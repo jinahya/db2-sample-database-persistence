@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = Act.TABLE_NAME)
-public class Act extends MappedAct {
+public class Act
+        extends MappedAct {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

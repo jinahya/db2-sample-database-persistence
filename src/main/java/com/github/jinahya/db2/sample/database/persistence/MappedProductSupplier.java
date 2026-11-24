@@ -32,13 +32,14 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedProductSupplier#TABLE_NAME} table, the suppliers of
- * the products.
+ * A mapped superclass which holds the mappings of the {@value MappedProductSupplier#TABLE_NAME}
+ * table, the suppliers of the products.
  * <p>
- * The primary key is composite, of {@value MappedProductSupplier#COLUMN_NAME_PID}, {@value
- * MappedProductSupplier#COLUMN_NAME_SID}, mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
- * entity names a subclass of {@link MappedProductSupplierId} with {@code @IdClass} and inherits the {@link Id @Id}
- * attributes from here.
+ * The primary key is composite, of {@value MappedProductSupplier#COLUMN_NAME_PID},
+ * {@value MappedProductSupplier#COLUMN_NAME_SID}, mapped with an
+ * {@link jakarta.persistence.IdClass @IdClass}: an extending entity names a subclass of
+ * {@link MappedProductSupplierId} with {@code @IdClass} and inherits the {@link Id @Id} attributes
+ * from here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedProductSupplierId
@@ -54,7 +55,8 @@ public abstract class MappedProductSupplier {
     // ------------------------------------------------------------------------------------------------------------- PID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PID} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PID} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PID = "PID";
 
@@ -69,7 +71,8 @@ public abstract class MappedProductSupplier {
     public static final int COLUMN_LENGTH_PID = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PID} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PID = "pid";
 
@@ -81,7 +84,8 @@ public abstract class MappedProductSupplier {
     // ------------------------------------------------------------------------------------------------------------- SID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SID} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SID} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_SID = "SID";
 
@@ -96,7 +100,8 @@ public abstract class MappedProductSupplier {
     public static final int COLUMN_LENGTH_SID = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SID} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_SID = "sid";
 
@@ -129,7 +134,8 @@ public abstract class MappedProductSupplier {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PID} and {@value #ATTRIBUTE_NAME_SID} alone.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PID} and
+     *         {@value #ATTRIBUTE_NAME_SID} alone.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -144,8 +150,8 @@ public abstract class MappedProductSupplier {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PID} and {@value #ATTRIBUTE_NAME_SID}, consistent with {@link
-     * #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PID} and
+     *         {@value #ATTRIBUTE_NAME_SID}, consistent with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {

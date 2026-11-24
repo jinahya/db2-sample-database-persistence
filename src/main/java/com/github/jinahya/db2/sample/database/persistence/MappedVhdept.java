@@ -33,16 +33,18 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVhdept#TABLE_NAME} view, the departments with their
- * locations.
+ * A mapped superclass which holds the mappings of the {@value MappedVhdept#TABLE_NAME} view, the
+ * departments with their locations.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
- * <strong>A view has no key.</strong> The column {@value MappedVhdept#COLUMN_NAME_DEPTNO}, unique and not {@code null}
- * in every row the sample database is created with, is mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
+ * <strong>A view has no key.</strong> The column {@value MappedVhdept#COLUMN_NAME_DEPTNO}, unique
+ * and not {@code null}
+ * in every row the sample database is created with, is mapped as the identifier, which an entity
+ * needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -57,7 +59,8 @@ public abstract class MappedVhdept {
     // ---------------------------------------------------------------------------------------------------------- DEPTNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNO = "DEPTNO";
 
@@ -72,7 +75,8 @@ public abstract class MappedVhdept {
     public static final int COLUMN_LENGTH_DEPTNO = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNO = "deptno";
 
@@ -84,7 +88,8 @@ public abstract class MappedVhdept {
     // -------------------------------------------------------------------------------------------------------- DEPTNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNAME = "DEPTNAME";
 
@@ -99,7 +104,8 @@ public abstract class MappedVhdept {
     public static final int COLUMN_LENGTH_DEPTNAME = 36;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNAME = "deptname";
 
@@ -111,7 +117,8 @@ public abstract class MappedVhdept {
     // ----------------------------------------------------------------------------------------------------------- MGRNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MGRNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MGRNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_MGRNO = "MGRNO";
 
@@ -126,7 +133,8 @@ public abstract class MappedVhdept {
     public static final int COLUMN_LENGTH_MGRNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MGRNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MGRNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MGRNO = "mgrno";
 
@@ -138,7 +146,8 @@ public abstract class MappedVhdept {
     // -------------------------------------------------------------------------------------------------------- ADMRDEPT
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_ADMRDEPT = "ADMRDEPT";
 
@@ -153,7 +162,8 @@ public abstract class MappedVhdept {
     public static final int COLUMN_LENGTH_ADMRDEPT = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ADMRDEPT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ADMRDEPT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ADMRDEPT = "admrdept";
 
@@ -165,7 +175,8 @@ public abstract class MappedVhdept {
     // -------------------------------------------------------------------------------------------------------- LOCATION
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LOCATION = "LOCATION";
 
@@ -180,7 +191,8 @@ public abstract class MappedVhdept {
     public static final int COLUMN_LENGTH_LOCATION = 16;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LOCATION} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LOCATION} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LOCATION = "location";
 
@@ -230,7 +242,8 @@ public abstract class MappedVhdept {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPTNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPTNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -250,7 +263,8 @@ public abstract class MappedVhdept {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute with the specified
+     * value.
      *
      * @param deptno new value for {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
      */
@@ -271,7 +285,8 @@ public abstract class MappedVhdept {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute with the specified
+     * value.
      *
      * @param deptname new value for {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
      */
@@ -313,7 +328,8 @@ public abstract class MappedVhdept {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute with the specified
+     * value.
      *
      * @param admrdept new value for {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute.
      */
@@ -334,7 +350,8 @@ public abstract class MappedVhdept {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute with the specified
+     * value.
      *
      * @param location new value for {@value #ATTRIBUTE_NAME_LOCATION} attribute.
      */

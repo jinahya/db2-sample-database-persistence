@@ -35,7 +35,8 @@ import jakarta.persistence.Table;
 @Entity
 @IdClass(EmpResumeId.class)
 @Table(name = EmpResume.TABLE_NAME)
-public class EmpResume extends MappedEmpResume {
+public class EmpResume
+        extends MappedEmpResume {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

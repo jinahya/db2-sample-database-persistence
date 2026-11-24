@@ -38,7 +38,8 @@ import java.lang.annotation.Target;
 import java.lang.invoke.MethodHandles;
 
 /**
- * Produces an entity manager factory, and entity managers, of the unit-test persistence unit, on an in-memory H2 database in DB2 mode whose schema the provider generates.
+ * Produces an entity manager factory, and entity managers, of the unit-test persistence unit, on an
+ * in-memory H2 database in DB2 mode whose schema the provider generates.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -53,7 +54,8 @@ class _Entity_Persistence_Test_Producer {
      */
     static final String PERSISTENCE_UNIT_NAME = "sample-test";
 
-    private static final System.Logger logger = System.getLogger(MethodHandles.lookup().lookupClass().getName());
+    private static final System.Logger logger =
+            System.getLogger(MethodHandles.lookup().lookupClass().getName());
 
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -69,7 +71,9 @@ class _Entity_Persistence_Test_Producer {
         /**
          * The literal of the qualifier.
          */
-        final class Literal extends AnnotationLiteral<__TestPU> implements __TestPU {
+        final class Literal
+                extends AnnotationLiteral<__TestPU>
+                implements __TestPU {
 
             /**
              * The single instance.
@@ -100,7 +104,8 @@ class _Entity_Persistence_Test_Producer {
         return Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
     }
 
-    protected void disposeEntityManagerFactory(@Disposes @__TestPU final EntityManagerFactory entityManagerFactory) {
+    protected void disposeEntityManagerFactory(
+            @Disposes @__TestPU final EntityManagerFactory entityManagerFactory) {
         if (entityManagerFactory.isOpen()) {
             logger.log(System.Logger.Level.DEBUG, "closing {0}", entityManagerFactory);
             entityManagerFactory.close();
@@ -112,7 +117,8 @@ class _Entity_Persistence_Test_Producer {
     @Produces
     @__TestPU
     @Dependent
-    protected EntityManager produceEntityManager(@__TestPU final EntityManagerFactory entityManagerFactory) {
+    protected EntityManager produceEntityManager(
+            @__TestPU final EntityManagerFactory entityManagerFactory) {
         return entityManagerFactory.createEntityManager();
     }
 

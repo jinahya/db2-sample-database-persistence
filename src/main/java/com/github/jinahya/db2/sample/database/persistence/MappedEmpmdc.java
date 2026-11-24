@@ -32,12 +32,13 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedEmpmdc#TABLE_NAME} table, the employees, by
- * department and division, for multidimensional clustering.
+ * A mapped superclass which holds the mappings of the {@value MappedEmpmdc#TABLE_NAME} table, the
+ * employees, by department and division, for multidimensional clustering.
  * <p>
- * <strong>The table declares no primary key.</strong> The column {@value MappedEmpmdc#COLUMN_NAME_EMPNO}, unique and
- * not {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity
- * needs; nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The column
+ * {@value MappedEmpmdc#COLUMN_NAME_EMPNO}, unique and
+ * not {@code null} in every row the sample database is created with, is mapped as the identifier,
+ * which an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -52,7 +53,8 @@ public abstract class MappedEmpmdc {
     // ----------------------------------------------------------------------------------------------------------- EMPNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
@@ -62,14 +64,16 @@ public abstract class MappedEmpmdc {
     public static final boolean COLUMN_NULLABLE_EMPNO = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPNO = "empno";
 
     // ------------------------------------------------------------------------------------------------------------ DEPT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPT} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPT} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT = "DEPT";
 
@@ -79,14 +83,16 @@ public abstract class MappedEmpmdc {
     public static final boolean COLUMN_NULLABLE_DEPT = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPT = "dept";
 
     // ------------------------------------------------------------------------------------------------------------- DIV
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DIV} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DIV} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DIV = "DIV";
 
@@ -96,7 +102,8 @@ public abstract class MappedEmpmdc {
     public static final boolean COLUMN_NULLABLE_DIV = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DIV} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DIV} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DIV = "div";
 
@@ -139,7 +146,8 @@ public abstract class MappedEmpmdc {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {

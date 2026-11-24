@@ -32,19 +32,22 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedAdefusr#TABLE_NAME} materialized query table, the
- * number of employees in each work department.
+ * A mapped superclass which holds the mappings of the {@value MappedAdefusr#TABLE_NAME}
+ * materialized query table, the number of employees in each work department.
  * <p>
- * <strong>The table is mapped read-only.</strong> It is a materialized query table which the database maintains
- * ({@code REFRESH IMMEDIATE MAINTAINED BY SYSTEM}); no column is updatable, none but the identifier's is insertable,
- * and the setters are not public. The identifier's column stays insertable since EclipseLink requires an {@link Id @Id}
- * mapping to be writable.
+ * <strong>The table is mapped read-only.</strong> It is a materialized query table which the
+ * database maintains
+ * ({@code REFRESH IMMEDIATE MAINTAINED BY SYSTEM}); no column is updatable, none but the
+ * identifier's is insertable, and the setters are not public. The identifier's column stays
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
- * It is defined as {@code SELECT WORKDEPT, COUNT(*) AS NO_OF_EMPLOYEES FROM EMPLOYEE GROUP BY WORKDEPT}.
+ * It is defined as
+ * {@code SELECT WORKDEPT, COUNT(*) AS NO_OF_EMPLOYEES FROM EMPLOYEE GROUP BY WORKDEPT}.
  * <p>
- * <strong>The table declares no primary key.</strong> The column {@value MappedAdefusr#COLUMN_NAME_WORKDEPT}, unique
- * and not {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity
- * needs; nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The column
+ * {@value MappedAdefusr#COLUMN_NAME_WORKDEPT}, unique
+ * and not {@code null} in every row the sample database is created with, is mapped as the
+ * identifier, which an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -52,15 +55,16 @@ import java.util.Objects;
 public abstract class MappedAdefusr {
 
     /**
-     * The name of the database materialized query table to which this class maps. The value is {@value}.
+     * The name of the database materialized query table to which this class maps. The value is
+     * {@value}.
      */
     public static final String TABLE_NAME = "ADEFUSR";
 
     // -------------------------------------------------------------------------------------------------------- WORKDEPT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_WORKDEPT = "WORKDEPT";
 
@@ -75,7 +79,8 @@ public abstract class MappedAdefusr {
     public static final int COLUMN_LENGTH_WORKDEPT = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_WORKDEPT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_WORKDEPT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_WORKDEPT = "workdept";
 
@@ -87,8 +92,8 @@ public abstract class MappedAdefusr {
     // ------------------------------------------------------------------------------------------------- NO_OF_EMPLOYEES
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NO_OF_EMPLOYEES} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NO_OF_EMPLOYEES} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_NO_OF_EMPLOYEES = "NO_OF_EMPLOYEES";
 
@@ -98,7 +103,8 @@ public abstract class MappedAdefusr {
     public static final boolean COLUMN_NULLABLE_NO_OF_EMPLOYEES = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_NO_OF_EMPLOYEES} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_NO_OF_EMPLOYEES} column. The
+     * value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_NO_OF_EMPLOYEES = "noOfEmployees";
 
@@ -140,7 +146,8 @@ public abstract class MappedAdefusr {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_WORKDEPT}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_WORKDEPT}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -160,7 +167,8 @@ public abstract class MappedAdefusr {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute with the specified
+     * value.
      *
      * @param workdept new value for {@value #ATTRIBUTE_NAME_WORKDEPT} attribute.
      */
@@ -181,7 +189,8 @@ public abstract class MappedAdefusr {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_NO_OF_EMPLOYEES} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_NO_OF_EMPLOYEES} attribute with the
+     * specified value.
      *
      * @param noOfEmployees new value for {@value #ATTRIBUTE_NAME_NO_OF_EMPLOYEES} attribute.
      */

@@ -33,8 +33,8 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedInventory#TABLE_NAME} table, the inventory of the
- * products.
+ * A mapped superclass which holds the mappings of the {@value MappedInventory#TABLE_NAME} table,
+ * the inventory of the products.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -49,7 +49,8 @@ public abstract class MappedInventory {
     // ------------------------------------------------------------------------------------------------------------- PID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PID} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PID} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PID = "PID";
 
@@ -64,7 +65,8 @@ public abstract class MappedInventory {
     public static final int COLUMN_LENGTH_PID = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PID} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PID = "pid";
 
@@ -76,8 +78,8 @@ public abstract class MappedInventory {
     // -------------------------------------------------------------------------------------------------------- QUANTITY
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_QUANTITY} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_QUANTITY} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_QUANTITY = "QUANTITY";
 
@@ -87,15 +89,16 @@ public abstract class MappedInventory {
     public static final boolean COLUMN_NULLABLE_QUANTITY = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_QUANTITY} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_QUANTITY} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_QUANTITY = "quantity";
 
     // -------------------------------------------------------------------------------------------------------- LOCATION
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LOCATION = "LOCATION";
 
@@ -110,7 +113,8 @@ public abstract class MappedInventory {
     public static final int COLUMN_LENGTH_LOCATION = 128;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LOCATION} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LOCATION} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LOCATION = "location";
 
@@ -158,7 +162,8 @@ public abstract class MappedInventory {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PID}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PID}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -199,7 +204,8 @@ public abstract class MappedInventory {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_QUANTITY} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_QUANTITY} attribute with the specified
+     * value.
      *
      * @param quantity new value for {@value #ATTRIBUTE_NAME_QUANTITY} attribute.
      */
@@ -220,7 +226,8 @@ public abstract class MappedInventory {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute with the specified
+     * value.
      *
      * @param location new value for {@value #ATTRIBUTE_NAME_LOCATION} attribute.
      */

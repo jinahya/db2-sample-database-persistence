@@ -34,7 +34,8 @@ import jakarta.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = Project.TABLE_NAME)
-public class Project extends MappedProject {
+public class Project
+        extends MappedProject {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

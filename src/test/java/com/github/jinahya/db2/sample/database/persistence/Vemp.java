@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = Vemp.TABLE_NAME)
-public class Vemp extends MappedVemp {
+public class Vemp
+        extends MappedVemp {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

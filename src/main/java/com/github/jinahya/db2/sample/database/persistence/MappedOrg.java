@@ -33,11 +33,13 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedOrg#TABLE_NAME} table, the organization.
+ * A mapped superclass which holds the mappings of the {@value MappedOrg#TABLE_NAME} table, the
+ * organization.
  * <p>
- * <strong>The table declares no primary key.</strong> The column {@value MappedOrg#COLUMN_NAME_DEPTNUMB}, unique and
- * not {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity
- * needs; nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The column
+ * {@value MappedOrg#COLUMN_NAME_DEPTNUMB}, unique and
+ * not {@code null} in every row the sample database is created with, is mapped as the identifier,
+ * which an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -52,8 +54,8 @@ public abstract class MappedOrg {
     // -------------------------------------------------------------------------------------------------------- DEPTNUMB
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNUMB = "DEPTNUMB";
 
@@ -63,15 +65,16 @@ public abstract class MappedOrg {
     public static final boolean COLUMN_NULLABLE_DEPTNUMB = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNUMB} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNUMB} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNUMB = "deptnumb";
 
     // -------------------------------------------------------------------------------------------------------- DEPTNAME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNAME = "DEPTNAME";
 
@@ -86,7 +89,8 @@ public abstract class MappedOrg {
     public static final int COLUMN_LENGTH_DEPTNAME = 14;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNAME = "deptname";
 
@@ -98,7 +102,8 @@ public abstract class MappedOrg {
     // --------------------------------------------------------------------------------------------------------- MANAGER
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_MANAGER} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_MANAGER} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_MANAGER = "MANAGER";
 
@@ -108,15 +113,16 @@ public abstract class MappedOrg {
     public static final boolean COLUMN_NULLABLE_MANAGER = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MANAGER} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MANAGER} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MANAGER = "manager";
 
     // -------------------------------------------------------------------------------------------------------- DIVISION
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DIVISION} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DIVISION} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_DIVISION = "DIVISION";
 
@@ -131,7 +137,8 @@ public abstract class MappedOrg {
     public static final int COLUMN_LENGTH_DIVISION = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DIVISION} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DIVISION} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DIVISION = "division";
 
@@ -143,8 +150,8 @@ public abstract class MappedOrg {
     // -------------------------------------------------------------------------------------------------------- LOCATION
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LOCATION = "LOCATION";
 
@@ -159,7 +166,8 @@ public abstract class MappedOrg {
     public static final int COLUMN_LENGTH_LOCATION = 13;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LOCATION} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LOCATION} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LOCATION = "location";
 
@@ -209,7 +217,8 @@ public abstract class MappedOrg {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPTNUMB}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPTNUMB}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -229,7 +238,8 @@ public abstract class MappedOrg {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute with the specified
+     * value.
      *
      * @param deptnumb new value for {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute.
      */
@@ -250,7 +260,8 @@ public abstract class MappedOrg {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute with the specified
+     * value.
      *
      * @param deptname new value for {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
      */
@@ -271,7 +282,8 @@ public abstract class MappedOrg {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MANAGER} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MANAGER} attribute with the specified
+     * value.
      *
      * @param manager new value for {@value #ATTRIBUTE_NAME_MANAGER} attribute.
      */
@@ -292,7 +304,8 @@ public abstract class MappedOrg {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DIVISION} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DIVISION} attribute with the specified
+     * value.
      *
      * @param division new value for {@value #ATTRIBUTE_NAME_DIVISION} attribute.
      */
@@ -313,7 +326,8 @@ public abstract class MappedOrg {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute with the specified
+     * value.
      *
      * @param location new value for {@value #ATTRIBUTE_NAME_LOCATION} attribute.
      */

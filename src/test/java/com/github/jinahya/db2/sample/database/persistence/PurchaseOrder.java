@@ -33,7 +33,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = PurchaseOrder.TABLE_NAME)
-public class PurchaseOrder extends MappedPurchaseOrder {
+public class PurchaseOrder
+        extends MappedPurchaseOrder {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

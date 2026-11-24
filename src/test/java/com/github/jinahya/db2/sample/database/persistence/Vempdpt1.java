@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = Vempdpt1.TABLE_NAME)
-public class Vempdpt1 extends MappedVempdpt1 {
+public class Vempdpt1
+        extends MappedVempdpt1 {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = Org.TABLE_NAME)
-public class Org extends MappedOrg {
+public class Org
+        extends MappedOrg {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

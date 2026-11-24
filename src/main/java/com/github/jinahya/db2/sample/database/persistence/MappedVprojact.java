@@ -36,20 +36,22 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVprojact#TABLE_NAME} view, the activities of the
- * projects.
+ * A mapped superclass which holds the mappings of the {@value MappedVprojact#TABLE_NAME} view, the
+ * activities of the projects.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
  * <strong>A view has no key.</strong> The columns {@value MappedVprojact#COLUMN_NAME_PROJNO},
- * {@value MappedVprojact#COLUMN_NAME_ACTNO}, {@value MappedVprojact#COLUMN_NAME_ACSTDATE}, unique and not {@code null}
- * in every row the sample database is created with, are mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
+ * {@value MappedVprojact#COLUMN_NAME_ACTNO}, {@value MappedVprojact#COLUMN_NAME_ACSTDATE}, unique
+ * and not {@code null} in every row the sample database is created with, are mapped as the
+ * identifier, which an entity needs; nothing in the database keeps that so.
  * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending entity names a subclass
- * of {@link MappedVprojactId} with {@code @IdClass} and inherits the {@link Id @Id} attributes from here.
+ * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
+ * entity names a subclass of {@link MappedVprojactId} with {@code @IdClass} and inherits the
+ * {@link Id @Id} attributes from here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedVprojactId
@@ -65,7 +67,8 @@ public abstract class MappedVprojact {
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
@@ -80,7 +83,8 @@ public abstract class MappedVprojact {
     public static final int COLUMN_LENGTH_PROJNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
@@ -92,7 +96,8 @@ public abstract class MappedVprojact {
     // ----------------------------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
@@ -102,14 +107,16 @@ public abstract class MappedVprojact {
     public static final boolean COLUMN_NULLABLE_ACTNO = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
     // --------------------------------------------------------------------------------------------------------- ACSTAFF
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACSTAFF = "ACSTAFF";
 
@@ -129,24 +136,29 @@ public abstract class MappedVprojact {
     public static final int COLUMN_SCALE_ACSTAFF = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTAFF} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTAFF} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACSTAFF = "acstaff";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute. The
+     * value is {@value}.
      */
-    public static final int DIGITS_INTEGER_ACSTAFF = COLUMN_PRECISION_ACSTAFF - COLUMN_SCALE_ACSTAFF;
+    public static final int DIGITS_INTEGER_ACSTAFF =
+            COLUMN_PRECISION_ACSTAFF - COLUMN_SCALE_ACSTAFF;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute.
+     * The value is {@value}.
      */
     public static final int DIGITS_FRACTION_ACSTAFF = COLUMN_SCALE_ACSTAFF;
 
     // -------------------------------------------------------------------------------------------------------- ACSTDATE
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_ACSTDATE = "ACSTDATE";
 
@@ -156,14 +168,16 @@ public abstract class MappedVprojact {
     public static final boolean COLUMN_NULLABLE_ACSTDATE = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACSTDATE = "acstdate";
 
     // -------------------------------------------------------------------------------------------------------- ACENDATE
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACENDATE} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACENDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_ACENDATE = "ACENDATE";
 
@@ -173,7 +187,8 @@ public abstract class MappedVprojact {
     public static final boolean COLUMN_NULLABLE_ACENDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACENDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACENDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACENDATE = "acendate";
 
@@ -204,8 +219,8 @@ public abstract class MappedVprojact {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
-     * {@value #ATTRIBUTE_NAME_ACSTDATE} alone.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and
+     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_ACSTDATE} alone.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -221,8 +236,9 @@ public abstract class MappedVprojact {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
-     * {@value #ATTRIBUTE_NAME_ACSTDATE}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and
+     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_ACSTDATE}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -242,7 +258,8 @@ public abstract class MappedVprojact {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -284,7 +301,8 @@ public abstract class MappedVprojact {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTAFF} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTAFF} attribute with the specified
+     * value.
      *
      * @param acstaff new value for {@value #ATTRIBUTE_NAME_ACSTAFF} attribute.
      */
@@ -305,7 +323,8 @@ public abstract class MappedVprojact {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute with the specified
+     * value.
      *
      * @param acstdate new value for {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
      */
@@ -326,7 +345,8 @@ public abstract class MappedVprojact {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACENDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACENDATE} attribute with the specified
+     * value.
      *
      * @param acendate new value for {@value #ATTRIBUTE_NAME_ACENDATE} attribute.
      */

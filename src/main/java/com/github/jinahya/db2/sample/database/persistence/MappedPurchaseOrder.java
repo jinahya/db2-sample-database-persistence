@@ -34,16 +34,17 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedPurchaseOrder#TABLE_NAME} table, the purchase
- * orders, each with an XML document.
+ * A mapped superclass which holds the mappings of the {@value MappedPurchaseOrder#TABLE_NAME}
+ * table, the purchase orders, each with an XML document.
  * <p>
- * The foreign key column {@value MappedPurchaseOrder#COLUMN_NAME_CUSTID} is mapped read-only ({@code insertable =
- * false, updatable = false}), with a {@code protected} getter and no setter, for {@link #toString()} and for queries.
- * How the relationship behind it is mapped is the extending entity's decision, so the extending entity also owns the
- * writable mapping, by an association's {@link jakarta.persistence.JoinColumn @JoinColumn}. <strong>An extending entity
- * which maps it not never writes it.</strong> For the same reason it is constrained {@code NotNull} here, even where
- * the column is {@code NOT NULL}: the attribute stays {@code null} until a load, and the association is what is
- * constrained.
+ * The foreign key column {@value MappedPurchaseOrder#COLUMN_NAME_CUSTID} is mapped read-only
+ * ({@code insertable = false, updatable = false}), with a {@code protected} getter and no setter,
+ * for {@link #toString()} and for queries. How the relationship behind it is mapped is the
+ * extending entity's decision, so the extending entity also owns the writable mapping, by an
+ * association's {@link jakarta.persistence.JoinColumn @JoinColumn}. <strong>An extending entity
+ * which maps it not never writes it.</strong> For the same reason it is constrained {@code NotNull}
+ * here, even where the column is {@code NOT NULL}: the attribute stays {@code null} until a load,
+ * and the association is what is constrained.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -58,7 +59,8 @@ public abstract class MappedPurchaseOrder {
     // ------------------------------------------------------------------------------------------------------------ POID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_POID} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_POID} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_POID = "POID";
 
@@ -68,14 +70,16 @@ public abstract class MappedPurchaseOrder {
     public static final boolean COLUMN_NULLABLE_POID = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_POID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_POID} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_POID = "poid";
 
     // ---------------------------------------------------------------------------------------------------------- STATUS
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_STATUS} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_STATUS} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_STATUS = "STATUS";
 
@@ -90,7 +94,8 @@ public abstract class MappedPurchaseOrder {
     public static final int COLUMN_LENGTH_STATUS = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_STATUS} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_STATUS} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_STATUS = "status";
 
@@ -102,7 +107,8 @@ public abstract class MappedPurchaseOrder {
     // ---------------------------------------------------------------------------------------------------------- CUSTID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CUSTID} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CUSTID} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_CUSTID = "CUSTID";
 
@@ -112,15 +118,16 @@ public abstract class MappedPurchaseOrder {
     public static final boolean COLUMN_NULLABLE_CUSTID = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_CUSTID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_CUSTID} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_CUSTID = "custid";
 
     // ------------------------------------------------------------------------------------------------------- ORDERDATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ORDERDATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ORDERDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_ORDERDATE = "ORDERDATE";
 
@@ -130,14 +137,16 @@ public abstract class MappedPurchaseOrder {
     public static final boolean COLUMN_NULLABLE_ORDERDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ORDERDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ORDERDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ORDERDATE = "orderdate";
 
     // ---------------------------------------------------------------------------------------------------------- PORDER
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PORDER} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PORDER} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PORDER = "PORDER";
 
@@ -147,15 +156,16 @@ public abstract class MappedPurchaseOrder {
     public static final boolean COLUMN_NULLABLE_PORDER = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PORDER} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PORDER} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PORDER = "porder";
 
     // -------------------------------------------------------------------------------------------------------- COMMENTS
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_COMMENTS} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_COMMENTS} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_COMMENTS = "COMMENTS";
 
@@ -170,7 +180,8 @@ public abstract class MappedPurchaseOrder {
     public static final int COLUMN_LENGTH_COMMENTS = 1000;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_COMMENTS} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_COMMENTS} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_COMMENTS = "comments";
 
@@ -221,7 +232,8 @@ public abstract class MappedPurchaseOrder {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_POID}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_POID}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -262,7 +274,8 @@ public abstract class MappedPurchaseOrder {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_STATUS} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_STATUS} attribute with the specified
+     * value.
      *
      * @param status new value for {@value #ATTRIBUTE_NAME_STATUS} attribute.
      */
@@ -273,12 +286,12 @@ public abstract class MappedPurchaseOrder {
     // ---------------------------------------------------------------------------------------------------------- custid
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_CUSTID} attribute, which is {@code null} until this instance is
-     * loaded.
+     * Returns current value of {@value #ATTRIBUTE_NAME_CUSTID} attribute, which is {@code null}
+     * until this instance is loaded.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_CUSTID} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy, which is a subclass in
-     * another package, can override it.
+     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
+     *         which is a subclass in another package, can override it.
      */
     @Nullable
     protected Long getCustid() {
@@ -298,7 +311,8 @@ public abstract class MappedPurchaseOrder {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ORDERDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ORDERDATE} attribute with the specified
+     * value.
      *
      * @param orderdate new value for {@value #ATTRIBUTE_NAME_ORDERDATE} attribute.
      */
@@ -309,7 +323,8 @@ public abstract class MappedPurchaseOrder {
     // ---------------------------------------------------------------------------------------------------------- porder
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_PORDER} attribute, serialized; the column is an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_PORDER} attribute, serialized; the column is
+     * an XML.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PORDER} attribute.
      */
@@ -319,7 +334,8 @@ public abstract class MappedPurchaseOrder {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PORDER} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PORDER} attribute with the specified
+     * value.
      *
      * @param porder new value for {@value #ATTRIBUTE_NAME_PORDER} attribute.
      */
@@ -340,7 +356,8 @@ public abstract class MappedPurchaseOrder {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_COMMENTS} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_COMMENTS} attribute with the specified
+     * value.
      *
      * @param comments new value for {@value #ATTRIBUTE_NAME_COMMENTS} attribute.
      */
@@ -374,7 +391,8 @@ public abstract class MappedPurchaseOrder {
     private String status;
 
     // -----------------------------------------------------------------------------------------------------------------
-    // read-only: the extending entity owns the writable mapping of this column; see the class documentation
+    // read-only: the extending entity owns the writable mapping of this column; see the class
+    // documentation
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_CUSTID,
             nullable = COLUMN_NULLABLE_CUSTID,

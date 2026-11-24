@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = MlblogsQuestion.TABLE_NAME)
-public class MlblogsQuestion extends MappedMlblogsQuestion {
+public class MlblogsQuestion
+        extends MappedMlblogsQuestion {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

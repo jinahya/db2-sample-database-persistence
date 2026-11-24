@@ -33,13 +33,16 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedPatient#TABLE_NAME} table, the patients.
+ * A mapped superclass which holds the mappings of the {@value MappedPatient#TABLE_NAME} table, the
+ * patients.
  * <p>
- * <strong>The table declares no primary key.</strong> The column {@value MappedPatient#COLUMN_NAME_PATIENT_ID}, unique
- * and not {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity
- * needs; nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The column
+ * {@value MappedPatient#COLUMN_NAME_PATIENT_ID}, unique
+ * and not {@code null} in every row the sample database is created with, is mapped as the
+ * identifier, which an entity needs; nothing in the database keeps that so.
  * <p>
- * The {@code EMBEDDING} column is not mapped; it is a VECTOR, for which Jakarta Persistence has no mapping.
+ * The {@code EMBEDDING} column is not mapped; it is a VECTOR, for which Jakarta Persistence has no
+ * mapping.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -54,8 +57,8 @@ public abstract class MappedPatient {
     // ------------------------------------------------------------------------------------------------------ PATIENT_ID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PATIENT_ID} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PATIENT_ID} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PATIENT_ID = "PATIENT_ID";
 
@@ -65,14 +68,16 @@ public abstract class MappedPatient {
     public static final boolean COLUMN_NULLABLE_PATIENT_ID = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PATIENT_ID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PATIENT_ID} column. The value
+     * is {@value}.
      */
     public static final String ATTRIBUTE_NAME_PATIENT_ID = "patientId";
 
     // ------------------------------------------------------------------------------------------------------------ NAME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_NAME = "NAME";
 
@@ -87,7 +92,8 @@ public abstract class MappedPatient {
     public static final int COLUMN_LENGTH_NAME = 30;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_NAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_NAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_NAME = "name";
 
@@ -99,7 +105,8 @@ public abstract class MappedPatient {
     // ------------------------------------------------------------------------------------------------------------- AGE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_AGE} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_AGE} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_AGE = "AGE";
 
@@ -109,14 +116,16 @@ public abstract class MappedPatient {
     public static final boolean COLUMN_NULLABLE_AGE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_AGE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_AGE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_AGE = "age";
 
     // ---------------------------------------------------------------------------------------------------------- GENDER
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_GENDER} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_GENDER} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_GENDER = "GENDER";
 
@@ -131,7 +140,8 @@ public abstract class MappedPatient {
     public static final int COLUMN_LENGTH_GENDER = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_GENDER} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_GENDER} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_GENDER = "gender";
 
@@ -143,26 +153,28 @@ public abstract class MappedPatient {
     // ----------------------------------------------------------------------------------------------- CHOLESTEROL_LEVEL
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CHOLESTEROL_LEVEL} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CHOLESTEROL_LEVEL}
+     * attribute maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_CHOLESTEROL_LEVEL = "CHOLESTEROL_LEVEL";
 
     /**
-     * Whether the {@value #COLUMN_NAME_CHOLESTEROL_LEVEL} column is nullable. The value is {@value}.
+     * Whether the {@value #COLUMN_NAME_CHOLESTEROL_LEVEL} column is nullable. The value is
+     * {@value}.
      */
     public static final boolean COLUMN_NULLABLE_CHOLESTEROL_LEVEL = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_CHOLESTEROL_LEVEL} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_CHOLESTEROL_LEVEL} column. The
+     * value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_CHOLESTEROL_LEVEL = "cholesterolLevel";
 
     // -------------------------------------------------------------------------------------------------- BLOOD_PRESSURE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_BLOOD_PRESSURE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_BLOOD_PRESSURE} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_BLOOD_PRESSURE = "BLOOD_PRESSURE";
 
@@ -172,15 +184,16 @@ public abstract class MappedPatient {
     public static final boolean COLUMN_NULLABLE_BLOOD_PRESSURE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_BLOOD_PRESSURE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_BLOOD_PRESSURE} column. The
+     * value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_BLOOD_PRESSURE = "bloodPressure";
 
     // -------------------------------------------------------------------------------------------------- SMOKING_STATUS
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_SMOKING_STATUS = "SMOKING_STATUS";
 
@@ -195,12 +208,14 @@ public abstract class MappedPatient {
     public static final int COLUMN_LENGTH_SMOKING_STATUS = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SMOKING_STATUS} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SMOKING_STATUS} column. The
+     * value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_SMOKING_STATUS = "smokingStatus";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute. The value is {@value}.
+     * The maximum size of the {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute. The value is
+     * {@value}.
      */
     public static final int SIZE_MAX_SMOKING_STATUS = COLUMN_LENGTH_SMOKING_STATUS;
 
@@ -247,7 +262,8 @@ public abstract class MappedPatient {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PATIENT_ID}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PATIENT_ID}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -267,7 +283,8 @@ public abstract class MappedPatient {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PATIENT_ID} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PATIENT_ID} attribute with the specified
+     * value.
      *
      * @param patientId new value for {@value #ATTRIBUTE_NAME_PATIENT_ID} attribute.
      */
@@ -330,7 +347,8 @@ public abstract class MappedPatient {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_GENDER} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_GENDER} attribute with the specified
+     * value.
      *
      * @param gender new value for {@value #ATTRIBUTE_NAME_GENDER} attribute.
      */
@@ -351,7 +369,8 @@ public abstract class MappedPatient {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_CHOLESTEROL_LEVEL} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_CHOLESTEROL_LEVEL} attribute with the
+     * specified value.
      *
      * @param cholesterolLevel new value for {@value #ATTRIBUTE_NAME_CHOLESTEROL_LEVEL} attribute.
      */
@@ -372,7 +391,8 @@ public abstract class MappedPatient {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_BLOOD_PRESSURE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_BLOOD_PRESSURE} attribute with the
+     * specified value.
      *
      * @param bloodPressure new value for {@value #ATTRIBUTE_NAME_BLOOD_PRESSURE} attribute.
      */
@@ -393,7 +413,8 @@ public abstract class MappedPatient {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute with the
+     * specified value.
      *
      * @param smokingStatus new value for {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute.
      */

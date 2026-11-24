@@ -25,7 +25,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-public class VprojactId extends MappedVprojactId {
+public class VprojactId
+        extends MappedVprojactId {
 
     private static final long serialVersionUID = 1L;
 

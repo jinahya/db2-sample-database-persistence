@@ -36,16 +36,19 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedEmpProjAct#TABLE_NAME} table, the employees on
- * activities of projects.
+ * A mapped superclass which holds the mappings of the {@value MappedEmpProjAct#TABLE_NAME} table,
+ * the employees on activities of projects.
  * <p>
- * <strong>The table declares no primary key.</strong> The columns {@value MappedEmpProjAct#COLUMN_NAME_EMPNO}, {@value
- * MappedEmpProjAct#COLUMN_NAME_PROJNO}, {@value MappedEmpProjAct#COLUMN_NAME_ACTNO}, {@value
- * MappedEmpProjAct#COLUMN_NAME_EMSTDATE}, unique and not {@code null} in every row the sample database is created with,
- * are mapped as the identifier, which an entity needs; nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The columns
+ * {@value MappedEmpProjAct#COLUMN_NAME_EMPNO}, {@value
+ * MappedEmpProjAct#COLUMN_NAME_PROJNO}, {@value MappedEmpProjAct#COLUMN_NAME_ACTNO},
+ * {@value MappedEmpProjAct#COLUMN_NAME_EMSTDATE}, unique and not {@code null} in every row the
+ * sample database is created with, are mapped as the identifier, which an entity needs; nothing in
+ * the database keeps that so.
  * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending entity names a subclass
- * of {@link MappedEmpProjActId} with {@code @IdClass} and inherits the {@link Id @Id} attributes from here.
+ * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
+ * entity names a subclass of {@link MappedEmpProjActId} with {@code @IdClass} and inherits the
+ * {@link Id @Id} attributes from here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedEmpProjActId
@@ -61,7 +64,8 @@ public abstract class MappedEmpProjAct {
     // ----------------------------------------------------------------------------------------------------------- EMPNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
@@ -76,7 +80,8 @@ public abstract class MappedEmpProjAct {
     public static final int COLUMN_LENGTH_EMPNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPNO = "empno";
 
@@ -88,7 +93,8 @@ public abstract class MappedEmpProjAct {
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
@@ -103,7 +109,8 @@ public abstract class MappedEmpProjAct {
     public static final int COLUMN_LENGTH_PROJNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
@@ -115,7 +122,8 @@ public abstract class MappedEmpProjAct {
     // ----------------------------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
@@ -125,14 +133,16 @@ public abstract class MappedEmpProjAct {
     public static final boolean COLUMN_NULLABLE_ACTNO = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
     // --------------------------------------------------------------------------------------------------------- EMPTIME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPTIME} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPTIME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_EMPTIME = "EMPTIME";
 
@@ -152,25 +162,29 @@ public abstract class MappedEmpProjAct {
     public static final int COLUMN_SCALE_EMPTIME = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPTIME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPTIME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPTIME = "emptime";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute. The
+     * value is {@value}.
      */
-    public static final int DIGITS_INTEGER_EMPTIME = COLUMN_PRECISION_EMPTIME - COLUMN_SCALE_EMPTIME;
+    public static final int DIGITS_INTEGER_EMPTIME =
+            COLUMN_PRECISION_EMPTIME - COLUMN_SCALE_EMPTIME;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute.
+     * The value is {@value}.
      */
     public static final int DIGITS_FRACTION_EMPTIME = COLUMN_SCALE_EMPTIME;
 
     // -------------------------------------------------------------------------------------------------------- EMSTDATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMSTDATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMSTDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_EMSTDATE = "EMSTDATE";
 
@@ -180,15 +194,16 @@ public abstract class MappedEmpProjAct {
     public static final boolean COLUMN_NULLABLE_EMSTDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMSTDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMSTDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMSTDATE = "emstdate";
 
     // -------------------------------------------------------------------------------------------------------- EMENDATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMENDATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMENDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_EMENDATE = "EMENDATE";
 
@@ -198,7 +213,8 @@ public abstract class MappedEmpProjAct {
     public static final boolean COLUMN_NULLABLE_EMENDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMENDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMENDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMENDATE = "emendate";
 
@@ -230,8 +246,9 @@ public abstract class MappedEmpProjAct {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_EMPNO} and {@value #ATTRIBUTE_NAME_PROJNO} and {@value
-     * #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_EMSTDATE} alone.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_EMPNO} and
+     *         {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
+     *         {@value #ATTRIBUTE_NAME_EMSTDATE} alone.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -248,8 +265,9 @@ public abstract class MappedEmpProjAct {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO} and {@value #ATTRIBUTE_NAME_PROJNO} and {@value
-     * #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_EMSTDATE}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO} and
+     *         {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
+     *         {@value #ATTRIBUTE_NAME_EMSTDATE}, consistent with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -290,7 +308,8 @@ public abstract class MappedEmpProjAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -332,7 +351,8 @@ public abstract class MappedEmpProjAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPTIME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPTIME} attribute with the specified
+     * value.
      *
      * @param emptime new value for {@value #ATTRIBUTE_NAME_EMPTIME} attribute.
      */
@@ -353,7 +373,8 @@ public abstract class MappedEmpProjAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMSTDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMSTDATE} attribute with the specified
+     * value.
      *
      * @param emstdate new value for {@value #ATTRIBUTE_NAME_EMSTDATE} attribute.
      */
@@ -374,7 +395,8 @@ public abstract class MappedEmpProjAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMENDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMENDATE} attribute with the specified
+     * value.
      *
      * @param emendate new value for {@value #ATTRIBUTE_NAME_EMENDATE} attribute.
      */

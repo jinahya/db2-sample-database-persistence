@@ -32,7 +32,8 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedAct#TABLE_NAME} table, the activities.
+ * A mapped superclass which holds the mappings of the {@value MappedAct#TABLE_NAME} table, the
+ * activities.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -47,7 +48,8 @@ public abstract class MappedAct {
     // ----------------------------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
@@ -57,14 +59,16 @@ public abstract class MappedAct {
     public static final boolean COLUMN_NULLABLE_ACTNO = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
     // ---------------------------------------------------------------------------------------------------------- ACTKWD
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTKWD} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTKWD} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTKWD = "ACTKWD";
 
@@ -79,7 +83,8 @@ public abstract class MappedAct {
     public static final int COLUMN_LENGTH_ACTKWD = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTKWD} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTKWD} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTKWD = "actkwd";
 
@@ -91,7 +96,8 @@ public abstract class MappedAct {
     // --------------------------------------------------------------------------------------------------------- ACTDESC
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTDESC} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTDESC} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_ACTDESC = "ACTDESC";
 
@@ -106,7 +112,8 @@ public abstract class MappedAct {
     public static final int COLUMN_LENGTH_ACTDESC = 20;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTDESC} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTDESC} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTDESC = "actdesc";
 
@@ -154,7 +161,8 @@ public abstract class MappedAct {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ACTNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ACTNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -195,7 +203,8 @@ public abstract class MappedAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTKWD} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTKWD} attribute with the specified
+     * value.
      *
      * @param actkwd new value for {@value #ATTRIBUTE_NAME_ACTKWD} attribute.
      */
@@ -216,7 +225,8 @@ public abstract class MappedAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTDESC} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTDESC} attribute with the specified
+     * value.
      *
      * @param actdesc new value for {@value #ATTRIBUTE_NAME_ACTDESC} attribute.
      */

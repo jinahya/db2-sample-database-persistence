@@ -32,7 +32,8 @@ import jakarta.persistence.Table;
 @Entity
 @IdClass(VprojactId.class)
 @Table(name = Vprojact.TABLE_NAME)
-public class Vprojact extends MappedVprojact {
+public class Vprojact
+        extends MappedVprojact {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

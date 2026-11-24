@@ -32,17 +32,19 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedMlblogsAnswer#TABLE_NAME} table, the answers of a
- * vector search example.
+ * A mapped superclass which holds the mappings of the {@value MappedMlblogsAnswer#TABLE_NAME}
+ * table, the answers of a vector search example.
  * <p>
- * Some answers appear in more than one row, with the same embedding; the instances of an answer a query returns are one
- * and the same.
+ * Some answers appear in more than one row, with the same embedding; the instances of an answer a
+ * query returns are one and the same.
  * <p>
- * <strong>The table declares no primary key.</strong> The column {@value MappedMlblogsAnswer#COLUMN_NAME_ANSWER}, not
- * {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity needs;
- * nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The column
+ * {@value MappedMlblogsAnswer#COLUMN_NAME_ANSWER}, not
+ * {@code null} in every row the sample database is created with, is mapped as the identifier, which
+ * an entity needs; nothing in the database keeps that so.
  * <p>
- * The column {@code EMBEDDING}, a {@code VECTOR}, is not mapped; Jakarta Persistence has no mapping for it.
+ * The column {@code EMBEDDING}, a {@code VECTOR}, is not mapped; Jakarta Persistence has no mapping
+ * for it.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -57,7 +59,8 @@ public abstract class MappedMlblogsAnswer {
     // ---------------------------------------------------------------------------------------------------------- ANSWER
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ANSWER} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ANSWER} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ANSWER = "ANSWER";
 
@@ -72,7 +75,8 @@ public abstract class MappedMlblogsAnswer {
     public static final int COLUMN_LENGTH_ANSWER = 1024;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ANSWER} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ANSWER} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ANSWER = "answer";
 
@@ -118,7 +122,8 @@ public abstract class MappedMlblogsAnswer {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ANSWER}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ANSWER}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -138,7 +143,8 @@ public abstract class MappedMlblogsAnswer {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ANSWER} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ANSWER} attribute with the specified
+     * value.
      *
      * @param answer new value for {@value #ATTRIBUTE_NAME_ANSWER} attribute.
      */

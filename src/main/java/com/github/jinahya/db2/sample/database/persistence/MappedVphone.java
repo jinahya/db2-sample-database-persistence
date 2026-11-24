@@ -33,16 +33,18 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVphone#TABLE_NAME} view, the phone list of the
- * employees, with their departments.
+ * A mapped superclass which holds the mappings of the {@value MappedVphone#TABLE_NAME} view, the
+ * phone list of the employees, with their departments.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
- * <strong>A view has no key.</strong> The column {@value MappedVphone#COLUMN_NAME_EMPLOYEENUMBER}, unique and not
- * {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity needs;
- * nothing in the database keeps that so.
+ * <strong>A view has no key.</strong> The column {@value MappedVphone#COLUMN_NAME_EMPLOYEENUMBER},
+ * unique and not
+ * {@code null} in every row the sample database is created with, is mapped as the identifier, which
+ * an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -57,7 +59,8 @@ public abstract class MappedVphone {
     // -------------------------------------------------------------------------------------------------------- LASTNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
@@ -72,7 +75,8 @@ public abstract class MappedVphone {
     public static final int COLUMN_LENGTH_LASTNAME = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LASTNAME = "lastname";
 
@@ -84,8 +88,8 @@ public abstract class MappedVphone {
     // ------------------------------------------------------------------------------------------------------- FIRSTNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNAME} attribute maps. The value is
-     * {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_FIRSTNAME = "FIRSTNAME";
 
@@ -100,7 +104,8 @@ public abstract class MappedVphone {
     public static final int COLUMN_LENGTH_FIRSTNAME = 12;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_FIRSTNAME = "firstname";
 
@@ -112,8 +117,8 @@ public abstract class MappedVphone {
     // --------------------------------------------------------------------------------------------------- MIDDLEINITIAL
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDDLEINITIAL} attribute maps. The value is
-     * {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDDLEINITIAL} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_MIDDLEINITIAL = "MIDDLEINITIAL";
 
@@ -128,20 +133,22 @@ public abstract class MappedVphone {
     public static final int COLUMN_LENGTH_MIDDLEINITIAL = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDDLEINITIAL} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDDLEINITIAL} column. The
+     * value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_MIDDLEINITIAL = "middleinitial";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_MIDDLEINITIAL} attribute. The value is {@value}.
+     * The maximum size of the {@value #ATTRIBUTE_NAME_MIDDLEINITIAL} attribute. The value is
+     * {@value}.
      */
     public static final int SIZE_MAX_MIDDLEINITIAL = COLUMN_LENGTH_MIDDLEINITIAL;
 
     // ----------------------------------------------------------------------------------------------------- PHONENUMBER
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute maps. The value is
-     * {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PHONENUMBER = "PHONENUMBER";
 
@@ -156,20 +163,22 @@ public abstract class MappedVphone {
     public static final int COLUMN_LENGTH_PHONENUMBER = 4;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PHONENUMBER} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PHONENUMBER} column. The value
+     * is {@value}.
      */
     public static final String ATTRIBUTE_NAME_PHONENUMBER = "phonenumber";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute. The value is {@value}.
+     * The maximum size of the {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute. The value is
+     * {@value}.
      */
     public static final int SIZE_MAX_PHONENUMBER = COLUMN_LENGTH_PHONENUMBER;
 
     // -------------------------------------------------------------------------------------------------- EMPLOYEENUMBER
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute maps. The value is
-     * {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_EMPLOYEENUMBER = "EMPLOYEENUMBER";
 
@@ -184,20 +193,22 @@ public abstract class MappedVphone {
     public static final int COLUMN_LENGTH_EMPLOYEENUMBER = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPLOYEENUMBER} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPLOYEENUMBER} column. The
+     * value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPLOYEENUMBER = "employeenumber";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute. The value is {@value}.
+     * The maximum size of the {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute. The value is
+     * {@value}.
      */
     public static final int SIZE_MAX_EMPLOYEENUMBER = COLUMN_LENGTH_EMPLOYEENUMBER;
 
     // ------------------------------------------------------------------------------------------------------ DEPTNUMBER
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNUMBER} attribute maps. The value is
-     * {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNUMBER} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNUMBER = "DEPTNUMBER";
 
@@ -212,19 +223,22 @@ public abstract class MappedVphone {
     public static final int COLUMN_LENGTH_DEPTNUMBER = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNUMBER} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNUMBER} column. The value
+     * is {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNUMBER = "deptnumber";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_DEPTNUMBER} attribute. The value is {@value}.
+     * The maximum size of the {@value #ATTRIBUTE_NAME_DEPTNUMBER} attribute. The value is
+     * {@value}.
      */
     public static final int SIZE_MAX_DEPTNUMBER = COLUMN_LENGTH_DEPTNUMBER;
 
     // -------------------------------------------------------------------------------------------------------- DEPTNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNAME = "DEPTNAME";
 
@@ -239,7 +253,8 @@ public abstract class MappedVphone {
     public static final int COLUMN_LENGTH_DEPTNAME = 36;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNAME = "deptname";
 
@@ -291,7 +306,8 @@ public abstract class MappedVphone {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -311,7 +327,8 @@ public abstract class MappedVphone {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified
+     * value.
      *
      * @param lastname new value for {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
      */
@@ -332,7 +349,8 @@ public abstract class MappedVphone {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNAME} attribute with the specified
+     * value.
      *
      * @param firstname new value for {@value #ATTRIBUTE_NAME_FIRSTNAME} attribute.
      */
@@ -353,7 +371,8 @@ public abstract class MappedVphone {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDDLEINITIAL} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDDLEINITIAL} attribute with the specified
+     * value.
      *
      * @param middleinitial new value for {@value #ATTRIBUTE_NAME_MIDDLEINITIAL} attribute.
      */
@@ -374,7 +393,8 @@ public abstract class MappedVphone {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute with the specified
+     * value.
      *
      * @param phonenumber new value for {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute.
      */
@@ -395,7 +415,8 @@ public abstract class MappedVphone {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute with the
+     * specified value.
      *
      * @param employeenumber new value for {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute.
      */
@@ -416,7 +437,8 @@ public abstract class MappedVphone {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNUMBER} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNUMBER} attribute with the specified
+     * value.
      *
      * @param deptnumber new value for {@value #ATTRIBUTE_NAME_DEPTNUMBER} attribute.
      */
@@ -437,7 +459,8 @@ public abstract class MappedVphone {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute with the specified
+     * value.
      *
      * @param deptname new value for {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
      */

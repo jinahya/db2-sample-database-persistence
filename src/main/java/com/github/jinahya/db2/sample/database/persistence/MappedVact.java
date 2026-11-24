@@ -32,15 +32,18 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVact#TABLE_NAME} view, the activities.
+ * A mapped superclass which holds the mappings of the {@value MappedVact#TABLE_NAME} view, the
+ * activities.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
- * <strong>A view has no key.</strong> The column {@value MappedVact#COLUMN_NAME_ACTNO}, unique and not {@code null} in
- * every row the sample database is created with, is mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
+ * <strong>A view has no key.</strong> The column {@value MappedVact#COLUMN_NAME_ACTNO}, unique and
+ * not {@code null} in
+ * every row the sample database is created with, is mapped as the identifier, which an entity
+ * needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -55,7 +58,8 @@ public abstract class MappedVact {
     // ----------------------------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
@@ -65,14 +69,16 @@ public abstract class MappedVact {
     public static final boolean COLUMN_NULLABLE_ACTNO = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
     // ---------------------------------------------------------------------------------------------------------- ACTKWD
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTKWD} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTKWD} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTKWD = "ACTKWD";
 
@@ -87,7 +93,8 @@ public abstract class MappedVact {
     public static final int COLUMN_LENGTH_ACTKWD = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTKWD} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTKWD} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTKWD = "actkwd";
 
@@ -99,7 +106,8 @@ public abstract class MappedVact {
     // --------------------------------------------------------------------------------------------------------- ACTDESC
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTDESC} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTDESC} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTDESC = "ACTDESC";
 
@@ -114,7 +122,8 @@ public abstract class MappedVact {
     public static final int COLUMN_LENGTH_ACTDESC = 20;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTDESC} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTDESC} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTDESC = "actdesc";
 
@@ -162,7 +171,8 @@ public abstract class MappedVact {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ACTNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ACTNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -203,7 +213,8 @@ public abstract class MappedVact {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTKWD} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTKWD} attribute with the specified
+     * value.
      *
      * @param actkwd new value for {@value #ATTRIBUTE_NAME_ACTKWD} attribute.
      */
@@ -224,7 +235,8 @@ public abstract class MappedVact {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTDESC} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTDESC} attribute with the specified
+     * value.
      *
      * @param actdesc new value for {@value #ATTRIBUTE_NAME_ACTDESC} attribute.
      */

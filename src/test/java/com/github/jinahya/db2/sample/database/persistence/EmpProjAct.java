@@ -36,7 +36,8 @@ import jakarta.persistence.Table;
 @Entity
 @IdClass(EmpProjActId.class)
 @Table(name = EmpProjAct.TABLE_NAME)
-public class EmpProjAct extends MappedEmpProjAct {
+public class EmpProjAct
+        extends MappedEmpProjAct {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -62,15 +63,15 @@ public class EmpProjAct extends MappedEmpProjAct {
     // read-only: the column(s) are part of the identifier, which the superclass writes
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumns({
-        @JoinColumn(name = EmpProjAct.COLUMN_NAME_PROJNO,
-                    referencedColumnName = ProjAct.COLUMN_NAME_PROJNO,
-                    insertable = false, updatable = false),
-        @JoinColumn(name = EmpProjAct.COLUMN_NAME_ACTNO,
-                    referencedColumnName = ProjAct.COLUMN_NAME_ACTNO,
-                    insertable = false, updatable = false),
-        @JoinColumn(name = EmpProjAct.COLUMN_NAME_EMSTDATE,
-                    referencedColumnName = ProjAct.COLUMN_NAME_ACSTDATE,
-                    insertable = false, updatable = false)
+            @JoinColumn(name = EmpProjAct.COLUMN_NAME_PROJNO,
+                        referencedColumnName = ProjAct.COLUMN_NAME_PROJNO,
+                        insertable = false, updatable = false),
+            @JoinColumn(name = EmpProjAct.COLUMN_NAME_ACTNO,
+                        referencedColumnName = ProjAct.COLUMN_NAME_ACTNO,
+                        insertable = false, updatable = false),
+            @JoinColumn(name = EmpProjAct.COLUMN_NAME_EMSTDATE,
+                        referencedColumnName = ProjAct.COLUMN_NAME_ACSTDATE,
+                        insertable = false, updatable = false)
     })
     private ProjAct projAct;
 }

@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = Vphone.TABLE_NAME)
-public class Vphone extends MappedVphone {
+public class Vphone
+        extends MappedVphone {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

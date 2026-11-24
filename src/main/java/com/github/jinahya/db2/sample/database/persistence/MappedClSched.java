@@ -34,11 +34,13 @@ import java.time.LocalTime;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedClSched#TABLE_NAME} table, the class schedules.
+ * A mapped superclass which holds the mappings of the {@value MappedClSched#TABLE_NAME} table, the
+ * class schedules.
  * <p>
- * <strong>The table declares no primary key.</strong> The column {@value MappedClSched#COLUMN_NAME_CLASS_CODE}, unique
- * and not {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity
- * needs; nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The column
+ * {@value MappedClSched#COLUMN_NAME_CLASS_CODE}, unique
+ * and not {@code null} in every row the sample database is created with, is mapped as the
+ * identifier, which an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -53,8 +55,8 @@ public abstract class MappedClSched {
     // ------------------------------------------------------------------------------------------------------ CLASS_CODE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_CLASS_CODE = "CLASS_CODE";
 
@@ -69,19 +71,22 @@ public abstract class MappedClSched {
     public static final int COLUMN_LENGTH_CLASS_CODE = 7;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_CLASS_CODE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_CLASS_CODE} column. The value
+     * is {@value}.
      */
     public static final String ATTRIBUTE_NAME_CLASS_CODE = "classCode";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute. The value is {@value}.
+     * The maximum size of the {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute. The value is
+     * {@value}.
      */
     public static final int SIZE_MAX_CLASS_CODE = COLUMN_LENGTH_CLASS_CODE;
 
     // ------------------------------------------------------------------------------------------------------------- DAY
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DAY} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DAY} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DAY = "DAY";
 
@@ -91,15 +96,16 @@ public abstract class MappedClSched {
     public static final boolean COLUMN_NULLABLE_DAY = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DAY} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DAY} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DAY = "day";
 
     // -------------------------------------------------------------------------------------------------------- STARTING
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_STARTING} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_STARTING} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_STARTING = "STARTING";
 
@@ -109,14 +115,16 @@ public abstract class MappedClSched {
     public static final boolean COLUMN_NULLABLE_STARTING = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_STARTING} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_STARTING} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_STARTING = "starting";
 
     // ---------------------------------------------------------------------------------------------------------- ENDING
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ENDING} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ENDING} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ENDING = "ENDING";
 
@@ -126,7 +134,8 @@ public abstract class MappedClSched {
     public static final boolean COLUMN_NULLABLE_ENDING = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ENDING} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ENDING} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ENDING = "ending";
 
@@ -170,7 +179,8 @@ public abstract class MappedClSched {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_CLASS_CODE}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_CLASS_CODE}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -190,7 +200,8 @@ public abstract class MappedClSched {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute with the specified
+     * value.
      *
      * @param classCode new value for {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute.
      */
@@ -232,7 +243,8 @@ public abstract class MappedClSched {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_STARTING} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_STARTING} attribute with the specified
+     * value.
      *
      * @param starting new value for {@value #ATTRIBUTE_NAME_STARTING} attribute.
      */
@@ -253,7 +265,8 @@ public abstract class MappedClSched {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ENDING} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ENDING} attribute with the specified
+     * value.
      *
      * @param ending new value for {@value #ATTRIBUTE_NAME_ENDING} attribute.
      */

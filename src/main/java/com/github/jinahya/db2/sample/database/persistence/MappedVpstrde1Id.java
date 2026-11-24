@@ -27,17 +27,19 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedVpstrde1#TABLE_NAME} view -- the logical, not declared, key of
- * {@value MappedVpstrde1#COLUMN_NAME_PROJ1NO}, {@value MappedVpstrde1#COLUMN_NAME_PROJ2NO}.
+ * A superclass for the identifier of the {@value MappedVpstrde1#TABLE_NAME} view -- the logical,
+ * not declared, key of {@value MappedVpstrde1#COLUMN_NAME_PROJ1NO},
+ * {@value MappedVpstrde1#COLUMN_NAME_PROJ2NO}.
  * <p>
  * An entity extending {@link MappedVpstrde1} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of the
- * {@link jakarta.persistence.Id @Id} attributes there.
+ * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
+ * the {@link jakarta.persistence.Id @Id} attributes there.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedVpstrde1
  */
-public abstract class MappedVpstrde1Id implements Serializable {
+public abstract class MappedVpstrde1Id
+        implements Serializable {
 
     /**
      * The serial version UID of this class. The value is {@value}.
@@ -47,37 +49,40 @@ public abstract class MappedVpstrde1Id implements Serializable {
     // --------------------------------------------------------------------------------------------------------- PROJ1NO
 
     /**
-     * The name of the attribute which maps the {@value MappedVpstrde1#COLUMN_NAME_PROJ1NO} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedVpstrde1#COLUMN_NAME_PROJ1NO} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJ1NO = MappedVpstrde1.ATTRIBUTE_NAME_PROJ1NO;
 
     // --------------------------------------------------------------------------------------------------------- PROJ2NO
 
     /**
-     * The name of the attribute which maps the {@value MappedVpstrde1#COLUMN_NAME_PROJ2NO} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedVpstrde1#COLUMN_NAME_PROJ2NO} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJ2NO = MappedVpstrde1.ATTRIBUTE_NAME_PROJ2NO;
 
-    // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
+    // ------------------------------------------------------------------------------------------
+    // STATIC_FACTORY_METHODS
 
     /**
      * Creates a new instance of a subclass, with the specified values.
      *
-     * @param <T> the type of the identifier.
+     * @param <T>          the type of the identifier.
      * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param proj1no a value for the {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
-     * @param proj2no a value for the {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
+     * @param proj1no      a value for the {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
+     * @param proj2no      a value for the {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
      * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies {@code null}.
+     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
+     *                              {@code null}.
      */
     protected static <T extends MappedVpstrde1Id> T of(
             final Supplier<? extends T> instantiator,
             final String proj1no,
             final String proj2no) {
         Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance = Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+        final var instance =
+                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
         instance.setProj1no(proj1no);
         instance.setProj2no(proj2no);
         return instance;
@@ -107,7 +112,8 @@ public abstract class MappedVpstrde1Id implements Serializable {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJ1NO} and {@value #ATTRIBUTE_NAME_PROJ2NO}.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJ1NO} and
+     *         {@value #ATTRIBUTE_NAME_PROJ2NO}.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -122,8 +128,8 @@ public abstract class MappedVpstrde1Id implements Serializable {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJ1NO} and {@value #ATTRIBUTE_NAME_PROJ2NO}, consistent with
-     * {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJ1NO} and
+     *         {@value #ATTRIBUTE_NAME_PROJ2NO}, consistent with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -143,7 +149,8 @@ public abstract class MappedVpstrde1Id implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJ1NO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJ1NO} attribute with the specified
+     * value.
      *
      * @param proj1no new value for {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
      */
@@ -164,7 +171,8 @@ public abstract class MappedVpstrde1Id implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJ2NO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJ2NO} attribute with the specified
+     * value.
      *
      * @param proj2no new value for {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
      */

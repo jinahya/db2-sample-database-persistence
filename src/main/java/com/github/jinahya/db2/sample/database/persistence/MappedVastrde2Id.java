@@ -27,17 +27,19 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedVastrde2#TABLE_NAME} view -- the logical, not declared, key of
- * {@value MappedVastrde2#COLUMN_NAME_DEPT1NO}, {@value MappedVastrde2#COLUMN_NAME_EMP2NO}.
+ * A superclass for the identifier of the {@value MappedVastrde2#TABLE_NAME} view -- the logical,
+ * not declared, key of {@value MappedVastrde2#COLUMN_NAME_DEPT1NO},
+ * {@value MappedVastrde2#COLUMN_NAME_EMP2NO}.
  * <p>
  * An entity extending {@link MappedVastrde2} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of the
- * {@link jakarta.persistence.Id @Id} attributes there.
+ * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
+ * the {@link jakarta.persistence.Id @Id} attributes there.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedVastrde2
  */
-public abstract class MappedVastrde2Id implements Serializable {
+public abstract class MappedVastrde2Id
+        implements Serializable {
 
     /**
      * The serial version UID of this class. The value is {@value}.
@@ -47,37 +49,40 @@ public abstract class MappedVastrde2Id implements Serializable {
     // --------------------------------------------------------------------------------------------------------- DEPT1NO
 
     /**
-     * The name of the attribute which maps the {@value MappedVastrde2#COLUMN_NAME_DEPT1NO} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedVastrde2#COLUMN_NAME_DEPT1NO} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPT1NO = MappedVastrde2.ATTRIBUTE_NAME_DEPT1NO;
 
     // ---------------------------------------------------------------------------------------------------------- EMP2NO
 
     /**
-     * The name of the attribute which maps the {@value MappedVastrde2#COLUMN_NAME_EMP2NO} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedVastrde2#COLUMN_NAME_EMP2NO} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMP2NO = MappedVastrde2.ATTRIBUTE_NAME_EMP2NO;
 
-    // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
+    // ------------------------------------------------------------------------------------------
+    // STATIC_FACTORY_METHODS
 
     /**
      * Creates a new instance of a subclass, with the specified values.
      *
-     * @param <T> the type of the identifier.
+     * @param <T>          the type of the identifier.
      * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param dept1no a value for the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
-     * @param emp2no a value for the {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
+     * @param dept1no      a value for the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
+     * @param emp2no       a value for the {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
      * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies {@code null}.
+     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
+     *                              {@code null}.
      */
     protected static <T extends MappedVastrde2Id> T of(
             final Supplier<? extends T> instantiator,
             final String dept1no,
             final String emp2no) {
         Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance = Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+        final var instance =
+                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
         instance.setDept1no(dept1no);
         instance.setEmp2no(emp2no);
         return instance;
@@ -107,7 +112,8 @@ public abstract class MappedVastrde2Id implements Serializable {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_DEPT1NO} and {@value #ATTRIBUTE_NAME_EMP2NO}.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_DEPT1NO} and
+     *         {@value #ATTRIBUTE_NAME_EMP2NO}.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -122,8 +128,8 @@ public abstract class MappedVastrde2Id implements Serializable {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPT1NO} and {@value #ATTRIBUTE_NAME_EMP2NO}, consistent with
-     * {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPT1NO} and
+     *         {@value #ATTRIBUTE_NAME_EMP2NO}, consistent with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -143,7 +149,8 @@ public abstract class MappedVastrde2Id implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute with the specified
+     * value.
      *
      * @param dept1no new value for {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
      */
@@ -164,7 +171,8 @@ public abstract class MappedVastrde2Id implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2NO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2NO} attribute with the specified
+     * value.
      *
      * @param emp2no new value for {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
      */

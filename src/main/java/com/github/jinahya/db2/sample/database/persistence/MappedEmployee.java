@@ -36,15 +36,17 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedEmployee#TABLE_NAME} table, the employees.
+ * A mapped superclass which holds the mappings of the {@value MappedEmployee#TABLE_NAME} table, the
+ * employees.
  * <p>
- * The foreign key column {@value MappedEmployee#COLUMN_NAME_WORKDEPT} is mapped read-only ({@code insertable = false,
- * updatable = false}), with a {@code protected} getter and no setter, for {@link #toString()} and for queries. How the
- * relationship behind it is mapped is the extending entity's decision, so the extending entity also owns the writable
- * mapping, by an association's {@link jakarta.persistence.JoinColumn @JoinColumn}. <strong>An extending entity which
- * maps it not never writes it.</strong> For the same reason it is constrained {@code NotNull} here, even where the
- * column is {@code NOT NULL}: the attribute stays {@code null} until a load, and the association is what is
- * constrained.
+ * The foreign key column {@value MappedEmployee#COLUMN_NAME_WORKDEPT} is mapped read-only
+ * ({@code insertable = false, updatable = false}), with a {@code protected} getter and no setter,
+ * for {@link #toString()} and for queries. How the relationship behind it is mapped is the
+ * extending entity's decision, so the extending entity also owns the writable mapping, by an
+ * association's {@link jakarta.persistence.JoinColumn @JoinColumn}. <strong>An extending entity
+ * which maps it not never writes it.</strong> For the same reason it is constrained {@code NotNull}
+ * here, even where the column is {@code NOT NULL}: the attribute stays {@code null} until a load,
+ * and the association is what is constrained.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -59,7 +61,8 @@ public abstract class MappedEmployee {
     // ----------------------------------------------------------------------------------------------------------- EMPNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
@@ -74,7 +77,8 @@ public abstract class MappedEmployee {
     public static final int COLUMN_LENGTH_EMPNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPNO = "empno";
 
@@ -86,8 +90,8 @@ public abstract class MappedEmployee {
     // -------------------------------------------------------------------------------------------------------- FIRSTNME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_FIRSTNME = "FIRSTNME";
 
@@ -102,7 +106,8 @@ public abstract class MappedEmployee {
     public static final int COLUMN_LENGTH_FIRSTNME = 12;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_FIRSTNME = "firstnme";
 
@@ -114,7 +119,8 @@ public abstract class MappedEmployee {
     // --------------------------------------------------------------------------------------------------------- MIDINIT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
@@ -129,7 +135,8 @@ public abstract class MappedEmployee {
     public static final int COLUMN_LENGTH_MIDINIT = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MIDINIT = "midinit";
 
@@ -141,8 +148,8 @@ public abstract class MappedEmployee {
     // -------------------------------------------------------------------------------------------------------- LASTNAME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
@@ -157,7 +164,8 @@ public abstract class MappedEmployee {
     public static final int COLUMN_LENGTH_LASTNAME = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LASTNAME = "lastname";
 
@@ -169,8 +177,8 @@ public abstract class MappedEmployee {
     // -------------------------------------------------------------------------------------------------------- WORKDEPT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_WORKDEPT = "WORKDEPT";
 
@@ -185,7 +193,8 @@ public abstract class MappedEmployee {
     public static final int COLUMN_LENGTH_WORKDEPT = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_WORKDEPT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_WORKDEPT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_WORKDEPT = "workdept";
 
@@ -197,7 +206,8 @@ public abstract class MappedEmployee {
     // --------------------------------------------------------------------------------------------------------- PHONENO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PHONENO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PHONENO} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PHONENO = "PHONENO";
 
@@ -212,7 +222,8 @@ public abstract class MappedEmployee {
     public static final int COLUMN_LENGTH_PHONENO = 4;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PHONENO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PHONENO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PHONENO = "phoneno";
 
@@ -224,8 +235,8 @@ public abstract class MappedEmployee {
     // -------------------------------------------------------------------------------------------------------- HIREDATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_HIREDATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_HIREDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_HIREDATE = "HIREDATE";
 
@@ -235,14 +246,16 @@ public abstract class MappedEmployee {
     public static final boolean COLUMN_NULLABLE_HIREDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_HIREDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_HIREDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_HIREDATE = "hiredate";
 
     // ------------------------------------------------------------------------------------------------------------- JOB
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_JOB} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_JOB} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_JOB = "JOB";
 
@@ -257,7 +270,8 @@ public abstract class MappedEmployee {
     public static final int COLUMN_LENGTH_JOB = 8;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_JOB} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_JOB} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_JOB = "job";
 
@@ -269,7 +283,8 @@ public abstract class MappedEmployee {
     // --------------------------------------------------------------------------------------------------------- EDLEVEL
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EDLEVEL} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EDLEVEL} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_EDLEVEL = "EDLEVEL";
 
@@ -279,14 +294,16 @@ public abstract class MappedEmployee {
     public static final boolean COLUMN_NULLABLE_EDLEVEL = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EDLEVEL} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EDLEVEL} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EDLEVEL = "edlevel";
 
     // ------------------------------------------------------------------------------------------------------------- SEX
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SEX} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SEX} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_SEX = "SEX";
 
@@ -301,7 +318,8 @@ public abstract class MappedEmployee {
     public static final int COLUMN_LENGTH_SEX = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SEX} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SEX} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_SEX = "sex";
 
@@ -313,8 +331,8 @@ public abstract class MappedEmployee {
     // ------------------------------------------------------------------------------------------------------- BIRTHDATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_BIRTHDATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_BIRTHDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_BIRTHDATE = "BIRTHDATE";
 
@@ -324,14 +342,16 @@ public abstract class MappedEmployee {
     public static final boolean COLUMN_NULLABLE_BIRTHDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_BIRTHDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_BIRTHDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_BIRTHDATE = "birthdate";
 
     // ---------------------------------------------------------------------------------------------------------- SALARY
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALARY} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALARY} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_SALARY = "SALARY";
 
@@ -351,24 +371,28 @@ public abstract class MappedEmployee {
     public static final int COLUMN_SCALE_SALARY = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SALARY} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SALARY} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_SALARY = "salary";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_INTEGER_SALARY = COLUMN_PRECISION_SALARY - COLUMN_SCALE_SALARY;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_FRACTION_SALARY = COLUMN_SCALE_SALARY;
 
     // ----------------------------------------------------------------------------------------------------------- BONUS
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_BONUS} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_BONUS} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_BONUS = "BONUS";
 
@@ -388,24 +412,28 @@ public abstract class MappedEmployee {
     public static final int COLUMN_SCALE_BONUS = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_BONUS} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_BONUS} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_BONUS = "bonus";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_BONUS} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_BONUS} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_INTEGER_BONUS = COLUMN_PRECISION_BONUS - COLUMN_SCALE_BONUS;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_BONUS} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_BONUS} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_FRACTION_BONUS = COLUMN_SCALE_BONUS;
 
     // ------------------------------------------------------------------------------------------------------------ COMM
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_COMM} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_COMM} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_COMM = "COMM";
 
@@ -425,17 +453,20 @@ public abstract class MappedEmployee {
     public static final int COLUMN_SCALE_COMM = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_COMM} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_COMM} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_COMM = "comm";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_COMM} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_COMM} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_INTEGER_COMM = COLUMN_PRECISION_COMM - COLUMN_SCALE_COMM;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_COMM} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_COMM} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_FRACTION_COMM = COLUMN_SCALE_COMM;
 
@@ -489,7 +520,8 @@ public abstract class MappedEmployee {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -530,7 +562,8 @@ public abstract class MappedEmployee {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute with the specified
+     * value.
      *
      * @param firstnme new value for {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
      */
@@ -551,7 +584,8 @@ public abstract class MappedEmployee {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified
+     * value.
      *
      * @param midinit new value for {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
      */
@@ -572,7 +606,8 @@ public abstract class MappedEmployee {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified
+     * value.
      *
      * @param lastname new value for {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
      */
@@ -583,12 +618,12 @@ public abstract class MappedEmployee {
     // -------------------------------------------------------------------------------------------------------- workdept
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute, which is {@code null} until this instance
-     * is loaded.
+     * Returns current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute, which is {@code null}
+     * until this instance is loaded.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy, which is a subclass in
-     * another package, can override it.
+     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
+     *         which is a subclass in another package, can override it.
      */
     @Nullable
     protected String getWorkdept() {
@@ -608,7 +643,8 @@ public abstract class MappedEmployee {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PHONENO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PHONENO} attribute with the specified
+     * value.
      *
      * @param phoneno new value for {@value #ATTRIBUTE_NAME_PHONENO} attribute.
      */
@@ -629,7 +665,8 @@ public abstract class MappedEmployee {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_HIREDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_HIREDATE} attribute with the specified
+     * value.
      *
      * @param hiredate new value for {@value #ATTRIBUTE_NAME_HIREDATE} attribute.
      */
@@ -671,7 +708,8 @@ public abstract class MappedEmployee {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EDLEVEL} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EDLEVEL} attribute with the specified
+     * value.
      *
      * @param edlevel new value for {@value #ATTRIBUTE_NAME_EDLEVEL} attribute.
      */
@@ -713,7 +751,8 @@ public abstract class MappedEmployee {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_BIRTHDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_BIRTHDATE} attribute with the specified
+     * value.
      *
      * @param birthdate new value for {@value #ATTRIBUTE_NAME_BIRTHDATE} attribute.
      */
@@ -734,7 +773,8 @@ public abstract class MappedEmployee {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_SALARY} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_SALARY} attribute with the specified
+     * value.
      *
      * @param salary new value for {@value #ATTRIBUTE_NAME_SALARY} attribute.
      */
@@ -836,7 +876,8 @@ public abstract class MappedEmployee {
     private String lastname;
 
     // -----------------------------------------------------------------------------------------------------------------
-    // read-only: the extending entity owns the writable mapping of this column; see the class documentation
+    // read-only: the extending entity owns the writable mapping of this column; see the class
+    // documentation
     @Size(max = SIZE_MAX_WORKDEPT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_WORKDEPT,

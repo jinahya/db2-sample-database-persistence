@@ -32,7 +32,8 @@ import jakarta.persistence.Table;
 @Entity
 @IdClass(Vastrde2Id.class)
 @Table(name = Vastrde2.TABLE_NAME)
-public class Vastrde2 extends MappedVastrde2 {
+public class Vastrde2
+        extends MappedVastrde2 {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

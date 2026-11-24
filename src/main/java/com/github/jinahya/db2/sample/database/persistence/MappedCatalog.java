@@ -33,7 +33,8 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedCatalog#TABLE_NAME} table, the XML catalogs.
+ * A mapped superclass which holds the mappings of the {@value MappedCatalog#TABLE_NAME} table, the
+ * XML catalogs.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -48,7 +49,8 @@ public abstract class MappedCatalog {
     // ------------------------------------------------------------------------------------------------------------ NAME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_NAME = "NAME";
 
@@ -63,7 +65,8 @@ public abstract class MappedCatalog {
     public static final int COLUMN_LENGTH_NAME = 128;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_NAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_NAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_NAME = "name";
 
@@ -75,7 +78,8 @@ public abstract class MappedCatalog {
     // ---------------------------------------------------------------------------------------------------------- CATLOG
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CATLOG} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CATLOG} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_CATLOG = "CATLOG";
 
@@ -85,7 +89,8 @@ public abstract class MappedCatalog {
     public static final boolean COLUMN_NULLABLE_CATLOG = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_CATLOG} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_CATLOG} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_CATLOG = "catlog";
 
@@ -127,7 +132,8 @@ public abstract class MappedCatalog {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_NAME}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_NAME}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -158,7 +164,8 @@ public abstract class MappedCatalog {
     // ---------------------------------------------------------------------------------------------------------- catlog
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_CATLOG} attribute, serialized; the column is an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_CATLOG} attribute, serialized; the column is
+     * an XML.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_CATLOG} attribute.
      */
@@ -168,7 +175,8 @@ public abstract class MappedCatalog {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_CATLOG} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_CATLOG} attribute with the specified
+     * value.
      *
      * @param catlog new value for {@value #ATTRIBUTE_NAME_CATLOG} attribute.
      */

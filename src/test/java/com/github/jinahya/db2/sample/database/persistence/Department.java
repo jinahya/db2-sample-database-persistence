@@ -34,7 +34,8 @@ import jakarta.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = Department.TABLE_NAME)
-public class Department extends MappedDepartment {
+public class Department
+        extends MappedDepartment {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

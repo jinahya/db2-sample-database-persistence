@@ -19,13 +19,15 @@
  */
 
 /**
- * Defines classes which map the tables and the views of the {@code SAMPLE} database, as created by {@code db2sampl}
- * into the {@code DB2INST1} schema, each holding the column mappings of one table or view.
+ * Defines classes which map the tables and the views of the {@code SAMPLE} database, as created by
+ * {@code db2sampl} into the {@code DB2INST1} schema, each holding the column mappings of one table
+ * or view.
  * <p>
- * Every table and every view is mapped. The views, and {@code ADEFUSR}, a materialized query table which the database
- * maintains, are mapped read-only. The {@code VECTOR} columns of {@code MLBLOGS_ANSWERS}, {@code MLBLOGS_QUESTIONS}
- * and {@code PATIENTS}, for which Jakarta Persistence has no mapping, are not mapped. The aliases ({@code DEPT},
- * {@code EMP}, {@code EMPACT}, {@code EMP_ACT}, {@code PROJ}) are other names of tables mapped here.
+ * Every table and every view is mapped. The views, and {@code ADEFUSR}, a materialized query table
+ * which the database maintains, are mapped read-only. The {@code VECTOR} columns of
+ * {@code MLBLOGS_ANSWERS}, {@code MLBLOGS_QUESTIONS} and {@code PATIENTS}, for which Jakarta
+ * Persistence has no mapping, are not mapped. The aliases ({@code DEPT}, {@code EMP},
+ * {@code EMPACT}, {@code EMP_ACT}, {@code PROJ}) are other names of tables mapped here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

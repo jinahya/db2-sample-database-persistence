@@ -35,8 +35,8 @@ import static com.github.jinahya.db2.sample.database.persistence._Entity_Persist
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Tests the unit-test persistence unit: an in-memory H2 database, in DB2 mode, whose schema the provider generates from
- * the mappings.
+ * Tests the unit-test persistence unit: an in-memory H2 database, in DB2 mode, whose schema the
+ * provider generates from the mappings.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -57,7 +57,8 @@ class PersistenceUnit_Test {
         assertThat(entities)
                 .as("entity types of %s", _Entity_Persistence_Test_Producer.PERSISTENCE_UNIT_NAME)
                 .hasSize(45)
-                .allSatisfy(e -> assertThat(e.hasSingleIdAttribute() || !e.getIdClassAttributes().isEmpty())
+                .allSatisfy(e -> assertThat(
+                        e.hasSingleIdAttribute() || !e.getIdClassAttributes().isEmpty())
                         .as("%s has an id", e.getName())
                         .isTrue());
     }
@@ -67,7 +68,8 @@ class PersistenceUnit_Test {
     void generatedSchema_IsQueryable_() {
         for (final EntityType<?> e : entityManagerFactory.getMetamodel().getEntities()) {
             final var count = applyInTransactionAndRollback(
-                    em -> em.createQuery("SELECT COUNT(e) FROM " + e.getName() + " e", Long.class).getSingleResult());
+                    em -> em.createQuery("SELECT COUNT(e) FROM " + e.getName() + " e", Long.class)
+                            .getSingleResult());
             assertThat(count).as("row count of %s", e.getName()).isZero();
         }
     }
@@ -85,11 +87,12 @@ class PersistenceUnit_Test {
             final var photo = new EmpPhoto();
             photo.setEmpno(employee.getEmpno());
             photo.setPhotoFormat("png");
-            photo.setPicture(new byte[] {1, 2, 3});
+            photo.setPicture(new byte[]{1, 2, 3});
             em.persist(photo);
             em.flush();
             em.clear();
-            final var found = em.find(EmpPhoto.class, MappedEmpPhotoId.of(EmpPhotoId::new, "000010", "png"));
+            final var found =
+                    em.find(EmpPhoto.class, MappedEmpPhotoId.of(EmpPhotoId::new, "000010", "png"));
             assertThat(found).isNotNull();
             assertThat(found.getPicture()).containsExactly(1, 2, 3);
             assertThat(found.getEmployee().getLastname()).isEqualTo("HAAS");
@@ -117,13 +120,15 @@ class PersistenceUnit_Test {
             em.clear();
             final var found = em.find(Employee.class, "000010");
             assertThat(found.getWorkdept()).isEqualTo("A00");
-            assertThat(found.getWorkdeptDepartment().getDeptname()).isEqualTo("SPIFFY COMPUTER SERVICE DIV.");
+            assertThat(found.getWorkdeptDepartment().getDeptname()).isEqualTo(
+                    "SPIFFY COMPUTER SERVICE DIV.");
             return null;
         });
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    private <R> R applyInTransactionAndRollback(final Function<? super EntityManager, ? extends R> function) {
+    private <R> R applyInTransactionAndRollback(
+            final Function<? super EntityManager, ? extends R> function) {
         final var transaction = entityManager.getTransaction();
         transaction.begin();
         try {

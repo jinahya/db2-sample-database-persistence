@@ -32,14 +32,16 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedMlblogsQuestion#TABLE_NAME} table, the questions of
- * a vector search example.
+ * A mapped superclass which holds the mappings of the {@value MappedMlblogsQuestion#TABLE_NAME}
+ * table, the questions of a vector search example.
  * <p>
- * <strong>The table declares no primary key.</strong> The column {@value MappedMlblogsQuestion#COLUMN_NAME_QUESTION},
- * not {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity
- * needs; nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The column
+ * {@value MappedMlblogsQuestion#COLUMN_NAME_QUESTION},
+ * not {@code null} in every row the sample database is created with, is mapped as the identifier,
+ * which an entity needs; nothing in the database keeps that so.
  * <p>
- * The column {@code EMBEDDING}, a {@code VECTOR}, is not mapped; Jakarta Persistence has no mapping for it.
+ * The column {@code EMBEDDING}, a {@code VECTOR}, is not mapped; Jakarta Persistence has no mapping
+ * for it.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -54,8 +56,8 @@ public abstract class MappedMlblogsQuestion {
     // -------------------------------------------------------------------------------------------------------- QUESTION
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_QUESTION} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_QUESTION} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_QUESTION = "QUESTION";
 
@@ -70,7 +72,8 @@ public abstract class MappedMlblogsQuestion {
     public static final int COLUMN_LENGTH_QUESTION = 1024;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_QUESTION} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_QUESTION} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_QUESTION = "question";
 
@@ -116,7 +119,8 @@ public abstract class MappedMlblogsQuestion {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_QUESTION}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_QUESTION}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -136,7 +140,8 @@ public abstract class MappedMlblogsQuestion {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_QUESTION} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_QUESTION} attribute with the specified
+     * value.
      *
      * @param question new value for {@value #ATTRIBUTE_NAME_QUESTION} attribute.
      */

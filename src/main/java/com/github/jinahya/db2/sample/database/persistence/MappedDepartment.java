@@ -33,15 +33,18 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedDepartment#TABLE_NAME} table, the departments.
+ * A mapped superclass which holds the mappings of the {@value MappedDepartment#TABLE_NAME} table,
+ * the departments.
  * <p>
- * The foreign key columns {@value MappedDepartment#COLUMN_NAME_MGRNO}, {@value MappedDepartment#COLUMN_NAME_ADMRDEPT}
- * are mapped read-only ({@code insertable = false, updatable = false}), with a {@code protected} getter and no setter,
- * for {@link #toString()} and for queries. How the relationship behind each is mapped is the extending entity's
- * decision, so the extending entity also owns the writable mapping, by an association's {@link
- * jakarta.persistence.JoinColumn @JoinColumn}. <strong>An extending entity which maps none never writes them.</strong>
- * For the same reason none of them is constrained {@code NotNull} here, even where the column is {@code NOT NULL}: the
- * attribute stays {@code null} until a load, and the association is what is constrained.
+ * The foreign key columns {@value MappedDepartment#COLUMN_NAME_MGRNO},
+ * {@value MappedDepartment#COLUMN_NAME_ADMRDEPT} are mapped read-only
+ * ({@code insertable = false, updatable = false}), with a {@code protected} getter and no setter,
+ * for {@link #toString()} and for queries. How the relationship behind each is mapped is the
+ * extending entity's decision, so the extending entity also owns the writable mapping, by an
+ * association's {@link jakarta.persistence.JoinColumn @JoinColumn}. <strong>An extending entity
+ * which maps none never writes them.</strong> For the same reason none of them is constrained
+ * {@code NotNull} here, even where the column is {@code NOT NULL}: the attribute stays {@code null}
+ * until a load, and the association is what is constrained.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -56,7 +59,8 @@ public abstract class MappedDepartment {
     // ---------------------------------------------------------------------------------------------------------- DEPTNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNO = "DEPTNO";
 
@@ -71,7 +75,8 @@ public abstract class MappedDepartment {
     public static final int COLUMN_LENGTH_DEPTNO = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNO = "deptno";
 
@@ -83,8 +88,8 @@ public abstract class MappedDepartment {
     // -------------------------------------------------------------------------------------------------------- DEPTNAME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNAME = "DEPTNAME";
 
@@ -99,7 +104,8 @@ public abstract class MappedDepartment {
     public static final int COLUMN_LENGTH_DEPTNAME = 36;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNAME = "deptname";
 
@@ -111,7 +117,8 @@ public abstract class MappedDepartment {
     // ----------------------------------------------------------------------------------------------------------- MGRNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_MGRNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_MGRNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_MGRNO = "MGRNO";
 
@@ -126,7 +133,8 @@ public abstract class MappedDepartment {
     public static final int COLUMN_LENGTH_MGRNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MGRNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MGRNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MGRNO = "mgrno";
 
@@ -138,8 +146,8 @@ public abstract class MappedDepartment {
     // -------------------------------------------------------------------------------------------------------- ADMRDEPT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_ADMRDEPT = "ADMRDEPT";
 
@@ -154,7 +162,8 @@ public abstract class MappedDepartment {
     public static final int COLUMN_LENGTH_ADMRDEPT = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ADMRDEPT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ADMRDEPT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ADMRDEPT = "admrdept";
 
@@ -166,8 +175,8 @@ public abstract class MappedDepartment {
     // -------------------------------------------------------------------------------------------------------- LOCATION
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LOCATION = "LOCATION";
 
@@ -182,7 +191,8 @@ public abstract class MappedDepartment {
     public static final int COLUMN_LENGTH_LOCATION = 16;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LOCATION} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LOCATION} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LOCATION = "location";
 
@@ -232,7 +242,8 @@ public abstract class MappedDepartment {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPTNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPTNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -252,7 +263,8 @@ public abstract class MappedDepartment {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute with the specified
+     * value.
      *
      * @param deptno new value for {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
      */
@@ -273,7 +285,8 @@ public abstract class MappedDepartment {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute with the specified
+     * value.
      *
      * @param deptname new value for {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
      */
@@ -284,12 +297,12 @@ public abstract class MappedDepartment {
     // ----------------------------------------------------------------------------------------------------------- mgrno
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute, which is {@code null} until this instance is
-     * loaded.
+     * Returns current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute, which is {@code null}
+     * until this instance is loaded.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy, which is a subclass in
-     * another package, can override it.
+     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
+     *         which is a subclass in another package, can override it.
      */
     @Nullable
     protected String getMgrno() {
@@ -299,12 +312,12 @@ public abstract class MappedDepartment {
     // -------------------------------------------------------------------------------------------------------- admrdept
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute, which is {@code null} until this instance
-     * is loaded.
+     * Returns current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute, which is {@code null}
+     * until this instance is loaded.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy, which is a subclass in
-     * another package, can override it.
+     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
+     *         which is a subclass in another package, can override it.
      */
     @Nullable
     protected String getAdmrdept() {
@@ -324,7 +337,8 @@ public abstract class MappedDepartment {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute with the specified
+     * value.
      *
      * @param location new value for {@value #ATTRIBUTE_NAME_LOCATION} attribute.
      */
@@ -360,7 +374,8 @@ public abstract class MappedDepartment {
     private String deptname;
 
     // -----------------------------------------------------------------------------------------------------------------
-    // read-only: the extending entity owns the writable mapping of this column; see the class documentation
+    // read-only: the extending entity owns the writable mapping of this column; see the class
+    // documentation
     @Size(max = SIZE_MAX_MGRNO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MGRNO,
@@ -372,7 +387,8 @@ public abstract class MappedDepartment {
     private String mgrno;
 
     // -----------------------------------------------------------------------------------------------------------------
-    // read-only: the extending entity owns the writable mapping of this column; see the class documentation
+    // read-only: the extending entity owns the writable mapping of this column; see the class
+    // documentation
     @Size(max = SIZE_MAX_ADMRDEPT)
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ADMRDEPT,

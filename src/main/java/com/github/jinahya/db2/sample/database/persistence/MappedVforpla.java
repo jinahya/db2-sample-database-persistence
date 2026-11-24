@@ -33,19 +33,22 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVforpla#TABLE_NAME} view, the projects with their
- * responsible employees, for planning.
+ * A mapped superclass which holds the mappings of the {@value MappedVforpla#TABLE_NAME} view, the
+ * projects with their responsible employees, for planning.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
- * The view joins {@code EMPPROJACT} only to repeat each project once per row there, so the rows of a project are
- * duplicates of one another; the instances of a project a query returns are one and the same.
+ * The view joins {@code EMPPROJACT} only to repeat each project once per row there, so the rows of
+ * a project are duplicates of one another; the instances of a project a query returns are one and
+ * the same.
  * <p>
- * <strong>A view has no key.</strong> The column {@value MappedVforpla#COLUMN_NAME_PROJNO}, unique and not {@code null}
- * in every row the sample database is created with, is mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
+ * <strong>A view has no key.</strong> The column {@value MappedVforpla#COLUMN_NAME_PROJNO}, unique
+ * and not {@code null}
+ * in every row the sample database is created with, is mapped as the identifier, which an entity
+ * needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -60,7 +63,8 @@ public abstract class MappedVforpla {
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
@@ -75,7 +79,8 @@ public abstract class MappedVforpla {
     public static final int COLUMN_LENGTH_PROJNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
@@ -87,7 +92,8 @@ public abstract class MappedVforpla {
     // -------------------------------------------------------------------------------------------------------- PROJNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNAME = "PROJNAME";
 
@@ -102,7 +108,8 @@ public abstract class MappedVforpla {
     public static final int COLUMN_LENGTH_PROJNAME = 24;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNAME = "projname";
 
@@ -114,7 +121,8 @@ public abstract class MappedVforpla {
     // --------------------------------------------------------------------------------------------------------- RESPEMP
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_RESPEMP = "RESPEMP";
 
@@ -129,7 +137,8 @@ public abstract class MappedVforpla {
     public static final int COLUMN_LENGTH_RESPEMP = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_RESPEMP} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_RESPEMP} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_RESPEMP = "respemp";
 
@@ -141,7 +150,8 @@ public abstract class MappedVforpla {
     // --------------------------------------------------------------------------------------------------------- PROJDEP
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJDEP} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJDEP} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJDEP = "PROJDEP";
 
@@ -156,7 +166,8 @@ public abstract class MappedVforpla {
     public static final int COLUMN_LENGTH_PROJDEP = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJDEP} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJDEP} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJDEP = "projdep";
 
@@ -168,7 +179,8 @@ public abstract class MappedVforpla {
     // -------------------------------------------------------------------------------------------------------- FRSTINIT
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FRSTINIT} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FRSTINIT} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_FRSTINIT = "FRSTINIT";
 
@@ -183,7 +195,8 @@ public abstract class MappedVforpla {
     public static final int COLUMN_LENGTH_FRSTINIT = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_FRSTINIT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_FRSTINIT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_FRSTINIT = "frstinit";
 
@@ -195,7 +208,8 @@ public abstract class MappedVforpla {
     // --------------------------------------------------------------------------------------------------------- MIDINIT
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
@@ -210,7 +224,8 @@ public abstract class MappedVforpla {
     public static final int COLUMN_LENGTH_MIDINIT = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MIDINIT = "midinit";
 
@@ -222,7 +237,8 @@ public abstract class MappedVforpla {
     // -------------------------------------------------------------------------------------------------------- LASTNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
@@ -237,7 +253,8 @@ public abstract class MappedVforpla {
     public static final int COLUMN_LENGTH_LASTNAME = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LASTNAME = "lastname";
 
@@ -289,7 +306,8 @@ public abstract class MappedVforpla {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -309,7 +327,8 @@ public abstract class MappedVforpla {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -330,7 +349,8 @@ public abstract class MappedVforpla {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute with the specified
+     * value.
      *
      * @param projname new value for {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
      */
@@ -351,7 +371,8 @@ public abstract class MappedVforpla {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute with the specified
+     * value.
      *
      * @param respemp new value for {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
      */
@@ -372,7 +393,8 @@ public abstract class MappedVforpla {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJDEP} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJDEP} attribute with the specified
+     * value.
      *
      * @param projdep new value for {@value #ATTRIBUTE_NAME_PROJDEP} attribute.
      */
@@ -393,7 +415,8 @@ public abstract class MappedVforpla {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_FRSTINIT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_FRSTINIT} attribute with the specified
+     * value.
      *
      * @param frstinit new value for {@value #ATTRIBUTE_NAME_FRSTINIT} attribute.
      */
@@ -414,7 +437,8 @@ public abstract class MappedVforpla {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified
+     * value.
      *
      * @param midinit new value for {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
      */
@@ -435,7 +459,8 @@ public abstract class MappedVforpla {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified
+     * value.
      *
      * @param lastname new value for {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
      */

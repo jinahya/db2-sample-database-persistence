@@ -28,18 +28,19 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedSale#TABLE_NAME} table -- the logical, not declared, key of
- * {@value MappedSale#COLUMN_NAME_SALES_DATE}, {@value MappedSale#COLUMN_NAME_SALES_PERSON}, {@value
- * MappedSale#COLUMN_NAME_REGION}.
+ * A superclass for the identifier of the {@value MappedSale#TABLE_NAME} table -- the logical, not
+ * declared, key of {@value MappedSale#COLUMN_NAME_SALES_DATE},
+ * {@value MappedSale#COLUMN_NAME_SALES_PERSON}, {@value MappedSale#COLUMN_NAME_REGION}.
  * <p>
- * An entity extending {@link MappedSale} names a concrete subclass of this class with {@link
- * jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of the {@link
- * jakarta.persistence.Id @Id} attributes there.
+ * An entity extending {@link MappedSale} names a concrete subclass of this class with
+ * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
+ * the {@link jakarta.persistence.Id @Id} attributes there.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedSale
  */
-public abstract class MappedSaleId implements Serializable {
+public abstract class MappedSaleId
+        implements Serializable {
 
     /**
      * The serial version UID of this class. The value is {@value}.
@@ -49,38 +50,41 @@ public abstract class MappedSaleId implements Serializable {
     // ------------------------------------------------------------------------------------------------------ SALES_DATE
 
     /**
-     * The name of the attribute which maps the {@value MappedSale#COLUMN_NAME_SALES_DATE} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedSale#COLUMN_NAME_SALES_DATE} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_SALES_DATE = MappedSale.ATTRIBUTE_NAME_SALES_DATE;
 
     // ---------------------------------------------------------------------------------------------------- SALES_PERSON
 
     /**
-     * The name of the attribute which maps the {@value MappedSale#COLUMN_NAME_SALES_PERSON} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedSale#COLUMN_NAME_SALES_PERSON} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_SALES_PERSON = MappedSale.ATTRIBUTE_NAME_SALES_PERSON;
 
     // ---------------------------------------------------------------------------------------------------------- REGION
 
     /**
-     * The name of the attribute which maps the {@value MappedSale#COLUMN_NAME_REGION} column. The value is {@value}.
+     * The name of the attribute which maps the {@value MappedSale#COLUMN_NAME_REGION} column. The
+     * value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_REGION = MappedSale.ATTRIBUTE_NAME_REGION;
 
-    // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
+    // ------------------------------------------------------------------------------------------
+    // STATIC_FACTORY_METHODS
 
     /**
      * Creates a new instance of a subclass, with the specified values.
      *
-     * @param <T> the type of the identifier.
+     * @param <T>          the type of the identifier.
      * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param salesDate a value for the {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
-     * @param salesPerson a value for the {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
-     * @param region a value for the {@value #ATTRIBUTE_NAME_REGION} attribute.
+     * @param salesDate    a value for the {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
+     * @param salesPerson  a value for the {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
+     * @param region       a value for the {@value #ATTRIBUTE_NAME_REGION} attribute.
      * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies {@code null}.
+     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
+     *                              {@code null}.
      */
     protected static <T extends MappedSaleId> T of(
             final Supplier<? extends T> instantiator,
@@ -88,7 +92,8 @@ public abstract class MappedSaleId implements Serializable {
             final String salesPerson,
             final String region) {
         Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance = Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+        final var instance =
+                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
         instance.setSalesDate(salesDate);
         instance.setSalesPerson(salesPerson);
         instance.setRegion(region);
@@ -120,8 +125,8 @@ public abstract class MappedSaleId implements Serializable {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_SALES_DATE} and {@value #ATTRIBUTE_NAME_SALES_PERSON} and
-     * {@value #ATTRIBUTE_NAME_REGION}.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_SALES_DATE} and
+     *         {@value #ATTRIBUTE_NAME_SALES_PERSON} and {@value #ATTRIBUTE_NAME_REGION}.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -137,8 +142,9 @@ public abstract class MappedSaleId implements Serializable {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_SALES_DATE} and {@value #ATTRIBUTE_NAME_SALES_PERSON} and
-     * {@value #ATTRIBUTE_NAME_REGION}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_SALES_DATE} and
+     *         {@value #ATTRIBUTE_NAME_SALES_PERSON} and {@value #ATTRIBUTE_NAME_REGION}, consistent
+     *         with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -158,7 +164,8 @@ public abstract class MappedSaleId implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_SALES_DATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_SALES_DATE} attribute with the specified
+     * value.
      *
      * @param salesDate new value for {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
      */
@@ -179,7 +186,8 @@ public abstract class MappedSaleId implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute with the specified
+     * value.
      *
      * @param salesPerson new value for {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
      */
@@ -200,7 +208,8 @@ public abstract class MappedSaleId implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_REGION} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_REGION} attribute with the specified
+     * value.
      *
      * @param region new value for {@value #ATTRIBUTE_NAME_REGION} attribute.
      */

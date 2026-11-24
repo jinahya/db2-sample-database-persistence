@@ -32,7 +32,8 @@ import jakarta.persistence.Table;
 @Entity
 @IdClass(ProductSupplierId.class)
 @Table(name = ProductSupplier.TABLE_NAME)
-public class ProductSupplier extends MappedProductSupplier {
+public class ProductSupplier
+        extends MappedProductSupplier {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

@@ -35,7 +35,8 @@ import jakarta.persistence.Table;
 @Entity
 @IdClass(ProjActId.class)
 @Table(name = ProjAct.TABLE_NAME)
-public class ProjAct extends MappedProjAct {
+public class ProjAct
+        extends MappedProjAct {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

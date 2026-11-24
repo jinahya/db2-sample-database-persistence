@@ -34,11 +34,13 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedInTray#TABLE_NAME} table, the received notes.
+ * A mapped superclass which holds the mappings of the {@value MappedInTray#TABLE_NAME} table, the
+ * received notes.
  * <p>
- * <strong>The table declares no primary key.</strong> The column {@value MappedInTray#COLUMN_NAME_RECEIVED}, unique and
- * not {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity
- * needs; nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The column
+ * {@value MappedInTray#COLUMN_NAME_RECEIVED}, unique and
+ * not {@code null} in every row the sample database is created with, is mapped as the identifier,
+ * which an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -53,8 +55,8 @@ public abstract class MappedInTray {
     // -------------------------------------------------------------------------------------------------------- RECEIVED
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_RECEIVED} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_RECEIVED} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_RECEIVED = "RECEIVED";
 
@@ -64,14 +66,16 @@ public abstract class MappedInTray {
     public static final boolean COLUMN_NULLABLE_RECEIVED = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_RECEIVED} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_RECEIVED} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_RECEIVED = "received";
 
     // ---------------------------------------------------------------------------------------------------------- SOURCE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SOURCE} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SOURCE} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_SOURCE = "SOURCE";
 
@@ -86,7 +90,8 @@ public abstract class MappedInTray {
     public static final int COLUMN_LENGTH_SOURCE = 8;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SOURCE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SOURCE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_SOURCE = "source";
 
@@ -98,7 +103,8 @@ public abstract class MappedInTray {
     // --------------------------------------------------------------------------------------------------------- SUBJECT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SUBJECT} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SUBJECT} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_SUBJECT = "SUBJECT";
 
@@ -113,7 +119,8 @@ public abstract class MappedInTray {
     public static final int COLUMN_LENGTH_SUBJECT = 64;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SUBJECT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SUBJECT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_SUBJECT = "subject";
 
@@ -125,8 +132,8 @@ public abstract class MappedInTray {
     // ------------------------------------------------------------------------------------------------------- NOTE_TEXT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_NOTE_TEXT = "NOTE_TEXT";
 
@@ -141,7 +148,8 @@ public abstract class MappedInTray {
     public static final int COLUMN_LENGTH_NOTE_TEXT = 3000;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_NOTE_TEXT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_NOTE_TEXT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_NOTE_TEXT = "noteText";
 
@@ -190,7 +198,8 @@ public abstract class MappedInTray {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_RECEIVED}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_RECEIVED}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -210,7 +219,8 @@ public abstract class MappedInTray {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_RECEIVED} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_RECEIVED} attribute with the specified
+     * value.
      *
      * @param received new value for {@value #ATTRIBUTE_NAME_RECEIVED} attribute.
      */
@@ -231,7 +241,8 @@ public abstract class MappedInTray {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_SOURCE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_SOURCE} attribute with the specified
+     * value.
      *
      * @param source new value for {@value #ATTRIBUTE_NAME_SOURCE} attribute.
      */
@@ -252,7 +263,8 @@ public abstract class MappedInTray {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_SUBJECT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_SUBJECT} attribute with the specified
+     * value.
      *
      * @param subject new value for {@value #ATTRIBUTE_NAME_SUBJECT} attribute.
      */
@@ -273,7 +285,8 @@ public abstract class MappedInTray {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute with the specified
+     * value.
      *
      * @param noteText new value for {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute.
      */

@@ -33,19 +33,22 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVastrde2#TABLE_NAME} view, the departments, each
- * with its manager and an employee who works in it.
+ * A mapped superclass which holds the mappings of the {@value MappedVastrde2#TABLE_NAME} view, the
+ * departments, each with its manager and an employee who works in it.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
  * <strong>A view has no key.</strong> The columns {@value MappedVastrde2#COLUMN_NAME_DEPT1NO},
- * {@value MappedVastrde2#COLUMN_NAME_EMP2NO}, unique and not {@code null} in every row the sample database is created
- * with, are mapped as the identifier, which an entity needs; nothing in the database keeps that so.
+ * {@value MappedVastrde2#COLUMN_NAME_EMP2NO}, unique and not {@code null} in every row the sample
+ * database is created with, are mapped as the identifier, which an entity needs; nothing in the
+ * database keeps that so.
  * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending entity names a subclass
- * of {@link MappedVastrde2Id} with {@code @IdClass} and inherits the {@link Id @Id} attributes from here.
+ * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
+ * entity names a subclass of {@link MappedVastrde2Id} with {@code @IdClass} and inherits the
+ * {@link Id @Id} attributes from here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedVastrde2Id
@@ -61,7 +64,8 @@ public abstract class MappedVastrde2 {
     // --------------------------------------------------------------------------------------------------------- DEPT1NO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT1NO = "DEPT1NO";
 
@@ -76,7 +80,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_DEPT1NO = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT1NO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT1NO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPT1NO = "dept1no";
 
@@ -88,7 +93,8 @@ public abstract class MappedVastrde2 {
     // -------------------------------------------------------------------------------------------------------- DEPT1NAM
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT1NAM} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT1NAM} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT1NAM = "DEPT1NAM";
 
@@ -103,7 +109,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_DEPT1NAM = 36;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT1NAM} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT1NAM} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPT1NAM = "dept1nam";
 
@@ -115,7 +122,8 @@ public abstract class MappedVastrde2 {
     // ---------------------------------------------------------------------------------------------------------- EMP1NO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1NO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1NO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP1NO = "EMP1NO";
 
@@ -130,7 +138,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_EMP1NO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP1NO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP1NO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMP1NO = "emp1no";
 
@@ -142,7 +151,8 @@ public abstract class MappedVastrde2 {
     // ---------------------------------------------------------------------------------------------------------- EMP1FN
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1FN} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1FN} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP1FN = "EMP1FN";
 
@@ -157,7 +167,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_EMP1FN = 12;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP1FN} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP1FN} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMP1FN = "emp1fn";
 
@@ -169,7 +180,8 @@ public abstract class MappedVastrde2 {
     // ---------------------------------------------------------------------------------------------------------- EMP1MI
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1MI} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1MI} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP1MI = "EMP1MI";
 
@@ -184,7 +196,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_EMP1MI = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP1MI} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP1MI} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMP1MI = "emp1mi";
 
@@ -196,7 +209,8 @@ public abstract class MappedVastrde2 {
     // ---------------------------------------------------------------------------------------------------------- EMP1LN
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1LN} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1LN} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP1LN = "EMP1LN";
 
@@ -211,7 +225,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_EMP1LN = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP1LN} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP1LN} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMP1LN = "emp1ln";
 
@@ -223,7 +238,8 @@ public abstract class MappedVastrde2 {
     // ----------------------------------------------------------------------------------------------------------- TYPE2
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_TYPE2} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_TYPE2} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_TYPE2 = "TYPE2";
 
@@ -238,7 +254,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_TYPE2 = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_TYPE2} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_TYPE2} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_TYPE2 = "type2";
 
@@ -250,7 +267,8 @@ public abstract class MappedVastrde2 {
     // --------------------------------------------------------------------------------------------------------- DEPT2NO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT2NO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT2NO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT2NO = "DEPT2NO";
 
@@ -265,7 +283,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_DEPT2NO = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT2NO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT2NO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPT2NO = "dept2no";
 
@@ -277,7 +296,8 @@ public abstract class MappedVastrde2 {
     // -------------------------------------------------------------------------------------------------------- DEPT2NAM
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT2NAM} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT2NAM} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT2NAM = "DEPT2NAM";
 
@@ -292,7 +312,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_DEPT2NAM = 36;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT2NAM} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT2NAM} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPT2NAM = "dept2nam";
 
@@ -304,7 +325,8 @@ public abstract class MappedVastrde2 {
     // ---------------------------------------------------------------------------------------------------------- EMP2NO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2NO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2NO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP2NO = "EMP2NO";
 
@@ -319,7 +341,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_EMP2NO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP2NO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP2NO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMP2NO = "emp2no";
 
@@ -331,7 +354,8 @@ public abstract class MappedVastrde2 {
     // ---------------------------------------------------------------------------------------------------------- EMP2FN
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2FN} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2FN} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP2FN = "EMP2FN";
 
@@ -346,7 +370,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_EMP2FN = 12;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP2FN} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP2FN} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMP2FN = "emp2fn";
 
@@ -358,7 +383,8 @@ public abstract class MappedVastrde2 {
     // ---------------------------------------------------------------------------------------------------------- EMP2MI
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2MI} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2MI} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP2MI = "EMP2MI";
 
@@ -373,7 +399,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_EMP2MI = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP2MI} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP2MI} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMP2MI = "emp2mi";
 
@@ -385,7 +412,8 @@ public abstract class MappedVastrde2 {
     // ---------------------------------------------------------------------------------------------------------- EMP2LN
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2LN} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2LN} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP2LN = "EMP2LN";
 
@@ -400,7 +428,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_EMP2LN = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP2LN} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP2LN} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMP2LN = "emp2ln";
 
@@ -444,7 +473,8 @@ public abstract class MappedVastrde2 {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_DEPT1NO} and {@value #ATTRIBUTE_NAME_EMP2NO} alone.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_DEPT1NO} and
+     *         {@value #ATTRIBUTE_NAME_EMP2NO} alone.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -459,8 +489,8 @@ public abstract class MappedVastrde2 {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPT1NO} and {@value #ATTRIBUTE_NAME_EMP2NO}, consistent with
-     * {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPT1NO} and
+     *         {@value #ATTRIBUTE_NAME_EMP2NO}, consistent with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -480,7 +510,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute with the specified
+     * value.
      *
      * @param dept1no new value for {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
      */
@@ -501,7 +532,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT1NAM} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT1NAM} attribute with the specified
+     * value.
      *
      * @param dept1nam new value for {@value #ATTRIBUTE_NAME_DEPT1NAM} attribute.
      */
@@ -522,7 +554,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP1NO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP1NO} attribute with the specified
+     * value.
      *
      * @param emp1no new value for {@value #ATTRIBUTE_NAME_EMP1NO} attribute.
      */
@@ -543,7 +576,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP1FN} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP1FN} attribute with the specified
+     * value.
      *
      * @param emp1fn new value for {@value #ATTRIBUTE_NAME_EMP1FN} attribute.
      */
@@ -564,7 +598,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP1MI} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP1MI} attribute with the specified
+     * value.
      *
      * @param emp1mi new value for {@value #ATTRIBUTE_NAME_EMP1MI} attribute.
      */
@@ -585,7 +620,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP1LN} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP1LN} attribute with the specified
+     * value.
      *
      * @param emp1ln new value for {@value #ATTRIBUTE_NAME_EMP1LN} attribute.
      */
@@ -627,7 +663,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT2NO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT2NO} attribute with the specified
+     * value.
      *
      * @param dept2no new value for {@value #ATTRIBUTE_NAME_DEPT2NO} attribute.
      */
@@ -648,7 +685,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT2NAM} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT2NAM} attribute with the specified
+     * value.
      *
      * @param dept2nam new value for {@value #ATTRIBUTE_NAME_DEPT2NAM} attribute.
      */
@@ -669,7 +707,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2NO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2NO} attribute with the specified
+     * value.
      *
      * @param emp2no new value for {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
      */
@@ -690,7 +729,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2FN} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2FN} attribute with the specified
+     * value.
      *
      * @param emp2fn new value for {@value #ATTRIBUTE_NAME_EMP2FN} attribute.
      */
@@ -711,7 +751,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2MI} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2MI} attribute with the specified
+     * value.
      *
      * @param emp2mi new value for {@value #ATTRIBUTE_NAME_EMP2MI} attribute.
      */
@@ -732,7 +773,8 @@ public abstract class MappedVastrde2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2LN} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2LN} attribute with the specified
+     * value.
      *
      * @param emp2ln new value for {@value #ATTRIBUTE_NAME_EMP2LN} attribute.
      */

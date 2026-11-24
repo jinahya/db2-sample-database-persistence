@@ -36,8 +36,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedProduct#TABLE_NAME} table, the products, each with
- * an XML description.
+ * A mapped superclass which holds the mappings of the {@value MappedProduct#TABLE_NAME} table, the
+ * products, each with an XML description.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -52,7 +52,8 @@ public abstract class MappedProduct {
     // ------------------------------------------------------------------------------------------------------------- PID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PID} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PID} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PID = "PID";
 
@@ -67,7 +68,8 @@ public abstract class MappedProduct {
     public static final int COLUMN_LENGTH_PID = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PID} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PID = "pid";
 
@@ -79,7 +81,8 @@ public abstract class MappedProduct {
     // ------------------------------------------------------------------------------------------------------------ NAME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_NAME = "NAME";
 
@@ -94,7 +97,8 @@ public abstract class MappedProduct {
     public static final int COLUMN_LENGTH_NAME = 128;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_NAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_NAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_NAME = "name";
 
@@ -106,7 +110,8 @@ public abstract class MappedProduct {
     // ----------------------------------------------------------------------------------------------------------- PRICE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRICE} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRICE} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PRICE = "PRICE";
 
@@ -126,25 +131,28 @@ public abstract class MappedProduct {
     public static final int COLUMN_SCALE_PRICE = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PRICE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PRICE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PRICE = "price";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_PRICE} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_PRICE} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_INTEGER_PRICE = COLUMN_PRECISION_PRICE - COLUMN_SCALE_PRICE;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_PRICE} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_PRICE} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_FRACTION_PRICE = COLUMN_SCALE_PRICE;
 
     // ------------------------------------------------------------------------------------------------------ PROMOPRICE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROMOPRICE = "PROMOPRICE";
 
@@ -164,27 +172,29 @@ public abstract class MappedProduct {
     public static final int COLUMN_SCALE_PROMOPRICE = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROMOPRICE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROMOPRICE} column. The value
+     * is {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROMOPRICE = "promoprice";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute. The value is
-     * {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute.
+     * The value is {@value}.
      */
-    public static final int DIGITS_INTEGER_PROMOPRICE = COLUMN_PRECISION_PROMOPRICE - COLUMN_SCALE_PROMOPRICE;
+    public static final int DIGITS_INTEGER_PROMOPRICE =
+            COLUMN_PRECISION_PROMOPRICE - COLUMN_SCALE_PROMOPRICE;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute. The value is
-     * {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute.
+     * The value is {@value}.
      */
     public static final int DIGITS_FRACTION_PROMOPRICE = COLUMN_SCALE_PROMOPRICE;
 
     // ------------------------------------------------------------------------------------------------------ PROMOSTART
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROMOSTART} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROMOSTART} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROMOSTART = "PROMOSTART";
 
@@ -194,15 +204,16 @@ public abstract class MappedProduct {
     public static final boolean COLUMN_NULLABLE_PROMOSTART = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROMOSTART} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROMOSTART} column. The value
+     * is {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROMOSTART = "promostart";
 
     // -------------------------------------------------------------------------------------------------------- PROMOEND
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROMOEND} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROMOEND} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROMOEND = "PROMOEND";
 
@@ -212,15 +223,16 @@ public abstract class MappedProduct {
     public static final boolean COLUMN_NULLABLE_PROMOEND = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROMOEND} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROMOEND} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROMOEND = "promoend";
 
     // ----------------------------------------------------------------------------------------------------- DESCRIPTION
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_DESCRIPTION = "DESCRIPTION";
 
@@ -230,7 +242,8 @@ public abstract class MappedProduct {
     public static final boolean COLUMN_NULLABLE_DESCRIPTION = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DESCRIPTION} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DESCRIPTION} column. The value
+     * is {@value}.
      */
     public static final String ATTRIBUTE_NAME_DESCRIPTION = "description";
 
@@ -277,7 +290,8 @@ public abstract class MappedProduct {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PID}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PID}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -360,7 +374,8 @@ public abstract class MappedProduct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute with the specified
+     * value.
      *
      * @param promoprice new value for {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute.
      */
@@ -381,7 +396,8 @@ public abstract class MappedProduct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROMOSTART} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROMOSTART} attribute with the specified
+     * value.
      *
      * @param promostart new value for {@value #ATTRIBUTE_NAME_PROMOSTART} attribute.
      */
@@ -402,7 +418,8 @@ public abstract class MappedProduct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROMOEND} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROMOEND} attribute with the specified
+     * value.
      *
      * @param promoend new value for {@value #ATTRIBUTE_NAME_PROMOEND} attribute.
      */
@@ -413,7 +430,8 @@ public abstract class MappedProduct {
     // ----------------------------------------------------------------------------------------------------- description
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute, serialized; the column is an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute, serialized; the
+     * column is an XML.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute.
      */
@@ -423,7 +441,8 @@ public abstract class MappedProduct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute with the specified
+     * value.
      *
      * @param description new value for {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute.
      */

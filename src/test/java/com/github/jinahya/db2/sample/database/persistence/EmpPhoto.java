@@ -35,7 +35,8 @@ import jakarta.persistence.Table;
 @Entity
 @IdClass(EmpPhotoId.class)
 @Table(name = EmpPhoto.TABLE_NAME)
-public class EmpPhoto extends MappedEmpPhoto {
+public class EmpPhoto
+        extends MappedEmpPhoto {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

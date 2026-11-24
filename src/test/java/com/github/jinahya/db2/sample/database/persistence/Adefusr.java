@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = Adefusr.TABLE_NAME)
-public class Adefusr extends MappedAdefusr {
+public class Adefusr
+        extends MappedAdefusr {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

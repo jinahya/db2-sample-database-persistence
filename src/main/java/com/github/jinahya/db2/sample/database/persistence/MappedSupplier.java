@@ -33,8 +33,8 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedSupplier#TABLE_NAME} table, the suppliers, each
- * with an XML address.
+ * A mapped superclass which holds the mappings of the {@value MappedSupplier#TABLE_NAME} table, the
+ * suppliers, each with an XML address.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -49,7 +49,8 @@ public abstract class MappedSupplier {
     // ------------------------------------------------------------------------------------------------------------- SID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SID} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SID} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_SID = "SID";
 
@@ -64,7 +65,8 @@ public abstract class MappedSupplier {
     public static final int COLUMN_LENGTH_SID = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SID} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_SID = "sid";
 
@@ -76,7 +78,8 @@ public abstract class MappedSupplier {
     // ------------------------------------------------------------------------------------------------------------ ADDR
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ADDR} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ADDR} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ADDR = "ADDR";
 
@@ -86,7 +89,8 @@ public abstract class MappedSupplier {
     public static final boolean COLUMN_NULLABLE_ADDR = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ADDR} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ADDR} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ADDR = "addr";
 
@@ -128,7 +132,8 @@ public abstract class MappedSupplier {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_SID}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_SID}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -159,7 +164,8 @@ public abstract class MappedSupplier {
     // ------------------------------------------------------------------------------------------------------------ addr
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_ADDR} attribute, serialized; the column is an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_ADDR} attribute, serialized; the column is
+     * an XML.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ADDR} attribute.
      */

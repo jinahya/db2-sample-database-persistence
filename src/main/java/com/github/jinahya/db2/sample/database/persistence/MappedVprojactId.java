@@ -28,18 +28,19 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedVprojact#TABLE_NAME} view -- the logical, not declared, key of
- * {@value MappedVprojact#COLUMN_NAME_PROJNO}, {@value MappedVprojact#COLUMN_NAME_ACTNO},
- * {@value MappedVprojact#COLUMN_NAME_ACSTDATE}.
+ * A superclass for the identifier of the {@value MappedVprojact#TABLE_NAME} view -- the logical,
+ * not declared, key of {@value MappedVprojact#COLUMN_NAME_PROJNO},
+ * {@value MappedVprojact#COLUMN_NAME_ACTNO}, {@value MappedVprojact#COLUMN_NAME_ACSTDATE}.
  * <p>
  * An entity extending {@link MappedVprojact} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of the
- * {@link jakarta.persistence.Id @Id} attributes there.
+ * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
+ * the {@link jakarta.persistence.Id @Id} attributes there.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedVprojact
  */
-public abstract class MappedVprojactId implements Serializable {
+public abstract class MappedVprojactId
+        implements Serializable {
 
     /**
      * The serial version UID of this class. The value is {@value}.
@@ -49,38 +50,41 @@ public abstract class MappedVprojactId implements Serializable {
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_PROJNO} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_PROJNO} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = MappedVprojact.ATTRIBUTE_NAME_PROJNO;
 
     // ----------------------------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_ACTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_ACTNO} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTNO = MappedVprojact.ATTRIBUTE_NAME_ACTNO;
 
     // -------------------------------------------------------------------------------------------------------- ACSTDATE
 
     /**
-     * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_ACSTDATE} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_ACSTDATE} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACSTDATE = MappedVprojact.ATTRIBUTE_NAME_ACSTDATE;
 
-    // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
+    // ------------------------------------------------------------------------------------------
+    // STATIC_FACTORY_METHODS
 
     /**
      * Creates a new instance of a subclass, with the specified values.
      *
-     * @param <T> the type of the identifier.
+     * @param <T>          the type of the identifier.
      * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param projno a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
-     * @param actno a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
-     * @param acstdate a value for the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
+     * @param projno       a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
+     * @param actno        a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
+     * @param acstdate     a value for the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
      * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies {@code null}.
+     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
+     *                              {@code null}.
      */
     protected static <T extends MappedVprojactId> T of(
             final Supplier<? extends T> instantiator,
@@ -88,7 +92,8 @@ public abstract class MappedVprojactId implements Serializable {
             final Short actno,
             final LocalDate acstdate) {
         Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance = Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+        final var instance =
+                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
         instance.setProjno(projno);
         instance.setActno(actno);
         instance.setAcstdate(acstdate);
@@ -120,8 +125,8 @@ public abstract class MappedVprojactId implements Serializable {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
-     * {@value #ATTRIBUTE_NAME_ACSTDATE}.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and
+     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_ACSTDATE}.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -137,8 +142,9 @@ public abstract class MappedVprojactId implements Serializable {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
-     * {@value #ATTRIBUTE_NAME_ACSTDATE}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and
+     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_ACSTDATE}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -158,7 +164,8 @@ public abstract class MappedVprojactId implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -200,7 +207,8 @@ public abstract class MappedVprojactId implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute with the specified
+     * value.
      *
      * @param acstdate new value for {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
      */

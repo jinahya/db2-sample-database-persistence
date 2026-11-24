@@ -36,15 +36,18 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVproj#TABLE_NAME} view, the projects.
+ * A mapped superclass which holds the mappings of the {@value MappedVproj#TABLE_NAME} view, the
+ * projects.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
- * <strong>A view has no key.</strong> The column {@value MappedVproj#COLUMN_NAME_PROJNO}, unique and not {@code null}
- * in every row the sample database is created with, is mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
+ * <strong>A view has no key.</strong> The column {@value MappedVproj#COLUMN_NAME_PROJNO}, unique
+ * and not {@code null}
+ * in every row the sample database is created with, is mapped as the identifier, which an entity
+ * needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -59,7 +62,8 @@ public abstract class MappedVproj {
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
@@ -74,7 +78,8 @@ public abstract class MappedVproj {
     public static final int COLUMN_LENGTH_PROJNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
@@ -86,7 +91,8 @@ public abstract class MappedVproj {
     // -------------------------------------------------------------------------------------------------------- PROJNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNAME = "PROJNAME";
 
@@ -101,7 +107,8 @@ public abstract class MappedVproj {
     public static final int COLUMN_LENGTH_PROJNAME = 24;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNAME = "projname";
 
@@ -113,7 +120,8 @@ public abstract class MappedVproj {
     // ---------------------------------------------------------------------------------------------------------- DEPTNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNO = "DEPTNO";
 
@@ -128,7 +136,8 @@ public abstract class MappedVproj {
     public static final int COLUMN_LENGTH_DEPTNO = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNO = "deptno";
 
@@ -140,7 +149,8 @@ public abstract class MappedVproj {
     // --------------------------------------------------------------------------------------------------------- RESPEMP
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_RESPEMP = "RESPEMP";
 
@@ -155,7 +165,8 @@ public abstract class MappedVproj {
     public static final int COLUMN_LENGTH_RESPEMP = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_RESPEMP} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_RESPEMP} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_RESPEMP = "respemp";
 
@@ -167,7 +178,8 @@ public abstract class MappedVproj {
     // --------------------------------------------------------------------------------------------------------- PRSTAFF
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PRSTAFF = "PRSTAFF";
 
@@ -187,24 +199,29 @@ public abstract class MappedVproj {
     public static final int COLUMN_SCALE_PRSTAFF = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTAFF} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTAFF} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PRSTAFF = "prstaff";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute. The
+     * value is {@value}.
      */
-    public static final int DIGITS_INTEGER_PRSTAFF = COLUMN_PRECISION_PRSTAFF - COLUMN_SCALE_PRSTAFF;
+    public static final int DIGITS_INTEGER_PRSTAFF =
+            COLUMN_PRECISION_PRSTAFF - COLUMN_SCALE_PRSTAFF;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute.
+     * The value is {@value}.
      */
     public static final int DIGITS_FRACTION_PRSTAFF = COLUMN_SCALE_PRSTAFF;
 
     // -------------------------------------------------------------------------------------------------------- PRSTDATE
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PRSTDATE} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PRSTDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PRSTDATE = "PRSTDATE";
 
@@ -214,14 +231,16 @@ public abstract class MappedVproj {
     public static final boolean COLUMN_NULLABLE_PRSTDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PRSTDATE = "prstdate";
 
     // -------------------------------------------------------------------------------------------------------- PRENDATE
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PRENDATE} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PRENDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PRENDATE = "PRENDATE";
 
@@ -231,14 +250,16 @@ public abstract class MappedVproj {
     public static final boolean COLUMN_NULLABLE_PRENDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PRENDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PRENDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PRENDATE = "prendate";
 
     // --------------------------------------------------------------------------------------------------------- MAJPROJ
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MAJPROJ} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MAJPROJ} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_MAJPROJ = "MAJPROJ";
 
@@ -253,7 +274,8 @@ public abstract class MappedVproj {
     public static final int COLUMN_LENGTH_MAJPROJ = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MAJPROJ} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MAJPROJ} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MAJPROJ = "majproj";
 
@@ -306,7 +328,8 @@ public abstract class MappedVproj {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -326,7 +349,8 @@ public abstract class MappedVproj {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -347,7 +371,8 @@ public abstract class MappedVproj {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute with the specified
+     * value.
      *
      * @param projname new value for {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
      */
@@ -368,7 +393,8 @@ public abstract class MappedVproj {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute with the specified
+     * value.
      *
      * @param deptno new value for {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
      */
@@ -389,7 +415,8 @@ public abstract class MappedVproj {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute with the specified
+     * value.
      *
      * @param respemp new value for {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
      */
@@ -410,7 +437,8 @@ public abstract class MappedVproj {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PRSTAFF} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PRSTAFF} attribute with the specified
+     * value.
      *
      * @param prstaff new value for {@value #ATTRIBUTE_NAME_PRSTAFF} attribute.
      */
@@ -431,7 +459,8 @@ public abstract class MappedVproj {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PRSTDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PRSTDATE} attribute with the specified
+     * value.
      *
      * @param prstdate new value for {@value #ATTRIBUTE_NAME_PRSTDATE} attribute.
      */
@@ -452,7 +481,8 @@ public abstract class MappedVproj {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PRENDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PRENDATE} attribute with the specified
+     * value.
      *
      * @param prendate new value for {@value #ATTRIBUTE_NAME_PRENDATE} attribute.
      */
@@ -473,7 +503,8 @@ public abstract class MappedVproj {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute with the specified
+     * value.
      *
      * @param majproj new value for {@value #ATTRIBUTE_NAME_MAJPROJ} attribute.
      */

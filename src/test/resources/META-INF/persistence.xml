@@ -79,7 +79,8 @@
       <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
       <!-- https://www.h2database.com/html/features.html#compatibility -->
       <!-- NON_KEYWORDS: CL_SCHED has a column named DAY, which H2 reserves -->
-      <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:;MODE=DB2;DEFAULT_NULL_ORDERING=HIGH;NON_KEYWORDS=DAY"/>
+      <property name="jakarta.persistence.jdbc.url"
+                value="jdbc:h2:mem:;MODE=DB2;DEFAULT_NULL_ORDERING=HIGH;NON_KEYWORDS=DAY"/>
       <property name="jakarta.persistence.jdbc.user" value="sa"/>
       <property name="jakarta.persistence.jdbc.password" value="password"/>
       <!-- ///////////////////////////////////////////////////////////////////////////////////////////// eclipselink -->
@@ -87,7 +88,8 @@
       <property name="eclipselink.logging.level.sql" value="FINE"/>
       <property name="eclipselink.logging.parameters" value="true"/>
       <!-- https://wiki.eclipse.org/EclipseLink/Examples/JPA/DDL -->
-      <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform"/>
+      <property name="eclipselink.target-database"
+                value="org.eclipse.persistence.platform.database.H2Platform"/>
       <property name="eclipselink.ddl-generation" value="create-tables"/>
       <!-- /////////////////////////////////////////////////////////////////////////////////////////////// hibernate -->
       <property name="hibernate.format_sql" value="true"/>
@@ -160,7 +162,8 @@
       <property name="eclipselink.logging.level.sql" value="FINE"/>
       <property name="eclipselink.logging.parameters" value="true"/>
       <!-- https://wiki.eclipse.org/EclipseLink/Examples/JPA/DDL -->
-      <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.DB2Platform"/>
+      <property name="eclipselink.target-database"
+                value="org.eclipse.persistence.platform.database.DB2Platform"/>
       <!-- /////////////////////////////////////////////////////////////////////////////////////////////// hibernate -->
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.hbm2ddl.auto" value="none"/>

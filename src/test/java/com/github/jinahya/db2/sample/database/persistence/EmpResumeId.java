@@ -25,7 +25,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-public class EmpResumeId extends MappedEmpResumeId {
+public class EmpResumeId
+        extends MappedEmpResumeId {
 
     private static final long serialVersionUID = 1L;
 

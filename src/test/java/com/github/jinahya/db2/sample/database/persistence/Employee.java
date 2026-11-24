@@ -33,7 +33,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = Employee.TABLE_NAME)
-public class Employee extends MappedEmployee {
+public class Employee
+        extends MappedEmployee {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

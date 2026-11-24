@@ -36,20 +36,23 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVstafac2#TABLE_NAME} view, the employees on the
- * activities of the projects, with their names.
+ * A mapped superclass which holds the mappings of the {@value MappedVstafac2#TABLE_NAME} view, the
+ * employees on the activities of the projects, with their names.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
  * <strong>A view has no key.</strong> The columns {@value MappedVstafac2#COLUMN_NAME_PROJNO},
  * {@value MappedVstafac2#COLUMN_NAME_ACTNO}, {@value MappedVstafac2#COLUMN_NAME_EMPNO},
- * {@value MappedVstafac2#COLUMN_NAME_STDATE}, unique and not {@code null} in every row the sample database is created
- * with, are mapped as the identifier, which an entity needs; nothing in the database keeps that so.
+ * {@value MappedVstafac2#COLUMN_NAME_STDATE}, unique and not {@code null} in every row the sample
+ * database is created with, are mapped as the identifier, which an entity needs; nothing in the
+ * database keeps that so.
  * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending entity names a subclass
- * of {@link MappedVstafac2Id} with {@code @IdClass} and inherits the {@link Id @Id} attributes from here.
+ * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
+ * entity names a subclass of {@link MappedVstafac2Id} with {@code @IdClass} and inherits the
+ * {@link Id @Id} attributes from here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedVstafac2Id
@@ -65,7 +68,8 @@ public abstract class MappedVstafac2 {
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
@@ -80,7 +84,8 @@ public abstract class MappedVstafac2 {
     public static final int COLUMN_LENGTH_PROJNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
@@ -92,7 +97,8 @@ public abstract class MappedVstafac2 {
     // ----------------------------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
@@ -102,14 +108,16 @@ public abstract class MappedVstafac2 {
     public static final boolean COLUMN_NULLABLE_ACTNO = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
     // --------------------------------------------------------------------------------------------------------- ACTDESC
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTDESC} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTDESC} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTDESC = "ACTDESC";
 
@@ -124,7 +132,8 @@ public abstract class MappedVstafac2 {
     public static final int COLUMN_LENGTH_ACTDESC = 20;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTDESC} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTDESC} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTDESC = "actdesc";
 
@@ -136,7 +145,8 @@ public abstract class MappedVstafac2 {
     // ----------------------------------------------------------------------------------------------------------- EMPNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
@@ -151,7 +161,8 @@ public abstract class MappedVstafac2 {
     public static final int COLUMN_LENGTH_EMPNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPNO = "empno";
 
@@ -163,7 +174,8 @@ public abstract class MappedVstafac2 {
     // -------------------------------------------------------------------------------------------------------- FIRSTNME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_FIRSTNME = "FIRSTNME";
 
@@ -178,7 +190,8 @@ public abstract class MappedVstafac2 {
     public static final int COLUMN_LENGTH_FIRSTNME = 12;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_FIRSTNME = "firstnme";
 
@@ -190,7 +203,8 @@ public abstract class MappedVstafac2 {
     // --------------------------------------------------------------------------------------------------------- MIDINIT
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
@@ -205,7 +219,8 @@ public abstract class MappedVstafac2 {
     public static final int COLUMN_LENGTH_MIDINIT = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MIDINIT = "midinit";
 
@@ -217,7 +232,8 @@ public abstract class MappedVstafac2 {
     // -------------------------------------------------------------------------------------------------------- LASTNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
@@ -232,7 +248,8 @@ public abstract class MappedVstafac2 {
     public static final int COLUMN_LENGTH_LASTNAME = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LASTNAME = "lastname";
 
@@ -244,7 +261,8 @@ public abstract class MappedVstafac2 {
     // --------------------------------------------------------------------------------------------------------- EMPTIME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPTIME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPTIME} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMPTIME = "EMPTIME";
 
@@ -264,24 +282,29 @@ public abstract class MappedVstafac2 {
     public static final int COLUMN_SCALE_EMPTIME = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPTIME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPTIME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPTIME = "emptime";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute. The
+     * value is {@value}.
      */
-    public static final int DIGITS_INTEGER_EMPTIME = COLUMN_PRECISION_EMPTIME - COLUMN_SCALE_EMPTIME;
+    public static final int DIGITS_INTEGER_EMPTIME =
+            COLUMN_PRECISION_EMPTIME - COLUMN_SCALE_EMPTIME;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute.
+     * The value is {@value}.
      */
     public static final int DIGITS_FRACTION_EMPTIME = COLUMN_SCALE_EMPTIME;
 
     // ---------------------------------------------------------------------------------------------------------- STDATE
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_STDATE} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_STDATE} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_STDATE = "STDATE";
 
@@ -291,14 +314,16 @@ public abstract class MappedVstafac2 {
     public static final boolean COLUMN_NULLABLE_STDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_STDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_STDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_STDATE = "stdate";
 
     // ---------------------------------------------------------------------------------------------------------- ENDATE
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ENDATE} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ENDATE} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ENDATE = "ENDATE";
 
@@ -308,14 +333,16 @@ public abstract class MappedVstafac2 {
     public static final boolean COLUMN_NULLABLE_ENDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ENDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ENDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ENDATE = "endate";
 
     // ------------------------------------------------------------------------------------------------------------ TYPE
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_TYPE} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_TYPE} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_TYPE = "TYPE";
 
@@ -330,7 +357,8 @@ public abstract class MappedVstafac2 {
     public static final int COLUMN_LENGTH_TYPE = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_TYPE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_TYPE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_TYPE = "type";
 
@@ -372,8 +400,9 @@ public abstract class MappedVstafac2 {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
-     * {@value #ATTRIBUTE_NAME_EMPNO} and {@value #ATTRIBUTE_NAME_STDATE} alone.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and
+     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_EMPNO} and
+     *         {@value #ATTRIBUTE_NAME_STDATE} alone.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -390,8 +419,9 @@ public abstract class MappedVstafac2 {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
-     * {@value #ATTRIBUTE_NAME_EMPNO} and {@value #ATTRIBUTE_NAME_STDATE}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and
+     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_EMPNO} and
+     *         {@value #ATTRIBUTE_NAME_STDATE}, consistent with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -411,7 +441,8 @@ public abstract class MappedVstafac2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -453,7 +484,8 @@ public abstract class MappedVstafac2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTDESC} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTDESC} attribute with the specified
+     * value.
      *
      * @param actdesc new value for {@value #ATTRIBUTE_NAME_ACTDESC} attribute.
      */
@@ -495,7 +527,8 @@ public abstract class MappedVstafac2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute with the specified
+     * value.
      *
      * @param firstnme new value for {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
      */
@@ -516,7 +549,8 @@ public abstract class MappedVstafac2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified
+     * value.
      *
      * @param midinit new value for {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
      */
@@ -537,7 +571,8 @@ public abstract class MappedVstafac2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified
+     * value.
      *
      * @param lastname new value for {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
      */
@@ -558,7 +593,8 @@ public abstract class MappedVstafac2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPTIME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPTIME} attribute with the specified
+     * value.
      *
      * @param emptime new value for {@value #ATTRIBUTE_NAME_EMPTIME} attribute.
      */
@@ -579,7 +615,8 @@ public abstract class MappedVstafac2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_STDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_STDATE} attribute with the specified
+     * value.
      *
      * @param stdate new value for {@value #ATTRIBUTE_NAME_STDATE} attribute.
      */
@@ -600,7 +637,8 @@ public abstract class MappedVstafac2 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ENDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ENDATE} attribute with the specified
+     * value.
      *
      * @param endate new value for {@value #ATTRIBUTE_NAME_ENDATE} attribute.
      */

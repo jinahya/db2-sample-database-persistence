@@ -25,7 +25,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-public class Vastrde1Id extends MappedVastrde1Id {
+public class Vastrde1Id
+        extends MappedVastrde1Id {
 
     private static final long serialVersionUID = 1L;
 

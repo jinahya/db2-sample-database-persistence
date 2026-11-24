@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = InTray.TABLE_NAME)
-public class InTray extends MappedInTray {
+public class InTray
+        extends MappedInTray {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

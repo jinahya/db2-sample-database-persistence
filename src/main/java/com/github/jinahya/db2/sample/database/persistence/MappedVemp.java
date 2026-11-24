@@ -33,15 +33,18 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVemp#TABLE_NAME} view, the employees.
+ * A mapped superclass which holds the mappings of the {@value MappedVemp#TABLE_NAME} view, the
+ * employees.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
- * <strong>A view has no key.</strong> The column {@value MappedVemp#COLUMN_NAME_EMPNO}, unique and not {@code null} in
- * every row the sample database is created with, is mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
+ * <strong>A view has no key.</strong> The column {@value MappedVemp#COLUMN_NAME_EMPNO}, unique and
+ * not {@code null} in
+ * every row the sample database is created with, is mapped as the identifier, which an entity
+ * needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -56,7 +59,8 @@ public abstract class MappedVemp {
     // ----------------------------------------------------------------------------------------------------------- EMPNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
@@ -71,7 +75,8 @@ public abstract class MappedVemp {
     public static final int COLUMN_LENGTH_EMPNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPNO = "empno";
 
@@ -83,7 +88,8 @@ public abstract class MappedVemp {
     // -------------------------------------------------------------------------------------------------------- FIRSTNME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_FIRSTNME = "FIRSTNME";
 
@@ -98,7 +104,8 @@ public abstract class MappedVemp {
     public static final int COLUMN_LENGTH_FIRSTNME = 12;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_FIRSTNME = "firstnme";
 
@@ -110,7 +117,8 @@ public abstract class MappedVemp {
     // --------------------------------------------------------------------------------------------------------- MIDINIT
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
@@ -125,7 +133,8 @@ public abstract class MappedVemp {
     public static final int COLUMN_LENGTH_MIDINIT = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MIDINIT = "midinit";
 
@@ -137,7 +146,8 @@ public abstract class MappedVemp {
     // -------------------------------------------------------------------------------------------------------- LASTNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
@@ -152,7 +162,8 @@ public abstract class MappedVemp {
     public static final int COLUMN_LENGTH_LASTNAME = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LASTNAME = "lastname";
 
@@ -164,7 +175,8 @@ public abstract class MappedVemp {
     // -------------------------------------------------------------------------------------------------------- WORKDEPT
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_WORKDEPT = "WORKDEPT";
 
@@ -179,7 +191,8 @@ public abstract class MappedVemp {
     public static final int COLUMN_LENGTH_WORKDEPT = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_WORKDEPT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_WORKDEPT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_WORKDEPT = "workdept";
 
@@ -229,7 +242,8 @@ public abstract class MappedVemp {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -270,7 +284,8 @@ public abstract class MappedVemp {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute with the specified
+     * value.
      *
      * @param firstnme new value for {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
      */
@@ -291,7 +306,8 @@ public abstract class MappedVemp {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified
+     * value.
      *
      * @param midinit new value for {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
      */
@@ -312,7 +328,8 @@ public abstract class MappedVemp {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified
+     * value.
      *
      * @param lastname new value for {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
      */
@@ -333,7 +350,8 @@ public abstract class MappedVemp {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute with the specified
+     * value.
      *
      * @param workdept new value for {@value #ATTRIBUTE_NAME_WORKDEPT} attribute.
      */

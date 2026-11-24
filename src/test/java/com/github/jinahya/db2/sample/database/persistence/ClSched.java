@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = ClSched.TABLE_NAME)
-public class ClSched extends MappedClSched {
+public class ClSched
+        extends MappedClSched {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

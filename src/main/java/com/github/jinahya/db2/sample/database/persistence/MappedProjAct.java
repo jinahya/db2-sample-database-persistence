@@ -36,13 +36,14 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedProjAct#TABLE_NAME} table, the activities of the
- * projects.
+ * A mapped superclass which holds the mappings of the {@value MappedProjAct#TABLE_NAME} table, the
+ * activities of the projects.
  * <p>
- * The primary key is composite, of {@value MappedProjAct#COLUMN_NAME_PROJNO}, {@value MappedProjAct#COLUMN_NAME_ACTNO},
- * {@value MappedProjAct#COLUMN_NAME_ACSTDATE}, mapped with an {@link jakarta.persistence.IdClass @IdClass}: an
- * extending entity names a subclass of {@link MappedProjActId} with {@code @IdClass} and inherits the {@link Id @Id}
- * attributes from here.
+ * The primary key is composite, of {@value MappedProjAct#COLUMN_NAME_PROJNO},
+ * {@value MappedProjAct#COLUMN_NAME_ACTNO}, {@value MappedProjAct#COLUMN_NAME_ACSTDATE}, mapped
+ * with an {@link jakarta.persistence.IdClass @IdClass}: an extending entity names a subclass of
+ * {@link MappedProjActId} with {@code @IdClass} and inherits the {@link Id @Id} attributes from
+ * here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedProjActId
@@ -58,7 +59,8 @@ public abstract class MappedProjAct {
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
@@ -73,7 +75,8 @@ public abstract class MappedProjAct {
     public static final int COLUMN_LENGTH_PROJNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
@@ -85,7 +88,8 @@ public abstract class MappedProjAct {
     // ----------------------------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
@@ -95,14 +99,16 @@ public abstract class MappedProjAct {
     public static final boolean COLUMN_NULLABLE_ACTNO = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
     // --------------------------------------------------------------------------------------------------------- ACSTAFF
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_ACSTAFF = "ACSTAFF";
 
@@ -122,25 +128,29 @@ public abstract class MappedProjAct {
     public static final int COLUMN_SCALE_ACSTAFF = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTAFF} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTAFF} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACSTAFF = "acstaff";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute. The
+     * value is {@value}.
      */
-    public static final int DIGITS_INTEGER_ACSTAFF = COLUMN_PRECISION_ACSTAFF - COLUMN_SCALE_ACSTAFF;
+    public static final int DIGITS_INTEGER_ACSTAFF =
+            COLUMN_PRECISION_ACSTAFF - COLUMN_SCALE_ACSTAFF;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute.
+     * The value is {@value}.
      */
     public static final int DIGITS_FRACTION_ACSTAFF = COLUMN_SCALE_ACSTAFF;
 
     // -------------------------------------------------------------------------------------------------------- ACSTDATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_ACSTDATE = "ACSTDATE";
 
@@ -150,15 +160,16 @@ public abstract class MappedProjAct {
     public static final boolean COLUMN_NULLABLE_ACSTDATE = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACSTDATE = "acstdate";
 
     // -------------------------------------------------------------------------------------------------------- ACENDATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACENDATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACENDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_ACENDATE = "ACENDATE";
 
@@ -168,7 +179,8 @@ public abstract class MappedProjAct {
     public static final boolean COLUMN_NULLABLE_ACENDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACENDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACENDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACENDATE = "acendate";
 
@@ -199,8 +211,8 @@ public abstract class MappedProjAct {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and {@value
-     * #ATTRIBUTE_NAME_ACSTDATE} alone.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and
+     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_ACSTDATE} alone.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -216,8 +228,9 @@ public abstract class MappedProjAct {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and {@value
-     * #ATTRIBUTE_NAME_ACSTDATE}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and
+     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_ACSTDATE}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -237,7 +250,8 @@ public abstract class MappedProjAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -279,7 +293,8 @@ public abstract class MappedProjAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTAFF} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTAFF} attribute with the specified
+     * value.
      *
      * @param acstaff new value for {@value #ATTRIBUTE_NAME_ACSTAFF} attribute.
      */
@@ -300,7 +315,8 @@ public abstract class MappedProjAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute with the specified
+     * value.
      *
      * @param acstdate new value for {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
      */
@@ -321,7 +337,8 @@ public abstract class MappedProjAct {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACENDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ACENDATE} attribute with the specified
+     * value.
      *
      * @param acendate new value for {@value #ATTRIBUTE_NAME_ACENDATE} attribute.
      */

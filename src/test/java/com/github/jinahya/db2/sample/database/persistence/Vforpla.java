@@ -30,7 +30,8 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = Vforpla.TABLE_NAME)
-public class Vforpla extends MappedVforpla {
+public class Vforpla
+        extends MappedVforpla {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

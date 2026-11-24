@@ -28,18 +28,20 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedEmpProjAct#TABLE_NAME} table -- the logical, not declared, key
- * of {@value MappedEmpProjAct#COLUMN_NAME_EMPNO}, {@value MappedEmpProjAct#COLUMN_NAME_PROJNO}, {@value
- * MappedEmpProjAct#COLUMN_NAME_ACTNO}, {@value MappedEmpProjAct#COLUMN_NAME_EMSTDATE}.
+ * A superclass for the identifier of the {@value MappedEmpProjAct#TABLE_NAME} table -- the logical,
+ * not declared, key of {@value MappedEmpProjAct#COLUMN_NAME_EMPNO},
+ * {@value MappedEmpProjAct#COLUMN_NAME_PROJNO}, {@value MappedEmpProjAct#COLUMN_NAME_ACTNO},
+ * {@value MappedEmpProjAct#COLUMN_NAME_EMSTDATE}.
  * <p>
- * An entity extending {@link MappedEmpProjAct} names a concrete subclass of this class with {@link
- * jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of the {@link
- * jakarta.persistence.Id @Id} attributes there.
+ * An entity extending {@link MappedEmpProjAct} names a concrete subclass of this class with
+ * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
+ * the {@link jakarta.persistence.Id @Id} attributes there.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedEmpProjAct
  */
-public abstract class MappedEmpProjActId implements Serializable {
+public abstract class MappedEmpProjActId
+        implements Serializable {
 
     /**
      * The serial version UID of this class. The value is {@value}.
@@ -49,48 +51,50 @@ public abstract class MappedEmpProjActId implements Serializable {
     // ----------------------------------------------------------------------------------------------------------- EMPNO
 
     /**
-     * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_EMPNO} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_EMPNO} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPNO = MappedEmpProjAct.ATTRIBUTE_NAME_EMPNO;
 
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_PROJNO} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_PROJNO} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = MappedEmpProjAct.ATTRIBUTE_NAME_PROJNO;
 
     // ----------------------------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_ACTNO} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_ACTNO} column.
+     * The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_ACTNO = MappedEmpProjAct.ATTRIBUTE_NAME_ACTNO;
 
     // -------------------------------------------------------------------------------------------------------- EMSTDATE
 
     /**
-     * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_EMSTDATE} column. The value is
-     * {@value}.
+     * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_EMSTDATE}
+     * column. The value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMSTDATE = MappedEmpProjAct.ATTRIBUTE_NAME_EMSTDATE;
 
-    // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
+    // ------------------------------------------------------------------------------------------
+    // STATIC_FACTORY_METHODS
 
     /**
      * Creates a new instance of a subclass, with the specified values.
      *
-     * @param <T> the type of the identifier.
+     * @param <T>          the type of the identifier.
      * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param empno a value for the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
-     * @param projno a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
-     * @param actno a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
-     * @param emstdate a value for the {@value #ATTRIBUTE_NAME_EMSTDATE} attribute.
+     * @param empno        a value for the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * @param projno       a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
+     * @param actno        a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
+     * @param emstdate     a value for the {@value #ATTRIBUTE_NAME_EMSTDATE} attribute.
      * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies {@code null}.
+     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
+     *                              {@code null}.
      */
     protected static <T extends MappedEmpProjActId> T of(
             final Supplier<? extends T> instantiator,
@@ -99,7 +103,8 @@ public abstract class MappedEmpProjActId implements Serializable {
             final Short actno,
             final LocalDate emstdate) {
         Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance = Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+        final var instance =
+                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
         instance.setEmpno(empno);
         instance.setProjno(projno);
         instance.setActno(actno);
@@ -133,8 +138,9 @@ public abstract class MappedEmpProjActId implements Serializable {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_EMPNO} and {@value #ATTRIBUTE_NAME_PROJNO} and {@value
-     * #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_EMSTDATE}.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_EMPNO} and
+     *         {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
+     *         {@value #ATTRIBUTE_NAME_EMSTDATE}.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -151,8 +157,9 @@ public abstract class MappedEmpProjActId implements Serializable {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO} and {@value #ATTRIBUTE_NAME_PROJNO} and {@value
-     * #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_EMSTDATE}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO} and
+     *         {@value #ATTRIBUTE_NAME_PROJNO} and {@value #ATTRIBUTE_NAME_ACTNO} and
+     *         {@value #ATTRIBUTE_NAME_EMSTDATE}, consistent with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -193,7 +200,8 @@ public abstract class MappedEmpProjActId implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -235,7 +243,8 @@ public abstract class MappedEmpProjActId implements Serializable {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMSTDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMSTDATE} attribute with the specified
+     * value.
      *
      * @param emstdate new value for {@value #ATTRIBUTE_NAME_EMSTDATE} attribute.
      */

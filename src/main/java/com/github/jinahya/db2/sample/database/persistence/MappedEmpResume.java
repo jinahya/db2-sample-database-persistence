@@ -34,13 +34,14 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedEmpResume#TABLE_NAME} table, the resumes of the
- * employees.
+ * A mapped superclass which holds the mappings of the {@value MappedEmpResume#TABLE_NAME} table,
+ * the resumes of the employees.
  * <p>
- * The primary key is composite, of {@value MappedEmpResume#COLUMN_NAME_EMPNO}, {@value
- * MappedEmpResume#COLUMN_NAME_RESUME_FORMAT}, mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
- * entity names a subclass of {@link MappedEmpResumeId} with {@code @IdClass} and inherits the {@link Id @Id} attributes
- * from here.
+ * The primary key is composite, of {@value MappedEmpResume#COLUMN_NAME_EMPNO},
+ * {@value MappedEmpResume#COLUMN_NAME_RESUME_FORMAT}, mapped with an
+ * {@link jakarta.persistence.IdClass @IdClass}: an extending entity names a subclass of
+ * {@link MappedEmpResumeId} with {@code @IdClass} and inherits the {@link Id @Id} attributes from
+ * here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedEmpResumeId
@@ -56,7 +57,8 @@ public abstract class MappedEmpResume {
     // ----------------------------------------------------------------------------------------------------------- EMPNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
@@ -71,7 +73,8 @@ public abstract class MappedEmpResume {
     public static final int COLUMN_LENGTH_EMPNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMPNO = "empno";
 
@@ -83,8 +86,8 @@ public abstract class MappedEmpResume {
     // --------------------------------------------------------------------------------------------------- RESUME_FORMAT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_RESUME_FORMAT = "RESUME_FORMAT";
 
@@ -99,19 +102,22 @@ public abstract class MappedEmpResume {
     public static final int COLUMN_LENGTH_RESUME_FORMAT = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_RESUME_FORMAT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_RESUME_FORMAT} column. The
+     * value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_RESUME_FORMAT = "resumeFormat";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute. The value is {@value}.
+     * The maximum size of the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute. The value is
+     * {@value}.
      */
     public static final int SIZE_MAX_RESUME_FORMAT = COLUMN_LENGTH_RESUME_FORMAT;
 
     // ---------------------------------------------------------------------------------------------------------- RESUME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESUME} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESUME} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_RESUME = "RESUME";
 
@@ -126,7 +132,8 @@ public abstract class MappedEmpResume {
     public static final int COLUMN_LENGTH_RESUME = 5120;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_RESUME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_RESUME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_RESUME = "resume";
 
@@ -155,7 +162,8 @@ public abstract class MappedEmpResume {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_EMPNO} and {@value #ATTRIBUTE_NAME_RESUME_FORMAT} alone.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_EMPNO} and
+     *         {@value #ATTRIBUTE_NAME_RESUME_FORMAT} alone.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -170,8 +178,8 @@ public abstract class MappedEmpResume {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO} and {@value #ATTRIBUTE_NAME_RESUME_FORMAT}, consistent
-     * with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO} and
+     *         {@value #ATTRIBUTE_NAME_RESUME_FORMAT}, consistent with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -212,7 +220,8 @@ public abstract class MappedEmpResume {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute with the specified
+     * value.
      *
      * @param resumeFormat new value for {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
      */
@@ -233,7 +242,8 @@ public abstract class MappedEmpResume {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_RESUME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_RESUME} attribute with the specified
+     * value.
      *
      * @param resume new value for {@value #ATTRIBUTE_NAME_RESUME} attribute.
      */

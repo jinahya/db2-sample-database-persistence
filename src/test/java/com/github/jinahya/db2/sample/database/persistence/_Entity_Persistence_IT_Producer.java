@@ -38,7 +38,8 @@ import java.lang.annotation.Target;
 import java.lang.invoke.MethodHandles;
 
 /**
- * Produces an entity manager factory, and entity managers, of the integration-test persistence unit, on the SAMPLE database of the Db2 from docker-compose.yml.
+ * Produces an entity manager factory, and entity managers, of the integration-test persistence
+ * unit, on the SAMPLE database of the Db2 from docker-compose.yml.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -53,7 +54,8 @@ class _Entity_Persistence_IT_Producer {
      */
     static final String PERSISTENCE_UNIT_NAME = "sample-it";
 
-    private static final System.Logger logger = System.getLogger(MethodHandles.lookup().lookupClass().getName());
+    private static final System.Logger logger =
+            System.getLogger(MethodHandles.lookup().lookupClass().getName());
 
     // -----------------------------------------------------------------------------------------------------------------
 
@@ -69,7 +71,9 @@ class _Entity_Persistence_IT_Producer {
         /**
          * The literal of the qualifier.
          */
-        final class Literal extends AnnotationLiteral<__ItPU> implements __ItPU {
+        final class Literal
+                extends AnnotationLiteral<__ItPU>
+                implements __ItPU {
 
             /**
              * The single instance.
@@ -100,7 +104,8 @@ class _Entity_Persistence_IT_Producer {
         return Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
     }
 
-    protected void disposeEntityManagerFactory(@Disposes @__ItPU final EntityManagerFactory entityManagerFactory) {
+    protected void disposeEntityManagerFactory(
+            @Disposes @__ItPU final EntityManagerFactory entityManagerFactory) {
         if (entityManagerFactory.isOpen()) {
             logger.log(System.Logger.Level.DEBUG, "closing {0}", entityManagerFactory);
             entityManagerFactory.close();
@@ -112,7 +117,8 @@ class _Entity_Persistence_IT_Producer {
     @Produces
     @__ItPU
     @Dependent
-    protected EntityManager produceEntityManager(@__ItPU final EntityManagerFactory entityManagerFactory) {
+    protected EntityManager produceEntityManager(
+            @__ItPU final EntityManagerFactory entityManagerFactory) {
         return entityManagerFactory.createEntityManager();
     }
 

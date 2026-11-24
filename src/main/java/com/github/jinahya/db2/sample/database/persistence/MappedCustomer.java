@@ -32,8 +32,8 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedCustomer#TABLE_NAME} table, the customers, each
- * with an XML document of information and one of history.
+ * A mapped superclass which holds the mappings of the {@value MappedCustomer#TABLE_NAME} table, the
+ * customers, each with an XML document of information and one of history.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -48,7 +48,8 @@ public abstract class MappedCustomer {
     // ------------------------------------------------------------------------------------------------------------- CID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CID} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_CID} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_CID = "CID";
 
@@ -58,14 +59,16 @@ public abstract class MappedCustomer {
     public static final boolean COLUMN_NULLABLE_CID = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_CID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_CID} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_CID = "cid";
 
     // ------------------------------------------------------------------------------------------------------------ INFO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_INFO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_INFO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_INFO = "INFO";
 
@@ -75,14 +78,16 @@ public abstract class MappedCustomer {
     public static final boolean COLUMN_NULLABLE_INFO = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_INFO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_INFO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_INFO = "info";
 
     // --------------------------------------------------------------------------------------------------------- HISTORY
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_HISTORY} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_HISTORY} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_HISTORY = "HISTORY";
 
@@ -92,7 +97,8 @@ public abstract class MappedCustomer {
     public static final boolean COLUMN_NULLABLE_HISTORY = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_HISTORY} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_HISTORY} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_HISTORY = "history";
 
@@ -135,7 +141,8 @@ public abstract class MappedCustomer {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_CID}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_CID}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -166,7 +173,8 @@ public abstract class MappedCustomer {
     // ------------------------------------------------------------------------------------------------------------ info
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_INFO} attribute, serialized; the column is an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_INFO} attribute, serialized; the column is
+     * an XML.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_INFO} attribute.
      */
@@ -187,7 +195,8 @@ public abstract class MappedCustomer {
     // --------------------------------------------------------------------------------------------------------- history
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_HISTORY} attribute, serialized; the column is an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_HISTORY} attribute, serialized; the column
+     * is an XML.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_HISTORY} attribute.
      */
@@ -197,7 +206,8 @@ public abstract class MappedCustomer {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_HISTORY} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_HISTORY} attribute with the specified
+     * value.
      *
      * @param history new value for {@value #ATTRIBUTE_NAME_HISTORY} attribute.
      */

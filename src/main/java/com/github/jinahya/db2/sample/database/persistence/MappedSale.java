@@ -34,15 +34,18 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedSale#TABLE_NAME} table, the sales.
+ * A mapped superclass which holds the mappings of the {@value MappedSale#TABLE_NAME} table, the
+ * sales.
  * <p>
- * <strong>The table declares no primary key.</strong> The columns {@value MappedSale#COLUMN_NAME_SALES_DATE}, {@value
- * MappedSale#COLUMN_NAME_SALES_PERSON}, {@value MappedSale#COLUMN_NAME_REGION}, unique and not {@code null} in every
- * row the sample database is created with, are mapped as the identifier, which an entity needs; nothing in the database
- * keeps that so.
+ * <strong>The table declares no primary key.</strong> The columns
+ * {@value MappedSale#COLUMN_NAME_SALES_DATE}, {@value
+ * MappedSale#COLUMN_NAME_SALES_PERSON}, {@value MappedSale#COLUMN_NAME_REGION}, unique and not
+ * {@code null} in every row the sample database is created with, are mapped as the identifier,
+ * which an entity needs; nothing in the database keeps that so.
  * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending entity names a subclass
- * of {@link MappedSaleId} with {@code @IdClass} and inherits the {@link Id @Id} attributes from here.
+ * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
+ * entity names a subclass of {@link MappedSaleId} with {@code @IdClass} and inherits the
+ * {@link Id @Id} attributes from here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedSaleId
@@ -58,8 +61,8 @@ public abstract class MappedSale {
     // ------------------------------------------------------------------------------------------------------ SALES_DATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALES_DATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALES_DATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_SALES_DATE = "SALES_DATE";
 
@@ -69,15 +72,16 @@ public abstract class MappedSale {
     public static final boolean COLUMN_NULLABLE_SALES_DATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SALES_DATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SALES_DATE} column. The value
+     * is {@value}.
      */
     public static final String ATTRIBUTE_NAME_SALES_DATE = "salesDate";
 
     // ---------------------------------------------------------------------------------------------------- SALES_PERSON
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_SALES_PERSON = "SALES_PERSON";
 
@@ -92,19 +96,22 @@ public abstract class MappedSale {
     public static final int COLUMN_LENGTH_SALES_PERSON = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SALES_PERSON} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SALES_PERSON} column. The value
+     * is {@value}.
      */
     public static final String ATTRIBUTE_NAME_SALES_PERSON = "salesPerson";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute. The value is {@value}.
+     * The maximum size of the {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute. The value is
+     * {@value}.
      */
     public static final int SIZE_MAX_SALES_PERSON = COLUMN_LENGTH_SALES_PERSON;
 
     // ---------------------------------------------------------------------------------------------------------- REGION
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_REGION} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_REGION} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_REGION = "REGION";
 
@@ -119,7 +126,8 @@ public abstract class MappedSale {
     public static final int COLUMN_LENGTH_REGION = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_REGION} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_REGION} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_REGION = "region";
 
@@ -131,7 +139,8 @@ public abstract class MappedSale {
     // ----------------------------------------------------------------------------------------------------------- SALES
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALES} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALES} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_SALES = "SALES";
 
@@ -141,7 +150,8 @@ public abstract class MappedSale {
     public static final boolean COLUMN_NULLABLE_SALES = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SALES} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SALES} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_SALES = "sales";
 
@@ -171,8 +181,8 @@ public abstract class MappedSale {
      *
      * @param obj {@inheritDoc}
      * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_SALES_DATE} and {@value #ATTRIBUTE_NAME_SALES_PERSON} and
-     * {@value #ATTRIBUTE_NAME_REGION} alone.
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_SALES_DATE} and
+     *         {@value #ATTRIBUTE_NAME_SALES_PERSON} and {@value #ATTRIBUTE_NAME_REGION} alone.
      */
     @Override
     public final boolean equals(final Object obj) {
@@ -188,8 +198,9 @@ public abstract class MappedSale {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_SALES_DATE} and {@value #ATTRIBUTE_NAME_SALES_PERSON} and
-     * {@value #ATTRIBUTE_NAME_REGION}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_SALES_DATE} and
+     *         {@value #ATTRIBUTE_NAME_SALES_PERSON} and {@value #ATTRIBUTE_NAME_REGION}, consistent
+     *         with {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -209,7 +220,8 @@ public abstract class MappedSale {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_SALES_DATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_SALES_DATE} attribute with the specified
+     * value.
      *
      * @param salesDate new value for {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
      */
@@ -230,7 +242,8 @@ public abstract class MappedSale {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute with the specified
+     * value.
      *
      * @param salesPerson new value for {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
      */
@@ -251,7 +264,8 @@ public abstract class MappedSale {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_REGION} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_REGION} attribute with the specified
+     * value.
      *
      * @param region new value for {@value #ATTRIBUTE_NAME_REGION} attribute.
      */

@@ -33,16 +33,18 @@ import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedVprojre1#TABLE_NAME} view, the projects with their
- * responsible employees.
+ * A mapped superclass which holds the mappings of the {@value MappedVprojre1#TABLE_NAME} view, the
+ * projects with their responsible employees.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay insertable since
- * EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
+ * is insertable, and
+ * the setters are not public; an extending entity is for reading. The identifier's columns stay
+ * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
- * <strong>A view has no key.</strong> The column {@value MappedVprojre1#COLUMN_NAME_PROJNO}, unique and not
- * {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity needs;
- * nothing in the database keeps that so.
+ * <strong>A view has no key.</strong> The column {@value MappedVprojre1#COLUMN_NAME_PROJNO}, unique
+ * and not
+ * {@code null} in every row the sample database is created with, is mapped as the identifier, which
+ * an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -57,7 +59,8 @@ public abstract class MappedVprojre1 {
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
@@ -72,7 +75,8 @@ public abstract class MappedVprojre1 {
     public static final int COLUMN_LENGTH_PROJNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
@@ -84,7 +88,8 @@ public abstract class MappedVprojre1 {
     // -------------------------------------------------------------------------------------------------------- PROJNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNAME = "PROJNAME";
 
@@ -99,7 +104,8 @@ public abstract class MappedVprojre1 {
     public static final int COLUMN_LENGTH_PROJNAME = 24;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNAME = "projname";
 
@@ -111,7 +117,8 @@ public abstract class MappedVprojre1 {
     // --------------------------------------------------------------------------------------------------------- PROJDEP
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJDEP} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJDEP} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJDEP = "PROJDEP";
 
@@ -126,7 +133,8 @@ public abstract class MappedVprojre1 {
     public static final int COLUMN_LENGTH_PROJDEP = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJDEP} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJDEP} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJDEP = "projdep";
 
@@ -138,7 +146,8 @@ public abstract class MappedVprojre1 {
     // --------------------------------------------------------------------------------------------------------- RESPEMP
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_RESPEMP = "RESPEMP";
 
@@ -153,7 +162,8 @@ public abstract class MappedVprojre1 {
     public static final int COLUMN_LENGTH_RESPEMP = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_RESPEMP} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_RESPEMP} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_RESPEMP = "respemp";
 
@@ -165,7 +175,8 @@ public abstract class MappedVprojre1 {
     // -------------------------------------------------------------------------------------------------------- FIRSTNME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_FIRSTNME = "FIRSTNME";
 
@@ -180,7 +191,8 @@ public abstract class MappedVprojre1 {
     public static final int COLUMN_LENGTH_FIRSTNME = 12;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_FIRSTNME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_FIRSTNME = "firstnme";
 
@@ -192,7 +204,8 @@ public abstract class MappedVprojre1 {
     // --------------------------------------------------------------------------------------------------------- MIDINIT
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
@@ -207,7 +220,8 @@ public abstract class MappedVprojre1 {
     public static final int COLUMN_LENGTH_MIDINIT = 1;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MIDINIT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MIDINIT = "midinit";
 
@@ -219,7 +233,8 @@ public abstract class MappedVprojre1 {
     // -------------------------------------------------------------------------------------------------------- LASTNAME
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
@@ -234,7 +249,8 @@ public abstract class MappedVprojre1 {
     public static final int COLUMN_LENGTH_LASTNAME = 15;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_LASTNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_LASTNAME = "lastname";
 
@@ -246,7 +262,8 @@ public abstract class MappedVprojre1 {
     // --------------------------------------------------------------------------------------------------------- MAJPROJ
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MAJPROJ} attribute maps. The value is {@value}.
+     * The name of the view column to which the {@value #ATTRIBUTE_NAME_MAJPROJ} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_MAJPROJ = "MAJPROJ";
 
@@ -261,7 +278,8 @@ public abstract class MappedVprojre1 {
     public static final int COLUMN_LENGTH_MAJPROJ = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MAJPROJ} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MAJPROJ} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MAJPROJ = "majproj";
 
@@ -314,7 +332,8 @@ public abstract class MappedVprojre1 {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -334,7 +353,8 @@ public abstract class MappedVprojre1 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -355,7 +375,8 @@ public abstract class MappedVprojre1 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute with the specified
+     * value.
      *
      * @param projname new value for {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
      */
@@ -376,7 +397,8 @@ public abstract class MappedVprojre1 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJDEP} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJDEP} attribute with the specified
+     * value.
      *
      * @param projdep new value for {@value #ATTRIBUTE_NAME_PROJDEP} attribute.
      */
@@ -397,7 +419,8 @@ public abstract class MappedVprojre1 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute with the specified
+     * value.
      *
      * @param respemp new value for {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
      */
@@ -418,7 +441,8 @@ public abstract class MappedVprojre1 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute with the specified
+     * value.
      *
      * @param firstnme new value for {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
      */
@@ -439,7 +463,8 @@ public abstract class MappedVprojre1 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute with the specified
+     * value.
      *
      * @param midinit new value for {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
      */
@@ -460,7 +485,8 @@ public abstract class MappedVprojre1 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute with the specified
+     * value.
      *
      * @param lastname new value for {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
      */
@@ -481,7 +507,8 @@ public abstract class MappedVprojre1 {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute with the specified
+     * value.
      *
      * @param majproj new value for {@value #ATTRIBUTE_NAME_MAJPROJ} attribute.
      */

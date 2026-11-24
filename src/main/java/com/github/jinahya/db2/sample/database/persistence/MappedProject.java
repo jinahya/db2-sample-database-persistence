@@ -36,15 +36,18 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedProject#TABLE_NAME} table, the projects.
+ * A mapped superclass which holds the mappings of the {@value MappedProject#TABLE_NAME} table, the
+ * projects.
  * <p>
- * The foreign key columns {@value MappedProject#COLUMN_NAME_DEPTNO}, {@value MappedProject#COLUMN_NAME_RESPEMP},
- * {@value MappedProject#COLUMN_NAME_MAJPROJ} are mapped read-only ({@code insertable = false, updatable = false}), with
- * a {@code protected} getter and no setter, for {@link #toString()} and for queries. How the relationship behind each
- * is mapped is the extending entity's decision, so the extending entity also owns the writable mapping, by an
- * association's {@link jakarta.persistence.JoinColumn @JoinColumn}. <strong>An extending entity which maps none never
- * writes them.</strong> For the same reason none of them is constrained {@code NotNull} here, even where the column is
- * {@code NOT NULL}: the attribute stays {@code null} until a load, and the association is what is constrained.
+ * The foreign key columns {@value MappedProject#COLUMN_NAME_DEPTNO},
+ * {@value MappedProject#COLUMN_NAME_RESPEMP}, {@value MappedProject#COLUMN_NAME_MAJPROJ} are mapped
+ * read-only ({@code insertable = false, updatable = false}), with a {@code protected} getter and no
+ * setter, for {@link #toString()} and for queries. How the relationship behind each is mapped is
+ * the extending entity's decision, so the extending entity also owns the writable mapping, by an
+ * association's {@link jakarta.persistence.JoinColumn @JoinColumn}. <strong>An extending entity
+ * which maps none never writes them.</strong> For the same reason none of them is constrained
+ * {@code NotNull} here, even where the column is {@code NOT NULL}: the attribute stays {@code null}
+ * until a load, and the association is what is constrained.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -59,7 +62,8 @@ public abstract class MappedProject {
     // ---------------------------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
@@ -74,7 +78,8 @@ public abstract class MappedProject {
     public static final int COLUMN_LENGTH_PROJNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
@@ -86,8 +91,8 @@ public abstract class MappedProject {
     // -------------------------------------------------------------------------------------------------------- PROJNAME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNAME = "PROJNAME";
 
@@ -102,7 +107,8 @@ public abstract class MappedProject {
     public static final int COLUMN_LENGTH_PROJNAME = 24;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PROJNAME = "projname";
 
@@ -114,7 +120,8 @@ public abstract class MappedProject {
     // ---------------------------------------------------------------------------------------------------------- DEPTNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNO = "DEPTNO";
 
@@ -129,7 +136,8 @@ public abstract class MappedProject {
     public static final int COLUMN_LENGTH_DEPTNO = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNO} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNO} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPTNO = "deptno";
 
@@ -141,7 +149,8 @@ public abstract class MappedProject {
     // --------------------------------------------------------------------------------------------------------- RESPEMP
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_RESPEMP = "RESPEMP";
 
@@ -156,7 +165,8 @@ public abstract class MappedProject {
     public static final int COLUMN_LENGTH_RESPEMP = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_RESPEMP} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_RESPEMP} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_RESPEMP = "respemp";
 
@@ -168,7 +178,8 @@ public abstract class MappedProject {
     // --------------------------------------------------------------------------------------------------------- PRSTAFF
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PRSTAFF = "PRSTAFF";
 
@@ -188,25 +199,29 @@ public abstract class MappedProject {
     public static final int COLUMN_SCALE_PRSTAFF = 2;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTAFF} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTAFF} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PRSTAFF = "prstaff";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute. The
+     * value is {@value}.
      */
-    public static final int DIGITS_INTEGER_PRSTAFF = COLUMN_PRECISION_PRSTAFF - COLUMN_SCALE_PRSTAFF;
+    public static final int DIGITS_INTEGER_PRSTAFF =
+            COLUMN_PRECISION_PRSTAFF - COLUMN_SCALE_PRSTAFF;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute.
+     * The value is {@value}.
      */
     public static final int DIGITS_FRACTION_PRSTAFF = COLUMN_SCALE_PRSTAFF;
 
     // -------------------------------------------------------------------------------------------------------- PRSTDATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRSTDATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRSTDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PRSTDATE = "PRSTDATE";
 
@@ -216,15 +231,16 @@ public abstract class MappedProject {
     public static final boolean COLUMN_NULLABLE_PRSTDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PRSTDATE = "prstdate";
 
     // -------------------------------------------------------------------------------------------------------- PRENDATE
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRENDATE} attribute maps. The value is
-     * {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRENDATE} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_PRENDATE = "PRENDATE";
 
@@ -234,14 +250,16 @@ public abstract class MappedProject {
     public static final boolean COLUMN_NULLABLE_PRENDATE = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PRENDATE} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PRENDATE} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_PRENDATE = "prendate";
 
     // --------------------------------------------------------------------------------------------------------- MAJPROJ
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_MAJPROJ} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_MAJPROJ} attribute maps.
+     * The value is {@value}.
      */
     public static final String COLUMN_NAME_MAJPROJ = "MAJPROJ";
 
@@ -256,7 +274,8 @@ public abstract class MappedProject {
     public static final int COLUMN_LENGTH_MAJPROJ = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_MAJPROJ} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MAJPROJ} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_MAJPROJ = "majproj";
 
@@ -309,7 +328,8 @@ public abstract class MappedProject {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -329,7 +349,8 @@ public abstract class MappedProject {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
+     * value.
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -350,7 +371,8 @@ public abstract class MappedProject {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute with the specified
+     * value.
      *
      * @param projname new value for {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
      */
@@ -361,12 +383,12 @@ public abstract class MappedProject {
     // ---------------------------------------------------------------------------------------------------------- deptno
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute, which is {@code null} until this instance is
-     * loaded.
+     * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute, which is {@code null}
+     * until this instance is loaded.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy, which is a subclass in
-     * another package, can override it.
+     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
+     *         which is a subclass in another package, can override it.
      */
     @Nullable
     protected String getDeptno() {
@@ -376,12 +398,12 @@ public abstract class MappedProject {
     // --------------------------------------------------------------------------------------------------------- respemp
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute, which is {@code null} until this instance is
-     * loaded.
+     * Returns current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute, which is {@code null}
+     * until this instance is loaded.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy, which is a subclass in
-     * another package, can override it.
+     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
+     *         which is a subclass in another package, can override it.
      */
     @Nullable
     protected String getRespemp() {
@@ -401,7 +423,8 @@ public abstract class MappedProject {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PRSTAFF} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PRSTAFF} attribute with the specified
+     * value.
      *
      * @param prstaff new value for {@value #ATTRIBUTE_NAME_PRSTAFF} attribute.
      */
@@ -422,7 +445,8 @@ public abstract class MappedProject {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PRSTDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PRSTDATE} attribute with the specified
+     * value.
      *
      * @param prstdate new value for {@value #ATTRIBUTE_NAME_PRSTDATE} attribute.
      */
@@ -443,7 +467,8 @@ public abstract class MappedProject {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PRENDATE} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PRENDATE} attribute with the specified
+     * value.
      *
      * @param prendate new value for {@value #ATTRIBUTE_NAME_PRENDATE} attribute.
      */
@@ -454,12 +479,12 @@ public abstract class MappedProject {
     // --------------------------------------------------------------------------------------------------------- majproj
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute, which is {@code null} until this instance is
-     * loaded.
+     * Returns current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute, which is {@code null}
+     * until this instance is loaded.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy, which is a subclass in
-     * another package, can override it.
+     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
+     *         which is a subclass in another package, can override it.
      */
     @Nullable
     protected String getMajproj() {
@@ -494,7 +519,8 @@ public abstract class MappedProject {
     private String projname;
 
     // -----------------------------------------------------------------------------------------------------------------
-    // read-only: the extending entity owns the writable mapping of this column; see the class documentation
+    // read-only: the extending entity owns the writable mapping of this column; see the class
+    // documentation
     @Size(max = SIZE_MAX_DEPTNO)
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNO,
@@ -506,7 +532,8 @@ public abstract class MappedProject {
     private String deptno;
 
     // -----------------------------------------------------------------------------------------------------------------
-    // read-only: the extending entity owns the writable mapping of this column; see the class documentation
+    // read-only: the extending entity owns the writable mapping of this column; see the class
+    // documentation
     @Size(max = SIZE_MAX_RESPEMP)
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESPEMP,
@@ -548,7 +575,8 @@ public abstract class MappedProject {
     private LocalDate prendate;
 
     // -----------------------------------------------------------------------------------------------------------------
-    // read-only: the extending entity owns the writable mapping of this column; see the class documentation
+    // read-only: the extending entity owns the writable mapping of this column; see the class
+    // documentation
     @Size(max = SIZE_MAX_MAJPROJ)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MAJPROJ,

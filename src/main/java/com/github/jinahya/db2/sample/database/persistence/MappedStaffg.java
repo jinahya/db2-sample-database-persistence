@@ -35,12 +35,13 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
- * A mapped superclass which holds the mappings of the {@value MappedStaffg#TABLE_NAME} table, the staff, in graphic
- * (double-byte) strings.
+ * A mapped superclass which holds the mappings of the {@value MappedStaffg#TABLE_NAME} table, the
+ * staff, in graphic (double-byte) strings.
  * <p>
- * <strong>The table declares no primary key.</strong> The column {@value MappedStaffg#COLUMN_NAME_ID}, unique and not
- * {@code null} in every row the sample database is created with, is mapped as the identifier, which an entity needs;
- * nothing in the database keeps that so.
+ * <strong>The table declares no primary key.</strong> The column
+ * {@value MappedStaffg#COLUMN_NAME_ID}, unique and not
+ * {@code null} in every row the sample database is created with, is mapped as the identifier, which
+ * an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -55,7 +56,8 @@ public abstract class MappedStaffg {
     // -------------------------------------------------------------------------------------------------------------- ID
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ID} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_ID} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_ID = "ID";
 
@@ -65,14 +67,16 @@ public abstract class MappedStaffg {
     public static final boolean COLUMN_NULLABLE_ID = false;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ID} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ID} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ID = "id";
 
     // ------------------------------------------------------------------------------------------------------------ NAME
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_NAME = "NAME";
 
@@ -87,7 +91,8 @@ public abstract class MappedStaffg {
     public static final int COLUMN_LENGTH_NAME = 9;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_NAME} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_NAME} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_NAME = "name";
 
@@ -99,7 +104,8 @@ public abstract class MappedStaffg {
     // ------------------------------------------------------------------------------------------------------------ DEPT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPT} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPT} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT = "DEPT";
 
@@ -109,14 +115,16 @@ public abstract class MappedStaffg {
     public static final boolean COLUMN_NULLABLE_DEPT = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DEPT = "dept";
 
     // ------------------------------------------------------------------------------------------------------------- JOB
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_JOB} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_JOB} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_JOB = "JOB";
 
@@ -131,7 +139,8 @@ public abstract class MappedStaffg {
     public static final int COLUMN_LENGTH_JOB = 5;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_JOB} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_JOB} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_JOB = "job";
 
@@ -143,7 +152,8 @@ public abstract class MappedStaffg {
     // ----------------------------------------------------------------------------------------------------------- YEARS
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_YEARS} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_YEARS} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_YEARS = "YEARS";
 
@@ -153,14 +163,16 @@ public abstract class MappedStaffg {
     public static final boolean COLUMN_NULLABLE_YEARS = true;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_YEARS} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_YEARS} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_YEARS = "years";
 
     // ---------------------------------------------------------------------------------------------------------- SALARY
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALARY} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALARY} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_SALARY = "SALARY";
 
@@ -180,24 +192,28 @@ public abstract class MappedStaffg {
     public static final int COLUMN_SCALE_SALARY = 0;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_SALARY} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SALARY} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_SALARY = "salary";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_INTEGER_SALARY = COLUMN_PRECISION_SALARY - COLUMN_SCALE_SALARY;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_FRACTION_SALARY = COLUMN_SCALE_SALARY;
 
     // ------------------------------------------------------------------------------------------------------------ COMM
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_COMM} attribute maps. The value is {@value}.
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_COMM} attribute maps. The
+     * value is {@value}.
      */
     public static final String COLUMN_NAME_COMM = "COMM";
 
@@ -217,17 +233,20 @@ public abstract class MappedStaffg {
     public static final int COLUMN_SCALE_COMM = 0;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_COMM} column. The value is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_COMM} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_COMM = "comm";
 
     /**
-     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_COMM} attribute. The value is {@value}.
+     * The maximum number of integral digits of the {@value #ATTRIBUTE_NAME_COMM} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_INTEGER_COMM = COLUMN_PRECISION_COMM - COLUMN_SCALE_COMM;
 
     /**
-     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_COMM} attribute. The value is {@value}.
+     * The maximum number of fractional digits of the {@value #ATTRIBUTE_NAME_COMM} attribute. The
+     * value is {@value}.
      */
     public static final int DIGITS_FRACTION_COMM = COLUMN_SCALE_COMM;
 
@@ -274,7 +293,8 @@ public abstract class MappedStaffg {
      * {@inheritDoc}
      *
      * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ID}, consistent with {@link #equals(Object)}.
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ID}, consistent with
+     *         {@link #equals(Object)}.
      */
     @Override
     public final int hashCode() {
@@ -399,7 +419,8 @@ public abstract class MappedStaffg {
     }
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_SALARY} attribute with the specified value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_SALARY} attribute with the specified
+     * value.
      *
      * @param salary new value for {@value #ATTRIBUTE_NAME_SALARY} attribute.
      */
