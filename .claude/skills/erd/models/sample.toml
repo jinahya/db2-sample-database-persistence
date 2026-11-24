@@ -1,0 +1,214 @@
+# The logical model of the Db2 SAMPLE database (schema DB2INST1), as db2sampl creates it on Db2 12.1: each table's
+# keys, each view's sources, and the logical groups. Read from SYSCAT.TABCONST, SYSCAT.KEYCOLUSE, SYSCAT.REFERENCES
+# and SYSCAT.TABDEP.
+#
+# - Nine tables declare no primary key. Their `ak` is the column, or the columns, the project maps as the identifier:
+#   unique and not null in the data db2sampl loads, but kept so by nothing in the database.
+# - ACT's foreign key RPAA refers to ACT itself, ACTNO to ACTNO, as db2sampl declares it.
+# - A view's sources are tables: an alias (EMP, DEPT, PROJ, EMPACT, EMP_ACT) is replaced by its table, and a view read
+#   by another view (VDEPMG1, VPROJRE1) by the tables it reads.
+# - ADEFUSR is a materialized query table, drawn as a materialized view.
+# - MLBLOGS_ANSWERS and MLBLOGS_QUESTIONS have no key.
+# - The other tables (ORG, STAFF, ..., PATIENTS) refer to no table and none refers to them; they are in no group.
+schema = "sample"
+title = "SAMPLE"
+output = "docs/erd"
+
+[[group]]
+name = "departments_and_employees"
+title = "부서와 직원"
+tables = ["DEPARTMENT", "EMPLOYEE", "EMP_PHOTO", "EMP_RESUME"]
+
+[[group]]
+name = "projects"
+title = "프로젝트"
+tables = ["PROJECT", "PROJACT", "ACT", "EMPPROJACT"]
+
+[[group]]
+name = "orders"
+title = "주문"
+tables = ["CUSTOMER", "PURCHASEORDER", "PRODUCT", "INVENTORY", "CATALOG", "SUPPLIERS", "PRODUCTSUPPLIER"]
+
+# ------------------------------------------------------------------------------------------- departments and employees
+
+[table.DEPARTMENT]
+pk = ["DEPTNO"]
+[[table.DEPARTMENT.fk]]
+columns = ["MGRNO"]
+references = "EMPLOYEE"
+nullable = true
+[[table.DEPARTMENT.fk]]
+columns = ["ADMRDEPT"]
+references = "DEPARTMENT"
+
+[table.EMPLOYEE]
+pk = ["EMPNO"]
+[[table.EMPLOYEE.fk]]
+columns = ["WORKDEPT"]
+references = "DEPARTMENT"
+nullable = true
+
+[table.EMP_PHOTO]
+pk = ["EMPNO", "PHOTO_FORMAT"]
+[[table.EMP_PHOTO.fk]]
+columns = ["EMPNO"]
+references = "EMPLOYEE"
+
+[table.EMP_RESUME]
+pk = ["EMPNO", "RESUME_FORMAT"]
+[[table.EMP_RESUME.fk]]
+columns = ["EMPNO"]
+references = "EMPLOYEE"
+
+# ----------------------------------------------------------------------------------------------------------- projects
+
+[table.PROJECT]
+pk = ["PROJNO"]
+[[table.PROJECT.fk]]
+columns = ["DEPTNO"]
+references = "DEPARTMENT"
+[[table.PROJECT.fk]]
+columns = ["RESPEMP"]
+references = "EMPLOYEE"
+[[table.PROJECT.fk]]
+columns = ["MAJPROJ"]
+references = "PROJECT"
+nullable = true
+
+[table.PROJACT]
+pk = ["PROJNO", "ACTNO", "ACSTDATE"]
+[[table.PROJACT.fk]]
+columns = ["PROJNO"]
+references = "PROJECT"
+
+[table.ACT]
+pk = ["ACTNO"]
+[[table.ACT.fk]]
+columns = ["ACTNO"]
+references = "ACT"
+
+[table.EMPPROJACT]
+ak = ["EMPNO", "PROJNO", "ACTNO", "EMSTDATE"]
+[[table.EMPPROJACT.fk]]
+columns = ["PROJNO", "ACTNO", "EMSTDATE"]
+references = "PROJACT"
+
+# ------------------------------------------------------------------------------------------------------------- orders
+
+[table.CUSTOMER]
+pk = ["CID"]
+
+[table.PURCHASEORDER]
+pk = ["POID"]
+[[table.PURCHASEORDER.fk]]
+columns = ["CUSTID"]
+references = "CUSTOMER"
+nullable = true
+
+[table.PRODUCT]
+pk = ["PID"]
+
+[table.INVENTORY]
+pk = ["PID"]
+
+[table.CATALOG]
+pk = ["NAME"]
+
+[table.SUPPLIERS]
+pk = ["SID"]
+
+[table.PRODUCTSUPPLIER]
+pk = ["PID", "SID"]
+
+# ---------------------------------------------------------------------------------------------- tables in no group
+
+[table.ORG]
+ak = ["DEPTNUMB"]
+
+[table.STAFF]
+ak = ["ID"]
+
+[table.STAFFG]
+ak = ["ID"]
+
+[table.SALES]
+ak = ["SALES_DATE", "SALES_PERSON", "REGION"]
+
+[table.CL_SCHED]
+ak = ["CLASS_CODE"]
+
+[table.IN_TRAY]
+ak = ["RECEIVED"]
+
+[table.EMPMDC]
+ak = ["EMPNO"]
+
+[table.PATIENTS]
+ak = ["PATIENT_ID"]
+
+[table.MLBLOGS_ANSWERS]
+
+[table.MLBLOGS_QUESTIONS]
+
+# -------------------------------------------------------------------------------------------------------------- views
+
+[view.ADEFUSR]
+kind = "materialized view"
+sources = ["EMPLOYEE"]
+
+[view.VACT]
+sources = ["ACT"]
+
+[view.VASTRDE1]
+sources = ["DEPARTMENT", "EMPLOYEE"]
+
+[view.VASTRDE2]
+sources = ["DEPARTMENT", "EMPLOYEE"]
+
+[view.VDEPMG1]
+sources = ["DEPARTMENT", "EMPLOYEE"]
+
+[view.VDEPT]
+sources = ["DEPARTMENT"]
+
+[view.VEMP]
+sources = ["EMPLOYEE"]
+
+[view.VEMPDPT1]
+sources = ["DEPARTMENT", "EMPLOYEE"]
+
+[view.VEMPLP]
+sources = ["EMPLOYEE"]
+
+[view.VEMPPROJACT]
+sources = ["EMPPROJACT"]
+
+[view.VFORPLA]
+sources = ["EMPPROJACT", "EMPLOYEE", "PROJECT"]
+
+[view.VHDEPT]
+sources = ["DEPARTMENT"]
+
+[view.VPHONE]
+sources = ["DEPARTMENT", "EMPLOYEE"]
+
+[view.VPROJ]
+sources = ["PROJECT"]
+
+[view.VPROJACT]
+sources = ["PROJACT"]
+
+[view.VPROJRE1]
+sources = ["EMPLOYEE", "PROJECT"]
+
+[view.VPSTRDE1]
+sources = ["EMPLOYEE", "PROJECT"]
+
+[view.VPSTRDE2]
+sources = ["EMPLOYEE", "PROJECT"]
+
+[view.VSTAFAC1]
+sources = ["ACT", "PROJACT"]
+
+[view.VSTAFAC2]
+sources = ["ACT", "EMPLOYEE", "EMPPROJACT"]
