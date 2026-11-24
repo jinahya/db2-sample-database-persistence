@@ -50,6 +50,28 @@
     <class>com.github.jinahya.db2.sample.database.persistence.Staff</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Staffg</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Supplier</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.MlblogsAnswer</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.MlblogsQuestion</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Adefusr</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vact</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vastrde1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vastrde2</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vdepmg1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vdept</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vemp</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vempdpt1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vemplp</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vempprojact</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vforpla</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vhdept</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vphone</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vproj</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vprojact</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vprojre1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde2</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vstafac1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vstafac2</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <validation-mode>CALLBACK</validation-mode>
@@ -101,6 +123,28 @@
     <class>com.github.jinahya.db2.sample.database.persistence.Staff</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Staffg</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Supplier</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.MlblogsAnswer</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.MlblogsQuestion</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Adefusr</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vact</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vastrde1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vastrde2</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vdepmg1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vdept</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vemp</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vempdpt1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vemplp</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vempprojact</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vforpla</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vhdept</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vphone</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vproj</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vprojact</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vprojre1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde2</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vstafac1</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Vstafac2</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <validation-mode>CALLBACK</validation-mode>

@@ -10,13 +10,19 @@ Sibling of [postgresql-demodb-persistence](https://github.com/jinahya/postgresql
 
 | | |
 | --- | --- |
-| `src/main` | one `@MappedSuperclass` per table, `Mapped<Table>`, plus a `Mapped<Table>Id` per composite key |
+| `src/main` | one `@MappedSuperclass` per table and view, `Mapped<Table>`, plus a `Mapped<Table>Id` per composite key |
 | `src/test` | an `@Entity` extending each, with the declared foreign keys as associations |
 
-23 of the 26 tables are mapped. `MLBLOGS_ANSWERS` and `MLBLOGS_QUESTIONS` have no key and little but a `VECTOR`
-column, and `ADEFUSR` is a materialized query table; `PATIENTS.EMBEDDING`, a `VECTOR`, is not mapped either.
+All 26 tables and all 18 views are mapped. The views, and `ADEFUSR`, a materialized query table the database
+maintains, are mapped read-only: no column is updatable, and none but the identifier's is insertable, which
+EclipseLink requires. The `VECTOR` columns (`MLBLOGS_ANSWERS.EMBEDDING`, `MLBLOGS_QUESTIONS.EMBEDDING`,
+`PATIENTS.EMBEDDING`) are not mapped. The five aliases (`DEPT`, `EMP`, ...) need no mapping of their own.
 
-Nine tables declare no primary key; each is mapped by a column, or a set of columns, which is unique and not `null` in
+A view has no key; each is mapped by a column, or a set of columns, which is unique and not `null` in the data
+(`VEMP.EMPNO`, `VPROJACT` by project, activity and start date, ...). `VFORPLA` and `MLBLOGS_ANSWERS` hold rows which
+are exact duplicates of one another, so a query returns the same instance for each of them.
+
+Twelve tables declare no primary key; each is mapped by a column, or a set of columns, which is unique and not `null` in
 the data `db2sampl` loads (`ORG.DEPTNUMB`, `STAFF.ID`, `SALES` by date, person and region, ...). Nothing in the
 database keeps that so; each class says which.
 
