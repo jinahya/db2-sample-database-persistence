@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  #%L
+  db2-sample-database-persistence
+  %%
+  Copyright (C) 2026 Jinahya, Inc.
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<!-- https://jakarta.ee/xml/ns/persistence/ -->
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence ${persistence.schemaLocation}"
+             version="${persistence.version}">
+  <persistence-unit name="sample-test" transaction-type="RESOURCE_LOCAL">
+    <description>Persistence Unit for an In-Memory DB</description>
+    <provider>${persistence-unit.provider}</provider>
+    <class>com.github.jinahya.db2.sample.database.persistence.Act</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Catalog</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.ClSched</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Customer</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Department</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Employee</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Empmdc</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.EmpProjAct</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.EmpPhoto</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.EmpResume</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Inventory</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.InTray</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Org</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Patient</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Product</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.ProductSupplier</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.ProjAct</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Project</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.PurchaseOrder</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Sale</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Staff</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Staffg</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Supplier</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <shared-cache-mode>NONE</shared-cache-mode>
+    <validation-mode>CALLBACK</validation-mode>
+    <properties>
+      <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+      <!-- https://www.h2database.com/html/features.html#compatibility -->
+      <!-- NON_KEYWORDS: CL_SCHED has a column named DAY, which H2 reserves -->
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:;MODE=DB2;DEFAULT_NULL_ORDERING=HIGH;NON_KEYWORDS=DAY"/>
+      <property name="jakarta.persistence.jdbc.user" value="sa"/>
+      <property name="jakarta.persistence.jdbc.password" value="password"/>
+      <!-- ///////////////////////////////////////////////////////////////////////////////////////////// eclipselink -->
+      <!-- https://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging -->
+      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+      <!-- https://wiki.eclipse.org/EclipseLink/Examples/JPA/DDL -->
+      <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
+      <!-- /////////////////////////////////////////////////////////////////////////////////////////////// hibernate -->
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+      <property name="hibernate.highlight_sql" value="true"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.use_sql_comment" value="true"/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="sample-it" transaction-type="RESOURCE_LOCAL">
+    <description>Persistence Unit for a Physical Database</description>
+    <provider>${persistence-unit.provider}</provider>
+    <class>com.github.jinahya.db2.sample.database.persistence.Act</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Catalog</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.ClSched</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Customer</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Department</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Employee</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Empmdc</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.EmpProjAct</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.EmpPhoto</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.EmpResume</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Inventory</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.InTray</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Org</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Patient</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Product</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.ProductSupplier</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.ProjAct</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Project</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.PurchaseOrder</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Sale</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Staff</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Staffg</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Supplier</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <shared-cache-mode>NONE</shared-cache-mode>
+    <validation-mode>CALLBACK</validation-mode>
+    <properties>
+      <property name="jakarta.persistence.jdbc.driver" value="com.ibm.db2.jcc.DB2Driver"/>
+      <!-- the database from docker-compose.yml; db2inst1's tables are in schema DB2INST1, its default -->
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:db2://localhost:50000/SAMPLE"/>
+      <property name="jakarta.persistence.jdbc.user" value="db2inst1"/>
+      <property name="jakarta.persistence.jdbc.password" value="abcD1234!"/>
+      <!-- ///////////////////////////////////////////////////////////////////////////////////////////// eclipselink -->
+      <!-- https://wiki.eclipse.org/EclipseLink/Examples/JPA/Logging -->
+      <property name="eclipselink.ddl-generation" value="none"/>
+      <property name="eclipselink.logging.level.sql" value="FINE"/>
+      <property name="eclipselink.logging.parameters" value="true"/>
+      <!-- https://wiki.eclipse.org/EclipseLink/Examples/JPA/DDL -->
+      <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.DB2Platform"/>
+      <!-- /////////////////////////////////////////////////////////////////////////////////////////////// hibernate -->
+      <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.hbm2ddl.auto" value="none"/>
+      <property name="hibernate.highlight_sql" value="true"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.use_sql_comment" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>
