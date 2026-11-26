@@ -29,10 +29,10 @@ import org.junit.jupiter.api.Test;
 })
 @Slf4j
 class Vact_PersistenceIT
-        extends _Entity_PersistenceIT<Vact, Short> {
+        extends _Entity_PersistenceIT<Vact, Integer> {
 
     Vact_PersistenceIT() {
-        super(Vact.class, Short.class);
+        super(Vact.class, Integer.class);
     }
 
     // ---------------------------------------------------------------------------------------------

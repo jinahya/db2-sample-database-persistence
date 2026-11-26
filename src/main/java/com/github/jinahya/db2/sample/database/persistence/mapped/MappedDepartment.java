@@ -56,7 +56,7 @@ public abstract class MappedDepartment {
      */
     public static final String TABLE_NAME = "DEPARTMENT";
 
-    // ---------------------------------------------------------------------------------------------------------- DEPTNO
+    // -------------------------------------------------------------------------------------- DEPTNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The
@@ -85,7 +85,7 @@ public abstract class MappedDepartment {
      */
     public static final int SIZE_MAX_DEPTNO = COLUMN_LENGTH_DEPTNO;
 
-    // -------------------------------------------------------------------------------------------------------- DEPTNAME
+    // ------------------------------------------------------------------------------------ DEPTNAME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps.
@@ -114,7 +114,7 @@ public abstract class MappedDepartment {
      */
     public static final int SIZE_MAX_DEPTNAME = COLUMN_LENGTH_DEPTNAME;
 
-    // ----------------------------------------------------------------------------------------------------------- MGRNO
+    // --------------------------------------------------------------------------------------- MGRNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_MGRNO} attribute maps. The
@@ -143,7 +143,7 @@ public abstract class MappedDepartment {
      */
     public static final int SIZE_MAX_MGRNO = COLUMN_LENGTH_MGRNO;
 
-    // -------------------------------------------------------------------------------------------------------- ADMRDEPT
+    // ------------------------------------------------------------------------------------ ADMRDEPT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute maps.
@@ -172,7 +172,7 @@ public abstract class MappedDepartment {
      */
     public static final int SIZE_MAX_ADMRDEPT = COLUMN_LENGTH_ADMRDEPT;
 
-    // -------------------------------------------------------------------------------------------------------- LOCATION
+    // ------------------------------------------------------------------------------------ LOCATION
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps.
@@ -201,7 +201,7 @@ public abstract class MappedDepartment {
      */
     public static final int SIZE_MAX_LOCATION = COLUMN_LENGTH_LOCATION;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -210,7 +210,7 @@ public abstract class MappedDepartment {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -250,7 +250,7 @@ public abstract class MappedDepartment {
         return Objects.hashCode(getDeptno());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- deptno
+    // -------------------------------------------------------------------------------------- deptno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
@@ -272,7 +272,7 @@ public abstract class MappedDepartment {
         this.deptno = deptno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- deptname
+    // ------------------------------------------------------------------------------------ deptname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
@@ -294,7 +294,7 @@ public abstract class MappedDepartment {
         this.deptname = deptname;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- mgrno
+    // --------------------------------------------------------------------------------------- mgrno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute, which is {@code null}
@@ -309,7 +309,7 @@ public abstract class MappedDepartment {
         return mgrno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- admrdept
+    // ------------------------------------------------------------------------------------ admrdept
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute, which is {@code null}
@@ -324,7 +324,7 @@ public abstract class MappedDepartment {
         return admrdept;
     }
 
-    // -------------------------------------------------------------------------------------------------------- location
+    // ------------------------------------------------------------------------------------ location
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute.
@@ -346,7 +346,7 @@ public abstract class MappedDepartment {
         this.location = location;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPTNO)
     @NotNull
@@ -360,7 +360,7 @@ public abstract class MappedDepartment {
     )
     private String deptno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPTNAME)
     @NotNull
@@ -373,7 +373,7 @@ public abstract class MappedDepartment {
     )
     private String deptname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the extending entity owns the writable mapping of this column; see the class
     // documentation
     @Size(max = SIZE_MAX_MGRNO)
@@ -386,7 +386,7 @@ public abstract class MappedDepartment {
     )
     private String mgrno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the extending entity owns the writable mapping of this column; see the class
     // documentation
     @Size(max = SIZE_MAX_ADMRDEPT)
@@ -399,7 +399,7 @@ public abstract class MappedDepartment {
     )
     private String admrdept;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_LOCATION)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LOCATION,

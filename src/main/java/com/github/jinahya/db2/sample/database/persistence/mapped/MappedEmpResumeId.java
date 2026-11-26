@@ -45,7 +45,7 @@ public abstract class MappedEmpResumeId
      */
     private static final long serialVersionUID = 1L;
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the attribute which maps the {@value MappedEmpResume#COLUMN_NAME_EMPNO} column.
@@ -53,7 +53,7 @@ public abstract class MappedEmpResumeId
      */
     public static final String ATTRIBUTE_NAME_EMPNO = MappedEmpResume.ATTRIBUTE_NAME_EMPNO;
 
-    // --------------------------------------------------------------------------------------------------- RESUME_FORMAT
+    // ------------------------------------------------------------------------------- RESUME_FORMAT
 
     /**
      * The name of the attribute which maps the {@value MappedEmpResume#COLUMN_NAME_RESUME_FORMAT}
@@ -62,7 +62,7 @@ public abstract class MappedEmpResumeId
     public static final String ATTRIBUTE_NAME_RESUME_FORMAT =
             MappedEmpResume.ATTRIBUTE_NAME_RESUME_FORMAT;
 
-    // ------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // STATIC_FACTORY_METHODS
 
     /**
@@ -88,7 +88,7 @@ public abstract class MappedEmpResumeId
         return instance;
     }
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -97,7 +97,7 @@ public abstract class MappedEmpResumeId
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -136,7 +136,7 @@ public abstract class MappedEmpResumeId
         return Objects.hash(getEmpno(), getResumeFormat());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -157,7 +157,7 @@ public abstract class MappedEmpResumeId
         this.empno = empno;
     }
 
-    // ---------------------------------------------------------------------------------------------------- resumeFormat
+    // -------------------------------------------------------------------------------- resumeFormat
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
@@ -179,9 +179,9 @@ public abstract class MappedEmpResumeId
         this.resumeFormat = resumeFormat;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String resumeFormat;
 }

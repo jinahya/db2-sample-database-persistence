@@ -38,7 +38,7 @@ import jakarta.validation.constraints.NotNull;
 public class Project
         extends MappedProject {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -59,7 +59,7 @@ public class Project
         super.setProjno(projno);
     }
 
-    // ------------------------------------------------------------------------------------------------ deptnoDepartment
+    // ---------------------------------------------------------------------------- deptnoDepartment
 
     /**
      * Returns the department responsible.
@@ -79,7 +79,7 @@ public class Project
         this.deptnoDepartment = deptnoDepartment;
     }
 
-    // ------------------------------------------------------------------------------------------------- respempEmployee
+    // ----------------------------------------------------------------------------- respempEmployee
 
     /**
      * Returns the employee responsible.
@@ -99,7 +99,7 @@ public class Project
         this.respempEmployee = respempEmployee;
     }
 
-    // -------------------------------------------------------------------------------------------------- majprojProject
+    // ------------------------------------------------------------------------------ majprojProject
 
     /**
      * Returns the major project.
@@ -119,21 +119,21 @@ public class Project
         this.majprojProject = majprojProject;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = Project.COLUMN_NAME_DEPTNO,
                 referencedColumnName = Department.COLUMN_NAME_DEPTNO)
     private Department deptnoDepartment;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = Project.COLUMN_NAME_RESPEMP,
                 referencedColumnName = Employee.COLUMN_NAME_EMPNO)
     private Employee respempEmployee;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = Project.COLUMN_NAME_MAJPROJ,
                 referencedColumnName = Project.COLUMN_NAME_PROJNO)

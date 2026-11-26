@@ -27,6 +27,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -52,7 +54,7 @@ public abstract class MappedClSched {
      */
     public static final String TABLE_NAME = "CL_SCHED";
 
-    // ------------------------------------------------------------------------------------------------------ CLASS_CODE
+    // ---------------------------------------------------------------------------------- CLASS_CODE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute maps.
@@ -82,7 +84,7 @@ public abstract class MappedClSched {
      */
     public static final int SIZE_MAX_CLASS_CODE = COLUMN_LENGTH_CLASS_CODE;
 
-    // ------------------------------------------------------------------------------------------------------------- DAY
+    // ----------------------------------------------------------------------------------------- DAY
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DAY} attribute maps. The
@@ -101,7 +103,25 @@ public abstract class MappedClSched {
      */
     public static final String ATTRIBUTE_NAME_DAY = "day";
 
-    // -------------------------------------------------------------------------------------------------------- STARTING
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_DAY} attribute. The value is {@value}.
+     *
+     * @implNote The column is a day number of a four-day schedule, as the documentation of the
+     *         {@code SAMPLE} database describes it; the database does not enforce it, with no
+     *         check constraint, and the installed rows hold {@code 1} to {@code 4}.
+     */
+    public static final int ATTRIBUTE_MIN_DAY = 1;
+
+    /**
+     * The maximum value of the {@value #ATTRIBUTE_NAME_DAY} attribute. The value is {@value}.
+     *
+     * @implNote The column is a day number of a four-day schedule, as the documentation of the
+     *         {@code SAMPLE} database describes it; the database does not enforce it, with no
+     *         check constraint, and the installed rows hold {@code 1} to {@code 4}.
+     */
+    public static final int ATTRIBUTE_MAX_DAY = 4;
+
+    // ------------------------------------------------------------------------------------ STARTING
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_STARTING} attribute maps.
@@ -120,7 +140,7 @@ public abstract class MappedClSched {
      */
     public static final String ATTRIBUTE_NAME_STARTING = "starting";
 
-    // ---------------------------------------------------------------------------------------------------------- ENDING
+    // -------------------------------------------------------------------------------------- ENDING
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ENDING} attribute maps. The
@@ -139,7 +159,7 @@ public abstract class MappedClSched {
      */
     public static final String ATTRIBUTE_NAME_ENDING = "ending";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -148,7 +168,7 @@ public abstract class MappedClSched {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -187,7 +207,7 @@ public abstract class MappedClSched {
         return Objects.hashCode(getClassCode());
     }
 
-    // ------------------------------------------------------------------------------------------------------- classCode
+    // ----------------------------------------------------------------------------------- classCode
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute.
@@ -209,7 +229,7 @@ public abstract class MappedClSched {
         this.classCode = classCode;
     }
 
-    // ------------------------------------------------------------------------------------------------------------- day
+    // ----------------------------------------------------------------------------------------- day
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DAY} attribute.
@@ -217,7 +237,7 @@ public abstract class MappedClSched {
      * @return current value of {@value #ATTRIBUTE_NAME_DAY} attribute.
      */
     @Nullable
-    public Short getDay() {
+    public Integer getDay() {
         return day;
     }
 
@@ -226,11 +246,11 @@ public abstract class MappedClSched {
      *
      * @param day new value for {@value #ATTRIBUTE_NAME_DAY} attribute.
      */
-    public void setDay(@Nullable final Short day) {
+    public void setDay(@Nullable final Integer day) {
         this.day = day;
     }
 
-    // -------------------------------------------------------------------------------------------------------- starting
+    // ------------------------------------------------------------------------------------ starting
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_STARTING} attribute.
@@ -252,7 +272,7 @@ public abstract class MappedClSched {
         this.starting = starting;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- ending
+    // -------------------------------------------------------------------------------------- ending
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ENDING} attribute.
@@ -274,7 +294,7 @@ public abstract class MappedClSched {
         this.ending = ending;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_CLASS_CODE)
     @NotNull
@@ -288,16 +308,18 @@ public abstract class MappedClSched {
     )
     private String classCode;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    // the day of a four-day schedule; not enforced by the database
+    @Max(ATTRIBUTE_MAX_DAY)
+    @Min(ATTRIBUTE_MIN_DAY)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DAY,
             nullable = COLUMN_NULLABLE_DAY,
             insertable = true,
             updatable = true
     )
-    private Short day;
+    private Integer day;
 
-    // -----------------------------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_STARTING,
             nullable = COLUMN_NULLABLE_STARTING,
@@ -306,7 +328,6 @@ public abstract class MappedClSched {
     )
     private LocalTime starting;
 
-    // -----------------------------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ENDING,
             nullable = COLUMN_NULLABLE_ENDING,

@@ -44,7 +44,7 @@ class Staffg_Randomizer
     @Override
     public Staffg get() {
         final var instance = super.get();
-        instance.setId(__Randomizer_Utils.positiveShort());
+        instance.setId(__Randomizer_Utils.positiveSmallint());
         return instance;
     }
 }

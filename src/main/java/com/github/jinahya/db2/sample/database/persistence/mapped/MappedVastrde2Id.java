@@ -46,7 +46,7 @@ public abstract class MappedVastrde2Id
      */
     private static final long serialVersionUID = 1L;
 
-    // --------------------------------------------------------------------------------------------------------- DEPT1NO
+    // ------------------------------------------------------------------------------------- DEPT1NO
 
     /**
      * The name of the attribute which maps the {@value MappedVastrde2#COLUMN_NAME_DEPT1NO} column.
@@ -54,7 +54,7 @@ public abstract class MappedVastrde2Id
      */
     public static final String ATTRIBUTE_NAME_DEPT1NO = MappedVastrde2.ATTRIBUTE_NAME_DEPT1NO;
 
-    // ---------------------------------------------------------------------------------------------------------- EMP2NO
+    // -------------------------------------------------------------------------------------- EMP2NO
 
     /**
      * The name of the attribute which maps the {@value MappedVastrde2#COLUMN_NAME_EMP2NO} column.
@@ -62,7 +62,7 @@ public abstract class MappedVastrde2Id
      */
     public static final String ATTRIBUTE_NAME_EMP2NO = MappedVastrde2.ATTRIBUTE_NAME_EMP2NO;
 
-    // ------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // STATIC_FACTORY_METHODS
 
     /**
@@ -88,7 +88,7 @@ public abstract class MappedVastrde2Id
         return instance;
     }
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -97,7 +97,7 @@ public abstract class MappedVastrde2Id
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -136,7 +136,7 @@ public abstract class MappedVastrde2Id
         return Objects.hash(getDept1no(), getEmp2no());
     }
 
-    // --------------------------------------------------------------------------------------------------------- dept1no
+    // ------------------------------------------------------------------------------------- dept1no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
@@ -158,7 +158,7 @@ public abstract class MappedVastrde2Id
         this.dept1no = dept1no;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- emp2no
+    // -------------------------------------------------------------------------------------- emp2no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
@@ -180,9 +180,9 @@ public abstract class MappedVastrde2Id
         this.emp2no = emp2no;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String dept1no;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String emp2no;
 }

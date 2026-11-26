@@ -44,7 +44,7 @@ class ProjActId_Randomizer
     public ProjActId get() {
         final var instance = new ProjActId();
         instance.setProjno(__Randomizer_Utils.string(10));
-        instance.setActno(__Randomizer_Utils.positiveShort());
+        instance.setActno(__Randomizer_Utils.positiveSmallint());
         instance.setAcstdate(__Randomizer_Utils.localDate());
         return instance;
     }

@@ -45,7 +45,7 @@ public abstract class MappedEmpPhotoId
      */
     private static final long serialVersionUID = 1L;
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the attribute which maps the {@value MappedEmpPhoto#COLUMN_NAME_EMPNO} column.
@@ -53,7 +53,7 @@ public abstract class MappedEmpPhotoId
      */
     public static final String ATTRIBUTE_NAME_EMPNO = MappedEmpPhoto.ATTRIBUTE_NAME_EMPNO;
 
-    // ---------------------------------------------------------------------------------------------------- PHOTO_FORMAT
+    // -------------------------------------------------------------------------------- PHOTO_FORMAT
 
     /**
      * The name of the attribute which maps the {@value MappedEmpPhoto#COLUMN_NAME_PHOTO_FORMAT}
@@ -62,7 +62,7 @@ public abstract class MappedEmpPhotoId
     public static final String ATTRIBUTE_NAME_PHOTO_FORMAT =
             MappedEmpPhoto.ATTRIBUTE_NAME_PHOTO_FORMAT;
 
-    // ------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // STATIC_FACTORY_METHODS
 
     /**
@@ -88,7 +88,7 @@ public abstract class MappedEmpPhotoId
         return instance;
     }
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -97,7 +97,7 @@ public abstract class MappedEmpPhotoId
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -136,7 +136,7 @@ public abstract class MappedEmpPhotoId
         return Objects.hash(getEmpno(), getPhotoFormat());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -157,7 +157,7 @@ public abstract class MappedEmpPhotoId
         this.empno = empno;
     }
 
-    // ----------------------------------------------------------------------------------------------------- photoFormat
+    // --------------------------------------------------------------------------------- photoFormat
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
@@ -179,9 +179,9 @@ public abstract class MappedEmpPhotoId
         this.photoFormat = photoFormat;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String photoFormat;
 }

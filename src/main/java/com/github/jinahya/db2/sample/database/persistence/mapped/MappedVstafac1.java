@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
@@ -28,6 +29,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -64,7 +67,7 @@ public abstract class MappedVstafac1 {
      */
     public static final String TABLE_NAME = "VSTAFAC1";
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
@@ -93,7 +96,7 @@ public abstract class MappedVstafac1 {
      */
     public static final int SIZE_MAX_PROJNO = COLUMN_LENGTH_PROJNO;
 
-    // ----------------------------------------------------------------------------------------------------------- ACTNO
+    // --------------------------------------------------------------------------------------- ACTNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
@@ -112,7 +115,7 @@ public abstract class MappedVstafac1 {
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
-    // --------------------------------------------------------------------------------------------------------- ACTDESC
+    // ------------------------------------------------------------------------------------- ACTDESC
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTDESC} attribute maps. The
@@ -141,7 +144,7 @@ public abstract class MappedVstafac1 {
      */
     public static final int SIZE_MAX_ACTDESC = COLUMN_LENGTH_ACTDESC;
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
@@ -170,7 +173,7 @@ public abstract class MappedVstafac1 {
      */
     public static final int SIZE_MAX_EMPNO = COLUMN_LENGTH_EMPNO;
 
-    // -------------------------------------------------------------------------------------------------------- FIRSTNME
+    // ------------------------------------------------------------------------------------ FIRSTNME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps.
@@ -199,7 +202,7 @@ public abstract class MappedVstafac1 {
      */
     public static final int SIZE_MAX_FIRSTNME = COLUMN_LENGTH_FIRSTNME;
 
-    // --------------------------------------------------------------------------------------------------------- MIDINIT
+    // ------------------------------------------------------------------------------------- MIDINIT
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The
@@ -228,7 +231,7 @@ public abstract class MappedVstafac1 {
      */
     public static final int SIZE_MAX_MIDINIT = COLUMN_LENGTH_MIDINIT;
 
-    // -------------------------------------------------------------------------------------------------------- LASTNAME
+    // ------------------------------------------------------------------------------------ LASTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
@@ -257,7 +260,7 @@ public abstract class MappedVstafac1 {
      */
     public static final int SIZE_MAX_LASTNAME = COLUMN_LENGTH_LASTNAME;
 
-    // --------------------------------------------------------------------------------------------------------- EMPTIME
+    // ------------------------------------------------------------------------------------- EMPTIME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPTIME} attribute maps. The
@@ -299,7 +302,7 @@ public abstract class MappedVstafac1 {
      */
     public static final int DIGITS_FRACTION_EMPTIME = COLUMN_SCALE_EMPTIME;
 
-    // ---------------------------------------------------------------------------------------------------------- STDATE
+    // -------------------------------------------------------------------------------------- STDATE
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_STDATE} attribute maps. The
@@ -318,7 +321,7 @@ public abstract class MappedVstafac1 {
      */
     public static final String ATTRIBUTE_NAME_STDATE = "stdate";
 
-    // ---------------------------------------------------------------------------------------------------------- ENDATE
+    // -------------------------------------------------------------------------------------- ENDATE
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_ENDATE} attribute maps. The
@@ -337,7 +340,7 @@ public abstract class MappedVstafac1 {
      */
     public static final String ATTRIBUTE_NAME_ENDATE = "endate";
 
-    // ------------------------------------------------------------------------------------------------------------ TYPE
+    // ---------------------------------------------------------------------------------------- TYPE
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_TYPE} attribute maps. The
@@ -366,7 +369,7 @@ public abstract class MappedVstafac1 {
      */
     public static final int SIZE_MAX_TYPE = COLUMN_LENGTH_TYPE;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -375,7 +378,7 @@ public abstract class MappedVstafac1 {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -425,7 +428,7 @@ public abstract class MappedVstafac1 {
         return Objects.hash(getProjno(), getActno(), getStdate());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -447,7 +450,7 @@ public abstract class MappedVstafac1 {
         this.projno = projno;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- actno
+    // --------------------------------------------------------------------------------------- actno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
@@ -455,7 +458,7 @@ public abstract class MappedVstafac1 {
      * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
     @Nonnull
-    public Short getActno() {
+    public Integer getActno() {
         return actno;
     }
 
@@ -464,11 +467,11 @@ public abstract class MappedVstafac1 {
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Short actno) {
+    protected void setActno(@Nonnull final Integer actno) {
         this.actno = actno;
     }
 
-    // --------------------------------------------------------------------------------------------------------- actdesc
+    // ------------------------------------------------------------------------------------- actdesc
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTDESC} attribute.
@@ -490,7 +493,7 @@ public abstract class MappedVstafac1 {
         this.actdesc = actdesc;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -511,7 +514,7 @@ public abstract class MappedVstafac1 {
         this.empno = empno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- firstnme
+    // ------------------------------------------------------------------------------------ firstnme
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
@@ -533,7 +536,7 @@ public abstract class MappedVstafac1 {
         this.firstnme = firstnme;
     }
 
-    // --------------------------------------------------------------------------------------------------------- midinit
+    // ------------------------------------------------------------------------------------- midinit
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
@@ -555,7 +558,7 @@ public abstract class MappedVstafac1 {
         this.midinit = midinit;
     }
 
-    // -------------------------------------------------------------------------------------------------------- lastname
+    // ------------------------------------------------------------------------------------ lastname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
@@ -577,7 +580,7 @@ public abstract class MappedVstafac1 {
         this.lastname = lastname;
     }
 
-    // --------------------------------------------------------------------------------------------------------- emptime
+    // ------------------------------------------------------------------------------------- emptime
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPTIME} attribute.
@@ -599,7 +602,7 @@ public abstract class MappedVstafac1 {
         this.emptime = emptime;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- stdate
+    // -------------------------------------------------------------------------------------- stdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_STDATE} attribute.
@@ -621,7 +624,7 @@ public abstract class MappedVstafac1 {
         this.stdate = stdate;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- endate
+    // -------------------------------------------------------------------------------------- endate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ENDATE} attribute.
@@ -643,7 +646,7 @@ public abstract class MappedVstafac1 {
         this.endate = endate;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ type
+    // ---------------------------------------------------------------------------------------- type
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_TYPE} attribute.
@@ -664,7 +667,7 @@ public abstract class MappedVstafac1 {
         this.type = type;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
@@ -678,8 +681,10 @@ public abstract class MappedVstafac1 {
     )
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
     @NotNull
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
@@ -688,9 +693,9 @@ public abstract class MappedVstafac1 {
             insertable = true,
             updatable = false
     )
-    private Short actno;
+    private Integer actno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_ACTDESC)
     @NotNull
@@ -703,7 +708,7 @@ public abstract class MappedVstafac1 {
     )
     private String actdesc;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_EMPNO)
     @NotNull
@@ -716,7 +721,7 @@ public abstract class MappedVstafac1 {
     )
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_FIRSTNME)
     @NotNull
@@ -729,7 +734,7 @@ public abstract class MappedVstafac1 {
     )
     private String firstnme;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_MIDINIT)
     @NotNull
@@ -742,7 +747,7 @@ public abstract class MappedVstafac1 {
     )
     private String midinit;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_LASTNAME)
     @NotNull
@@ -755,7 +760,7 @@ public abstract class MappedVstafac1 {
     )
     private String lastname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Digits(integer = DIGITS_INTEGER_EMPTIME, fraction = DIGITS_FRACTION_EMPTIME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPTIME,
@@ -767,7 +772,7 @@ public abstract class MappedVstafac1 {
     )
     private BigDecimal emptime;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -779,7 +784,7 @@ public abstract class MappedVstafac1 {
     )
     private LocalDate stdate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ENDATE,
             nullable = COLUMN_NULLABLE_ENDATE,
@@ -788,7 +793,7 @@ public abstract class MappedVstafac1 {
     )
     private LocalDate endate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_TYPE)
     @NotNull

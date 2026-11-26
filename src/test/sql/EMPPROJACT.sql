@@ -33,6 +33,17 @@ FROM EMPPROJACT
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, EMPNO, PROJNO, ACTNO, EMSTDATE, of a table, which declares no primary key:
+-- the values which more than one row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT EMPNO, PROJNO, ACTNO, EMSTDATE, COUNT(*)
+FROM EMPPROJACT
+GROUP BY EMPNO, PROJNO, ACTNO, EMSTDATE
+HAVING COUNT(*) > 1
+;
+
+
 -- --------------------------------------------------------------------------------------------------------------- EMPNO
 -- the shortest and the longest EMPNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPNO))), MAX(LENGTH(RTRIM(EMPNO)))

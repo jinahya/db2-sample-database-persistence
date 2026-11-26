@@ -55,7 +55,7 @@ public abstract class MappedVdept {
      */
     public static final String TABLE_NAME = "VDEPT";
 
-    // ---------------------------------------------------------------------------------------------------------- DEPTNO
+    // -------------------------------------------------------------------------------------- DEPTNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The
@@ -84,7 +84,7 @@ public abstract class MappedVdept {
      */
     public static final int SIZE_MAX_DEPTNO = COLUMN_LENGTH_DEPTNO;
 
-    // -------------------------------------------------------------------------------------------------------- DEPTNAME
+    // ------------------------------------------------------------------------------------ DEPTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps.
@@ -113,7 +113,7 @@ public abstract class MappedVdept {
      */
     public static final int SIZE_MAX_DEPTNAME = COLUMN_LENGTH_DEPTNAME;
 
-    // ----------------------------------------------------------------------------------------------------------- MGRNO
+    // --------------------------------------------------------------------------------------- MGRNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MGRNO} attribute maps. The
@@ -142,7 +142,7 @@ public abstract class MappedVdept {
      */
     public static final int SIZE_MAX_MGRNO = COLUMN_LENGTH_MGRNO;
 
-    // -------------------------------------------------------------------------------------------------------- ADMRDEPT
+    // ------------------------------------------------------------------------------------ ADMRDEPT
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute maps.
@@ -171,7 +171,7 @@ public abstract class MappedVdept {
      */
     public static final int SIZE_MAX_ADMRDEPT = COLUMN_LENGTH_ADMRDEPT;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -180,7 +180,7 @@ public abstract class MappedVdept {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -219,7 +219,7 @@ public abstract class MappedVdept {
         return Objects.hashCode(getDeptno());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- deptno
+    // -------------------------------------------------------------------------------------- deptno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
@@ -241,7 +241,7 @@ public abstract class MappedVdept {
         this.deptno = deptno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- deptname
+    // ------------------------------------------------------------------------------------ deptname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
@@ -263,7 +263,7 @@ public abstract class MappedVdept {
         this.deptname = deptname;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- mgrno
+    // --------------------------------------------------------------------------------------- mgrno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute.
@@ -284,7 +284,7 @@ public abstract class MappedVdept {
         this.mgrno = mgrno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- admrdept
+    // ------------------------------------------------------------------------------------ admrdept
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute.
@@ -306,7 +306,7 @@ public abstract class MappedVdept {
         this.admrdept = admrdept;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPTNO)
     @NotNull
@@ -320,7 +320,7 @@ public abstract class MappedVdept {
     )
     private String deptno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPTNAME)
     @NotNull
@@ -333,7 +333,7 @@ public abstract class MappedVdept {
     )
     private String deptname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MGRNO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MGRNO,
@@ -344,7 +344,7 @@ public abstract class MappedVdept {
     )
     private String mgrno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_ADMRDEPT)
     @NotNull

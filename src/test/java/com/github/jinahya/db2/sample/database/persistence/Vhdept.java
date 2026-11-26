@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Vhdept
         extends MappedVhdept {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

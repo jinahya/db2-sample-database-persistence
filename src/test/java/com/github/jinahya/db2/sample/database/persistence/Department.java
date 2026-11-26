@@ -38,7 +38,7 @@ import jakarta.validation.constraints.NotNull;
 public class Department
         extends MappedDepartment {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -59,7 +59,7 @@ public class Department
         super.setDeptno(deptno);
     }
 
-    // ---------------------------------------------------------------------------------------------- admrdeptDepartment
+    // -------------------------------------------------------------------------- admrdeptDepartment
 
     /**
      * Returns the administering department.
@@ -79,7 +79,7 @@ public class Department
         this.admrdeptDepartment = admrdeptDepartment;
     }
 
-    // --------------------------------------------------------------------------------------------------- mgrnoEmployee
+    // ------------------------------------------------------------------------------- mgrnoEmployee
 
     /**
      * Returns the manager.
@@ -99,14 +99,14 @@ public class Department
         this.mgrnoEmployee = mgrnoEmployee;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = Department.COLUMN_NAME_ADMRDEPT,
                 referencedColumnName = Department.COLUMN_NAME_DEPTNO)
     private Department admrdeptDepartment;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = Department.COLUMN_NAME_MGRNO,
                 referencedColumnName = Employee.COLUMN_NAME_EMPNO)

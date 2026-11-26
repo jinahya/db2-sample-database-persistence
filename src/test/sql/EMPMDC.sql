@@ -33,6 +33,17 @@ FROM EMPMDC
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, EMPNO, of a table, which declares no primary key: the values which more than
+-- one row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT EMPNO, COUNT(*)
+FROM EMPMDC
+GROUP BY EMPNO
+HAVING COUNT(*) > 1
+;
+
+
 -- --------------------------------------------------------------------------------------------------------------- EMPNO
 -- the smallest and the largest EMPNO; 0 and 9999.
 SELECT MIN(EMPNO), MAX(EMPNO)

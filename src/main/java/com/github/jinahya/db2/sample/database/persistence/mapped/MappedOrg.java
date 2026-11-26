@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
@@ -27,6 +28,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -51,7 +54,7 @@ public abstract class MappedOrg {
      */
     public static final String TABLE_NAME = "ORG";
 
-    // -------------------------------------------------------------------------------------------------------- DEPTNUMB
+    // ------------------------------------------------------------------------------------ DEPTNUMB
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute maps.
@@ -70,7 +73,7 @@ public abstract class MappedOrg {
      */
     public static final String ATTRIBUTE_NAME_DEPTNUMB = "deptnumb";
 
-    // -------------------------------------------------------------------------------------------------------- DEPTNAME
+    // ------------------------------------------------------------------------------------ DEPTNAME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps.
@@ -99,7 +102,7 @@ public abstract class MappedOrg {
      */
     public static final int SIZE_MAX_DEPTNAME = COLUMN_LENGTH_DEPTNAME;
 
-    // --------------------------------------------------------------------------------------------------------- MANAGER
+    // ------------------------------------------------------------------------------------- MANAGER
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_MANAGER} attribute maps.
@@ -118,7 +121,7 @@ public abstract class MappedOrg {
      */
     public static final String ATTRIBUTE_NAME_MANAGER = "manager";
 
-    // -------------------------------------------------------------------------------------------------------- DIVISION
+    // ------------------------------------------------------------------------------------ DIVISION
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DIVISION} attribute maps.
@@ -147,7 +150,7 @@ public abstract class MappedOrg {
      */
     public static final int SIZE_MAX_DIVISION = COLUMN_LENGTH_DIVISION;
 
-    // -------------------------------------------------------------------------------------------------------- LOCATION
+    // ------------------------------------------------------------------------------------ LOCATION
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps.
@@ -176,7 +179,7 @@ public abstract class MappedOrg {
      */
     public static final int SIZE_MAX_LOCATION = COLUMN_LENGTH_LOCATION;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -185,7 +188,7 @@ public abstract class MappedOrg {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -225,7 +228,7 @@ public abstract class MappedOrg {
         return Objects.hashCode(getDeptnumb());
     }
 
-    // -------------------------------------------------------------------------------------------------------- deptnumb
+    // ------------------------------------------------------------------------------------ deptnumb
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute.
@@ -233,7 +236,7 @@ public abstract class MappedOrg {
      * @return current value of {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute.
      */
     @Nonnull
-    public Short getDeptnumb() {
+    public Integer getDeptnumb() {
         return deptnumb;
     }
 
@@ -243,11 +246,11 @@ public abstract class MappedOrg {
      *
      * @param deptnumb new value for {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute.
      */
-    protected void setDeptnumb(@Nonnull final Short deptnumb) {
+    protected void setDeptnumb(@Nonnull final Integer deptnumb) {
         this.deptnumb = deptnumb;
     }
 
-    // -------------------------------------------------------------------------------------------------------- deptname
+    // ------------------------------------------------------------------------------------ deptname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
@@ -269,7 +272,7 @@ public abstract class MappedOrg {
         this.deptname = deptname;
     }
 
-    // --------------------------------------------------------------------------------------------------------- manager
+    // ------------------------------------------------------------------------------------- manager
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MANAGER} attribute.
@@ -277,7 +280,7 @@ public abstract class MappedOrg {
      * @return current value of {@value #ATTRIBUTE_NAME_MANAGER} attribute.
      */
     @Nullable
-    public Short getManager() {
+    public Integer getManager() {
         return manager;
     }
 
@@ -287,11 +290,11 @@ public abstract class MappedOrg {
      *
      * @param manager new value for {@value #ATTRIBUTE_NAME_MANAGER} attribute.
      */
-    public void setManager(@Nullable final Short manager) {
+    public void setManager(@Nullable final Integer manager) {
         this.manager = manager;
     }
 
-    // -------------------------------------------------------------------------------------------------------- division
+    // ------------------------------------------------------------------------------------ division
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DIVISION} attribute.
@@ -313,7 +316,7 @@ public abstract class MappedOrg {
         this.division = division;
     }
 
-    // -------------------------------------------------------------------------------------------------------- location
+    // ------------------------------------------------------------------------------------ location
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute.
@@ -335,8 +338,10 @@ public abstract class MappedOrg {
         this.location = location;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
     @NotNull
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
@@ -345,9 +350,9 @@ public abstract class MappedOrg {
             insertable = true,
             updatable = false
     )
-    private Short deptnumb;
+    private Integer deptnumb;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_DEPTNAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNAME,
@@ -358,16 +363,18 @@ public abstract class MappedOrg {
     )
     private String deptname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MANAGER,
             nullable = COLUMN_NULLABLE_MANAGER,
             insertable = true,
             updatable = true
     )
-    private Short manager;
+    private Integer manager;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_DIVISION)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DIVISION,
@@ -378,7 +385,7 @@ public abstract class MappedOrg {
     )
     private String division;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_LOCATION)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LOCATION,

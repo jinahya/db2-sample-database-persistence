@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Vempdpt1
         extends MappedVempdpt1 {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

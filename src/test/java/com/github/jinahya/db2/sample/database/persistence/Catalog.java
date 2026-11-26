@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Catalog
         extends MappedCatalog {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

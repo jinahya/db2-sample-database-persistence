@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Staffg
         extends MappedStaffg {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -51,7 +51,7 @@ public class Staffg
      *         whoever creates an instance sets it.
      */
     @Override
-    public void setId(final Short id) {
+    public void setId(final Integer id) {
         super.setId(id);
     }
 }

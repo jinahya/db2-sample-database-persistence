@@ -20,7 +20,10 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -47,7 +50,7 @@ public abstract class MappedVprojactId
      */
     private static final long serialVersionUID = 1L;
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_PROJNO} column.
@@ -55,7 +58,7 @@ public abstract class MappedVprojactId
      */
     public static final String ATTRIBUTE_NAME_PROJNO = MappedVprojact.ATTRIBUTE_NAME_PROJNO;
 
-    // ----------------------------------------------------------------------------------------------------------- ACTNO
+    // --------------------------------------------------------------------------------------- ACTNO
 
     /**
      * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_ACTNO} column.
@@ -63,7 +66,7 @@ public abstract class MappedVprojactId
      */
     public static final String ATTRIBUTE_NAME_ACTNO = MappedVprojact.ATTRIBUTE_NAME_ACTNO;
 
-    // -------------------------------------------------------------------------------------------------------- ACSTDATE
+    // ------------------------------------------------------------------------------------ ACSTDATE
 
     /**
      * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_ACSTDATE} column.
@@ -71,7 +74,7 @@ public abstract class MappedVprojactId
      */
     public static final String ATTRIBUTE_NAME_ACSTDATE = MappedVprojact.ATTRIBUTE_NAME_ACSTDATE;
 
-    // ------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // STATIC_FACTORY_METHODS
 
     /**
@@ -89,7 +92,7 @@ public abstract class MappedVprojactId
     protected static <T extends MappedVprojactId> T of(
             final Supplier<? extends T> instantiator,
             final String projno,
-            final Short actno,
+            final Integer actno,
             final LocalDate acstdate) {
         Objects.requireNonNull(instantiator, "instantiator is null");
         final var instance =
@@ -100,7 +103,7 @@ public abstract class MappedVprojactId
         return instance;
     }
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -109,7 +112,7 @@ public abstract class MappedVprojactId
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -151,7 +154,7 @@ public abstract class MappedVprojactId
         return Objects.hash(getProjno(), getActno(), getAcstdate());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -173,7 +176,7 @@ public abstract class MappedVprojactId
         this.projno = projno;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- actno
+    // --------------------------------------------------------------------------------------- actno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
@@ -181,7 +184,7 @@ public abstract class MappedVprojactId
      * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
     @Nonnull
-    public Short getActno() {
+    public Integer getActno() {
         return actno;
     }
 
@@ -190,11 +193,11 @@ public abstract class MappedVprojactId
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Short actno) {
+    protected void setActno(@Nonnull final Integer actno) {
         this.actno = actno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- acstdate
+    // ------------------------------------------------------------------------------------ acstdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
@@ -216,12 +219,14 @@ public abstract class MappedVprojactId
         this.acstdate = acstdate;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
-    private Short actno;
+    // ---------------------------------------------------------------------------------------------
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
+    private Integer actno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private LocalDate acstdate;
 }

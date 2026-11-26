@@ -44,7 +44,7 @@ class Org_Randomizer
     @Override
     public Org get() {
         final var instance = super.get();
-        instance.setDeptnumb(__Randomizer_Utils.positiveShort());
+        instance.setDeptnumb(__Randomizer_Utils.positiveSmallint());
         return instance;
     }
 }

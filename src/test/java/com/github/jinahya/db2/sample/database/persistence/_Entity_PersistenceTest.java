@@ -342,7 +342,7 @@ public abstract class _Entity_PersistenceTest<T, U>
         // empty
     }
 
-    // ------------------------------------------------------------ equality across the context
+    // ----------------------------------------------------------------- equality across the context
 
     /**
      * Skips the calling test when EclipseLink wove {@link #targetClass} and its identifier includes

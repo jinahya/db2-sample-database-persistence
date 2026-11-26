@@ -33,6 +33,17 @@ FROM SALES
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, SALES_DATE, SALES_PERSON, REGION, of a table, which declares no primary key:
+-- the values which more than one row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT SALES_DATE, SALES_PERSON, REGION, COUNT(*)
+FROM SALES
+GROUP BY SALES_DATE, SALES_PERSON, REGION
+HAVING COUNT(*) > 1
+;
+
+
 -- ---------------------------------------------------------------------------------------------------------- SALES_DATE
 -- the earliest and the latest SALES_DATE; 1996-03-29 and 2006-04-01.
 SELECT MIN(SALES_DATE), MAX(SALES_DATE)

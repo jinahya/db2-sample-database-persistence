@@ -33,6 +33,17 @@ FROM VPHONE
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, EMPLOYEENUMBER, of a view, which has no key: the values which more than one
+-- row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT EMPLOYEENUMBER, COUNT(*)
+FROM VPHONE
+GROUP BY EMPLOYEENUMBER
+HAVING COUNT(*) > 1
+;
+
+
 -- ------------------------------------------------------------------------------------------------------------ LASTNAME
 -- the shortest and the longest LASTNAME, trailing spaces trimmed; 3 to 10 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(LASTNAME))), MAX(LENGTH(RTRIM(LASTNAME)))

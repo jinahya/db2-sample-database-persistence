@@ -33,6 +33,17 @@ FROM MLBLOGS_ANSWERS
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, ANSWER, of a table, which declares no primary key: the values which more than
+-- one row shares.
+-- 2 ANSWERs, in 5 rows: the rows of each are copies of one another, which a query returns as one instance.
+SELECT ANSWER, COUNT(*)
+FROM MLBLOGS_ANSWERS
+GROUP BY ANSWER
+HAVING COUNT(*) > 1
+;
+
+
 -- -------------------------------------------------------------------------------------------------------------- ANSWER
 -- the shortest and the longest ANSWER, trailing spaces trimmed; 30 to 1024 characters, of VARCHAR(1024) declared.
 SELECT MIN(LENGTH(RTRIM(ANSWER))), MAX(LENGTH(RTRIM(ANSWER)))

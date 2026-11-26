@@ -199,7 +199,7 @@ class PersistenceUnit_IT {
                 .forEach(e -> assertThat(e.getProjAct()).as("projAct of %s", e).isNotNull());
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // persists the specified entity, flushes, clears, and finds it again; all rolled back
     private <T> T insertAndFind(final T entity, final Class<T> type, final Object id) {
         return applyInTransactionAndRollback(em -> {
@@ -227,7 +227,7 @@ class PersistenceUnit_IT {
         }
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @__ItPU
     @Inject
     private EntityManagerFactory entityManagerFactory;

@@ -55,7 +55,7 @@ public abstract class MappedVphone {
      */
     public static final String TABLE_NAME = "VPHONE";
 
-    // -------------------------------------------------------------------------------------------------------- LASTNAME
+    // ------------------------------------------------------------------------------------ LASTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
@@ -84,7 +84,7 @@ public abstract class MappedVphone {
      */
     public static final int SIZE_MAX_LASTNAME = COLUMN_LENGTH_LASTNAME;
 
-    // ------------------------------------------------------------------------------------------------------- FIRSTNAME
+    // ----------------------------------------------------------------------------------- FIRSTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNAME} attribute maps.
@@ -113,7 +113,7 @@ public abstract class MappedVphone {
      */
     public static final int SIZE_MAX_FIRSTNAME = COLUMN_LENGTH_FIRSTNAME;
 
-    // --------------------------------------------------------------------------------------------------- MIDDLEINITIAL
+    // ------------------------------------------------------------------------------- MIDDLEINITIAL
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDDLEINITIAL} attribute
@@ -143,7 +143,7 @@ public abstract class MappedVphone {
      */
     public static final int SIZE_MAX_MIDDLEINITIAL = COLUMN_LENGTH_MIDDLEINITIAL;
 
-    // ----------------------------------------------------------------------------------------------------- PHONENUMBER
+    // --------------------------------------------------------------------------------- PHONENUMBER
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute maps.
@@ -173,7 +173,7 @@ public abstract class MappedVphone {
      */
     public static final int SIZE_MAX_PHONENUMBER = COLUMN_LENGTH_PHONENUMBER;
 
-    // -------------------------------------------------------------------------------------------------- EMPLOYEENUMBER
+    // ------------------------------------------------------------------------------ EMPLOYEENUMBER
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute
@@ -203,7 +203,7 @@ public abstract class MappedVphone {
      */
     public static final int SIZE_MAX_EMPLOYEENUMBER = COLUMN_LENGTH_EMPLOYEENUMBER;
 
-    // ------------------------------------------------------------------------------------------------------ DEPTNUMBER
+    // ---------------------------------------------------------------------------------- DEPTNUMBER
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNUMBER} attribute maps.
@@ -233,7 +233,7 @@ public abstract class MappedVphone {
      */
     public static final int SIZE_MAX_DEPTNUMBER = COLUMN_LENGTH_DEPTNUMBER;
 
-    // -------------------------------------------------------------------------------------------------------- DEPTNAME
+    // ------------------------------------------------------------------------------------ DEPTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps.
@@ -262,7 +262,7 @@ public abstract class MappedVphone {
      */
     public static final int SIZE_MAX_DEPTNAME = COLUMN_LENGTH_DEPTNAME;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -271,7 +271,7 @@ public abstract class MappedVphone {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -313,7 +313,7 @@ public abstract class MappedVphone {
         return Objects.hashCode(getEmployeenumber());
     }
 
-    // -------------------------------------------------------------------------------------------------------- lastname
+    // ------------------------------------------------------------------------------------ lastname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
@@ -335,7 +335,7 @@ public abstract class MappedVphone {
         this.lastname = lastname;
     }
 
-    // ------------------------------------------------------------------------------------------------------- firstname
+    // ----------------------------------------------------------------------------------- firstname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_FIRSTNAME} attribute.
@@ -357,7 +357,7 @@ public abstract class MappedVphone {
         this.firstname = firstname;
     }
 
-    // --------------------------------------------------------------------------------------------------- middleinitial
+    // ------------------------------------------------------------------------------- middleinitial
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MIDDLEINITIAL} attribute.
@@ -379,7 +379,7 @@ public abstract class MappedVphone {
         this.middleinitial = middleinitial;
     }
 
-    // ----------------------------------------------------------------------------------------------------- phonenumber
+    // --------------------------------------------------------------------------------- phonenumber
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute.
@@ -401,7 +401,7 @@ public abstract class MappedVphone {
         this.phonenumber = phonenumber;
     }
 
-    // -------------------------------------------------------------------------------------------------- employeenumber
+    // ------------------------------------------------------------------------------ employeenumber
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute.
@@ -423,7 +423,7 @@ public abstract class MappedVphone {
         this.employeenumber = employeenumber;
     }
 
-    // ------------------------------------------------------------------------------------------------------ deptnumber
+    // ---------------------------------------------------------------------------------- deptnumber
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNUMBER} attribute.
@@ -445,7 +445,7 @@ public abstract class MappedVphone {
         this.deptnumber = deptnumber;
     }
 
-    // -------------------------------------------------------------------------------------------------------- deptname
+    // ------------------------------------------------------------------------------------ deptname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
@@ -467,7 +467,7 @@ public abstract class MappedVphone {
         this.deptname = deptname;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_LASTNAME)
     @NotNull
@@ -480,7 +480,7 @@ public abstract class MappedVphone {
     )
     private String lastname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_FIRSTNAME)
     @NotNull
@@ -493,7 +493,7 @@ public abstract class MappedVphone {
     )
     private String firstname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MIDDLEINITIAL)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDDLEINITIAL,
@@ -504,7 +504,7 @@ public abstract class MappedVphone {
     )
     private String middleinitial;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PHONENUMBER)
     @NotNull
@@ -517,7 +517,7 @@ public abstract class MappedVphone {
     )
     private String phonenumber;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_EMPLOYEENUMBER)
     @NotNull
@@ -531,7 +531,7 @@ public abstract class MappedVphone {
     )
     private String employeenumber;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPTNUMBER)
     @NotNull
@@ -544,7 +544,7 @@ public abstract class MappedVphone {
     )
     private String deptnumber;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPTNAME)
     @NotNull

@@ -27,10 +27,10 @@ import lombok.extern.slf4j.Slf4j;
 })
 @Slf4j
 class Staff_PersistenceTest
-        extends _Entity_PersistenceTest<Staff, Short> {
+        extends _Entity_PersistenceTest<Staff, Integer> {
 
     Staff_PersistenceTest() {
-        super(Staff.class, Short.class);
+        super(Staff.class, Integer.class);
     }
 }
 

@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
@@ -28,6 +29,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -56,7 +59,7 @@ public abstract class MappedProjAct {
      */
     public static final String TABLE_NAME = "PROJACT";
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
@@ -85,7 +88,7 @@ public abstract class MappedProjAct {
      */
     public static final int SIZE_MAX_PROJNO = COLUMN_LENGTH_PROJNO;
 
-    // ----------------------------------------------------------------------------------------------------------- ACTNO
+    // --------------------------------------------------------------------------------------- ACTNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
@@ -104,7 +107,7 @@ public abstract class MappedProjAct {
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
-    // --------------------------------------------------------------------------------------------------------- ACSTAFF
+    // ------------------------------------------------------------------------------------- ACSTAFF
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACSTAFF} attribute maps.
@@ -146,7 +149,7 @@ public abstract class MappedProjAct {
      */
     public static final int DIGITS_FRACTION_ACSTAFF = COLUMN_SCALE_ACSTAFF;
 
-    // -------------------------------------------------------------------------------------------------------- ACSTDATE
+    // ------------------------------------------------------------------------------------ ACSTDATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute maps.
@@ -165,7 +168,7 @@ public abstract class MappedProjAct {
      */
     public static final String ATTRIBUTE_NAME_ACSTDATE = "acstdate";
 
-    // -------------------------------------------------------------------------------------------------------- ACENDATE
+    // ------------------------------------------------------------------------------------ ACENDATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACENDATE} attribute maps.
@@ -184,7 +187,7 @@ public abstract class MappedProjAct {
      */
     public static final String ATTRIBUTE_NAME_ACENDATE = "acendate";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -193,7 +196,7 @@ public abstract class MappedProjAct {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -237,7 +240,7 @@ public abstract class MappedProjAct {
         return Objects.hash(getProjno(), getActno(), getAcstdate());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -259,7 +262,7 @@ public abstract class MappedProjAct {
         this.projno = projno;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- actno
+    // --------------------------------------------------------------------------------------- actno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
@@ -267,7 +270,7 @@ public abstract class MappedProjAct {
      * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
     @Nonnull
-    public Short getActno() {
+    public Integer getActno() {
         return actno;
     }
 
@@ -276,11 +279,11 @@ public abstract class MappedProjAct {
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Short actno) {
+    protected void setActno(@Nonnull final Integer actno) {
         this.actno = actno;
     }
 
-    // --------------------------------------------------------------------------------------------------------- acstaff
+    // ------------------------------------------------------------------------------------- acstaff
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACSTAFF} attribute.
@@ -302,7 +305,7 @@ public abstract class MappedProjAct {
         this.acstaff = acstaff;
     }
 
-    // -------------------------------------------------------------------------------------------------------- acstdate
+    // ------------------------------------------------------------------------------------ acstdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
@@ -324,7 +327,7 @@ public abstract class MappedProjAct {
         this.acstdate = acstdate;
     }
 
-    // -------------------------------------------------------------------------------------------------------- acendate
+    // ------------------------------------------------------------------------------------ acendate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACENDATE} attribute.
@@ -346,7 +349,7 @@ public abstract class MappedProjAct {
         this.acendate = acendate;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
@@ -360,8 +363,10 @@ public abstract class MappedProjAct {
     )
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
     @NotNull
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
@@ -370,9 +375,9 @@ public abstract class MappedProjAct {
             insertable = true,
             updatable = false
     )
-    private Short actno;
+    private Integer actno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Digits(integer = DIGITS_INTEGER_ACSTAFF, fraction = DIGITS_FRACTION_ACSTAFF)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACSTAFF,
@@ -384,7 +389,7 @@ public abstract class MappedProjAct {
     )
     private BigDecimal acstaff;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -396,7 +401,7 @@ public abstract class MappedProjAct {
     )
     private LocalDate acstdate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACENDATE,
             nullable = COLUMN_NULLABLE_ACENDATE,

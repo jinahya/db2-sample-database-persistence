@@ -33,6 +33,17 @@ FROM PATIENTS
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, PATIENT_ID, of a table, which declares no primary key: the values which more
+-- than one row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT PATIENT_ID, COUNT(*)
+FROM PATIENTS
+GROUP BY PATIENT_ID
+HAVING COUNT(*) > 1
+;
+
+
 -- ---------------------------------------------------------------------------------------------------------- PATIENT_ID
 -- the smallest and the largest PATIENT_ID; 1 and 20.
 SELECT MIN(PATIENT_ID), MAX(PATIENT_ID)

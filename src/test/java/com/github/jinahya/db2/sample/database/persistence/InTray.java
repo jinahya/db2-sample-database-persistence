@@ -35,7 +35,7 @@ import java.time.LocalDateTime;
 public class InTray
         extends MappedInTray {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

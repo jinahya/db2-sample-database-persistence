@@ -33,6 +33,17 @@ FROM VHDEPT
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, DEPTNO, of a view, which has no key: the values which more than one row
+-- shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT DEPTNO, COUNT(*)
+FROM VHDEPT
+GROUP BY DEPTNO
+HAVING COUNT(*) > 1
+;
+
+
 -- -------------------------------------------------------------------------------------------------------------- DEPTNO
 -- the shortest and the longest DEPTNO, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(DEPTNO))), MAX(LENGTH(RTRIM(DEPTNO)))

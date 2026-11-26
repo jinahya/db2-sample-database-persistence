@@ -58,7 +58,7 @@ public abstract class MappedMlblogsQuestion {
      */
     public static final String TABLE_NAME = "MLBLOGS_QUESTIONS";
 
-    // -------------------------------------------------------------------------------------------------------- QUESTION
+    // ------------------------------------------------------------------------------------ QUESTION
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_QUESTION} attribute maps.
@@ -87,7 +87,7 @@ public abstract class MappedMlblogsQuestion {
      */
     public static final int SIZE_MAX_QUESTION = COLUMN_LENGTH_QUESTION;
 
-    // ------------------------------------------------------------------------------------------------------- EMBEDDING
+    // ----------------------------------------------------------------------------------- EMBEDDING
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMBEDDING} attribute maps.
@@ -124,7 +124,7 @@ public abstract class MappedMlblogsQuestion {
      */
     public static final int SIZE_EMBEDDING = COLUMN_DIMENSION_EMBEDDING;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -133,7 +133,7 @@ public abstract class MappedMlblogsQuestion {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -169,7 +169,7 @@ public abstract class MappedMlblogsQuestion {
         return Objects.hashCode(getQuestion());
     }
 
-    // -------------------------------------------------------------------------------------------------------- question
+    // ------------------------------------------------------------------------------------ question
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_QUESTION} attribute.
@@ -191,7 +191,7 @@ public abstract class MappedMlblogsQuestion {
         this.question = question;
     }
 
-    // ------------------------------------------------------------------------------------------------------- embedding
+    // ----------------------------------------------------------------------------------- embedding
 
     /**
      * Returns a copy of current value of {@value #ATTRIBUTE_NAME_EMBEDDING} attribute.
@@ -217,7 +217,7 @@ public abstract class MappedMlblogsQuestion {
         this.embedding = Optional.ofNullable(embedding).map(float[]::clone).orElse(null);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_QUESTION)
     @NotNull
@@ -231,7 +231,7 @@ public abstract class MappedMlblogsQuestion {
     )
     private String question;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(min = SIZE_EMBEDDING, max = SIZE_EMBEDDING)
     @Convert(converter = VectorStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)

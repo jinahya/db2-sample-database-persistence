@@ -50,7 +50,7 @@ public abstract class MappedEmpmdc {
      */
     public static final String TABLE_NAME = "EMPMDC";
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
@@ -69,7 +69,7 @@ public abstract class MappedEmpmdc {
      */
     public static final String ATTRIBUTE_NAME_EMPNO = "empno";
 
-    // ------------------------------------------------------------------------------------------------------------ DEPT
+    // ---------------------------------------------------------------------------------------- DEPT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPT} attribute maps. The
@@ -88,7 +88,7 @@ public abstract class MappedEmpmdc {
      */
     public static final String ATTRIBUTE_NAME_DEPT = "dept";
 
-    // ------------------------------------------------------------------------------------------------------------- DIV
+    // ----------------------------------------------------------------------------------------- DIV
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DIV} attribute maps. The
@@ -107,7 +107,7 @@ public abstract class MappedEmpmdc {
      */
     public static final String ATTRIBUTE_NAME_DIV = "div";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -116,7 +116,7 @@ public abstract class MappedEmpmdc {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -154,7 +154,7 @@ public abstract class MappedEmpmdc {
         return Objects.hashCode(getEmpno());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -175,7 +175,7 @@ public abstract class MappedEmpmdc {
         this.empno = empno;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ dept
+    // ---------------------------------------------------------------------------------------- dept
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPT} attribute.
@@ -196,7 +196,7 @@ public abstract class MappedEmpmdc {
         this.dept = dept;
     }
 
-    // ------------------------------------------------------------------------------------------------------------- div
+    // ----------------------------------------------------------------------------------------- div
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DIV} attribute.
@@ -217,7 +217,7 @@ public abstract class MappedEmpmdc {
         this.div = div;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -229,7 +229,7 @@ public abstract class MappedEmpmdc {
     )
     private Integer empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPT,
             nullable = COLUMN_NULLABLE_DEPT,
@@ -238,7 +238,7 @@ public abstract class MappedEmpmdc {
     )
     private Integer dept;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DIV,
             nullable = COLUMN_NULLABLE_DIV,

@@ -55,7 +55,7 @@ public abstract class MappedVdepmg1 {
      */
     public static final String TABLE_NAME = "VDEPMG1";
 
-    // ---------------------------------------------------------------------------------------------------------- DEPTNO
+    // -------------------------------------------------------------------------------------- DEPTNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The
@@ -84,7 +84,7 @@ public abstract class MappedVdepmg1 {
      */
     public static final int SIZE_MAX_DEPTNO = COLUMN_LENGTH_DEPTNO;
 
-    // -------------------------------------------------------------------------------------------------------- DEPTNAME
+    // ------------------------------------------------------------------------------------ DEPTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute maps.
@@ -113,7 +113,7 @@ public abstract class MappedVdepmg1 {
      */
     public static final int SIZE_MAX_DEPTNAME = COLUMN_LENGTH_DEPTNAME;
 
-    // ----------------------------------------------------------------------------------------------------------- MGRNO
+    // --------------------------------------------------------------------------------------- MGRNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MGRNO} attribute maps. The
@@ -142,7 +142,7 @@ public abstract class MappedVdepmg1 {
      */
     public static final int SIZE_MAX_MGRNO = COLUMN_LENGTH_MGRNO;
 
-    // -------------------------------------------------------------------------------------------------------- FIRSTNME
+    // ------------------------------------------------------------------------------------ FIRSTNME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps.
@@ -171,7 +171,7 @@ public abstract class MappedVdepmg1 {
      */
     public static final int SIZE_MAX_FIRSTNME = COLUMN_LENGTH_FIRSTNME;
 
-    // --------------------------------------------------------------------------------------------------------- MIDINIT
+    // ------------------------------------------------------------------------------------- MIDINIT
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The
@@ -200,7 +200,7 @@ public abstract class MappedVdepmg1 {
      */
     public static final int SIZE_MAX_MIDINIT = COLUMN_LENGTH_MIDINIT;
 
-    // -------------------------------------------------------------------------------------------------------- LASTNAME
+    // ------------------------------------------------------------------------------------ LASTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
@@ -229,7 +229,7 @@ public abstract class MappedVdepmg1 {
      */
     public static final int SIZE_MAX_LASTNAME = COLUMN_LENGTH_LASTNAME;
 
-    // -------------------------------------------------------------------------------------------------------- ADMRDEPT
+    // ------------------------------------------------------------------------------------ ADMRDEPT
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute maps.
@@ -258,7 +258,7 @@ public abstract class MappedVdepmg1 {
      */
     public static final int SIZE_MAX_ADMRDEPT = COLUMN_LENGTH_ADMRDEPT;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -267,7 +267,7 @@ public abstract class MappedVdepmg1 {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -309,7 +309,7 @@ public abstract class MappedVdepmg1 {
         return Objects.hashCode(getDeptno());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- deptno
+    // -------------------------------------------------------------------------------------- deptno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
@@ -331,7 +331,7 @@ public abstract class MappedVdepmg1 {
         this.deptno = deptno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- deptname
+    // ------------------------------------------------------------------------------------ deptname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
@@ -353,7 +353,7 @@ public abstract class MappedVdepmg1 {
         this.deptname = deptname;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- mgrno
+    // --------------------------------------------------------------------------------------- mgrno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute.
@@ -374,7 +374,7 @@ public abstract class MappedVdepmg1 {
         this.mgrno = mgrno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- firstnme
+    // ------------------------------------------------------------------------------------ firstnme
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
@@ -396,7 +396,7 @@ public abstract class MappedVdepmg1 {
         this.firstnme = firstnme;
     }
 
-    // --------------------------------------------------------------------------------------------------------- midinit
+    // ------------------------------------------------------------------------------------- midinit
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
@@ -418,7 +418,7 @@ public abstract class MappedVdepmg1 {
         this.midinit = midinit;
     }
 
-    // -------------------------------------------------------------------------------------------------------- lastname
+    // ------------------------------------------------------------------------------------ lastname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
@@ -440,7 +440,7 @@ public abstract class MappedVdepmg1 {
         this.lastname = lastname;
     }
 
-    // -------------------------------------------------------------------------------------------------------- admrdept
+    // ------------------------------------------------------------------------------------ admrdept
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute.
@@ -462,7 +462,7 @@ public abstract class MappedVdepmg1 {
         this.admrdept = admrdept;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPTNO)
     @NotNull
@@ -476,7 +476,7 @@ public abstract class MappedVdepmg1 {
     )
     private String deptno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPTNAME)
     @NotNull
@@ -489,7 +489,7 @@ public abstract class MappedVdepmg1 {
     )
     private String deptname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MGRNO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MGRNO,
@@ -500,7 +500,7 @@ public abstract class MappedVdepmg1 {
     )
     private String mgrno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_FIRSTNME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_FIRSTNME,
@@ -511,7 +511,7 @@ public abstract class MappedVdepmg1 {
     )
     private String firstnme;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
@@ -522,7 +522,7 @@ public abstract class MappedVdepmg1 {
     )
     private String midinit;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_LASTNAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LASTNAME,
@@ -533,7 +533,7 @@ public abstract class MappedVdepmg1 {
     )
     private String lastname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_ADMRDEPT)
     @NotNull

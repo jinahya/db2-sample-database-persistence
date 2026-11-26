@@ -29,10 +29,10 @@ import nl.jqno.equalsverifier.api.SingleTypeEqualsVerifierApi;
 })
 @Slf4j
 class Staffg_Test
-        extends _Entity_Test<Staffg, Short> {
+        extends _Entity_Test<Staffg, Integer> {
 
     Staffg_Test() {
-        super(Staffg.class, Short.class);
+        super(Staffg.class, Integer.class);
     }
 
     // ----------------------------------------------------------------------------- equals/hashCode

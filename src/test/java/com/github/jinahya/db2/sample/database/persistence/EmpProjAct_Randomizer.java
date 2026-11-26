@@ -51,7 +51,7 @@ class EmpProjAct_Randomizer
         final var instance = super.get();
         instance.setEmpno(__Randomizer_Utils.string(6));
         instance.setProjno(__Randomizer_Utils.string(6));
-        instance.setActno(__Randomizer_Utils.positiveShort());
+        instance.setActno(__Randomizer_Utils.positiveSmallint());
         instance.setEmstdate(__Randomizer_Utils.localDate());
         return instance;
     }

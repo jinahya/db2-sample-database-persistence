@@ -33,6 +33,17 @@ FROM ADEFUSR
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, WORKDEPT, of a materialized query table, which declares no primary key: the
+-- values which more than one row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT WORKDEPT, COUNT(*)
+FROM ADEFUSR
+GROUP BY WORKDEPT
+HAVING COUNT(*) > 1
+;
+
+
 -- ------------------------------------------------------------------------------------------------------------ WORKDEPT
 -- the shortest and the longest WORKDEPT, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(WORKDEPT))), MAX(LENGTH(RTRIM(WORKDEPT)))

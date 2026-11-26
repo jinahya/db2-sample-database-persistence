@@ -37,7 +37,7 @@ import jakarta.persistence.Table;
 public class PurchaseOrder
         extends MappedPurchaseOrder {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -58,7 +58,7 @@ public class PurchaseOrder
         super.setPoid(poid);
     }
 
-    // -------------------------------------------------------------------------------------------------- custidCustomer
+    // ------------------------------------------------------------------------------ custidCustomer
 
     /**
      * Returns the customer.
@@ -78,7 +78,7 @@ public class PurchaseOrder
         this.custidCustomer = custidCustomer;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = PurchaseOrder.COLUMN_NAME_CUSTID,
                 referencedColumnName = Customer.COLUMN_NAME_CID)

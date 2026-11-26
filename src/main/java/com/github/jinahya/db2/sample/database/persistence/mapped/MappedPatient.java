@@ -58,7 +58,7 @@ public abstract class MappedPatient {
      */
     public static final String TABLE_NAME = "PATIENTS";
 
-    // ------------------------------------------------------------------------------------------------------ PATIENT_ID
+    // ---------------------------------------------------------------------------------- PATIENT_ID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PATIENT_ID} attribute maps.
@@ -77,7 +77,7 @@ public abstract class MappedPatient {
      */
     public static final String ATTRIBUTE_NAME_PATIENT_ID = "patientId";
 
-    // ------------------------------------------------------------------------------------------------------------ NAME
+    // ---------------------------------------------------------------------------------------- NAME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The
@@ -106,7 +106,7 @@ public abstract class MappedPatient {
      */
     public static final int SIZE_MAX_NAME = COLUMN_LENGTH_NAME;
 
-    // ------------------------------------------------------------------------------------------------------------- AGE
+    // ----------------------------------------------------------------------------------------- AGE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_AGE} attribute maps. The
@@ -125,7 +125,7 @@ public abstract class MappedPatient {
      */
     public static final String ATTRIBUTE_NAME_AGE = "age";
 
-    // ---------------------------------------------------------------------------------------------------------- GENDER
+    // -------------------------------------------------------------------------------------- GENDER
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_GENDER} attribute maps. The
@@ -154,7 +154,7 @@ public abstract class MappedPatient {
      */
     public static final int SIZE_MAX_GENDER = COLUMN_LENGTH_GENDER;
 
-    // ----------------------------------------------------------------------------------------------- CHOLESTEROL_LEVEL
+    // --------------------------------------------------------------------------- CHOLESTEROL_LEVEL
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_CHOLESTEROL_LEVEL}
@@ -174,7 +174,7 @@ public abstract class MappedPatient {
      */
     public static final String ATTRIBUTE_NAME_CHOLESTEROL_LEVEL = "cholesterolLevel";
 
-    // -------------------------------------------------------------------------------------------------- BLOOD_PRESSURE
+    // ------------------------------------------------------------------------------ BLOOD_PRESSURE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_BLOOD_PRESSURE} attribute
@@ -193,7 +193,7 @@ public abstract class MappedPatient {
      */
     public static final String ATTRIBUTE_NAME_BLOOD_PRESSURE = "bloodPressure";
 
-    // -------------------------------------------------------------------------------------------------- SMOKING_STATUS
+    // ------------------------------------------------------------------------------ SMOKING_STATUS
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute
@@ -223,7 +223,7 @@ public abstract class MappedPatient {
      */
     public static final int SIZE_MAX_SMOKING_STATUS = COLUMN_LENGTH_SMOKING_STATUS;
 
-    // ------------------------------------------------------------------------------------------------------- EMBEDDING
+    // ----------------------------------------------------------------------------------- EMBEDDING
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMBEDDING} attribute maps.
@@ -260,7 +260,7 @@ public abstract class MappedPatient {
      */
     public static final int SIZE_EMBEDDING = COLUMN_DIMENSION_EMBEDDING;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -269,7 +269,7 @@ public abstract class MappedPatient {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -311,7 +311,7 @@ public abstract class MappedPatient {
         return Objects.hashCode(getPatientId());
     }
 
-    // ------------------------------------------------------------------------------------------------------- patientId
+    // ----------------------------------------------------------------------------------- patientId
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PATIENT_ID} attribute.
@@ -333,7 +333,7 @@ public abstract class MappedPatient {
         this.patientId = patientId;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ name
+    // ---------------------------------------------------------------------------------------- name
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_NAME} attribute.
@@ -354,7 +354,7 @@ public abstract class MappedPatient {
         this.name = name;
     }
 
-    // ------------------------------------------------------------------------------------------------------------- age
+    // ----------------------------------------------------------------------------------------- age
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_AGE} attribute.
@@ -375,7 +375,7 @@ public abstract class MappedPatient {
         this.age = age;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- gender
+    // -------------------------------------------------------------------------------------- gender
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_GENDER} attribute.
@@ -397,7 +397,7 @@ public abstract class MappedPatient {
         this.gender = gender;
     }
 
-    // ------------------------------------------------------------------------------------------------ cholesterolLevel
+    // ---------------------------------------------------------------------------- cholesterolLevel
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_CHOLESTEROL_LEVEL} attribute.
@@ -419,7 +419,7 @@ public abstract class MappedPatient {
         this.cholesterolLevel = cholesterolLevel;
     }
 
-    // --------------------------------------------------------------------------------------------------- bloodPressure
+    // ------------------------------------------------------------------------------- bloodPressure
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_BLOOD_PRESSURE} attribute.
@@ -441,7 +441,7 @@ public abstract class MappedPatient {
         this.bloodPressure = bloodPressure;
     }
 
-    // --------------------------------------------------------------------------------------------------- smokingStatus
+    // ------------------------------------------------------------------------------- smokingStatus
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute.
@@ -463,7 +463,7 @@ public abstract class MappedPatient {
         this.smokingStatus = smokingStatus;
     }
 
-    // ------------------------------------------------------------------------------------------------------- embedding
+    // ----------------------------------------------------------------------------------- embedding
 
     /**
      * Returns a copy of current value of {@value #ATTRIBUTE_NAME_EMBEDDING} attribute.
@@ -489,7 +489,7 @@ public abstract class MappedPatient {
         this.embedding = Optional.ofNullable(embedding).map(float[]::clone).orElse(null);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -501,7 +501,7 @@ public abstract class MappedPatient {
     )
     private Integer patientId;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_NAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NAME,
@@ -512,7 +512,7 @@ public abstract class MappedPatient {
     )
     private String name;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_AGE,
             nullable = COLUMN_NULLABLE_AGE,
@@ -521,7 +521,7 @@ public abstract class MappedPatient {
     )
     private Integer age;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_GENDER)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_GENDER,
@@ -532,7 +532,7 @@ public abstract class MappedPatient {
     )
     private String gender;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_CHOLESTEROL_LEVEL,
             nullable = COLUMN_NULLABLE_CHOLESTEROL_LEVEL,
@@ -541,7 +541,7 @@ public abstract class MappedPatient {
     )
     private Integer cholesterolLevel;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_BLOOD_PRESSURE,
             nullable = COLUMN_NULLABLE_BLOOD_PRESSURE,
@@ -550,7 +550,7 @@ public abstract class MappedPatient {
     )
     private Integer bloodPressure;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_SMOKING_STATUS)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SMOKING_STATUS,
@@ -561,7 +561,7 @@ public abstract class MappedPatient {
     )
     private String smokingStatus;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(min = SIZE_EMBEDDING, max = SIZE_EMBEDDING)
     @Convert(converter = VectorStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)

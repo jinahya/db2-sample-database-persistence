@@ -33,6 +33,17 @@ FROM VPROJACT
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, PROJNO, ACTNO, ACSTDATE, of a view, which has no key: the values which more
+-- than one row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT PROJNO, ACTNO, ACSTDATE, COUNT(*)
+FROM VPROJACT
+GROUP BY PROJNO, ACTNO, ACSTDATE
+HAVING COUNT(*) > 1
+;
+
+
 -- -------------------------------------------------------------------------------------------------------------- PROJNO
 -- the shortest and the longest PROJNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNO))), MAX(LENGTH(RTRIM(PROJNO)))

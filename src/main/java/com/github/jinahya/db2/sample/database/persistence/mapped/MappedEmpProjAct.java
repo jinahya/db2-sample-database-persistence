@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
@@ -27,7 +28,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -60,7 +65,7 @@ public abstract class MappedEmpProjAct {
      */
     public static final String TABLE_NAME = "EMPPROJACT";
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
@@ -89,7 +94,7 @@ public abstract class MappedEmpProjAct {
      */
     public static final int SIZE_MAX_EMPNO = COLUMN_LENGTH_EMPNO;
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
@@ -118,7 +123,7 @@ public abstract class MappedEmpProjAct {
      */
     public static final int SIZE_MAX_PROJNO = COLUMN_LENGTH_PROJNO;
 
-    // ----------------------------------------------------------------------------------------------------------- ACTNO
+    // --------------------------------------------------------------------------------------- ACTNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
@@ -137,7 +142,7 @@ public abstract class MappedEmpProjAct {
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
-    // --------------------------------------------------------------------------------------------------------- EMPTIME
+    // ------------------------------------------------------------------------------------- EMPTIME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPTIME} attribute maps.
@@ -179,7 +184,23 @@ public abstract class MappedEmpProjAct {
      */
     public static final int DIGITS_FRACTION_EMPTIME = COLUMN_SCALE_EMPTIME;
 
-    // -------------------------------------------------------------------------------------------------------- EMSTDATE
+    /**
+     * The maximum value of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute. The value is {@value}.
+     *
+     * @implNote "Proportion of employee's time spent on project", as the documentation of the
+     *         {@code SAMPLE} database describes the column; the database does not enforce it.
+     */
+    public static final String ATTRIBUTE_DECIMAL_MAX_EMPTIME = "1";
+
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_EMPTIME} attribute. The value is {@value}.
+     *
+     * @implNote "Proportion of employee's time spent on project", as the documentation of the
+     *         {@code SAMPLE} database describes the column; the database does not enforce it.
+     */
+    public static final String ATTRIBUTE_DECIMAL_MIN_EMPTIME = "0";
+
+    // ------------------------------------------------------------------------------------ EMSTDATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMSTDATE} attribute maps.
@@ -198,7 +219,7 @@ public abstract class MappedEmpProjAct {
      */
     public static final String ATTRIBUTE_NAME_EMSTDATE = "emstdate";
 
-    // -------------------------------------------------------------------------------------------------------- EMENDATE
+    // ------------------------------------------------------------------------------------ EMENDATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMENDATE} attribute maps.
@@ -217,7 +238,7 @@ public abstract class MappedEmpProjAct {
      */
     public static final String ATTRIBUTE_NAME_EMENDATE = "emendate";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -226,7 +247,7 @@ public abstract class MappedEmpProjAct {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -273,7 +294,7 @@ public abstract class MappedEmpProjAct {
         return Objects.hash(getEmpno(), getProjno(), getActno(), getEmstdate());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -294,7 +315,7 @@ public abstract class MappedEmpProjAct {
         this.empno = empno;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -316,7 +337,7 @@ public abstract class MappedEmpProjAct {
         this.projno = projno;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- actno
+    // --------------------------------------------------------------------------------------- actno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
@@ -324,7 +345,7 @@ public abstract class MappedEmpProjAct {
      * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
     @Nonnull
-    public Short getActno() {
+    public Integer getActno() {
         return actno;
     }
 
@@ -333,11 +354,11 @@ public abstract class MappedEmpProjAct {
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Short actno) {
+    protected void setActno(@Nonnull final Integer actno) {
         this.actno = actno;
     }
 
-    // --------------------------------------------------------------------------------------------------------- emptime
+    // ------------------------------------------------------------------------------------- emptime
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPTIME} attribute.
@@ -359,7 +380,7 @@ public abstract class MappedEmpProjAct {
         this.emptime = emptime;
     }
 
-    // -------------------------------------------------------------------------------------------------------- emstdate
+    // ------------------------------------------------------------------------------------ emstdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMSTDATE} attribute.
@@ -381,7 +402,7 @@ public abstract class MappedEmpProjAct {
         this.emstdate = emstdate;
     }
 
-    // -------------------------------------------------------------------------------------------------------- emendate
+    // ------------------------------------------------------------------------------------ emendate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMENDATE} attribute.
@@ -403,7 +424,7 @@ public abstract class MappedEmpProjAct {
         this.emendate = emendate;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_EMPNO)
     @NotNull
@@ -417,7 +438,7 @@ public abstract class MappedEmpProjAct {
     )
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
@@ -431,8 +452,10 @@ public abstract class MappedEmpProjAct {
     )
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
     @NotNull
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
@@ -441,9 +464,11 @@ public abstract class MappedEmpProjAct {
             insertable = true,
             updatable = false
     )
-    private Short actno;
+    private Integer actno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @DecimalMax(ATTRIBUTE_DECIMAL_MAX_EMPTIME)
+    @DecimalMin(ATTRIBUTE_DECIMAL_MIN_EMPTIME)
     @Digits(integer = DIGITS_INTEGER_EMPTIME, fraction = DIGITS_FRACTION_EMPTIME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPTIME,
@@ -455,7 +480,7 @@ public abstract class MappedEmpProjAct {
     )
     private BigDecimal emptime;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -467,7 +492,7 @@ public abstract class MappedEmpProjAct {
     )
     private LocalDate emstdate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMENDATE,
             nullable = COLUMN_NULLABLE_EMENDATE,

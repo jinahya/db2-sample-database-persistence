@@ -86,8 +86,13 @@ final class __Randomizer_Utils {
         return of(DIGITS, length);
     }
 
-    static Short positiveShort() {
-        return (short) ThreadLocalRandom.current().nextInt(1, Short.MAX_VALUE);
+    /**
+     * Returns a new positive value which fits a {@code SMALLINT} column.
+     *
+     * @return a new value between {@code 1} and {@link Short#MAX_VALUE}, exclusive.
+     */
+    static Integer positiveSmallint() {
+        return ThreadLocalRandom.current().nextInt(1, Short.MAX_VALUE);
     }
 
     static Integer positiveInt() {

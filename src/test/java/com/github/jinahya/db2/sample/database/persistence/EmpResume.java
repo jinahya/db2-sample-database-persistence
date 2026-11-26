@@ -39,7 +39,7 @@ import jakarta.persistence.Table;
 public class EmpResume
         extends MappedEmpResume {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -72,7 +72,7 @@ public class EmpResume
         super.setResumeFormat(resumeFormat);
     }
 
-    // -------------------------------------------------------------------------------------------------------- employee
+    // ------------------------------------------------------------------------------------ employee
 
     /**
      * Returns the employee.
@@ -83,7 +83,7 @@ public class EmpResume
         return employee;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the column(s) are part of the identifier, which the superclass writes
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = EmpResume.COLUMN_NAME_EMPNO,

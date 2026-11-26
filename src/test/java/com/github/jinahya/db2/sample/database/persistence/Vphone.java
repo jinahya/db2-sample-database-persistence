@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Vphone
         extends MappedVphone {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

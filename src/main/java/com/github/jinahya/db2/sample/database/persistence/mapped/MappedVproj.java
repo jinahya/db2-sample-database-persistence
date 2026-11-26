@@ -58,7 +58,7 @@ public abstract class MappedVproj {
      */
     public static final String TABLE_NAME = "VPROJ";
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
@@ -87,7 +87,7 @@ public abstract class MappedVproj {
      */
     public static final int SIZE_MAX_PROJNO = COLUMN_LENGTH_PROJNO;
 
-    // -------------------------------------------------------------------------------------------------------- PROJNAME
+    // ------------------------------------------------------------------------------------ PROJNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps.
@@ -116,7 +116,7 @@ public abstract class MappedVproj {
      */
     public static final int SIZE_MAX_PROJNAME = COLUMN_LENGTH_PROJNAME;
 
-    // ---------------------------------------------------------------------------------------------------------- DEPTNO
+    // -------------------------------------------------------------------------------------- DEPTNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The
@@ -145,7 +145,7 @@ public abstract class MappedVproj {
      */
     public static final int SIZE_MAX_DEPTNO = COLUMN_LENGTH_DEPTNO;
 
-    // --------------------------------------------------------------------------------------------------------- RESPEMP
+    // ------------------------------------------------------------------------------------- RESPEMP
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The
@@ -174,7 +174,7 @@ public abstract class MappedVproj {
      */
     public static final int SIZE_MAX_RESPEMP = COLUMN_LENGTH_RESPEMP;
 
-    // --------------------------------------------------------------------------------------------------------- PRSTAFF
+    // ------------------------------------------------------------------------------------- PRSTAFF
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute maps. The
@@ -216,7 +216,7 @@ public abstract class MappedVproj {
      */
     public static final int DIGITS_FRACTION_PRSTAFF = COLUMN_SCALE_PRSTAFF;
 
-    // -------------------------------------------------------------------------------------------------------- PRSTDATE
+    // ------------------------------------------------------------------------------------ PRSTDATE
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PRSTDATE} attribute maps.
@@ -235,7 +235,7 @@ public abstract class MappedVproj {
      */
     public static final String ATTRIBUTE_NAME_PRSTDATE = "prstdate";
 
-    // -------------------------------------------------------------------------------------------------------- PRENDATE
+    // ------------------------------------------------------------------------------------ PRENDATE
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PRENDATE} attribute maps.
@@ -254,7 +254,7 @@ public abstract class MappedVproj {
      */
     public static final String ATTRIBUTE_NAME_PRENDATE = "prendate";
 
-    // --------------------------------------------------------------------------------------------------------- MAJPROJ
+    // ------------------------------------------------------------------------------------- MAJPROJ
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MAJPROJ} attribute maps. The
@@ -283,7 +283,7 @@ public abstract class MappedVproj {
      */
     public static final int SIZE_MAX_MAJPROJ = COLUMN_LENGTH_MAJPROJ;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -292,7 +292,7 @@ public abstract class MappedVproj {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -335,7 +335,7 @@ public abstract class MappedVproj {
         return Objects.hashCode(getProjno());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -357,7 +357,7 @@ public abstract class MappedVproj {
         this.projno = projno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- projname
+    // ------------------------------------------------------------------------------------ projname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
@@ -379,7 +379,7 @@ public abstract class MappedVproj {
         this.projname = projname;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- deptno
+    // -------------------------------------------------------------------------------------- deptno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
@@ -401,7 +401,7 @@ public abstract class MappedVproj {
         this.deptno = deptno;
     }
 
-    // --------------------------------------------------------------------------------------------------------- respemp
+    // ------------------------------------------------------------------------------------- respemp
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
@@ -423,7 +423,7 @@ public abstract class MappedVproj {
         this.respemp = respemp;
     }
 
-    // --------------------------------------------------------------------------------------------------------- prstaff
+    // ------------------------------------------------------------------------------------- prstaff
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRSTAFF} attribute.
@@ -445,7 +445,7 @@ public abstract class MappedVproj {
         this.prstaff = prstaff;
     }
 
-    // -------------------------------------------------------------------------------------------------------- prstdate
+    // ------------------------------------------------------------------------------------ prstdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRSTDATE} attribute.
@@ -467,7 +467,7 @@ public abstract class MappedVproj {
         this.prstdate = prstdate;
     }
 
-    // -------------------------------------------------------------------------------------------------------- prendate
+    // ------------------------------------------------------------------------------------ prendate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRENDATE} attribute.
@@ -489,7 +489,7 @@ public abstract class MappedVproj {
         this.prendate = prendate;
     }
 
-    // --------------------------------------------------------------------------------------------------------- majproj
+    // ------------------------------------------------------------------------------------- majproj
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute.
@@ -511,7 +511,7 @@ public abstract class MappedVproj {
         this.majproj = majproj;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
@@ -525,7 +525,7 @@ public abstract class MappedVproj {
     )
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNAME)
     @NotNull
@@ -538,7 +538,7 @@ public abstract class MappedVproj {
     )
     private String projname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPTNO)
     @NotNull
@@ -551,7 +551,7 @@ public abstract class MappedVproj {
     )
     private String deptno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESPEMP)
     @NotNull
@@ -564,7 +564,7 @@ public abstract class MappedVproj {
     )
     private String respemp;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Digits(integer = DIGITS_INTEGER_PRSTAFF, fraction = DIGITS_FRACTION_PRSTAFF)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRSTAFF,
@@ -576,7 +576,7 @@ public abstract class MappedVproj {
     )
     private BigDecimal prstaff;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRSTDATE,
             nullable = COLUMN_NULLABLE_PRSTDATE,
@@ -585,7 +585,7 @@ public abstract class MappedVproj {
     )
     private LocalDate prstdate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRENDATE,
             nullable = COLUMN_NULLABLE_PRENDATE,
@@ -594,7 +594,7 @@ public abstract class MappedVproj {
     )
     private LocalDate prendate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MAJPROJ)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MAJPROJ,

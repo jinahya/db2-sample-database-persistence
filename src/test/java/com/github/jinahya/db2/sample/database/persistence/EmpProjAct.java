@@ -41,7 +41,7 @@ import java.time.LocalDate;
 public class EmpProjAct
         extends MappedEmpProjAct {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -82,7 +82,7 @@ public class EmpProjAct
      *         whoever creates an instance sets it.
      */
     @Override
-    public void setActno(final Short actno) {
+    public void setActno(final Integer actno) {
         super.setActno(actno);
     }
 
@@ -98,7 +98,7 @@ public class EmpProjAct
         super.setEmstdate(emstdate);
     }
 
-    // --------------------------------------------------------------------------------------------------------- projAct
+    // ------------------------------------------------------------------------------------- projAct
 
     /**
      * Returns the activity of the project.
@@ -109,7 +109,7 @@ public class EmpProjAct
         return projAct;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the column(s) are part of the identifier, which the superclass writes
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumns({

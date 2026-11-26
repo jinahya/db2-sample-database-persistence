@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Inventory
         extends MappedInventory {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

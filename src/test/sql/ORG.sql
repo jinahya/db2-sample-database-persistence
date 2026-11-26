@@ -33,6 +33,17 @@ FROM ORG
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, DEPTNUMB, of a table, which declares no primary key: the values which more
+-- than one row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT DEPTNUMB, COUNT(*)
+FROM ORG
+GROUP BY DEPTNUMB
+HAVING COUNT(*) > 1
+;
+
+
 -- ------------------------------------------------------------------------------------------------------------ DEPTNUMB
 -- the smallest and the largest DEPTNUMB; 10 and 84.
 SELECT MIN(DEPTNUMB), MAX(DEPTNUMB)

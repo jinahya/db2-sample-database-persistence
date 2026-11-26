@@ -33,6 +33,17 @@ FROM VEMPLP
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, EMPLOYEENUMBER, of a view, which has no key: the values which more than one
+-- row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT EMPLOYEENUMBER, COUNT(*)
+FROM VEMPLP
+GROUP BY EMPLOYEENUMBER
+HAVING COUNT(*) > 1
+;
+
+
 -- ------------------------------------------------------------------------------------------------------ EMPLOYEENUMBER
 -- the shortest and the longest EMPLOYEENUMBER, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPLOYEENUMBER))), MAX(LENGTH(RTRIM(EMPLOYEENUMBER)))

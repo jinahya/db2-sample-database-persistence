@@ -54,7 +54,7 @@ public abstract class MappedEmpPhoto {
      */
     public static final String TABLE_NAME = "EMP_PHOTO";
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
@@ -83,7 +83,7 @@ public abstract class MappedEmpPhoto {
      */
     public static final int SIZE_MAX_EMPNO = COLUMN_LENGTH_EMPNO;
 
-    // ---------------------------------------------------------------------------------------------------- PHOTO_FORMAT
+    // -------------------------------------------------------------------------------- PHOTO_FORMAT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute
@@ -113,7 +113,7 @@ public abstract class MappedEmpPhoto {
      */
     public static final int SIZE_MAX_PHOTO_FORMAT = COLUMN_LENGTH_PHOTO_FORMAT;
 
-    // --------------------------------------------------------------------------------------------------------- PICTURE
+    // ------------------------------------------------------------------------------------- PICTURE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PICTURE} attribute maps.
@@ -137,7 +137,7 @@ public abstract class MappedEmpPhoto {
      */
     public static final String ATTRIBUTE_NAME_PICTURE = "picture";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -146,7 +146,7 @@ public abstract class MappedEmpPhoto {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -186,7 +186,7 @@ public abstract class MappedEmpPhoto {
         return Objects.hash(getEmpno(), getPhotoFormat());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -207,7 +207,7 @@ public abstract class MappedEmpPhoto {
         this.empno = empno;
     }
 
-    // ----------------------------------------------------------------------------------------------------- photoFormat
+    // --------------------------------------------------------------------------------- photoFormat
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
@@ -229,7 +229,7 @@ public abstract class MappedEmpPhoto {
         this.photoFormat = photoFormat;
     }
 
-    // --------------------------------------------------------------------------------------------------------- picture
+    // ------------------------------------------------------------------------------------- picture
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PICTURE} attribute.
@@ -251,7 +251,7 @@ public abstract class MappedEmpPhoto {
         this.picture = picture;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_EMPNO)
     @NotNull
@@ -265,7 +265,7 @@ public abstract class MappedEmpPhoto {
     )
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PHOTO_FORMAT)
     @NotNull
@@ -279,7 +279,7 @@ public abstract class MappedEmpPhoto {
     )
     private String photoFormat;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Lob
     @Basic(optional = true, fetch = FetchType.LAZY)
     @Column(name = COLUMN_NAME_PICTURE,

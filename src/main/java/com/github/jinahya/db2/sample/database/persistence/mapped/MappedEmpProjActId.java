@@ -20,7 +20,10 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -48,7 +51,7 @@ public abstract class MappedEmpProjActId
      */
     private static final long serialVersionUID = 1L;
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_EMPNO} column.
@@ -56,7 +59,7 @@ public abstract class MappedEmpProjActId
      */
     public static final String ATTRIBUTE_NAME_EMPNO = MappedEmpProjAct.ATTRIBUTE_NAME_EMPNO;
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_PROJNO} column.
@@ -64,7 +67,7 @@ public abstract class MappedEmpProjActId
      */
     public static final String ATTRIBUTE_NAME_PROJNO = MappedEmpProjAct.ATTRIBUTE_NAME_PROJNO;
 
-    // ----------------------------------------------------------------------------------------------------------- ACTNO
+    // --------------------------------------------------------------------------------------- ACTNO
 
     /**
      * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_ACTNO} column.
@@ -72,7 +75,7 @@ public abstract class MappedEmpProjActId
      */
     public static final String ATTRIBUTE_NAME_ACTNO = MappedEmpProjAct.ATTRIBUTE_NAME_ACTNO;
 
-    // -------------------------------------------------------------------------------------------------------- EMSTDATE
+    // ------------------------------------------------------------------------------------ EMSTDATE
 
     /**
      * The name of the attribute which maps the {@value MappedEmpProjAct#COLUMN_NAME_EMSTDATE}
@@ -80,7 +83,7 @@ public abstract class MappedEmpProjActId
      */
     public static final String ATTRIBUTE_NAME_EMSTDATE = MappedEmpProjAct.ATTRIBUTE_NAME_EMSTDATE;
 
-    // ------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // STATIC_FACTORY_METHODS
 
     /**
@@ -100,7 +103,7 @@ public abstract class MappedEmpProjActId
             final Supplier<? extends T> instantiator,
             final String empno,
             final String projno,
-            final Short actno,
+            final Integer actno,
             final LocalDate emstdate) {
         Objects.requireNonNull(instantiator, "instantiator is null");
         final var instance =
@@ -112,7 +115,7 @@ public abstract class MappedEmpProjActId
         return instance;
     }
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -121,7 +124,7 @@ public abstract class MappedEmpProjActId
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -166,7 +169,7 @@ public abstract class MappedEmpProjActId
         return Objects.hash(getEmpno(), getProjno(), getActno(), getEmstdate());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -187,7 +190,7 @@ public abstract class MappedEmpProjActId
         this.empno = empno;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -209,7 +212,7 @@ public abstract class MappedEmpProjActId
         this.projno = projno;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- actno
+    // --------------------------------------------------------------------------------------- actno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
@@ -217,7 +220,7 @@ public abstract class MappedEmpProjActId
      * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
     @Nonnull
-    public Short getActno() {
+    public Integer getActno() {
         return actno;
     }
 
@@ -226,11 +229,11 @@ public abstract class MappedEmpProjActId
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Short actno) {
+    protected void setActno(@Nonnull final Integer actno) {
         this.actno = actno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- emstdate
+    // ------------------------------------------------------------------------------------ emstdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMSTDATE} attribute.
@@ -252,15 +255,17 @@ public abstract class MappedEmpProjActId
         this.emstdate = emstdate;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
-    private Short actno;
+    // ---------------------------------------------------------------------------------------------
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
+    private Integer actno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private LocalDate emstdate;
 }

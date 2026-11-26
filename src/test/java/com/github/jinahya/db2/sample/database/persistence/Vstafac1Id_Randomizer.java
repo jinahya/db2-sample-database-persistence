@@ -44,7 +44,7 @@ class Vstafac1Id_Randomizer
     public Vstafac1Id get() {
         final var instance = new Vstafac1Id();
         instance.setProjno(__Randomizer_Utils.string(10));
-        instance.setActno(__Randomizer_Utils.positiveShort());
+        instance.setActno(__Randomizer_Utils.positiveSmallint());
         instance.setStdate(__Randomizer_Utils.localDate());
         return instance;
     }

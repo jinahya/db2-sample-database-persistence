@@ -40,7 +40,7 @@ import java.time.LocalDate;
 public class ProjAct
         extends MappedProjAct {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -69,7 +69,7 @@ public class ProjAct
      *         whoever creates an instance sets it.
      */
     @Override
-    public void setActno(final Short actno) {
+    public void setActno(final Integer actno) {
         super.setActno(actno);
     }
 
@@ -85,7 +85,7 @@ public class ProjAct
         super.setAcstdate(acstdate);
     }
 
-    // --------------------------------------------------------------------------------------------------------- project
+    // ------------------------------------------------------------------------------------- project
 
     /**
      * Returns the project.
@@ -96,7 +96,7 @@ public class ProjAct
         return project;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the column(s) are part of the identifier, which the superclass writes
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = ProjAct.COLUMN_NAME_PROJNO,

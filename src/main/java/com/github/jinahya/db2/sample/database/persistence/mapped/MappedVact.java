@@ -20,12 +20,15 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -54,7 +57,7 @@ public abstract class MappedVact {
      */
     public static final String TABLE_NAME = "VACT";
 
-    // ----------------------------------------------------------------------------------------------------------- ACTNO
+    // --------------------------------------------------------------------------------------- ACTNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
@@ -73,7 +76,7 @@ public abstract class MappedVact {
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
-    // ---------------------------------------------------------------------------------------------------------- ACTKWD
+    // -------------------------------------------------------------------------------------- ACTKWD
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTKWD} attribute maps. The
@@ -102,7 +105,7 @@ public abstract class MappedVact {
      */
     public static final int SIZE_MAX_ACTKWD = COLUMN_LENGTH_ACTKWD;
 
-    // --------------------------------------------------------------------------------------------------------- ACTDESC
+    // ------------------------------------------------------------------------------------- ACTDESC
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTDESC} attribute maps. The
@@ -131,7 +134,7 @@ public abstract class MappedVact {
      */
     public static final int SIZE_MAX_ACTDESC = COLUMN_LENGTH_ACTDESC;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -140,7 +143,7 @@ public abstract class MappedVact {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -178,7 +181,7 @@ public abstract class MappedVact {
         return Objects.hashCode(getActno());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- actno
+    // --------------------------------------------------------------------------------------- actno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
@@ -186,7 +189,7 @@ public abstract class MappedVact {
      * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
     @Nonnull
-    public Short getActno() {
+    public Integer getActno() {
         return actno;
     }
 
@@ -195,11 +198,11 @@ public abstract class MappedVact {
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Short actno) {
+    protected void setActno(@Nonnull final Integer actno) {
         this.actno = actno;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- actkwd
+    // -------------------------------------------------------------------------------------- actkwd
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTKWD} attribute.
@@ -221,7 +224,7 @@ public abstract class MappedVact {
         this.actkwd = actkwd;
     }
 
-    // --------------------------------------------------------------------------------------------------------- actdesc
+    // ------------------------------------------------------------------------------------- actdesc
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTDESC} attribute.
@@ -243,8 +246,10 @@ public abstract class MappedVact {
         this.actdesc = actdesc;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
     @NotNull
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
@@ -253,9 +258,9 @@ public abstract class MappedVact {
             insertable = true,
             updatable = false
     )
-    private Short actno;
+    private Integer actno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_ACTKWD)
     @NotNull
@@ -268,7 +273,7 @@ public abstract class MappedVact {
     )
     private String actkwd;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_ACTDESC)
     @NotNull

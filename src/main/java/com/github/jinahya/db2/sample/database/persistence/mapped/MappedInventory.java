@@ -46,7 +46,7 @@ public abstract class MappedInventory {
      */
     public static final String TABLE_NAME = "INVENTORY";
 
-    // ------------------------------------------------------------------------------------------------------------- PID
+    // ----------------------------------------------------------------------------------------- PID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PID} attribute maps. The
@@ -75,7 +75,7 @@ public abstract class MappedInventory {
      */
     public static final int SIZE_MAX_PID = COLUMN_LENGTH_PID;
 
-    // -------------------------------------------------------------------------------------------------------- QUANTITY
+    // ------------------------------------------------------------------------------------ QUANTITY
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_QUANTITY} attribute maps.
@@ -94,7 +94,7 @@ public abstract class MappedInventory {
      */
     public static final String ATTRIBUTE_NAME_QUANTITY = "quantity";
 
-    // -------------------------------------------------------------------------------------------------------- LOCATION
+    // ------------------------------------------------------------------------------------ LOCATION
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_LOCATION} attribute maps.
@@ -123,7 +123,7 @@ public abstract class MappedInventory {
      */
     public static final int SIZE_MAX_LOCATION = COLUMN_LENGTH_LOCATION;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -132,7 +132,7 @@ public abstract class MappedInventory {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -170,7 +170,7 @@ public abstract class MappedInventory {
         return Objects.hashCode(getPid());
     }
 
-    // ------------------------------------------------------------------------------------------------------------- pid
+    // ----------------------------------------------------------------------------------------- pid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PID} attribute.
@@ -191,7 +191,7 @@ public abstract class MappedInventory {
         this.pid = pid;
     }
 
-    // -------------------------------------------------------------------------------------------------------- quantity
+    // ------------------------------------------------------------------------------------ quantity
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_QUANTITY} attribute.
@@ -213,7 +213,7 @@ public abstract class MappedInventory {
         this.quantity = quantity;
     }
 
-    // -------------------------------------------------------------------------------------------------------- location
+    // ------------------------------------------------------------------------------------ location
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute.
@@ -235,7 +235,7 @@ public abstract class MappedInventory {
         this.location = location;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PID)
     @NotNull
@@ -249,7 +249,7 @@ public abstract class MappedInventory {
     )
     private String pid;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_QUANTITY,
             nullable = COLUMN_NULLABLE_QUANTITY,
@@ -258,7 +258,7 @@ public abstract class MappedInventory {
     )
     private Integer quantity;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_LOCATION)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LOCATION,

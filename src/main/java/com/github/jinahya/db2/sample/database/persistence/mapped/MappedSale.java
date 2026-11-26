@@ -27,6 +27,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -58,7 +59,7 @@ public abstract class MappedSale {
      */
     public static final String TABLE_NAME = "SALES";
 
-    // ------------------------------------------------------------------------------------------------------ SALES_DATE
+    // ---------------------------------------------------------------------------------- SALES_DATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALES_DATE} attribute maps.
@@ -77,7 +78,7 @@ public abstract class MappedSale {
      */
     public static final String ATTRIBUTE_NAME_SALES_DATE = "salesDate";
 
-    // ---------------------------------------------------------------------------------------------------- SALES_PERSON
+    // -------------------------------------------------------------------------------- SALES_PERSON
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute
@@ -107,7 +108,7 @@ public abstract class MappedSale {
      */
     public static final int SIZE_MAX_SALES_PERSON = COLUMN_LENGTH_SALES_PERSON;
 
-    // ---------------------------------------------------------------------------------------------------------- REGION
+    // -------------------------------------------------------------------------------------- REGION
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_REGION} attribute maps. The
@@ -136,7 +137,7 @@ public abstract class MappedSale {
      */
     public static final int SIZE_MAX_REGION = COLUMN_LENGTH_REGION;
 
-    // ----------------------------------------------------------------------------------------------------------- SALES
+    // --------------------------------------------------------------------------------------- SALES
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALES} attribute maps. The
@@ -155,7 +156,15 @@ public abstract class MappedSale {
      */
     public static final String ATTRIBUTE_NAME_SALES = "sales";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_SALES} attribute. The value is {@value}.
+     *
+     * @implNote "Number of sales", as the documentation of the {@code SAMPLE} database describes
+     *         the column; the database does not enforce it.
+     */
+    public static final int ATTRIBUTE_MIN_SALES = 0;
+
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -164,7 +173,7 @@ public abstract class MappedSale {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -207,7 +216,7 @@ public abstract class MappedSale {
         return Objects.hash(getSalesDate(), getSalesPerson(), getRegion());
     }
 
-    // ------------------------------------------------------------------------------------------------------- salesDate
+    // ----------------------------------------------------------------------------------- salesDate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
@@ -229,7 +238,7 @@ public abstract class MappedSale {
         this.salesDate = salesDate;
     }
 
-    // ----------------------------------------------------------------------------------------------------- salesPerson
+    // --------------------------------------------------------------------------------- salesPerson
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
@@ -251,7 +260,7 @@ public abstract class MappedSale {
         this.salesPerson = salesPerson;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- region
+    // -------------------------------------------------------------------------------------- region
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_REGION} attribute.
@@ -273,7 +282,7 @@ public abstract class MappedSale {
         this.region = region;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- sales
+    // --------------------------------------------------------------------------------------- sales
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALES} attribute.
@@ -294,7 +303,7 @@ public abstract class MappedSale {
         this.sales = sales;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -306,7 +315,7 @@ public abstract class MappedSale {
     )
     private LocalDate salesDate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_SALES_PERSON)
     @NotNull
@@ -320,7 +329,7 @@ public abstract class MappedSale {
     )
     private String salesPerson;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_REGION)
     @NotNull
@@ -334,7 +343,8 @@ public abstract class MappedSale {
     )
     private String region;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @Min(ATTRIBUTE_MIN_SALES)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALES,
             nullable = COLUMN_NULLABLE_SALES,

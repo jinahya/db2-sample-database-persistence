@@ -52,7 +52,7 @@ public abstract class MappedProductSupplier {
      */
     public static final String TABLE_NAME = "PRODUCTSUPPLIER";
 
-    // ------------------------------------------------------------------------------------------------------------- PID
+    // ----------------------------------------------------------------------------------------- PID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PID} attribute maps. The
@@ -81,7 +81,7 @@ public abstract class MappedProductSupplier {
      */
     public static final int SIZE_MAX_PID = COLUMN_LENGTH_PID;
 
-    // ------------------------------------------------------------------------------------------------------------- SID
+    // ----------------------------------------------------------------------------------------- SID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SID} attribute maps. The
@@ -110,7 +110,7 @@ public abstract class MappedProductSupplier {
      */
     public static final int SIZE_MAX_SID = COLUMN_LENGTH_SID;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -119,7 +119,7 @@ public abstract class MappedProductSupplier {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -158,7 +158,7 @@ public abstract class MappedProductSupplier {
         return Objects.hash(getPid(), getSid());
     }
 
-    // ------------------------------------------------------------------------------------------------------------- pid
+    // ----------------------------------------------------------------------------------------- pid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PID} attribute.
@@ -179,7 +179,7 @@ public abstract class MappedProductSupplier {
         this.pid = pid;
     }
 
-    // ------------------------------------------------------------------------------------------------------------- sid
+    // ----------------------------------------------------------------------------------------- sid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SID} attribute.
@@ -200,7 +200,7 @@ public abstract class MappedProductSupplier {
         this.sid = sid;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PID)
     @NotNull
@@ -214,7 +214,7 @@ public abstract class MappedProductSupplier {
     )
     private String pid;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_SID)
     @NotNull

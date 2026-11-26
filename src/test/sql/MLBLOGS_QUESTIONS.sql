@@ -33,6 +33,17 @@ FROM MLBLOGS_QUESTIONS
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, QUESTION, of a table, which declares no primary key: the values which more
+-- than one row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT QUESTION, COUNT(*)
+FROM MLBLOGS_QUESTIONS
+GROUP BY QUESTION
+HAVING COUNT(*) > 1
+;
+
+
 -- ------------------------------------------------------------------------------------------------------------ QUESTION
 -- the shortest and the longest QUESTION, trailing spaces trimmed; 19 to 64 characters, of VARCHAR(1024) declared.
 SELECT MIN(LENGTH(RTRIM(QUESTION))), MAX(LENGTH(RTRIM(QUESTION)))

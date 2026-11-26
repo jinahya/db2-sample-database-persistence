@@ -56,7 +56,7 @@ public abstract class MappedVprojre1 {
      */
     public static final String TABLE_NAME = "VPROJRE1";
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
@@ -85,7 +85,7 @@ public abstract class MappedVprojre1 {
      */
     public static final int SIZE_MAX_PROJNO = COLUMN_LENGTH_PROJNO;
 
-    // -------------------------------------------------------------------------------------------------------- PROJNAME
+    // ------------------------------------------------------------------------------------ PROJNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps.
@@ -114,7 +114,7 @@ public abstract class MappedVprojre1 {
      */
     public static final int SIZE_MAX_PROJNAME = COLUMN_LENGTH_PROJNAME;
 
-    // --------------------------------------------------------------------------------------------------------- PROJDEP
+    // ------------------------------------------------------------------------------------- PROJDEP
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJDEP} attribute maps. The
@@ -143,7 +143,7 @@ public abstract class MappedVprojre1 {
      */
     public static final int SIZE_MAX_PROJDEP = COLUMN_LENGTH_PROJDEP;
 
-    // --------------------------------------------------------------------------------------------------------- RESPEMP
+    // ------------------------------------------------------------------------------------- RESPEMP
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The
@@ -172,7 +172,7 @@ public abstract class MappedVprojre1 {
      */
     public static final int SIZE_MAX_RESPEMP = COLUMN_LENGTH_RESPEMP;
 
-    // -------------------------------------------------------------------------------------------------------- FIRSTNME
+    // ------------------------------------------------------------------------------------ FIRSTNME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps.
@@ -201,7 +201,7 @@ public abstract class MappedVprojre1 {
      */
     public static final int SIZE_MAX_FIRSTNME = COLUMN_LENGTH_FIRSTNME;
 
-    // --------------------------------------------------------------------------------------------------------- MIDINIT
+    // ------------------------------------------------------------------------------------- MIDINIT
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The
@@ -230,7 +230,7 @@ public abstract class MappedVprojre1 {
      */
     public static final int SIZE_MAX_MIDINIT = COLUMN_LENGTH_MIDINIT;
 
-    // -------------------------------------------------------------------------------------------------------- LASTNAME
+    // ------------------------------------------------------------------------------------ LASTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
@@ -259,7 +259,7 @@ public abstract class MappedVprojre1 {
      */
     public static final int SIZE_MAX_LASTNAME = COLUMN_LENGTH_LASTNAME;
 
-    // --------------------------------------------------------------------------------------------------------- MAJPROJ
+    // ------------------------------------------------------------------------------------- MAJPROJ
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MAJPROJ} attribute maps. The
@@ -288,7 +288,7 @@ public abstract class MappedVprojre1 {
      */
     public static final int SIZE_MAX_MAJPROJ = COLUMN_LENGTH_MAJPROJ;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -297,7 +297,7 @@ public abstract class MappedVprojre1 {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -340,7 +340,7 @@ public abstract class MappedVprojre1 {
         return Objects.hashCode(getProjno());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -362,7 +362,7 @@ public abstract class MappedVprojre1 {
         this.projno = projno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- projname
+    // ------------------------------------------------------------------------------------ projname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
@@ -384,7 +384,7 @@ public abstract class MappedVprojre1 {
         this.projname = projname;
     }
 
-    // --------------------------------------------------------------------------------------------------------- projdep
+    // ------------------------------------------------------------------------------------- projdep
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJDEP} attribute.
@@ -406,7 +406,7 @@ public abstract class MappedVprojre1 {
         this.projdep = projdep;
     }
 
-    // --------------------------------------------------------------------------------------------------------- respemp
+    // ------------------------------------------------------------------------------------- respemp
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
@@ -428,7 +428,7 @@ public abstract class MappedVprojre1 {
         this.respemp = respemp;
     }
 
-    // -------------------------------------------------------------------------------------------------------- firstnme
+    // ------------------------------------------------------------------------------------ firstnme
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
@@ -450,7 +450,7 @@ public abstract class MappedVprojre1 {
         this.firstnme = firstnme;
     }
 
-    // --------------------------------------------------------------------------------------------------------- midinit
+    // ------------------------------------------------------------------------------------- midinit
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
@@ -472,7 +472,7 @@ public abstract class MappedVprojre1 {
         this.midinit = midinit;
     }
 
-    // -------------------------------------------------------------------------------------------------------- lastname
+    // ------------------------------------------------------------------------------------ lastname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
@@ -494,7 +494,7 @@ public abstract class MappedVprojre1 {
         this.lastname = lastname;
     }
 
-    // --------------------------------------------------------------------------------------------------------- majproj
+    // ------------------------------------------------------------------------------------- majproj
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute.
@@ -516,7 +516,7 @@ public abstract class MappedVprojre1 {
         this.majproj = majproj;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
@@ -530,7 +530,7 @@ public abstract class MappedVprojre1 {
     )
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNAME)
     @NotNull
@@ -543,7 +543,7 @@ public abstract class MappedVprojre1 {
     )
     private String projname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJDEP)
     @NotNull
@@ -556,7 +556,7 @@ public abstract class MappedVprojre1 {
     )
     private String projdep;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESPEMP)
     @NotNull
@@ -569,7 +569,7 @@ public abstract class MappedVprojre1 {
     )
     private String respemp;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_FIRSTNME)
     @NotNull
@@ -582,7 +582,7 @@ public abstract class MappedVprojre1 {
     )
     private String firstnme;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
@@ -593,7 +593,7 @@ public abstract class MappedVprojre1 {
     )
     private String midinit;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_LASTNAME)
     @NotNull
@@ -606,7 +606,7 @@ public abstract class MappedVprojre1 {
     )
     private String lastname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MAJPROJ)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MAJPROJ,

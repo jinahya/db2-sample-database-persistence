@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Vact
         extends MappedVact {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

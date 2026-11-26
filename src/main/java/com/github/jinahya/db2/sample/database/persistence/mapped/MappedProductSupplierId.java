@@ -46,7 +46,7 @@ public abstract class MappedProductSupplierId
      */
     private static final long serialVersionUID = 1L;
 
-    // ------------------------------------------------------------------------------------------------------------- PID
+    // ----------------------------------------------------------------------------------------- PID
 
     /**
      * The name of the attribute which maps the {@value MappedProductSupplier#COLUMN_NAME_PID}
@@ -54,7 +54,7 @@ public abstract class MappedProductSupplierId
      */
     public static final String ATTRIBUTE_NAME_PID = MappedProductSupplier.ATTRIBUTE_NAME_PID;
 
-    // ------------------------------------------------------------------------------------------------------------- SID
+    // ----------------------------------------------------------------------------------------- SID
 
     /**
      * The name of the attribute which maps the {@value MappedProductSupplier#COLUMN_NAME_SID}
@@ -62,7 +62,7 @@ public abstract class MappedProductSupplierId
      */
     public static final String ATTRIBUTE_NAME_SID = MappedProductSupplier.ATTRIBUTE_NAME_SID;
 
-    // ------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // STATIC_FACTORY_METHODS
 
     /**
@@ -88,7 +88,7 @@ public abstract class MappedProductSupplierId
         return instance;
     }
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -97,7 +97,7 @@ public abstract class MappedProductSupplierId
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -136,7 +136,7 @@ public abstract class MappedProductSupplierId
         return Objects.hash(getPid(), getSid());
     }
 
-    // ------------------------------------------------------------------------------------------------------------- pid
+    // ----------------------------------------------------------------------------------------- pid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PID} attribute.
@@ -157,7 +157,7 @@ public abstract class MappedProductSupplierId
         this.pid = pid;
     }
 
-    // ------------------------------------------------------------------------------------------------------------- sid
+    // ----------------------------------------------------------------------------------------- sid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SID} attribute.
@@ -178,9 +178,9 @@ public abstract class MappedProductSupplierId
         this.sid = sid;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String pid;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String sid;
 }

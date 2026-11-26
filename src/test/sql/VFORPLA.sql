@@ -33,6 +33,18 @@ FROM VFORPLA
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, PROJNO, of a view, which has no key: the values which more than one row
+-- shares.
+-- 14 PROJNOs, in 68 rows: the view repeats a project once per row of EMPPROJACT, so the rows of each are copies of one
+-- another, which a query returns as one instance.
+SELECT PROJNO, COUNT(*)
+FROM VFORPLA
+GROUP BY PROJNO
+HAVING COUNT(*) > 1
+;
+
+
 -- -------------------------------------------------------------------------------------------------------------- PROJNO
 -- the shortest and the longest PROJNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNO))), MAX(LENGTH(RTRIM(PROJNO)))

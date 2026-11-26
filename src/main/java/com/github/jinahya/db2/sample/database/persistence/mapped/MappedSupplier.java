@@ -49,7 +49,7 @@ public abstract class MappedSupplier {
      */
     public static final String TABLE_NAME = "SUPPLIERS";
 
-    // ------------------------------------------------------------------------------------------------------------- SID
+    // ----------------------------------------------------------------------------------------- SID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SID} attribute maps. The
@@ -78,7 +78,7 @@ public abstract class MappedSupplier {
      */
     public static final int SIZE_MAX_SID = COLUMN_LENGTH_SID;
 
-    // ------------------------------------------------------------------------------------------------------------ ADDR
+    // ---------------------------------------------------------------------------------------- ADDR
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ADDR} attribute maps. The
@@ -106,7 +106,7 @@ public abstract class MappedSupplier {
      */
     public static final String ATTRIBUTE_NAME_ADDR = "addr";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -115,7 +115,7 @@ public abstract class MappedSupplier {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -152,7 +152,7 @@ public abstract class MappedSupplier {
         return Objects.hashCode(getSid());
     }
 
-    // ------------------------------------------------------------------------------------------------------------- sid
+    // ----------------------------------------------------------------------------------------- sid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SID} attribute.
@@ -173,7 +173,7 @@ public abstract class MappedSupplier {
         this.sid = sid;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ addr
+    // ---------------------------------------------------------------------------------------- addr
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ADDR} attribute; the column is an XML, bound
@@ -195,7 +195,7 @@ public abstract class MappedSupplier {
         this.addr = addr;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_SID)
     @NotNull
@@ -209,7 +209,7 @@ public abstract class MappedSupplier {
     )
     private String sid;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Convert(converter = SupplierinfoStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ADDR,

@@ -32,7 +32,7 @@ public class Vastrde1Id
 
     private static final long serialVersionUID = 1L;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

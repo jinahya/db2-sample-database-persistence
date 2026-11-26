@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
@@ -28,6 +29,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -65,7 +68,7 @@ public abstract class MappedVempprojact {
      */
     public static final String TABLE_NAME = "VEMPPROJACT";
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
@@ -94,7 +97,7 @@ public abstract class MappedVempprojact {
      */
     public static final int SIZE_MAX_EMPNO = COLUMN_LENGTH_EMPNO;
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
@@ -123,7 +126,7 @@ public abstract class MappedVempprojact {
      */
     public static final int SIZE_MAX_PROJNO = COLUMN_LENGTH_PROJNO;
 
-    // ----------------------------------------------------------------------------------------------------------- ACTNO
+    // --------------------------------------------------------------------------------------- ACTNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
@@ -142,7 +145,7 @@ public abstract class MappedVempprojact {
      */
     public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
-    // --------------------------------------------------------------------------------------------------------- EMPTIME
+    // ------------------------------------------------------------------------------------- EMPTIME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPTIME} attribute maps. The
@@ -184,7 +187,7 @@ public abstract class MappedVempprojact {
      */
     public static final int DIGITS_FRACTION_EMPTIME = COLUMN_SCALE_EMPTIME;
 
-    // -------------------------------------------------------------------------------------------------------- EMSTDATE
+    // ------------------------------------------------------------------------------------ EMSTDATE
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMSTDATE} attribute maps.
@@ -203,7 +206,7 @@ public abstract class MappedVempprojact {
      */
     public static final String ATTRIBUTE_NAME_EMSTDATE = "emstdate";
 
-    // -------------------------------------------------------------------------------------------------------- EMENDATE
+    // ------------------------------------------------------------------------------------ EMENDATE
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMENDATE} attribute maps.
@@ -222,7 +225,7 @@ public abstract class MappedVempprojact {
      */
     public static final String ATTRIBUTE_NAME_EMENDATE = "emendate";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -231,7 +234,7 @@ public abstract class MappedVempprojact {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -278,7 +281,7 @@ public abstract class MappedVempprojact {
         return Objects.hash(getEmpno(), getProjno(), getActno(), getEmstdate());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -299,7 +302,7 @@ public abstract class MappedVempprojact {
         this.empno = empno;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -321,7 +324,7 @@ public abstract class MappedVempprojact {
         this.projno = projno;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- actno
+    // --------------------------------------------------------------------------------------- actno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
@@ -329,7 +332,7 @@ public abstract class MappedVempprojact {
      * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
     @Nonnull
-    public Short getActno() {
+    public Integer getActno() {
         return actno;
     }
 
@@ -338,11 +341,11 @@ public abstract class MappedVempprojact {
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Short actno) {
+    protected void setActno(@Nonnull final Integer actno) {
         this.actno = actno;
     }
 
-    // --------------------------------------------------------------------------------------------------------- emptime
+    // ------------------------------------------------------------------------------------- emptime
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPTIME} attribute.
@@ -364,7 +367,7 @@ public abstract class MappedVempprojact {
         this.emptime = emptime;
     }
 
-    // -------------------------------------------------------------------------------------------------------- emstdate
+    // ------------------------------------------------------------------------------------ emstdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMSTDATE} attribute.
@@ -386,7 +389,7 @@ public abstract class MappedVempprojact {
         this.emstdate = emstdate;
     }
 
-    // -------------------------------------------------------------------------------------------------------- emendate
+    // ------------------------------------------------------------------------------------ emendate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMENDATE} attribute.
@@ -408,7 +411,7 @@ public abstract class MappedVempprojact {
         this.emendate = emendate;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_EMPNO)
     @NotNull
@@ -422,7 +425,7 @@ public abstract class MappedVempprojact {
     )
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
@@ -436,8 +439,10 @@ public abstract class MappedVempprojact {
     )
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
     @NotNull
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
@@ -446,9 +451,9 @@ public abstract class MappedVempprojact {
             insertable = true,
             updatable = false
     )
-    private Short actno;
+    private Integer actno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Digits(integer = DIGITS_INTEGER_EMPTIME, fraction = DIGITS_FRACTION_EMPTIME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPTIME,
@@ -460,7 +465,7 @@ public abstract class MappedVempprojact {
     )
     private BigDecimal emptime;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -472,7 +477,7 @@ public abstract class MappedVempprojact {
     )
     private LocalDate emstdate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMENDATE,
             nullable = COLUMN_NULLABLE_EMENDATE,

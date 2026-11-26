@@ -46,7 +46,7 @@ public abstract class MappedCatalog {
      */
     public static final String TABLE_NAME = "CATALOG";
 
-    // ------------------------------------------------------------------------------------------------------------ NAME
+    // ---------------------------------------------------------------------------------------- NAME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The
@@ -75,7 +75,7 @@ public abstract class MappedCatalog {
      */
     public static final int SIZE_MAX_NAME = COLUMN_LENGTH_NAME;
 
-    // ---------------------------------------------------------------------------------------------------------- CATLOG
+    // -------------------------------------------------------------------------------------- CATLOG
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_CATLOG} attribute maps. The
@@ -103,7 +103,7 @@ public abstract class MappedCatalog {
      */
     public static final String ATTRIBUTE_NAME_CATLOG = "catlog";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -112,7 +112,7 @@ public abstract class MappedCatalog {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -149,7 +149,7 @@ public abstract class MappedCatalog {
         return Objects.hashCode(getName());
     }
 
-    // ------------------------------------------------------------------------------------------------------------ name
+    // ---------------------------------------------------------------------------------------- name
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_NAME} attribute.
@@ -170,7 +170,7 @@ public abstract class MappedCatalog {
         this.name = name;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- catlog
+    // -------------------------------------------------------------------------------------- catlog
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_CATLOG} attribute, serialized; the column is
@@ -193,7 +193,7 @@ public abstract class MappedCatalog {
         this.catlog = catlog;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_NAME)
     @NotNull
@@ -207,7 +207,7 @@ public abstract class MappedCatalog {
     )
     private String name;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_CATLOG,
             nullable = COLUMN_NULLABLE_CATLOG,

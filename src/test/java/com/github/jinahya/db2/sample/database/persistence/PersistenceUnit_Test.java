@@ -82,7 +82,7 @@ class PersistenceUnit_Test {
             employee.setEmpno("000010");
             employee.setFirstnme("CHRISTINE");
             employee.setLastname("HAAS");
-            employee.setEdlevel((short) 18);
+            employee.setEdlevel(18);
             em.persist(employee);
             final var photo = new EmpPhoto();
             photo.setEmpno(employee.getEmpno());
@@ -113,7 +113,7 @@ class PersistenceUnit_Test {
             employee.setEmpno("000010");
             employee.setFirstnme("CHRISTINE");
             employee.setLastname("HAAS");
-            employee.setEdlevel((short) 18);
+            employee.setEdlevel(18);
             employee.setWorkdeptDepartment(department);
             em.persist(employee);
             em.flush();
@@ -126,7 +126,7 @@ class PersistenceUnit_Test {
         });
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private <R> R applyInTransactionAndRollback(
             final Function<? super EntityManager, ? extends R> function) {
         final var transaction = entityManager.getTransaction();
@@ -138,7 +138,7 @@ class PersistenceUnit_Test {
         }
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @__TestPU
     @Inject
     private EntityManagerFactory entityManagerFactory;

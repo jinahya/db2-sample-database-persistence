@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Act
         extends MappedAct {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -51,7 +51,7 @@ public class Act
      *         whoever creates an instance sets it.
      */
     @Override
-    public void setActno(final Short actno) {
+    public void setActno(final Integer actno) {
         super.setActno(actno);
     }
 }

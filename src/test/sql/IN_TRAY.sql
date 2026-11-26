@@ -33,6 +33,17 @@ FROM IN_TRAY
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, RECEIVED, of a table, which declares no primary key: the values which more
+-- than one row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT RECEIVED, COUNT(*)
+FROM IN_TRAY
+GROUP BY RECEIVED
+HAVING COUNT(*) > 1
+;
+
+
 -- ------------------------------------------------------------------------------------------------------------ RECEIVED
 -- the earliest and the latest RECEIVED; 1988-12-22-14.07.21.136421 and 1988-12-25-17.12.30.000000.
 SELECT MIN(RECEIVED), MAX(RECEIVED)

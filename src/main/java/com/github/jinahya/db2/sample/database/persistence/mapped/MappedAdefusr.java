@@ -59,7 +59,7 @@ public abstract class MappedAdefusr {
      */
     public static final String TABLE_NAME = "ADEFUSR";
 
-    // -------------------------------------------------------------------------------------------------------- WORKDEPT
+    // ------------------------------------------------------------------------------------ WORKDEPT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute maps.
@@ -88,7 +88,7 @@ public abstract class MappedAdefusr {
      */
     public static final int SIZE_MAX_WORKDEPT = COLUMN_LENGTH_WORKDEPT;
 
-    // ------------------------------------------------------------------------------------------------- NO_OF_EMPLOYEES
+    // ----------------------------------------------------------------------------- NO_OF_EMPLOYEES
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_NO_OF_EMPLOYEES} attribute
@@ -107,7 +107,7 @@ public abstract class MappedAdefusr {
      */
     public static final String ATTRIBUTE_NAME_NO_OF_EMPLOYEES = "noOfEmployees";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -116,7 +116,7 @@ public abstract class MappedAdefusr {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -153,7 +153,7 @@ public abstract class MappedAdefusr {
         return Objects.hashCode(getWorkdept());
     }
 
-    // -------------------------------------------------------------------------------------------------------- workdept
+    // ------------------------------------------------------------------------------------ workdept
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute.
@@ -175,7 +175,7 @@ public abstract class MappedAdefusr {
         this.workdept = workdept;
     }
 
-    // --------------------------------------------------------------------------------------------------- noOfEmployees
+    // ------------------------------------------------------------------------------- noOfEmployees
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_NO_OF_EMPLOYEES} attribute.
@@ -197,7 +197,7 @@ public abstract class MappedAdefusr {
         this.noOfEmployees = noOfEmployees;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_WORKDEPT)
     @NotNull
@@ -211,7 +211,7 @@ public abstract class MappedAdefusr {
     )
     private String workdept;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)

@@ -36,7 +36,7 @@ import jakarta.persistence.Table;
 public class Vastrde2
         extends MappedVastrde2 {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

@@ -52,7 +52,7 @@ public abstract class MappedInTray {
      */
     public static final String TABLE_NAME = "IN_TRAY";
 
-    // -------------------------------------------------------------------------------------------------------- RECEIVED
+    // ------------------------------------------------------------------------------------ RECEIVED
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_RECEIVED} attribute maps.
@@ -71,7 +71,7 @@ public abstract class MappedInTray {
      */
     public static final String ATTRIBUTE_NAME_RECEIVED = "received";
 
-    // ---------------------------------------------------------------------------------------------------------- SOURCE
+    // -------------------------------------------------------------------------------------- SOURCE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SOURCE} attribute maps. The
@@ -100,7 +100,7 @@ public abstract class MappedInTray {
      */
     public static final int SIZE_MAX_SOURCE = COLUMN_LENGTH_SOURCE;
 
-    // --------------------------------------------------------------------------------------------------------- SUBJECT
+    // ------------------------------------------------------------------------------------- SUBJECT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SUBJECT} attribute maps.
@@ -129,7 +129,7 @@ public abstract class MappedInTray {
      */
     public static final int SIZE_MAX_SUBJECT = COLUMN_LENGTH_SUBJECT;
 
-    // ------------------------------------------------------------------------------------------------------- NOTE_TEXT
+    // ----------------------------------------------------------------------------------- NOTE_TEXT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute maps.
@@ -158,7 +158,7 @@ public abstract class MappedInTray {
      */
     public static final int SIZE_MAX_NOTE_TEXT = COLUMN_LENGTH_NOTE_TEXT;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -167,7 +167,7 @@ public abstract class MappedInTray {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -206,7 +206,7 @@ public abstract class MappedInTray {
         return Objects.hashCode(getReceived());
     }
 
-    // -------------------------------------------------------------------------------------------------------- received
+    // ------------------------------------------------------------------------------------ received
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RECEIVED} attribute.
@@ -228,7 +228,7 @@ public abstract class MappedInTray {
         this.received = received;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- source
+    // -------------------------------------------------------------------------------------- source
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SOURCE} attribute.
@@ -250,7 +250,7 @@ public abstract class MappedInTray {
         this.source = source;
     }
 
-    // --------------------------------------------------------------------------------------------------------- subject
+    // ------------------------------------------------------------------------------------- subject
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SUBJECT} attribute.
@@ -272,7 +272,7 @@ public abstract class MappedInTray {
         this.subject = subject;
     }
 
-    // -------------------------------------------------------------------------------------------------------- noteText
+    // ------------------------------------------------------------------------------------ noteText
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute.
@@ -294,7 +294,7 @@ public abstract class MappedInTray {
         this.noteText = noteText;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -306,7 +306,7 @@ public abstract class MappedInTray {
     )
     private LocalDateTime received;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_SOURCE)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SOURCE,
@@ -317,7 +317,7 @@ public abstract class MappedInTray {
     )
     private String source;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_SUBJECT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SUBJECT,
@@ -328,7 +328,7 @@ public abstract class MappedInTray {
     )
     private String subject;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_NOTE_TEXT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NOTE_TEXT,

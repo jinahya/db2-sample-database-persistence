@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class MlblogsQuestion
         extends MappedMlblogsQuestion {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

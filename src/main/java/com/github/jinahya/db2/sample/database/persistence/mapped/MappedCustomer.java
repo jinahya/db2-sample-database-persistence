@@ -48,7 +48,7 @@ public abstract class MappedCustomer {
      */
     public static final String TABLE_NAME = "CUSTOMER";
 
-    // ------------------------------------------------------------------------------------------------------------- CID
+    // ----------------------------------------------------------------------------------------- CID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_CID} attribute maps. The
@@ -67,7 +67,7 @@ public abstract class MappedCustomer {
      */
     public static final String ATTRIBUTE_NAME_CID = "cid";
 
-    // ------------------------------------------------------------------------------------------------------------ INFO
+    // ---------------------------------------------------------------------------------------- INFO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_INFO} attribute maps. The
@@ -95,7 +95,7 @@ public abstract class MappedCustomer {
      */
     public static final String ATTRIBUTE_NAME_INFO = "info";
 
-    // --------------------------------------------------------------------------------------------------------- HISTORY
+    // ------------------------------------------------------------------------------------- HISTORY
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_HISTORY} attribute maps.
@@ -123,7 +123,7 @@ public abstract class MappedCustomer {
      */
     public static final String ATTRIBUTE_NAME_HISTORY = "history";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -132,7 +132,7 @@ public abstract class MappedCustomer {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -170,7 +170,7 @@ public abstract class MappedCustomer {
         return Objects.hashCode(getCid());
     }
 
-    // ------------------------------------------------------------------------------------------------------------- cid
+    // ----------------------------------------------------------------------------------------- cid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_CID} attribute.
@@ -191,7 +191,7 @@ public abstract class MappedCustomer {
         this.cid = cid;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ info
+    // ---------------------------------------------------------------------------------------- info
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_INFO} attribute; the column is an XML, bound
@@ -213,7 +213,7 @@ public abstract class MappedCustomer {
         this.info = info;
     }
 
-    // --------------------------------------------------------------------------------------------------------- history
+    // ------------------------------------------------------------------------------------- history
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_HISTORY} attribute, serialized; the column
@@ -236,7 +236,7 @@ public abstract class MappedCustomer {
         this.history = history;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -248,7 +248,7 @@ public abstract class MappedCustomer {
     )
     private Long cid;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Convert(converter = CustomerinfoStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_INFO,
@@ -259,7 +259,7 @@ public abstract class MappedCustomer {
     )
     private Customerinfo info;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_HISTORY,
             nullable = COLUMN_NULLABLE_HISTORY,

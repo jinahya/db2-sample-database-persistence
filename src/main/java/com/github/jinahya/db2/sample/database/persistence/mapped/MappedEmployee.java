@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
@@ -27,8 +28,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
@@ -58,7 +63,7 @@ public abstract class MappedEmployee {
      */
     public static final String TABLE_NAME = "EMPLOYEE";
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
@@ -87,7 +92,7 @@ public abstract class MappedEmployee {
      */
     public static final int SIZE_MAX_EMPNO = COLUMN_LENGTH_EMPNO;
 
-    // -------------------------------------------------------------------------------------------------------- FIRSTNME
+    // ------------------------------------------------------------------------------------ FIRSTNME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps.
@@ -116,7 +121,7 @@ public abstract class MappedEmployee {
      */
     public static final int SIZE_MAX_FIRSTNME = COLUMN_LENGTH_FIRSTNME;
 
-    // --------------------------------------------------------------------------------------------------------- MIDINIT
+    // ------------------------------------------------------------------------------------- MIDINIT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps.
@@ -145,7 +150,7 @@ public abstract class MappedEmployee {
      */
     public static final int SIZE_MAX_MIDINIT = COLUMN_LENGTH_MIDINIT;
 
-    // -------------------------------------------------------------------------------------------------------- LASTNAME
+    // ------------------------------------------------------------------------------------ LASTNAME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
@@ -174,7 +179,7 @@ public abstract class MappedEmployee {
      */
     public static final int SIZE_MAX_LASTNAME = COLUMN_LENGTH_LASTNAME;
 
-    // -------------------------------------------------------------------------------------------------------- WORKDEPT
+    // ------------------------------------------------------------------------------------ WORKDEPT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute maps.
@@ -203,7 +208,7 @@ public abstract class MappedEmployee {
      */
     public static final int SIZE_MAX_WORKDEPT = COLUMN_LENGTH_WORKDEPT;
 
-    // --------------------------------------------------------------------------------------------------------- PHONENO
+    // ------------------------------------------------------------------------------------- PHONENO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PHONENO} attribute maps.
@@ -232,7 +237,17 @@ public abstract class MappedEmployee {
      */
     public static final int SIZE_MAX_PHONENO = COLUMN_LENGTH_PHONENO;
 
-    // -------------------------------------------------------------------------------------------------------- HIREDATE
+    /**
+     * The regular expression of the {@value #ATTRIBUTE_NAME_PHONENO} attribute. The value is
+     * {@value}.
+     *
+     * @implNote four digits, as the table's {@code NUMBER} check constraint,
+     *         {@code PHONENO >= '0000' AND PHONENO <= '9999'}, means it; the constraint compares
+     *         the text, so it lets through what is not a digit, which this does not.
+     */
+    public static final String ATTRIBUTE_REGEXP_PHONENO = "[0-9]{4}";
+
+    // ------------------------------------------------------------------------------------ HIREDATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_HIREDATE} attribute maps.
@@ -251,7 +266,7 @@ public abstract class MappedEmployee {
      */
     public static final String ATTRIBUTE_NAME_HIREDATE = "hiredate";
 
-    // ------------------------------------------------------------------------------------------------------------- JOB
+    // ----------------------------------------------------------------------------------------- JOB
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_JOB} attribute maps. The
@@ -280,7 +295,7 @@ public abstract class MappedEmployee {
      */
     public static final int SIZE_MAX_JOB = COLUMN_LENGTH_JOB;
 
-    // --------------------------------------------------------------------------------------------------------- EDLEVEL
+    // ------------------------------------------------------------------------------------- EDLEVEL
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EDLEVEL} attribute maps.
@@ -299,7 +314,15 @@ public abstract class MappedEmployee {
      */
     public static final String ATTRIBUTE_NAME_EDLEVEL = "edlevel";
 
-    // ------------------------------------------------------------------------------------------------------------- SEX
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_EDLEVEL} attribute. The value is {@value}.
+     *
+     * @implNote "Number of years of formal education", as the documentation of the {@code SAMPLE}
+     *         database describes the column; the database does not enforce it.
+     */
+    public static final int ATTRIBUTE_MIN_EDLEVEL = 0;
+
+    // ----------------------------------------------------------------------------------------- SEX
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SEX} attribute maps. The
@@ -328,7 +351,15 @@ public abstract class MappedEmployee {
      */
     public static final int SIZE_MAX_SEX = COLUMN_LENGTH_SEX;
 
-    // ------------------------------------------------------------------------------------------------------- BIRTHDATE
+    /**
+     * The regular expression of the {@value #ATTRIBUTE_NAME_SEX} attribute. The value is {@value}.
+     *
+     * @implNote "Sex (M male, F female)", as the documentation of the {@code SAMPLE} database
+     *         describes the column; the database does not enforce it.
+     */
+    public static final String ATTRIBUTE_REGEXP_SEX = "[MF]";
+
+    // ----------------------------------------------------------------------------------- BIRTHDATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_BIRTHDATE} attribute maps.
@@ -347,7 +378,7 @@ public abstract class MappedEmployee {
      */
     public static final String ATTRIBUTE_NAME_BIRTHDATE = "birthdate";
 
-    // ---------------------------------------------------------------------------------------------------------- SALARY
+    // -------------------------------------------------------------------------------------- SALARY
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALARY} attribute maps. The
@@ -388,7 +419,15 @@ public abstract class MappedEmployee {
      */
     public static final int DIGITS_FRACTION_SALARY = COLUMN_SCALE_SALARY;
 
-    // ----------------------------------------------------------------------------------------------------------- BONUS
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The value is {@value}.
+     *
+     * @implNote "Yearly salary", as the documentation of the {@code SAMPLE} database describes the
+     *         column; the database does not enforce it.
+     */
+    public static final String ATTRIBUTE_DECIMAL_MIN_SALARY = "0";
+
+    // --------------------------------------------------------------------------------------- BONUS
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_BONUS} attribute maps. The
@@ -429,7 +468,15 @@ public abstract class MappedEmployee {
      */
     public static final int DIGITS_FRACTION_BONUS = COLUMN_SCALE_BONUS;
 
-    // ------------------------------------------------------------------------------------------------------------ COMM
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_BONUS} attribute. The value is {@value}.
+     *
+     * @implNote "Yearly bonus", as the documentation of the {@code SAMPLE} database describes the
+     *         column; the database does not enforce it.
+     */
+    public static final String ATTRIBUTE_DECIMAL_MIN_BONUS = "0";
+
+    // ---------------------------------------------------------------------------------------- COMM
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_COMM} attribute maps. The
@@ -470,7 +517,15 @@ public abstract class MappedEmployee {
      */
     public static final int DIGITS_FRACTION_COMM = COLUMN_SCALE_COMM;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_COMM} attribute. The value is {@value}.
+     *
+     * @implNote "Yearly commission", as the documentation of the {@code SAMPLE} database describes
+     *         the column; the database does not enforce it.
+     */
+    public static final String ATTRIBUTE_DECIMAL_MIN_COMM = "0";
+
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -479,7 +534,7 @@ public abstract class MappedEmployee {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -528,7 +583,7 @@ public abstract class MappedEmployee {
         return Objects.hashCode(getEmpno());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -549,7 +604,7 @@ public abstract class MappedEmployee {
         this.empno = empno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- firstnme
+    // ------------------------------------------------------------------------------------ firstnme
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
@@ -571,7 +626,7 @@ public abstract class MappedEmployee {
         this.firstnme = firstnme;
     }
 
-    // --------------------------------------------------------------------------------------------------------- midinit
+    // ------------------------------------------------------------------------------------- midinit
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
@@ -593,7 +648,7 @@ public abstract class MappedEmployee {
         this.midinit = midinit;
     }
 
-    // -------------------------------------------------------------------------------------------------------- lastname
+    // ------------------------------------------------------------------------------------ lastname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
@@ -615,7 +670,7 @@ public abstract class MappedEmployee {
         this.lastname = lastname;
     }
 
-    // -------------------------------------------------------------------------------------------------------- workdept
+    // ------------------------------------------------------------------------------------ workdept
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute, which is {@code null}
@@ -630,7 +685,7 @@ public abstract class MappedEmployee {
         return workdept;
     }
 
-    // --------------------------------------------------------------------------------------------------------- phoneno
+    // ------------------------------------------------------------------------------------- phoneno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PHONENO} attribute.
@@ -652,7 +707,7 @@ public abstract class MappedEmployee {
         this.phoneno = phoneno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- hiredate
+    // ------------------------------------------------------------------------------------ hiredate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_HIREDATE} attribute.
@@ -674,7 +729,7 @@ public abstract class MappedEmployee {
         this.hiredate = hiredate;
     }
 
-    // ------------------------------------------------------------------------------------------------------------- job
+    // ----------------------------------------------------------------------------------------- job
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_JOB} attribute.
@@ -695,7 +750,7 @@ public abstract class MappedEmployee {
         this.job = job;
     }
 
-    // --------------------------------------------------------------------------------------------------------- edlevel
+    // ------------------------------------------------------------------------------------- edlevel
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EDLEVEL} attribute.
@@ -703,7 +758,7 @@ public abstract class MappedEmployee {
      * @return current value of {@value #ATTRIBUTE_NAME_EDLEVEL} attribute.
      */
     @Nonnull
-    public Short getEdlevel() {
+    public Integer getEdlevel() {
         return edlevel;
     }
 
@@ -713,11 +768,11 @@ public abstract class MappedEmployee {
      *
      * @param edlevel new value for {@value #ATTRIBUTE_NAME_EDLEVEL} attribute.
      */
-    public void setEdlevel(@Nonnull final Short edlevel) {
+    public void setEdlevel(@Nonnull final Integer edlevel) {
         this.edlevel = edlevel;
     }
 
-    // ------------------------------------------------------------------------------------------------------------- sex
+    // ----------------------------------------------------------------------------------------- sex
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SEX} attribute.
@@ -738,7 +793,7 @@ public abstract class MappedEmployee {
         this.sex = sex;
     }
 
-    // ------------------------------------------------------------------------------------------------------- birthdate
+    // ----------------------------------------------------------------------------------- birthdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_BIRTHDATE} attribute.
@@ -760,7 +815,7 @@ public abstract class MappedEmployee {
         this.birthdate = birthdate;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- salary
+    // -------------------------------------------------------------------------------------- salary
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALARY} attribute.
@@ -782,7 +837,7 @@ public abstract class MappedEmployee {
         this.salary = salary;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- bonus
+    // --------------------------------------------------------------------------------------- bonus
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_BONUS} attribute.
@@ -803,7 +858,7 @@ public abstract class MappedEmployee {
         this.bonus = bonus;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ comm
+    // ---------------------------------------------------------------------------------------- comm
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_COMM} attribute.
@@ -824,7 +879,7 @@ public abstract class MappedEmployee {
         this.comm = comm;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_EMPNO)
     @NotNull
@@ -838,7 +893,7 @@ public abstract class MappedEmployee {
     )
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_FIRSTNME)
     @NotNull
@@ -851,7 +906,7 @@ public abstract class MappedEmployee {
     )
     private String firstnme;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
@@ -862,7 +917,7 @@ public abstract class MappedEmployee {
     )
     private String midinit;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_LASTNAME)
     @NotNull
@@ -875,7 +930,7 @@ public abstract class MappedEmployee {
     )
     private String lastname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the extending entity owns the writable mapping of this column; see the class
     // documentation
     @Size(max = SIZE_MAX_WORKDEPT)
@@ -888,8 +943,9 @@ public abstract class MappedEmployee {
     )
     private String workdept;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // the table's NUMBER check constraint: PHONENO >= '0000' AND PHONENO <= '9999'
+    @Pattern(regexp = ATTRIBUTE_REGEXP_PHONENO)
     @Size(max = SIZE_MAX_PHONENO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PHONENO,
@@ -900,7 +956,7 @@ public abstract class MappedEmployee {
     )
     private String phoneno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_HIREDATE,
             nullable = COLUMN_NULLABLE_HIREDATE,
@@ -909,7 +965,7 @@ public abstract class MappedEmployee {
     )
     private LocalDate hiredate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_JOB)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_JOB,
@@ -920,8 +976,10 @@ public abstract class MappedEmployee {
     )
     private String job;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
+    @Min(ATTRIBUTE_MIN_EDLEVEL)
+    @Max(Db2Constants.SMALLINT_MAX)
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EDLEVEL,
@@ -929,9 +987,10 @@ public abstract class MappedEmployee {
             insertable = true,
             updatable = true
     )
-    private Short edlevel;
+    private Integer edlevel;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @Pattern(regexp = ATTRIBUTE_REGEXP_SEX)
     @Size(max = SIZE_MAX_SEX)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SEX,
@@ -942,7 +1001,7 @@ public abstract class MappedEmployee {
     )
     private String sex;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_BIRTHDATE,
             nullable = COLUMN_NULLABLE_BIRTHDATE,
@@ -951,7 +1010,8 @@ public abstract class MappedEmployee {
     )
     private LocalDate birthdate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @DecimalMin(ATTRIBUTE_DECIMAL_MIN_SALARY)
     @Digits(integer = DIGITS_INTEGER_SALARY, fraction = DIGITS_FRACTION_SALARY)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALARY,
@@ -963,7 +1023,8 @@ public abstract class MappedEmployee {
     )
     private BigDecimal salary;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @DecimalMin(ATTRIBUTE_DECIMAL_MIN_BONUS)
     @Digits(integer = DIGITS_INTEGER_BONUS, fraction = DIGITS_FRACTION_BONUS)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_BONUS,
@@ -975,7 +1036,8 @@ public abstract class MappedEmployee {
     )
     private BigDecimal bonus;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @DecimalMin(ATTRIBUTE_DECIMAL_MIN_COMM)
     @Digits(integer = DIGITS_INTEGER_COMM, fraction = DIGITS_FRACTION_COMM)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_COMM,

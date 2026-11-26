@@ -49,7 +49,7 @@ class ProjAct_Randomizer
     public ProjAct get() {
         final var instance = super.get();
         instance.setProjno(__Randomizer_Utils.string(6));
-        instance.setActno(__Randomizer_Utils.positiveShort());
+        instance.setActno(__Randomizer_Utils.positiveSmallint());
         instance.setAcstdate(__Randomizer_Utils.localDate());
         return instance;
     }

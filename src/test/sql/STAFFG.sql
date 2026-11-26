@@ -33,6 +33,17 @@ FROM STAFFG
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, ID, of a table, which declares no primary key: the values which more than one
+-- row shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT ID, COUNT(*)
+FROM STAFFG
+GROUP BY ID
+HAVING COUNT(*) > 1
+;
+
+
 -- ------------------------------------------------------------------------------------------------------------------ ID
 -- the smallest and the largest ID; 10 and 350.
 SELECT MIN(ID), MAX(ID)

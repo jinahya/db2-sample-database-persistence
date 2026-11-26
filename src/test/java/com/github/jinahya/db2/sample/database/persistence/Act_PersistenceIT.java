@@ -27,10 +27,10 @@ import lombok.extern.slf4j.Slf4j;
 })
 @Slf4j
 class Act_PersistenceIT
-        extends _Entity_PersistenceIT<Act, Short> {
+        extends _Entity_PersistenceIT<Act, Integer> {
 
     Act_PersistenceIT() {
-        super(Act.class, Short.class);
+        super(Act.class, Integer.class);
     }
 }
 

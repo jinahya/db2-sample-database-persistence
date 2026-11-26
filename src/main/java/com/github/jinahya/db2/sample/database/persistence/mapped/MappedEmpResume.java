@@ -54,7 +54,7 @@ public abstract class MappedEmpResume {
      */
     public static final String TABLE_NAME = "EMP_RESUME";
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
@@ -83,7 +83,7 @@ public abstract class MappedEmpResume {
      */
     public static final int SIZE_MAX_EMPNO = COLUMN_LENGTH_EMPNO;
 
-    // --------------------------------------------------------------------------------------------------- RESUME_FORMAT
+    // ------------------------------------------------------------------------------- RESUME_FORMAT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute
@@ -113,7 +113,7 @@ public abstract class MappedEmpResume {
      */
     public static final int SIZE_MAX_RESUME_FORMAT = COLUMN_LENGTH_RESUME_FORMAT;
 
-    // ---------------------------------------------------------------------------------------------------------- RESUME
+    // -------------------------------------------------------------------------------------- RESUME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESUME} attribute maps. The
@@ -137,7 +137,7 @@ public abstract class MappedEmpResume {
      */
     public static final String ATTRIBUTE_NAME_RESUME = "resume";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -146,7 +146,7 @@ public abstract class MappedEmpResume {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -186,7 +186,7 @@ public abstract class MappedEmpResume {
         return Objects.hash(getEmpno(), getResumeFormat());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -207,7 +207,7 @@ public abstract class MappedEmpResume {
         this.empno = empno;
     }
 
-    // ---------------------------------------------------------------------------------------------------- resumeFormat
+    // -------------------------------------------------------------------------------- resumeFormat
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
@@ -229,7 +229,7 @@ public abstract class MappedEmpResume {
         this.resumeFormat = resumeFormat;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- resume
+    // -------------------------------------------------------------------------------------- resume
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESUME} attribute.
@@ -251,7 +251,7 @@ public abstract class MappedEmpResume {
         this.resume = resume;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_EMPNO)
     @NotNull
@@ -265,7 +265,7 @@ public abstract class MappedEmpResume {
     )
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESUME_FORMAT)
     @NotNull
@@ -279,7 +279,7 @@ public abstract class MappedEmpResume {
     )
     private String resumeFormat;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Lob
     @Basic(optional = true, fetch = FetchType.LAZY)
     @Column(name = COLUMN_NAME_RESUME,

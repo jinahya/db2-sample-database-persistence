@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Adefusr
         extends MappedAdefusr {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

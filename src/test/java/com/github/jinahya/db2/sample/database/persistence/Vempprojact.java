@@ -36,7 +36,7 @@ import jakarta.persistence.Table;
 public class Vempprojact
         extends MappedVempprojact {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

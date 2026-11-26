@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Supplier
         extends MappedSupplier {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

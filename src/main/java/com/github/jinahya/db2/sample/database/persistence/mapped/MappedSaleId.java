@@ -47,7 +47,7 @@ public abstract class MappedSaleId
      */
     private static final long serialVersionUID = 1L;
 
-    // ------------------------------------------------------------------------------------------------------ SALES_DATE
+    // ---------------------------------------------------------------------------------- SALES_DATE
 
     /**
      * The name of the attribute which maps the {@value MappedSale#COLUMN_NAME_SALES_DATE} column.
@@ -55,7 +55,7 @@ public abstract class MappedSaleId
      */
     public static final String ATTRIBUTE_NAME_SALES_DATE = MappedSale.ATTRIBUTE_NAME_SALES_DATE;
 
-    // ---------------------------------------------------------------------------------------------------- SALES_PERSON
+    // -------------------------------------------------------------------------------- SALES_PERSON
 
     /**
      * The name of the attribute which maps the {@value MappedSale#COLUMN_NAME_SALES_PERSON} column.
@@ -63,7 +63,7 @@ public abstract class MappedSaleId
      */
     public static final String ATTRIBUTE_NAME_SALES_PERSON = MappedSale.ATTRIBUTE_NAME_SALES_PERSON;
 
-    // ---------------------------------------------------------------------------------------------------------- REGION
+    // -------------------------------------------------------------------------------------- REGION
 
     /**
      * The name of the attribute which maps the {@value MappedSale#COLUMN_NAME_REGION} column. The
@@ -71,7 +71,7 @@ public abstract class MappedSaleId
      */
     public static final String ATTRIBUTE_NAME_REGION = MappedSale.ATTRIBUTE_NAME_REGION;
 
-    // ------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // STATIC_FACTORY_METHODS
 
     /**
@@ -100,7 +100,7 @@ public abstract class MappedSaleId
         return instance;
     }
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -109,7 +109,7 @@ public abstract class MappedSaleId
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -151,7 +151,7 @@ public abstract class MappedSaleId
         return Objects.hash(getSalesDate(), getSalesPerson(), getRegion());
     }
 
-    // ------------------------------------------------------------------------------------------------------- salesDate
+    // ----------------------------------------------------------------------------------- salesDate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
@@ -173,7 +173,7 @@ public abstract class MappedSaleId
         this.salesDate = salesDate;
     }
 
-    // ----------------------------------------------------------------------------------------------------- salesPerson
+    // --------------------------------------------------------------------------------- salesPerson
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
@@ -195,7 +195,7 @@ public abstract class MappedSaleId
         this.salesPerson = salesPerson;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- region
+    // -------------------------------------------------------------------------------------- region
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_REGION} attribute.
@@ -217,12 +217,12 @@ public abstract class MappedSaleId
         this.region = region;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private LocalDate salesDate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String salesPerson;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     private String region;
 }

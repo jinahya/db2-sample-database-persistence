@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Vforpla
         extends MappedVforpla {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

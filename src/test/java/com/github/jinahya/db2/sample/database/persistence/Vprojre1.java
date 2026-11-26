@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Vprojre1
         extends MappedVprojre1 {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

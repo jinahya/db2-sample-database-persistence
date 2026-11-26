@@ -44,7 +44,7 @@ class Staff_Randomizer
     @Override
     public Staff get() {
         final var instance = super.get();
-        instance.setId(__Randomizer_Utils.positiveShort());
+        instance.setId(__Randomizer_Utils.positiveSmallint());
         return instance;
     }
 }

@@ -59,7 +59,7 @@ public abstract class MappedPurchaseOrder {
      */
     public static final String TABLE_NAME = "PURCHASEORDER";
 
-    // ------------------------------------------------------------------------------------------------------------ POID
+    // ---------------------------------------------------------------------------------------- POID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_POID} attribute maps. The
@@ -78,7 +78,7 @@ public abstract class MappedPurchaseOrder {
      */
     public static final String ATTRIBUTE_NAME_POID = "poid";
 
-    // ---------------------------------------------------------------------------------------------------------- STATUS
+    // -------------------------------------------------------------------------------------- STATUS
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_STATUS} attribute maps. The
@@ -107,7 +107,7 @@ public abstract class MappedPurchaseOrder {
      */
     public static final int SIZE_MAX_STATUS = COLUMN_LENGTH_STATUS;
 
-    // ---------------------------------------------------------------------------------------------------------- CUSTID
+    // -------------------------------------------------------------------------------------- CUSTID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_CUSTID} attribute maps. The
@@ -126,7 +126,7 @@ public abstract class MappedPurchaseOrder {
      */
     public static final String ATTRIBUTE_NAME_CUSTID = "custid";
 
-    // ------------------------------------------------------------------------------------------------------- ORDERDATE
+    // ----------------------------------------------------------------------------------- ORDERDATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ORDERDATE} attribute maps.
@@ -145,7 +145,7 @@ public abstract class MappedPurchaseOrder {
      */
     public static final String ATTRIBUTE_NAME_ORDERDATE = "orderdate";
 
-    // ---------------------------------------------------------------------------------------------------------- PORDER
+    // -------------------------------------------------------------------------------------- PORDER
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PORDER} attribute maps. The
@@ -173,7 +173,7 @@ public abstract class MappedPurchaseOrder {
      */
     public static final String ATTRIBUTE_NAME_PORDER = "porder";
 
-    // -------------------------------------------------------------------------------------------------------- COMMENTS
+    // ------------------------------------------------------------------------------------ COMMENTS
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_COMMENTS} attribute maps.
@@ -202,7 +202,7 @@ public abstract class MappedPurchaseOrder {
      */
     public static final int SIZE_MAX_COMMENTS = COLUMN_LENGTH_COMMENTS;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -211,7 +211,7 @@ public abstract class MappedPurchaseOrder {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -252,7 +252,7 @@ public abstract class MappedPurchaseOrder {
         return Objects.hashCode(getPoid());
     }
 
-    // ------------------------------------------------------------------------------------------------------------ poid
+    // ---------------------------------------------------------------------------------------- poid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_POID} attribute.
@@ -273,7 +273,7 @@ public abstract class MappedPurchaseOrder {
         this.poid = poid;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- status
+    // -------------------------------------------------------------------------------------- status
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_STATUS} attribute.
@@ -295,7 +295,7 @@ public abstract class MappedPurchaseOrder {
         this.status = status;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- custid
+    // -------------------------------------------------------------------------------------- custid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_CUSTID} attribute, which is {@code null}
@@ -310,7 +310,7 @@ public abstract class MappedPurchaseOrder {
         return custid;
     }
 
-    // ------------------------------------------------------------------------------------------------------- orderdate
+    // ----------------------------------------------------------------------------------- orderdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ORDERDATE} attribute.
@@ -332,7 +332,7 @@ public abstract class MappedPurchaseOrder {
         this.orderdate = orderdate;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- porder
+    // -------------------------------------------------------------------------------------- porder
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PORDER} attribute; the column is an XML,
@@ -355,7 +355,7 @@ public abstract class MappedPurchaseOrder {
         this.porder = porder;
     }
 
-    // -------------------------------------------------------------------------------------------------------- comments
+    // ------------------------------------------------------------------------------------ comments
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_COMMENTS} attribute.
@@ -377,7 +377,7 @@ public abstract class MappedPurchaseOrder {
         this.comments = comments;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
     @Id
@@ -389,7 +389,7 @@ public abstract class MappedPurchaseOrder {
     )
     private Long poid;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_STATUS)
     @NotNull
@@ -402,7 +402,7 @@ public abstract class MappedPurchaseOrder {
     )
     private String status;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the extending entity owns the writable mapping of this column; see the class
     // documentation
     @Basic(optional = true, fetch = FetchType.EAGER)
@@ -413,7 +413,7 @@ public abstract class MappedPurchaseOrder {
     )
     private Long custid;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ORDERDATE,
             nullable = COLUMN_NULLABLE_ORDERDATE,
@@ -422,7 +422,7 @@ public abstract class MappedPurchaseOrder {
     )
     private LocalDate orderdate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Convert(converter = PurchaseOrderStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PORDER,
@@ -433,7 +433,7 @@ public abstract class MappedPurchaseOrder {
     )
     private PurchaseOrder porder;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_COMMENTS)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_COMMENTS,

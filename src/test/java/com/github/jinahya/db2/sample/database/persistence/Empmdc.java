@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Empmdc
         extends MappedEmpmdc {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

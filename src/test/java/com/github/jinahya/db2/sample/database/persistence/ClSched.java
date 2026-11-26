@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class ClSched
         extends MappedClSched {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

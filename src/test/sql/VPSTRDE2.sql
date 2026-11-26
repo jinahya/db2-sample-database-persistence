@@ -33,6 +33,17 @@ FROM VPSTRDE2
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, PROJ1NO, of a view, which has no key: the values which more than one row
+-- shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT PROJ1NO, COUNT(*)
+FROM VPSTRDE2
+GROUP BY PROJ1NO
+HAVING COUNT(*) > 1
+;
+
+
 -- ------------------------------------------------------------------------------------------------------------- PROJ1NO
 -- the shortest and the longest PROJ1NO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJ1NO))), MAX(LENGTH(RTRIM(PROJ1NO)))

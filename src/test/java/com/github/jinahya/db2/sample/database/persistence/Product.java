@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Product
         extends MappedProduct {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

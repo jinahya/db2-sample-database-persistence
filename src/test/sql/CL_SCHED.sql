@@ -33,7 +33,27 @@ FROM CL_SCHED
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- CLASS_CODE
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, CLASS_CODE, of a table, which declares no primary key: the values which more
+-- than one row shares.
+-- no rows: each of the 5 appears once, which the 5 rows happen to give, not what the column means; a class
+-- (room:teacher) may meet on more than one day.
+SELECT CLASS_CODE, COUNT(*)
+FROM CL_SCHED
+GROUP BY CLASS_CODE
+HAVING COUNT(*) > 1
+;
+
+-- the sessions, CLASS_CODE, DAY and STARTING, which more than one row shares.
+-- no rows.
+SELECT CLASS_CODE, DAY, STARTING, COUNT(*)
+FROM CL_SCHED
+GROUP BY CLASS_CODE, DAY, STARTING
+HAVING COUNT(*) > 1
+;
+
+
+-- -------------------------------------------------------------------------------------- CLASS_CODE
 -- the shortest and the longest CLASS_CODE, trailing spaces trimmed; 6 to 7 characters, of CHARACTER(7) declared.
 SELECT MIN(LENGTH(RTRIM(CLASS_CODE))), MAX(LENGTH(RTRIM(CLASS_CODE)))
 FROM CL_SCHED

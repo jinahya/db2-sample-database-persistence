@@ -33,6 +33,17 @@ FROM VACT
 ;
 
 
+-- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- the identifier which the mapping takes, ACTNO, of a view, which has no key: the values which more than one row
+-- shares.
+-- no rows: unique in the installed data; nothing in the database keeps it so.
+SELECT ACTNO, COUNT(*)
+FROM VACT
+GROUP BY ACTNO
+HAVING COUNT(*) > 1
+;
+
+
 -- --------------------------------------------------------------------------------------------------------------- ACTNO
 -- the smallest and the largest ACTNO; 10 and 180.
 SELECT MIN(ACTNO), MAX(ACTNO)

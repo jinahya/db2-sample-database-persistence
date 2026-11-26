@@ -44,7 +44,7 @@ class Act_Randomizer
     @Override
     public Act get() {
         final var instance = super.get();
-        instance.setActno(__Randomizer_Utils.positiveShort());
+        instance.setActno(__Randomizer_Utils.positiveSmallint());
         return instance;
     }
 }

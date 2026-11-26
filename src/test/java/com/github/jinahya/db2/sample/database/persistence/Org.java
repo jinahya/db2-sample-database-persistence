@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Org
         extends MappedOrg {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -51,7 +51,7 @@ public class Org
      *         whoever creates an instance sets it.
      */
     @Override
-    public void setDeptnumb(final Short deptnumb) {
+    public void setDeptnumb(final Integer deptnumb) {
         super.setDeptnumb(deptnumb);
     }
 }

@@ -37,7 +37,7 @@ import jakarta.persistence.Table;
 public class Employee
         extends MappedEmployee {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -70,7 +70,7 @@ public class Employee
         super.setEmpno(empno);
     }
 
-    // ---------------------------------------------------------------------------------------------- workdeptDepartment
+    // -------------------------------------------------------------------------- workdeptDepartment
 
     /**
      * Returns the department the employee works in.
@@ -90,7 +90,7 @@ public class Employee
         this.workdeptDepartment = workdeptDepartment;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = Employee.COLUMN_NAME_WORKDEPT,
                 referencedColumnName = Department.COLUMN_NAME_DEPTNO)

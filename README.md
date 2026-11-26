@@ -20,11 +20,13 @@ no mapping of their own.
 
 A view has no key; each is mapped by a column, or a set of columns, which is unique and not `null` in the data
 (`VEMP.EMPNO`, `VPROJACT` by project, activity and start date, ...). `VFORPLA` and `MLBLOGS_ANSWERS` hold rows which
-are exact duplicates of one another, so a query returns the same instance for each of them.
+are exact duplicates of one another, so a query returns the same instance for each of them. See
+[Identifiers with no primary key](#identifiers-with-no-primary-key) for the column each is mapped by, and why.
 
 Twelve tables declare no primary key; each is mapped by a column, or a set of columns, which is unique and not `null` in
 the data `db2sampl` loads (`ORG.DEPTNUMB`, `STAFF.ID`, `SALES` by date, person and region, ...). Nothing in the
-database keeps that so; each class says which.
+database keeps that so; each class says which, and so does
+[Identifiers with no primary key](#identifiers-with-no-primary-key).
 
 A foreign key column is mapped read-only in the superclass; the entity owns its writable mapping, as an association.
 `XML` columns with a registered schema map to classes bound to it (see below), the others to `String`; `BLOB` maps to
@@ -86,6 +88,55 @@ Three columns are `VECTOR(n, FLOAT32)`, the embeddings of a vector search exampl
   functions on Db2 too, but it is Hibernate ORM's own, and has no type for H2, on which the `test` unit runs.
 * **What the embeddings are.** They come with the database; which model made them is not recorded, so a new text
   cannot be embedded to compare with them.
+
+### Identifiers with no primary key
+
+An entity needs an identifier, but twelve tables declare no primary key, and a view has none. Each is mapped by the
+column, or the columns, which the clue below points to, and which are not `null` in every row `db2sampl` loads, and
+unique but in `MLBLOGS_ANSWERS` and `VFORPLA`, whose duplicate rows are copies of one another. Nothing in the database
+keeps them so. A clue is, from the strongest: the key of the table the view selects from; a foreign key; IBM's
+description of the column
+(["The SAMPLE database"](https://www.ibm.com/docs/en/db2/11.5.x?topic=samples-sample-database)); the column's name
+alone.
+
+The tables (`DEPT`, `EMP` and `PROJ`, below, are aliases of `DEPARTMENT`, `EMPLOYEE` and `PROJECT`):
+
+| Table | Identifier | Clue |
+| --- | --- | --- |
+| `ADEFUSR` | `WORKDEPT` | the `GROUP BY` of the materialized query table: one row per work department |
+| `CL_SCHED` | `CLASS_CODE` | "Class Code (room:teacher)"; nullable |
+| `EMPMDC` | `EMPNO` | the name; its indexes are on the clustering dimensions, `DEPT` and `DIV`, and not unique; nullable |
+| `EMPPROJACT` | `EMPNO`, `PROJNO`, `ACTNO`, `EMSTDATE` | its foreign key `REPAPA`, (`PROJNO`, `ACTNO`, `EMSTDATE`), is the key of `PROJACT`, an activity of a project; `EMPNO` adds the employee on it. `EMSTDATE` is nullable |
+| `IN_TRAY` | `RECEIVED` | "Date and Time received"; nullable |
+| `MLBLOGS_ANSWERS` | `ANSWER` | the only candidate, the text; not unique: 108 rows, 105 answers, the duplicates whole-row copies |
+| `MLBLOGS_QUESTIONS` | `QUESTION` | the only candidate, the text; nullable |
+| `ORG` | `DEPTNUMB` | "Department number", and `NOT NULL` |
+| `PATIENTS` | `PATIENT_ID` | the name; nullable |
+| `SALES` | `SALES_DATE`, `SALES_PERSON`, `REGION` | "Date of sales", "Employee's last name", "Region of sales": no one of them is unique; `SALES`, "Number of sales", is the measure. Nullable |
+| `STAFF`, `STAFFG` | `ID` | "Employee number", and `NOT NULL` |
+
+The views, each by the key of what it selects from:
+
+| View | Identifier | Clue |
+| --- | --- | --- |
+| `VACT` | `ACTNO` | `SELECT ... FROM ACT`: the key of `ACT` |
+| `VDEPT`, `VHDEPT` | `DEPTNO` | `SELECT ... FROM DEPT`: the key of `DEPARTMENT` |
+| `VDEPMG1` | `DEPTNO` | `DEPT LEFT OUTER JOIN EMP ON MGRNO = EMPNO`: one row per department, a manager at most |
+| `VEMP` | `EMPNO` | `SELECT ... FROM EMP`: the key of `EMPLOYEE` |
+| `VEMPLP` | `EMPLOYEENUMBER` | `EMPNO` of `EMP`, renamed |
+| `VEMPDPT1` | `EMPNO` | `DEPT RIGHT OUTER JOIN EMP ON WORKDEPT = DEPTNO`: one row per employee |
+| `VPHONE` | `EMPLOYEENUMBER` | `EMPNO` of `EMP`, joined with the one department each works in |
+| `VPROJ` | `PROJNO` | `SELECT ... FROM PROJ`: the key of `PROJECT` |
+| `VPROJRE1` | `PROJNO` | `PROJ, EMP WHERE RESPEMP = EMPNO`: one responsible employee per project |
+| `VFORPLA` | `PROJNO` | `VPROJRE1 LEFT OUTER JOIN EMPPROJACT`: a project repeats once per row of `EMPPROJACT`, so its rows are copies of one another |
+| `VPSTRDE1` | `PROJ1NO`, `PROJ2NO` | `VPROJRE1 P1, VPROJRE1 P2 WHERE P1.PROJNO = P2.MAJPROJ`: a project and one of its subprojects |
+| `VPSTRDE2` | `PROJ1NO` | `VPROJRE1 P1 WHERE NOT EXISTS (...)`: each project with no subproject, once |
+| `VASTRDE1` | `DEPT1NO`, `DEPT2NO` | `VDEPMG1 D1, VDEPMG1 D2 WHERE D1.DEPTNO = D2.ADMRDEPT`: a department and one it administers |
+| `VASTRDE2` | `DEPT1NO`, `EMP2NO` | `VDEPMG1 D1, EMP E2 WHERE D1.DEPTNO = E2.WORKDEPT`: a department and an employee in it |
+| `VPROJACT` | `PROJNO`, `ACTNO`, `ACSTDATE` | `SELECT ... FROM PROJACT`: the key of `PROJACT` |
+| `VSTAFAC1` | `PROJNO`, `ACTNO`, `STDATE` | `PROJACT PA, ACT AC WHERE PA.ACTNO = AC.ACTNO`: the key of `PROJACT`, `ACSTDATE` renamed |
+| `VEMPPROJACT` | `EMPNO`, `PROJNO`, `ACTNO`, `EMSTDATE` | `SELECT ... FROM EMPPROJACT`: the identifier of `EMPPROJACT`, above, itself no key |
+| `VSTAFAC2` | `PROJNO`, `ACTNO`, `EMPNO`, `STDATE` | `EMPPROJACT EP, ACT AC, EMP EM ...`: the identifier of `EMPPROJACT`, `EMSTDATE` renamed |
 
 ## The database
 

@@ -55,7 +55,7 @@ public abstract class MappedVemplp {
      */
     public static final String TABLE_NAME = "VEMPLP";
 
-    // -------------------------------------------------------------------------------------------------- EMPLOYEENUMBER
+    // ------------------------------------------------------------------------------ EMPLOYEENUMBER
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute
@@ -85,7 +85,7 @@ public abstract class MappedVemplp {
      */
     public static final int SIZE_MAX_EMPLOYEENUMBER = COLUMN_LENGTH_EMPLOYEENUMBER;
 
-    // ----------------------------------------------------------------------------------------------------- PHONENUMBER
+    // --------------------------------------------------------------------------------- PHONENUMBER
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute maps.
@@ -115,7 +115,7 @@ public abstract class MappedVemplp {
      */
     public static final int SIZE_MAX_PHONENUMBER = COLUMN_LENGTH_PHONENUMBER;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -124,7 +124,7 @@ public abstract class MappedVemplp {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -161,7 +161,7 @@ public abstract class MappedVemplp {
         return Objects.hashCode(getEmployeenumber());
     }
 
-    // -------------------------------------------------------------------------------------------------- employeenumber
+    // ------------------------------------------------------------------------------ employeenumber
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPLOYEENUMBER} attribute.
@@ -183,7 +183,7 @@ public abstract class MappedVemplp {
         this.employeenumber = employeenumber;
     }
 
-    // ----------------------------------------------------------------------------------------------------- phonenumber
+    // --------------------------------------------------------------------------------- phonenumber
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PHONENUMBER} attribute.
@@ -205,7 +205,7 @@ public abstract class MappedVemplp {
         this.phonenumber = phonenumber;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_EMPLOYEENUMBER)
     @NotNull
@@ -219,7 +219,7 @@ public abstract class MappedVemplp {
     )
     private String employeenumber;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_PHONENUMBER)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PHONENUMBER,

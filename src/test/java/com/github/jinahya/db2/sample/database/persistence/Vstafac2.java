@@ -36,7 +36,7 @@ import jakarta.persistence.Table;
 public class Vstafac2
         extends MappedVstafac2 {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

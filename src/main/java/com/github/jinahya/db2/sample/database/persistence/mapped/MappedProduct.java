@@ -52,7 +52,7 @@ public abstract class MappedProduct {
      */
     public static final String TABLE_NAME = "PRODUCT";
 
-    // ------------------------------------------------------------------------------------------------------------- PID
+    // ----------------------------------------------------------------------------------------- PID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PID} attribute maps. The
@@ -81,7 +81,7 @@ public abstract class MappedProduct {
      */
     public static final int SIZE_MAX_PID = COLUMN_LENGTH_PID;
 
-    // ------------------------------------------------------------------------------------------------------------ NAME
+    // ---------------------------------------------------------------------------------------- NAME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The
@@ -110,7 +110,7 @@ public abstract class MappedProduct {
      */
     public static final int SIZE_MAX_NAME = COLUMN_LENGTH_NAME;
 
-    // ----------------------------------------------------------------------------------------------------------- PRICE
+    // --------------------------------------------------------------------------------------- PRICE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRICE} attribute maps. The
@@ -151,7 +151,7 @@ public abstract class MappedProduct {
      */
     public static final int DIGITS_FRACTION_PRICE = COLUMN_SCALE_PRICE;
 
-    // ------------------------------------------------------------------------------------------------------ PROMOPRICE
+    // ---------------------------------------------------------------------------------- PROMOPRICE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute maps.
@@ -193,7 +193,7 @@ public abstract class MappedProduct {
      */
     public static final int DIGITS_FRACTION_PROMOPRICE = COLUMN_SCALE_PROMOPRICE;
 
-    // ------------------------------------------------------------------------------------------------------ PROMOSTART
+    // ---------------------------------------------------------------------------------- PROMOSTART
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROMOSTART} attribute maps.
@@ -212,7 +212,7 @@ public abstract class MappedProduct {
      */
     public static final String ATTRIBUTE_NAME_PROMOSTART = "promostart";
 
-    // -------------------------------------------------------------------------------------------------------- PROMOEND
+    // ------------------------------------------------------------------------------------ PROMOEND
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROMOEND} attribute maps.
@@ -231,7 +231,7 @@ public abstract class MappedProduct {
      */
     public static final String ATTRIBUTE_NAME_PROMOEND = "promoend";
 
-    // ----------------------------------------------------------------------------------------------------- DESCRIPTION
+    // --------------------------------------------------------------------------------- DESCRIPTION
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute
@@ -259,7 +259,7 @@ public abstract class MappedProduct {
      */
     public static final String ATTRIBUTE_NAME_DESCRIPTION = "description";
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -268,7 +268,7 @@ public abstract class MappedProduct {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -310,7 +310,7 @@ public abstract class MappedProduct {
         return Objects.hashCode(getPid());
     }
 
-    // ------------------------------------------------------------------------------------------------------------- pid
+    // ----------------------------------------------------------------------------------------- pid
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PID} attribute.
@@ -331,7 +331,7 @@ public abstract class MappedProduct {
         this.pid = pid;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ name
+    // ---------------------------------------------------------------------------------------- name
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_NAME} attribute.
@@ -352,7 +352,7 @@ public abstract class MappedProduct {
         this.name = name;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- price
+    // --------------------------------------------------------------------------------------- price
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRICE} attribute.
@@ -373,7 +373,7 @@ public abstract class MappedProduct {
         this.price = price;
     }
 
-    // ------------------------------------------------------------------------------------------------------ promoprice
+    // ---------------------------------------------------------------------------------- promoprice
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROMOPRICE} attribute.
@@ -395,7 +395,7 @@ public abstract class MappedProduct {
         this.promoprice = promoprice;
     }
 
-    // ------------------------------------------------------------------------------------------------------ promostart
+    // ---------------------------------------------------------------------------------- promostart
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROMOSTART} attribute.
@@ -417,7 +417,7 @@ public abstract class MappedProduct {
         this.promostart = promostart;
     }
 
-    // -------------------------------------------------------------------------------------------------------- promoend
+    // ------------------------------------------------------------------------------------ promoend
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROMOEND} attribute.
@@ -439,7 +439,7 @@ public abstract class MappedProduct {
         this.promoend = promoend;
     }
 
-    // ----------------------------------------------------------------------------------------------------- description
+    // --------------------------------------------------------------------------------- description
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute; the column is an
@@ -462,7 +462,7 @@ public abstract class MappedProduct {
         this.description = description;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PID)
     @NotNull
@@ -476,7 +476,7 @@ public abstract class MappedProduct {
     )
     private String pid;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_NAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NAME,
@@ -487,7 +487,7 @@ public abstract class MappedProduct {
     )
     private String name;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Digits(integer = DIGITS_INTEGER_PRICE, fraction = DIGITS_FRACTION_PRICE)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRICE,
@@ -499,7 +499,7 @@ public abstract class MappedProduct {
     )
     private BigDecimal price;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Digits(integer = DIGITS_INTEGER_PROMOPRICE, fraction = DIGITS_FRACTION_PROMOPRICE)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROMOPRICE,
@@ -511,7 +511,7 @@ public abstract class MappedProduct {
     )
     private BigDecimal promoprice;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROMOSTART,
             nullable = COLUMN_NULLABLE_PROMOSTART,
@@ -520,7 +520,7 @@ public abstract class MappedProduct {
     )
     private LocalDate promostart;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROMOEND,
             nullable = COLUMN_NULLABLE_PROMOEND,
@@ -529,7 +529,7 @@ public abstract class MappedProduct {
     )
     private LocalDate promoend;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Convert(converter = ProductStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DESCRIPTION,

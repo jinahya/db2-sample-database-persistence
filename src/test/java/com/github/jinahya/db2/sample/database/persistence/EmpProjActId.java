@@ -33,7 +33,7 @@ public class EmpProjActId
 
     private static final long serialVersionUID = 1L;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -71,7 +71,7 @@ public class EmpProjActId
      * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
      */
     @Override
-    public void setActno(final Short actno) {
+    public void setActno(final Integer actno) {
         super.setActno(actno);
     }
 

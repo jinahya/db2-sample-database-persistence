@@ -55,7 +55,7 @@ public abstract class MappedVemp {
      */
     public static final String TABLE_NAME = "VEMP";
 
-    // ----------------------------------------------------------------------------------------------------------- EMPNO
+    // --------------------------------------------------------------------------------------- EMPNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
@@ -84,7 +84,7 @@ public abstract class MappedVemp {
      */
     public static final int SIZE_MAX_EMPNO = COLUMN_LENGTH_EMPNO;
 
-    // -------------------------------------------------------------------------------------------------------- FIRSTNME
+    // ------------------------------------------------------------------------------------ FIRSTNME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute maps.
@@ -113,7 +113,7 @@ public abstract class MappedVemp {
      */
     public static final int SIZE_MAX_FIRSTNME = COLUMN_LENGTH_FIRSTNME;
 
-    // --------------------------------------------------------------------------------------------------------- MIDINIT
+    // ------------------------------------------------------------------------------------- MIDINIT
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The
@@ -142,7 +142,7 @@ public abstract class MappedVemp {
      */
     public static final int SIZE_MAX_MIDINIT = COLUMN_LENGTH_MIDINIT;
 
-    // -------------------------------------------------------------------------------------------------------- LASTNAME
+    // ------------------------------------------------------------------------------------ LASTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
@@ -171,7 +171,7 @@ public abstract class MappedVemp {
      */
     public static final int SIZE_MAX_LASTNAME = COLUMN_LENGTH_LASTNAME;
 
-    // -------------------------------------------------------------------------------------------------------- WORKDEPT
+    // ------------------------------------------------------------------------------------ WORKDEPT
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute maps.
@@ -200,7 +200,7 @@ public abstract class MappedVemp {
      */
     public static final int SIZE_MAX_WORKDEPT = COLUMN_LENGTH_WORKDEPT;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -209,7 +209,7 @@ public abstract class MappedVemp {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -249,7 +249,7 @@ public abstract class MappedVemp {
         return Objects.hashCode(getEmpno());
     }
 
-    // ----------------------------------------------------------------------------------------------------------- empno
+    // --------------------------------------------------------------------------------------- empno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
@@ -270,7 +270,7 @@ public abstract class MappedVemp {
         this.empno = empno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- firstnme
+    // ------------------------------------------------------------------------------------ firstnme
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
@@ -292,7 +292,7 @@ public abstract class MappedVemp {
         this.firstnme = firstnme;
     }
 
-    // --------------------------------------------------------------------------------------------------------- midinit
+    // ------------------------------------------------------------------------------------- midinit
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
@@ -314,7 +314,7 @@ public abstract class MappedVemp {
         this.midinit = midinit;
     }
 
-    // -------------------------------------------------------------------------------------------------------- lastname
+    // ------------------------------------------------------------------------------------ lastname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
@@ -336,7 +336,7 @@ public abstract class MappedVemp {
         this.lastname = lastname;
     }
 
-    // -------------------------------------------------------------------------------------------------------- workdept
+    // ------------------------------------------------------------------------------------ workdept
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute.
@@ -358,7 +358,7 @@ public abstract class MappedVemp {
         this.workdept = workdept;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_EMPNO)
     @NotNull
@@ -372,7 +372,7 @@ public abstract class MappedVemp {
     )
     private String empno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_FIRSTNME)
     @NotNull
@@ -385,7 +385,7 @@ public abstract class MappedVemp {
     )
     private String firstnme;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
@@ -396,7 +396,7 @@ public abstract class MappedVemp {
     )
     private String midinit;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_LASTNAME)
     @NotNull
@@ -409,7 +409,7 @@ public abstract class MappedVemp {
     )
     private String lastname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_WORKDEPT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_WORKDEPT,

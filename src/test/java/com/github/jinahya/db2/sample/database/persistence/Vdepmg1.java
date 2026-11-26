@@ -34,7 +34,7 @@ import jakarta.persistence.Table;
 public class Vdepmg1
         extends MappedVdepmg1 {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

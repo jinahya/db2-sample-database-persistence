@@ -59,7 +59,7 @@ public abstract class MappedVforpla {
      */
     public static final String TABLE_NAME = "VFORPLA";
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
@@ -88,7 +88,7 @@ public abstract class MappedVforpla {
      */
     public static final int SIZE_MAX_PROJNO = COLUMN_LENGTH_PROJNO;
 
-    // -------------------------------------------------------------------------------------------------------- PROJNAME
+    // ------------------------------------------------------------------------------------ PROJNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps.
@@ -117,7 +117,7 @@ public abstract class MappedVforpla {
      */
     public static final int SIZE_MAX_PROJNAME = COLUMN_LENGTH_PROJNAME;
 
-    // --------------------------------------------------------------------------------------------------------- RESPEMP
+    // ------------------------------------------------------------------------------------- RESPEMP
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps. The
@@ -146,7 +146,7 @@ public abstract class MappedVforpla {
      */
     public static final int SIZE_MAX_RESPEMP = COLUMN_LENGTH_RESPEMP;
 
-    // --------------------------------------------------------------------------------------------------------- PROJDEP
+    // ------------------------------------------------------------------------------------- PROJDEP
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJDEP} attribute maps. The
@@ -175,7 +175,7 @@ public abstract class MappedVforpla {
      */
     public static final int SIZE_MAX_PROJDEP = COLUMN_LENGTH_PROJDEP;
 
-    // -------------------------------------------------------------------------------------------------------- FRSTINIT
+    // ------------------------------------------------------------------------------------ FRSTINIT
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_FRSTINIT} attribute maps.
@@ -204,7 +204,7 @@ public abstract class MappedVforpla {
      */
     public static final int SIZE_MAX_FRSTINIT = COLUMN_LENGTH_FRSTINIT;
 
-    // --------------------------------------------------------------------------------------------------------- MIDINIT
+    // ------------------------------------------------------------------------------------- MIDINIT
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_MIDINIT} attribute maps. The
@@ -233,7 +233,7 @@ public abstract class MappedVforpla {
      */
     public static final int SIZE_MAX_MIDINIT = COLUMN_LENGTH_MIDINIT;
 
-    // -------------------------------------------------------------------------------------------------------- LASTNAME
+    // ------------------------------------------------------------------------------------ LASTNAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_LASTNAME} attribute maps.
@@ -262,7 +262,7 @@ public abstract class MappedVforpla {
      */
     public static final int SIZE_MAX_LASTNAME = COLUMN_LENGTH_LASTNAME;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -271,7 +271,7 @@ public abstract class MappedVforpla {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -313,7 +313,7 @@ public abstract class MappedVforpla {
         return Objects.hashCode(getProjno());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -335,7 +335,7 @@ public abstract class MappedVforpla {
         this.projno = projno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- projname
+    // ------------------------------------------------------------------------------------ projname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
@@ -357,7 +357,7 @@ public abstract class MappedVforpla {
         this.projname = projname;
     }
 
-    // --------------------------------------------------------------------------------------------------------- respemp
+    // ------------------------------------------------------------------------------------- respemp
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
@@ -379,7 +379,7 @@ public abstract class MappedVforpla {
         this.respemp = respemp;
     }
 
-    // --------------------------------------------------------------------------------------------------------- projdep
+    // ------------------------------------------------------------------------------------- projdep
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJDEP} attribute.
@@ -401,7 +401,7 @@ public abstract class MappedVforpla {
         this.projdep = projdep;
     }
 
-    // -------------------------------------------------------------------------------------------------------- frstinit
+    // ------------------------------------------------------------------------------------ frstinit
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_FRSTINIT} attribute.
@@ -423,7 +423,7 @@ public abstract class MappedVforpla {
         this.frstinit = frstinit;
     }
 
-    // --------------------------------------------------------------------------------------------------------- midinit
+    // ------------------------------------------------------------------------------------- midinit
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
@@ -445,7 +445,7 @@ public abstract class MappedVforpla {
         this.midinit = midinit;
     }
 
-    // -------------------------------------------------------------------------------------------------------- lastname
+    // ------------------------------------------------------------------------------------ lastname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
@@ -467,7 +467,7 @@ public abstract class MappedVforpla {
         this.lastname = lastname;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
@@ -481,7 +481,7 @@ public abstract class MappedVforpla {
     )
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNAME)
     @NotNull
@@ -494,7 +494,7 @@ public abstract class MappedVforpla {
     )
     private String projname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESPEMP)
     @NotNull
@@ -507,7 +507,7 @@ public abstract class MappedVforpla {
     )
     private String respemp;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJDEP)
     @NotNull
@@ -520,7 +520,7 @@ public abstract class MappedVforpla {
     )
     private String projdep;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_FRSTINIT)
     @NotNull
@@ -533,7 +533,7 @@ public abstract class MappedVforpla {
     )
     private String frstinit;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
@@ -544,7 +544,7 @@ public abstract class MappedVforpla {
     )
     private String midinit;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_LASTNAME)
     @NotNull

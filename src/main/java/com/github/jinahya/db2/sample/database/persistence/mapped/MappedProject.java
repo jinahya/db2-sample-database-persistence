@@ -27,6 +27,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -59,7 +60,7 @@ public abstract class MappedProject {
      */
     public static final String TABLE_NAME = "PROJECT";
 
-    // ---------------------------------------------------------------------------------------------------------- PROJNO
+    // -------------------------------------------------------------------------------------- PROJNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
@@ -88,7 +89,7 @@ public abstract class MappedProject {
      */
     public static final int SIZE_MAX_PROJNO = COLUMN_LENGTH_PROJNO;
 
-    // -------------------------------------------------------------------------------------------------------- PROJNAME
+    // ------------------------------------------------------------------------------------ PROJNAME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PROJNAME} attribute maps.
@@ -117,7 +118,7 @@ public abstract class MappedProject {
      */
     public static final int SIZE_MAX_PROJNAME = COLUMN_LENGTH_PROJNAME;
 
-    // ---------------------------------------------------------------------------------------------------------- DEPTNO
+    // -------------------------------------------------------------------------------------- DEPTNO
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPTNO} attribute maps. The
@@ -146,7 +147,7 @@ public abstract class MappedProject {
      */
     public static final int SIZE_MAX_DEPTNO = COLUMN_LENGTH_DEPTNO;
 
-    // --------------------------------------------------------------------------------------------------------- RESPEMP
+    // ------------------------------------------------------------------------------------- RESPEMP
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESPEMP} attribute maps.
@@ -175,7 +176,7 @@ public abstract class MappedProject {
      */
     public static final int SIZE_MAX_RESPEMP = COLUMN_LENGTH_RESPEMP;
 
-    // --------------------------------------------------------------------------------------------------------- PRSTAFF
+    // ------------------------------------------------------------------------------------- PRSTAFF
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute maps.
@@ -217,7 +218,15 @@ public abstract class MappedProject {
      */
     public static final int DIGITS_FRACTION_PRSTAFF = COLUMN_SCALE_PRSTAFF;
 
-    // -------------------------------------------------------------------------------------------------------- PRSTDATE
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute. The value is {@value}.
+     *
+     * @implNote "Estimated mean staffing", as the documentation of the {@code SAMPLE} database
+     *         describes the column; the database does not enforce it.
+     */
+    public static final String ATTRIBUTE_DECIMAL_MIN_PRSTAFF = "0";
+
+    // ------------------------------------------------------------------------------------ PRSTDATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRSTDATE} attribute maps.
@@ -236,7 +245,7 @@ public abstract class MappedProject {
      */
     public static final String ATTRIBUTE_NAME_PRSTDATE = "prstdate";
 
-    // -------------------------------------------------------------------------------------------------------- PRENDATE
+    // ------------------------------------------------------------------------------------ PRENDATE
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_PRENDATE} attribute maps.
@@ -255,7 +264,7 @@ public abstract class MappedProject {
      */
     public static final String ATTRIBUTE_NAME_PRENDATE = "prendate";
 
-    // --------------------------------------------------------------------------------------------------------- MAJPROJ
+    // ------------------------------------------------------------------------------------- MAJPROJ
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_MAJPROJ} attribute maps.
@@ -284,7 +293,7 @@ public abstract class MappedProject {
      */
     public static final int SIZE_MAX_MAJPROJ = COLUMN_LENGTH_MAJPROJ;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -293,7 +302,7 @@ public abstract class MappedProject {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -336,7 +345,7 @@ public abstract class MappedProject {
         return Objects.hashCode(getProjno());
     }
 
-    // ---------------------------------------------------------------------------------------------------------- projno
+    // -------------------------------------------------------------------------------------- projno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
@@ -358,7 +367,7 @@ public abstract class MappedProject {
         this.projno = projno;
     }
 
-    // -------------------------------------------------------------------------------------------------------- projname
+    // ------------------------------------------------------------------------------------ projname
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
@@ -380,7 +389,7 @@ public abstract class MappedProject {
         this.projname = projname;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- deptno
+    // -------------------------------------------------------------------------------------- deptno
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute, which is {@code null}
@@ -395,7 +404,7 @@ public abstract class MappedProject {
         return deptno;
     }
 
-    // --------------------------------------------------------------------------------------------------------- respemp
+    // ------------------------------------------------------------------------------------- respemp
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute, which is {@code null}
@@ -410,7 +419,7 @@ public abstract class MappedProject {
         return respemp;
     }
 
-    // --------------------------------------------------------------------------------------------------------- prstaff
+    // ------------------------------------------------------------------------------------- prstaff
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRSTAFF} attribute.
@@ -432,7 +441,7 @@ public abstract class MappedProject {
         this.prstaff = prstaff;
     }
 
-    // -------------------------------------------------------------------------------------------------------- prstdate
+    // ------------------------------------------------------------------------------------ prstdate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRSTDATE} attribute.
@@ -454,7 +463,7 @@ public abstract class MappedProject {
         this.prstdate = prstdate;
     }
 
-    // -------------------------------------------------------------------------------------------------------- prendate
+    // ------------------------------------------------------------------------------------ prendate
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRENDATE} attribute.
@@ -476,7 +485,7 @@ public abstract class MappedProject {
         this.prendate = prendate;
     }
 
-    // --------------------------------------------------------------------------------------------------------- majproj
+    // ------------------------------------------------------------------------------------- majproj
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute, which is {@code null}
@@ -491,7 +500,7 @@ public abstract class MappedProject {
         return majproj;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
@@ -505,7 +514,7 @@ public abstract class MappedProject {
     )
     private String projno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNAME)
     @NotNull
@@ -518,7 +527,7 @@ public abstract class MappedProject {
     )
     private String projname;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the extending entity owns the writable mapping of this column; see the class
     // documentation
     @Size(max = SIZE_MAX_DEPTNO)
@@ -531,7 +540,7 @@ public abstract class MappedProject {
     )
     private String deptno;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the extending entity owns the writable mapping of this column; see the class
     // documentation
     @Size(max = SIZE_MAX_RESPEMP)
@@ -544,7 +553,8 @@ public abstract class MappedProject {
     )
     private String respemp;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @DecimalMin(ATTRIBUTE_DECIMAL_MIN_PRSTAFF)
     @Digits(integer = DIGITS_INTEGER_PRSTAFF, fraction = DIGITS_FRACTION_PRSTAFF)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRSTAFF,
@@ -556,7 +566,7 @@ public abstract class MappedProject {
     )
     private BigDecimal prstaff;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRSTDATE,
             nullable = COLUMN_NULLABLE_PRSTDATE,
@@ -565,7 +575,7 @@ public abstract class MappedProject {
     )
     private LocalDate prstdate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRENDATE,
             nullable = COLUMN_NULLABLE_PRENDATE,
@@ -574,7 +584,7 @@ public abstract class MappedProject {
     )
     private LocalDate prendate;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     // read-only: the extending entity owns the writable mapping of this column; see the class
     // documentation
     @Size(max = SIZE_MAX_MAJPROJ)

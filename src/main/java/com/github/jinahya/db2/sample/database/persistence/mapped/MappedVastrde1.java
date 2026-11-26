@@ -61,7 +61,7 @@ public abstract class MappedVastrde1 {
      */
     public static final String TABLE_NAME = "VASTRDE1";
 
-    // --------------------------------------------------------------------------------------------------------- DEPT1NO
+    // ------------------------------------------------------------------------------------- DEPT1NO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute maps. The
@@ -90,7 +90,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_DEPT1NO = COLUMN_LENGTH_DEPT1NO;
 
-    // -------------------------------------------------------------------------------------------------------- DEPT1NAM
+    // ------------------------------------------------------------------------------------ DEPT1NAM
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT1NAM} attribute maps.
@@ -119,7 +119,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_DEPT1NAM = COLUMN_LENGTH_DEPT1NAM;
 
-    // ---------------------------------------------------------------------------------------------------------- EMP1NO
+    // -------------------------------------------------------------------------------------- EMP1NO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1NO} attribute maps. The
@@ -148,7 +148,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_EMP1NO = COLUMN_LENGTH_EMP1NO;
 
-    // ---------------------------------------------------------------------------------------------------------- EMP1FN
+    // -------------------------------------------------------------------------------------- EMP1FN
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1FN} attribute maps. The
@@ -177,7 +177,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_EMP1FN = COLUMN_LENGTH_EMP1FN;
 
-    // ---------------------------------------------------------------------------------------------------------- EMP1MI
+    // -------------------------------------------------------------------------------------- EMP1MI
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1MI} attribute maps. The
@@ -206,7 +206,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_EMP1MI = COLUMN_LENGTH_EMP1MI;
 
-    // ---------------------------------------------------------------------------------------------------------- EMP1LN
+    // -------------------------------------------------------------------------------------- EMP1LN
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP1LN} attribute maps. The
@@ -235,7 +235,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_EMP1LN = COLUMN_LENGTH_EMP1LN;
 
-    // ----------------------------------------------------------------------------------------------------------- TYPE2
+    // --------------------------------------------------------------------------------------- TYPE2
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_TYPE2} attribute maps. The
@@ -264,7 +264,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_TYPE2 = COLUMN_LENGTH_TYPE2;
 
-    // --------------------------------------------------------------------------------------------------------- DEPT2NO
+    // ------------------------------------------------------------------------------------- DEPT2NO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT2NO} attribute maps. The
@@ -293,7 +293,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_DEPT2NO = COLUMN_LENGTH_DEPT2NO;
 
-    // -------------------------------------------------------------------------------------------------------- DEPT2NAM
+    // ------------------------------------------------------------------------------------ DEPT2NAM
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT2NAM} attribute maps.
@@ -322,7 +322,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_DEPT2NAM = COLUMN_LENGTH_DEPT2NAM;
 
-    // ---------------------------------------------------------------------------------------------------------- EMP2NO
+    // -------------------------------------------------------------------------------------- EMP2NO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2NO} attribute maps. The
@@ -351,7 +351,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_EMP2NO = COLUMN_LENGTH_EMP2NO;
 
-    // ---------------------------------------------------------------------------------------------------------- EMP2FN
+    // -------------------------------------------------------------------------------------- EMP2FN
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2FN} attribute maps. The
@@ -380,7 +380,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_EMP2FN = COLUMN_LENGTH_EMP2FN;
 
-    // ---------------------------------------------------------------------------------------------------------- EMP2MI
+    // -------------------------------------------------------------------------------------- EMP2MI
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2MI} attribute maps. The
@@ -409,7 +409,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_EMP2MI = COLUMN_LENGTH_EMP2MI;
 
-    // ---------------------------------------------------------------------------------------------------------- EMP2LN
+    // -------------------------------------------------------------------------------------- EMP2LN
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2LN} attribute maps. The
@@ -438,7 +438,7 @@ public abstract class MappedVastrde1 {
      */
     public static final int SIZE_MAX_EMP2LN = COLUMN_LENGTH_EMP2LN;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -447,7 +447,7 @@ public abstract class MappedVastrde1 {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -497,7 +497,7 @@ public abstract class MappedVastrde1 {
         return Objects.hash(getDept1no(), getDept2no());
     }
 
-    // --------------------------------------------------------------------------------------------------------- dept1no
+    // ------------------------------------------------------------------------------------- dept1no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
@@ -519,7 +519,7 @@ public abstract class MappedVastrde1 {
         this.dept1no = dept1no;
     }
 
-    // -------------------------------------------------------------------------------------------------------- dept1nam
+    // ------------------------------------------------------------------------------------ dept1nam
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPT1NAM} attribute.
@@ -541,7 +541,7 @@ public abstract class MappedVastrde1 {
         this.dept1nam = dept1nam;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- emp1no
+    // -------------------------------------------------------------------------------------- emp1no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMP1NO} attribute.
@@ -563,7 +563,7 @@ public abstract class MappedVastrde1 {
         this.emp1no = emp1no;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- emp1fn
+    // -------------------------------------------------------------------------------------- emp1fn
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMP1FN} attribute.
@@ -585,7 +585,7 @@ public abstract class MappedVastrde1 {
         this.emp1fn = emp1fn;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- emp1mi
+    // -------------------------------------------------------------------------------------- emp1mi
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMP1MI} attribute.
@@ -607,7 +607,7 @@ public abstract class MappedVastrde1 {
         this.emp1mi = emp1mi;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- emp1ln
+    // -------------------------------------------------------------------------------------- emp1ln
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMP1LN} attribute.
@@ -629,7 +629,7 @@ public abstract class MappedVastrde1 {
         this.emp1ln = emp1ln;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- type2
+    // --------------------------------------------------------------------------------------- type2
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_TYPE2} attribute.
@@ -650,7 +650,7 @@ public abstract class MappedVastrde1 {
         this.type2 = type2;
     }
 
-    // --------------------------------------------------------------------------------------------------------- dept2no
+    // ------------------------------------------------------------------------------------- dept2no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPT2NO} attribute.
@@ -672,7 +672,7 @@ public abstract class MappedVastrde1 {
         this.dept2no = dept2no;
     }
 
-    // -------------------------------------------------------------------------------------------------------- dept2nam
+    // ------------------------------------------------------------------------------------ dept2nam
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPT2NAM} attribute.
@@ -694,7 +694,7 @@ public abstract class MappedVastrde1 {
         this.dept2nam = dept2nam;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- emp2no
+    // -------------------------------------------------------------------------------------- emp2no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
@@ -716,7 +716,7 @@ public abstract class MappedVastrde1 {
         this.emp2no = emp2no;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- emp2fn
+    // -------------------------------------------------------------------------------------- emp2fn
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMP2FN} attribute.
@@ -738,7 +738,7 @@ public abstract class MappedVastrde1 {
         this.emp2fn = emp2fn;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- emp2mi
+    // -------------------------------------------------------------------------------------- emp2mi
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMP2MI} attribute.
@@ -760,7 +760,7 @@ public abstract class MappedVastrde1 {
         this.emp2mi = emp2mi;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- emp2ln
+    // -------------------------------------------------------------------------------------- emp2ln
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMP2LN} attribute.
@@ -782,7 +782,7 @@ public abstract class MappedVastrde1 {
         this.emp2ln = emp2ln;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPT1NO)
     @NotNull
@@ -796,7 +796,7 @@ public abstract class MappedVastrde1 {
     )
     private String dept1no;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPT1NAM)
     @NotNull
@@ -809,7 +809,7 @@ public abstract class MappedVastrde1 {
     )
     private String dept1nam;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_EMP1NO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP1NO,
@@ -820,7 +820,7 @@ public abstract class MappedVastrde1 {
     )
     private String emp1no;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_EMP1FN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP1FN,
@@ -831,7 +831,7 @@ public abstract class MappedVastrde1 {
     )
     private String emp1fn;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_EMP1MI)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP1MI,
@@ -842,7 +842,7 @@ public abstract class MappedVastrde1 {
     )
     private String emp1mi;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_EMP1LN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP1LN,
@@ -853,7 +853,7 @@ public abstract class MappedVastrde1 {
     )
     private String emp1ln;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_TYPE2)
     @NotNull
@@ -866,7 +866,7 @@ public abstract class MappedVastrde1 {
     )
     private String type2;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPT2NO)
     @NotNull
@@ -880,7 +880,7 @@ public abstract class MappedVastrde1 {
     )
     private String dept2no;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_DEPT2NAM)
     @NotNull
@@ -893,7 +893,7 @@ public abstract class MappedVastrde1 {
     )
     private String dept2nam;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_EMP2NO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP2NO,
@@ -904,7 +904,7 @@ public abstract class MappedVastrde1 {
     )
     private String emp2no;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_EMP2FN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP2FN,
@@ -915,7 +915,7 @@ public abstract class MappedVastrde1 {
     )
     private String emp2fn;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_EMP2MI)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP2MI,
@@ -926,7 +926,7 @@ public abstract class MappedVastrde1 {
     )
     private String emp2mi;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_EMP2LN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP2LN,

@@ -37,7 +37,7 @@ import java.time.LocalDate;
 public class Sale
         extends MappedSale {
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.

@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
@@ -27,7 +28,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -53,7 +57,7 @@ public abstract class MappedStaff {
      */
     public static final String TABLE_NAME = "STAFF";
 
-    // -------------------------------------------------------------------------------------------------------------- ID
+    // ------------------------------------------------------------------------------------------ ID
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_ID} attribute maps. The
@@ -72,7 +76,7 @@ public abstract class MappedStaff {
      */
     public static final String ATTRIBUTE_NAME_ID = "id";
 
-    // ------------------------------------------------------------------------------------------------------------ NAME
+    // ---------------------------------------------------------------------------------------- NAME
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_NAME} attribute maps. The
@@ -101,7 +105,7 @@ public abstract class MappedStaff {
      */
     public static final int SIZE_MAX_NAME = COLUMN_LENGTH_NAME;
 
-    // ------------------------------------------------------------------------------------------------------------ DEPT
+    // ---------------------------------------------------------------------------------------- DEPT
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_DEPT} attribute maps. The
@@ -120,7 +124,7 @@ public abstract class MappedStaff {
      */
     public static final String ATTRIBUTE_NAME_DEPT = "dept";
 
-    // ------------------------------------------------------------------------------------------------------------- JOB
+    // ----------------------------------------------------------------------------------------- JOB
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_JOB} attribute maps. The
@@ -149,7 +153,7 @@ public abstract class MappedStaff {
      */
     public static final int SIZE_MAX_JOB = COLUMN_LENGTH_JOB;
 
-    // ----------------------------------------------------------------------------------------------------------- YEARS
+    // --------------------------------------------------------------------------------------- YEARS
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_YEARS} attribute maps. The
@@ -168,7 +172,15 @@ public abstract class MappedStaff {
      */
     public static final String ATTRIBUTE_NAME_YEARS = "years";
 
-    // ---------------------------------------------------------------------------------------------------------- SALARY
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_YEARS} attribute. The value is {@value}.
+     *
+     * @implNote "Years of service", as the documentation of the {@code SAMPLE} database describes
+     *         the column; the database does not enforce it.
+     */
+    public static final int ATTRIBUTE_MIN_YEARS = 0;
+
+    // -------------------------------------------------------------------------------------- SALARY
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_SALARY} attribute maps. The
@@ -209,7 +221,15 @@ public abstract class MappedStaff {
      */
     public static final int DIGITS_FRACTION_SALARY = COLUMN_SCALE_SALARY;
 
-    // ------------------------------------------------------------------------------------------------------------ COMM
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The value is {@value}.
+     *
+     * @implNote "Current salary", as the documentation of the {@code SAMPLE} database describes the
+     *         column; the database does not enforce it.
+     */
+    public static final String ATTRIBUTE_DECIMAL_MIN_SALARY = "0";
+
+    // ---------------------------------------------------------------------------------------- COMM
 
     /**
      * The name of the table column to which the {@value #ATTRIBUTE_NAME_COMM} attribute maps. The
@@ -250,7 +270,15 @@ public abstract class MappedStaff {
      */
     public static final int DIGITS_FRACTION_COMM = COLUMN_SCALE_COMM;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    /**
+     * The minimum value of the {@value #ATTRIBUTE_NAME_COMM} attribute. The value is {@value}.
+     *
+     * @implNote "Commission", as the documentation of the {@code SAMPLE} database describes the
+     *         column; the database does not enforce it.
+     */
+    public static final String ATTRIBUTE_DECIMAL_MIN_COMM = "0";
+
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -259,7 +287,7 @@ public abstract class MappedStaff {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -301,7 +329,7 @@ public abstract class MappedStaff {
         return Objects.hashCode(getId());
     }
 
-    // -------------------------------------------------------------------------------------------------------------- id
+    // ------------------------------------------------------------------------------------------ id
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ID} attribute.
@@ -309,7 +337,7 @@ public abstract class MappedStaff {
      * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
      */
     @Nonnull
-    public Short getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -318,11 +346,11 @@ public abstract class MappedStaff {
      *
      * @param id new value for {@value #ATTRIBUTE_NAME_ID} attribute.
      */
-    protected void setId(@Nonnull final Short id) {
+    protected void setId(@Nonnull final Integer id) {
         this.id = id;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ name
+    // ---------------------------------------------------------------------------------------- name
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_NAME} attribute.
@@ -343,7 +371,7 @@ public abstract class MappedStaff {
         this.name = name;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ dept
+    // ---------------------------------------------------------------------------------------- dept
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPT} attribute.
@@ -351,7 +379,7 @@ public abstract class MappedStaff {
      * @return current value of {@value #ATTRIBUTE_NAME_DEPT} attribute.
      */
     @Nullable
-    public Short getDept() {
+    public Integer getDept() {
         return dept;
     }
 
@@ -360,11 +388,11 @@ public abstract class MappedStaff {
      *
      * @param dept new value for {@value #ATTRIBUTE_NAME_DEPT} attribute.
      */
-    public void setDept(@Nullable final Short dept) {
+    public void setDept(@Nullable final Integer dept) {
         this.dept = dept;
     }
 
-    // ------------------------------------------------------------------------------------------------------------- job
+    // ----------------------------------------------------------------------------------------- job
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_JOB} attribute.
@@ -385,7 +413,7 @@ public abstract class MappedStaff {
         this.job = job;
     }
 
-    // ----------------------------------------------------------------------------------------------------------- years
+    // --------------------------------------------------------------------------------------- years
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_YEARS} attribute.
@@ -393,7 +421,7 @@ public abstract class MappedStaff {
      * @return current value of {@value #ATTRIBUTE_NAME_YEARS} attribute.
      */
     @Nullable
-    public Short getYears() {
+    public Integer getYears() {
         return years;
     }
 
@@ -402,11 +430,11 @@ public abstract class MappedStaff {
      *
      * @param years new value for {@value #ATTRIBUTE_NAME_YEARS} attribute.
      */
-    public void setYears(@Nullable final Short years) {
+    public void setYears(@Nullable final Integer years) {
         this.years = years;
     }
 
-    // ---------------------------------------------------------------------------------------------------------- salary
+    // -------------------------------------------------------------------------------------- salary
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALARY} attribute.
@@ -428,7 +456,7 @@ public abstract class MappedStaff {
         this.salary = salary;
     }
 
-    // ------------------------------------------------------------------------------------------------------------ comm
+    // ---------------------------------------------------------------------------------------- comm
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_COMM} attribute.
@@ -449,8 +477,10 @@ public abstract class MappedStaff {
         this.comm = comm;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
     @NotNull
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
@@ -459,9 +489,9 @@ public abstract class MappedStaff {
             insertable = true,
             updatable = false
     )
-    private Short id;
+    private Integer id;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_NAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NAME,
@@ -472,16 +502,18 @@ public abstract class MappedStaff {
     )
     private String name;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @Max(Db2Constants.SMALLINT_MAX)
+    @Min(Db2Constants.SMALLINT_MIN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPT,
             nullable = COLUMN_NULLABLE_DEPT,
             insertable = true,
             updatable = true
     )
-    private Short dept;
+    private Integer dept;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_JOB)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_JOB,
@@ -492,16 +524,19 @@ public abstract class MappedStaff {
     )
     private String job;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @Min(ATTRIBUTE_MIN_YEARS)
+    @Max(Db2Constants.SMALLINT_MAX)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_YEARS,
             nullable = COLUMN_NULLABLE_YEARS,
             insertable = true,
             updatable = true
     )
-    private Short years;
+    private Integer years;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @DecimalMin(ATTRIBUTE_DECIMAL_MIN_SALARY)
     @Digits(integer = DIGITS_INTEGER_SALARY, fraction = DIGITS_FRACTION_SALARY)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALARY,
@@ -513,7 +548,8 @@ public abstract class MappedStaff {
     )
     private BigDecimal salary;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
+    @DecimalMin(ATTRIBUTE_DECIMAL_MIN_COMM)
     @Digits(integer = DIGITS_INTEGER_COMM, fraction = DIGITS_FRACTION_COMM)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_COMM,

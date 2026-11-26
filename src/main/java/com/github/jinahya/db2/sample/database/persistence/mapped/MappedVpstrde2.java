@@ -55,7 +55,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final String TABLE_NAME = "VPSTRDE2";
 
-    // --------------------------------------------------------------------------------------------------------- PROJ1NO
+    // ------------------------------------------------------------------------------------- PROJ1NO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJ1NO} attribute maps. The
@@ -84,7 +84,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_PROJ1NO = COLUMN_LENGTH_PROJ1NO;
 
-    // ------------------------------------------------------------------------------------------------------- PROJ1NAME
+    // ----------------------------------------------------------------------------------- PROJ1NAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJ1NAME} attribute maps.
@@ -113,7 +113,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_PROJ1NAME = COLUMN_LENGTH_PROJ1NAME;
 
-    // --------------------------------------------------------------------------------------------------------- RESP1NO
+    // ------------------------------------------------------------------------------------- RESP1NO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESP1NO} attribute maps. The
@@ -142,7 +142,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_RESP1NO = COLUMN_LENGTH_RESP1NO;
 
-    // --------------------------------------------------------------------------------------------------------- RESP1FN
+    // ------------------------------------------------------------------------------------- RESP1FN
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESP1FN} attribute maps. The
@@ -171,7 +171,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_RESP1FN = COLUMN_LENGTH_RESP1FN;
 
-    // --------------------------------------------------------------------------------------------------------- RESP1MI
+    // ------------------------------------------------------------------------------------- RESP1MI
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESP1MI} attribute maps. The
@@ -200,7 +200,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_RESP1MI = COLUMN_LENGTH_RESP1MI;
 
-    // --------------------------------------------------------------------------------------------------------- RESP1LN
+    // ------------------------------------------------------------------------------------- RESP1LN
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESP1LN} attribute maps. The
@@ -229,7 +229,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_RESP1LN = COLUMN_LENGTH_RESP1LN;
 
-    // --------------------------------------------------------------------------------------------------------- PROJ2NO
+    // ------------------------------------------------------------------------------------- PROJ2NO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJ2NO} attribute maps. The
@@ -258,7 +258,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_PROJ2NO = COLUMN_LENGTH_PROJ2NO;
 
-    // ------------------------------------------------------------------------------------------------------- PROJ2NAME
+    // ----------------------------------------------------------------------------------- PROJ2NAME
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJ2NAME} attribute maps.
@@ -287,7 +287,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_PROJ2NAME = COLUMN_LENGTH_PROJ2NAME;
 
-    // --------------------------------------------------------------------------------------------------------- RESP2NO
+    // ------------------------------------------------------------------------------------- RESP2NO
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESP2NO} attribute maps. The
@@ -316,7 +316,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_RESP2NO = COLUMN_LENGTH_RESP2NO;
 
-    // --------------------------------------------------------------------------------------------------------- RESP2FN
+    // ------------------------------------------------------------------------------------- RESP2FN
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESP2FN} attribute maps. The
@@ -345,7 +345,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_RESP2FN = COLUMN_LENGTH_RESP2FN;
 
-    // --------------------------------------------------------------------------------------------------------- RESP2MI
+    // ------------------------------------------------------------------------------------- RESP2MI
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESP2MI} attribute maps. The
@@ -374,7 +374,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_RESP2MI = COLUMN_LENGTH_RESP2MI;
 
-    // --------------------------------------------------------------------------------------------------------- RESP2LN
+    // ------------------------------------------------------------------------------------- RESP2LN
 
     /**
      * The name of the view column to which the {@value #ATTRIBUTE_NAME_RESP2LN} attribute maps. The
@@ -403,7 +403,7 @@ public abstract class MappedVpstrde2 {
      */
     public static final int SIZE_MAX_RESP2LN = COLUMN_LENGTH_RESP2LN;
 
-    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+    // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
@@ -412,7 +412,7 @@ public abstract class MappedVpstrde2 {
         super();
     }
 
-    // ------------------------------------------------------------------------------------------------ java.lang.Object
+    // ---------------------------------------------------------------------------- java.lang.Object
 
     @Override
     public String toString() {
@@ -459,7 +459,7 @@ public abstract class MappedVpstrde2 {
         return Objects.hashCode(getProj1no());
     }
 
-    // --------------------------------------------------------------------------------------------------------- proj1no
+    // ------------------------------------------------------------------------------------- proj1no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
@@ -481,7 +481,7 @@ public abstract class MappedVpstrde2 {
         this.proj1no = proj1no;
     }
 
-    // ------------------------------------------------------------------------------------------------------- proj1name
+    // ----------------------------------------------------------------------------------- proj1name
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJ1NAME} attribute.
@@ -503,7 +503,7 @@ public abstract class MappedVpstrde2 {
         this.proj1name = proj1name;
     }
 
-    // --------------------------------------------------------------------------------------------------------- resp1no
+    // ------------------------------------------------------------------------------------- resp1no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESP1NO} attribute.
@@ -525,7 +525,7 @@ public abstract class MappedVpstrde2 {
         this.resp1no = resp1no;
     }
 
-    // --------------------------------------------------------------------------------------------------------- resp1fn
+    // ------------------------------------------------------------------------------------- resp1fn
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESP1FN} attribute.
@@ -547,7 +547,7 @@ public abstract class MappedVpstrde2 {
         this.resp1fn = resp1fn;
     }
 
-    // --------------------------------------------------------------------------------------------------------- resp1mi
+    // ------------------------------------------------------------------------------------- resp1mi
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESP1MI} attribute.
@@ -569,7 +569,7 @@ public abstract class MappedVpstrde2 {
         this.resp1mi = resp1mi;
     }
 
-    // --------------------------------------------------------------------------------------------------------- resp1ln
+    // ------------------------------------------------------------------------------------- resp1ln
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESP1LN} attribute.
@@ -591,7 +591,7 @@ public abstract class MappedVpstrde2 {
         this.resp1ln = resp1ln;
     }
 
-    // --------------------------------------------------------------------------------------------------------- proj2no
+    // ------------------------------------------------------------------------------------- proj2no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
@@ -613,7 +613,7 @@ public abstract class MappedVpstrde2 {
         this.proj2no = proj2no;
     }
 
-    // ------------------------------------------------------------------------------------------------------- proj2name
+    // ----------------------------------------------------------------------------------- proj2name
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJ2NAME} attribute.
@@ -635,7 +635,7 @@ public abstract class MappedVpstrde2 {
         this.proj2name = proj2name;
     }
 
-    // --------------------------------------------------------------------------------------------------------- resp2no
+    // ------------------------------------------------------------------------------------- resp2no
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESP2NO} attribute.
@@ -657,7 +657,7 @@ public abstract class MappedVpstrde2 {
         this.resp2no = resp2no;
     }
 
-    // --------------------------------------------------------------------------------------------------------- resp2fn
+    // ------------------------------------------------------------------------------------- resp2fn
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESP2FN} attribute.
@@ -679,7 +679,7 @@ public abstract class MappedVpstrde2 {
         this.resp2fn = resp2fn;
     }
 
-    // --------------------------------------------------------------------------------------------------------- resp2mi
+    // ------------------------------------------------------------------------------------- resp2mi
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESP2MI} attribute.
@@ -701,7 +701,7 @@ public abstract class MappedVpstrde2 {
         this.resp2mi = resp2mi;
     }
 
-    // --------------------------------------------------------------------------------------------------------- resp2ln
+    // ------------------------------------------------------------------------------------- resp2ln
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESP2LN} attribute.
@@ -723,7 +723,7 @@ public abstract class MappedVpstrde2 {
         this.resp2ln = resp2ln;
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJ1NO)
     @NotNull
@@ -737,7 +737,7 @@ public abstract class MappedVpstrde2 {
     )
     private String proj1no;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJ1NAME)
     @NotNull
@@ -750,7 +750,7 @@ public abstract class MappedVpstrde2 {
     )
     private String proj1name;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESP1NO)
     @NotNull
@@ -763,7 +763,7 @@ public abstract class MappedVpstrde2 {
     )
     private String resp1no;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESP1FN)
     @NotNull
@@ -776,7 +776,7 @@ public abstract class MappedVpstrde2 {
     )
     private String resp1fn;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_RESP1MI)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP1MI,
@@ -787,7 +787,7 @@ public abstract class MappedVpstrde2 {
     )
     private String resp1mi;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESP1LN)
     @NotNull
@@ -800,7 +800,7 @@ public abstract class MappedVpstrde2 {
     )
     private String resp1ln;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJ2NO)
     @NotNull
@@ -813,7 +813,7 @@ public abstract class MappedVpstrde2 {
     )
     private String proj2no;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJ2NAME)
     @NotNull
@@ -826,7 +826,7 @@ public abstract class MappedVpstrde2 {
     )
     private String proj2name;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESP2NO)
     @NotNull
@@ -839,7 +839,7 @@ public abstract class MappedVpstrde2 {
     )
     private String resp2no;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESP2FN)
     @NotNull
@@ -852,7 +852,7 @@ public abstract class MappedVpstrde2 {
     )
     private String resp2fn;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_RESP2MI)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP2MI,
@@ -863,7 +863,7 @@ public abstract class MappedVpstrde2 {
     )
     private String resp2mi;
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_RESP2LN)
     @NotNull
