@@ -28,12 +28,12 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 
-
 /**
  * A mapped superclass which holds the mappings of the {@value MappedEmpmdc#TABLE_NAME} table, the
  * employees, by department and division, for multidimensional clustering.
  * <p>
- * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
+ * by
  * its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  *
@@ -56,11 +56,6 @@ public abstract class MappedEmpmdc {
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMPNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPNO = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is
      * {@value}.
      */
@@ -73,11 +68,6 @@ public abstract class MappedEmpmdc {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT = "DEPT";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_DEPT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPT = true;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT} column. The value is
@@ -94,15 +84,21 @@ public abstract class MappedEmpmdc {
     public static final String COLUMN_NAME_DIV = "DIV";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DIV} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DIV = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_DIV} column. The value is
      * {@value}.
      */
     public static final String ATTRIBUTE_NAME_DIV = "div";
+
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_EMPNO + ", "
+            + COLUMN_NAME_DEPT + ", "
+            + COLUMN_NAME_DIV;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -111,6 +107,23 @@ public abstract class MappedEmpmdc {
      */
     protected MappedEmpmdc() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param empno a value for the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * @param dept  a value for the {@value #ATTRIBUTE_NAME_DEPT} attribute.
+     * @param div   a value for the {@value #ATTRIBUTE_NAME_DIV} attribute.
+     */
+    protected MappedEmpmdc(
+            final Integer empno,
+            final Integer dept,
+            final Integer div) {
+        this();
+        this.empno = empno;
+        this.dept = dept;
+        this.div = div;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -192,7 +205,7 @@ public abstract class MappedEmpmdc {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPNO,
-            nullable = COLUMN_NULLABLE_EMPNO,
+            nullable = true,
             insertable = true,
             updatable = false
     )
@@ -201,7 +214,7 @@ public abstract class MappedEmpmdc {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPT,
-            nullable = COLUMN_NULLABLE_DEPT,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -210,7 +223,7 @@ public abstract class MappedEmpmdc {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DIV,
-            nullable = COLUMN_NULLABLE_DIV,
+            nullable = true,
             insertable = true,
             updatable = true
     )

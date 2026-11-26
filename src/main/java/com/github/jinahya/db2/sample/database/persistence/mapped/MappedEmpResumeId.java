@@ -180,8 +180,16 @@ public abstract class MappedEmpResumeId
     }
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     */
     private String empno;
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
+     */
     private String resumeFormat;
 }

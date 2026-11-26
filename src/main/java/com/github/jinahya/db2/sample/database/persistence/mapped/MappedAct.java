@@ -57,11 +57,6 @@ public abstract class MappedAct {
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_ACTNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACTNO = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
      * {@value}.
      */
@@ -74,11 +69,6 @@ public abstract class MappedAct {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTKWD = "ACTKWD";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_ACTKWD} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACTKWD = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_ACTKWD} column. The value is {@value}.
@@ -103,11 +93,6 @@ public abstract class MappedAct {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_ACTDESC = "ACTDESC";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_ACTDESC} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACTDESC = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_ACTDESC} column. The value is {@value}.
@@ -245,7 +230,7 @@ public abstract class MappedAct {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACTNO,
-            nullable = COLUMN_NULLABLE_ACTNO,
+            nullable = false,
             insertable = true,
             updatable = false
     )
@@ -257,7 +242,7 @@ public abstract class MappedAct {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACTKWD,
-            nullable = COLUMN_NULLABLE_ACTKWD,
+            nullable = false,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_ACTKWD
@@ -270,7 +255,7 @@ public abstract class MappedAct {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACTDESC,
-            nullable = COLUMN_NULLABLE_ACTDESC,
+            nullable = false,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_ACTDESC

@@ -81,6 +81,9 @@ public class PurchaseOrder
     // ---------------------------------------------------------------------------------------------
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = PurchaseOrder.COLUMN_NAME_CUSTID,
-                referencedColumnName = Customer.COLUMN_NAME_CID)
+                referencedColumnName = Customer.COLUMN_NAME_CID,
+                nullable = true,
+                insertable = true,
+                updatable = true)
     private Customer custidCustomer;
 }

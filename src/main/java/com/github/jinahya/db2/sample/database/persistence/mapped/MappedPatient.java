@@ -37,7 +37,8 @@ import java.util.Optional;
  * A mapped superclass which holds the mappings of the {@value MappedPatient#TABLE_NAME} table, the
  * patients.
  * <p>
- * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
+ * by
  * its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  * <p>
@@ -64,11 +65,6 @@ public abstract class MappedPatient {
     public static final String COLUMN_NAME_PATIENT_ID = "PATIENT_ID";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PATIENT_ID} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PATIENT_ID = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_PATIENT_ID} column. The value
      * is {@value}.
      */
@@ -81,11 +77,6 @@ public abstract class MappedPatient {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_NAME = "NAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_NAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_NAME = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_NAME} column. The value is {@value}.
@@ -112,11 +103,6 @@ public abstract class MappedPatient {
     public static final String COLUMN_NAME_AGE = "AGE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_AGE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_AGE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_AGE} column. The value is
      * {@value}.
      */
@@ -129,11 +115,6 @@ public abstract class MappedPatient {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_GENDER = "GENDER";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_GENDER} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_GENDER = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_GENDER} column. The value is {@value}.
@@ -160,12 +141,6 @@ public abstract class MappedPatient {
     public static final String COLUMN_NAME_CHOLESTEROL_LEVEL = "CHOLESTEROL_LEVEL";
 
     /**
-     * Whether the {@value #COLUMN_NAME_CHOLESTEROL_LEVEL} column is nullable. The value is
-     * {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_CHOLESTEROL_LEVEL = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_CHOLESTEROL_LEVEL} column. The
      * value is {@value}.
      */
@@ -180,11 +155,6 @@ public abstract class MappedPatient {
     public static final String COLUMN_NAME_BLOOD_PRESSURE = "BLOOD_PRESSURE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_BLOOD_PRESSURE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_BLOOD_PRESSURE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_BLOOD_PRESSURE} column. The
      * value is {@value}.
      */
@@ -197,11 +167,6 @@ public abstract class MappedPatient {
      * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_SMOKING_STATUS = "SMOKING_STATUS";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_SMOKING_STATUS} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SMOKING_STATUS = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_SMOKING_STATUS} column. The value is {@value}.
@@ -229,26 +194,14 @@ public abstract class MappedPatient {
     public static final String COLUMN_NAME_EMBEDDING = "EMBEDDING";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMBEDDING} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMBEDDING = true;
-
-    /**
      * The dimension of the {@value #COLUMN_NAME_EMBEDDING} column, a {@code VECTOR(768, FLOAT32)}.
      * The value is {@value}.
      */
     public static final int COLUMN_DIMENSION_EMBEDDING = 768;
 
     /**
-     * The length of the string form of the {@value #COLUMN_NAME_EMBEDDING} column, which a
-     * generated schema gives the column; {@code VECTOR_SERIALIZE} makes it {@code d * 16 + 1}
-     * for a {@code FLOAT32} vector of {@code d} dimensions. The value is {@value}.
-     */
-    public static final int COLUMN_LENGTH_EMBEDDING = COLUMN_DIMENSION_EMBEDDING * 16 + 1;
-
-    /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMBEDDING} column. The value
-     * is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMBEDDING} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMBEDDING = "embedding";
 
@@ -257,6 +210,22 @@ public abstract class MappedPatient {
      */
     public static final int SIZE_EMBEDDING = COLUMN_DIMENSION_EMBEDDING;
 
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_PATIENT_ID + ", "
+            + COLUMN_NAME_NAME + ", "
+            + COLUMN_NAME_AGE + ", "
+            + COLUMN_NAME_GENDER + ", "
+            + COLUMN_NAME_CHOLESTEROL_LEVEL + ", "
+            + COLUMN_NAME_BLOOD_PRESSURE + ", "
+            + COLUMN_NAME_SMOKING_STATUS + ", "
+            + COLUMN_NAME_EMBEDDING;
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
@@ -264,6 +233,39 @@ public abstract class MappedPatient {
      */
     protected MappedPatient() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param patientId        a value for the {@value #ATTRIBUTE_NAME_PATIENT_ID} attribute.
+     * @param name             a value for the {@value #ATTRIBUTE_NAME_NAME} attribute.
+     * @param age              a value for the {@value #ATTRIBUTE_NAME_AGE} attribute.
+     * @param gender           a value for the {@value #ATTRIBUTE_NAME_GENDER} attribute.
+     * @param cholesterolLevel a value for the {@value #ATTRIBUTE_NAME_CHOLESTEROL_LEVEL}
+     *                         attribute.
+     * @param bloodPressure    a value for the {@value #ATTRIBUTE_NAME_BLOOD_PRESSURE} attribute.
+     * @param smokingStatus    a value for the {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute.
+     * @param embedding        a value for the {@value #ATTRIBUTE_NAME_EMBEDDING} attribute.
+     */
+    protected MappedPatient(
+            final Integer patientId,
+            final String name,
+            final Integer age,
+            final String gender,
+            final Integer cholesterolLevel,
+            final Integer bloodPressure,
+            final String smokingStatus,
+            final float[] embedding) {
+        this();
+        this.patientId = patientId;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.cholesterolLevel = cholesterolLevel;
+        this.bloodPressure = bloodPressure;
+        this.smokingStatus = smokingStatus;
+        this.embedding = Optional.ofNullable(embedding).map(float[]::clone).orElse(null);
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -440,9 +442,9 @@ public abstract class MappedPatient {
      *
      * @return a copy of current value of {@value #ATTRIBUTE_NAME_EMBEDDING} attribute; {@code null}
      *         when it is {@code null}.
-     * @implNote A copy is returned, and a copy is kept by {@link #setEmbedding(float[])}, so that
-     *         the value changes only through the setter; EclipseLink does not see a change made
-     *         to the elements of a converted array.
+     * @implNote A copy is returned, and a copy is kept by {@link #setEmbedding(float[])},
+     *         so that the value changes only through the setter; EclipseLink does not see a change
+     *         made to the elements of a converted array.
      */
     @Nullable
     public float[] getEmbedding() {
@@ -464,7 +466,7 @@ public abstract class MappedPatient {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PATIENT_ID,
-            nullable = COLUMN_NULLABLE_PATIENT_ID,
+            nullable = true,
             insertable = true,
             updatable = false
     )
@@ -474,7 +476,7 @@ public abstract class MappedPatient {
     @Size(max = SIZE_MAX_NAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NAME,
-            nullable = COLUMN_NULLABLE_NAME,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_NAME
@@ -484,7 +486,7 @@ public abstract class MappedPatient {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_AGE,
-            nullable = COLUMN_NULLABLE_AGE,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -494,7 +496,7 @@ public abstract class MappedPatient {
     @Size(max = SIZE_MAX_GENDER)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_GENDER,
-            nullable = COLUMN_NULLABLE_GENDER,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_GENDER
@@ -504,7 +506,7 @@ public abstract class MappedPatient {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_CHOLESTEROL_LEVEL,
-            nullable = COLUMN_NULLABLE_CHOLESTEROL_LEVEL,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -513,7 +515,7 @@ public abstract class MappedPatient {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_BLOOD_PRESSURE,
-            nullable = COLUMN_NULLABLE_BLOOD_PRESSURE,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -523,7 +525,7 @@ public abstract class MappedPatient {
     @Size(max = SIZE_MAX_SMOKING_STATUS)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SMOKING_STATUS,
-            nullable = COLUMN_NULLABLE_SMOKING_STATUS,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_SMOKING_STATUS
@@ -535,10 +537,10 @@ public abstract class MappedPatient {
     @Convert(converter = VectorStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMBEDDING,
-            nullable = COLUMN_NULLABLE_EMBEDDING,
+            nullable = true,
             insertable = true,
             updatable = true,
-            length = COLUMN_LENGTH_EMBEDDING
+            length = COLUMN_DIMENSION_EMBEDDING * 16 + 1 // just for H2
     )
     private float[] embedding;
 }

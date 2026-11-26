@@ -21,6 +21,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVstafac1Id;
+
 import java.time.LocalDate;
 
 /**

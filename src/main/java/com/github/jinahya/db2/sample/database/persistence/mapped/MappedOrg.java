@@ -32,12 +32,12 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-
 /**
  * A mapped superclass which holds the mappings of the {@value MappedOrg#TABLE_NAME} table, the
  * organization.
  * <p>
- * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
+ * by
  * its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  *
@@ -60,11 +60,6 @@ public abstract class MappedOrg {
     public static final String COLUMN_NAME_DEPTNUMB = "DEPTNUMB";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DEPTNUMB} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNUMB = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNUMB} column. The value is
      * {@value}.
      */
@@ -77,11 +72,6 @@ public abstract class MappedOrg {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNAME = "DEPTNAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_DEPTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNAME = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_DEPTNAME} column. The value is {@value}.
@@ -108,11 +98,6 @@ public abstract class MappedOrg {
     public static final String COLUMN_NAME_MANAGER = "MANAGER";
 
     /**
-     * Whether the {@value #COLUMN_NAME_MANAGER} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MANAGER = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_MANAGER} column. The value is
      * {@value}.
      */
@@ -125,11 +110,6 @@ public abstract class MappedOrg {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_DIVISION = "DIVISION";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_DIVISION} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DIVISION = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_DIVISION} column. The value is {@value}.
@@ -156,11 +136,6 @@ public abstract class MappedOrg {
     public static final String COLUMN_NAME_LOCATION = "LOCATION";
 
     /**
-     * Whether the {@value #COLUMN_NAME_LOCATION} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_LOCATION = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_LOCATION} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_LOCATION = 13;
@@ -176,6 +151,19 @@ public abstract class MappedOrg {
      */
     public static final int SIZE_MAX_LOCATION = COLUMN_LENGTH_LOCATION;
 
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_DEPTNUMB + ", "
+            + COLUMN_NAME_DEPTNAME + ", "
+            + COLUMN_NAME_MANAGER + ", "
+            + COLUMN_NAME_DIVISION + ", "
+            + COLUMN_NAME_LOCATION;
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
@@ -183,6 +171,29 @@ public abstract class MappedOrg {
      */
     protected MappedOrg() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param deptnumb a value for the {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute.
+     * @param deptname a value for the {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
+     * @param manager  a value for the {@value #ATTRIBUTE_NAME_MANAGER} attribute.
+     * @param division a value for the {@value #ATTRIBUTE_NAME_DIVISION} attribute.
+     * @param location a value for the {@value #ATTRIBUTE_NAME_LOCATION} attribute.
+     */
+    protected MappedOrg(
+            final Integer deptnumb,
+            final String deptname,
+            final Integer manager,
+            final String division,
+            final String location) {
+        this();
+        this.deptnumb = deptnumb;
+        this.deptname = deptname;
+        this.manager = manager;
+        this.division = division;
+        this.location = location;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -315,7 +326,7 @@ public abstract class MappedOrg {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNUMB,
-            nullable = COLUMN_NULLABLE_DEPTNUMB,
+            nullable = false,
             insertable = true,
             updatable = false
     )
@@ -325,7 +336,7 @@ public abstract class MappedOrg {
     @Size(max = SIZE_MAX_DEPTNAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNAME,
-            nullable = COLUMN_NULLABLE_DEPTNAME,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_DEPTNAME
@@ -337,7 +348,7 @@ public abstract class MappedOrg {
     @Min(Db2Constants.SMALLINT_MIN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MANAGER,
-            nullable = COLUMN_NULLABLE_MANAGER,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -347,7 +358,7 @@ public abstract class MappedOrg {
     @Size(max = SIZE_MAX_DIVISION)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DIVISION,
-            nullable = COLUMN_NULLABLE_DIVISION,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_DIVISION
@@ -358,7 +369,7 @@ public abstract class MappedOrg {
     @Size(max = SIZE_MAX_LOCATION)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LOCATION,
-            nullable = COLUMN_NULLABLE_LOCATION,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_LOCATION

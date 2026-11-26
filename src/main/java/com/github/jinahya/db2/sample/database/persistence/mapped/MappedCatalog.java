@@ -55,11 +55,6 @@ public abstract class MappedCatalog {
     public static final String COLUMN_NAME_NAME = "NAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_NAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_NAME = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_NAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_NAME = 128;
@@ -82,20 +77,6 @@ public abstract class MappedCatalog {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_CATLOG = "CATLOG";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_CATLOG} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_CATLOG = true;
-
-    /**
-     * The length of the {@value #COLUMN_NAME_CATLOG} column, for a schema a provider generates. The
-     * value is {@value}.
-     * <p>
-     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
-     * {@code VARCHAR} of the provider's default length, too short for a document.
-     */
-    public static final int COLUMN_LENGTH_CATLOG = 1048576;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_CATLOG} column. The value is
@@ -200,7 +181,7 @@ public abstract class MappedCatalog {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NAME,
-            nullable = COLUMN_NULLABLE_NAME,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_NAME
@@ -210,10 +191,10 @@ public abstract class MappedCatalog {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_CATLOG,
-            nullable = COLUMN_NULLABLE_CATLOG,
+            nullable = true,
             insertable = true,
             updatable = true,
-            length = COLUMN_LENGTH_CATLOG
+            length = 1048576 // just for H2
     )
     private String catlog;
 }

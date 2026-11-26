@@ -123,19 +123,28 @@ public class Project
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = Project.COLUMN_NAME_DEPTNO,
-                referencedColumnName = Department.COLUMN_NAME_DEPTNO)
+                referencedColumnName = Department.COLUMN_NAME_DEPTNO,
+                nullable = false,
+                insertable = true,
+                updatable = true)
     private Department deptnoDepartment;
 
     // ---------------------------------------------------------------------------------------------
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = Project.COLUMN_NAME_RESPEMP,
-                referencedColumnName = Employee.COLUMN_NAME_EMPNO)
+                referencedColumnName = Employee.COLUMN_NAME_EMPNO,
+                nullable = false,
+                insertable = true,
+                updatable = true)
     private Employee respempEmployee;
 
     // ---------------------------------------------------------------------------------------------
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = Project.COLUMN_NAME_MAJPROJ,
-                referencedColumnName = Project.COLUMN_NAME_PROJNO)
+                referencedColumnName = Project.COLUMN_NAME_PROJNO,
+                nullable = true,
+                insertable = true,
+                updatable = true)
     private Project majprojProject;
 }

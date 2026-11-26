@@ -61,11 +61,6 @@ public abstract class MappedProduct {
     public static final String COLUMN_NAME_PID = "PID";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PID} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PID = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PID} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PID = 10;
@@ -90,11 +85,6 @@ public abstract class MappedProduct {
     public static final String COLUMN_NAME_NAME = "NAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_NAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_NAME = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_NAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_NAME = 128;
@@ -117,11 +107,6 @@ public abstract class MappedProduct {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_PRICE = "PRICE";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PRICE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PRICE = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_PRICE} column. The value is {@value}.
@@ -158,11 +143,6 @@ public abstract class MappedProduct {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROMOPRICE = "PROMOPRICE";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PROMOPRICE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROMOPRICE = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_PROMOPRICE} column. The value is {@value}.
@@ -202,11 +182,6 @@ public abstract class MappedProduct {
     public static final String COLUMN_NAME_PROMOSTART = "PROMOSTART";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROMOSTART} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROMOSTART = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_PROMOSTART} column. The value
      * is {@value}.
      */
@@ -221,11 +196,6 @@ public abstract class MappedProduct {
     public static final String COLUMN_NAME_PROMOEND = "PROMOEND";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROMOEND} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROMOEND = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_PROMOEND} column. The value is
      * {@value}.
      */
@@ -238,20 +208,6 @@ public abstract class MappedProduct {
      * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_DESCRIPTION = "DESCRIPTION";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_DESCRIPTION} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DESCRIPTION = true;
-
-    /**
-     * The length of the {@value #COLUMN_NAME_DESCRIPTION} column, for a schema a provider
-     * generates. The value is {@value}.
-     * <p>
-     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
-     * {@code VARCHAR} of the provider's default length, too short for a document.
-     */
-    public static final int COLUMN_LENGTH_DESCRIPTION = 1048576;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_DESCRIPTION} column. The value
@@ -469,7 +425,7 @@ public abstract class MappedProduct {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PID,
-            nullable = COLUMN_NULLABLE_PID,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_PID
@@ -480,7 +436,7 @@ public abstract class MappedProduct {
     @Size(max = SIZE_MAX_NAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NAME,
-            nullable = COLUMN_NULLABLE_NAME,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_NAME
@@ -491,7 +447,7 @@ public abstract class MappedProduct {
     @Digits(integer = DIGITS_INTEGER_PRICE, fraction = DIGITS_FRACTION_PRICE)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRICE,
-            nullable = COLUMN_NULLABLE_PRICE,
+            nullable = true,
             insertable = true,
             updatable = true,
             precision = COLUMN_PRECISION_PRICE,
@@ -503,7 +459,7 @@ public abstract class MappedProduct {
     @Digits(integer = DIGITS_INTEGER_PROMOPRICE, fraction = DIGITS_FRACTION_PROMOPRICE)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROMOPRICE,
-            nullable = COLUMN_NULLABLE_PROMOPRICE,
+            nullable = true,
             insertable = true,
             updatable = true,
             precision = COLUMN_PRECISION_PROMOPRICE,
@@ -514,7 +470,7 @@ public abstract class MappedProduct {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROMOSTART,
-            nullable = COLUMN_NULLABLE_PROMOSTART,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -523,7 +479,7 @@ public abstract class MappedProduct {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROMOEND,
-            nullable = COLUMN_NULLABLE_PROMOEND,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -533,10 +489,10 @@ public abstract class MappedProduct {
     @Convert(converter = ProductStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DESCRIPTION,
-            nullable = COLUMN_NULLABLE_DESCRIPTION,
+            nullable = true,
             insertable = true,
             updatable = true,
-            length = COLUMN_LENGTH_DESCRIPTION
+            length = 1048576 // just for H2
     )
     private Product description;
 }

@@ -72,11 +72,6 @@ public abstract class MappedEmployee {
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMPNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMPNO = 6;
@@ -99,11 +94,6 @@ public abstract class MappedEmployee {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_FIRSTNME = "FIRSTNME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_FIRSTNME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_FIRSTNME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_FIRSTNME} column. The value is {@value}.
@@ -130,11 +120,6 @@ public abstract class MappedEmployee {
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_MIDINIT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MIDINIT = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_MIDINIT = 1;
@@ -157,11 +142,6 @@ public abstract class MappedEmployee {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_LASTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_LASTNAME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
@@ -188,11 +168,6 @@ public abstract class MappedEmployee {
     public static final String COLUMN_NAME_WORKDEPT = "WORKDEPT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_WORKDEPT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_WORKDEPT = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_WORKDEPT} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_WORKDEPT = 3;
@@ -215,11 +190,6 @@ public abstract class MappedEmployee {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_PHONENO = "PHONENO";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PHONENO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PHONENO = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_PHONENO} column. The value is {@value}.
@@ -256,11 +226,6 @@ public abstract class MappedEmployee {
     public static final String COLUMN_NAME_HIREDATE = "HIREDATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_HIREDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_HIREDATE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_HIREDATE} column. The value is
      * {@value}.
      */
@@ -273,11 +238,6 @@ public abstract class MappedEmployee {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_JOB = "JOB";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_JOB} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_JOB = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_JOB} column. The value is {@value}.
@@ -304,11 +264,6 @@ public abstract class MappedEmployee {
     public static final String COLUMN_NAME_EDLEVEL = "EDLEVEL";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EDLEVEL} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EDLEVEL = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_EDLEVEL} column. The value is
      * {@value}.
      */
@@ -317,8 +272,8 @@ public abstract class MappedEmployee {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_EDLEVEL} attribute. The value is {@value}.
      *
-     * @implNote "Number of years of formal education", as the documentation of the {@code SAMPLE}
-     *         database describes the column; the database does not enforce it.
+     * @implNote "Number of years of formal education", as the documentation of the
+     *         {@code SAMPLE} database describes the column; the database does not enforce it.
      */
     public static final int ATTRIBUTE_MIN_EDLEVEL = 0;
 
@@ -329,11 +284,6 @@ public abstract class MappedEmployee {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_SEX = "SEX";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_SEX} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SEX = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_SEX} column. The value is {@value}.
@@ -354,8 +304,8 @@ public abstract class MappedEmployee {
     /**
      * The regular expression of the {@value #ATTRIBUTE_NAME_SEX} attribute. The value is {@value}.
      *
-     * @implNote "Sex (M male, F female)", as the documentation of the {@code SAMPLE} database
-     *         describes the column; the database does not enforce it.
+     * @implNote "Sex (M male, F female)", as the documentation of the {@code SAMPLE}
+     *         database describes the column; the database does not enforce it.
      */
     public static final String ATTRIBUTE_REGEXP_SEX = "[MF]";
 
@@ -366,11 +316,6 @@ public abstract class MappedEmployee {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_BIRTHDATE = "BIRTHDATE";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_BIRTHDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_BIRTHDATE = true;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_BIRTHDATE} column. The value is
@@ -385,11 +330,6 @@ public abstract class MappedEmployee {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_SALARY = "SALARY";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_SALARY} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SALARY = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_SALARY} column. The value is {@value}.
@@ -422,8 +362,8 @@ public abstract class MappedEmployee {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The value is {@value}.
      *
-     * @implNote "Yearly salary", as the documentation of the {@code SAMPLE} database describes the
-     *         column; the database does not enforce it.
+     * @implNote "Yearly salary", as the documentation of the {@code SAMPLE} database
+     *         describes the column; the database does not enforce it.
      */
     public static final String ATTRIBUTE_DECIMAL_MIN_SALARY = "0";
 
@@ -434,11 +374,6 @@ public abstract class MappedEmployee {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_BONUS = "BONUS";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_BONUS} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_BONUS = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_BONUS} column. The value is {@value}.
@@ -471,8 +406,8 @@ public abstract class MappedEmployee {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_BONUS} attribute. The value is {@value}.
      *
-     * @implNote "Yearly bonus", as the documentation of the {@code SAMPLE} database describes the
-     *         column; the database does not enforce it.
+     * @implNote "Yearly bonus", as the documentation of the {@code SAMPLE} database
+     *         describes the column; the database does not enforce it.
      */
     public static final String ATTRIBUTE_DECIMAL_MIN_BONUS = "0";
 
@@ -483,11 +418,6 @@ public abstract class MappedEmployee {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_COMM = "COMM";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_COMM} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_COMM = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_COMM} column. The value is {@value}.
@@ -520,8 +450,8 @@ public abstract class MappedEmployee {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_COMM} attribute. The value is {@value}.
      *
-     * @implNote "Yearly commission", as the documentation of the {@code SAMPLE} database describes
-     *         the column; the database does not enforce it.
+     * @implNote "Yearly commission", as the documentation of the {@code SAMPLE} database
+     *         describes the column; the database does not enforce it.
      */
     public static final String ATTRIBUTE_DECIMAL_MIN_COMM = "0";
 
@@ -886,7 +816,7 @@ public abstract class MappedEmployee {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPNO,
-            nullable = COLUMN_NULLABLE_EMPNO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_EMPNO
@@ -899,7 +829,7 @@ public abstract class MappedEmployee {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_FIRSTNME,
-            nullable = COLUMN_NULLABLE_FIRSTNME,
+            nullable = false,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_FIRSTNME
@@ -910,7 +840,7 @@ public abstract class MappedEmployee {
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
-            nullable = COLUMN_NULLABLE_MIDINIT,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_MIDINIT
@@ -923,7 +853,7 @@ public abstract class MappedEmployee {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LASTNAME,
-            nullable = COLUMN_NULLABLE_LASTNAME,
+            nullable = false,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_LASTNAME
@@ -936,7 +866,7 @@ public abstract class MappedEmployee {
     @Size(max = SIZE_MAX_WORKDEPT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_WORKDEPT,
-            nullable = COLUMN_NULLABLE_WORKDEPT,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_WORKDEPT
@@ -949,7 +879,7 @@ public abstract class MappedEmployee {
     @Size(max = SIZE_MAX_PHONENO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PHONENO,
-            nullable = COLUMN_NULLABLE_PHONENO,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_PHONENO
@@ -959,7 +889,7 @@ public abstract class MappedEmployee {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_HIREDATE,
-            nullable = COLUMN_NULLABLE_HIREDATE,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -969,7 +899,7 @@ public abstract class MappedEmployee {
     @Size(max = SIZE_MAX_JOB)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_JOB,
-            nullable = COLUMN_NULLABLE_JOB,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_JOB
@@ -983,7 +913,7 @@ public abstract class MappedEmployee {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EDLEVEL,
-            nullable = COLUMN_NULLABLE_EDLEVEL,
+            nullable = false,
             insertable = true,
             updatable = true
     )
@@ -994,7 +924,7 @@ public abstract class MappedEmployee {
     @Size(max = SIZE_MAX_SEX)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SEX,
-            nullable = COLUMN_NULLABLE_SEX,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_SEX
@@ -1004,7 +934,7 @@ public abstract class MappedEmployee {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_BIRTHDATE,
-            nullable = COLUMN_NULLABLE_BIRTHDATE,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -1015,7 +945,7 @@ public abstract class MappedEmployee {
     @Digits(integer = DIGITS_INTEGER_SALARY, fraction = DIGITS_FRACTION_SALARY)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALARY,
-            nullable = COLUMN_NULLABLE_SALARY,
+            nullable = true,
             insertable = true,
             updatable = true,
             precision = COLUMN_PRECISION_SALARY,
@@ -1028,7 +958,7 @@ public abstract class MappedEmployee {
     @Digits(integer = DIGITS_INTEGER_BONUS, fraction = DIGITS_FRACTION_BONUS)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_BONUS,
-            nullable = COLUMN_NULLABLE_BONUS,
+            nullable = true,
             insertable = true,
             updatable = true,
             precision = COLUMN_PRECISION_BONUS,
@@ -1041,7 +971,7 @@ public abstract class MappedEmployee {
     @Digits(integer = DIGITS_INTEGER_COMM, fraction = DIGITS_FRACTION_COMM)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_COMM,
-            nullable = COLUMN_NULLABLE_COMM,
+            nullable = true,
             insertable = true,
             updatable = true,
             precision = COLUMN_PRECISION_COMM,

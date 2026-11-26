@@ -34,6 +34,5 @@ class Act_Persister
     Act_Persister() {
         super(Act.class);
     }
-
 }
 

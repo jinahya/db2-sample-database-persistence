@@ -41,6 +41,20 @@ public class Empmdc
     }
 
     /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 3 values.
+     */
+    public Empmdc(final Object[] row) {
+        super(
+                __Row_Utils.integer(row, 0),
+                __Row_Utils.integer(row, 1),
+                __Row_Utils.integer(row, 2)
+        );
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @param empno {@inheritDoc}

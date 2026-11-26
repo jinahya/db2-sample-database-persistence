@@ -181,8 +181,16 @@ public abstract class MappedVpstrde1Id
     }
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
+     */
     private String proj1no;
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
+     */
     private String proj2no;
 }

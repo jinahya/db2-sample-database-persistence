@@ -93,6 +93,9 @@ public class Employee
     // ---------------------------------------------------------------------------------------------
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = Employee.COLUMN_NAME_WORKDEPT,
-                referencedColumnName = Department.COLUMN_NAME_DEPTNO)
+                referencedColumnName = Department.COLUMN_NAME_DEPTNO,
+                nullable = true,
+                insertable = true,
+                updatable = true)
     private Department workdeptDepartment;
 }

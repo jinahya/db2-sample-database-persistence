@@ -22,17 +22,33 @@ package com.github.jinahya.db2.sample.database.persistence;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
-@Disabled("not an entity: the table has no key; Sale is built from the rows of a native query")
 class Sale_PersistenceIT
         extends _Entity_PersistenceIT<Sale, Void> {
 
     Sale_PersistenceIT() {
         super(Sale.class, Void.class);
     }
-}
 
+    // ---------------------------------------------------------------------------------------------
+    @Disabled("not an entity: the table has no key, and Sale is persisted by no entity manager")
+    @Override
+    @Test
+    protected void persistRandomizedEntityInstance__() {
+        // empty
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @DisplayName("a randomly selected installed row, read through a native query, is valid")
+    @Override
+    @Test
+    protected void selectRandomEntityInstance__() {
+        selectRandomRow__(Sale.TABLE_NAME, Sale::new);
+    }
+}

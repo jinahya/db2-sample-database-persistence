@@ -64,11 +64,6 @@ public abstract class MappedVpstrde2 {
     public static final String COLUMN_NAME_PROJ1NO = "PROJ1NO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROJ1NO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJ1NO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PROJ1NO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PROJ1NO = 6;
@@ -91,11 +86,6 @@ public abstract class MappedVpstrde2 {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJ1NAME = "PROJ1NAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PROJ1NAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJ1NAME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_PROJ1NAME} column. The value is {@value}.
@@ -122,11 +112,6 @@ public abstract class MappedVpstrde2 {
     public static final String COLUMN_NAME_RESP1NO = "RESP1NO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_RESP1NO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESP1NO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_RESP1NO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_RESP1NO = 6;
@@ -149,11 +134,6 @@ public abstract class MappedVpstrde2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_RESP1FN = "RESP1FN";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_RESP1FN} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESP1FN = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_RESP1FN} column. The value is {@value}.
@@ -180,11 +160,6 @@ public abstract class MappedVpstrde2 {
     public static final String COLUMN_NAME_RESP1MI = "RESP1MI";
 
     /**
-     * Whether the {@value #COLUMN_NAME_RESP1MI} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESP1MI = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_RESP1MI} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_RESP1MI = 1;
@@ -207,11 +182,6 @@ public abstract class MappedVpstrde2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_RESP1LN = "RESP1LN";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_RESP1LN} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESP1LN = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_RESP1LN} column. The value is {@value}.
@@ -238,11 +208,6 @@ public abstract class MappedVpstrde2 {
     public static final String COLUMN_NAME_PROJ2NO = "PROJ2NO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROJ2NO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJ2NO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PROJ2NO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PROJ2NO = 6;
@@ -265,11 +230,6 @@ public abstract class MappedVpstrde2 {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJ2NAME = "PROJ2NAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PROJ2NAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJ2NAME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_PROJ2NAME} column. The value is {@value}.
@@ -296,11 +256,6 @@ public abstract class MappedVpstrde2 {
     public static final String COLUMN_NAME_RESP2NO = "RESP2NO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_RESP2NO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESP2NO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_RESP2NO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_RESP2NO = 6;
@@ -323,11 +278,6 @@ public abstract class MappedVpstrde2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_RESP2FN = "RESP2FN";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_RESP2FN} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESP2FN = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_RESP2FN} column. The value is {@value}.
@@ -354,11 +304,6 @@ public abstract class MappedVpstrde2 {
     public static final String COLUMN_NAME_RESP2MI = "RESP2MI";
 
     /**
-     * Whether the {@value #COLUMN_NAME_RESP2MI} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESP2MI = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_RESP2MI} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_RESP2MI = 1;
@@ -381,11 +326,6 @@ public abstract class MappedVpstrde2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_RESP2LN = "RESP2LN";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_RESP2LN} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESP2LN = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_RESP2LN} column. The value is {@value}.
@@ -730,7 +670,7 @@ public abstract class MappedVpstrde2 {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJ1NO,
-            nullable = COLUMN_NULLABLE_PROJ1NO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_PROJ1NO
@@ -743,7 +683,7 @@ public abstract class MappedVpstrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJ1NAME,
-            nullable = COLUMN_NULLABLE_PROJ1NAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJ1NAME
@@ -756,7 +696,7 @@ public abstract class MappedVpstrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP1NO,
-            nullable = COLUMN_NULLABLE_RESP1NO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESP1NO
@@ -769,7 +709,7 @@ public abstract class MappedVpstrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP1FN,
-            nullable = COLUMN_NULLABLE_RESP1FN,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESP1FN
@@ -780,7 +720,7 @@ public abstract class MappedVpstrde2 {
     @Size(max = SIZE_MAX_RESP1MI)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP1MI,
-            nullable = COLUMN_NULLABLE_RESP1MI,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESP1MI
@@ -793,7 +733,7 @@ public abstract class MappedVpstrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP1LN,
-            nullable = COLUMN_NULLABLE_RESP1LN,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESP1LN
@@ -806,7 +746,7 @@ public abstract class MappedVpstrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJ2NO,
-            nullable = COLUMN_NULLABLE_PROJ2NO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJ2NO
@@ -819,7 +759,7 @@ public abstract class MappedVpstrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJ2NAME,
-            nullable = COLUMN_NULLABLE_PROJ2NAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJ2NAME
@@ -832,7 +772,7 @@ public abstract class MappedVpstrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP2NO,
-            nullable = COLUMN_NULLABLE_RESP2NO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESP2NO
@@ -845,7 +785,7 @@ public abstract class MappedVpstrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP2FN,
-            nullable = COLUMN_NULLABLE_RESP2FN,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESP2FN
@@ -856,7 +796,7 @@ public abstract class MappedVpstrde2 {
     @Size(max = SIZE_MAX_RESP2MI)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP2MI,
-            nullable = COLUMN_NULLABLE_RESP2MI,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESP2MI
@@ -869,7 +809,7 @@ public abstract class MappedVpstrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESP2LN,
-            nullable = COLUMN_NULLABLE_RESP2LN,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESP2LN

@@ -23,8 +23,8 @@ package com.github.jinahya.db2.sample.database.persistence;
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedAdefusr;
 
 /**
- * A row of the {@value #TABLE_NAME} materialized query table; not an entity, since it has no key, but a
- * class built from the rows of a native query.
+ * A row of the {@value #TABLE_NAME} materialized query table; not an entity, since it has no key,
+ * but a class built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -38,5 +38,18 @@ public class Adefusr
      */
     public Adefusr() {
         super();
+    }
+
+    /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 2 values.
+     */
+    public Adefusr(final Object[] row) {
+        super(
+                __Row_Utils.string(row, 0),
+                __Row_Utils.integer(row, 1)
+        );
     }
 }

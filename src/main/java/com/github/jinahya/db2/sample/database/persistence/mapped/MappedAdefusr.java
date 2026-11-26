@@ -28,7 +28,6 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-
 /**
  * A mapped superclass which holds the mappings of the {@value MappedAdefusr#TABLE_NAME}
  * materialized query table, the number of employees in each work department.
@@ -65,11 +64,6 @@ public abstract class MappedAdefusr {
     public static final String COLUMN_NAME_WORKDEPT = "WORKDEPT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_WORKDEPT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_WORKDEPT = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_WORKDEPT} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_WORKDEPT = 3;
@@ -94,15 +88,20 @@ public abstract class MappedAdefusr {
     public static final String COLUMN_NAME_NO_OF_EMPLOYEES = "NO_OF_EMPLOYEES";
 
     /**
-     * Whether the {@value #COLUMN_NAME_NO_OF_EMPLOYEES} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_NO_OF_EMPLOYEES = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_NO_OF_EMPLOYEES} column. The
      * value is {@value}.
      */
     public static final String ATTRIBUTE_NAME_NO_OF_EMPLOYEES = "noOfEmployees";
+
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_WORKDEPT + ", "
+            + COLUMN_NAME_NO_OF_EMPLOYEES;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -111,6 +110,20 @@ public abstract class MappedAdefusr {
      */
     protected MappedAdefusr() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param workdept      a value for the {@value #ATTRIBUTE_NAME_WORKDEPT} attribute.
+     * @param noOfEmployees a value for the {@value #ATTRIBUTE_NAME_NO_OF_EMPLOYEES} attribute.
+     */
+    protected MappedAdefusr(
+            final String workdept,
+            final Integer noOfEmployees) {
+        this();
+        this.workdept = workdept;
+        this.noOfEmployees = noOfEmployees;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -173,7 +186,7 @@ public abstract class MappedAdefusr {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_WORKDEPT,
-            nullable = COLUMN_NULLABLE_WORKDEPT,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_WORKDEPT
@@ -185,7 +198,7 @@ public abstract class MappedAdefusr {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NO_OF_EMPLOYEES,
-            nullable = COLUMN_NULLABLE_NO_OF_EMPLOYEES,
+            nullable = false,
             insertable = false,
             updatable = false
     )

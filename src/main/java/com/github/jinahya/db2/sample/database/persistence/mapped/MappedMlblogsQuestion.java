@@ -37,7 +37,8 @@ import java.util.Optional;
  * A mapped superclass which holds the mappings of the {@value MappedMlblogsQuestion#TABLE_NAME}
  * table, the questions of a vector search example.
  * <p>
- * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
+ * by
  * its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  * <p>
@@ -64,11 +65,6 @@ public abstract class MappedMlblogsQuestion {
     public static final String COLUMN_NAME_QUESTION = "QUESTION";
 
     /**
-     * Whether the {@value #COLUMN_NAME_QUESTION} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_QUESTION = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_QUESTION} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_QUESTION = 1024;
@@ -93,26 +89,14 @@ public abstract class MappedMlblogsQuestion {
     public static final String COLUMN_NAME_EMBEDDING = "EMBEDDING";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMBEDDING} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMBEDDING = true;
-
-    /**
      * The dimension of the {@value #COLUMN_NAME_EMBEDDING} column, a {@code VECTOR(1024, FLOAT32)}.
      * The value is {@value}.
      */
     public static final int COLUMN_DIMENSION_EMBEDDING = 1024;
 
     /**
-     * The length of the string form of the {@value #COLUMN_NAME_EMBEDDING} column, which a
-     * generated schema gives the column; {@code VECTOR_SERIALIZE} makes it {@code d * 16 + 1}
-     * for a {@code FLOAT32} vector of {@code d} dimensions. The value is {@value}.
-     */
-    public static final int COLUMN_LENGTH_EMBEDDING = COLUMN_DIMENSION_EMBEDDING * 16 + 1;
-
-    /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMBEDDING} column. The value
-     * is {@value}.
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMBEDDING} column. The value is
+     * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMBEDDING = "embedding";
 
@@ -121,6 +105,16 @@ public abstract class MappedMlblogsQuestion {
      */
     public static final int SIZE_EMBEDDING = COLUMN_DIMENSION_EMBEDDING;
 
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_QUESTION + ", "
+            + COLUMN_NAME_EMBEDDING;
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
@@ -128,6 +122,20 @@ public abstract class MappedMlblogsQuestion {
      */
     protected MappedMlblogsQuestion() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param question  a value for the {@value #ATTRIBUTE_NAME_QUESTION} attribute.
+     * @param embedding a value for the {@value #ATTRIBUTE_NAME_EMBEDDING} attribute.
+     */
+    protected MappedMlblogsQuestion(
+            final String question,
+            final float[] embedding) {
+        this();
+        this.question = question;
+        this.embedding = Optional.ofNullable(embedding).map(float[]::clone).orElse(null);
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -168,9 +176,9 @@ public abstract class MappedMlblogsQuestion {
      *
      * @return a copy of current value of {@value #ATTRIBUTE_NAME_EMBEDDING} attribute; {@code null}
      *         when it is {@code null}.
-     * @implNote A copy is returned, and a copy is kept by {@link #setEmbedding(float[])}, so that
-     *         the value changes only through the setter; EclipseLink does not see a change made
-     *         to the elements of a converted array.
+     * @implNote A copy is returned, and a copy is kept by {@link #setEmbedding(float[])},
+     *         so that the value changes only through the setter; EclipseLink does not see a change
+     *         made to the elements of a converted array.
      */
     @Nullable
     public float[] getEmbedding() {
@@ -193,7 +201,7 @@ public abstract class MappedMlblogsQuestion {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_QUESTION,
-            nullable = COLUMN_NULLABLE_QUESTION,
+            nullable = true,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_QUESTION
@@ -205,10 +213,10 @@ public abstract class MappedMlblogsQuestion {
     @Convert(converter = VectorStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMBEDDING,
-            nullable = COLUMN_NULLABLE_EMBEDDING,
+            nullable = true,
             insertable = true,
             updatable = true,
-            length = COLUMN_LENGTH_EMBEDDING
+            length = COLUMN_DIMENSION_EMBEDDING * 16 + 1 // just for H2
     )
     private float[] embedding;
 }

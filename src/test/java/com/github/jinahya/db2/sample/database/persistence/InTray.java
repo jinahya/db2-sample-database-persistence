@@ -42,6 +42,21 @@ public class InTray
     }
 
     /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 4 values.
+     */
+    public InTray(final Object[] row) {
+        super(
+                __Row_Utils.localDateTime(row, 0),
+                __Row_Utils.string(row, 1),
+                __Row_Utils.string(row, 2),
+                __Row_Utils.string(row, 3)
+        );
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @param received {@inheritDoc}

@@ -65,11 +65,6 @@ public abstract class MappedDepartment {
     public static final String COLUMN_NAME_DEPTNO = "DEPTNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DEPTNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_DEPTNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_DEPTNO = 3;
@@ -92,11 +87,6 @@ public abstract class MappedDepartment {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNAME = "DEPTNAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_DEPTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNAME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_DEPTNAME} column. The value is {@value}.
@@ -123,11 +113,6 @@ public abstract class MappedDepartment {
     public static final String COLUMN_NAME_MGRNO = "MGRNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_MGRNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MGRNO = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_MGRNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_MGRNO = 6;
@@ -150,11 +135,6 @@ public abstract class MappedDepartment {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_ADMRDEPT = "ADMRDEPT";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_ADMRDEPT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ADMRDEPT = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_ADMRDEPT} column. The value is {@value}.
@@ -181,11 +161,6 @@ public abstract class MappedDepartment {
     public static final String COLUMN_NAME_LOCATION = "LOCATION";
 
     /**
-     * Whether the {@value #COLUMN_NAME_LOCATION} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_LOCATION = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_LOCATION} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_LOCATION = 16;
@@ -208,6 +183,17 @@ public abstract class MappedDepartment {
      */
     protected MappedDepartment() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified value of the {@value #ATTRIBUTE_NAME_DEPTNO}
+     * attribute, the identifier, which is assigned, not generated.
+     *
+     * @param deptno a value for the {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
+     */
+    protected MappedDepartment(final String deptno) {
+        this();
+        setDeptno(deptno);
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -294,36 +280,6 @@ public abstract class MappedDepartment {
         this.deptname = deptname;
     }
 
-    // --------------------------------------------------------------------------------------- mgrno
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute, which is {@code null}
-     * until this instance is loaded.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
-     *         which is a subclass in another package, can override it.
-     */
-    @Nullable
-    protected String getMgrno() {
-        return mgrno;
-    }
-
-    // ------------------------------------------------------------------------------------ admrdept
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute, which is {@code null}
-     * until this instance is loaded.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
-     *         which is a subclass in another package, can override it.
-     */
-    @Nullable
-    protected String getAdmrdept() {
-        return admrdept;
-    }
-
     // ------------------------------------------------------------------------------------ location
 
     /**
@@ -353,7 +309,7 @@ public abstract class MappedDepartment {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNO,
-            nullable = COLUMN_NULLABLE_DEPTNO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_DEPTNO
@@ -366,7 +322,7 @@ public abstract class MappedDepartment {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNAME,
-            nullable = COLUMN_NULLABLE_DEPTNAME,
+            nullable = false,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_DEPTNAME
@@ -379,7 +335,7 @@ public abstract class MappedDepartment {
     @Size(max = SIZE_MAX_MGRNO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MGRNO,
-            nullable = COLUMN_NULLABLE_MGRNO,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_MGRNO
@@ -392,7 +348,7 @@ public abstract class MappedDepartment {
     @Size(max = SIZE_MAX_ADMRDEPT)
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ADMRDEPT,
-            nullable = COLUMN_NULLABLE_ADMRDEPT,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_ADMRDEPT
@@ -403,7 +359,7 @@ public abstract class MappedDepartment {
     @Size(max = SIZE_MAX_LOCATION)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LOCATION,
-            nullable = COLUMN_NULLABLE_LOCATION,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_LOCATION

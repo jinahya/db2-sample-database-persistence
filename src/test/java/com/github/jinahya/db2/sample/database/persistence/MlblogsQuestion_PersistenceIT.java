@@ -24,6 +24,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,7 +33,6 @@ import static org.assertj.core.api.Assertions.assertThat;
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
-@Disabled("not an entity: the table has no key; MlblogsQuestion is built from the rows of a native query")
 class MlblogsQuestion_PersistenceIT
         extends _Entity_PersistenceIT<MlblogsQuestion, String> {
 
@@ -50,5 +51,20 @@ class MlblogsQuestion_PersistenceIT
             assertThat(embedding).hasSize(MlblogsQuestion.COLUMN_DIMENSION_EMBEDDING);
         }
     }
-}
 
+    // ---------------------------------------------------------------------------------------------
+    @Disabled("not an entity: the table has no key, and MlblogsQuestion is persisted by no entity manager")
+    @Override
+    @Test
+    protected void persistRandomizedEntityInstance__() {
+        // empty
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @DisplayName("a randomly selected installed row, read through a native query, is valid")
+    @Override
+    @Test
+    protected void selectRandomEntityInstance__() {
+        selectRandomRow__(MlblogsQuestion.TABLE_NAME, MlblogsQuestion::new);
+    }
+}

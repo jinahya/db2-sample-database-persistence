@@ -61,11 +61,6 @@ public abstract class MappedProductSupplier {
     public static final String COLUMN_NAME_PID = "PID";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PID} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PID = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PID} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PID = 10;
@@ -88,11 +83,6 @@ public abstract class MappedProductSupplier {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_SID = "SID";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_SID} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SID = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_SID} column. The value is {@value}.
@@ -207,7 +197,7 @@ public abstract class MappedProductSupplier {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PID,
-            nullable = COLUMN_NULLABLE_PID,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_PID
@@ -221,7 +211,7 @@ public abstract class MappedProductSupplier {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SID,
-            nullable = COLUMN_NULLABLE_SID,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_SID

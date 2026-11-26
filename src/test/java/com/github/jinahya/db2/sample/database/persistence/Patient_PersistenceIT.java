@@ -39,7 +39,6 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
-@Disabled("not an entity: the table has no key; Patient is built from the rows of a native query")
 class Patient_PersistenceIT
         extends _Entity_PersistenceIT<Patient, Integer> {
 
@@ -100,6 +99,7 @@ class Patient_PersistenceIT
     }
 
     @DisplayName("an embedding replaced with a new vector is updated")
+    @Disabled("not an entity: no Patient is loaded or merged by an entity manager")
     @Test
     void embedding_Replaced_Updated() {
         changeEmbedding(p -> {
@@ -109,6 +109,7 @@ class Patient_PersistenceIT
     }
 
     @DisplayName("an embedding changed in the array its getter returns is not updated")
+    @Disabled("not an entity: no Patient is loaded or merged by an entity manager")
     @Test
     void embedding_ChangedInReturnedArray_NotUpdated() {
         changeEmbedding(p -> {
@@ -119,6 +120,7 @@ class Patient_PersistenceIT
     }
 
     @DisplayName("an embedding changed in a copy and set back is updated")
+    @Disabled("not an entity: no Patient is loaded or merged by an entity manager")
     @Test
     void embedding_ChangedAndSet_Updated() {
         changeEmbedding(p -> {
@@ -128,5 +130,20 @@ class Patient_PersistenceIT
             return p;
         }, true);
     }
-}
 
+    // ---------------------------------------------------------------------------------------------
+    @Disabled("not an entity: the table has no key, and Patient is persisted by no entity manager")
+    @Override
+    @Test
+    protected void persistRandomizedEntityInstance__() {
+        // empty
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @DisplayName("a randomly selected installed row, read through a native query, is valid")
+    @Override
+    @Test
+    protected void selectRandomEntityInstance__() {
+        selectRandomRow__(Patient.TABLE_NAME, Patient::new);
+    }
+}

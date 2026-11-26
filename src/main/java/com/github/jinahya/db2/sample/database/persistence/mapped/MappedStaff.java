@@ -40,7 +40,8 @@ import java.math.BigDecimal;
  * A mapped superclass which holds the mappings of the {@value MappedStaff#TABLE_NAME} table, the
  * staff.
  * <p>
- * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
+ * by
  * its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  *
@@ -63,11 +64,6 @@ public abstract class MappedStaff {
     public static final String COLUMN_NAME_ID = "ID";
 
     /**
-     * Whether the {@value #COLUMN_NAME_ID} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ID = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ID} column. The value is
      * {@value}.
      */
@@ -80,11 +76,6 @@ public abstract class MappedStaff {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_NAME = "NAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_NAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_NAME = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_NAME} column. The value is {@value}.
@@ -111,11 +102,6 @@ public abstract class MappedStaff {
     public static final String COLUMN_NAME_DEPT = "DEPT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DEPT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPT = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT} column. The value is
      * {@value}.
      */
@@ -128,11 +114,6 @@ public abstract class MappedStaff {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_JOB = "JOB";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_JOB} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_JOB = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_JOB} column. The value is {@value}.
@@ -159,11 +140,6 @@ public abstract class MappedStaff {
     public static final String COLUMN_NAME_YEARS = "YEARS";
 
     /**
-     * Whether the {@value #COLUMN_NAME_YEARS} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_YEARS = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_YEARS} column. The value is
      * {@value}.
      */
@@ -172,8 +148,8 @@ public abstract class MappedStaff {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_YEARS} attribute. The value is {@value}.
      *
-     * @implNote "Years of service", as the documentation of the {@code SAMPLE} database describes
-     *         the column; the database does not enforce it.
+     * @implNote "Years of service", as the documentation of the {@code SAMPLE} database
+     *         describes the column; the database does not enforce it.
      */
     public static final int ATTRIBUTE_MIN_YEARS = 0;
 
@@ -184,11 +160,6 @@ public abstract class MappedStaff {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_SALARY = "SALARY";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_SALARY} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SALARY = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_SALARY} column. The value is {@value}.
@@ -221,8 +192,8 @@ public abstract class MappedStaff {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_SALARY} attribute. The value is {@value}.
      *
-     * @implNote "Current salary", as the documentation of the {@code SAMPLE} database describes the
-     *         column; the database does not enforce it.
+     * @implNote "Current salary", as the documentation of the {@code SAMPLE} database
+     *         describes the column; the database does not enforce it.
      */
     public static final String ATTRIBUTE_DECIMAL_MIN_SALARY = "0";
 
@@ -233,11 +204,6 @@ public abstract class MappedStaff {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_COMM = "COMM";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_COMM} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_COMM = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_COMM} column. The value is {@value}.
@@ -270,10 +236,25 @@ public abstract class MappedStaff {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_COMM} attribute. The value is {@value}.
      *
-     * @implNote "Commission", as the documentation of the {@code SAMPLE} database describes the
-     *         column; the database does not enforce it.
+     * @implNote "Commission", as the documentation of the {@code SAMPLE} database describes
+     *         the column; the database does not enforce it.
      */
     public static final String ATTRIBUTE_DECIMAL_MIN_COMM = "0";
+
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_ID + ", "
+            + COLUMN_NAME_NAME + ", "
+            + COLUMN_NAME_DEPT + ", "
+            + COLUMN_NAME_JOB + ", "
+            + COLUMN_NAME_YEARS + ", "
+            + COLUMN_NAME_SALARY + ", "
+            + COLUMN_NAME_COMM;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -282,6 +263,35 @@ public abstract class MappedStaff {
      */
     protected MappedStaff() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param id     a value for the {@value #ATTRIBUTE_NAME_ID} attribute.
+     * @param name   a value for the {@value #ATTRIBUTE_NAME_NAME} attribute.
+     * @param dept   a value for the {@value #ATTRIBUTE_NAME_DEPT} attribute.
+     * @param job    a value for the {@value #ATTRIBUTE_NAME_JOB} attribute.
+     * @param years  a value for the {@value #ATTRIBUTE_NAME_YEARS} attribute.
+     * @param salary a value for the {@value #ATTRIBUTE_NAME_SALARY} attribute.
+     * @param comm   a value for the {@value #ATTRIBUTE_NAME_COMM} attribute.
+     */
+    protected MappedStaff(
+            final Integer id,
+            final String name,
+            final Integer dept,
+            final String job,
+            final Integer years,
+            final BigDecimal salary,
+            final BigDecimal comm) {
+        this();
+        this.id = id;
+        this.name = name;
+        this.dept = dept;
+        this.job = job;
+        this.years = years;
+        this.salary = salary;
+        this.comm = comm;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -454,7 +464,7 @@ public abstract class MappedStaff {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ID,
-            nullable = COLUMN_NULLABLE_ID,
+            nullable = false,
             insertable = true,
             updatable = false
     )
@@ -464,7 +474,7 @@ public abstract class MappedStaff {
     @Size(max = SIZE_MAX_NAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NAME,
-            nullable = COLUMN_NULLABLE_NAME,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_NAME
@@ -476,7 +486,7 @@ public abstract class MappedStaff {
     @Min(Db2Constants.SMALLINT_MIN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPT,
-            nullable = COLUMN_NULLABLE_DEPT,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -486,7 +496,7 @@ public abstract class MappedStaff {
     @Size(max = SIZE_MAX_JOB)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_JOB,
-            nullable = COLUMN_NULLABLE_JOB,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_JOB
@@ -498,7 +508,7 @@ public abstract class MappedStaff {
     @Max(Db2Constants.SMALLINT_MAX)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_YEARS,
-            nullable = COLUMN_NULLABLE_YEARS,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -509,7 +519,7 @@ public abstract class MappedStaff {
     @Digits(integer = DIGITS_INTEGER_SALARY, fraction = DIGITS_FRACTION_SALARY)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALARY,
-            nullable = COLUMN_NULLABLE_SALARY,
+            nullable = true,
             insertable = true,
             updatable = true,
             precision = COLUMN_PRECISION_SALARY,
@@ -522,7 +532,7 @@ public abstract class MappedStaff {
     @Digits(integer = DIGITS_INTEGER_COMM, fraction = DIGITS_FRACTION_COMM)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_COMM,
-            nullable = COLUMN_NULLABLE_COMM,
+            nullable = true,
             insertable = true,
             updatable = true,
             precision = COLUMN_PRECISION_COMM,

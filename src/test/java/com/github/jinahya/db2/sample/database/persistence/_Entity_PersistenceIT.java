@@ -28,6 +28,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Function;
 
 import static com.github.jinahya.db2.sample.database.persistence.___PersistenceIT_Utils.applyEntityManagerFactory;
 import static com.github.jinahya.db2.sample.database.persistence.___PersistenceIT_Utils.applyEntityManager_;
@@ -42,9 +44,9 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 /**
  * The integration tests of an entity, against the
- * {@value ___PersistenceIT_Utils#PERSISTENCE_UNIT_NAME} unit on the database {@code
- * docker-compose.yml} brings up. Each reads installed rows, or persists a new randomized instance,
- * and rolls back.
+ * {@value ___PersistenceIT_Utils#PERSISTENCE_UNIT_NAME} unit on the database
+ * {@code docker-compose.yml} brings up. Each reads installed rows, or persists a new randomized
+ * instance, and rolls back.
  * <p>
  * The base holds no entity manager. Each test takes the factory from {@link ___PersistenceIT_Utils}
  * and goes through the jinahya library directly, one entity manager per call.
@@ -233,6 +235,48 @@ public abstract class _Entity_PersistenceIT<T, U> {
                                                   final EntityManager entityManager,
                                                   final T entityInstance) {
         // empty
+    }
+
+    /**
+     * Selects a random installed row of the specified table, or view, through a native query,
+     * builds an instance from it with the specified constructor, validates it, and hands it to
+     * {@link #randomEntityInstanceSelected__(EntityManagerFactory, EntityManager, Object)}; for a
+     * class which is no entity, since its table has no key, whose
+     * {@link #selectRandomEntityInstance__()} calls this instead.
+     * <p>
+     * A native {@code COUNT(*)} picks a random offset, and a native {@code SELECT *}, whose columns
+     * come in the table's order, reads the row at it.
+     *
+     * @param table       the name of the table, or view.
+     * @param constructor the constructor which builds an instance from a row.
+     * @implSpec An empty table is not a failure; the test aborts, as
+     *         {@link #selectRandomEntityInstance__()} does.
+     */
+    protected void selectRandomRow__(final String table,
+                                     final Function<? super Object[], ? extends T> constructor) {
+        Objects.requireNonNull(table, "table is null");
+        Objects.requireNonNull(constructor, "constructor is null");
+        final var selected = Optional.ofNullable(applyEntityManagerFactory(
+                emf -> applyEntityManager(emf, em -> {
+                    final var count = ((Number)
+                            em.createNativeQuery("SELECT COUNT(*) FROM " + table)
+                                    .getSingleResult()).longValue();
+                    if (count == 0L) {
+                        return null;
+                    }
+                    final var offset = ThreadLocalRandom.current().nextLong(count);
+                    final var row = (Object[]) em.createNativeQuery(
+                                    "SELECT * "
+                                    + "FROM " + table
+                                    + " OFFSET " + offset + " ROWS FETCH FIRST 1 ROW ONLY")
+                            .getSingleResult();
+                    final T instance = constructor.apply(row);
+                    ___Validation_TestUtils.assertValid(instance);
+                    randomEntityInstanceSelected__(emf, em, instance);
+                    return instance;
+                })
+        ));
+        assumeTrue(selected.isPresent(), () -> "no row of " + table + " is installed");
     }
 
     // ---------------------------------------------------------------------------------------------

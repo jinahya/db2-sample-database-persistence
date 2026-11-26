@@ -39,4 +39,21 @@ public class Vempprojact
     public Vempprojact() {
         super();
     }
+
+    /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 6 values.
+     */
+    public Vempprojact(final Object[] row) {
+        super(
+                __Row_Utils.string(row, 0),
+                __Row_Utils.string(row, 1),
+                __Row_Utils.integer(row, 2),
+                __Row_Utils.bigDecimal(row, 3),
+                __Row_Utils.localDate(row, 4),
+                __Row_Utils.localDate(row, 5)
+        );
+    }
 }

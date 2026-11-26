@@ -64,11 +64,6 @@ public abstract class MappedVemplp {
     public static final String COLUMN_NAME_EMPLOYEENUMBER = "EMPLOYEENUMBER";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMPLOYEENUMBER} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPLOYEENUMBER = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMPLOYEENUMBER} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMPLOYEENUMBER = 6;
@@ -92,11 +87,6 @@ public abstract class MappedVemplp {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_PHONENUMBER = "PHONENUMBER";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PHONENUMBER} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PHONENUMBER = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_PHONENUMBER} column. The value is {@value}.
@@ -212,7 +202,7 @@ public abstract class MappedVemplp {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPLOYEENUMBER,
-            nullable = COLUMN_NULLABLE_EMPLOYEENUMBER,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_EMPLOYEENUMBER
@@ -223,7 +213,7 @@ public abstract class MappedVemplp {
     @Size(max = SIZE_MAX_PHONENUMBER)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PHONENUMBER,
-            nullable = COLUMN_NULLABLE_PHONENUMBER,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PHONENUMBER

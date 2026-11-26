@@ -181,8 +181,16 @@ public abstract class MappedVastrde2Id
     }
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
+     */
     private String dept1no;
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
+     */
     private String emp2no;
 }

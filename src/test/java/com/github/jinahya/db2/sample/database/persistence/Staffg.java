@@ -41,6 +41,24 @@ public class Staffg
     }
 
     /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 7 values.
+     */
+    public Staffg(final Object[] row) {
+        super(
+                __Row_Utils.integer(row, 0),
+                __Row_Utils.string(row, 1),
+                __Row_Utils.integer(row, 2),
+                __Row_Utils.string(row, 3),
+                __Row_Utils.integer(row, 4),
+                __Row_Utils.bigDecimal(row, 5),
+                __Row_Utils.bigDecimal(row, 6)
+        );
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @param id {@inheritDoc}

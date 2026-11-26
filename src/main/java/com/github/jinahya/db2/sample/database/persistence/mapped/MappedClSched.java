@@ -37,7 +37,8 @@ import java.time.LocalTime;
  * A mapped superclass which holds the mappings of the {@value MappedClSched#TABLE_NAME} table, the
  * class schedules.
  * <p>
- * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
+ * by
  * its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  *
@@ -58,11 +59,6 @@ public abstract class MappedClSched {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_CLASS_CODE = "CLASS_CODE";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_CLASS_CODE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_CLASS_CODE = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_CLASS_CODE} column. The value is {@value}.
@@ -90,11 +86,6 @@ public abstract class MappedClSched {
     public static final String COLUMN_NAME_DAY = "DAY";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DAY} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DAY = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_DAY} column. The value is
      * {@value}.
      */
@@ -103,8 +94,8 @@ public abstract class MappedClSched {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_DAY} attribute. The value is {@value}.
      *
-     * @implNote The column is a day number of a four-day schedule, as the documentation of the
-     *         {@code SAMPLE} database describes it; the database does not enforce it, with no
+     * @implNote The column is a day number of a four-day schedule, as the documentation of
+     *         the {@code SAMPLE} database describes it; the database does not enforce it, with no
      *         check constraint, and the installed rows hold {@code 1} to {@code 4}.
      */
     public static final int ATTRIBUTE_MIN_DAY = 1;
@@ -112,8 +103,8 @@ public abstract class MappedClSched {
     /**
      * The maximum value of the {@value #ATTRIBUTE_NAME_DAY} attribute. The value is {@value}.
      *
-     * @implNote The column is a day number of a four-day schedule, as the documentation of the
-     *         {@code SAMPLE} database describes it; the database does not enforce it, with no
+     * @implNote The column is a day number of a four-day schedule, as the documentation of
+     *         the {@code SAMPLE} database describes it; the database does not enforce it, with no
      *         check constraint, and the installed rows hold {@code 1} to {@code 4}.
      */
     public static final int ATTRIBUTE_MAX_DAY = 4;
@@ -125,11 +116,6 @@ public abstract class MappedClSched {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_STARTING = "STARTING";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_STARTING} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_STARTING = true;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_STARTING} column. The value is
@@ -146,15 +132,22 @@ public abstract class MappedClSched {
     public static final String COLUMN_NAME_ENDING = "ENDING";
 
     /**
-     * Whether the {@value #COLUMN_NAME_ENDING} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ENDING = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ENDING} column. The value is
      * {@value}.
      */
     public static final String ATTRIBUTE_NAME_ENDING = "ending";
+
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_CLASS_CODE + ", "
+            + COLUMN_NAME_DAY + ", "
+            + COLUMN_NAME_STARTING + ", "
+            + COLUMN_NAME_ENDING;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -163,6 +156,26 @@ public abstract class MappedClSched {
      */
     protected MappedClSched() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param classCode a value for the {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute.
+     * @param day       a value for the {@value #ATTRIBUTE_NAME_DAY} attribute.
+     * @param starting  a value for the {@value #ATTRIBUTE_NAME_STARTING} attribute.
+     * @param ending    a value for the {@value #ATTRIBUTE_NAME_ENDING} attribute.
+     */
+    protected MappedClSched(
+            final String classCode,
+            final Integer day,
+            final LocalTime starting,
+            final LocalTime ending) {
+        this();
+        this.classCode = classCode;
+        this.day = day;
+        this.starting = starting;
+        this.ending = ending;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -270,7 +283,7 @@ public abstract class MappedClSched {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_CLASS_CODE,
-            nullable = COLUMN_NULLABLE_CLASS_CODE,
+            nullable = true,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_CLASS_CODE
@@ -283,7 +296,7 @@ public abstract class MappedClSched {
     @Min(ATTRIBUTE_MIN_DAY)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DAY,
-            nullable = COLUMN_NULLABLE_DAY,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -291,7 +304,7 @@ public abstract class MappedClSched {
 
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_STARTING,
-            nullable = COLUMN_NULLABLE_STARTING,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -299,7 +312,7 @@ public abstract class MappedClSched {
 
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ENDING,
-            nullable = COLUMN_NULLABLE_ENDING,
+            nullable = true,
             insertable = true,
             updatable = true
     )

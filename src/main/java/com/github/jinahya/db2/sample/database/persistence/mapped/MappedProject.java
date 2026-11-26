@@ -69,11 +69,6 @@ public abstract class MappedProject {
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROJNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PROJNO = 6;
@@ -96,11 +91,6 @@ public abstract class MappedProject {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNAME = "PROJNAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PROJNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNAME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_PROJNAME} column. The value is {@value}.
@@ -127,11 +117,6 @@ public abstract class MappedProject {
     public static final String COLUMN_NAME_DEPTNO = "DEPTNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DEPTNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_DEPTNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_DEPTNO = 3;
@@ -156,11 +141,6 @@ public abstract class MappedProject {
     public static final String COLUMN_NAME_RESPEMP = "RESPEMP";
 
     /**
-     * Whether the {@value #COLUMN_NAME_RESPEMP} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESPEMP = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_RESPEMP} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_RESPEMP = 6;
@@ -183,11 +163,6 @@ public abstract class MappedProject {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_PRSTAFF = "PRSTAFF";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PRSTAFF} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PRSTAFF = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_PRSTAFF} column. The value is {@value}.
@@ -221,8 +196,8 @@ public abstract class MappedProject {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_PRSTAFF} attribute. The value is {@value}.
      *
-     * @implNote "Estimated mean staffing", as the documentation of the {@code SAMPLE} database
-     *         describes the column; the database does not enforce it.
+     * @implNote "Estimated mean staffing", as the documentation of the {@code SAMPLE}
+     *         database describes the column; the database does not enforce it.
      */
     public static final String ATTRIBUTE_DECIMAL_MIN_PRSTAFF = "0";
 
@@ -233,11 +208,6 @@ public abstract class MappedProject {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_PRSTDATE = "PRSTDATE";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PRSTDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PRSTDATE = true;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTDATE} column. The value is
@@ -254,11 +224,6 @@ public abstract class MappedProject {
     public static final String COLUMN_NAME_PRENDATE = "PRENDATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PRENDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PRENDATE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_PRENDATE} column. The value is
      * {@value}.
      */
@@ -271,11 +236,6 @@ public abstract class MappedProject {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_MAJPROJ = "MAJPROJ";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_MAJPROJ} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MAJPROJ = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_MAJPROJ} column. The value is {@value}.
@@ -389,36 +349,6 @@ public abstract class MappedProject {
         this.projname = projname;
     }
 
-    // -------------------------------------------------------------------------------------- deptno
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute, which is {@code null}
-     * until this instance is loaded.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
-     *         which is a subclass in another package, can override it.
-     */
-    @Nullable
-    protected String getDeptno() {
-        return deptno;
-    }
-
-    // ------------------------------------------------------------------------------------- respemp
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute, which is {@code null}
-     * until this instance is loaded.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
-     *         which is a subclass in another package, can override it.
-     */
-    @Nullable
-    protected String getRespemp() {
-        return respemp;
-    }
-
     // ------------------------------------------------------------------------------------- prstaff
 
     /**
@@ -485,21 +415,6 @@ public abstract class MappedProject {
         this.prendate = prendate;
     }
 
-    // ------------------------------------------------------------------------------------- majproj
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute, which is {@code null}
-     * until this instance is loaded.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
-     *         which is a subclass in another package, can override it.
-     */
-    @Nullable
-    protected String getMajproj() {
-        return majproj;
-    }
-
     // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
@@ -507,7 +422,7 @@ public abstract class MappedProject {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNO,
-            nullable = COLUMN_NULLABLE_PROJNO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_PROJNO
@@ -520,7 +435,7 @@ public abstract class MappedProject {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNAME,
-            nullable = COLUMN_NULLABLE_PROJNAME,
+            nullable = false,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_PROJNAME
@@ -533,7 +448,7 @@ public abstract class MappedProject {
     @Size(max = SIZE_MAX_DEPTNO)
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNO,
-            nullable = COLUMN_NULLABLE_DEPTNO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_DEPTNO
@@ -546,7 +461,7 @@ public abstract class MappedProject {
     @Size(max = SIZE_MAX_RESPEMP)
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESPEMP,
-            nullable = COLUMN_NULLABLE_RESPEMP,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESPEMP
@@ -558,7 +473,7 @@ public abstract class MappedProject {
     @Digits(integer = DIGITS_INTEGER_PRSTAFF, fraction = DIGITS_FRACTION_PRSTAFF)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRSTAFF,
-            nullable = COLUMN_NULLABLE_PRSTAFF,
+            nullable = true,
             insertable = true,
             updatable = true,
             precision = COLUMN_PRECISION_PRSTAFF,
@@ -569,7 +484,7 @@ public abstract class MappedProject {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRSTDATE,
-            nullable = COLUMN_NULLABLE_PRSTDATE,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -578,7 +493,7 @@ public abstract class MappedProject {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRENDATE,
-            nullable = COLUMN_NULLABLE_PRENDATE,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -590,7 +505,7 @@ public abstract class MappedProject {
     @Size(max = SIZE_MAX_MAJPROJ)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MAJPROJ,
-            nullable = COLUMN_NULLABLE_MAJPROJ,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_MAJPROJ

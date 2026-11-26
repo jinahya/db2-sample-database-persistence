@@ -57,11 +57,6 @@ public abstract class MappedCustomer {
     public static final String COLUMN_NAME_CID = "CID";
 
     /**
-     * Whether the {@value #COLUMN_NAME_CID} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_CID = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_CID} column. The value is
      * {@value}.
      */
@@ -76,20 +71,6 @@ public abstract class MappedCustomer {
     public static final String COLUMN_NAME_INFO = "INFO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_INFO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_INFO = true;
-
-    /**
-     * The length of the {@value #COLUMN_NAME_INFO} column, for a schema a provider generates. The
-     * value is {@value}.
-     * <p>
-     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
-     * {@code VARCHAR} of the provider's default length, too short for a document.
-     */
-    public static final int COLUMN_LENGTH_INFO = 1048576;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_INFO} column. The value is
      * {@value}.
      */
@@ -102,20 +83,6 @@ public abstract class MappedCustomer {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_HISTORY = "HISTORY";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_HISTORY} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_HISTORY = true;
-
-    /**
-     * The length of the {@value #COLUMN_NAME_HISTORY} column, for a schema a provider generates.
-     * The value is {@value}.
-     * <p>
-     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
-     * {@code VARCHAR} of the provider's default length, too short for a document.
-     */
-    public static final int COLUMN_LENGTH_HISTORY = 1048576;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_HISTORY} column. The value is
@@ -242,7 +209,7 @@ public abstract class MappedCustomer {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_CID,
-            nullable = COLUMN_NULLABLE_CID,
+            nullable = false,
             insertable = true,
             updatable = false
     )
@@ -252,20 +219,20 @@ public abstract class MappedCustomer {
     @Convert(converter = CustomerinfoStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_INFO,
-            nullable = COLUMN_NULLABLE_INFO,
+            nullable = true,
             insertable = true,
             updatable = true,
-            length = COLUMN_LENGTH_INFO
+            length = 1048576 // just for H2
     )
     private Customerinfo info;
 
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_HISTORY,
-            nullable = COLUMN_NULLABLE_HISTORY,
+            nullable = true,
             insertable = true,
             updatable = true,
-            length = COLUMN_LENGTH_HISTORY
+            length = 1048576 // just for H2
     )
     private String history;
 }

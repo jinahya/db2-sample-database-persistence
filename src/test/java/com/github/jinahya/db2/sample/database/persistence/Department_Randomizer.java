@@ -25,8 +25,8 @@ import com.github.jinahya.object.randomizer.PodamObjectRandomizer;
 import java.util.List;
 
 /**
- * Randomizes a new {@link Department}, whose identifier it sets itself, within the lengths of its
- * columns, since Podam does not reach its setters, which are not public. It leaves out the
+ * Randomizes a new {@link Department}, created with a random identifier, which has no public
+ * setter, and the values Podam gives the other columns, within their lengths. It leaves out the
  * associations, which its persister sets, and the foreign key columns, mapped read-only.
  */
 @SuppressWarnings({
@@ -48,8 +48,10 @@ class Department_Randomizer
     // ---------------------------------------------------------------------------------------------
     @Override
     public Department get() {
-        final var instance = super.get();
-        instance.setDeptno(__Randomizer_Utils.string(3));
+        final var randomized = super.get();
+        final var instance = new Department(__Randomizer_Utils.string(3));
+        instance.setDeptname(randomized.getDeptname());
+        instance.setLocation(randomized.getLocation());
         return instance;
     }
 }

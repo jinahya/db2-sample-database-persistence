@@ -41,6 +41,19 @@ public class MlblogsQuestion
     }
 
     /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 2 values.
+     */
+    public MlblogsQuestion(final Object[] row) {
+        super(
+                __Row_Utils.string(row, 0),
+                __Row_Utils.vector(row, 1)
+        );
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @param question {@inheritDoc}

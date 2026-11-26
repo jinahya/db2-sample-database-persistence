@@ -28,10 +28,10 @@ import jakarta.persistence.Converter;
  * and back.
  * <p>
  * Db2 stores a vector in binary, but uses its string form when interacting with applications: the
- * IBM Data Server Driver for JDBC reports a {@code VECTOR} column as a {@code VARCHAR}, reads it with
- * {@code getString}, and binds a {@code VARCHAR} parameter to it with {@code setString}; it does
- * not read or bind a {@code VECTOR} as a {@code byte[]} or a {@code float[]}. The string form is a
- * comma-separated list of the coordinates, delimited by square brackets, such as
+ * IBM Data Server Driver for JDBC reports a {@code VECTOR} column as a {@code VARCHAR}, reads it
+ * with {@code getString}, and binds a {@code VARCHAR} parameter to it with {@code setString}; it
+ * does not read or bind a {@code VECTOR} as a {@code byte[]} or a {@code float[]}. The string form
+ * is a comma-separated list of the coordinates, delimited by square brackets, such as
  * {@code [0.123,-0.456,0.789]}.
  * <p>
  * The database normalizes the text it is given, so the text read back is not the text written;

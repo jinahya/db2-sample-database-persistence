@@ -64,11 +64,6 @@ public abstract class MappedVempdpt1 {
     public static final String COLUMN_NAME_DEPTNO = "DEPTNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DEPTNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNO = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_DEPTNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_DEPTNO = 3;
@@ -91,11 +86,6 @@ public abstract class MappedVempdpt1 {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNAME = "DEPTNAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_DEPTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNAME = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_DEPTNAME} column. The value is {@value}.
@@ -122,11 +112,6 @@ public abstract class MappedVempdpt1 {
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMPNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMPNO = 6;
@@ -149,11 +134,6 @@ public abstract class MappedVempdpt1 {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_FRSTINIT = "FRSTINIT";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_FRSTINIT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_FRSTINIT = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_FRSTINIT} column. The value is {@value}.
@@ -180,11 +160,6 @@ public abstract class MappedVempdpt1 {
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_MIDINIT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MIDINIT = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_MIDINIT = 1;
@@ -209,11 +184,6 @@ public abstract class MappedVempdpt1 {
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_LASTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_LASTNAME = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_LASTNAME = 15;
@@ -236,11 +206,6 @@ public abstract class MappedVempdpt1 {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_WORKDEPT = "WORKDEPT";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_WORKDEPT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_WORKDEPT = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_WORKDEPT} column. The value is {@value}.
@@ -466,7 +431,7 @@ public abstract class MappedVempdpt1 {
     @Size(max = SIZE_MAX_DEPTNO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNO,
-            nullable = COLUMN_NULLABLE_DEPTNO,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_DEPTNO
@@ -477,7 +442,7 @@ public abstract class MappedVempdpt1 {
     @Size(max = SIZE_MAX_DEPTNAME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNAME,
-            nullable = COLUMN_NULLABLE_DEPTNAME,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_DEPTNAME
@@ -491,7 +456,7 @@ public abstract class MappedVempdpt1 {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPNO,
-            nullable = COLUMN_NULLABLE_EMPNO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_EMPNO
@@ -504,7 +469,7 @@ public abstract class MappedVempdpt1 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_FRSTINIT,
-            nullable = COLUMN_NULLABLE_FRSTINIT,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_FRSTINIT
@@ -515,7 +480,7 @@ public abstract class MappedVempdpt1 {
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
-            nullable = COLUMN_NULLABLE_MIDINIT,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_MIDINIT
@@ -528,7 +493,7 @@ public abstract class MappedVempdpt1 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LASTNAME,
-            nullable = COLUMN_NULLABLE_LASTNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_LASTNAME
@@ -539,7 +504,7 @@ public abstract class MappedVempdpt1 {
     @Size(max = SIZE_MAX_WORKDEPT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_WORKDEPT,
-            nullable = COLUMN_NULLABLE_WORKDEPT,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_WORKDEPT

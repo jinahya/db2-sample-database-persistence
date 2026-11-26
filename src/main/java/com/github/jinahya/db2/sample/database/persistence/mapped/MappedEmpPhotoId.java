@@ -180,8 +180,16 @@ public abstract class MappedEmpPhotoId
     }
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     */
     private String empno;
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
+     */
     private String photoFormat;
 }

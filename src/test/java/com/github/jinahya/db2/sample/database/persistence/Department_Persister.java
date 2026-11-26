@@ -40,7 +40,7 @@ class Department_Persister
     @Override
     public Department apply(final EntityManager entityManager, final Department entityInstance) {
         // ADMRDEPT is not null, and references DEPARTMENT; the department administers itself
-        entityInstance.setAdmrdeptDepartment(entityInstance);
+        entityInstance.setDepartment(entityInstance);
         return super.apply(entityManager, entityInstance);
     }
 }

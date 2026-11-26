@@ -220,13 +220,25 @@ public abstract class MappedProjActId
     }
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
+     */
     private String projno;
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
+     */
     @Max(Db2Constants.SMALLINT_MAX)
     @Min(Db2Constants.SMALLINT_MIN)
     private Integer actno;
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
+     */
     private LocalDate acstdate;
 }

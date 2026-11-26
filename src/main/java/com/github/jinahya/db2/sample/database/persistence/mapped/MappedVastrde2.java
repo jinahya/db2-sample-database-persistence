@@ -70,11 +70,6 @@ public abstract class MappedVastrde2 {
     public static final String COLUMN_NAME_DEPT1NO = "DEPT1NO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DEPT1NO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPT1NO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_DEPT1NO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_DEPT1NO = 3;
@@ -97,11 +92,6 @@ public abstract class MappedVastrde2 {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT1NAM = "DEPT1NAM";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_DEPT1NAM} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPT1NAM = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_DEPT1NAM} column. The value is {@value}.
@@ -128,11 +118,6 @@ public abstract class MappedVastrde2 {
     public static final String COLUMN_NAME_EMP1NO = "EMP1NO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMP1NO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMP1NO = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMP1NO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMP1NO = 6;
@@ -155,11 +140,6 @@ public abstract class MappedVastrde2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP1FN = "EMP1FN";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_EMP1FN} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMP1FN = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_EMP1FN} column. The value is {@value}.
@@ -186,11 +166,6 @@ public abstract class MappedVastrde2 {
     public static final String COLUMN_NAME_EMP1MI = "EMP1MI";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMP1MI} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMP1MI = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMP1MI} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMP1MI = 1;
@@ -213,11 +188,6 @@ public abstract class MappedVastrde2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP1LN = "EMP1LN";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_EMP1LN} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMP1LN = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_EMP1LN} column. The value is {@value}.
@@ -244,11 +214,6 @@ public abstract class MappedVastrde2 {
     public static final String COLUMN_NAME_TYPE2 = "TYPE2";
 
     /**
-     * Whether the {@value #COLUMN_NAME_TYPE2} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_TYPE2 = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_TYPE2} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_TYPE2 = 1;
@@ -271,11 +236,6 @@ public abstract class MappedVastrde2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT2NO = "DEPT2NO";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_DEPT2NO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPT2NO = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_DEPT2NO} column. The value is {@value}.
@@ -302,11 +262,6 @@ public abstract class MappedVastrde2 {
     public static final String COLUMN_NAME_DEPT2NAM = "DEPT2NAM";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DEPT2NAM} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPT2NAM = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_DEPT2NAM} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_DEPT2NAM = 36;
@@ -329,11 +284,6 @@ public abstract class MappedVastrde2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP2NO = "EMP2NO";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_EMP2NO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMP2NO = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_EMP2NO} column. The value is {@value}.
@@ -360,11 +310,6 @@ public abstract class MappedVastrde2 {
     public static final String COLUMN_NAME_EMP2FN = "EMP2FN";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMP2FN} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMP2FN = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMP2FN} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMP2FN = 12;
@@ -389,11 +334,6 @@ public abstract class MappedVastrde2 {
     public static final String COLUMN_NAME_EMP2MI = "EMP2MI";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMP2MI} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMP2MI = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMP2MI} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMP2MI = 1;
@@ -416,11 +356,6 @@ public abstract class MappedVastrde2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_EMP2LN = "EMP2LN";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_EMP2LN} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMP2LN = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_EMP2LN} column. The value is {@value}.
@@ -789,7 +724,7 @@ public abstract class MappedVastrde2 {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPT1NO,
-            nullable = COLUMN_NULLABLE_DEPT1NO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_DEPT1NO
@@ -802,7 +737,7 @@ public abstract class MappedVastrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPT1NAM,
-            nullable = COLUMN_NULLABLE_DEPT1NAM,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_DEPT1NAM
@@ -813,7 +748,7 @@ public abstract class MappedVastrde2 {
     @Size(max = SIZE_MAX_EMP1NO)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP1NO,
-            nullable = COLUMN_NULLABLE_EMP1NO,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMP1NO
@@ -824,7 +759,7 @@ public abstract class MappedVastrde2 {
     @Size(max = SIZE_MAX_EMP1FN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP1FN,
-            nullable = COLUMN_NULLABLE_EMP1FN,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMP1FN
@@ -835,7 +770,7 @@ public abstract class MappedVastrde2 {
     @Size(max = SIZE_MAX_EMP1MI)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP1MI,
-            nullable = COLUMN_NULLABLE_EMP1MI,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMP1MI
@@ -846,7 +781,7 @@ public abstract class MappedVastrde2 {
     @Size(max = SIZE_MAX_EMP1LN)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP1LN,
-            nullable = COLUMN_NULLABLE_EMP1LN,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMP1LN
@@ -859,7 +794,7 @@ public abstract class MappedVastrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_TYPE2,
-            nullable = COLUMN_NULLABLE_TYPE2,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_TYPE2
@@ -872,7 +807,7 @@ public abstract class MappedVastrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPT2NO,
-            nullable = COLUMN_NULLABLE_DEPT2NO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_DEPT2NO
@@ -885,7 +820,7 @@ public abstract class MappedVastrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPT2NAM,
-            nullable = COLUMN_NULLABLE_DEPT2NAM,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_DEPT2NAM
@@ -899,7 +834,7 @@ public abstract class MappedVastrde2 {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP2NO,
-            nullable = COLUMN_NULLABLE_EMP2NO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_EMP2NO
@@ -912,7 +847,7 @@ public abstract class MappedVastrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP2FN,
-            nullable = COLUMN_NULLABLE_EMP2FN,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMP2FN
@@ -923,7 +858,7 @@ public abstract class MappedVastrde2 {
     @Size(max = SIZE_MAX_EMP2MI)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP2MI,
-            nullable = COLUMN_NULLABLE_EMP2MI,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMP2MI
@@ -936,7 +871,7 @@ public abstract class MappedVastrde2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMP2LN,
-            nullable = COLUMN_NULLABLE_EMP2LN,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMP2LN

@@ -179,8 +179,16 @@ public abstract class MappedProductSupplierId
     }
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_PID} attribute.
+     */
     private String pid;
 
     // ---------------------------------------------------------------------------------------------
+
+    /**
+     * The value of the {@value #ATTRIBUTE_NAME_SID} attribute.
+     */
     private String sid;
 }

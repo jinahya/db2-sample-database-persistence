@@ -101,6 +101,8 @@ public class ProjAct
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = ProjAct.COLUMN_NAME_PROJNO,
                 referencedColumnName = Project.COLUMN_NAME_PROJNO,
-                insertable = false, updatable = false)
+                nullable = false,
+                insertable = false,
+                updatable = false)
     private Project project;
 }

@@ -64,11 +64,6 @@ public abstract class MappedVphone {
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_LASTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_LASTNAME = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_LASTNAME = 15;
@@ -93,11 +88,6 @@ public abstract class MappedVphone {
     public static final String COLUMN_NAME_FIRSTNAME = "FIRSTNAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_FIRSTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_FIRSTNAME = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_FIRSTNAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_FIRSTNAME = 12;
@@ -120,11 +110,6 @@ public abstract class MappedVphone {
      * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_MIDDLEINITIAL = "MIDDLEINITIAL";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_MIDDLEINITIAL} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MIDDLEINITIAL = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_MIDDLEINITIAL} column. The value is {@value}.
@@ -152,11 +137,6 @@ public abstract class MappedVphone {
     public static final String COLUMN_NAME_PHONENUMBER = "PHONENUMBER";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PHONENUMBER} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PHONENUMBER = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PHONENUMBER} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PHONENUMBER = 4;
@@ -180,11 +160,6 @@ public abstract class MappedVphone {
      * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_EMPLOYEENUMBER = "EMPLOYEENUMBER";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_EMPLOYEENUMBER} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPLOYEENUMBER = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_EMPLOYEENUMBER} column. The value is {@value}.
@@ -212,11 +187,6 @@ public abstract class MappedVphone {
     public static final String COLUMN_NAME_DEPTNUMBER = "DEPTNUMBER";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DEPTNUMBER} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNUMBER = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_DEPTNUMBER} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_DEPTNUMBER = 3;
@@ -240,11 +210,6 @@ public abstract class MappedVphone {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPTNAME = "DEPTNAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_DEPTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNAME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_DEPTNAME} column. The value is {@value}.
@@ -473,7 +438,7 @@ public abstract class MappedVphone {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LASTNAME,
-            nullable = COLUMN_NULLABLE_LASTNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_LASTNAME
@@ -486,7 +451,7 @@ public abstract class MappedVphone {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_FIRSTNAME,
-            nullable = COLUMN_NULLABLE_FIRSTNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_FIRSTNAME
@@ -497,7 +462,7 @@ public abstract class MappedVphone {
     @Size(max = SIZE_MAX_MIDDLEINITIAL)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDDLEINITIAL,
-            nullable = COLUMN_NULLABLE_MIDDLEINITIAL,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_MIDDLEINITIAL
@@ -510,7 +475,7 @@ public abstract class MappedVphone {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PHONENUMBER,
-            nullable = COLUMN_NULLABLE_PHONENUMBER,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PHONENUMBER
@@ -524,7 +489,7 @@ public abstract class MappedVphone {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPLOYEENUMBER,
-            nullable = COLUMN_NULLABLE_EMPLOYEENUMBER,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_EMPLOYEENUMBER
@@ -537,7 +502,7 @@ public abstract class MappedVphone {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNUMBER,
-            nullable = COLUMN_NULLABLE_DEPTNUMBER,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_DEPTNUMBER
@@ -550,7 +515,7 @@ public abstract class MappedVphone {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNAME,
-            nullable = COLUMN_NULLABLE_DEPTNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_DEPTNAME

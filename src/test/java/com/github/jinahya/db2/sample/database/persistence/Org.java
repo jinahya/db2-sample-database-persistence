@@ -41,6 +41,22 @@ public class Org
     }
 
     /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 5 values.
+     */
+    public Org(final Object[] row) {
+        super(
+                __Row_Utils.integer(row, 0),
+                __Row_Utils.string(row, 1),
+                __Row_Utils.integer(row, 2),
+                __Row_Utils.string(row, 3),
+                __Row_Utils.string(row, 4)
+        );
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @param deptnumb {@inheritDoc}

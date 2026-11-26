@@ -88,6 +88,8 @@ public class EmpPhoto
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = EmpPhoto.COLUMN_NAME_EMPNO,
                 referencedColumnName = Employee.COLUMN_NAME_EMPNO,
-                insertable = false, updatable = false)
+                nullable = false,
+                insertable = false,
+                updatable = false)
     private Employee employee;
 }

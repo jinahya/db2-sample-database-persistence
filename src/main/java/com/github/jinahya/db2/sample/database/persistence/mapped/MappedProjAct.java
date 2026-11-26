@@ -68,11 +68,6 @@ public abstract class MappedProjAct {
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROJNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PROJNO = 6;
@@ -97,11 +92,6 @@ public abstract class MappedProjAct {
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_ACTNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACTNO = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
      * {@value}.
      */
@@ -114,11 +104,6 @@ public abstract class MappedProjAct {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_ACSTAFF = "ACSTAFF";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_ACSTAFF} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACSTAFF = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_ACSTAFF} column. The value is {@value}.
@@ -158,11 +143,6 @@ public abstract class MappedProjAct {
     public static final String COLUMN_NAME_ACSTDATE = "ACSTDATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_ACSTDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACSTDATE = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTDATE} column. The value is
      * {@value}.
      */
@@ -175,11 +155,6 @@ public abstract class MappedProjAct {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_ACENDATE = "ACENDATE";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_ACENDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACENDATE = true;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ACENDATE} column. The value is
@@ -356,7 +331,7 @@ public abstract class MappedProjAct {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNO,
-            nullable = COLUMN_NULLABLE_PROJNO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_PROJNO
@@ -371,7 +346,7 @@ public abstract class MappedProjAct {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACTNO,
-            nullable = COLUMN_NULLABLE_ACTNO,
+            nullable = false,
             insertable = true,
             updatable = false
     )
@@ -381,7 +356,7 @@ public abstract class MappedProjAct {
     @Digits(integer = DIGITS_INTEGER_ACSTAFF, fraction = DIGITS_FRACTION_ACSTAFF)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACSTAFF,
-            nullable = COLUMN_NULLABLE_ACSTAFF,
+            nullable = true,
             insertable = true,
             updatable = true,
             precision = COLUMN_PRECISION_ACSTAFF,
@@ -395,7 +370,7 @@ public abstract class MappedProjAct {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACSTDATE,
-            nullable = COLUMN_NULLABLE_ACSTDATE,
+            nullable = false,
             insertable = true,
             updatable = false
     )
@@ -404,7 +379,7 @@ public abstract class MappedProjAct {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACENDATE,
-            nullable = COLUMN_NULLABLE_ACENDATE,
+            nullable = true,
             insertable = true,
             updatable = true
     )

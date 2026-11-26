@@ -58,11 +58,6 @@ public abstract class MappedSupplier {
     public static final String COLUMN_NAME_SID = "SID";
 
     /**
-     * Whether the {@value #COLUMN_NAME_SID} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SID = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_SID} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_SID = 10;
@@ -85,20 +80,6 @@ public abstract class MappedSupplier {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_ADDR = "ADDR";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_ADDR} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ADDR = true;
-
-    /**
-     * The length of the {@value #COLUMN_NAME_ADDR} column, for a schema a provider generates. The
-     * value is {@value}.
-     * <p>
-     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
-     * {@code VARCHAR} of the provider's default length, too short for a document.
-     */
-    public static final int COLUMN_LENGTH_ADDR = 1048576;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ADDR} column. The value is
@@ -202,7 +183,7 @@ public abstract class MappedSupplier {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SID,
-            nullable = COLUMN_NULLABLE_SID,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_SID
@@ -213,10 +194,10 @@ public abstract class MappedSupplier {
     @Convert(converter = SupplierinfoStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ADDR,
-            nullable = COLUMN_NULLABLE_ADDR,
+            nullable = true,
             insertable = true,
             updatable = true,
-            length = COLUMN_LENGTH_ADDR
+            length = 1048576 // just for H2
     )
     private Supplierinfo addr;
 }

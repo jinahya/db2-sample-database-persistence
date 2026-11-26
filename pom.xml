@@ -92,7 +92,7 @@
     <!-- profile can move the platform out from under the implementations. -->
     <persistence.version>3.2</persistence.version>
     <persistence.schemaLocation>https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd</persistence.schemaLocation>
-    <!-- the Jakarta Persistence provider; overridden by jakarta-ee-11-eclipselink -->
+    <!-- the Jakarta Persistence provider; overridden by jakartaee-11-eclipselink -->
     <persistence-unit.provider>org.hibernate.jpa.HibernatePersistenceProvider</persistence-unit.provider>
     <metamodel.generator.groupId>org.hibernate.orm</metamodel.generator.groupId>
     <metamodel.generator.artifactId>hibernate-jpamodelgen</metamodel.generator.artifactId>
@@ -455,6 +455,8 @@
           <configuration>
             <additionalOptions>
               <additionalOption>-Xdoclint:${doclint},-missing</additionalOption>
+              <!-- the module links the Jakarta EE apidocs, which are not modular; noted, not warned -->
+              <additionalOption>--link-modularity-mismatch=info</additionalOption>
             </additionalOptions>
             <failOnError>true</failOnError>
             <failOnWarnings>true</failOnWarnings>
@@ -789,6 +791,8 @@
               <show>protected</show>
               <additionalOptions combine.self="override">
                 <additionalOption>-Xdoclint:${doclint}</additionalOption>
+                <!-- the module links the Jakarta EE apidocs, which are not modular; noted, not warned -->
+                <additionalOption>--link-modularity-mismatch=info</additionalOption>
               </additionalOptions>
               <!-- In module mode javadoc reads the whole module from its source path, so the generated -->
               <!-- metamodel there would be linted with -missing on, which it cannot pass. This reportSet -->
@@ -812,6 +816,8 @@
               <!-- it Maven merges the list and the plugin-level -Xdoclint:${doclint} comes along too. -->
               <additionalOptions combine.self="override">
                 <additionalOption>-Xdoclint:all,-missing</additionalOption>
+                <!-- the module links the Jakarta EE apidocs, which are not modular; noted, not warned -->
+                <additionalOption>--link-modularity-mismatch=info</additionalOption>
               </additionalOptions>
               <!-- test-javadoc links the test apidocs to the main ones, ../apidocs, whenever those exist, -->
               <!-- and no parameter turns that off. The test sources are documented in the unnamed module -->
@@ -892,7 +898,7 @@
          <properties>, one per provider. A profile decides only which provider is on the test
          classpath, and which metamodel generator the annotation processor path uses. -->
     <profile>
-      <id>jakarta-ee-11-hibernate-orm</id>
+      <id>jakartaee-11-hibernate-orm</id>
       <!-- https://hibernate.org/orm/releases/ -->
       <!-- Jakarta Persistence: 3.2 / Jakarta EE: 11; version: version.org.hibernate.orm -->
       <!-- the provider defaults in <properties> are this profile's; it only adds the dependency -->
@@ -908,7 +914,7 @@
       </dependencies>
     </profile>
     <profile>
-      <id>jakarta-ee-11-eclipselink</id>
+      <id>jakartaee-11-eclipselink</id>
       <!-- https://eclipse.dev/eclipselink/releases/index.html -->
       <!-- Jakarta Persistence: 3.2 / Jakarta EE: 11; version: version.org.eclipse.persistence -->
       <properties>

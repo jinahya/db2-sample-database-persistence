@@ -90,8 +90,11 @@ An entity needs an identifier. Twelve tables declare no primary key, and a view 
 which the data merely happens to keep unique. A view is an entity when its definition carries the key of what it
 selects from, unchanged: a key, or a join which matches each row with one row at most. The others map no identifier:
 the class extending `Mapped<Table>` is not an entity, is listed in no persistence unit, and is built from the rows of
-a native query. Its `equals` and `hashCode` are `Object`'s, by identity; its `_PersistenceTest` and `_PersistenceIT`,
-and its `_Test`'s `equals_verify_`, are disabled.
+a native query: `SELECT ` + `SELECT_LIST`, a constant of the columns in their order, gives each row as an `Object[]`,
+which the class's public constructor converts and hands to the protected all-columns constructor of `Mapped<Table>`
+(`NoKey_PersistenceIT` reads every row so). Its `equals` and `hashCode` are `Object`'s, by identity. Its `_PersistenceIT` selects a random row with a
+native `COUNT(*)` and a native `SELECT *` at a random offset (`selectRandomRow__`), and persists nothing; its
+`_PersistenceTest`, on H2, where no table is generated for it, and its `_Test`'s `equals_verify_`, are disabled.
 
 The views which are entities (`DEPT`, `EMP` and `PROJ` are aliases of `DEPARTMENT`, `EMPLOYEE` and `PROJECT`):
 
@@ -154,7 +157,7 @@ $ docker exec -it db2-sample-database-persistence su - db2inst1 -c 'db2 connect 
 
 ## Building
 
-Two persistence providers, one profile each; `jakarta-ee-11-hibernate-orm` is active by default. Building the tests
+Two persistence providers, one profile each; `jakartaee-11-hibernate-orm` is active by default. Building the tests
 needs JDK 25 or newer.
 
 ```shell

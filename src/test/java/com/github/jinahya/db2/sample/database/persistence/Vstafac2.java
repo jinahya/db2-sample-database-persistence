@@ -39,4 +39,26 @@ public class Vstafac2
     public Vstafac2() {
         super();
     }
+
+    /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 11 values.
+     */
+    public Vstafac2(final Object[] row) {
+        super(
+                __Row_Utils.string(row, 0),
+                __Row_Utils.integer(row, 1),
+                __Row_Utils.string(row, 2),
+                __Row_Utils.string(row, 3),
+                __Row_Utils.string(row, 4),
+                __Row_Utils.string(row, 5),
+                __Row_Utils.string(row, 6),
+                __Row_Utils.bigDecimal(row, 7),
+                __Row_Utils.localDate(row, 8),
+                __Row_Utils.localDate(row, 9),
+                __Row_Utils.string(row, 10)
+        );
+    }
 }

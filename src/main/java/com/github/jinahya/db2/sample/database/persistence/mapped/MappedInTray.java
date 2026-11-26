@@ -35,7 +35,8 @@ import java.time.LocalDateTime;
  * A mapped superclass which holds the mappings of the {@value MappedInTray#TABLE_NAME} table, the
  * received notes.
  * <p>
- * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
+ * by
  * its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  *
@@ -58,11 +59,6 @@ public abstract class MappedInTray {
     public static final String COLUMN_NAME_RECEIVED = "RECEIVED";
 
     /**
-     * Whether the {@value #COLUMN_NAME_RECEIVED} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RECEIVED = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_RECEIVED} column. The value is
      * {@value}.
      */
@@ -75,11 +71,6 @@ public abstract class MappedInTray {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_SOURCE = "SOURCE";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_SOURCE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SOURCE = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_SOURCE} column. The value is {@value}.
@@ -106,11 +97,6 @@ public abstract class MappedInTray {
     public static final String COLUMN_NAME_SUBJECT = "SUBJECT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_SUBJECT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SUBJECT = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_SUBJECT} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_SUBJECT = 64;
@@ -135,11 +121,6 @@ public abstract class MappedInTray {
     public static final String COLUMN_NAME_NOTE_TEXT = "NOTE_TEXT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_NOTE_TEXT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_NOTE_TEXT = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_NOTE_TEXT} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_NOTE_TEXT = 3000;
@@ -155,6 +136,18 @@ public abstract class MappedInTray {
      */
     public static final int SIZE_MAX_NOTE_TEXT = COLUMN_LENGTH_NOTE_TEXT;
 
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_RECEIVED + ", "
+            + COLUMN_NAME_SOURCE + ", "
+            + COLUMN_NAME_SUBJECT + ", "
+            + COLUMN_NAME_NOTE_TEXT;
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
@@ -162,6 +155,26 @@ public abstract class MappedInTray {
      */
     protected MappedInTray() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param received a value for the {@value #ATTRIBUTE_NAME_RECEIVED} attribute.
+     * @param source   a value for the {@value #ATTRIBUTE_NAME_SOURCE} attribute.
+     * @param subject  a value for the {@value #ATTRIBUTE_NAME_SUBJECT} attribute.
+     * @param noteText a value for the {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute.
+     */
+    protected MappedInTray(
+            final LocalDateTime received,
+            final String source,
+            final String subject,
+            final String noteText) {
+        this();
+        this.received = received;
+        this.source = source;
+        this.subject = subject;
+        this.noteText = noteText;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -269,7 +282,7 @@ public abstract class MappedInTray {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RECEIVED,
-            nullable = COLUMN_NULLABLE_RECEIVED,
+            nullable = true,
             insertable = true,
             updatable = false
     )
@@ -279,7 +292,7 @@ public abstract class MappedInTray {
     @Size(max = SIZE_MAX_SOURCE)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SOURCE,
-            nullable = COLUMN_NULLABLE_SOURCE,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_SOURCE
@@ -290,7 +303,7 @@ public abstract class MappedInTray {
     @Size(max = SIZE_MAX_SUBJECT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SUBJECT,
-            nullable = COLUMN_NULLABLE_SUBJECT,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_SUBJECT
@@ -301,7 +314,7 @@ public abstract class MappedInTray {
     @Size(max = SIZE_MAX_NOTE_TEXT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_NOTE_TEXT,
-            nullable = COLUMN_NULLABLE_NOTE_TEXT,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_NOTE_TEXT

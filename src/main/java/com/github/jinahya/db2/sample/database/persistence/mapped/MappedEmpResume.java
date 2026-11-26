@@ -63,11 +63,6 @@ public abstract class MappedEmpResume {
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMPNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMPNO = 6;
@@ -90,11 +85,6 @@ public abstract class MappedEmpResume {
      * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_RESUME_FORMAT = "RESUME_FORMAT";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_RESUME_FORMAT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESUME_FORMAT = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_RESUME_FORMAT} column. The value is {@value}.
@@ -120,11 +110,6 @@ public abstract class MappedEmpResume {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_RESUME = "RESUME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_RESUME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESUME = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_RESUME} column. The value is {@value}.
@@ -258,7 +243,7 @@ public abstract class MappedEmpResume {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPNO,
-            nullable = COLUMN_NULLABLE_EMPNO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_EMPNO
@@ -272,7 +257,7 @@ public abstract class MappedEmpResume {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESUME_FORMAT,
-            nullable = COLUMN_NULLABLE_RESUME_FORMAT,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_RESUME_FORMAT
@@ -283,7 +268,7 @@ public abstract class MappedEmpResume {
     @Lob
     @Basic(optional = true, fetch = FetchType.LAZY)
     @Column(name = COLUMN_NAME_RESUME,
-            nullable = COLUMN_NULLABLE_RESUME,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_RESUME

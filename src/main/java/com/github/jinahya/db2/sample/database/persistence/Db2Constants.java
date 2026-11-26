@@ -23,8 +23,8 @@ package com.github.jinahya.db2.sample.database.persistence;
 /**
  * Constants of the Db2 data types.
  * <p>
- * A column narrower than 32 bits, such as a {@code SMALLINT}, maps to an {@link Integer}, not to
- * a {@link Short}; its range is kept with {@code @Min} and {@code @Max} of these constants.
+ * A column narrower than 32 bits, such as a {@code SMALLINT}, maps to an {@link Integer}, not to a
+ * {@link Short}; its range is kept with {@code @Min} and {@code @Max} of these constants.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see <a href="https://www.ibm.com/docs/en/db2/12.1.x?topic=list-numbers">Numbers</a>

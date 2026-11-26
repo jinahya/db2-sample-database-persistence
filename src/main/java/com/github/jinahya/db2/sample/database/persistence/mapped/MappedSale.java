@@ -36,7 +36,8 @@ import java.time.LocalDate;
  * A mapped superclass which holds the mappings of the {@value MappedSale#TABLE_NAME} table, the
  * sales.
  * <p>
- * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
+ * by
  * its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  *
@@ -59,11 +60,6 @@ public abstract class MappedSale {
     public static final String COLUMN_NAME_SALES_DATE = "SALES_DATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_SALES_DATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SALES_DATE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_SALES_DATE} column. The value
      * is {@value}.
      */
@@ -76,11 +72,6 @@ public abstract class MappedSale {
      * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_SALES_PERSON = "SALES_PERSON";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_SALES_PERSON} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SALES_PERSON = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_SALES_PERSON} column. The value is {@value}.
@@ -108,11 +99,6 @@ public abstract class MappedSale {
     public static final String COLUMN_NAME_REGION = "REGION";
 
     /**
-     * Whether the {@value #COLUMN_NAME_REGION} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_REGION = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_REGION} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_REGION = 15;
@@ -137,11 +123,6 @@ public abstract class MappedSale {
     public static final String COLUMN_NAME_SALES = "SALES";
 
     /**
-     * Whether the {@value #COLUMN_NAME_SALES} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_SALES = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_SALES} column. The value is
      * {@value}.
      */
@@ -150,10 +131,22 @@ public abstract class MappedSale {
     /**
      * The minimum value of the {@value #ATTRIBUTE_NAME_SALES} attribute. The value is {@value}.
      *
-     * @implNote "Number of sales", as the documentation of the {@code SAMPLE} database describes
-     *         the column; the database does not enforce it.
+     * @implNote "Number of sales", as the documentation of the {@code SAMPLE} database
+     *         describes the column; the database does not enforce it.
      */
     public static final int ATTRIBUTE_MIN_SALES = 0;
+
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_SALES_DATE + ", "
+            + COLUMN_NAME_SALES_PERSON + ", "
+            + COLUMN_NAME_REGION + ", "
+            + COLUMN_NAME_SALES;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -162,6 +155,26 @@ public abstract class MappedSale {
      */
     protected MappedSale() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param salesDate   a value for the {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
+     * @param salesPerson a value for the {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
+     * @param region      a value for the {@value #ATTRIBUTE_NAME_REGION} attribute.
+     * @param sales       a value for the {@value #ATTRIBUTE_NAME_SALES} attribute.
+     */
+    protected MappedSale(
+            final LocalDate salesDate,
+            final String salesPerson,
+            final String region,
+            final Integer sales) {
+        this();
+        this.salesDate = salesDate;
+        this.salesPerson = salesPerson;
+        this.region = region;
+        this.sales = sales;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -268,7 +281,7 @@ public abstract class MappedSale {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALES_DATE,
-            nullable = COLUMN_NULLABLE_SALES_DATE,
+            nullable = true,
             insertable = true,
             updatable = false
     )
@@ -280,7 +293,7 @@ public abstract class MappedSale {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALES_PERSON,
-            nullable = COLUMN_NULLABLE_SALES_PERSON,
+            nullable = true,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_SALES_PERSON
@@ -293,7 +306,7 @@ public abstract class MappedSale {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_REGION,
-            nullable = COLUMN_NULLABLE_REGION,
+            nullable = true,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_REGION
@@ -304,7 +317,7 @@ public abstract class MappedSale {
     @Min(ATTRIBUTE_MIN_SALES)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALES,
-            nullable = COLUMN_NULLABLE_SALES,
+            nullable = true,
             insertable = true,
             updatable = true
     )

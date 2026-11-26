@@ -68,11 +68,6 @@ public abstract class MappedPurchaseOrder {
     public static final String COLUMN_NAME_POID = "POID";
 
     /**
-     * Whether the {@value #COLUMN_NAME_POID} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_POID = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_POID} column. The value is
      * {@value}.
      */
@@ -85,11 +80,6 @@ public abstract class MappedPurchaseOrder {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_STATUS = "STATUS";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_STATUS} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_STATUS = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_STATUS} column. The value is {@value}.
@@ -116,11 +106,6 @@ public abstract class MappedPurchaseOrder {
     public static final String COLUMN_NAME_CUSTID = "CUSTID";
 
     /**
-     * Whether the {@value #COLUMN_NAME_CUSTID} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_CUSTID = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_CUSTID} column. The value is
      * {@value}.
      */
@@ -133,11 +118,6 @@ public abstract class MappedPurchaseOrder {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_ORDERDATE = "ORDERDATE";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_ORDERDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ORDERDATE = true;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ORDERDATE} column. The value is
@@ -154,20 +134,6 @@ public abstract class MappedPurchaseOrder {
     public static final String COLUMN_NAME_PORDER = "PORDER";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PORDER} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PORDER = true;
-
-    /**
-     * The length of the {@value #COLUMN_NAME_PORDER} column, for a schema a provider generates. The
-     * value is {@value}.
-     * <p>
-     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
-     * {@code VARCHAR} of the provider's default length, too short for a document.
-     */
-    public static final int COLUMN_LENGTH_PORDER = 1048576;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_PORDER} column. The value is
      * {@value}.
      */
@@ -180,11 +146,6 @@ public abstract class MappedPurchaseOrder {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_COMMENTS = "COMMENTS";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_COMMENTS} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_COMMENTS = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_COMMENTS} column. The value is {@value}.
@@ -295,21 +256,6 @@ public abstract class MappedPurchaseOrder {
         this.status = status;
     }
 
-    // -------------------------------------------------------------------------------------- custid
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_CUSTID} attribute, which is {@code null}
-     * until this instance is loaded.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_CUSTID} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
-     *         which is a subclass in another package, can override it.
-     */
-    @Nullable
-    protected Long getCustid() {
-        return custid;
-    }
-
     // ----------------------------------------------------------------------------------- orderdate
 
     /**
@@ -383,7 +329,7 @@ public abstract class MappedPurchaseOrder {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_POID,
-            nullable = COLUMN_NULLABLE_POID,
+            nullable = false,
             insertable = true,
             updatable = false
     )
@@ -395,7 +341,7 @@ public abstract class MappedPurchaseOrder {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_STATUS,
-            nullable = COLUMN_NULLABLE_STATUS,
+            nullable = false,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_STATUS
@@ -407,7 +353,7 @@ public abstract class MappedPurchaseOrder {
     // documentation
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_CUSTID,
-            nullable = COLUMN_NULLABLE_CUSTID,
+            nullable = true,
             insertable = false,
             updatable = false
     )
@@ -416,7 +362,7 @@ public abstract class MappedPurchaseOrder {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ORDERDATE,
-            nullable = COLUMN_NULLABLE_ORDERDATE,
+            nullable = true,
             insertable = true,
             updatable = true
     )
@@ -426,10 +372,10 @@ public abstract class MappedPurchaseOrder {
     @Convert(converter = PurchaseOrderStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PORDER,
-            nullable = COLUMN_NULLABLE_PORDER,
+            nullable = true,
             insertable = true,
             updatable = true,
-            length = COLUMN_LENGTH_PORDER
+            length = 1048576 // just for H2
     )
     private PurchaseOrder porder;
 
@@ -437,7 +383,7 @@ public abstract class MappedPurchaseOrder {
     @Size(max = SIZE_MAX_COMMENTS)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_COMMENTS,
-            nullable = COLUMN_NULLABLE_COMMENTS,
+            nullable = true,
             insertable = true,
             updatable = true,
             length = COLUMN_LENGTH_COMMENTS

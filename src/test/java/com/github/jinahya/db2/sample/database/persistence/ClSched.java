@@ -41,6 +41,21 @@ public class ClSched
     }
 
     /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 4 values.
+     */
+    public ClSched(final Object[] row) {
+        super(
+                __Row_Utils.string(row, 0),
+                __Row_Utils.integer(row, 1),
+                __Row_Utils.localTime(row, 2),
+                __Row_Utils.localTime(row, 3)
+        );
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @param classCode {@inheritDoc}

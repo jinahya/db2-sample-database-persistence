@@ -39,4 +39,22 @@ public class Vforpla
     public Vforpla() {
         super();
     }
+
+    /**
+     * Creates a new instance from the specified row of a native query which selects
+     * {@link #SELECT_LIST}, in its order.
+     *
+     * @param row the row; an array of 7 values.
+     */
+    public Vforpla(final Object[] row) {
+        super(
+                __Row_Utils.string(row, 0),
+                __Row_Utils.string(row, 1),
+                __Row_Utils.string(row, 2),
+                __Row_Utils.string(row, 3),
+                __Row_Utils.string(row, 4),
+                __Row_Utils.string(row, 5),
+                __Row_Utils.string(row, 6)
+        );
+    }
 }

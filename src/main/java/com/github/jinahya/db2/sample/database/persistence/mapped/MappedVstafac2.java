@@ -66,11 +66,6 @@ public abstract class MappedVstafac2 {
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROJNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PROJNO = 6;
@@ -95,11 +90,6 @@ public abstract class MappedVstafac2 {
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_ACTNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACTNO = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
      * {@value}.
      */
@@ -112,11 +102,6 @@ public abstract class MappedVstafac2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_ACTDESC = "ACTDESC";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_ACTDESC} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACTDESC = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_ACTDESC} column. The value is {@value}.
@@ -143,11 +128,6 @@ public abstract class MappedVstafac2 {
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMPNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMPNO = 6;
@@ -170,11 +150,6 @@ public abstract class MappedVstafac2 {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_FIRSTNME = "FIRSTNME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_FIRSTNME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_FIRSTNME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_FIRSTNME} column. The value is {@value}.
@@ -201,11 +176,6 @@ public abstract class MappedVstafac2 {
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_MIDINIT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MIDINIT = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_MIDINIT = 1;
@@ -230,11 +200,6 @@ public abstract class MappedVstafac2 {
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_LASTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_LASTNAME = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_LASTNAME = 15;
@@ -257,11 +222,6 @@ public abstract class MappedVstafac2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_EMPTIME = "EMPTIME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_EMPTIME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPTIME = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_EMPTIME} column. The value is {@value}.
@@ -301,11 +261,6 @@ public abstract class MappedVstafac2 {
     public static final String COLUMN_NAME_STDATE = "STDATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_STDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_STDATE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_STDATE} column. The value is
      * {@value}.
      */
@@ -320,11 +275,6 @@ public abstract class MappedVstafac2 {
     public static final String COLUMN_NAME_ENDATE = "ENDATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_ENDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ENDATE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ENDATE} column. The value is
      * {@value}.
      */
@@ -337,11 +287,6 @@ public abstract class MappedVstafac2 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_TYPE = "TYPE";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_TYPE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_TYPE = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_TYPE} column. The value is {@value}.
@@ -359,6 +304,25 @@ public abstract class MappedVstafac2 {
      */
     public static final int SIZE_MAX_TYPE = COLUMN_LENGTH_TYPE;
 
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_PROJNO + ", "
+            + COLUMN_NAME_ACTNO + ", "
+            + COLUMN_NAME_ACTDESC + ", "
+            + COLUMN_NAME_EMPNO + ", "
+            + COLUMN_NAME_FIRSTNME + ", "
+            + COLUMN_NAME_MIDINIT + ", "
+            + COLUMN_NAME_LASTNAME + ", "
+            + COLUMN_NAME_EMPTIME + ", "
+            + COLUMN_NAME_STDATE + ", "
+            + COLUMN_NAME_ENDATE + ", "
+            + COLUMN_NAME_TYPE;
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
@@ -366,6 +330,47 @@ public abstract class MappedVstafac2 {
      */
     protected MappedVstafac2() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param projno   a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
+     * @param actno    a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
+     * @param actdesc  a value for the {@value #ATTRIBUTE_NAME_ACTDESC} attribute.
+     * @param empno    a value for the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * @param firstnme a value for the {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
+     * @param midinit  a value for the {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
+     * @param lastname a value for the {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
+     * @param emptime  a value for the {@value #ATTRIBUTE_NAME_EMPTIME} attribute.
+     * @param stdate   a value for the {@value #ATTRIBUTE_NAME_STDATE} attribute.
+     * @param endate   a value for the {@value #ATTRIBUTE_NAME_ENDATE} attribute.
+     * @param type     a value for the {@value #ATTRIBUTE_NAME_TYPE} attribute.
+     */
+    protected MappedVstafac2(
+            final String projno,
+            final Integer actno,
+            final String actdesc,
+            final String empno,
+            final String firstnme,
+            final String midinit,
+            final String lastname,
+            final BigDecimal emptime,
+            final LocalDate stdate,
+            final LocalDate endate,
+            final String type) {
+        this();
+        this.projno = projno;
+        this.actno = actno;
+        this.actdesc = actdesc;
+        this.empno = empno;
+        this.firstnme = firstnme;
+        this.midinit = midinit;
+        this.lastname = lastname;
+        this.emptime = emptime;
+        this.stdate = stdate;
+        this.endate = endate;
+        this.type = type;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -632,7 +637,7 @@ public abstract class MappedVstafac2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNO,
-            nullable = COLUMN_NULLABLE_PROJNO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJNO
@@ -646,7 +651,7 @@ public abstract class MappedVstafac2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACTNO,
-            nullable = COLUMN_NULLABLE_ACTNO,
+            nullable = false,
             insertable = false,
             updatable = false
     )
@@ -658,7 +663,7 @@ public abstract class MappedVstafac2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACTDESC,
-            nullable = COLUMN_NULLABLE_ACTDESC,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_ACTDESC
@@ -671,7 +676,7 @@ public abstract class MappedVstafac2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPNO,
-            nullable = COLUMN_NULLABLE_EMPNO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMPNO
@@ -684,7 +689,7 @@ public abstract class MappedVstafac2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_FIRSTNME,
-            nullable = COLUMN_NULLABLE_FIRSTNME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_FIRSTNME
@@ -695,7 +700,7 @@ public abstract class MappedVstafac2 {
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
-            nullable = COLUMN_NULLABLE_MIDINIT,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_MIDINIT
@@ -708,7 +713,7 @@ public abstract class MappedVstafac2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LASTNAME,
-            nullable = COLUMN_NULLABLE_LASTNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_LASTNAME
@@ -719,7 +724,7 @@ public abstract class MappedVstafac2 {
     @Digits(integer = DIGITS_INTEGER_EMPTIME, fraction = DIGITS_FRACTION_EMPTIME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPTIME,
-            nullable = COLUMN_NULLABLE_EMPTIME,
+            nullable = true,
             insertable = false,
             updatable = false,
             precision = COLUMN_PRECISION_EMPTIME,
@@ -732,7 +737,7 @@ public abstract class MappedVstafac2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_STDATE,
-            nullable = COLUMN_NULLABLE_STDATE,
+            nullable = true,
             insertable = false,
             updatable = false
     )
@@ -741,7 +746,7 @@ public abstract class MappedVstafac2 {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ENDATE,
-            nullable = COLUMN_NULLABLE_ENDATE,
+            nullable = true,
             insertable = false,
             updatable = false
     )
@@ -753,7 +758,7 @@ public abstract class MappedVstafac2 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_TYPE,
-            nullable = COLUMN_NULLABLE_TYPE,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_TYPE

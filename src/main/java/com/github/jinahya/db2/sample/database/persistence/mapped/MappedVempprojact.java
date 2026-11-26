@@ -66,11 +66,6 @@ public abstract class MappedVempprojact {
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMPNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_EMPNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_EMPNO = 6;
@@ -93,11 +88,6 @@ public abstract class MappedVempprojact {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PROJNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNO = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
@@ -124,11 +114,6 @@ public abstract class MappedVempprojact {
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_ACTNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_ACTNO = false;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
      * {@value}.
      */
@@ -141,11 +126,6 @@ public abstract class MappedVempprojact {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_EMPTIME = "EMPTIME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_EMPTIME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMPTIME = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_EMPTIME} column. The value is {@value}.
@@ -185,11 +165,6 @@ public abstract class MappedVempprojact {
     public static final String COLUMN_NAME_EMSTDATE = "EMSTDATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMSTDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMSTDATE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_EMSTDATE} column. The value is
      * {@value}.
      */
@@ -204,15 +179,24 @@ public abstract class MappedVempprojact {
     public static final String COLUMN_NAME_EMENDATE = "EMENDATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_EMENDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_EMENDATE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_EMENDATE} column. The value is
      * {@value}.
      */
     public static final String ATTRIBUTE_NAME_EMENDATE = "emendate";
+
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_EMPNO + ", "
+            + COLUMN_NAME_PROJNO + ", "
+            + COLUMN_NAME_ACTNO + ", "
+            + COLUMN_NAME_EMPTIME + ", "
+            + COLUMN_NAME_EMSTDATE + ", "
+            + COLUMN_NAME_EMENDATE;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -221,6 +205,32 @@ public abstract class MappedVempprojact {
      */
     protected MappedVempprojact() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param empno    a value for the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * @param projno   a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
+     * @param actno    a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
+     * @param emptime  a value for the {@value #ATTRIBUTE_NAME_EMPTIME} attribute.
+     * @param emstdate a value for the {@value #ATTRIBUTE_NAME_EMSTDATE} attribute.
+     * @param emendate a value for the {@value #ATTRIBUTE_NAME_EMENDATE} attribute.
+     */
+    protected MappedVempprojact(
+            final String empno,
+            final String projno,
+            final Integer actno,
+            final BigDecimal emptime,
+            final LocalDate emstdate,
+            final LocalDate emendate) {
+        this();
+        this.empno = empno;
+        this.projno = projno;
+        this.actno = actno;
+        this.emptime = emptime;
+        this.emstdate = emstdate;
+        this.emendate = emendate;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -373,7 +383,7 @@ public abstract class MappedVempprojact {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPNO,
-            nullable = COLUMN_NULLABLE_EMPNO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMPNO
@@ -386,7 +396,7 @@ public abstract class MappedVempprojact {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNO,
-            nullable = COLUMN_NULLABLE_PROJNO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJNO
@@ -400,7 +410,7 @@ public abstract class MappedVempprojact {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACTNO,
-            nullable = COLUMN_NULLABLE_ACTNO,
+            nullable = false,
             insertable = false,
             updatable = false
     )
@@ -410,7 +420,7 @@ public abstract class MappedVempprojact {
     @Digits(integer = DIGITS_INTEGER_EMPTIME, fraction = DIGITS_FRACTION_EMPTIME)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPTIME,
-            nullable = COLUMN_NULLABLE_EMPTIME,
+            nullable = true,
             insertable = false,
             updatable = false,
             precision = COLUMN_PRECISION_EMPTIME,
@@ -423,7 +433,7 @@ public abstract class MappedVempprojact {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMSTDATE,
-            nullable = COLUMN_NULLABLE_EMSTDATE,
+            nullable = true,
             insertable = false,
             updatable = false
     )
@@ -432,7 +442,7 @@ public abstract class MappedVempprojact {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMENDATE,
-            nullable = COLUMN_NULLABLE_EMENDATE,
+            nullable = true,
             insertable = false,
             updatable = false
     )

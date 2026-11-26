@@ -42,8 +42,7 @@ import java.util.Objects;
  * writable.
  * <p>
  * <strong>A view has no key.</strong> The column {@value MappedVprojre1#COLUMN_NAME_PROJNO},
- * unique
- * and not {@code null} in every row the sample database is created with, is mapped as the
+ * unique and not {@code null} in every row the sample database is created with, is mapped as the
  * identifier, which an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
@@ -63,11 +62,6 @@ public abstract class MappedVprojre1 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PROJNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNO = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
@@ -94,11 +88,6 @@ public abstract class MappedVprojre1 {
     public static final String COLUMN_NAME_PROJNAME = "PROJNAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROJNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNAME = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PROJNAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PROJNAME = 24;
@@ -121,11 +110,6 @@ public abstract class MappedVprojre1 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJDEP = "PROJDEP";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PROJDEP} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJDEP = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_PROJDEP} column. The value is {@value}.
@@ -152,11 +136,6 @@ public abstract class MappedVprojre1 {
     public static final String COLUMN_NAME_RESPEMP = "RESPEMP";
 
     /**
-     * Whether the {@value #COLUMN_NAME_RESPEMP} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESPEMP = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_RESPEMP} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_RESPEMP = 6;
@@ -179,11 +158,6 @@ public abstract class MappedVprojre1 {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_FIRSTNME = "FIRSTNME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_FIRSTNME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_FIRSTNME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_FIRSTNME} column. The value is {@value}.
@@ -210,11 +184,6 @@ public abstract class MappedVprojre1 {
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_MIDINIT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MIDINIT = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_MIDINIT = 1;
@@ -239,11 +208,6 @@ public abstract class MappedVprojre1 {
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_LASTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_LASTNAME = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_LASTNAME = 15;
@@ -266,11 +230,6 @@ public abstract class MappedVprojre1 {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_MAJPROJ = "MAJPROJ";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_MAJPROJ} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MAJPROJ = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_MAJPROJ} column. The value is {@value}.
@@ -523,7 +482,7 @@ public abstract class MappedVprojre1 {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNO,
-            nullable = COLUMN_NULLABLE_PROJNO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_PROJNO
@@ -536,7 +495,7 @@ public abstract class MappedVprojre1 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNAME,
-            nullable = COLUMN_NULLABLE_PROJNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJNAME
@@ -549,7 +508,7 @@ public abstract class MappedVprojre1 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJDEP,
-            nullable = COLUMN_NULLABLE_PROJDEP,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJDEP
@@ -562,7 +521,7 @@ public abstract class MappedVprojre1 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESPEMP,
-            nullable = COLUMN_NULLABLE_RESPEMP,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESPEMP
@@ -575,7 +534,7 @@ public abstract class MappedVprojre1 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_FIRSTNME,
-            nullable = COLUMN_NULLABLE_FIRSTNME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_FIRSTNME
@@ -586,7 +545,7 @@ public abstract class MappedVprojre1 {
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
-            nullable = COLUMN_NULLABLE_MIDINIT,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_MIDINIT
@@ -599,7 +558,7 @@ public abstract class MappedVprojre1 {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LASTNAME,
-            nullable = COLUMN_NULLABLE_LASTNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_LASTNAME
@@ -610,7 +569,7 @@ public abstract class MappedVprojre1 {
     @Size(max = SIZE_MAX_MAJPROJ)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MAJPROJ,
-            nullable = COLUMN_NULLABLE_MAJPROJ,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_MAJPROJ

@@ -67,11 +67,6 @@ public abstract class MappedVproj {
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROJNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PROJNO = 6;
@@ -94,11 +89,6 @@ public abstract class MappedVproj {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNAME = "PROJNAME";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PROJNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNAME = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_PROJNAME} column. The value is {@value}.
@@ -125,11 +115,6 @@ public abstract class MappedVproj {
     public static final String COLUMN_NAME_DEPTNO = "DEPTNO";
 
     /**
-     * Whether the {@value #COLUMN_NAME_DEPTNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_DEPTNO = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_DEPTNO} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_DEPTNO = 3;
@@ -154,11 +139,6 @@ public abstract class MappedVproj {
     public static final String COLUMN_NAME_RESPEMP = "RESPEMP";
 
     /**
-     * Whether the {@value #COLUMN_NAME_RESPEMP} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESPEMP = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_RESPEMP} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_RESPEMP = 6;
@@ -181,11 +161,6 @@ public abstract class MappedVproj {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_PRSTAFF = "PRSTAFF";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PRSTAFF} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PRSTAFF = true;
 
     /**
      * The precision of the {@value #COLUMN_NAME_PRSTAFF} column. The value is {@value}.
@@ -225,11 +200,6 @@ public abstract class MappedVproj {
     public static final String COLUMN_NAME_PRSTDATE = "PRSTDATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PRSTDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PRSTDATE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_PRSTDATE} column. The value is
      * {@value}.
      */
@@ -244,11 +214,6 @@ public abstract class MappedVproj {
     public static final String COLUMN_NAME_PRENDATE = "PRENDATE";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PRENDATE} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PRENDATE = true;
-
-    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_PRENDATE} column. The value is
      * {@value}.
      */
@@ -261,11 +226,6 @@ public abstract class MappedVproj {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_MAJPROJ = "MAJPROJ";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_MAJPROJ} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MAJPROJ = true;
 
     /**
      * The length of the {@value #COLUMN_NAME_MAJPROJ} column. The value is {@value}.
@@ -518,7 +478,7 @@ public abstract class MappedVproj {
     @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNO,
-            nullable = COLUMN_NULLABLE_PROJNO,
+            nullable = false,
             insertable = true,
             updatable = false,
             length = COLUMN_LENGTH_PROJNO
@@ -531,7 +491,7 @@ public abstract class MappedVproj {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNAME,
-            nullable = COLUMN_NULLABLE_PROJNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJNAME
@@ -544,7 +504,7 @@ public abstract class MappedVproj {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DEPTNO,
-            nullable = COLUMN_NULLABLE_DEPTNO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_DEPTNO
@@ -557,7 +517,7 @@ public abstract class MappedVproj {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESPEMP,
-            nullable = COLUMN_NULLABLE_RESPEMP,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESPEMP
@@ -568,7 +528,7 @@ public abstract class MappedVproj {
     @Digits(integer = DIGITS_INTEGER_PRSTAFF, fraction = DIGITS_FRACTION_PRSTAFF)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRSTAFF,
-            nullable = COLUMN_NULLABLE_PRSTAFF,
+            nullable = true,
             insertable = false,
             updatable = false,
             precision = COLUMN_PRECISION_PRSTAFF,
@@ -579,7 +539,7 @@ public abstract class MappedVproj {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRSTDATE,
-            nullable = COLUMN_NULLABLE_PRSTDATE,
+            nullable = true,
             insertable = false,
             updatable = false
     )
@@ -588,7 +548,7 @@ public abstract class MappedVproj {
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PRENDATE,
-            nullable = COLUMN_NULLABLE_PRENDATE,
+            nullable = true,
             insertable = false,
             updatable = false
     )
@@ -598,7 +558,7 @@ public abstract class MappedVproj {
     @Size(max = SIZE_MAX_MAJPROJ)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MAJPROJ,
-            nullable = COLUMN_NULLABLE_MAJPROJ,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_MAJPROJ

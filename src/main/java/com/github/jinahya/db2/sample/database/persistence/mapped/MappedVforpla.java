@@ -29,7 +29,6 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-
 /**
  * A mapped superclass which holds the mappings of the {@value MappedVforpla#TABLE_NAME} view, the
  * projects with their responsible employees, for planning.
@@ -41,7 +40,8 @@ import jakarta.validation.constraints.Size;
  * a project are duplicates of one another.
  * <p>
  * <strong>A view has no key</strong>, and the rows of this one repeat a project; the class maps no
- * identifier, so an extending class is not an entity, and is built from the rows of a native query.
+ * identifier, so an extending class is not an entity, and is built from the rows of a native
+ * query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -60,11 +60,6 @@ public abstract class MappedVforpla {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_PROJNO} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNO = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_PROJNO} column. The value is {@value}.
@@ -91,11 +86,6 @@ public abstract class MappedVforpla {
     public static final String COLUMN_NAME_PROJNAME = "PROJNAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROJNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJNAME = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PROJNAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PROJNAME = 24;
@@ -118,11 +108,6 @@ public abstract class MappedVforpla {
      * value is {@value}.
      */
     public static final String COLUMN_NAME_RESPEMP = "RESPEMP";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_RESPEMP} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_RESPEMP = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_RESPEMP} column. The value is {@value}.
@@ -149,11 +134,6 @@ public abstract class MappedVforpla {
     public static final String COLUMN_NAME_PROJDEP = "PROJDEP";
 
     /**
-     * Whether the {@value #COLUMN_NAME_PROJDEP} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_PROJDEP = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_PROJDEP} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_PROJDEP = 3;
@@ -176,11 +156,6 @@ public abstract class MappedVforpla {
      * The value is {@value}.
      */
     public static final String COLUMN_NAME_FRSTINIT = "FRSTINIT";
-
-    /**
-     * Whether the {@value #COLUMN_NAME_FRSTINIT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_FRSTINIT = false;
 
     /**
      * The length of the {@value #COLUMN_NAME_FRSTINIT} column. The value is {@value}.
@@ -207,11 +182,6 @@ public abstract class MappedVforpla {
     public static final String COLUMN_NAME_MIDINIT = "MIDINIT";
 
     /**
-     * Whether the {@value #COLUMN_NAME_MIDINIT} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_MIDINIT = true;
-
-    /**
      * The length of the {@value #COLUMN_NAME_MIDINIT} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_MIDINIT = 1;
@@ -236,11 +206,6 @@ public abstract class MappedVforpla {
     public static final String COLUMN_NAME_LASTNAME = "LASTNAME";
 
     /**
-     * Whether the {@value #COLUMN_NAME_LASTNAME} column is nullable. The value is {@value}.
-     */
-    public static final boolean COLUMN_NULLABLE_LASTNAME = false;
-
-    /**
      * The length of the {@value #COLUMN_NAME_LASTNAME} column. The value is {@value}.
      */
     public static final int COLUMN_LENGTH_LASTNAME = 15;
@@ -256,6 +221,21 @@ public abstract class MappedVforpla {
      */
     public static final int SIZE_MAX_LASTNAME = COLUMN_LENGTH_LASTNAME;
 
+    // --------------------------------------------------------------------------------- SELECT_LIST
+
+    /**
+     * The columns of {@value #TABLE_NAME}, in their order, as the select list of a native query
+     * whose rows an extending class is built from. The value is {@value}.
+     */
+    public static final String SELECT_LIST =
+            COLUMN_NAME_PROJNO + ", "
+            + COLUMN_NAME_PROJNAME + ", "
+            + COLUMN_NAME_RESPEMP + ", "
+            + COLUMN_NAME_PROJDEP + ", "
+            + COLUMN_NAME_FRSTINIT + ", "
+            + COLUMN_NAME_MIDINIT + ", "
+            + COLUMN_NAME_LASTNAME;
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
@@ -263,6 +243,35 @@ public abstract class MappedVforpla {
      */
     protected MappedVforpla() {
         super();
+    }
+
+    /**
+     * Creates a new instance with the specified values, in the order of {@link #SELECT_LIST}.
+     *
+     * @param projno   a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
+     * @param projname a value for the {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
+     * @param respemp  a value for the {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
+     * @param projdep  a value for the {@value #ATTRIBUTE_NAME_PROJDEP} attribute.
+     * @param frstinit a value for the {@value #ATTRIBUTE_NAME_FRSTINIT} attribute.
+     * @param midinit  a value for the {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
+     * @param lastname a value for the {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
+     */
+    protected MappedVforpla(
+            final String projno,
+            final String projname,
+            final String respemp,
+            final String projdep,
+            final String frstinit,
+            final String midinit,
+            final String lastname) {
+        this();
+        this.projno = projno;
+        this.projname = projname;
+        this.respemp = respemp;
+        this.projdep = projdep;
+        this.frstinit = frstinit;
+        this.midinit = midinit;
+        this.lastname = lastname;
     }
 
     // ---------------------------------------------------------------------------- java.lang.Object
@@ -440,7 +449,7 @@ public abstract class MappedVforpla {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNO,
-            nullable = COLUMN_NULLABLE_PROJNO,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJNO
@@ -453,7 +462,7 @@ public abstract class MappedVforpla {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNAME,
-            nullable = COLUMN_NULLABLE_PROJNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJNAME
@@ -466,7 +475,7 @@ public abstract class MappedVforpla {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_RESPEMP,
-            nullable = COLUMN_NULLABLE_RESPEMP,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_RESPEMP
@@ -479,7 +488,7 @@ public abstract class MappedVforpla {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJDEP,
-            nullable = COLUMN_NULLABLE_PROJDEP,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJDEP
@@ -492,7 +501,7 @@ public abstract class MappedVforpla {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_FRSTINIT,
-            nullable = COLUMN_NULLABLE_FRSTINIT,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_FRSTINIT
@@ -503,7 +512,7 @@ public abstract class MappedVforpla {
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
-            nullable = COLUMN_NULLABLE_MIDINIT,
+            nullable = true,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_MIDINIT
@@ -516,7 +525,7 @@ public abstract class MappedVforpla {
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LASTNAME,
-            nullable = COLUMN_NULLABLE_LASTNAME,
+            nullable = false,
             insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_LASTNAME

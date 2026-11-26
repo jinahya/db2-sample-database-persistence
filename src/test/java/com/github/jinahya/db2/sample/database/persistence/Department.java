@@ -48,46 +48,23 @@ public class Department
     }
 
     /**
-     * {@inheritDoc}
+     * Creates a new instance with the specified identifier, which is assigned, not generated.
      *
-     * @param deptno {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @param deptno a value for the {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
      */
-    @Override
-    public void setDeptno(final String deptno) {
-        super.setDeptno(deptno);
+    public Department(final String deptno) {
+        super(deptno);
     }
 
-    // -------------------------------------------------------------------------- admrdeptDepartment
-
-    /**
-     * Returns the administering department.
-     *
-     * @return the administering department.
-     */
-    public Department getAdmrdeptDepartment() {
-        return admrdeptDepartment;
-    }
-
-    /**
-     * Replaces the administering department with the specified value.
-     *
-     * @param admrdeptDepartment new value for the administering department.
-     */
-    public void setAdmrdeptDepartment(final Department admrdeptDepartment) {
-        this.admrdeptDepartment = admrdeptDepartment;
-    }
-
-    // ------------------------------------------------------------------------------- mgrnoEmployee
+    // ------------------------------------------------------------------------------------ employee
 
     /**
      * Returns the manager.
      *
      * @return the manager.
      */
-    public Employee getMgrnoEmployee() {
-        return mgrnoEmployee;
+    public Employee getEmployee() {
+        return employee;
     }
 
     /**
@@ -95,20 +72,48 @@ public class Department
      *
      * @param mgrnoEmployee new value for the manager.
      */
-    public void setMgrnoEmployee(final Employee mgrnoEmployee) {
-        this.mgrnoEmployee = mgrnoEmployee;
+    public void setEmployee(final Employee mgrnoEmployee) {
+        this.employee = mgrnoEmployee;
     }
+
+    // ---------------------------------------------------------------------------------- department
+
+    /**
+     * Returns the administering department.
+     *
+     * @return the administering department.
+     */
+    public Department getDepartment() {
+        return department;
+    }
+
+    /**
+     * Replaces the administering department with the specified value.
+     *
+     * @param admrdeptDepartment new value for the administering department.
+     */
+    public void setDepartment(final Department admrdeptDepartment) {
+        this.department = admrdeptDepartment;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = Department.COLUMN_NAME_MGRNO,
+                referencedColumnName = Employee.COLUMN_NAME_EMPNO,
+                nullable = true,
+                insertable = true,
+                updatable = true
+    )
+    private Employee employee;
 
     // ---------------------------------------------------------------------------------------------
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = Department.COLUMN_NAME_ADMRDEPT,
-                referencedColumnName = Department.COLUMN_NAME_DEPTNO)
-    private Department admrdeptDepartment;
-
-    // ---------------------------------------------------------------------------------------------
-    @ManyToOne(optional = true, fetch = FetchType.LAZY)
-    @JoinColumn(name = Department.COLUMN_NAME_MGRNO,
-                referencedColumnName = Employee.COLUMN_NAME_EMPNO)
-    private Employee mgrnoEmployee;
+                referencedColumnName = Department.COLUMN_NAME_DEPTNO,
+                nullable = false,
+                insertable = true,
+                updatable = true
+    )
+    private Department department;
 }
