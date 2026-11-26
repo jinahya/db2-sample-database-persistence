@@ -34,8 +34,8 @@ FROM CL_SCHED
 
 
 -- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
--- the identifier which the mapping takes, CLASS_CODE, of a table, which declares no primary key: the values which more
--- than one row shares.
+-- this table declares no primary key, and is mapped as no entity, with no identifier. CLASS_CODE, which the data alone
+-- would suggest as one: the values which more than one row shares.
 -- no rows: each of the 5 appears once, which the 5 rows happen to give, not what the column means; a class
 -- (room:teacher) may meet on more than one day.
 SELECT CLASS_CODE, COUNT(*)

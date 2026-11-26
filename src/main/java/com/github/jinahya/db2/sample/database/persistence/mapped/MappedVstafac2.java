@@ -26,7 +26,6 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Max;
@@ -36,29 +35,19 @@ import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedVstafac2#TABLE_NAME} view, the
  * employees on the activities of the projects, with their names.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
- * is insertable, and the setters are not public; an extending entity is for reading. The
- * identifier's columns stay insertable since EclipseLink requires an {@link Id @Id} mapping to be
- * writable.
+ * <strong>The view is mapped read-only.</strong> No column is insertable or updatable, and the
+ * setters are not public; an extending class is for reading.
  * <p>
- * <strong>A view has no key.</strong> The columns {@value MappedVstafac2#COLUMN_NAME_PROJNO},
- * {@value MappedVstafac2#COLUMN_NAME_ACTNO}, {@value MappedVstafac2#COLUMN_NAME_EMPNO},
- * {@value MappedVstafac2#COLUMN_NAME_STDATE}, unique and not {@code null} in every row the sample
- * database is created with, are mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
- * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
- * entity names a subclass of {@link MappedVstafac2Id} with {@code @IdClass} and inherits the
- * {@link Id @Id} attributes from here.
+ * <strong>A view has no key</strong>, and this one selects from {@code EMPPROJACT}, which has none
+ * either; the class maps no identifier, so an extending class is not an entity, and is built from
+ * the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
- * @see MappedVstafac2Id
  */
 @MappedSuperclass
 public abstract class MappedVstafac2 {
@@ -398,39 +387,6 @@ public abstract class MappedVstafac2 {
                '}';
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and
-     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_EMPNO} and
-     *         {@value #ATTRIBUTE_NAME_STDATE} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedVstafac2 that)) {
-            return false;
-        }
-        return Objects.equals(getProjno(), that.getProjno())
-               && Objects.equals(getActno(), that.getActno())
-               && Objects.equals(getEmpno(), that.getEmpno())
-               && Objects.equals(getStdate(), that.getStdate());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and
-     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_EMPNO} and
-     *         {@value #ATTRIBUTE_NAME_STDATE}, consistent with {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hash(getProjno(), getActno(), getEmpno(), getStdate());
-    }
-
     // -------------------------------------------------------------------------------------- projno
 
     /**
@@ -674,11 +630,10 @@ public abstract class MappedVstafac2 {
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNO,
             nullable = COLUMN_NULLABLE_PROJNO,
-            insertable = true,
+            insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJNO
     )
@@ -689,11 +644,10 @@ public abstract class MappedVstafac2 {
     @Max(Db2Constants.SMALLINT_MAX)
     @Min(Db2Constants.SMALLINT_MIN)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACTNO,
             nullable = COLUMN_NULLABLE_ACTNO,
-            insertable = true,
+            insertable = false,
             updatable = false
     )
     private Integer actno;
@@ -715,11 +669,10 @@ public abstract class MappedVstafac2 {
     @Nonnull
     @Size(max = SIZE_MAX_EMPNO)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_EMPNO,
             nullable = COLUMN_NULLABLE_EMPNO,
-            insertable = true,
+            insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_EMPNO
     )
@@ -777,11 +730,10 @@ public abstract class MappedVstafac2 {
     // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_STDATE,
             nullable = COLUMN_NULLABLE_STDATE,
-            insertable = true,
+            insertable = false,
             updatable = false
     )
     private LocalDate stdate;

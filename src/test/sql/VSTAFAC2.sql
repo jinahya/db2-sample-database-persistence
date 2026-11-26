@@ -34,8 +34,8 @@ FROM VSTAFAC2
 
 
 -- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
--- the identifier which the mapping takes, PROJNO, ACTNO, EMPNO, STDATE, of a view, which has no key: the values which
--- more than one row shares.
+-- this view has no key, and is mapped as no entity, with no identifier. PROJNO, ACTNO, EMPNO, STDATE, which the data
+-- alone would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
 SELECT PROJNO, ACTNO, EMPNO, STDATE, COUNT(*)
 FROM VSTAFAC2

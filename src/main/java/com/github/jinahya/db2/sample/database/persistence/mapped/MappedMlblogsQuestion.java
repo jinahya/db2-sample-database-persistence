@@ -27,26 +27,23 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedMlblogsQuestion#TABLE_NAME}
  * table, the questions of a vector search example.
  * <p>
- * <strong>The table declares no primary key.</strong> The column
- * {@value MappedMlblogsQuestion#COLUMN_NAME_QUESTION}, not {@code null} in every row the sample
- * database is created with, is mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * its definition; the class maps no identifier, so an extending class is not an entity, and is
+ * built from the rows of a native query.
  * <p>
- * The {@value MappedMlblogsQuestion#COLUMN_NAME_EMBEDDING} column, a {@code VECTOR(1024, FLOAT32)}, maps to
- * a {@code float[]} through {@link VectorStringAttributeConverter}, by the string form in which
- * Db2 hands a vector to an application.
+ * The {@value MappedMlblogsQuestion#COLUMN_NAME_EMBEDDING} column, a {@code VECTOR(1024, FLOAT32)},
+ * maps to a {@code float[]} through {@link VectorStringAttributeConverter}, by the string form in
+ * which Db2 hands a vector to an application.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -142,33 +139,6 @@ public abstract class MappedMlblogsQuestion {
                '}';
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_QUESTION} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedMlblogsQuestion that)) {
-            return false;
-        }
-        return Objects.equals(getQuestion(), that.getQuestion());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_QUESTION}, consistent with
-     *         {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hashCode(getQuestion());
-    }
-
     // ------------------------------------------------------------------------------------ question
 
     /**
@@ -221,7 +191,6 @@ public abstract class MappedMlblogsQuestion {
     @Nonnull
     @Size(max = SIZE_MAX_QUESTION)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_QUESTION,
             nullable = COLUMN_NULLABLE_QUESTION,

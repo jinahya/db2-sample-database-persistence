@@ -21,16 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedAdefusr;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 /**
- * An entity of the {@value #TABLE_NAME} materialized query table.
+ * A row of the {@value #TABLE_NAME} materialized query table; not an entity, since it has no key, but a
+ * class built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-@Entity
-@Table(name = Adefusr.TABLE_NAME)
 public class Adefusr
         extends MappedAdefusr {
 

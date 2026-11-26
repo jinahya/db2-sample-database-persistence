@@ -25,29 +25,23 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.util.Objects;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedVforpla#TABLE_NAME} view, the
  * projects with their responsible employees, for planning.
  * <p>
- * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
- * is insertable, and the setters are not public; an extending entity is for reading. The
- * identifier's columns stay insertable since EclipseLink requires an {@link Id @Id} mapping to be
- * writable.
+ * <strong>The view is mapped read-only.</strong> No column is insertable or updatable, and the
+ * setters are not public; an extending class is for reading.
  * <p>
  * The view joins {@code EMPPROJACT} only to repeat each project once per row there, so the rows of
- * a project are duplicates of one another; the instances of a project a query returns are one and
- * the same.
+ * a project are duplicates of one another.
  * <p>
- * <strong>A view has no key.</strong> The column {@value MappedVforpla#COLUMN_NAME_PROJNO}, unique
- * and not {@code null} in every row the sample database is created with, is mapped as the
- * identifier, which an entity needs; nothing in the database keeps that so.
+ * <strong>A view has no key</strong>, and the rows of this one repeat a project; the class maps no
+ * identifier, so an extending class is not an entity, and is built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -286,33 +280,6 @@ public abstract class MappedVforpla {
                '}';
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedVforpla that)) {
-            return false;
-        }
-        return Objects.equals(getProjno(), that.getProjno());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO}, consistent with
-     *         {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hashCode(getProjno());
-    }
-
     // -------------------------------------------------------------------------------------- projno
 
     /**
@@ -471,11 +438,10 @@ public abstract class MappedVforpla {
     @Nonnull
     @Size(max = SIZE_MAX_PROJNO)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PROJNO,
             nullable = COLUMN_NULLABLE_PROJNO,
-            insertable = true,
+            insertable = false,
             updatable = false,
             length = COLUMN_LENGTH_PROJNO
     )

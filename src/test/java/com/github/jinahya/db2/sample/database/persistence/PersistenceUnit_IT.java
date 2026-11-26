@@ -188,15 +188,13 @@ class PersistenceUnit_IT {
                         .contains("Resume"));
     }
 
-    @DisplayName("an @IdClass entity finds by its id, and its composite association resolves")
+    @DisplayName("an @IdClass entity finds by its id, and its association resolves")
     @Test
     void idClass_() {
         final var photo = entityManager.find(EmpPhoto.class,
                                              EmpPhotoId.of("000130", "bitmap"));
         assertThat(photo).isNotNull();
         assertThat(photo.getEmployee().getLastname()).isEqualTo("QUINTANA");
-        entityManager.createQuery("SELECT e FROM EmpProjAct e", EmpProjAct.class).getResultList()
-                .forEach(e -> assertThat(e.getProjAct()).as("projAct of %s", e).isNotNull());
     }
 
     // ---------------------------------------------------------------------------------------------

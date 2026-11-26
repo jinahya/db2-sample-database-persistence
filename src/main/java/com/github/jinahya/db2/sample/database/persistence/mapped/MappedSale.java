@@ -25,31 +25,22 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedSale#TABLE_NAME} table, the
  * sales.
  * <p>
- * <strong>The table declares no primary key.</strong> The columns
- * {@value MappedSale#COLUMN_NAME_SALES_DATE}, {@value MappedSale#COLUMN_NAME_SALES_PERSON},
- * {@value MappedSale#COLUMN_NAME_REGION}, unique and not {@code null} in every row the sample
- * database is created with, are mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
- * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
- * entity names a subclass of {@link MappedSaleId} with {@code @IdClass} and inherits the
- * {@link Id @Id} attributes from here.
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * its definition; the class maps no identifier, so an extending class is not an entity, and is
+ * built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
- * @see MappedSaleId
  */
 @MappedSuperclass
 public abstract class MappedSale {
@@ -185,37 +176,6 @@ public abstract class MappedSale {
                '}';
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_SALES_DATE} and
-     *         {@value #ATTRIBUTE_NAME_SALES_PERSON} and {@value #ATTRIBUTE_NAME_REGION} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedSale that)) {
-            return false;
-        }
-        return Objects.equals(getSalesDate(), that.getSalesDate())
-               && Objects.equals(getSalesPerson(), that.getSalesPerson())
-               && Objects.equals(getRegion(), that.getRegion());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_SALES_DATE} and
-     *         {@value #ATTRIBUTE_NAME_SALES_PERSON} and {@value #ATTRIBUTE_NAME_REGION}, consistent
-     *         with {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hash(getSalesDate(), getSalesPerson(), getRegion());
-    }
-
     // ----------------------------------------------------------------------------------- salesDate
 
     /**
@@ -306,7 +266,6 @@ public abstract class MappedSale {
     // ---------------------------------------------------------------------------------------------
     @Nonnull
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALES_DATE,
             nullable = COLUMN_NULLABLE_SALES_DATE,
@@ -319,7 +278,6 @@ public abstract class MappedSale {
     @Nonnull
     @Size(max = SIZE_MAX_SALES_PERSON)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALES_PERSON,
             nullable = COLUMN_NULLABLE_SALES_PERSON,
@@ -333,7 +291,6 @@ public abstract class MappedSale {
     @Nonnull
     @Size(max = SIZE_MAX_REGION)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_REGION,
             nullable = COLUMN_NULLABLE_REGION,

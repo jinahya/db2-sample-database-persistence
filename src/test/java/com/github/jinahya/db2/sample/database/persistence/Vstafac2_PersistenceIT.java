@@ -28,11 +28,12 @@ import org.junit.jupiter.api.Test;
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
+@Disabled("not an entity: the view has no key; Vstafac2 is built from the rows of a native query")
 class Vstafac2_PersistenceIT
-        extends _Entity_PersistenceIT<Vstafac2, Vstafac2Id> {
+        extends _Entity_PersistenceIT<Vstafac2, Void> {
 
     Vstafac2_PersistenceIT() {
-        super(Vstafac2.class, Vstafac2Id.class);
+        super(Vstafac2.class, Void.class);
     }
 
     // ---------------------------------------------------------------------------------------------

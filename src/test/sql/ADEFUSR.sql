@@ -34,8 +34,8 @@ FROM ADEFUSR
 
 
 -- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
--- the identifier which the mapping takes, WORKDEPT, of a materialized query table, which declares no primary key: the
--- values which more than one row shares.
+-- this materialized query table declares no primary key, and is mapped as no entity, with no identifier. WORKDEPT,
+-- which the data alone would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
 SELECT WORKDEPT, COUNT(*)
 FROM ADEFUSR

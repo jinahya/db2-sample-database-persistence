@@ -23,6 +23,7 @@ package com.github.jinahya.db2.sample.database.persistence;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -38,6 +39,7 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
+@Disabled("not an entity: the table has no key; Patient is built from the rows of a native query")
 class Patient_PersistenceIT
         extends _Entity_PersistenceIT<Patient, Integer> {
 

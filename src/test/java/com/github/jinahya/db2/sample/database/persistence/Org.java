@@ -21,16 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedOrg;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 /**
- * An entity of the {@value #TABLE_NAME} table.
+ * A row of the {@value #TABLE_NAME} table; not an entity, since it has no key, but a
+ * class built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-@Entity
-@Table(name = Org.TABLE_NAME)
 public class Org
         extends MappedOrg {
 
@@ -47,8 +44,7 @@ public class Org
      * {@inheritDoc}
      *
      * @param deptnumb {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
      */
     @Override
     public void setDeptnumb(final Integer deptnumb) {

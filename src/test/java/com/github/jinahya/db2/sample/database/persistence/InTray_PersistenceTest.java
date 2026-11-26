@@ -21,6 +21,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,7 @@ import java.time.LocalDateTime;
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
+@Disabled("not an entity: the table has no key; InTray is built from the rows of a native query")
 class InTray_PersistenceTest
         extends _Entity_PersistenceTest<InTray, LocalDateTime> {
 

@@ -21,19 +21,14 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedSale;
-import jakarta.persistence.Entity;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 /**
- * An entity of the {@value #TABLE_NAME} table.
+ * A row of the {@value #TABLE_NAME} table; not an entity, since it has no key, but a
+ * class built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-@Entity
-@IdClass(SaleId.class)
-@Table(name = Sale.TABLE_NAME)
 public class Sale
         extends MappedSale {
 
@@ -50,8 +45,7 @@ public class Sale
      * {@inheritDoc}
      *
      * @param salesDate {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
      */
     @Override
     public void setSalesDate(final LocalDate salesDate) {
@@ -62,8 +56,7 @@ public class Sale
      * {@inheritDoc}
      *
      * @param salesPerson {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
      */
     @Override
     public void setSalesPerson(final String salesPerson) {
@@ -74,8 +67,7 @@ public class Sale
      * {@inheritDoc}
      *
      * @param region {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
      */
     @Override
     public void setRegion(final String region) {

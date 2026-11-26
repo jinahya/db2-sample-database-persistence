@@ -28,11 +28,12 @@ import org.junit.jupiter.api.Test;
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
+@Disabled("not an entity: the view has no key; Vempprojact is built from the rows of a native query")
 class Vempprojact_PersistenceIT
-        extends _Entity_PersistenceIT<Vempprojact, VempprojactId> {
+        extends _Entity_PersistenceIT<Vempprojact, Void> {
 
     Vempprojact_PersistenceIT() {
-        super(Vempprojact.class, VempprojactId.class);
+        super(Vempprojact.class, Void.class);
     }
 
     // ---------------------------------------------------------------------------------------------

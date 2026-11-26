@@ -34,8 +34,8 @@ FROM SALES
 
 
 -- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
--- the identifier which the mapping takes, SALES_DATE, SALES_PERSON, REGION, of a table, which declares no primary key:
--- the values which more than one row shares.
+-- this table declares no primary key, and is mapped as no entity, with no identifier. SALES_DATE, SALES_PERSON, REGION,
+-- which the data alone would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
 SELECT SALES_DATE, SALES_PERSON, REGION, COUNT(*)
 FROM SALES

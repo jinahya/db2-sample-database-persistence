@@ -34,8 +34,8 @@ FROM MLBLOGS_QUESTIONS
 
 
 -- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
--- the identifier which the mapping takes, QUESTION, of a table, which declares no primary key: the values which more
--- than one row shares.
+-- this table declares no primary key, and is mapped as no entity, with no identifier. QUESTION, which the data alone
+-- would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
 SELECT QUESTION, COUNT(*)
 FROM MLBLOGS_QUESTIONS

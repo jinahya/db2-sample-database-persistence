@@ -29,30 +29,18 @@
     <provider>${persistence-unit.provider}</provider>
     <class>com.github.jinahya.db2.sample.database.persistence.Act</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Catalog</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.ClSched</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Customer</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Department</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Employee</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Empmdc</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.EmpProjAct</class>
     <class>com.github.jinahya.db2.sample.database.persistence.EmpPhoto</class>
     <class>com.github.jinahya.db2.sample.database.persistence.EmpResume</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Inventory</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.InTray</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Org</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Patient</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Product</class>
     <class>com.github.jinahya.db2.sample.database.persistence.ProductSupplier</class>
     <class>com.github.jinahya.db2.sample.database.persistence.ProjAct</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Project</class>
     <class>com.github.jinahya.db2.sample.database.persistence.PurchaseOrder</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Sale</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Staff</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Staffg</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Supplier</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.MlblogsAnswer</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.MlblogsQuestion</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Adefusr</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vact</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vastrde1</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vastrde2</class>
@@ -61,8 +49,6 @@
     <class>com.github.jinahya.db2.sample.database.persistence.Vemp</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vempdpt1</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vemplp</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Vempprojact</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Vforpla</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vhdept</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vphone</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vproj</class>
@@ -71,7 +57,6 @@
     <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde1</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde2</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vstafac1</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Vstafac2</class>
     <!-- the converters of the XML columns, which EclipseLink finds only when listed -->
     <class>com.github.jinahya.db2.sample.database.persistence.CustomerinfoStringAttributeConverter</class>
     <class>com.github.jinahya.db2.sample.database.persistence.ProductStringAttributeConverter</class>
@@ -110,30 +95,18 @@
     <provider>${persistence-unit.provider}</provider>
     <class>com.github.jinahya.db2.sample.database.persistence.Act</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Catalog</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.ClSched</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Customer</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Department</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Employee</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Empmdc</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.EmpProjAct</class>
     <class>com.github.jinahya.db2.sample.database.persistence.EmpPhoto</class>
     <class>com.github.jinahya.db2.sample.database.persistence.EmpResume</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Inventory</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.InTray</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Org</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Patient</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Product</class>
     <class>com.github.jinahya.db2.sample.database.persistence.ProductSupplier</class>
     <class>com.github.jinahya.db2.sample.database.persistence.ProjAct</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Project</class>
     <class>com.github.jinahya.db2.sample.database.persistence.PurchaseOrder</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Sale</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Staff</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Staffg</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Supplier</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.MlblogsAnswer</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.MlblogsQuestion</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Adefusr</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vact</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vastrde1</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vastrde2</class>
@@ -142,8 +115,6 @@
     <class>com.github.jinahya.db2.sample.database.persistence.Vemp</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vempdpt1</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vemplp</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Vempprojact</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Vforpla</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vhdept</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vphone</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vproj</class>
@@ -152,7 +123,6 @@
     <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde1</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde2</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vstafac1</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.Vstafac2</class>
     <!-- the converters of the XML columns, which EclipseLink finds only when listed -->
     <class>com.github.jinahya.db2.sample.database.persistence.CustomerinfoStringAttributeConverter</class>
     <class>com.github.jinahya.db2.sample.database.persistence.ProductStringAttributeConverter</class>

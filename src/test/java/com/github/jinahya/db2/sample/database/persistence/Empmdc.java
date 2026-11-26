@@ -21,16 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmpmdc;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 /**
- * An entity of the {@value #TABLE_NAME} table.
+ * A row of the {@value #TABLE_NAME} table; not an entity, since it has no key, but a
+ * class built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-@Entity
-@Table(name = Empmdc.TABLE_NAME)
 public class Empmdc
         extends MappedEmpmdc {
 
@@ -47,8 +44,7 @@ public class Empmdc
      * {@inheritDoc}
      *
      * @param empno {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
      */
     @Override
     public void setEmpno(final Integer empno) {

@@ -26,7 +26,6 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
@@ -36,16 +35,14 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedStaff#TABLE_NAME} table, the
  * staff.
  * <p>
- * <strong>The table declares no primary key.</strong> The column
- * {@value MappedStaff#COLUMN_NAME_ID}, unique and not {@code null} in every row the sample database
- * is created with, is mapped as the identifier, which an entity needs; nothing in the database
- * keeps that so.
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * its definition; the class maps no identifier, so an extending class is not an entity, and is
+ * built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -302,33 +299,6 @@ public abstract class MappedStaff {
                '}';
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_ID} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedStaff that)) {
-            return false;
-        }
-        return Objects.equals(getId(), that.getId());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ID}, consistent with
-     *         {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hashCode(getId());
-    }
-
     // ------------------------------------------------------------------------------------------ id
 
     /**
@@ -482,7 +452,6 @@ public abstract class MappedStaff {
     @Max(Db2Constants.SMALLINT_MAX)
     @Min(Db2Constants.SMALLINT_MIN)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ID,
             nullable = COLUMN_NULLABLE_ID,

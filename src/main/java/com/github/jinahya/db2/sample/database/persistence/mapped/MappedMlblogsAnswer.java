@@ -27,29 +27,25 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedMlblogsAnswer#TABLE_NAME}
  * table, the answers of a vector search example.
  * <p>
- * Some answers appear in more than one row, with the same embedding; the instances of an answer a
- * query returns are one and the same.
+ * Some answers appear in more than one row, with the same embedding.
  * <p>
- * <strong>The table declares no primary key.</strong> The column
- * {@value MappedMlblogsAnswer#COLUMN_NAME_ANSWER}, not {@code null} in every row the sample
- * database is created with, is mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * its definition; the class maps no identifier, so an extending class is not an entity, and is
+ * built from the rows of a native query.
  * <p>
- * The {@value MappedMlblogsAnswer#COLUMN_NAME_EMBEDDING} column, a {@code VECTOR(1024, FLOAT32)}, maps to
- * a {@code float[]} through {@link VectorStringAttributeConverter}, by the string form in which
- * Db2 hands a vector to an application.
+ * The {@value MappedMlblogsAnswer#COLUMN_NAME_EMBEDDING} column, a {@code VECTOR(1024, FLOAT32)},
+ * maps to a {@code float[]} through {@link VectorStringAttributeConverter}, by the string form in
+ * which Db2 hands a vector to an application.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -145,33 +141,6 @@ public abstract class MappedMlblogsAnswer {
                '}';
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_ANSWER} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedMlblogsAnswer that)) {
-            return false;
-        }
-        return Objects.equals(getAnswer(), that.getAnswer());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ANSWER}, consistent with
-     *         {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hashCode(getAnswer());
-    }
-
     // -------------------------------------------------------------------------------------- answer
 
     /**
@@ -224,7 +193,6 @@ public abstract class MappedMlblogsAnswer {
     @Nonnull
     @Size(max = SIZE_MAX_ANSWER)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ANSWER,
             nullable = COLUMN_NULLABLE_ANSWER,

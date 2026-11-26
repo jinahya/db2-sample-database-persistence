@@ -25,7 +25,6 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -33,16 +32,14 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalTime;
-import java.util.Objects;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedClSched#TABLE_NAME} table, the
  * class schedules.
  * <p>
- * <strong>The table declares no primary key.</strong> The column
- * {@value MappedClSched#COLUMN_NAME_CLASS_CODE}, unique and not {@code null} in every row the
- * sample database is created with, is mapped as the identifier, which an entity needs; nothing in
- * the database keeps that so.
+ * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key by
+ * its definition; the class maps no identifier, so an extending class is not an entity, and is
+ * built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -180,33 +177,6 @@ public abstract class MappedClSched {
                '}';
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_CLASS_CODE} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedClSched that)) {
-            return false;
-        }
-        return Objects.equals(getClassCode(), that.getClassCode());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_CLASS_CODE}, consistent with
-     *         {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hashCode(getClassCode());
-    }
-
     // ----------------------------------------------------------------------------------- classCode
 
     /**
@@ -298,7 +268,6 @@ public abstract class MappedClSched {
     @Nonnull
     @Size(max = SIZE_MAX_CLASS_CODE)
     @NotNull
-    @Id
     @Basic(optional = false, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_CLASS_CODE,
             nullable = COLUMN_NULLABLE_CLASS_CODE,

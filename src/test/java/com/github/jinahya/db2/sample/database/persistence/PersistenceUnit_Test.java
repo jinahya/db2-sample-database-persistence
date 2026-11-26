@@ -50,13 +50,13 @@ class PersistenceUnit_Test {
         assertThat(entityManagerFactory.isOpen()).isTrue();
     }
 
-    @DisplayName("every table and view is an entity with an id")
+    @DisplayName("every table and view with a key is an entity with an id")
     @Test
     void metamodel_HasEveryEntityWithAnId_() {
         final var entities = entityManagerFactory.getMetamodel().getEntities();
         assertThat(entities)
                 .as("entity types of %s", _Entity_Persistence_Test_Producer.PERSISTENCE_UNIT_NAME)
-                .hasSize(45)
+                .hasSize(30)
                 .allSatisfy(e -> assertThat(
                         e.hasSingleIdAttribute() || !e.getIdClassAttributes().isEmpty())
                         .as("%s has an id", e.getName())

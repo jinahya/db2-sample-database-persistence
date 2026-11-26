@@ -21,16 +21,18 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
+@Disabled("not an entity: the table has no key; Sale is built from the rows of a native query")
 class Sale_PersistenceIT
-        extends _Entity_PersistenceIT<Sale, SaleId> {
+        extends _Entity_PersistenceIT<Sale, Void> {
 
     Sale_PersistenceIT() {
-        super(Sale.class, SaleId.class);
+        super(Sale.class, Void.class);
     }
 }
 

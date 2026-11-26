@@ -28,6 +28,7 @@ import org.junit.jupiter.api.Test;
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
+@Disabled("not an entity: the table has no key; Adefusr is built from the rows of a native query")
 class Adefusr_PersistenceTest
         extends _Entity_PersistenceTest<Adefusr, String> {
 

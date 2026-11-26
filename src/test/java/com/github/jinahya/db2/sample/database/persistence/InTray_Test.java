@@ -21,8 +21,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import lombok.extern.slf4j.Slf4j;
-import nl.jqno.equalsverifier.Warning;
-import nl.jqno.equalsverifier.api.SingleTypeEqualsVerifierApi;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
@@ -38,10 +38,11 @@ class InTray_Test
     }
 
     // ----------------------------------------------------------------------------- equals/hashCode
+    @Disabled("no key: InTray inherits equals/hashCode from Object, its identity")
+    @Test
     @Override
-    public SingleTypeEqualsVerifierApi<InTray> equals_verifier_() {
-        return super.equals_verifier_()
-                .suppress(Warning.SURROGATE_KEY);
+    public void equals_verify_() {
+        super.equals_verify_();
     }
 }
 

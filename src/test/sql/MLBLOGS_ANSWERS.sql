@@ -34,9 +34,9 @@ FROM MLBLOGS_ANSWERS
 
 
 -- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
--- the identifier which the mapping takes, ANSWER, of a table, which declares no primary key: the values which more than
--- one row shares.
--- 2 ANSWERs, in 5 rows: the rows of each are copies of one another, which a query returns as one instance.
+-- this table declares no primary key, and is mapped as no entity, with no identifier. ANSWER, the text of a row: the
+-- values which more than one row shares.
+-- 2 ANSWERs, in 5 rows: the rows of each are copies of one another.
 SELECT ANSWER, COUNT(*)
 FROM MLBLOGS_ANSWERS
 GROUP BY ANSWER

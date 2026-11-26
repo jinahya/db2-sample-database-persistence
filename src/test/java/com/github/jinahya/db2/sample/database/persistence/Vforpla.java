@@ -21,16 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVforpla;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 /**
- * An entity of the {@value #TABLE_NAME} view.
+ * A row of the {@value #TABLE_NAME} view; not an entity, since it has no key, but a
+ * class built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-@Entity
-@Table(name = Vforpla.TABLE_NAME)
 public class Vforpla
         extends MappedVforpla {
 

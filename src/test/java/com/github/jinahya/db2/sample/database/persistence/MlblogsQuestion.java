@@ -21,16 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedMlblogsQuestion;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 /**
- * An entity of the {@value #TABLE_NAME} table.
+ * A row of the {@value #TABLE_NAME} table; not an entity, since it has no key, but a
+ * class built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-@Entity
-@Table(name = MlblogsQuestion.TABLE_NAME)
 public class MlblogsQuestion
         extends MappedMlblogsQuestion {
 
@@ -47,8 +44,7 @@ public class MlblogsQuestion
      * {@inheritDoc}
      *
      * @param question {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
      */
     @Override
     public void setQuestion(final String question) {

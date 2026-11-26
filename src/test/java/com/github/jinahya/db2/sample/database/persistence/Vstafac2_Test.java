@@ -21,25 +21,26 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import lombok.extern.slf4j.Slf4j;
-import nl.jqno.equalsverifier.Warning;
-import nl.jqno.equalsverifier.api.SingleTypeEqualsVerifierApi;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
 class Vstafac2_Test
-        extends _Entity_Test<Vstafac2, Vstafac2Id> {
+        extends _Entity_Test<Vstafac2, Void> {
 
     Vstafac2_Test() {
-        super(Vstafac2.class, Vstafac2Id.class);
+        super(Vstafac2.class, Void.class);
     }
 
     // ----------------------------------------------------------------------------- equals/hashCode
+    @Disabled("no key: Vstafac2 inherits equals/hashCode from Object, its identity")
+    @Test
     @Override
-    public SingleTypeEqualsVerifierApi<Vstafac2> equals_verifier_() {
-        return super.equals_verifier_()
-                .suppress(Warning.SURROGATE_KEY);
+    public void equals_verify_() {
+        super.equals_verify_();
     }
 }
 

@@ -21,18 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVempprojact;
-import jakarta.persistence.Entity;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
 
 /**
- * An entity of the {@value #TABLE_NAME} view.
+ * A row of the {@value #TABLE_NAME} view; not an entity, since it has no key, but a
+ * class built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
-@Entity
-@IdClass(VempprojactId.class)
-@Table(name = Vempprojact.TABLE_NAME)
 public class Vempprojact
         extends MappedVempprojact {
 
