@@ -25,12 +25,13 @@ import com.github.jinahya.object.randomizer.PodamObjectRandomizer;
 import java.util.List;
 
 /**
- * Randomizes a new {@link Customer}, its {@code XML} column included; left out are the identifier,
- * which the test sets, and {@code HISTORY}, an {@code XML} column of text, which random text would
- * not keep well-formed.
- *
- * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
+ * Randomizes a new {@link Customer}, whose identifier it sets itself, within the lengths of its
+ * columns, since Podam does not reach its setters, which are not public. It leaves out the XML
+ * column mapped as text, which random text would not keep well-formed.
  */
+@SuppressWarnings({
+        "java:S101" // Class names should comply with a naming convention
+})
 class Customer_Randomizer
         extends PodamObjectRandomizer<Customer> {
 
@@ -39,6 +40,14 @@ class Customer_Randomizer
                 Customer.ATTRIBUTE_NAME_CID,
                 Customer.ATTRIBUTE_NAME_HISTORY
         ));
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Override
+    public Customer get() {
+        final var instance = super.get();
+        instance.setCid(__Randomizer_Utils.positiveLong());
+        return instance;
     }
 }
 

@@ -25,11 +25,12 @@ import com.github.jinahya.object.randomizer.PodamObjectRandomizer;
 import java.util.List;
 
 /**
- * Randomizes a new {@link Product}, its {@code XML} column included; left out are the identifier,
- * which the test sets.
- *
- * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
+ * Randomizes a new {@link Product}, whose identifier it sets itself, within the lengths of its
+ * columns, since Podam does not reach its setters, which are not public.
  */
+@SuppressWarnings({
+        "java:S101" // Class names should comply with a naming convention
+})
 class Product_Randomizer
         extends PodamObjectRandomizer<Product> {
 
@@ -37,6 +38,14 @@ class Product_Randomizer
         super(Product.class, List.of(
                 Product.ATTRIBUTE_NAME_PID
         ));
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Override
+    public Product get() {
+        final var instance = super.get();
+        instance.setPid(__Randomizer_Utils.string(10));
+        return instance;
     }
 }
 

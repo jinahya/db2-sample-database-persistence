@@ -123,6 +123,8 @@
     <!-- 11.0.0 manages: jakarta.persistence-api 3.2.0, jakarta.validation-api 3.1.1, -->
     <!--                 jakarta.enterprise.cdi-api 4.1.0, jakarta.el-api 6.0.1 -->
     <version.jakarta.jakartaee-bom>11.0.0</version.jakarta.jakartaee-bom>
+    <!-- https://central.sonatype.com/artifact/nl.jqno.equalsverifier/equalsverifier-nodep/versions -->
+    <version.nl.jqno.equalsverifier>4.5.2</version.nl.jqno.equalsverifier>
     <!-- https://central.sonatype.com/artifact/org.assertj/assertj-core/versions -->
     <version.org.assertj>4.0.0-M1</version.org.assertj>
     <!-- https://github.com/eclipse-ee4j/eclipselink/releases -->
@@ -147,6 +149,10 @@
     <!-- https://central.sonatype.com/artifact/org.junit/junit-bom/versions -->
     <version.org.junit>5.14.4</version.org.junit>
     <!-- https://central.sonatype.com/artifact/org.slf4j/slf4j-bom/versions -->
+    <!-- https://central.sonatype.com/artifact/org.mockito/mockito-junit-jupiter/versions -->
+    <version.org.mockito>5.24.0</version.org.mockito>
+    <!-- https://central.sonatype.com/artifact/org.projectlombok/lombok/versions -->
+    <version.org.projectlombok>1.18.48</version.org.projectlombok>
     <version.org.slf4j>2.0.20</version.org.slf4j>
     <!-- https://central.sonatype.com/artifact/uk.co.jemos.podam/podam/versions -->
     <version.uk.co.jemos.podam>8.0.2.RELEASE</version.uk.co.jemos.podam>
@@ -182,6 +188,26 @@
         <groupId>io.github.jinahya</groupId>
         <artifactId>jinahya-persistence-more</artifactId>
         <version>${version.io.github.jinahya.jinahya-persistence}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.jinahya</groupId>
+        <artifactId>jinahya-persistence-test-utils</artifactId>
+        <version>${version.io.github.jinahya.jinahya-persistence}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.github.jinahya</groupId>
+        <artifactId>jinahya-persistence-utils</artifactId>
+        <version>${version.io.github.jinahya.jinahya-persistence}</version>
+      </dependency>
+      <dependency>
+        <groupId>nl.jqno.equalsverifier</groupId>
+        <artifactId>equalsverifier-nodep</artifactId>
+        <version>${version.nl.jqno.equalsverifier}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-junit-jupiter</artifactId>
+        <version>${version.org.mockito}</version>
       </dependency>
       <dependency>
         <groupId>jakarta.xml.bind</groupId>
@@ -340,6 +366,32 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency><!-- the bases of the per-entity tests: the cached factories, the persisters, random selection -->
+      <groupId>io.github.jinahya</groupId>
+      <artifactId>jinahya-persistence-test-utils</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.github.jinahya</groupId>
+      <artifactId>jinahya-persistence-utils</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>nl.jqno.equalsverifier</groupId>
+      <artifactId>equalsverifier-nodep</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency><!-- EqualsVerifier uses it, when present, to break recursive entity graphs -->
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${version.org.projectlombok}</version>
       <scope>test</scope>
     </dependency>
     <dependency><!-- the *_Randomizer classes, which the *IT insert -->
@@ -593,6 +645,11 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${version.org.projectlombok}</version>
+            </path>
             <path><!-- the static metamodel generator of the active persistence provider -->
               <groupId>${metamodel.generator.groupId}</groupId>
               <artifactId>${metamodel.generator.artifactId}</artifactId>

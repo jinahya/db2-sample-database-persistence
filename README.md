@@ -11,7 +11,7 @@ Sibling of [postgresql-demodb-persistence](https://github.com/jinahya/postgresql
 | | |
 | --- | --- |
 | `src/main` | one `@MappedSuperclass` per table and view, `Mapped<Table>`, plus a `Mapped<Table>Id` per composite key |
-| `src/test` | an `@Entity` extending each, with the declared foreign keys as associations |
+| `src/test` | an `@Entity` extending each, with the declared foreign keys as associations; and, per entity, as in the sibling projects: `<Entity>_Test` (`toString`, `equals`/`hashCode` with EqualsVerifier, accessors), `<Entity>_PersistenceTest` (on H2), `<Entity>_PersistenceIT` (on Db2), and, for each table, `<Entity>_Randomizer` (Podam) and `<Entity>_Persister`, which persists what the entity references first; each id class has a `_Test` and a `_Randomizer` |
 
 All 26 tables and all 18 views are mapped. The views, and `ADEFUSR`, a materialized query table the database
 maintains, are mapped read-only: no column is updatable, and none but the identifier's is insertable, which

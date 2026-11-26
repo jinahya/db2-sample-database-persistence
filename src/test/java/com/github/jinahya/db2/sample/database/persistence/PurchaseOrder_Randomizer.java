@@ -25,21 +25,30 @@ import com.github.jinahya.object.randomizer.PodamObjectRandomizer;
 import java.util.List;
 
 /**
- * Randomizes a new {@link PurchaseOrder}, its {@code XML} column included; left out are the
- * identifier, which the test sets, and the customer, a foreign key mapped read-only and the
- * association which owns it.
- *
- * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
+ * Randomizes a new {@link PurchaseOrder}, whose identifier it sets itself, within the lengths of
+ * its columns, since Podam does not reach its setters, which are not public. It leaves out the
+ * associations, which its persister sets, and the foreign key columns, mapped read-only.
  */
+@SuppressWarnings({
+        "java:S101" // Class names should comply with a naming convention
+})
 class PurchaseOrder_Randomizer
         extends PodamObjectRandomizer<PurchaseOrder> {
 
     PurchaseOrder_Randomizer() {
         super(PurchaseOrder.class, List.of(
+                "custidCustomer",
                 PurchaseOrder.ATTRIBUTE_NAME_POID,
-                PurchaseOrder.ATTRIBUTE_NAME_CUSTID,
-                "custidCustomer"
+                PurchaseOrder.ATTRIBUTE_NAME_CUSTID
         ));
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Override
+    public PurchaseOrder get() {
+        final var instance = super.get();
+        instance.setPoid(__Randomizer_Utils.positiveLong());
+        return instance;
     }
 }
 
