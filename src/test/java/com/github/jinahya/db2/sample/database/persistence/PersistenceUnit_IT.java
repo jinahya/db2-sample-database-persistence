@@ -20,8 +20,6 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
-import com.github.jinahya.db2.sample.database.persistence.xml.customer.Customerinfo;
-import com.github.jinahya.db2.sample.database.persistence.xml.supplier.Supplierinfo;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -34,8 +32,6 @@ import org.junit.jupiter.api.Test;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
 import java.io.StringReader;
 import java.math.BigInteger;
 import java.util.function.Function;
@@ -115,17 +111,13 @@ class PersistenceUnit_IT {
                         .as("addr of %s", s.getSid()).isEqualTo(s.getSid()));
     }
 
-    @DisplayName("every stored document is valid against the XSD on the class path")
+    @DisplayName("every stored document is valid against the schema of its column")
     @Test
     void xml_ValidAgainstXsd_() throws Exception {
-        final var customer = validator(Customerinfo.class, "customer.xsd");
-        final var product = validator(
-                com.github.jinahya.db2.sample.database.persistence.xml.product.Product.class,
-                "product.xsd");
-        final var porder = validator(
-                com.github.jinahya.db2.sample.database.persistence.xml.porder.PurchaseOrder.class,
-                "porder.xsd");
-        final var supplier = validator(Supplierinfo.class, "supplier.xsd");
+        final var customer = XmlSchemaUtils.customerinfo().newValidator();
+        final var product = XmlSchemaUtils.product().newValidator();
+        final var porder = XmlSchemaUtils.purchaseOrder().newValidator();
+        final var supplier = XmlSchemaUtils.supplierinfo().newValidator();
         for (final var c : entityManager.createQuery("SELECT c FROM Customer c", Customer.class)
                 .getResultList()) {
             customer.validate(source(new CustomerinfoStringAttributeConverter()
@@ -208,13 +200,6 @@ class PersistenceUnit_IT {
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    // a validator of the XSD which sits beside the specified bound class
-    private static Validator validator(final Class<?> bound, final String name) throws Exception {
-        final var resource = bound.getResource(name);
-        assertThat(resource).as("%s beside %s", name, bound).isNotNull();
-        return SchemaFactory.newDefaultInstance().newSchema(resource).newValidator();
-    }
-
     // persists the specified entity, flushes, clears, and finds it again; all rolled back
     private <T> T insertAndFind(final T entity, final Class<T> type, final Object id) {
         return applyInTransactionAndRollback(em -> {

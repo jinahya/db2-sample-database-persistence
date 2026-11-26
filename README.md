@@ -47,7 +47,8 @@ at build time, from that XSD, through an `AttributeConverter` which extends `Jax
 
 * **The XSDs.** Copied unchanged from `/opt/ibm/db2/V12.1/samples/db2sampl/` of the image, they are in
   `src/main/resources`, each in the package of its classes, and ship in the jar, so that a downstream project can
-  validate against them (`Customerinfo.class.getResource("customer.xsd")`). The packages are opened. IBM's terms are in
+  validate against them: `XmlSchemaUtils` loads each once, as a shared `Schema`
+  (`XmlSchemaUtils.customerinfo().newValidator()`). The packages are opened. IBM's terms are in
   `NOTICE.txt` beside them. `addr.xsd`, also in the image, describes the `addr` element of `customerinfo` and
   `supplierinfo`, not a column, and is left out.
 * **Registered schemas only.** The four XSDs are the ones registered in the database's XML schema repository
