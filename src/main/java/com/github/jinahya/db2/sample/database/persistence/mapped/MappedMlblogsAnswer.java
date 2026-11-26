@@ -20,9 +20,12 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.VectorStringAttributeConverter;
 import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -30,6 +33,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedMlblogsAnswer#TABLE_NAME}
@@ -43,8 +47,9 @@ import java.util.Objects;
  * database is created with, is mapped as the identifier, which an entity needs; nothing in the
  * database keeps that so.
  * <p>
- * The column {@code EMBEDDING}, a {@code VECTOR}, is not mapped; Jakarta Persistence has no mapping
- * for it.
+ * The {@value MappedMlblogsAnswer#COLUMN_NAME_EMBEDDING} column, a {@code VECTOR(1024, FLOAT32)}, maps to
+ * a {@code float[]} through {@link VectorStringAttributeConverter}, by the string form in which
+ * Db2 hands a vector to an application.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -84,6 +89,43 @@ public abstract class MappedMlblogsAnswer {
      * The maximum size of the {@value #ATTRIBUTE_NAME_ANSWER} attribute. The value is {@value}.
      */
     public static final int SIZE_MAX_ANSWER = COLUMN_LENGTH_ANSWER;
+
+    // ------------------------------------------------------------------------------------------------------- EMBEDDING
+
+    /**
+     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMBEDDING} attribute maps.
+     * The value is {@value}.
+     */
+    public static final String COLUMN_NAME_EMBEDDING = "EMBEDDING";
+
+    /**
+     * Whether the {@value #COLUMN_NAME_EMBEDDING} column is nullable. The value is {@value}.
+     */
+    public static final boolean COLUMN_NULLABLE_EMBEDDING = true;
+
+    /**
+     * The dimension of the {@value #COLUMN_NAME_EMBEDDING} column, a {@code VECTOR(1024, FLOAT32)}.
+     * The value is {@value}.
+     */
+    public static final int COLUMN_DIMENSION_EMBEDDING = 1024;
+
+    /**
+     * The length of the string form of the {@value #COLUMN_NAME_EMBEDDING} column, which a
+     * generated schema gives the column; {@code VECTOR_SERIALIZE} makes it {@code d * 16 + 1}
+     * for a {@code FLOAT32} vector of {@code d} dimensions. The value is {@value}.
+     */
+    public static final int COLUMN_LENGTH_EMBEDDING = COLUMN_DIMENSION_EMBEDDING * 16 + 1;
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMBEDDING} column. The value
+     * is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_EMBEDDING = "embedding";
+
+    /**
+     * The size of the {@value #ATTRIBUTE_NAME_EMBEDDING} attribute. The value is {@value}.
+     */
+    public static final int SIZE_EMBEDDING = COLUMN_DIMENSION_EMBEDDING;
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -152,6 +194,32 @@ public abstract class MappedMlblogsAnswer {
         this.answer = answer;
     }
 
+    // ------------------------------------------------------------------------------------------------------- embedding
+
+    /**
+     * Returns a copy of current value of {@value #ATTRIBUTE_NAME_EMBEDDING} attribute.
+     *
+     * @return a copy of current value of {@value #ATTRIBUTE_NAME_EMBEDDING} attribute; {@code null}
+     *         when it is {@code null}.
+     * @implNote A copy is returned, and a copy is kept by {@link #setEmbedding(float[])}, so that
+     *         the value changes only through the setter; EclipseLink does not see a change made
+     *         to the elements of a converted array.
+     */
+    @Nullable
+    public float[] getEmbedding() {
+        return Optional.ofNullable(embedding).map(float[]::clone).orElse(null);
+    }
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMBEDDING} attribute with a copy of the
+     * specified value.
+     *
+     * @param embedding new value for {@value #ATTRIBUTE_NAME_EMBEDDING} attribute.
+     */
+    public void setEmbedding(@Nullable final float[] embedding) {
+        this.embedding = Optional.ofNullable(embedding).map(float[]::clone).orElse(null);
+    }
+
     // -----------------------------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_ANSWER)
@@ -165,4 +233,16 @@ public abstract class MappedMlblogsAnswer {
             length = COLUMN_LENGTH_ANSWER
     )
     private String answer;
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @Size(min = SIZE_EMBEDDING, max = SIZE_EMBEDDING)
+    @Convert(converter = VectorStringAttributeConverter.class)
+    @Basic(optional = true, fetch = FetchType.EAGER)
+    @Column(name = COLUMN_NAME_EMBEDDING,
+            nullable = COLUMN_NULLABLE_EMBEDDING,
+            insertable = true,
+            updatable = true,
+            length = COLUMN_LENGTH_EMBEDDING
+    )
+    private float[] embedding;
 }

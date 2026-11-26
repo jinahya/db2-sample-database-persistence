@@ -61,6 +61,22 @@ final class __Randomizer_Utils {
     }
 
     /**
+     * Returns a new vector of {@code dimension} coordinates, each of a size an embedding has;
+     * a value which Db2 rejects in a {@code VECTOR}, such as a subnormal one, is never returned.
+     *
+     * @param dimension the dimension of the vector.
+     * @return a new vector of {@code dimension} coordinates.
+     */
+    static float[] vector(final int dimension) {
+        final var random = ThreadLocalRandom.current();
+        final var vector = new float[dimension];
+        for (int i = 0; i < dimension; i++) {
+            vector[i] = (float) random.nextGaussian(0.0d, 0.1d);
+        }
+        return vector;
+    }
+
+    /**
      * Returns a new string of digits.
      *
      * @param length the length of the string.

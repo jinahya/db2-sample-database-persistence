@@ -26,7 +26,8 @@ import java.util.List;
 
 /**
  * Randomizes a new {@link MlblogsQuestion}, whose identifier it sets itself, within the lengths of
- * its columns, since Podam does not reach its setters, which are not public.
+ * its columns, since Podam does not reach its setters, which are not public; the embedding, too,
+ * is set here, to a vector of the column's dimension.
  */
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
@@ -45,6 +46,8 @@ class MlblogsQuestion_Randomizer
     public MlblogsQuestion get() {
         final var instance = super.get();
         instance.setQuestion(__Randomizer_Utils.string(20));
+        instance.setEmbedding(
+                __Randomizer_Utils.vector(MlblogsQuestion.COLUMN_DIMENSION_EMBEDDING));
         return instance;
     }
 }

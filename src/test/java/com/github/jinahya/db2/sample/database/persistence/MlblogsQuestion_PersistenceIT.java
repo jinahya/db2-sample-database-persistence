@@ -20,7 +20,11 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import lombok.extern.slf4j.Slf4j;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
@@ -31,6 +35,18 @@ class MlblogsQuestion_PersistenceIT
 
     MlblogsQuestion_PersistenceIT() {
         super(MlblogsQuestion.class, String.class);
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Override
+    protected void randomEntityInstanceSelected__(final EntityManagerFactory entityManagerFactory,
+                                                  final EntityManager entityManager,
+                                                  final MlblogsQuestion entityInstance) {
+        super.randomEntityInstanceSelected__(entityManagerFactory, entityManager, entityInstance);
+        final var embedding = entityInstance.getEmbedding();
+        if (embedding != null) {
+            assertThat(embedding).hasSize(MlblogsQuestion.COLUMN_DIMENSION_EMBEDDING);
+        }
     }
 }
 

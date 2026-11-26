@@ -25,8 +25,8 @@
  * <p>
  * Every table and every view is mapped. The views, and {@code ADEFUSR}, a materialized query table
  * which the database maintains, are mapped read-only. The {@code VECTOR} columns of
- * {@code MLBLOGS_ANSWERS}, {@code MLBLOGS_QUESTIONS} and {@code PATIENTS}, for which Jakarta
- * Persistence has no mapping, are not mapped. The aliases ({@code DEPT}, {@code EMP},
+ * {@code MLBLOGS_ANSWERS}, {@code MLBLOGS_QUESTIONS} and {@code PATIENTS} map to {@code float[]}
+ * through {@code VectorStringAttributeConverter}. The aliases ({@code DEPT}, {@code EMP},
  * {@code EMPACT}, {@code EMP_ACT}, {@code PROJ}) are other names of tables mapped here.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;

@@ -15,8 +15,8 @@ Sibling of [postgresql-demodb-persistence](https://github.com/jinahya/postgresql
 
 All 26 tables and all 18 views are mapped. The views, and `ADEFUSR`, a materialized query table the database
 maintains, are mapped read-only: no column is updatable, and none but the identifier's is insertable, which
-EclipseLink requires. The `VECTOR` columns (`MLBLOGS_ANSWERS.EMBEDDING`, `MLBLOGS_QUESTIONS.EMBEDDING`,
-`PATIENTS.EMBEDDING`) are not mapped. The five aliases (`DEPT`, `EMP`, ...) need no mapping of their own.
+EclipseLink requires. The `VECTOR` columns map to `float[]` (see below). The five aliases (`DEPT`, `EMP`, ...) need
+no mapping of their own.
 
 A view has no key; each is mapped by a column, or a set of columns, which is unique and not `null` in the data
 (`VEMP.EMPNO`, `VPROJACT` by project, activity and start date, ...). `VFORPLA` and `MLBLOGS_ANSWERS` hold rows which
@@ -67,6 +67,25 @@ at build time, from that XSD, through an `AttributeConverter` which extends `Jax
 * **Both providers.** The converters are listed in `persistence.xml`, which EclipseLink requires. Each also declares
   `AttributeConverter<T, String>` itself, though `OfString` implements it already: EclipseLink takes the column type
   from the interface the converter class declares, and without it binds the attribute, not its text, on insert.
+
+### VECTOR columns
+
+Three columns are `VECTOR(n, FLOAT32)`, the embeddings of a vector search example: `MLBLOGS_QUESTIONS.EMBEDDING` and
+`MLBLOGS_ANSWERS.EMBEDDING` (`1024`), of the text in the same row, and `PATIENTS.EMBEDDING` (`768`). Each maps to a
+`float[]` through `VectorStringAttributeConverter`, an `AttributeConverter<float[], String>`.
+
+* **The string form.** Db2 stores a vector in binary, but hands it to an application as text, `[0.12,-0.03,...]`:
+  the JDBC driver reports the column as a `VARCHAR`, reads it with `getString` and binds it with `setString`; it reads
+  or binds it neither as `byte[]` nor as `float[]`. The converter writes each coordinate with `Float.toString` and
+  parses it with `Float.parseFloat`, and every value Db2 accepts reads back bit-exact. Db2 rejects `NaN`, the
+  infinities, the subnormal values, `Float.MAX_VALUE` and a vector of another dimension (`SQLCODE -420`, `-302`).
+* **Copies.** The getter returns a copy and the setter keeps one, so the value changes only through the setter:
+  EclipseLink does not see a change made to the elements of a converted array, Hibernate ORM does.
+* **No vector functions.** Jakarta Persistence has none, so a similarity search, `VECTOR_DISTANCE(...)`, is a native
+  query. Hibernate ORM's `hibernate-vector` (`@JdbcTypeCode(SqlTypes.VECTOR_FLOAT32)`) maps the type and its
+  functions on Db2 too, but it is Hibernate ORM's own, and has no type for H2, on which the `test` unit runs.
+* **What the embeddings are.** They come with the database; which model made them is not recorded, so a new text
+  cannot be embedded to compare with them.
 
 ## The database
 

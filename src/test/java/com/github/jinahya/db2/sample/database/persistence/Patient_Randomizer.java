@@ -26,7 +26,8 @@ import java.util.List;
 
 /**
  * Randomizes a new {@link Patient}, whose identifier it sets itself, within the lengths of its
- * columns, since Podam does not reach its setters, which are not public.
+ * columns, since Podam does not reach its setters, which are not public; the embedding, too, is
+ * set here, to a vector of the column's dimension.
  */
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
@@ -45,6 +46,7 @@ class Patient_Randomizer
     public Patient get() {
         final var instance = super.get();
         instance.setPatientId(__Randomizer_Utils.positiveInt());
+        instance.setEmbedding(__Randomizer_Utils.vector(Patient.COLUMN_DIMENSION_EMBEDDING));
         return instance;
     }
 }
