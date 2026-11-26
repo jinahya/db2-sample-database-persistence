@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedPurchaseOrder;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
@@ -43,6 +44,18 @@ public class PurchaseOrder
      */
     public PurchaseOrder() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param poid {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setPoid(final Long poid) {
+        super.setPoid(poid);
     }
 
     // -------------------------------------------------------------------------------------------------- custidCustomer

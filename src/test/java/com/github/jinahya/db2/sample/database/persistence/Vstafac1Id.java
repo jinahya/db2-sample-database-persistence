@@ -20,6 +20,9 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVstafac1Id;
+import java.time.LocalDate;
+
 /**
  * The identifier class of {@link Vstafac1}.
  *
@@ -37,5 +40,38 @@ public class Vstafac1Id
      */
     public Vstafac1Id() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param projno {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setProjno(final String projno) {
+        super.setProjno(projno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param actno {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setActno(final Short actno) {
+        super.setActno(actno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param stdate {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setStdate(final LocalDate stdate) {
+        super.setStdate(stdate);
     }
 }

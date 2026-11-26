@@ -20,6 +20,9 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedSaleId;
+import java.time.LocalDate;
+
 /**
  * The identifier class of {@link Sale}.
  *
@@ -37,5 +40,38 @@ public class SaleId
      */
     public SaleId() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param salesDate {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setSalesDate(final LocalDate salesDate) {
+        super.setSalesDate(salesDate);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param salesPerson {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setSalesPerson(final String salesPerson) {
+        super.setSalesPerson(salesPerson);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param region {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setRegion(final String region) {
+        super.setRegion(region);
     }
 }

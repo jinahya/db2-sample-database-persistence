@@ -20,6 +20,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVastrde2Id;
+
 /**
  * The identifier class of {@link Vastrde2}.
  *
@@ -37,5 +39,27 @@ public class Vastrde2Id
      */
     public Vastrde2Id() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param dept1no {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setDept1no(final String dept1no) {
+        super.setDept1no(dept1no);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param emp2no {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setEmp2no(final String emp2no) {
+        super.setEmp2no(emp2no);
     }
 }

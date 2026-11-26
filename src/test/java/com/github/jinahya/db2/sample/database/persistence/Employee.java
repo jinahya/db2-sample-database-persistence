@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmployee;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
@@ -43,6 +44,30 @@ public class Employee
      */
     public Employee() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return {@inheritDoc}
+     * @implNote Widened to {@code public}, so that a test reads the column the association
+     *         writes.
+     */
+    @Override
+    public String getWorkdept() {
+        return super.getWorkdept();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param empno {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setEmpno(final String empno) {
+        super.setEmpno(empno);
     }
 
     // ---------------------------------------------------------------------------------------------- workdeptDepartment

@@ -44,12 +44,14 @@ module com.github.jinahya.db2.sample.database.persistence {
     requires transitive org.jvnet.jaxb.plugins.runtime;
 
     exports com.github.jinahya.db2.sample.database.persistence;
+    exports com.github.jinahya.db2.sample.database.persistence.mapped;
     exports com.github.jinahya.db2.sample.database.persistence.xml.customer;
     exports com.github.jinahya.db2.sample.database.persistence.xml.product;
     exports com.github.jinahya.db2.sample.database.persistence.xml.porder;
     exports com.github.jinahya.db2.sample.database.persistence.xml.supplier;
 
     opens com.github.jinahya.db2.sample.database.persistence;
+    opens com.github.jinahya.db2.sample.database.persistence.mapped;
     // to Jakarta XML Binding, and for the XSD each holds
     opens com.github.jinahya.db2.sample.database.persistence.xml.customer;
     opens com.github.jinahya.db2.sample.database.persistence.xml.product;

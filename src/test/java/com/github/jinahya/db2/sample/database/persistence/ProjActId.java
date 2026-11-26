@@ -20,6 +20,9 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedProjActId;
+import java.time.LocalDate;
+
 /**
  * The identifier class of {@link ProjAct}.
  *
@@ -37,5 +40,38 @@ public class ProjActId
      */
     public ProjActId() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param projno {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setProjno(final String projno) {
+        super.setProjno(projno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param actno {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setActno(final Short actno) {
+        super.setActno(actno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param acstdate {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setAcstdate(final LocalDate acstdate) {
+        super.setAcstdate(acstdate);
     }
 }

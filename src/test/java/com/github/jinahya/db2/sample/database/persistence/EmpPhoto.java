@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmpPhoto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.IdClass;
@@ -45,6 +46,30 @@ public class EmpPhoto
      */
     public EmpPhoto() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param empno {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setEmpno(final String empno) {
+        super.setEmpno(empno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param photoFormat {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setPhotoFormat(final String photoFormat) {
+        super.setPhotoFormat(photoFormat);
     }
 
     // -------------------------------------------------------------------------------------------------------- employee

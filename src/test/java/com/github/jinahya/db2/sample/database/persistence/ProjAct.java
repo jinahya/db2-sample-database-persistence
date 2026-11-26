@@ -20,12 +20,14 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedProjAct;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 
 /**
  * An entity of the {@value #TABLE_NAME} table.
@@ -45,6 +47,42 @@ public class ProjAct
      */
     public ProjAct() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param projno {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setProjno(final String projno) {
+        super.setProjno(projno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param actno {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setActno(final Short actno) {
+        super.setActno(actno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param acstdate {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setAcstdate(final LocalDate acstdate) {
+        super.setAcstdate(acstdate);
     }
 
     // --------------------------------------------------------------------------------------------------------- project

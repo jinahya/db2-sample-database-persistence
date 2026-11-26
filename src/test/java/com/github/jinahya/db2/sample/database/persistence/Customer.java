@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedCustomer;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -40,5 +41,17 @@ public class Customer
      */
     public Customer() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param cid {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setCid(final Long cid) {
+        super.setCid(cid);
     }
 }

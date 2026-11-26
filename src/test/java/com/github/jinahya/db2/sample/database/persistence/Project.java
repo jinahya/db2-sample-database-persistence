@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedProject;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
@@ -44,6 +45,18 @@ public class Project
      */
     public Project() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param projno {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setProjno(final String projno) {
+        super.setProjno(projno);
     }
 
     // ------------------------------------------------------------------------------------------------ deptnoDepartment

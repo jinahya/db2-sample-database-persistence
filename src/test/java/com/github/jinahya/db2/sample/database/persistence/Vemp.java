@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVemp;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 

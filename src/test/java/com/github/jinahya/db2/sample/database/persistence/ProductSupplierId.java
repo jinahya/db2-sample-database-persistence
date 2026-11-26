@@ -20,6 +20,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedProductSupplierId;
+
 /**
  * The identifier class of {@link ProductSupplier}.
  *
@@ -37,5 +39,27 @@ public class ProductSupplierId
      */
     public ProductSupplierId() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param pid {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setPid(final String pid) {
+        super.setPid(pid);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param sid {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setSid(final String sid) {
+        super.setSid(sid);
     }
 }

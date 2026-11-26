@@ -20,6 +20,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmpPhotoId;
+
 /**
  * The identifier class of {@link EmpPhoto}.
  *
@@ -37,5 +39,38 @@ public class EmpPhotoId
      */
     public EmpPhotoId() {
         super();
+    }
+
+    /**
+     * Returns a new instance of the specified values.
+     *
+     * @param empno       a value for the {@code empno} attribute.
+     * @param photoFormat a value for the {@code photoFormat} attribute.
+     * @return a new instance of {@code empno} and {@code photoFormat}.
+     */
+    public static EmpPhotoId of(final String empno, final String photoFormat) {
+        return MappedEmpPhotoId.of(EmpPhotoId::new, empno, photoFormat);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param empno {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setEmpno(final String empno) {
+        super.setEmpno(empno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param photoFormat {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setPhotoFormat(final String photoFormat) {
+        super.setPhotoFormat(photoFormat);
     }
 }

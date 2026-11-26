@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedClSched;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -40,5 +41,17 @@ public class ClSched
      */
     public ClSched() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param classCode {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setClassCode(final String classCode) {
+        super.setClassCode(classCode);
     }
 }

@@ -200,8 +200,7 @@ class PersistenceUnit_IT {
     @Test
     void idClass_() {
         final var photo = entityManager.find(EmpPhoto.class,
-                                             MappedEmpPhotoId.of(EmpPhotoId::new, "000130",
-                                                                 "bitmap"));
+                                             EmpPhotoId.of("000130", "bitmap"));
         assertThat(photo).isNotNull();
         assertThat(photo.getEmployee().getLastname()).isEqualTo("QUINTANA");
         entityManager.createQuery("SELECT e FROM EmpProjAct e", EmpProjAct.class).getResultList()

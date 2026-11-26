@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmpResume;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.IdClass;
@@ -45,6 +46,30 @@ public class EmpResume
      */
     public EmpResume() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param empno {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setEmpno(final String empno) {
+        super.setEmpno(empno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param resumeFormat {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setResumeFormat(final String resumeFormat) {
+        super.setResumeFormat(resumeFormat);
     }
 
     // -------------------------------------------------------------------------------------------------------- employee

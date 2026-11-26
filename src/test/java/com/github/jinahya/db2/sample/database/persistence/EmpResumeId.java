@@ -20,6 +20,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmpResumeId;
+
 /**
  * The identifier class of {@link EmpResume}.
  *
@@ -37,5 +39,27 @@ public class EmpResumeId
      */
     public EmpResumeId() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param empno {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setEmpno(final String empno) {
+        super.setEmpno(empno);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param resumeFormat {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setResumeFormat(final String resumeFormat) {
+        super.setResumeFormat(resumeFormat);
     }
 }

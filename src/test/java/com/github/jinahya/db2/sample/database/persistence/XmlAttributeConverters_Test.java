@@ -37,7 +37,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * Tests the converters of the XML columns, and the XSDs beside the classes bound to them, without a database.
+ * Tests the converters of the XML columns, and the XSDs beside the classes bound to them,
+ * without a database.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

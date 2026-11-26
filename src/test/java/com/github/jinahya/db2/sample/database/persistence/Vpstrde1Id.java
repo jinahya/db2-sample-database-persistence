@@ -20,6 +20,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVpstrde1Id;
+
 /**
  * The identifier class of {@link Vpstrde1}.
  *
@@ -37,5 +39,27 @@ public class Vpstrde1Id
      */
     public Vpstrde1Id() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param proj1no {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setProj1no(final String proj1no) {
+        super.setProj1no(proj1no);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param proj2no {@inheritDoc}
+     * @implNote Widened to {@code public}, so that whoever needs an identifier builds one.
+     */
+    @Override
+    public void setProj2no(final String proj2no) {
+        super.setProj2no(proj2no);
     }
 }

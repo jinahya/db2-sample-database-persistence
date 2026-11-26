@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedProduct;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -40,5 +41,17 @@ public class Product
      */
     public Product() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param pid {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setPid(final String pid) {
+        super.setPid(pid);
     }
 }

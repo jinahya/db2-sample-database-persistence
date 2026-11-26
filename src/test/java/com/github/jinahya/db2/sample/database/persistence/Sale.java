@@ -20,9 +20,11 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedSale;
 import jakarta.persistence.Entity;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 
 /**
  * An entity of the {@value #TABLE_NAME} table.
@@ -42,5 +44,41 @@ public class Sale
      */
     public Sale() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param salesDate {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setSalesDate(final LocalDate salesDate) {
+        super.setSalesDate(salesDate);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param salesPerson {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setSalesPerson(final String salesPerson) {
+        super.setSalesPerson(salesPerson);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param region {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setRegion(final String region) {
+        super.setRegion(region);
     }
 }

@@ -20,6 +20,7 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedOrg;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -40,5 +41,17 @@ public class Org
      */
     public Org() {
         super();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param deptnumb {@inheritDoc}
+     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
+     *         whoever creates an instance sets it.
+     */
+    @Override
+    public void setDeptnumb(final Short deptnumb) {
+        super.setDeptnumb(deptnumb);
     }
 }

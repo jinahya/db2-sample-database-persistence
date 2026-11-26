@@ -92,7 +92,7 @@ class PersistenceUnit_Test {
             em.flush();
             em.clear();
             final var found =
-                    em.find(EmpPhoto.class, MappedEmpPhotoId.of(EmpPhotoId::new, "000010", "png"));
+                    em.find(EmpPhoto.class, EmpPhotoId.of("000010", "png"));
             assertThat(found).isNotNull();
             assertThat(found.getPicture()).containsExactly(1, 2, 3);
             assertThat(found.getEmployee().getLastname()).isEqualTo("HAAS");
