@@ -27,6 +27,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import java.util.Optional;
+
 /**
  * An entity of the {@value #TABLE_NAME} table.
  *
@@ -76,6 +78,7 @@ public class PurchaseOrder
      */
     public void setCustidCustomer(final Customer custidCustomer) {
         this.custidCustomer = custidCustomer;
+        setCustid(Optional.ofNullable(custidCustomer).map(Customer::getCid).orElse(null));
     }
 
     // ---------------------------------------------------------------------------------------------

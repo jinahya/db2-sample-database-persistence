@@ -615,6 +615,19 @@ public abstract class MappedEmployee {
         return workdept;
     }
 
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute with the specified
+     * value.
+     *
+     * @param workdept new value for {@value #ATTRIBUTE_NAME_WORKDEPT} attribute.
+     * @apiNote The column is mapped read-only here, and written through the association of an
+     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     *         with the association.
+     */
+    protected void setWorkdept(@Nullable final String workdept) {
+        this.workdept = workdept;
+    }
+
     // ------------------------------------------------------------------------------------- phoneno
 
     /**

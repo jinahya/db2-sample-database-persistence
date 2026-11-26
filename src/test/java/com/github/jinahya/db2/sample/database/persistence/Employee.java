@@ -27,6 +27,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import java.util.Optional;
+
 /**
  * An entity of the {@value #TABLE_NAME} table.
  *
@@ -88,6 +90,9 @@ public class Employee
      */
     public void setWorkdeptDepartment(final Department workdeptDepartment) {
         this.workdeptDepartment = workdeptDepartment;
+        setWorkdept(Optional.ofNullable(workdeptDepartment)
+                    .map(Department::getDeptno)
+                    .orElse(null));
     }
 
     // ---------------------------------------------------------------------------------------------

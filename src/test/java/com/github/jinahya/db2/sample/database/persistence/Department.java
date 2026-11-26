@@ -28,6 +28,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Optional;
+
 /**
  * An entity of the {@value #TABLE_NAME} table.
  *
@@ -70,10 +72,11 @@ public class Department
     /**
      * Replaces the manager with the specified value.
      *
-     * @param mgrnoEmployee new value for the manager.
+     * @param employee new value for the manager.
      */
-    public void setEmployee(final Employee mgrnoEmployee) {
-        this.employee = mgrnoEmployee;
+    public void setEmployee(final Employee employee) {
+        this.employee = employee;
+        setMgrno(Optional.ofNullable(employee).map(Employee::getEmpno).orElse(null));
     }
 
     // ---------------------------------------------------------------------------------- department
@@ -90,10 +93,13 @@ public class Department
     /**
      * Replaces the administering department with the specified value.
      *
-     * @param admrdeptDepartment new value for the administering department.
+     * @param department new value for the administering department.
      */
-    public void setDepartment(final Department admrdeptDepartment) {
-        this.department = admrdeptDepartment;
+    public void setDepartment(final Department department) {
+        this.department = department;
+        setAdmrdept(Optional.ofNullable(department)
+                    .map(Department::getDeptno)
+                    .orElse(null));
     }
 
     // ---------------------------------------------------------------------------------------------

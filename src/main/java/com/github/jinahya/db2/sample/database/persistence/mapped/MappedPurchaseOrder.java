@@ -256,6 +256,21 @@ public abstract class MappedPurchaseOrder {
         this.status = status;
     }
 
+    // -------------------------------------------------------------------------------------- custid
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_CUSTID} attribute with the specified
+     * value.
+     *
+     * @param custid new value for {@value #ATTRIBUTE_NAME_CUSTID} attribute.
+     * @apiNote The column is mapped read-only here, and written through the association of an
+     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     *         with the association.
+     */
+    protected void setCustid(@Nullable final Long custid) {
+        this.custid = custid;
+    }
+
     // ----------------------------------------------------------------------------------- orderdate
 
     /**

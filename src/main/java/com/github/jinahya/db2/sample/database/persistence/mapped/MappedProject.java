@@ -349,6 +349,36 @@ public abstract class MappedProject {
         this.projname = projname;
     }
 
+    // -------------------------------------------------------------------------------------- deptno
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute with the specified
+     * value.
+     *
+     * @param deptno new value for {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
+     * @apiNote The column is mapped read-only here, and written through the association of an
+     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     *         with the association.
+     */
+    protected void setDeptno(@Nullable final String deptno) {
+        this.deptno = deptno;
+    }
+
+    // ------------------------------------------------------------------------------------- respemp
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute with the specified
+     * value.
+     *
+     * @param respemp new value for {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
+     * @apiNote The column is mapped read-only here, and written through the association of an
+     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     *         with the association.
+     */
+    protected void setRespemp(@Nullable final String respemp) {
+        this.respemp = respemp;
+    }
+
     // ------------------------------------------------------------------------------------- prstaff
 
     /**
@@ -413,6 +443,21 @@ public abstract class MappedProject {
      */
     public void setPrendate(@Nullable final LocalDate prendate) {
         this.prendate = prendate;
+    }
+
+    // ------------------------------------------------------------------------------------- majproj
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute with the specified
+     * value.
+     *
+     * @param majproj new value for {@value #ATTRIBUTE_NAME_MAJPROJ} attribute.
+     * @apiNote The column is mapped read-only here, and written through the association of an
+     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     *         with the association.
+     */
+    protected void setMajproj(@Nullable final String majproj) {
+        this.majproj = majproj;
     }
 
     // ---------------------------------------------------------------------------------------------

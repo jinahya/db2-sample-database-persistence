@@ -28,6 +28,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Optional;
+
 /**
  * An entity of the {@value #TABLE_NAME} table.
  *
@@ -77,6 +79,7 @@ public class Project
      */
     public void setDeptnoDepartment(final Department deptnoDepartment) {
         this.deptnoDepartment = deptnoDepartment;
+        setDeptno(Optional.ofNullable(deptnoDepartment).map(Department::getDeptno).orElse(null));
     }
 
     // ----------------------------------------------------------------------------- respempEmployee
@@ -97,6 +100,7 @@ public class Project
      */
     public void setRespempEmployee(final Employee respempEmployee) {
         this.respempEmployee = respempEmployee;
+        setRespemp(Optional.ofNullable(respempEmployee).map(Employee::getEmpno).orElse(null));
     }
 
     // ------------------------------------------------------------------------------ majprojProject
@@ -117,6 +121,7 @@ public class Project
      */
     public void setMajprojProject(final Project majprojProject) {
         this.majprojProject = majprojProject;
+        setMajproj(Optional.ofNullable(majprojProject).map(Project::getProjno).orElse(null));
     }
 
     // ---------------------------------------------------------------------------------------------
