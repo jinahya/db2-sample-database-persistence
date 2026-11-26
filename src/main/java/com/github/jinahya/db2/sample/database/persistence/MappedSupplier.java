@@ -91,6 +91,15 @@ public abstract class MappedSupplier {
     public static final boolean COLUMN_NULLABLE_ADDR = true;
 
     /**
+     * The length of the {@value #COLUMN_NAME_ADDR} column, for a schema a provider generates. The
+     * value is {@value}.
+     * <p>
+     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
+     * {@code VARCHAR} of the provider's default length, too short for a document.
+     */
+    public static final int COLUMN_LENGTH_ADDR = 1048576;
+
+    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_ADDR} column. The value is
      * {@value}.
      */
@@ -205,7 +214,8 @@ public abstract class MappedSupplier {
     @Column(name = COLUMN_NAME_ADDR,
             nullable = COLUMN_NULLABLE_ADDR,
             insertable = true,
-            updatable = true
+            updatable = true,
+            length = COLUMN_LENGTH_ADDR
     )
     private Supplierinfo addr;
 }

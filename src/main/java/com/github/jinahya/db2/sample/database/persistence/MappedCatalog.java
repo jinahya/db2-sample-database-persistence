@@ -89,6 +89,15 @@ public abstract class MappedCatalog {
     public static final boolean COLUMN_NULLABLE_CATLOG = true;
 
     /**
+     * The length of the {@value #COLUMN_NAME_CATLOG} column, for a schema a provider generates. The
+     * value is {@value}.
+     * <p>
+     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
+     * {@code VARCHAR} of the provider's default length, too short for a document.
+     */
+    public static final int COLUMN_LENGTH_CATLOG = 1048576;
+
+    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_CATLOG} column. The value is
      * {@value}.
      */
@@ -203,7 +212,8 @@ public abstract class MappedCatalog {
     @Column(name = COLUMN_NAME_CATLOG,
             nullable = COLUMN_NULLABLE_CATLOG,
             insertable = true,
-            updatable = true
+            updatable = true,
+            length = COLUMN_LENGTH_CATLOG
     )
     private String catlog;
 }

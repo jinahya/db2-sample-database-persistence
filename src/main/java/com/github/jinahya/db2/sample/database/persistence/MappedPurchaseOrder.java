@@ -158,6 +158,15 @@ public abstract class MappedPurchaseOrder {
     public static final boolean COLUMN_NULLABLE_PORDER = true;
 
     /**
+     * The length of the {@value #COLUMN_NAME_PORDER} column, for a schema a provider generates. The
+     * value is {@value}.
+     * <p>
+     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
+     * {@code VARCHAR} of the provider's default length, too short for a document.
+     */
+    public static final int COLUMN_LENGTH_PORDER = 1048576;
+
+    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_PORDER} column. The value is
      * {@value}.
      */
@@ -418,7 +427,8 @@ public abstract class MappedPurchaseOrder {
     @Column(name = COLUMN_NAME_PORDER,
             nullable = COLUMN_NULLABLE_PORDER,
             insertable = true,
-            updatable = true
+            updatable = true,
+            length = COLUMN_LENGTH_PORDER
     )
     private PurchaseOrder porder;
 

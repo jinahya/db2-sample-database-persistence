@@ -80,6 +80,15 @@ public abstract class MappedCustomer {
     public static final boolean COLUMN_NULLABLE_INFO = true;
 
     /**
+     * The length of the {@value #COLUMN_NAME_INFO} column, for a schema a provider generates. The
+     * value is {@value}.
+     * <p>
+     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
+     * {@code VARCHAR} of the provider's default length, too short for a document.
+     */
+    public static final int COLUMN_LENGTH_INFO = 1048576;
+
+    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_INFO} column. The value is
      * {@value}.
      */
@@ -97,6 +106,15 @@ public abstract class MappedCustomer {
      * Whether the {@value #COLUMN_NAME_HISTORY} column is nullable. The value is {@value}.
      */
     public static final boolean COLUMN_NULLABLE_HISTORY = true;
+
+    /**
+     * The length of the {@value #COLUMN_NAME_HISTORY} column, for a schema a provider generates.
+     * The value is {@value}.
+     * <p>
+     * Db2's {@code XML} has no length; without one, a generated schema makes the column a
+     * {@code VARCHAR} of the provider's default length, too short for a document.
+     */
+    public static final int COLUMN_LENGTH_HISTORY = 1048576;
 
     /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_HISTORY} column. The value is
@@ -235,7 +253,8 @@ public abstract class MappedCustomer {
     @Column(name = COLUMN_NAME_INFO,
             nullable = COLUMN_NULLABLE_INFO,
             insertable = true,
-            updatable = true
+            updatable = true,
+            length = COLUMN_LENGTH_INFO
     )
     private Customerinfo info;
 
@@ -244,7 +263,8 @@ public abstract class MappedCustomer {
     @Column(name = COLUMN_NAME_HISTORY,
             nullable = COLUMN_NULLABLE_HISTORY,
             insertable = true,
-            updatable = true
+            updatable = true,
+            length = COLUMN_LENGTH_HISTORY
     )
     private String history;
 }
