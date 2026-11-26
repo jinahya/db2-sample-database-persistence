@@ -325,8 +325,8 @@ public abstract class MappedPurchaseOrder {
     // ---------------------------------------------------------------------------------------------------------- porder
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_PORDER} attribute; the column is an
-     * XML, bound to {@link PurchaseOrder}.
+     * Returns current value of {@value #ATTRIBUTE_NAME_PORDER} attribute; the column is an XML,
+     * bound to {@link PurchaseOrder}.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PORDER} attribute.
      */

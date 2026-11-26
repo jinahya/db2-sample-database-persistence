@@ -28,13 +28,16 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 
 /**
- * Converts a {@link Product} attribute to the text of the {@code PRODUCT.DESCRIPTION} column, an {@code XML}, and back.
+ * Converts a {@link Product} attribute to the text of the {@code PRODUCT.DESCRIPTION} column, an
+ * {@code XML}, and back.
  * <p>
- * The class is bound to {@code product.xsd}, whose root element is {@code product}, in no namespace.
+ * The class is bound to {@code product.xsd}, whose root element is {@code product}, in no
+ * namespace.
  * <p>
- * The class declares {@link AttributeConverter} again, with its types, though its superclass implements it already;
- * EclipseLink takes the column type from an {@link AttributeConverter} the converter class itself declares, and
- * without it binds the attribute, not the text, to the column.
+ * The class declares {@link AttributeConverter} again, with its types, though its superclass
+ * implements it already; EclipseLink takes the column type from an {@link AttributeConverter} the
+ * converter class itself declares, and without it binds the attribute, not the text, to the
+ * column.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -50,7 +53,8 @@ public class ProductStringAttributeConverter
 
         static {
             try {
-                CONTEXT = JAXBContext.newInstance(com.github.jinahya.db2.sample.database.persistence.xml.product.ObjectFactory.class);
+                CONTEXT = JAXBContext.newInstance(
+                        com.github.jinahya.db2.sample.database.persistence.xml.product.ObjectFactory.class);
             } catch (final JAXBException e) {
                 throw new ExceptionInInitializerError(e);
             }

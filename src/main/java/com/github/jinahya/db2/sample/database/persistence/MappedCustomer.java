@@ -175,8 +175,8 @@ public abstract class MappedCustomer {
     // ------------------------------------------------------------------------------------------------------------ info
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_INFO} attribute; the column is an
-     * XML, bound to {@link Customerinfo}.
+     * Returns current value of {@value #ATTRIBUTE_NAME_INFO} attribute; the column is an XML, bound
+     * to {@link Customerinfo}.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_INFO} attribute.
      */

@@ -36,18 +36,17 @@ import java.util.Objects;
  * materialized query table, the number of employees in each work department.
  * <p>
  * <strong>The table is mapped read-only.</strong> It is a materialized query table which the
- * database maintains
- * ({@code REFRESH IMMEDIATE MAINTAINED BY SYSTEM}); no column is updatable, none but the
- * identifier's is insertable, and the setters are not public. The identifier's column stays
+ * database maintains ({@code REFRESH IMMEDIATE MAINTAINED BY SYSTEM}); no column is updatable, none
+ * but the identifier's is insertable, and the setters are not public. The identifier's column stays
  * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
  * <p>
  * It is defined as
  * {@code SELECT WORKDEPT, COUNT(*) AS NO_OF_EMPLOYEES FROM EMPLOYEE GROUP BY WORKDEPT}.
  * <p>
  * <strong>The table declares no primary key.</strong> The column
- * {@value MappedAdefusr#COLUMN_NAME_WORKDEPT}, unique
- * and not {@code null} in every row the sample database is created with, is mapped as the
- * identifier, which an entity needs; nothing in the database keeps that so.
+ * {@value MappedAdefusr#COLUMN_NAME_WORKDEPT}, unique and not {@code null} in every row the sample
+ * database is created with, is mapped as the identifier, which an entity needs; nothing in the
+ * database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

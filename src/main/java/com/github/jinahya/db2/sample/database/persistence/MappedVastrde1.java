@@ -37,9 +37,9 @@ import java.util.Objects;
  * departments, each with a department it administers, and the managers of both.
  * <p>
  * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
- * is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay
- * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * is insertable, and the setters are not public; an extending entity is for reading. The
+ * identifier's columns stay insertable since EclipseLink requires an {@link Id @Id} mapping to be
+ * writable.
  * <p>
  * <strong>A view has no key.</strong> The columns {@value MappedVastrde1#COLUMN_NAME_DEPT1NO},
  * {@value MappedVastrde1#COLUMN_NAME_DEPT2NO}, unique and not {@code null} in every row the sample

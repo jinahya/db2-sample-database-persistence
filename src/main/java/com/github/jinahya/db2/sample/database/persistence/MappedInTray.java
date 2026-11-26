@@ -38,9 +38,9 @@ import java.util.Objects;
  * received notes.
  * <p>
  * <strong>The table declares no primary key.</strong> The column
- * {@value MappedInTray#COLUMN_NAME_RECEIVED}, unique and
- * not {@code null} in every row the sample database is created with, is mapped as the identifier,
- * which an entity needs; nothing in the database keeps that so.
+ * {@value MappedInTray#COLUMN_NAME_RECEIVED}, unique and not {@code null} in every row the sample
+ * database is created with, is mapped as the identifier, which an entity needs; nothing in the
+ * database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

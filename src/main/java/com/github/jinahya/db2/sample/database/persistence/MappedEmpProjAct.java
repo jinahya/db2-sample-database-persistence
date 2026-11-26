@@ -40,11 +40,10 @@ import java.util.Objects;
  * the employees on activities of projects.
  * <p>
  * <strong>The table declares no primary key.</strong> The columns
- * {@value MappedEmpProjAct#COLUMN_NAME_EMPNO}, {@value
- * MappedEmpProjAct#COLUMN_NAME_PROJNO}, {@value MappedEmpProjAct#COLUMN_NAME_ACTNO},
- * {@value MappedEmpProjAct#COLUMN_NAME_EMSTDATE}, unique and not {@code null} in every row the
- * sample database is created with, are mapped as the identifier, which an entity needs; nothing in
- * the database keeps that so.
+ * {@value MappedEmpProjAct#COLUMN_NAME_EMPNO}, {@value MappedEmpProjAct#COLUMN_NAME_PROJNO},
+ * {@value MappedEmpProjAct#COLUMN_NAME_ACTNO}, {@value MappedEmpProjAct#COLUMN_NAME_EMSTDATE},
+ * unique and not {@code null} in every row the sample database is created with, are mapped as the
+ * identifier, which an entity needs; nothing in the database keeps that so.
  * <p>
  * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
  * entity names a subclass of {@link MappedEmpProjActId} with {@code @IdClass} and inherits the

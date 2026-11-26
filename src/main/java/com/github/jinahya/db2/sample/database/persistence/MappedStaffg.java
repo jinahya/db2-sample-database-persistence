@@ -39,9 +39,9 @@ import java.util.Objects;
  * staff, in graphic (double-byte) strings.
  * <p>
  * <strong>The table declares no primary key.</strong> The column
- * {@value MappedStaffg#COLUMN_NAME_ID}, unique and not
- * {@code null} in every row the sample database is created with, is mapped as the identifier, which
- * an entity needs; nothing in the database keeps that so.
+ * {@value MappedStaffg#COLUMN_NAME_ID}, unique and not {@code null} in every row the sample
+ * database is created with, is mapped as the identifier, which an entity needs; nothing in the
+ * database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

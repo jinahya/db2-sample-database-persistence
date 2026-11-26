@@ -28,13 +28,16 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 
 /**
- * Converts a {@link PurchaseOrder} attribute to the text of the {@code PURCHASEORDER.PORDER} column, an {@code XML}, and back.
+ * Converts a {@link PurchaseOrder} attribute to the text of the {@code PURCHASEORDER.PORDER}
+ * column, an {@code XML}, and back.
  * <p>
- * The class is bound to {@code porder.xsd}, whose root element is {@code PurchaseOrder}, in no namespace.
+ * The class is bound to {@code porder.xsd}, whose root element is {@code PurchaseOrder}, in no
+ * namespace.
  * <p>
- * The class declares {@link AttributeConverter} again, with its types, though its superclass implements it already;
- * EclipseLink takes the column type from an {@link AttributeConverter} the converter class itself declares, and
- * without it binds the attribute, not the text, to the column.
+ * The class declares {@link AttributeConverter} again, with its types, though its superclass
+ * implements it already; EclipseLink takes the column type from an {@link AttributeConverter} the
+ * converter class itself declares, and without it binds the attribute, not the text, to the
+ * column.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
@@ -50,7 +53,8 @@ public class PurchaseOrderStringAttributeConverter
 
         static {
             try {
-                CONTEXT = JAXBContext.newInstance(com.github.jinahya.db2.sample.database.persistence.xml.porder.ObjectFactory.class);
+                CONTEXT = JAXBContext.newInstance(
+                        com.github.jinahya.db2.sample.database.persistence.xml.porder.ObjectFactory.class);
             } catch (final JAXBException e) {
                 throw new ExceptionInInitializerError(e);
             }

@@ -37,18 +37,17 @@ import java.util.Objects;
  * projects with their responsible employees, for planning.
  * <p>
  * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
- * is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay
- * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * is insertable, and the setters are not public; an extending entity is for reading. The
+ * identifier's columns stay insertable since EclipseLink requires an {@link Id @Id} mapping to be
+ * writable.
  * <p>
  * The view joins {@code EMPPROJACT} only to repeat each project once per row there, so the rows of
  * a project are duplicates of one another; the instances of a project a query returns are one and
  * the same.
  * <p>
  * <strong>A view has no key.</strong> The column {@value MappedVforpla#COLUMN_NAME_PROJNO}, unique
- * and not {@code null}
- * in every row the sample database is created with, is mapped as the identifier, which an entity
- * needs; nothing in the database keeps that so.
+ * and not {@code null} in every row the sample database is created with, is mapped as the
+ * identifier, which an entity needs; nothing in the database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

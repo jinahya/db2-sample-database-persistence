@@ -37,9 +37,9 @@ import java.util.Objects;
  * patients.
  * <p>
  * <strong>The table declares no primary key.</strong> The column
- * {@value MappedPatient#COLUMN_NAME_PATIENT_ID}, unique
- * and not {@code null} in every row the sample database is created with, is mapped as the
- * identifier, which an entity needs; nothing in the database keeps that so.
+ * {@value MappedPatient#COLUMN_NAME_PATIENT_ID}, unique and not {@code null} in every row the
+ * sample database is created with, is mapped as the identifier, which an entity needs; nothing in
+ * the database keeps that so.
  * <p>
  * The {@code EMBEDDING} column is not mapped; it is a VECTOR, for which Jakarta Persistence has no
  * mapping.

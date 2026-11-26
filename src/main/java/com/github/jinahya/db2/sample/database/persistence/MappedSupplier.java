@@ -166,8 +166,8 @@ public abstract class MappedSupplier {
     // ------------------------------------------------------------------------------------------------------------ addr
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_ADDR} attribute; the column is an
-     * XML, bound to {@link Supplierinfo}.
+     * Returns current value of {@value #ATTRIBUTE_NAME_ADDR} attribute; the column is an XML, bound
+     * to {@link Supplierinfo}.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ADDR} attribute.
      */

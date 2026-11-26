@@ -39,9 +39,9 @@ import java.util.Objects;
  * query returns are one and the same.
  * <p>
  * <strong>The table declares no primary key.</strong> The column
- * {@value MappedMlblogsAnswer#COLUMN_NAME_ANSWER}, not
- * {@code null} in every row the sample database is created with, is mapped as the identifier, which
- * an entity needs; nothing in the database keeps that so.
+ * {@value MappedMlblogsAnswer#COLUMN_NAME_ANSWER}, not {@code null} in every row the sample
+ * database is created with, is mapped as the identifier, which an entity needs; nothing in the
+ * database keeps that so.
  * <p>
  * The column {@code EMBEDDING}, a {@code VECTOR}, is not mapped; Jakarta Persistence has no mapping
  * for it.

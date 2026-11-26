@@ -36,9 +36,9 @@ import java.util.Objects;
  * employees, by department and division, for multidimensional clustering.
  * <p>
  * <strong>The table declares no primary key.</strong> The column
- * {@value MappedEmpmdc#COLUMN_NAME_EMPNO}, unique and
- * not {@code null} in every row the sample database is created with, is mapped as the identifier,
- * which an entity needs; nothing in the database keeps that so.
+ * {@value MappedEmpmdc#COLUMN_NAME_EMPNO}, unique and not {@code null} in every row the sample
+ * database is created with, is mapped as the identifier, which an entity needs; nothing in the
+ * database keeps that so.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

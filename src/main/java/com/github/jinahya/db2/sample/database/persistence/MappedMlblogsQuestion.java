@@ -36,9 +36,9 @@ import java.util.Objects;
  * table, the questions of a vector search example.
  * <p>
  * <strong>The table declares no primary key.</strong> The column
- * {@value MappedMlblogsQuestion#COLUMN_NAME_QUESTION},
- * not {@code null} in every row the sample database is created with, is mapped as the identifier,
- * which an entity needs; nothing in the database keeps that so.
+ * {@value MappedMlblogsQuestion#COLUMN_NAME_QUESTION}, not {@code null} in every row the sample
+ * database is created with, is mapped as the identifier, which an entity needs; nothing in the
+ * database keeps that so.
  * <p>
  * The column {@code EMBEDDING}, a {@code VECTOR}, is not mapped; Jakarta Persistence has no mapping
  * for it.

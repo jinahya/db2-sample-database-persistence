@@ -40,9 +40,9 @@ import java.util.Objects;
  * activities of the projects.
  * <p>
  * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
- * is insertable, and
- * the setters are not public; an extending entity is for reading. The identifier's columns stay
- * insertable since EclipseLink requires an {@link Id @Id} mapping to be writable.
+ * is insertable, and the setters are not public; an extending entity is for reading. The
+ * identifier's columns stay insertable since EclipseLink requires an {@link Id @Id} mapping to be
+ * writable.
  * <p>
  * <strong>A view has no key.</strong> The columns {@value MappedVprojact#COLUMN_NAME_PROJNO},
  * {@value MappedVprojact#COLUMN_NAME_ACTNO}, {@value MappedVprojact#COLUMN_NAME_ACSTDATE}, unique
