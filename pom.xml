@@ -107,6 +107,8 @@
     <version.ch.qus.logback>1.6.5</version.ch.qus.logback>
     <!-- https://central.sonatype.com/artifact/com.h2database/h2/versions -->
     <version.com.h2database>2.5.252</version.com.h2database>
+    <!-- https://central.sonatype.com/artifact/io.github.jinahya/jinahya-object-randomizer/versions -->
+    <version.io.github.jinahya.jinahya-object-randomizer>0.0.7</version.io.github.jinahya.jinahya-object-randomizer>
     <!-- https://central.sonatype.com/artifact/io.github.jinahya/jinahya-persistence-more/versions -->
     <version.io.github.jinahya.jinahya-persistence>0.6.12-SNAPSHOT</version.io.github.jinahya.jinahya-persistence>
     <!-- Jakarta XML Binding 4.0; not in the Jakarta EE 11 platform, so not in its BOM, and versioned here -->
@@ -146,6 +148,8 @@
     <version.org.junit>5.14.4</version.org.junit>
     <!-- https://central.sonatype.com/artifact/org.slf4j/slf4j-bom/versions -->
     <version.org.slf4j>2.0.20</version.org.slf4j>
+    <!-- https://central.sonatype.com/artifact/uk.co.jemos.podam/podam/versions -->
+    <version.uk.co.jemos.podam>8.0.2.RELEASE</version.uk.co.jemos.podam>
     <eclipselink.woven>false</eclipselink.woven>
   </properties>
 
@@ -168,6 +172,11 @@
         <version>${version.jakarta.jakartaee-bom}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.github.jinahya</groupId>
+        <artifactId>jinahya-object-randomizer</artifactId>
+        <version>${version.io.github.jinahya.jinahya-object-randomizer}</version>
       </dependency>
       <dependency>
         <groupId>io.github.jinahya</groupId>
@@ -230,6 +239,11 @@
         <groupId>com.ibm.db2</groupId>
         <artifactId>jcc</artifactId>
         <version>${version.com.ibm.db2.jcc}</version>
+      </dependency>
+      <dependency>
+        <groupId>uk.co.jemos.podam</groupId>
+        <artifactId>podam</artifactId>
+        <version>${version.uk.co.jemos.podam}</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -326,6 +340,16 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency><!-- the *_Randomizer classes, which the *IT insert -->
+      <groupId>io.github.jinahya</groupId>
+      <artifactId>jinahya-object-randomizer</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency><!-- jinahya-object-randomizer's PodamObjectRandomizer, which leaves Podam to its user -->
+      <groupId>uk.co.jemos.podam</groupId>
+      <artifactId>podam</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency><!-- for the *IT, against the Db2 from docker-compose.yml -->

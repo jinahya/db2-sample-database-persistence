@@ -148,29 +148,41 @@ class PersistenceUnit_IT {
         }
     }
 
-    @DisplayName("a document written to an XML column reads back equal")
+    @DisplayName("a random Customer inserts, and its XML column reads back equal")
     @Test
-    void xml_RoundTrips_() {
-        final var addr = new Customerinfo.Addr();
-        addr.setCountry("Korea");
-        addr.setStreet("1 Sejong-daero");
-        addr.setCity("Seoul");
-        addr.setProvState("Seoul");
-        addr.setPcodeZip("04524");
-        final var info = new Customerinfo();
-        info.setCid(BigInteger.valueOf(9999L));
-        info.setName("Kim");
-        info.getAddr().add(addr);
-        applyInTransactionAndRollback(em -> {
-            final var customer = new Customer();
-            customer.setCid(9999L);
-            customer.setInfo(info);
-            em.persist(customer);
-            em.flush();
-            em.clear();
-            assertThat(em.find(Customer.class, 9999L).getInfo()).isEqualTo(info);
-            return null;
-        });
+    void customer_Inserts_() {
+        final var customer = new Customer_Randomizer().get();
+        customer.setCid(9999L);
+        final var found = insertAndFind(customer, Customer.class, customer.getCid());
+        assertThat(found.getInfo()).isNotNull().isEqualTo(customer.getInfo());
+    }
+
+    @DisplayName("a random Product inserts, and its XML column reads back equal")
+    @Test
+    void product_Inserts_() {
+        final var product = new Product_Randomizer().get();
+        product.setPid("TEST-00001");
+        final var found = insertAndFind(product, Product.class, product.getPid());
+        assertThat(found.getDescription()).isNotNull().isEqualTo(product.getDescription());
+    }
+
+    @DisplayName("a random PurchaseOrder inserts, and its XML column reads back equal")
+    @Test
+    void purchaseOrder_Inserts_() {
+        final var purchaseOrder = new PurchaseOrder_Randomizer().get();
+        purchaseOrder.setPoid(9999L);
+        final var found = insertAndFind(purchaseOrder, PurchaseOrder.class,
+                                        purchaseOrder.getPoid());
+        assertThat(found.getPorder()).isNotNull().isEqualTo(purchaseOrder.getPorder());
+    }
+
+    @DisplayName("a random Supplier inserts, and its XML column reads back equal")
+    @Test
+    void supplier_Inserts_() {
+        final var supplier = new Supplier_Randomizer().get();
+        supplier.setSid("TEST-001");
+        final var found = insertAndFind(supplier, Supplier.class, supplier.getSid());
+        assertThat(found.getAddr()).isNotNull().isEqualTo(supplier.getAddr());
     }
 
     @DisplayName("LOB columns read as bytes and as strings")
@@ -202,6 +214,18 @@ class PersistenceUnit_IT {
         final var resource = bound.getResource(name);
         assertThat(resource).as("%s beside %s", name, bound).isNotNull();
         return SchemaFactory.newDefaultInstance().newSchema(resource).newValidator();
+    }
+
+    // persists the specified entity, flushes, clears, and finds it again; all rolled back
+    private <T> T insertAndFind(final T entity, final Class<T> type, final Object id) {
+        return applyInTransactionAndRollback(em -> {
+            em.persist(entity);
+            em.flush();
+            em.clear();
+            final var found = em.find(type, id);
+            assertThat(found).as("%s found by %s", type.getSimpleName(), id).isNotNull();
+            return found;
+        });
     }
 
     private static Source source(final String text) {
