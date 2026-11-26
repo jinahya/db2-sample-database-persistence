@@ -36,7 +36,7 @@ class Adefusr_PersistenceIT
     }
 
     // ---------------------------------------------------------------------------------------------
-    @Disabled("a table the database maintains: nothing is inserted into it")
+    @Disabled("a materialized query table, which Db2 maintains: nothing is inserted into it")
     @Override
     @Test
     protected void persistRandomizedEntityInstance__() {

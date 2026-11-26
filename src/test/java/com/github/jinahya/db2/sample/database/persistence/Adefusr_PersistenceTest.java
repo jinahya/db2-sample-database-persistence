@@ -36,28 +36,28 @@ class Adefusr_PersistenceTest
     }
 
     // ---------------------------------------------------------------------------------------------
-    @Disabled("a table the database maintains: nothing is inserted into it")
+    @Disabled("a materialized query table, which Db2 maintains: nothing is inserted into it")
     @Override
     @Test
     protected void persistRandomizedEntityInstance__() {
         // empty
     }
 
-    @Disabled("a table the database maintains: nothing is inserted into it")
+    @Disabled("a materialized query table, which Db2 maintains: nothing is inserted into it")
     @Override
     @Test
     void _persist_EqualsReference() {
         // empty
     }
 
-    @Disabled("a table the database maintains: nothing is inserted into it")
+    @Disabled("a materialized query table, which Db2 maintains: nothing is inserted into it")
     @Override
     @Test
     void _persist_ReferenceEquals() {
         // empty
     }
 
-    @Disabled("a table the database maintains: nothing is inserted into it")
+    @Disabled("a materialized query table, which Db2 maintains: nothing is inserted into it")
     @Override
     @Test
     void _persist_HashSetMembership() {
