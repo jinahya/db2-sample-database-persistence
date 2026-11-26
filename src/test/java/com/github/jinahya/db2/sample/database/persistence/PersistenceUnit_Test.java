@@ -106,7 +106,7 @@ class PersistenceUnit_Test {
         applyInTransactionAndRollback(em -> {
             final var department = new Department("A00");
             department.setDeptname("SPIFFY COMPUTER SERVICE DIV.");
-            department.setDepartment(department);
+            department.setAdministrativeDepartment(department);
             em.persist(department);
             final var employee = new Employee();
             employee.setEmpno("000010");

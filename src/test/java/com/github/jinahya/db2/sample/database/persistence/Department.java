@@ -65,18 +65,18 @@ public class Department
      *
      * @return the manager.
      */
-    public Employee getEmployee() {
-        return employee;
+    public Employee getManager() {
+        return manager;
     }
 
     /**
      * Replaces the manager with the specified value.
      *
-     * @param employee new value for the manager.
+     * @param manager new value for the manager.
      */
-    public void setEmployee(final Employee employee) {
-        this.employee = employee;
-        setMgrno(Optional.ofNullable(employee).map(Employee::getEmpno).orElse(null));
+    public void setManager(final Employee manager) {
+        this.manager = manager;
+        setMgrno(Optional.ofNullable(manager).map(Employee::getEmpno).orElse(null));
     }
 
     // ---------------------------------------------------------------------------------- department
@@ -86,20 +86,20 @@ public class Department
      *
      * @return the administering department.
      */
-    public Department getDepartment() {
-        return department;
+    public Department getAdministrativeDepartment() {
+        return administrativeDepartment;
     }
 
     /**
      * Replaces the administering department with the specified value.
      *
-     * @param department new value for the administering department.
+     * @param administrativeDepartment new value for the administering department.
      */
-    public void setDepartment(final Department department) {
-        this.department = department;
-        setAdmrdept(Optional.ofNullable(department)
-                    .map(Department::getDeptno)
-                    .orElse(null));
+    public void setAdministrativeDepartment(final Department administrativeDepartment) {
+        this.administrativeDepartment = administrativeDepartment;
+        setAdmrdept(Optional.ofNullable(administrativeDepartment)
+                            .map(Department::getDeptno)
+                            .orElse(null));
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ public class Department
                 insertable = true,
                 updatable = true
     )
-    private Employee employee;
+    private Employee manager;
 
     // ---------------------------------------------------------------------------------------------
     @NotNull
@@ -121,5 +121,5 @@ public class Department
                 insertable = true,
                 updatable = true
     )
-    private Department department;
+    private Department administrativeDepartment;
 }
