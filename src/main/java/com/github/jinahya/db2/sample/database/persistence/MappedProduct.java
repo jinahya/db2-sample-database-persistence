@@ -20,10 +20,12 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.xml.product.Product;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -267,7 +269,7 @@ public abstract class MappedProduct {
                ",promoprice=" + promoprice +
                ",promostart=" + promostart +
                ",promoend=" + promoend +
-               ",description=" + (description == null ? null : description.length() + " char(s)") +
+               ",description=" + description +
                '}';
     }
 
@@ -430,13 +432,13 @@ public abstract class MappedProduct {
     // ----------------------------------------------------------------------------------------------------- description
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute, serialized; the
-     * column is an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute; the column is an
+     * XML, bound to {@link Product}.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute.
      */
     @Nullable
-    public String getDescription() {
+    public Product getDescription() {
         return description;
     }
 
@@ -446,7 +448,7 @@ public abstract class MappedProduct {
      *
      * @param description new value for {@value #ATTRIBUTE_NAME_DESCRIPTION} attribute.
      */
-    public void setDescription(@Nullable final String description) {
+    public void setDescription(@Nullable final Product description) {
         this.description = description;
     }
 
@@ -518,11 +520,12 @@ public abstract class MappedProduct {
     private LocalDate promoend;
 
     // -----------------------------------------------------------------------------------------------------------------
+    @Convert(converter = ProductStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_DESCRIPTION,
             nullable = COLUMN_NULLABLE_DESCRIPTION,
             insertable = true,
             updatable = true
     )
-    private String description;
+    private Product description;
 }

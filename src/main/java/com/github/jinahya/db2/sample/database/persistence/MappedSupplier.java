@@ -20,10 +20,12 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.xml.supplier.Supplierinfo;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -109,7 +111,7 @@ public abstract class MappedSupplier {
     public String toString() {
         return super.toString() + '{' +
                "sid=" + sid +
-               ",addr=" + (addr == null ? null : addr.length() + " char(s)") +
+               ",addr=" + addr +
                '}';
     }
 
@@ -164,13 +166,13 @@ public abstract class MappedSupplier {
     // ------------------------------------------------------------------------------------------------------------ addr
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_ADDR} attribute, serialized; the column is
-     * an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_ADDR} attribute; the column is an
+     * XML, bound to {@link Supplierinfo}.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ADDR} attribute.
      */
     @Nullable
-    public String getAddr() {
+    public Supplierinfo getAddr() {
         return addr;
     }
 
@@ -179,7 +181,7 @@ public abstract class MappedSupplier {
      *
      * @param addr new value for {@value #ATTRIBUTE_NAME_ADDR} attribute.
      */
-    public void setAddr(@Nullable final String addr) {
+    public void setAddr(@Nullable final Supplierinfo addr) {
         this.addr = addr;
     }
 
@@ -198,11 +200,12 @@ public abstract class MappedSupplier {
     private String sid;
 
     // -----------------------------------------------------------------------------------------------------------------
+    @Convert(converter = SupplierinfoStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ADDR,
             nullable = COLUMN_NULLABLE_ADDR,
             insertable = true,
             updatable = true
     )
-    private String addr;
+    private Supplierinfo addr;
 }

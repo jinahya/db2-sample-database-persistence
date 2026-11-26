@@ -20,10 +20,12 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.xml.porder.PurchaseOrder;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -208,7 +210,7 @@ public abstract class MappedPurchaseOrder {
                ",status=" + status +
                ",custid=" + custid +
                ",orderdate=" + orderdate +
-               ",porder=" + (porder == null ? null : porder.length() + " char(s)") +
+               ",porder=" + porder +
                ",comments=" + comments +
                '}';
     }
@@ -323,13 +325,13 @@ public abstract class MappedPurchaseOrder {
     // ---------------------------------------------------------------------------------------------------------- porder
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_PORDER} attribute, serialized; the column is
-     * an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_PORDER} attribute; the column is an
+     * XML, bound to {@link PurchaseOrder}.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PORDER} attribute.
      */
     @Nullable
-    public String getPorder() {
+    public PurchaseOrder getPorder() {
         return porder;
     }
 
@@ -339,7 +341,7 @@ public abstract class MappedPurchaseOrder {
      *
      * @param porder new value for {@value #ATTRIBUTE_NAME_PORDER} attribute.
      */
-    public void setPorder(@Nullable final String porder) {
+    public void setPorder(@Nullable final PurchaseOrder porder) {
         this.porder = porder;
     }
 
@@ -411,13 +413,14 @@ public abstract class MappedPurchaseOrder {
     private LocalDate orderdate;
 
     // -----------------------------------------------------------------------------------------------------------------
+    @Convert(converter = PurchaseOrderStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_PORDER,
             nullable = COLUMN_NULLABLE_PORDER,
             insertable = true,
             updatable = true
     )
-    private String porder;
+    private PurchaseOrder porder;
 
     // -----------------------------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_COMMENTS)

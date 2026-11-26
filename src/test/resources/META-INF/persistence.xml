@@ -72,6 +72,11 @@
     <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde2</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vstafac1</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vstafac2</class>
+    <!-- the converters of the XML columns, which EclipseLink finds only when listed -->
+    <class>com.github.jinahya.db2.sample.database.persistence.CustomerinfoStringAttributeConverter</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.ProductStringAttributeConverter</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.PurchaseOrderStringAttributeConverter</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.SupplierinfoStringAttributeConverter</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <validation-mode>CALLBACK</validation-mode>
@@ -147,6 +152,11 @@
     <class>com.github.jinahya.db2.sample.database.persistence.Vpstrde2</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vstafac1</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vstafac2</class>
+    <!-- the converters of the XML columns, which EclipseLink finds only when listed -->
+    <class>com.github.jinahya.db2.sample.database.persistence.CustomerinfoStringAttributeConverter</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.ProductStringAttributeConverter</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.PurchaseOrderStringAttributeConverter</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.SupplierinfoStringAttributeConverter</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <validation-mode>CALLBACK</validation-mode>

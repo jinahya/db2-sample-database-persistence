@@ -20,6 +20,8 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.xml.customer.Customerinfo;
+import com.github.jinahya.db2.sample.database.persistence.xml.supplier.Supplierinfo;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -29,6 +31,14 @@ import org.jboss.weld.junit5.auto.AddBeanClasses;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import java.io.StringReader;
+import java.math.BigInteger;
+import java.util.function.Function;
 
 import static com.github.jinahya.db2.sample.database.persistence._Entity_Persistence_IT_Producer.__ItPU;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -84,15 +94,83 @@ class PersistenceUnit_IT {
                 "SPIFFY COMPUTER SERVICE DIV.");
     }
 
-    @DisplayName("XML columns read as strings")
+    @DisplayName("every XML column reads into the class bound to its XSD")
     @Test
     void xml_() {
         entityManager.createQuery("SELECT c FROM Customer c", Customer.class).getResultList()
-                .forEach(c -> assertThat(c.getInfo()).as("info of %s", c.getCid())
-                        .contains("customerinfo"));
+                .forEach(c -> {
+                    assertThat(c.getInfo().getCid()).as("info of %s", c.getCid())
+                            .isEqualTo(BigInteger.valueOf(c.getCid()));
+                    assertThat(c.getHistory()).as("history of %s", c.getCid()).isNull();
+                });
         entityManager.createQuery("SELECT p FROM Product p", Product.class).getResultList()
-                .forEach(p -> assertThat(p.getDescription()).as("description of %s", p.getPid())
-                        .contains("product"));
+                .forEach(p -> assertThat(p.getDescription().getPid())
+                        .as("description of %s", p.getPid()).isEqualTo(p.getPid()));
+        entityManager.createQuery("SELECT o FROM PurchaseOrder o", PurchaseOrder.class)
+                .getResultList()
+                .forEach(o -> assertThat(o.getPorder().getPoNum())
+                        .as("porder of %s", o.getPoid()).isEqualTo(String.valueOf(o.getPoid())));
+        entityManager.createQuery("SELECT s FROM Supplier s", Supplier.class).getResultList()
+                .forEach(s -> assertThat(s.getAddr().getSid())
+                        .as("addr of %s", s.getSid()).isEqualTo(s.getSid()));
+    }
+
+    @DisplayName("every stored document is valid against the XSD on the class path")
+    @Test
+    void xml_ValidAgainstXsd_() throws Exception {
+        final var customer = validator(Customerinfo.class, "customer.xsd");
+        final var product = validator(
+                com.github.jinahya.db2.sample.database.persistence.xml.product.Product.class,
+                "product.xsd");
+        final var porder = validator(
+                com.github.jinahya.db2.sample.database.persistence.xml.porder.PurchaseOrder.class,
+                "porder.xsd");
+        final var supplier = validator(Supplierinfo.class, "supplier.xsd");
+        for (final var c : entityManager.createQuery("SELECT c FROM Customer c", Customer.class)
+                .getResultList()) {
+            customer.validate(source(new CustomerinfoStringAttributeConverter()
+                                             .convertToDatabaseColumn(c.getInfo())));
+        }
+        for (final var p : entityManager.createQuery("SELECT p FROM Product p", Product.class)
+                .getResultList()) {
+            product.validate(source(new ProductStringAttributeConverter()
+                                            .convertToDatabaseColumn(p.getDescription())));
+        }
+        for (final var o : entityManager.createQuery("SELECT o FROM PurchaseOrder o",
+                                                     PurchaseOrder.class).getResultList()) {
+            porder.validate(source(new PurchaseOrderStringAttributeConverter()
+                                           .convertToDatabaseColumn(o.getPorder())));
+        }
+        for (final var s : entityManager.createQuery("SELECT s FROM Supplier s", Supplier.class)
+                .getResultList()) {
+            supplier.validate(source(new SupplierinfoStringAttributeConverter()
+                                             .convertToDatabaseColumn(s.getAddr())));
+        }
+    }
+
+    @DisplayName("a document written to an XML column reads back equal")
+    @Test
+    void xml_RoundTrips_() {
+        final var addr = new Customerinfo.Addr();
+        addr.setCountry("Korea");
+        addr.setStreet("1 Sejong-daero");
+        addr.setCity("Seoul");
+        addr.setProvState("Seoul");
+        addr.setPcodeZip("04524");
+        final var info = new Customerinfo();
+        info.setCid(BigInteger.valueOf(9999L));
+        info.setName("Kim");
+        info.getAddr().add(addr);
+        applyInTransactionAndRollback(em -> {
+            final var customer = new Customer();
+            customer.setCid(9999L);
+            customer.setInfo(info);
+            em.persist(customer);
+            em.flush();
+            em.clear();
+            assertThat(em.find(Customer.class, 9999L).getInfo()).isEqualTo(info);
+            return null;
+        });
     }
 
     @DisplayName("LOB columns read as bytes and as strings")
@@ -116,6 +194,29 @@ class PersistenceUnit_IT {
         assertThat(photo.getEmployee().getLastname()).isEqualTo("QUINTANA");
         entityManager.createQuery("SELECT e FROM EmpProjAct e", EmpProjAct.class).getResultList()
                 .forEach(e -> assertThat(e.getProjAct()).as("projAct of %s", e).isNotNull());
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    // a validator of the XSD which sits beside the specified bound class
+    private static Validator validator(final Class<?> bound, final String name) throws Exception {
+        final var resource = bound.getResource(name);
+        assertThat(resource).as("%s beside %s", name, bound).isNotNull();
+        return SchemaFactory.newDefaultInstance().newSchema(resource).newValidator();
+    }
+
+    private static Source source(final String text) {
+        return new StreamSource(new StringReader(text));
+    }
+
+    private <R> R applyInTransactionAndRollback(
+            final Function<? super EntityManager, ? extends R> function) {
+        final var transaction = entityManager.getTransaction();
+        transaction.begin();
+        try {
+            return function.apply(entityManager);
+        } finally {
+            transaction.rollback();
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------------------

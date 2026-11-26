@@ -27,7 +27,45 @@ the data `db2sampl` loads (`ORG.DEPTNUMB`, `STAFF.ID`, `SALES` by date, person a
 database keeps that so; each class says which.
 
 A foreign key column is mapped read-only in the superclass; the entity owns its writable mapping, as an association.
-`XML` columns map to `String`, `BLOB` to `byte[]` and `CLOB` to `String`.
+`XML` columns with a registered schema map to classes bound to it (see below), the others to `String`; `BLOB` maps to
+`byte[]` and `CLOB` to `String`.
+
+### XML columns
+
+Six columns are `XML`. The four whose schema Db2 registers map to classes which Jakarta XML Binding's `xjc` generates,
+at build time, from that XSD, through an `AttributeConverter` which extends `JaxbAttributeConverter.OfString` of
+[jinahya-persistence](https://github.com/jinahya/jinahya-persistence). The other two stay `String`.
+
+| Column | Rows (not `null`) | Registered schema | XSD | Root element | Namespace | Attribute type | Converter |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `CUSTOMER.INFO` | 6 (6) | `DB2INST1.CUSTOMER` | `customer.xsd` | `customerinfo` | none | `xml.customer.Customerinfo` | `CustomerinfoStringAttributeConverter` |
+| `CUSTOMER.HISTORY` | 6 (0) | none | | | | `String` | |
+| `PRODUCT.DESCRIPTION` | 4 (4) | `DB2INST1.PRODUCT` | `product.xsd` | `product` | none | `xml.product.Product` | `ProductStringAttributeConverter` |
+| `PURCHASEORDER.PORDER` | 6 (6) | `DB2INST1.PORDER` | `porder.xsd` | `PurchaseOrder` | none | `xml.porder.PurchaseOrder` | `PurchaseOrderStringAttributeConverter` |
+| `SUPPLIERS.ADDR` | 2 (2) | `DB2INST1.SUPPLIER` | `supplier.xsd` | `supplierinfo` | `http://posample.org` | `xml.supplier.Supplierinfo` | `SupplierinfoStringAttributeConverter` |
+| `CATALOG.CATLOG` | 0 (0) | none | | | | `String` | |
+
+* **The XSDs.** Copied unchanged from `/opt/ibm/db2/V12.1/samples/db2sampl/` of the image, they are in
+  `src/main/resources`, each in the package of its classes, and ship in the jar, so that a downstream project can
+  validate against them (`Customerinfo.class.getResource("customer.xsd")`). The packages are opened. IBM's terms are in
+  `NOTICE.txt` beside them. `addr.xsd`, also in the image, describes the `addr` element of `customerinfo` and
+  `supplierinfo`, not a column, and is left out.
+* **Registered schemas only.** The four XSDs are the ones registered in the database's XML schema repository
+  (`SYSCAT.XSROBJECTS`), and every document stored in their columns was validated against them when `db2sampl` loaded
+  the data (`XMLXSROBJECTID`). `PersistenceUnit_IT` validates each of them again against the XSD on the class path.
+* **`history.xsd` and `catalog.xsd` are left out.** The image also has them, for `CUSTOMER.HISTORY` and
+  `CATALOG.CATLOG`, but Db2 registers neither, no sample uses either, and neither column holds a document;
+  `history.xsd` is not even a valid schema (its global element carries `minOccurs` and `maxOccurs`). Both columns map
+  to `String`.
+* **The database does not enforce the schemas.** No table has a check constraint (`IS VALIDATED ACCORDING TO`), so a
+  write is only checked for being well-formed, and a document written through an entity is stored with no schema
+  recorded against it. The bound classes do not validate either; a downstream project which needs it validates
+  against the XSDs.
+* **Value equality.** The classes are generated with `-Xequals` and `-XhashCode` (`jaxb-plugins-runtime`), so that a
+  provider sees an unchanged document as unchanged rather than dirty.
+* **Both providers.** The converters are listed in `persistence.xml`, which EclipseLink requires. Each also declares
+  `AttributeConverter<T, String>` itself, though `OfString` implements it already: EclipseLink takes the column type
+  from the interface the converter class declares, and without it binds the attribute, not its text, on insert.
 
 ## The database
 

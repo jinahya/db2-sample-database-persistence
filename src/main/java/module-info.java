@@ -37,8 +37,22 @@ module com.github.jinahya.db2.sample.database.persistence {
     requires static transitive jakarta.annotation;
     requires transitive jakarta.persistence;
     requires transitive jakarta.validation;
+    // the XML columns: the bound classes, and the converters, which extend JaxbAttributeConverter
+    requires transitive jakarta.xml.bind;
+    requires transitive com.github.jinahya.persistence.more;
+    // the bound classes implement its Equals and HashCode
+    requires transitive org.jvnet.jaxb.plugins.runtime;
 
     exports com.github.jinahya.db2.sample.database.persistence;
+    exports com.github.jinahya.db2.sample.database.persistence.xml.customer;
+    exports com.github.jinahya.db2.sample.database.persistence.xml.product;
+    exports com.github.jinahya.db2.sample.database.persistence.xml.porder;
+    exports com.github.jinahya.db2.sample.database.persistence.xml.supplier;
 
     opens com.github.jinahya.db2.sample.database.persistence;
+    // to Jakarta XML Binding, and for the XSD each holds
+    opens com.github.jinahya.db2.sample.database.persistence.xml.customer;
+    opens com.github.jinahya.db2.sample.database.persistence.xml.product;
+    opens com.github.jinahya.db2.sample.database.persistence.xml.porder;
+    opens com.github.jinahya.db2.sample.database.persistence.xml.supplier;
 }

@@ -107,6 +107,15 @@
     <version.ch.qus.logback>1.6.5</version.ch.qus.logback>
     <!-- https://central.sonatype.com/artifact/com.h2database/h2/versions -->
     <version.com.h2database>2.5.252</version.com.h2database>
+    <!-- https://central.sonatype.com/artifact/io.github.jinahya/jinahya-persistence-more/versions -->
+    <version.io.github.jinahya.jinahya-persistence>0.6.12-SNAPSHOT</version.io.github.jinahya.jinahya-persistence>
+    <!-- Jakarta XML Binding 4.0; not in the Jakarta EE 11 platform, so not in its BOM, and versioned here -->
+    <!-- https://central.sonatype.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api/versions -->
+    <version.jakarta.xml.bind-api>4.0.5</version.jakarta.xml.bind-api>
+    <!-- https://central.sonatype.com/artifact/org.glassfish.jaxb/jaxb-runtime/versions -->
+    <version.org.glassfish.jaxb>4.0.9</version.org.glassfish.jaxb>
+    <!-- https://central.sonatype.com/artifact/org.jvnet.jaxb/jaxb-maven-plugin/versions -->
+    <version.org.jvnet.jaxb>4.0.16</version.org.jvnet.jaxb>
     <!-- https://jakarta.ee/specifications/platform/11/ -->
     <!-- https://central.sonatype.com/artifact/jakarta.platform/jakarta.jakartaee-bom/versions -->
     <!-- 11.0.0 manages: jakarta.persistence-api 3.2.0, jakarta.validation-api 3.1.1, -->
@@ -161,9 +170,29 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>io.github.jinahya</groupId>
+        <artifactId>jinahya-persistence-more</artifactId>
+        <version>${version.io.github.jinahya.jinahya-persistence}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.xml.bind</groupId>
+        <artifactId>jakarta.xml.bind-api</artifactId>
+        <version>${version.jakarta.xml.bind-api}</version>
+      </dependency>
+      <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-core</artifactId>
         <version>${version.org.assertj}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>${version.org.glassfish.jaxb}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jvnet.jaxb</groupId>
+        <artifactId>jaxb-plugins-runtime</artifactId>
+        <version>${version.org.jvnet.jaxb}</version>
       </dependency>
       <dependency>
         <groupId>org.eclipse.persistence</groupId>
@@ -243,6 +272,26 @@
       <groupId>jakarta.validation</groupId>
       <artifactId>jakarta.validation-api</artifactId>
       <scope>provided</scope>
+    </dependency>
+    <dependency><!-- the classes bound to the XSDs of the XML columns -->
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency><!-- the value equals/hashCode which -Xequals/-XhashCode generate, for dirty checking -->
+      <groupId>org.jvnet.jaxb</groupId>
+      <artifactId>jaxb-plugins-runtime</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency><!-- JaxbAttributeConverter, which the converters of the XML columns extend -->
+      <groupId>io.github.jinahya</groupId>
+      <artifactId>jinahya-persistence-more</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.weld</groupId>
@@ -438,6 +487,83 @@
       </plugins>
     </pluginManagement>
     <plugins>
+      <plugin><!-- the classes bound to the XSDs of the XML columns, one package per XSD; see README.md -->
+        <groupId>org.jvnet.jaxb</groupId>
+        <artifactId>jaxb-maven-plugin</artifactId>
+        <version>${version.org.jvnet.jaxb}</version>
+        <configuration>
+          <schemaDirectory>${project.basedir}/src/main/resources/com/github/jinahya/db2/sample/database/persistence/xml</schemaDirectory>
+          <extension>true</extension>
+          <noFileHeader>true</noFileHeader>
+          <episode>false</episode>
+          <!-- value equals/hashCode, so that a provider sees an unchanged document as unchanged -->
+          <args>
+            <arg>-Xequals</arg>
+            <arg>-XhashCode</arg>
+          </args>
+          <plugins>
+            <plugin>
+              <groupId>org.jvnet.jaxb</groupId>
+              <artifactId>jaxb-plugins</artifactId>
+              <version>${version.org.jvnet.jaxb}</version>
+            </plugin>
+          </plugins>
+        </configuration>
+        <executions>
+          <execution>
+            <id>xjc-customer</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <schemaIncludes>
+                <include>customer/customer.xsd</include>
+              </schemaIncludes>
+              <generatePackage>com.github.jinahya.db2.sample.database.persistence.xml.customer</generatePackage>
+              <generateDirectory>${project.build.directory}/generated-sources/xjc-customer</generateDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>xjc-product</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <schemaIncludes>
+                <include>product/product.xsd</include>
+              </schemaIncludes>
+              <generatePackage>com.github.jinahya.db2.sample.database.persistence.xml.product</generatePackage>
+              <generateDirectory>${project.build.directory}/generated-sources/xjc-product</generateDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>xjc-porder</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <schemaIncludes>
+                <include>porder/porder.xsd</include>
+              </schemaIncludes>
+              <generatePackage>com.github.jinahya.db2.sample.database.persistence.xml.porder</generatePackage>
+              <generateDirectory>${project.build.directory}/generated-sources/xjc-porder</generateDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>xjc-supplier</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <schemaIncludes>
+                <include>supplier/supplier.xsd</include>
+              </schemaIncludes>
+              <generatePackage>com.github.jinahya.db2.sample.database.persistence.xml.supplier</generatePackage>
+              <generateDirectory>${project.build.directory}/generated-sources/xjc-supplier</generateDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

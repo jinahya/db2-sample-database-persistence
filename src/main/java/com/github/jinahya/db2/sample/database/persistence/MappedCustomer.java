@@ -20,10 +20,12 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.xml.customer.Customerinfo;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -117,7 +119,7 @@ public abstract class MappedCustomer {
     public String toString() {
         return super.toString() + '{' +
                "cid=" + cid +
-               ",info=" + (info == null ? null : info.length() + " char(s)") +
+               ",info=" + info +
                ",history=" + (history == null ? null : history.length() + " char(s)") +
                '}';
     }
@@ -173,13 +175,13 @@ public abstract class MappedCustomer {
     // ------------------------------------------------------------------------------------------------------------ info
 
     /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_INFO} attribute, serialized; the column is
-     * an XML.
+     * Returns current value of {@value #ATTRIBUTE_NAME_INFO} attribute; the column is an
+     * XML, bound to {@link Customerinfo}.
      *
      * @return current value of {@value #ATTRIBUTE_NAME_INFO} attribute.
      */
     @Nullable
-    public String getInfo() {
+    public Customerinfo getInfo() {
         return info;
     }
 
@@ -188,7 +190,7 @@ public abstract class MappedCustomer {
      *
      * @param info new value for {@value #ATTRIBUTE_NAME_INFO} attribute.
      */
-    public void setInfo(@Nullable final String info) {
+    public void setInfo(@Nullable final Customerinfo info) {
         this.info = info;
     }
 
@@ -228,13 +230,14 @@ public abstract class MappedCustomer {
     private Long cid;
 
     // -----------------------------------------------------------------------------------------------------------------
+    @Convert(converter = CustomerinfoStringAttributeConverter.class)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_INFO,
             nullable = COLUMN_NULLABLE_INFO,
             insertable = true,
             updatable = true
     )
-    private String info;
+    private Customerinfo info;
 
     // -----------------------------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
