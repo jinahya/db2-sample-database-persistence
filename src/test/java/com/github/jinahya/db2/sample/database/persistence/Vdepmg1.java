@@ -39,7 +39,7 @@ public class Vdepmg1
     /**
      * Creates a new instance.
      */
-    public Vdepmg1() {
+    protected Vdepmg1() {
         super();
     }
 }

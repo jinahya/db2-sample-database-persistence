@@ -184,7 +184,7 @@ class PersistenceUnit_IT {
                 .forEach(p -> assertThat(p.getPicture()).as("picture of %s", p.getEmpno())
                         .isNotEmpty());
         entityManager.createQuery("SELECT r FROM EmpResume r", EmpResume.class).getResultList()
-                .forEach(r -> assertThat(r.getResume()).as("resume of %s", r.getEmpno())
+                .forEach(r -> assertThat(r.getResume()).as("resume of %s", r.getId().getEmpno())
                         .contains("Resume"));
     }
 

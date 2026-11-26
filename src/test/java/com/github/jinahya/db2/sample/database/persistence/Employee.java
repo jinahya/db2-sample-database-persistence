@@ -44,7 +44,7 @@ public class Employee
     /**
      * Creates a new instance.
      */
-    public Employee() {
+    protected Employee() {
         super();
     }
 
@@ -91,8 +91,8 @@ public class Employee
     public void setWorkdeptDepartment(final Department workdeptDepartment) {
         this.workdeptDepartment = workdeptDepartment;
         setWorkdept(Optional.ofNullable(workdeptDepartment)
-                    .map(Department::getDeptno)
-                    .orElse(null));
+                            .map(Department::getDeptno)
+                            .orElse(null));
     }
 
     // ---------------------------------------------------------------------------------------------

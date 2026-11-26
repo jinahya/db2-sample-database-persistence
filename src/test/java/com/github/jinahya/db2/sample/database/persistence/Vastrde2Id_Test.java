@@ -21,6 +21,11 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
@@ -32,5 +37,40 @@ class Vastrde2Id_Test
     Vastrde2Id_Test() {
         super(Vastrde2Id.class);
     }
-}
 
+    // ---------------------------------------------------------------------------------------------
+
+    /**
+     * Tests {@link Vastrde2Id#of(String, String)}.
+     */
+    @DisplayName("of(dept1no, emp2no)")
+    @Nested
+    class OfTest {
+
+        /**
+         * Verifies that {@link Vastrde2Id#of(String, String) of} returns an instance of the
+         * specified values.
+         */
+        @Test
+        void __() {
+            final var instance = Vastrde2Id.of("V0", "V1");
+            assertThat(instance).isNotNull().satisfies(v -> {
+                assertThat(v.getDept1no()).isEqualTo("V0");
+                assertThat(v.getEmp2no()).isEqualTo("V1");
+            });
+        }
+
+        /**
+         * Verifies that {@link Vastrde2Id#of(String, String) of} takes {@code null} values as they
+         * are.
+         */
+        @Test
+        void __null() {
+            final var instance = Vastrde2Id.of(null, null);
+            assertThat(instance).isNotNull().satisfies(v -> {
+                assertThat(v.getDept1no()).isNull();
+                assertThat(v.getEmp2no()).isNull();
+            });
+        }
+    }
+}

@@ -39,7 +39,7 @@ public class Vact
     /**
      * Creates a new instance.
      */
-    public Vact() {
+    protected Vact() {
         super();
     }
 }

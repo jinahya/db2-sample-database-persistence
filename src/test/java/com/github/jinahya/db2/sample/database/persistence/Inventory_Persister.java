@@ -34,6 +34,5 @@ class Inventory_Persister
     Inventory_Persister() {
         super(Inventory.class);
     }
-
 }
 

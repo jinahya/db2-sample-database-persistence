@@ -23,8 +23,8 @@ package com.github.jinahya.db2.sample.database.persistence;
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedClSched;
 
 /**
- * A row of the {@value #TABLE_NAME} table; not an entity, since it has no key, but a
- * class built from the rows of a native query.
+ * A row of the {@value #TABLE_NAME} table; not an entity, since it has no key, but a class built
+ * from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

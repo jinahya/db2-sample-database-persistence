@@ -39,7 +39,7 @@ public class Vpstrde2
     /**
      * Creates a new instance.
      */
-    public Vpstrde2() {
+    protected Vpstrde2() {
         super();
     }
 }

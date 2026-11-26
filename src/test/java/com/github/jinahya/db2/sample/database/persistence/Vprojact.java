@@ -21,27 +21,118 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVprojact;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.Objects;
 
 /**
- * An entity of the {@value #TABLE_NAME} view.
+ * An entity of the {@value #TABLE_NAME} view, which declares the identifier {@link MappedVprojact}
+ * leaves out, an {@link EmbeddedId @EmbeddedId} of {@link VprojactId}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
 @Entity
-@IdClass(VprojactId.class)
 @Table(name = Vprojact.TABLE_NAME)
 public class Vprojact
         extends MappedVprojact {
+
+    /**
+     * The name of the attribute of the identifier, an {@link EmbeddedId @EmbeddedId} of
+     * {@link VprojactId}. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_ID = "id";
+
+    /**
+     * The path of the identifier's attribute which maps the {@value #COLUMN_NAME_PROJNO} column.
+     * The value is {@value}.
+     */
+    public static final String ATTRIBUTE_PATH_ID_PROJNO =
+            ATTRIBUTE_NAME_ID + "." + VprojactId.ATTRIBUTE_NAME_PROJNO;
+
+    /**
+     * The path of the identifier's attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The
+     * value is {@value}.
+     */
+    public static final String ATTRIBUTE_PATH_ID_ACTNO =
+            ATTRIBUTE_NAME_ID + "." + VprojactId.ATTRIBUTE_NAME_ACTNO;
+
+    /**
+     * The path of the identifier's attribute which maps the {@value #COLUMN_NAME_ACSTDATE} column.
+     * The value is {@value}.
+     */
+    public static final String ATTRIBUTE_PATH_ID_ACSTDATE =
+            ATTRIBUTE_NAME_ID + "." + VprojactId.ATTRIBUTE_NAME_ACSTDATE;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
      */
-    public Vprojact() {
+    protected Vprojact() {
         super();
     }
+    // ---------------------------------------------------------------------------- java.lang.Object
+
+    @Override
+    public String toString() {
+        return super.toString() + '{' +
+               "id=" + id +
+               '}';
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param obj {@inheritDoc}
+     * @return {@inheritDoc}
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_ID}, the identifier.
+     */
+    @Override
+    public final boolean equals(final Object obj) {
+        if (!(obj instanceof Vprojact that)) {
+            return false;
+        }
+        return Objects.equals(getId(), that.getId());
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return {@inheritDoc}
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ID}, consistent with
+     *         {@link #equals(Object)}.
+     */
+    @Override
+    public final int hashCode() {
+        return Objects.hash(getId());
+    }
+    // ------------------------------------------------------------------------------------------ id
+
+    /**
+     * Returns current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     *
+     * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     */
+    protected VprojactId getId() {
+        return id;
+    }
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ID} attribute with the specified value.
+     *
+     * @param id new value for {@value #ATTRIBUTE_NAME_ID} attribute.
+     */
+    protected void setId(final VprojactId id) {
+        this.id = id;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Valid
+    @NotNull
+    @EmbeddedId
+    private VprojactId id;
 }

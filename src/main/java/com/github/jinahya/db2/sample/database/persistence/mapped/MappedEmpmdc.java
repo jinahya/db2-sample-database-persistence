@@ -33,8 +33,7 @@ import jakarta.validation.constraints.NotNull;
  * employees, by department and division, for multidimensional clustering.
  * <p>
  * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
- * by
- * its definition; the class maps no identifier, so an extending class is not an entity, and is
+ * by its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;

@@ -39,7 +39,7 @@ public class Customer
     /**
      * Creates a new instance.
      */
-    public Customer() {
+    protected Customer() {
         super();
     }
 

@@ -20,17 +20,15 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Vpstrde1Id;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
-import java.util.Objects;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedVpstrde1#TABLE_NAME} view, the
@@ -38,20 +36,20 @@ import java.util.Objects;
  * <p>
  * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
  * is insertable, and the setters are not public; an extending entity is for reading. The
- * identifier's columns stay insertable since EclipseLink requires an {@link Id @Id} mapping to be
- * writable.
+ * identifier's columns stay insertable since EclipseLink requires an
+ * {@link jakarta.persistence.Id @Id} mapping to be writable.
  * <p>
  * <strong>A view has no key.</strong> The columns {@value MappedVpstrde1#COLUMN_NAME_PROJ1NO},
  * {@value MappedVpstrde1#COLUMN_NAME_PROJ2NO}, unique and not {@code null} in every row the sample
- * database is created with, are mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
- * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
- * entity names a subclass of {@link MappedVpstrde1Id} with {@code @IdClass} and inherits the
- * {@link Id @Id} attributes from here.
+ * database is created with, are its identifier, which an entity needs, though nothing in the
+ * database keeps them so. This class does not map it: an extending entity declares it, either as
+ * {@link jakarta.persistence.Id @Id} attributes with {@link Vpstrde1Id} as its
+ * {@link jakarta.persistence.IdClass @IdClass}, or as an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId} of {@link Vpstrde1Id}, and with it its
+ * {@code equals} and {@code hashCode}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
- * @see MappedVpstrde1Id
+ * @see Vpstrde1Id
  */
 @MappedSuperclass
 public abstract class MappedVpstrde1 {
@@ -64,8 +62,8 @@ public abstract class MappedVpstrde1 {
     // ------------------------------------------------------------------------------------- PROJ1NO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJ1NO} attribute maps. The
-     * value is {@value}.
+     * The name of the view column to which the {@value Vpstrde1Id#ATTRIBUTE_NAME_PROJ1NO} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJ1NO = "PROJ1NO";
 
@@ -75,13 +73,8 @@ public abstract class MappedVpstrde1 {
     public static final int COLUMN_LENGTH_PROJ1NO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJ1NO} column. The value is
+     * The maximum size of the {@value Vpstrde1Id#ATTRIBUTE_NAME_PROJ1NO} attribute. The value is
      * {@value}.
-     */
-    public static final String ATTRIBUTE_NAME_PROJ1NO = "proj1no";
-
-    /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_PROJ1NO} attribute. The value is {@value}.
      */
     public static final int SIZE_MAX_PROJ1NO = COLUMN_LENGTH_PROJ1NO;
 
@@ -208,8 +201,8 @@ public abstract class MappedVpstrde1 {
     // ------------------------------------------------------------------------------------- PROJ2NO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJ2NO} attribute maps. The
-     * value is {@value}.
+     * The name of the view column to which the {@value Vpstrde1Id#ATTRIBUTE_NAME_PROJ2NO} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJ2NO = "PROJ2NO";
 
@@ -219,13 +212,8 @@ public abstract class MappedVpstrde1 {
     public static final int COLUMN_LENGTH_PROJ2NO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJ2NO} column. The value is
+     * The maximum size of the {@value Vpstrde1Id#ATTRIBUTE_NAME_PROJ2NO} attribute. The value is
      * {@value}.
-     */
-    public static final String ATTRIBUTE_NAME_PROJ2NO = "proj2no";
-
-    /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_PROJ2NO} attribute. The value is {@value}.
      */
     public static final int SIZE_MAX_PROJ2NO = COLUMN_LENGTH_PROJ2NO;
 
@@ -363,70 +351,17 @@ public abstract class MappedVpstrde1 {
     @Override
     public String toString() {
         return super.toString() + '{' +
-               "proj1no=" + proj1no +
-               ",proj1name=" + proj1name +
+               "proj1name=" + proj1name +
                ",resp1no=" + resp1no +
                ",resp1fn=" + resp1fn +
                ",resp1mi=" + resp1mi +
                ",resp1ln=" + resp1ln +
-               ",proj2no=" + proj2no +
                ",proj2name=" + proj2name +
                ",resp2no=" + resp2no +
                ",resp2fn=" + resp2fn +
                ",resp2mi=" + resp2mi +
                ",resp2ln=" + resp2ln +
                '}';
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJ1NO} and
-     *         {@value #ATTRIBUTE_NAME_PROJ2NO} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedVpstrde1 that)) {
-            return false;
-        }
-        return Objects.equals(getProj1no(), that.getProj1no())
-               && Objects.equals(getProj2no(), that.getProj2no());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJ1NO} and
-     *         {@value #ATTRIBUTE_NAME_PROJ2NO}, consistent with {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hash(getProj1no(), getProj2no());
-    }
-
-    // ------------------------------------------------------------------------------------- proj1no
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
-     */
-    @Nonnull
-    public String getProj1no() {
-        return proj1no;
-    }
-
-    /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJ1NO} attribute with the specified
-     * value.
-     *
-     * @param proj1no new value for {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
-     */
-    protected void setProj1no(@Nonnull final String proj1no) {
-        this.proj1no = proj1no;
     }
 
     // ----------------------------------------------------------------------------------- proj1name
@@ -537,28 +472,6 @@ public abstract class MappedVpstrde1 {
      */
     protected void setResp1ln(@Nonnull final String resp1ln) {
         this.resp1ln = resp1ln;
-    }
-
-    // ------------------------------------------------------------------------------------- proj2no
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
-     */
-    @Nonnull
-    public String getProj2no() {
-        return proj2no;
-    }
-
-    /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJ2NO} attribute with the specified
-     * value.
-     *
-     * @param proj2no new value for {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
-     */
-    protected void setProj2no(@Nonnull final String proj2no) {
-        this.proj2no = proj2no;
     }
 
     // ----------------------------------------------------------------------------------- proj2name
@@ -673,20 +586,6 @@ public abstract class MappedVpstrde1 {
 
     // ---------------------------------------------------------------------------------------------
     @Nonnull
-    @Size(max = SIZE_MAX_PROJ1NO)
-    @NotNull
-    @Id
-    @Basic(optional = false, fetch = FetchType.EAGER)
-    @Column(name = COLUMN_NAME_PROJ1NO,
-            nullable = false,
-            insertable = true,
-            updatable = false,
-            length = COLUMN_LENGTH_PROJ1NO
-    )
-    private String proj1no;
-
-    // ---------------------------------------------------------------------------------------------
-    @Nonnull
     @Size(max = SIZE_MAX_PROJ1NAME)
     @NotNull
     @Basic(optional = false, fetch = FetchType.EAGER)
@@ -747,20 +646,6 @@ public abstract class MappedVpstrde1 {
             length = COLUMN_LENGTH_RESP1LN
     )
     private String resp1ln;
-
-    // ---------------------------------------------------------------------------------------------
-    @Nonnull
-    @Size(max = SIZE_MAX_PROJ2NO)
-    @NotNull
-    @Id
-    @Basic(optional = false, fetch = FetchType.EAGER)
-    @Column(name = COLUMN_NAME_PROJ2NO,
-            nullable = false,
-            insertable = true,
-            updatable = false,
-            length = COLUMN_LENGTH_PROJ2NO
-    )
-    private String proj2no;
 
     // ---------------------------------------------------------------------------------------------
     @Nonnull

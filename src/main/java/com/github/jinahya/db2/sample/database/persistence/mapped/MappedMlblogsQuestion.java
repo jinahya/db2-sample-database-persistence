@@ -38,8 +38,7 @@ import java.util.Optional;
  * table, the questions of a vector search example.
  * <p>
  * <strong>The table declares no primary key</strong>, and no column, or set of columns, is a key
- * by
- * its definition; the class maps no identifier, so an extending class is not an entity, and is
+ * by its definition; the class maps no identifier, so an extending class is not an entity, and is
  * built from the rows of a native query.
  * <p>
  * The {@value MappedMlblogsQuestion#COLUMN_NAME_EMBEDDING} column, a {@code VECTOR(1024, FLOAT32)},
@@ -217,6 +216,6 @@ public abstract class MappedMlblogsQuestion {
             insertable = true,
             updatable = true,
             length = COLUMN_DIMENSION_EMBEDDING * 16 + 1 // just for H2
-    )
+            )
     private float[] embedding;
 }

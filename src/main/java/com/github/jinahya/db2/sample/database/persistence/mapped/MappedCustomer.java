@@ -223,7 +223,7 @@ public abstract class MappedCustomer {
             insertable = true,
             updatable = true,
             length = 1048576 // just for H2
-    )
+            )
     private Customerinfo info;
 
     // ---------------------------------------------------------------------------------------------
@@ -233,6 +233,6 @@ public abstract class MappedCustomer {
             insertable = true,
             updatable = true,
             length = 1048576 // just for H2
-    )
+            )
     private String history;
 }

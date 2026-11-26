@@ -620,8 +620,8 @@ public abstract class MappedEmployee {
      * value.
      *
      * @param workdept new value for {@value #ATTRIBUTE_NAME_WORKDEPT} attribute.
-     * @apiNote The column is mapped read-only here, and written through the association of an
-     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     * @apiNote The column is mapped read-only here, and written through the association of
+     *         an extending entity, whose setter calls this, so that this attribute stays consistent
      *         with the association.
      */
     protected void setWorkdept(@Nullable final String workdept) {

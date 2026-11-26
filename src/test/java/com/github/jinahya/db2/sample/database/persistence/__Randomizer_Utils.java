@@ -61,8 +61,8 @@ final class __Randomizer_Utils {
     }
 
     /**
-     * Returns a new vector of {@code dimension} coordinates, each of a size an embedding has;
-     * a value which Db2 rejects in a {@code VECTOR}, such as a subnormal one, is never returned.
+     * Returns a new vector of {@code dimension} coordinates, each of a size an embedding has; a
+     * value which Db2 rejects in a {@code VECTOR}, such as a subnormal one, is never returned.
      *
      * @param dimension the dimension of the vector.
      * @return a new vector of {@code dimension} coordinates.

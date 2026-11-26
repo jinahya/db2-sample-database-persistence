@@ -356,8 +356,8 @@ public abstract class MappedProject {
      * value.
      *
      * @param deptno new value for {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
-     * @apiNote The column is mapped read-only here, and written through the association of an
-     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     * @apiNote The column is mapped read-only here, and written through the association of
+     *         an extending entity, whose setter calls this, so that this attribute stays consistent
      *         with the association.
      */
     protected void setDeptno(@Nullable final String deptno) {
@@ -371,8 +371,8 @@ public abstract class MappedProject {
      * value.
      *
      * @param respemp new value for {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
-     * @apiNote The column is mapped read-only here, and written through the association of an
-     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     * @apiNote The column is mapped read-only here, and written through the association of
+     *         an extending entity, whose setter calls this, so that this attribute stays consistent
      *         with the association.
      */
     protected void setRespemp(@Nullable final String respemp) {
@@ -452,8 +452,8 @@ public abstract class MappedProject {
      * value.
      *
      * @param majproj new value for {@value #ATTRIBUTE_NAME_MAJPROJ} attribute.
-     * @apiNote The column is mapped read-only here, and written through the association of an
-     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     * @apiNote The column is mapped read-only here, and written through the association of
+     *         an extending entity, whose setter calls this, so that this attribute stays consistent
      *         with the association.
      */
     protected void setMajproj(@Nullable final String majproj) {

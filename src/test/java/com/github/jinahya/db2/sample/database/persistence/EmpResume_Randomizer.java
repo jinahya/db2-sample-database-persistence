@@ -38,8 +38,7 @@ class EmpResume_Randomizer
     EmpResume_Randomizer() {
         super(EmpResume.class, List.of(
                 "employee",
-                EmpResume.ATTRIBUTE_NAME_EMPNO,
-                EmpResume.ATTRIBUTE_NAME_RESUME_FORMAT
+                EmpResume.ATTRIBUTE_NAME_ID
         ));
     }
 
@@ -47,7 +46,7 @@ class EmpResume_Randomizer
     @Override
     public EmpResume get() {
         final var instance = super.get();
-        instance.setEmpno(__Randomizer_Utils.string(6));
+        // the employee number is the employee's, which the persister sets
         instance.setResumeFormat(__Randomizer_Utils.string(10));
         return instance;
     }

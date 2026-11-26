@@ -34,6 +34,5 @@ class Customer_Persister
     Customer_Persister() {
         super(Customer.class);
     }
-
 }
 

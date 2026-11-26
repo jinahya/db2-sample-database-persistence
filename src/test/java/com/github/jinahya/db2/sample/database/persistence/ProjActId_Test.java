@@ -21,6 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
@@ -32,5 +39,42 @@ class ProjActId_Test
     ProjActId_Test() {
         super(ProjActId.class);
     }
-}
 
+    // ---------------------------------------------------------------------------------------------
+
+    /**
+     * Tests {@link ProjActId#of(String, Integer, LocalDate)}.
+     */
+    @DisplayName("of(projno, actno, acstdate)")
+    @Nested
+    class OfTest {
+
+        /**
+         * Verifies that {@link ProjActId#of(String, Integer, LocalDate) of} returns an instance of
+         * the specified values.
+         */
+        @Test
+        void __() {
+            final var instance = ProjActId.of("V0", 20, LocalDate.of(2026, 1, 3));
+            assertThat(instance).isNotNull().satisfies(v -> {
+                assertThat(v.getProjno()).isEqualTo("V0");
+                assertThat(v.getActno()).isEqualTo(20);
+                assertThat(v.getAcstdate()).isEqualTo(LocalDate.of(2026, 1, 3));
+            });
+        }
+
+        /**
+         * Verifies that {@link ProjActId#of(String, Integer, LocalDate) of} takes {@code null}
+         * values as they are.
+         */
+        @Test
+        void __null() {
+            final var instance = ProjActId.of(null, null, null);
+            assertThat(instance).isNotNull().satisfies(v -> {
+                assertThat(v.getProjno()).isNull();
+                assertThat(v.getActno()).isNull();
+                assertThat(v.getAcstdate()).isNull();
+            });
+        }
+    }
+}

@@ -22,7 +22,6 @@ package com.github.jinahya.db2.sample.database.persistence;
 
 import com.github.jinahya.persistence.test.util.AbstractEntityPersister;
 import jakarta.persistence.EntityManager;
-import static com.github.jinahya.persistence.test.util.EntityPersisterUtils.newPersistedInstanceOf;
 
 import static com.github.jinahya.persistence.test.util.EntityPersisterUtils.newPersistedInstanceOf;
 

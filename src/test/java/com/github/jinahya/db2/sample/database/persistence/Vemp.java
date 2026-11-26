@@ -39,7 +39,7 @@ public class Vemp
     /**
      * Creates a new instance.
      */
-    public Vemp() {
+    protected Vemp() {
         super();
     }
 }

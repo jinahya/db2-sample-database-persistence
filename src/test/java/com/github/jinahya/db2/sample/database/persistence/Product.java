@@ -39,7 +39,7 @@ public class Product
     /**
      * Creates a new instance.
      */
-    public Product() {
+    protected Product() {
         super();
     }
 

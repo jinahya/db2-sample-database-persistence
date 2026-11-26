@@ -39,7 +39,7 @@ public class Inventory
     /**
      * Creates a new instance.
      */
-    public Inventory() {
+    protected Inventory() {
         super();
     }
 

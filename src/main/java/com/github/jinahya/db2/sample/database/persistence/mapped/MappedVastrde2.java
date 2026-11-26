@@ -20,17 +20,15 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.Vastrde2Id;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
-import java.util.Objects;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedVastrde2#TABLE_NAME} view, the
@@ -38,20 +36,20 @@ import java.util.Objects;
  * <p>
  * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
  * is insertable, and the setters are not public; an extending entity is for reading. The
- * identifier's columns stay insertable since EclipseLink requires an {@link Id @Id} mapping to be
- * writable.
+ * identifier's columns stay insertable since EclipseLink requires an
+ * {@link jakarta.persistence.Id @Id} mapping to be writable.
  * <p>
  * <strong>A view has no key.</strong> The columns {@value MappedVastrde2#COLUMN_NAME_DEPT1NO},
  * {@value MappedVastrde2#COLUMN_NAME_EMP2NO}, unique and not {@code null} in every row the sample
- * database is created with, are mapped as the identifier, which an entity needs; nothing in the
- * database keeps that so.
- * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
- * entity names a subclass of {@link MappedVastrde2Id} with {@code @IdClass} and inherits the
- * {@link Id @Id} attributes from here.
+ * database is created with, are its identifier, which an entity needs, though nothing in the
+ * database keeps them so. This class does not map it: an extending entity declares it, either as
+ * {@link jakarta.persistence.Id @Id} attributes with {@link Vastrde2Id} as its
+ * {@link jakarta.persistence.IdClass @IdClass}, or as an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId} of {@link Vastrde2Id}, and with it its
+ * {@code equals} and {@code hashCode}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
- * @see MappedVastrde2Id
+ * @see Vastrde2Id
  */
 @MappedSuperclass
 public abstract class MappedVastrde2 {
@@ -64,8 +62,8 @@ public abstract class MappedVastrde2 {
     // ------------------------------------------------------------------------------------- DEPT1NO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute maps. The
-     * value is {@value}.
+     * The name of the view column to which the {@value Vastrde2Id#ATTRIBUTE_NAME_DEPT1NO} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_DEPT1NO = "DEPT1NO";
 
@@ -75,13 +73,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_DEPT1NO = 3;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPT1NO} column. The value is
+     * The maximum size of the {@value Vastrde2Id#ATTRIBUTE_NAME_DEPT1NO} attribute. The value is
      * {@value}.
-     */
-    public static final String ATTRIBUTE_NAME_DEPT1NO = "dept1no";
-
-    /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute. The value is {@value}.
      */
     public static final int SIZE_MAX_DEPT1NO = COLUMN_LENGTH_DEPT1NO;
 
@@ -280,8 +273,8 @@ public abstract class MappedVastrde2 {
     // -------------------------------------------------------------------------------------- EMP2NO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_EMP2NO} attribute maps. The
-     * value is {@value}.
+     * The name of the view column to which the {@value Vastrde2Id#ATTRIBUTE_NAME_EMP2NO} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_EMP2NO = "EMP2NO";
 
@@ -291,13 +284,8 @@ public abstract class MappedVastrde2 {
     public static final int COLUMN_LENGTH_EMP2NO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMP2NO} column. The value is
+     * The maximum size of the {@value Vastrde2Id#ATTRIBUTE_NAME_EMP2NO} attribute. The value is
      * {@value}.
-     */
-    public static final String ATTRIBUTE_NAME_EMP2NO = "emp2no";
-
-    /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_EMP2NO} attribute. The value is {@value}.
      */
     public static final int SIZE_MAX_EMP2NO = COLUMN_LENGTH_EMP2NO;
 
@@ -387,8 +375,7 @@ public abstract class MappedVastrde2 {
     @Override
     public String toString() {
         return super.toString() + '{' +
-               "dept1no=" + dept1no +
-               ",dept1nam=" + dept1nam +
+               "dept1nam=" + dept1nam +
                ",emp1no=" + emp1no +
                ",emp1fn=" + emp1fn +
                ",emp1mi=" + emp1mi +
@@ -396,62 +383,10 @@ public abstract class MappedVastrde2 {
                ",type2=" + type2 +
                ",dept2no=" + dept2no +
                ",dept2nam=" + dept2nam +
-               ",emp2no=" + emp2no +
                ",emp2fn=" + emp2fn +
                ",emp2mi=" + emp2mi +
                ",emp2ln=" + emp2ln +
                '}';
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_DEPT1NO} and
-     *         {@value #ATTRIBUTE_NAME_EMP2NO} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedVastrde2 that)) {
-            return false;
-        }
-        return Objects.equals(getDept1no(), that.getDept1no())
-               && Objects.equals(getEmp2no(), that.getEmp2no());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_DEPT1NO} and
-     *         {@value #ATTRIBUTE_NAME_EMP2NO}, consistent with {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hash(getDept1no(), getEmp2no());
-    }
-
-    // ------------------------------------------------------------------------------------- dept1no
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
-     */
-    @Nonnull
-    public String getDept1no() {
-        return dept1no;
-    }
-
-    /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute with the specified
-     * value.
-     *
-     * @param dept1no new value for {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
-     */
-    protected void setDept1no(@Nonnull final String dept1no) {
-        this.dept1no = dept1no;
     }
 
     // ------------------------------------------------------------------------------------ dept1nam
@@ -629,28 +564,6 @@ public abstract class MappedVastrde2 {
         this.dept2nam = dept2nam;
     }
 
-    // -------------------------------------------------------------------------------------- emp2no
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
-     */
-    @Nonnull
-    public String getEmp2no() {
-        return emp2no;
-    }
-
-    /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMP2NO} attribute with the specified
-     * value.
-     *
-     * @param emp2no new value for {@value #ATTRIBUTE_NAME_EMP2NO} attribute.
-     */
-    protected void setEmp2no(@Nonnull final String emp2no) {
-        this.emp2no = emp2no;
-    }
-
     // -------------------------------------------------------------------------------------- emp2fn
 
     /**
@@ -716,20 +629,6 @@ public abstract class MappedVastrde2 {
     protected void setEmp2ln(@Nonnull final String emp2ln) {
         this.emp2ln = emp2ln;
     }
-
-    // ---------------------------------------------------------------------------------------------
-    @Nonnull
-    @Size(max = SIZE_MAX_DEPT1NO)
-    @NotNull
-    @Id
-    @Basic(optional = false, fetch = FetchType.EAGER)
-    @Column(name = COLUMN_NAME_DEPT1NO,
-            nullable = false,
-            insertable = true,
-            updatable = false,
-            length = COLUMN_LENGTH_DEPT1NO
-    )
-    private String dept1no;
 
     // ---------------------------------------------------------------------------------------------
     @Nonnull
@@ -826,20 +725,6 @@ public abstract class MappedVastrde2 {
             length = COLUMN_LENGTH_DEPT2NAM
     )
     private String dept2nam;
-
-    // ---------------------------------------------------------------------------------------------
-    @Nonnull
-    @Size(max = SIZE_MAX_EMP2NO)
-    @NotNull
-    @Id
-    @Basic(optional = false, fetch = FetchType.EAGER)
-    @Column(name = COLUMN_NAME_EMP2NO,
-            nullable = false,
-            insertable = true,
-            updatable = false,
-            length = COLUMN_LENGTH_EMP2NO
-    )
-    private String emp2no;
 
     // ---------------------------------------------------------------------------------------------
     @Nonnull

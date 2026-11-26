@@ -36,8 +36,7 @@ class ProductSupplier_Randomizer
 
     ProductSupplier_Randomizer() {
         super(ProductSupplier.class, List.of(
-                ProductSupplier.ATTRIBUTE_NAME_PID,
-                ProductSupplier.ATTRIBUTE_NAME_SID
+                ProductSupplier.ATTRIBUTE_NAME_ID
         ));
     }
 
@@ -45,8 +44,8 @@ class ProductSupplier_Randomizer
     @Override
     public ProductSupplier get() {
         final var instance = super.get();
-        instance.setPid(__Randomizer_Utils.string(10));
-        instance.setSid(__Randomizer_Utils.string(10));
+        instance.setId(ProductSupplierId.of(__Randomizer_Utils.string(10),
+                                            __Randomizer_Utils.string(10)));
         return instance;
     }
 }

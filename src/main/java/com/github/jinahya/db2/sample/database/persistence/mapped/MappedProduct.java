@@ -493,6 +493,6 @@ public abstract class MappedProduct {
             insertable = true,
             updatable = true,
             length = 1048576 // just for H2
-    )
+            )
     private Product description;
 }

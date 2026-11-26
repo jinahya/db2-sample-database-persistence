@@ -39,7 +39,7 @@ public class Vphone
     /**
      * Creates a new instance.
      */
-    public Vphone() {
+    protected Vphone() {
         super();
     }
 }

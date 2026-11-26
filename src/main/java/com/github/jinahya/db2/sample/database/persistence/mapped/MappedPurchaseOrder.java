@@ -263,8 +263,8 @@ public abstract class MappedPurchaseOrder {
      * value.
      *
      * @param custid new value for {@value #ATTRIBUTE_NAME_CUSTID} attribute.
-     * @apiNote The column is mapped read-only here, and written through the association of an
-     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     * @apiNote The column is mapped read-only here, and written through the association of
+     *         an extending entity, whose setter calls this, so that this attribute stays consistent
      *         with the association.
      */
     protected void setCustid(@Nullable final Long custid) {
@@ -391,7 +391,7 @@ public abstract class MappedPurchaseOrder {
             insertable = true,
             updatable = true,
             length = 1048576 // just for H2
-    )
+            )
     private PurchaseOrder porder;
 
     // ---------------------------------------------------------------------------------------------

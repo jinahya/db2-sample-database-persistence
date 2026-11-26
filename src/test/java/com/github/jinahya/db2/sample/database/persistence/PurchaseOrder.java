@@ -44,7 +44,7 @@ public class PurchaseOrder
     /**
      * Creates a new instance.
      */
-    public PurchaseOrder() {
+    protected PurchaseOrder() {
         super();
     }
 

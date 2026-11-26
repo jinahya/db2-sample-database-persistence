@@ -50,8 +50,8 @@ class Catalog_PersistenceIT
     }
 
     /**
-     * Parses the {@code CATLOG} of the specified instance, if any, as an XML document, and
-     * saves it. The column has no registered schema, so the document is not validated.
+     * Parses the {@code CATLOG} of the specified instance, if any, as an XML document, and saves
+     * it. The column has no registered schema, so the document is not validated.
      *
      * @param entityManager  the entity manager which selected the instance.
      * @param entityInstance the instance.

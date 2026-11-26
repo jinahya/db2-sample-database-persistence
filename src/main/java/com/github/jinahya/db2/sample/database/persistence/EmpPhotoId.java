@@ -1,4 +1,4 @@
-package com.github.jinahya.db2.sample.database.persistence.mapped;
+package com.github.jinahya.db2.sample.database.persistence;
 
 /*-
  * #%L
@@ -20,30 +20,27 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmpPhoto;
 import jakarta.annotation.Nonnull;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
-import java.io.Serializable;
 import java.util.Objects;
-import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedEmpPhoto#TABLE_NAME} table -- the key of
- * {@value MappedEmpPhoto#COLUMN_NAME_EMPNO}, {@value MappedEmpPhoto#COLUMN_NAME_PHOTO_FORMAT}.
+ * The identifier of the {@value MappedEmpPhoto#TABLE_NAME} table, the key of
+ * {@value MappedEmpPhoto#COLUMN_NAME_EMPNO} and {@value MappedEmpPhoto#COLUMN_NAME_PHOTO_FORMAT}.
  * <p>
- * An entity extending {@link MappedEmpPhoto} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
- * the {@link jakarta.persistence.Id @Id} attributes there.
+ * It is an {@link Embeddable @Embeddable}, so that an entity extending {@link MappedEmpPhoto} may
+ * name it either with {@link jakarta.persistence.IdClass @IdClass}, whose attributes have the names
+ * and the types of the {@link jakarta.persistence.Id @Id} attributes there, or as the type of an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId}, which the column mappings here serve.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedEmpPhoto
  */
-public abstract class MappedEmpPhotoId
-        implements Serializable {
-
-    /**
-     * The serial version UID of this class. The value is {@value}.
-     */
-    private static final long serialVersionUID = 1L;
+@Embeddable
+public class EmpPhotoId {
 
     // --------------------------------------------------------------------------------------- EMPNO
 
@@ -51,7 +48,7 @@ public abstract class MappedEmpPhotoId
      * The name of the attribute which maps the {@value MappedEmpPhoto#COLUMN_NAME_EMPNO} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_EMPNO = MappedEmpPhoto.ATTRIBUTE_NAME_EMPNO;
+    public static final String ATTRIBUTE_NAME_EMPNO = "empno";
 
     // -------------------------------------------------------------------------------- PHOTO_FORMAT
 
@@ -59,30 +56,19 @@ public abstract class MappedEmpPhotoId
      * The name of the attribute which maps the {@value MappedEmpPhoto#COLUMN_NAME_PHOTO_FORMAT}
      * column. The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_PHOTO_FORMAT =
-            MappedEmpPhoto.ATTRIBUTE_NAME_PHOTO_FORMAT;
+    public static final String ATTRIBUTE_NAME_PHOTO_FORMAT = "photoFormat";
 
-    // ---------------------------------------------------------------------------------------------
-    // STATIC_FACTORY_METHODS
+    // ---------------------------------------------------------------------- STATIC_FACTORY_METHODS
 
     /**
-     * Creates a new instance of a subclass, with the specified values.
+     * Returns a new instance with the specified values.
      *
-     * @param <T>          the type of the identifier.
-     * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param empno        a value for the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
-     * @param photoFormat  a value for the {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
-     * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
-     *                              {@code null}.
+     * @param empno       a value for the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * @param photoFormat a value for the {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
+     * @return a new instance with {@code empno} and {@code photoFormat}.
      */
-    protected static <T extends MappedEmpPhotoId> T of(
-            final Supplier<? extends T> instantiator,
-            final String empno,
-            final String photoFormat) {
-        Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance =
-                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+    public static EmpPhotoId of(final String empno, final String photoFormat) {
+        final var instance = new EmpPhotoId();
         instance.setEmpno(empno);
         instance.setPhotoFormat(photoFormat);
         return instance;
@@ -93,7 +79,7 @@ public abstract class MappedEmpPhotoId
     /**
      * Creates a new instance.
      */
-    protected MappedEmpPhotoId() {
+    public EmpPhotoId() {
         super();
     }
 
@@ -117,7 +103,7 @@ public abstract class MappedEmpPhotoId
      */
     @Override
     public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedEmpPhotoId that)) {
+        if (!(obj instanceof EmpPhotoId that)) {
             return false;
         }
         return Objects.equals(getEmpno(), that.getEmpno())
@@ -184,6 +170,12 @@ public abstract class MappedEmpPhotoId
     /**
      * The value of the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      */
+    @Column(name = MappedEmpPhoto.COLUMN_NAME_EMPNO,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedEmpPhoto.COLUMN_LENGTH_EMPNO
+    )
     private String empno;
 
     // ---------------------------------------------------------------------------------------------
@@ -191,5 +183,11 @@ public abstract class MappedEmpPhotoId
     /**
      * The value of the {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
      */
+    @Column(name = MappedEmpPhoto.COLUMN_NAME_PHOTO_FORMAT,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedEmpPhoto.COLUMN_LENGTH_PHOTO_FORMAT
+    )
     private String photoFormat;
 }

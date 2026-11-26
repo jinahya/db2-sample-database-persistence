@@ -85,7 +85,7 @@ class PersistenceUnit_Test {
             employee.setEdlevel(18);
             em.persist(employee);
             final var photo = new EmpPhoto();
-            photo.setEmpno(employee.getEmpno());
+            photo.setEmployee(employee);
             photo.setPhotoFormat("png");
             photo.setPicture(new byte[]{1, 2, 3});
             em.persist(photo);

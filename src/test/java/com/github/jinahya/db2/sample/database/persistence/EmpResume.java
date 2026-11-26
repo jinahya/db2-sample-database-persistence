@@ -21,55 +21,118 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmpResume;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.Objects;
+import java.util.Optional;
 
 /**
- * An entity of the {@value #TABLE_NAME} table.
+ * An entity of the {@value #TABLE_NAME} table, which declares the identifier
+ * {@link MappedEmpResume} leaves out, an {@link EmbeddedId @EmbeddedId} of {@link EmpResumeId}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
 @Entity
-@IdClass(EmpResumeId.class)
 @Table(name = EmpResume.TABLE_NAME)
 public class EmpResume
         extends MappedEmpResume {
+
+    /**
+     * The name of the attribute of the identifier, an {@link EmbeddedId @EmbeddedId} of
+     * {@link EmpResumeId}. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_ID = "id";
+
+    /**
+     * The path of the identifier's attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The
+     * value is {@value}.
+     */
+    public static final String ATTRIBUTE_PATH_ID_EMPNO =
+            ATTRIBUTE_NAME_ID + "." + EmpResumeId.ATTRIBUTE_NAME_EMPNO;
+
+    /**
+     * The path of the identifier's attribute which maps the {@value #COLUMN_NAME_RESUME_FORMAT}
+     * column. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_PATH_ID_RESUME_FORMAT =
+            ATTRIBUTE_NAME_ID + "." + EmpResumeId.ATTRIBUTE_NAME_RESUME_FORMAT;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
      */
-    public EmpResume() {
+    protected EmpResume() {
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param empno {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
-     */
+    // ---------------------------------------------------------------------------- java.lang.Object
+
     @Override
-    public void setEmpno(final String empno) {
-        super.setEmpno(empno);
+    public String toString() {
+        return super.toString() + '{' +
+               "id=" + id +
+               '}';
     }
 
     /**
      * {@inheritDoc}
      *
-     * @param resumeFormat {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @param obj {@inheritDoc}
+     * @return {@inheritDoc}
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_ID}, the identifier.
      */
     @Override
-    public void setResumeFormat(final String resumeFormat) {
-        super.setResumeFormat(resumeFormat);
+    public final boolean equals(final Object obj) {
+        if (!(obj instanceof EmpResume that)) {
+            return false;
+        }
+        return Objects.equals(getId(), that.getId());
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return {@inheritDoc}
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ID}, consistent with
+     *         {@link #equals(Object)}.
+     */
+    @Override
+    public final int hashCode() {
+        return Objects.hash(getId());
+    }
+    // ------------------------------------------------------------------------------------------ id
+
+    /**
+     * Returns current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     *
+     * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     */
+    protected EmpResumeId getId() {
+        return id;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+
+    /**
+     * Replaces the resume format of the identifier with the specified value; an identifier is
+     * created when there is none.
+     *
+     * @param resumeFormat new value for the resume format of the identifier.
+     */
+    protected void setResumeFormat(final String resumeFormat) {
+        if (id == null) {
+            id = new EmpResumeId();
+        }
+        id.setResumeFormat(resumeFormat);
     }
 
     // ------------------------------------------------------------------------------------ employee
@@ -83,13 +146,40 @@ public class EmpResume
         return employee;
     }
 
+    /**
+     * Replaces the employee with the specified value.
+     *
+     * @param employee new value for the employee.
+     * @implNote The association maps the employee number of the identifier
+     *         ({@link jakarta.persistence.MapsId @MapsId}), which the provider sets from it when
+     *         this instance is persisted; this sets it as well, so that the identifier is complete
+     *         before then.
+     */
+    public void setEmployee(final Employee employee) {
+        this.employee = employee;
+        id = EmpResumeId.from(
+                employee,
+                Optional.ofNullable(id)
+                        .map(EmpResumeId::getResumeFormat)
+                        .orElse(null)
+        );
+    }
+
     // ---------------------------------------------------------------------------------------------
-    // read-only: the column(s) are part of the identifier, which the superclass writes
+    @Valid
+    @NotNull
+    @EmbeddedId
+    private EmpResumeId id;
+
+    // ---------------------------------------------------------------------------------------------
+    // maps the employee number of the identifier, which the provider derives from it
+    @MapsId(EmpResumeId.ATTRIBUTE_NAME_EMPNO)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = EmpResume.COLUMN_NAME_EMPNO,
                 referencedColumnName = Employee.COLUMN_NAME_EMPNO,
                 nullable = false,
-                insertable = false,
-                updatable = false)
+                insertable = true,
+                updatable = false
+    )
     private Employee employee;
 }

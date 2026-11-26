@@ -45,7 +45,7 @@ public class Department
     /**
      * Creates a new instance.
      */
-    public Department() {
+    protected Department() {
         super();
     }
 

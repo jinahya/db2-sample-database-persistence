@@ -32,8 +32,8 @@ import java.util.Optional;
  * Reads a value, by its index, from a row of a native query, which a provider hands over as an
  * {@code Object[]}.
  * <p>
- * Without a result mapping, the type of each value is the provider's and the driver's to choose:
- * a {@code SMALLINT} may come as a {@link Short} or an {@link Integer}, a {@code TIME} as a
+ * Without a result mapping, the type of each value is the provider's and the driver's to choose: a
+ * {@code SMALLINT} may come as a {@link Short} or an {@link Integer}, a {@code TIME} as a
  * {@link java.sql.Time} or a {@link LocalTime}, a {@code CHAR(1)} as a {@link Character}. Each
  * method takes what either provider gives, and returns the type of the attribute.
  */

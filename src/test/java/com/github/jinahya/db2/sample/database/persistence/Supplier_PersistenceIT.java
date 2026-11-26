@@ -54,9 +54,9 @@ class Supplier_PersistenceIT
     }
 
     /**
-     * Reads the {@code ADDR} document of the specified instance as stored, parses it,
-     * validates it against its schema, and saves it; then marshals the attribute bound to the
-     * schema, validating it again, and saves that as well.
+     * Reads the {@code ADDR} document of the specified instance as stored, parses it, validates it
+     * against its schema, and saves it; then marshals the attribute bound to the schema, validating
+     * it again, and saves that as well.
      *
      * @param entityManager  the entity manager which selected the instance.
      * @param entityInstance the instance.

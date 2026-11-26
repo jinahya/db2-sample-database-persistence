@@ -283,12 +283,11 @@ public abstract class MappedDepartment {
     // --------------------------------------------------------------------------------------- mgrno
 
     /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute with the specified
-     * value.
+     * Replaces current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute with the specified value.
      *
      * @param mgrno new value for {@value #ATTRIBUTE_NAME_MGRNO} attribute.
-     * @apiNote The column is mapped read-only here, and written through the association of an
-     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     * @apiNote The column is mapped read-only here, and written through the association of
+     *         an extending entity, whose setter calls this, so that this attribute stays consistent
      *         with the association.
      */
     protected void setMgrno(@Nullable final String mgrno) {
@@ -302,8 +301,8 @@ public abstract class MappedDepartment {
      * value.
      *
      * @param admrdept new value for {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute.
-     * @apiNote The column is mapped read-only here, and written through the association of an
-     *         extending entity, whose setter calls this, so that this attribute stays consistent
+     * @apiNote The column is mapped read-only here, and written through the association of
+     *         an extending entity, whose setter calls this, so that this attribute stays consistent
      *         with the association.
      */
     protected void setAdmrdept(@Nullable final String admrdept) {

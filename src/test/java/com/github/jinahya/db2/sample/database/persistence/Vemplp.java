@@ -39,7 +39,7 @@ public class Vemplp
     /**
      * Creates a new instance.
      */
-    public Vemplp() {
+    protected Vemplp() {
         super();
     }
 }

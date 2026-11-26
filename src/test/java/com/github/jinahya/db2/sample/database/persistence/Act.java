@@ -39,7 +39,7 @@ public class Act
     /**
      * Creates a new instance.
      */
-    public Act() {
+    protected Act() {
         super();
     }
 

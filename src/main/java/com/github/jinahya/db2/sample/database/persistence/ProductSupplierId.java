@@ -1,4 +1,4 @@
-package com.github.jinahya.db2.sample.database.persistence.mapped;
+package com.github.jinahya.db2.sample.database.persistence;
 
 /*-
  * #%L
@@ -20,31 +20,29 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
-import jakarta.annotation.Nonnull;
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedProductSupplier;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import java.io.Serializable;
 import java.util.Objects;
-import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedProductSupplier#TABLE_NAME} table -- the key
- * of {@value MappedProductSupplier#COLUMN_NAME_PID},
- * {@value MappedProductSupplier#COLUMN_NAME_SID}.
+ * The identifier of the {@value MappedProductSupplier#TABLE_NAME} table, the key of
+ * {@value MappedProductSupplier#COLUMN_NAME_PID}, {@value MappedProductSupplier#COLUMN_NAME_SID}.
  * <p>
- * An entity extending {@link MappedProductSupplier} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
- * the {@link jakarta.persistence.Id @Id} attributes there.
+ * It is an {@link Embeddable @Embeddable}, so that an entity extending
+ * {@link MappedProductSupplier} may name it either with
+ * {@link jakarta.persistence.IdClass @IdClass}, whose attributes have the names and the types of
+ * the {@link jakarta.persistence.Id @Id} attributes there, or as the type of an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId}, which the column mappings here serve.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedProductSupplier
  */
-public abstract class MappedProductSupplierId
-        implements Serializable {
-
-    /**
-     * The serial version UID of this class. The value is {@value}.
-     */
-    private static final long serialVersionUID = 1L;
+@Embeddable
+public class ProductSupplierId {
 
     // ----------------------------------------------------------------------------------------- PID
 
@@ -52,7 +50,7 @@ public abstract class MappedProductSupplierId
      * The name of the attribute which maps the {@value MappedProductSupplier#COLUMN_NAME_PID}
      * column. The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_PID = MappedProductSupplier.ATTRIBUTE_NAME_PID;
+    public static final String ATTRIBUTE_NAME_PID = "pid";
 
     // ----------------------------------------------------------------------------------------- SID
 
@@ -60,29 +58,19 @@ public abstract class MappedProductSupplierId
      * The name of the attribute which maps the {@value MappedProductSupplier#COLUMN_NAME_SID}
      * column. The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_SID = MappedProductSupplier.ATTRIBUTE_NAME_SID;
+    public static final String ATTRIBUTE_NAME_SID = "sid";
 
-    // ---------------------------------------------------------------------------------------------
-    // STATIC_FACTORY_METHODS
+    // ---------------------------------------------------------------------- STATIC_FACTORY_METHODS
 
     /**
-     * Creates a new instance of a subclass, with the specified values.
+     * Returns a new instance with the specified values.
      *
-     * @param <T>          the type of the identifier.
-     * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param pid          a value for the {@value #ATTRIBUTE_NAME_PID} attribute.
-     * @param sid          a value for the {@value #ATTRIBUTE_NAME_SID} attribute.
-     * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
-     *                              {@code null}.
+     * @param pid a value for the {@value #ATTRIBUTE_NAME_PID} attribute.
+     * @param sid a value for the {@value #ATTRIBUTE_NAME_SID} attribute.
+     * @return a new instance with the specified values.
      */
-    protected static <T extends MappedProductSupplierId> T of(
-            final Supplier<? extends T> instantiator,
-            final String pid,
-            final String sid) {
-        Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance =
-                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+    public static ProductSupplierId of(final String pid, final String sid) {
+        final var instance = new ProductSupplierId();
         instance.setPid(pid);
         instance.setSid(sid);
         return instance;
@@ -93,7 +81,7 @@ public abstract class MappedProductSupplierId
     /**
      * Creates a new instance.
      */
-    protected MappedProductSupplierId() {
+    public ProductSupplierId() {
         super();
     }
 
@@ -117,7 +105,7 @@ public abstract class MappedProductSupplierId
      */
     @Override
     public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedProductSupplierId that)) {
+        if (!(obj instanceof ProductSupplierId that)) {
             return false;
         }
         return Objects.equals(getPid(), that.getPid())
@@ -143,7 +131,6 @@ public abstract class MappedProductSupplierId
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PID} attribute.
      */
-    @Nonnull
     public String getPid() {
         return pid;
     }
@@ -153,7 +140,7 @@ public abstract class MappedProductSupplierId
      *
      * @param pid new value for {@value #ATTRIBUTE_NAME_PID} attribute.
      */
-    protected void setPid(@Nonnull final String pid) {
+    protected void setPid(final String pid) {
         this.pid = pid;
     }
 
@@ -164,7 +151,6 @@ public abstract class MappedProductSupplierId
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SID} attribute.
      */
-    @Nonnull
     public String getSid() {
         return sid;
     }
@@ -174,7 +160,7 @@ public abstract class MappedProductSupplierId
      *
      * @param sid new value for {@value #ATTRIBUTE_NAME_SID} attribute.
      */
-    protected void setSid(@Nonnull final String sid) {
+    protected void setSid(final String sid) {
         this.sid = sid;
     }
 
@@ -183,6 +169,14 @@ public abstract class MappedProductSupplierId
     /**
      * The value of the {@value #ATTRIBUTE_NAME_PID} attribute.
      */
+    @Size(max = MappedProductSupplier.SIZE_MAX_PID)
+    @NotNull
+    @Column(name = MappedProductSupplier.COLUMN_NAME_PID,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedProductSupplier.COLUMN_LENGTH_PID
+    )
     private String pid;
 
     // ---------------------------------------------------------------------------------------------
@@ -190,5 +184,13 @@ public abstract class MappedProductSupplierId
     /**
      * The value of the {@value #ATTRIBUTE_NAME_SID} attribute.
      */
+    @Size(max = MappedProductSupplier.SIZE_MAX_SID)
+    @NotNull
+    @Column(name = MappedProductSupplier.COLUMN_NAME_SID,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedProductSupplier.COLUMN_LENGTH_SID
+    )
     private String sid;
 }

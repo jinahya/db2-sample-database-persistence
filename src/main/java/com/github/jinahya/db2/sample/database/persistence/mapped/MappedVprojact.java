@@ -20,23 +20,16 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
-import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
-import jakarta.annotation.Nonnull;
+import com.github.jinahya.db2.sample.database.persistence.VprojactId;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedVprojact#TABLE_NAME} view, the
@@ -44,20 +37,20 @@ import java.util.Objects;
  * <p>
  * <strong>The view is mapped read-only.</strong> No column is updatable, none but the identifier's
  * is insertable, and the setters are not public; an extending entity is for reading. The
- * identifier's columns stay insertable since EclipseLink requires an {@link Id @Id} mapping to be
- * writable.
+ * identifier's columns stay insertable since EclipseLink requires an
+ * {@link jakarta.persistence.Id @Id} mapping to be writable.
  * <p>
  * <strong>A view has no key.</strong> The columns {@value MappedVprojact#COLUMN_NAME_PROJNO},
  * {@value MappedVprojact#COLUMN_NAME_ACTNO}, {@value MappedVprojact#COLUMN_NAME_ACSTDATE}, unique
- * and not {@code null} in every row the sample database is created with, are mapped as the
- * identifier, which an entity needs; nothing in the database keeps that so.
- * <p>
- * The identifier is mapped with an {@link jakarta.persistence.IdClass @IdClass}: an extending
- * entity names a subclass of {@link MappedVprojactId} with {@code @IdClass} and inherits the
- * {@link Id @Id} attributes from here.
+ * and not {@code null} in every row the sample database is created with, are its identifier, which
+ * an entity needs, though nothing in the database keeps them so. This class does not map it: an
+ * extending entity declares it, either as {@link jakarta.persistence.Id @Id} attributes with
+ * {@link VprojactId} as its {@link jakarta.persistence.IdClass @IdClass}, or as an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId} of {@link VprojactId}, and with it its
+ * {@code equals} and {@code hashCode}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
- * @see MappedVprojactId
+ * @see VprojactId
  */
 @MappedSuperclass
 public abstract class MappedVprojact {
@@ -70,8 +63,8 @@ public abstract class MappedVprojact {
     // -------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_PROJNO} attribute maps. The
-     * value is {@value}.
+     * The name of the view column to which the {@value VprojactId#ATTRIBUTE_NAME_PROJNO} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_PROJNO = "PROJNO";
 
@@ -81,29 +74,18 @@ public abstract class MappedVprojact {
     public static final int COLUMN_LENGTH_PROJNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column. The value is
+     * The maximum size of the {@value VprojactId#ATTRIBUTE_NAME_PROJNO} attribute. The value is
      * {@value}.
-     */
-    public static final String ATTRIBUTE_NAME_PROJNO = "projno";
-
-    /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_PROJNO} attribute. The value is {@value}.
      */
     public static final int SIZE_MAX_PROJNO = COLUMN_LENGTH_PROJNO;
 
     // --------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACTNO} attribute maps. The
-     * value is {@value}.
+     * The name of the view column to which the {@value VprojactId#ATTRIBUTE_NAME_ACTNO} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_ACTNO = "ACTNO";
-
-    /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column. The value is
-     * {@value}.
-     */
-    public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
     // ------------------------------------------------------------------------------------- ACSTAFF
 
@@ -145,16 +127,10 @@ public abstract class MappedVprojact {
     // ------------------------------------------------------------------------------------ ACSTDATE
 
     /**
-     * The name of the view column to which the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute maps.
-     * The value is {@value}.
+     * The name of the view column to which the {@value VprojactId#ATTRIBUTE_NAME_ACSTDATE}
+     * attribute maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_ACSTDATE = "ACSTDATE";
-
-    /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_ACSTDATE} column. The value is
-     * {@value}.
-     */
-    public static final String ATTRIBUTE_NAME_ACSTDATE = "acstdate";
 
     // ------------------------------------------------------------------------------------ ACENDATE
 
@@ -184,86 +160,9 @@ public abstract class MappedVprojact {
     @Override
     public String toString() {
         return super.toString() + '{' +
-               "projno=" + projno +
-               ",actno=" + actno +
-               ",acstaff=" + acstaff +
-               ",acstdate=" + acstdate +
+               "acstaff=" + acstaff +
                ",acendate=" + acendate +
                '}';
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_PROJNO} and
-     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_ACSTDATE} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedVprojact that)) {
-            return false;
-        }
-        return Objects.equals(getProjno(), that.getProjno())
-               && Objects.equals(getActno(), that.getActno())
-               && Objects.equals(getAcstdate(), that.getAcstdate());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_PROJNO} and
-     *         {@value #ATTRIBUTE_NAME_ACTNO} and {@value #ATTRIBUTE_NAME_ACSTDATE}, consistent with
-     *         {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hash(getProjno(), getActno(), getAcstdate());
-    }
-
-    // -------------------------------------------------------------------------------------- projno
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
-     */
-    @Nonnull
-    public String getProjno() {
-        return projno;
-    }
-
-    /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute with the specified
-     * value.
-     *
-     * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
-     */
-    protected void setProjno(@Nonnull final String projno) {
-        this.projno = projno;
-    }
-
-    // --------------------------------------------------------------------------------------- actno
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
-     */
-    @Nonnull
-    public Integer getActno() {
-        return actno;
-    }
-
-    /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute with the specified value.
-     *
-     * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
-     */
-    protected void setActno(@Nonnull final Integer actno) {
-        this.actno = actno;
     }
 
     // ------------------------------------------------------------------------------------- acstaff
@@ -286,28 +185,6 @@ public abstract class MappedVprojact {
      */
     protected void setAcstaff(@Nullable final BigDecimal acstaff) {
         this.acstaff = acstaff;
-    }
-
-    // ------------------------------------------------------------------------------------ acstdate
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
-     */
-    @Nonnull
-    public LocalDate getAcstdate() {
-        return acstdate;
-    }
-
-    /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute with the specified
-     * value.
-     *
-     * @param acstdate new value for {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
-     */
-    protected void setAcstdate(@Nonnull final LocalDate acstdate) {
-        this.acstdate = acstdate;
     }
 
     // ------------------------------------------------------------------------------------ acendate
@@ -333,34 +210,6 @@ public abstract class MappedVprojact {
     }
 
     // ---------------------------------------------------------------------------------------------
-    @Nonnull
-    @Size(max = SIZE_MAX_PROJNO)
-    @NotNull
-    @Id
-    @Basic(optional = false, fetch = FetchType.EAGER)
-    @Column(name = COLUMN_NAME_PROJNO,
-            nullable = false,
-            insertable = true,
-            updatable = false,
-            length = COLUMN_LENGTH_PROJNO
-    )
-    private String projno;
-
-    // ---------------------------------------------------------------------------------------------
-    @Nonnull
-    @Max(Db2Constants.SMALLINT_MAX)
-    @Min(Db2Constants.SMALLINT_MIN)
-    @NotNull
-    @Id
-    @Basic(optional = false, fetch = FetchType.EAGER)
-    @Column(name = COLUMN_NAME_ACTNO,
-            nullable = false,
-            insertable = true,
-            updatable = false
-    )
-    private Integer actno;
-
-    // ---------------------------------------------------------------------------------------------
     @Digits(integer = DIGITS_INTEGER_ACSTAFF, fraction = DIGITS_FRACTION_ACSTAFF)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_ACSTAFF,
@@ -371,18 +220,6 @@ public abstract class MappedVprojact {
             scale = COLUMN_SCALE_ACSTAFF
     )
     private BigDecimal acstaff;
-
-    // ---------------------------------------------------------------------------------------------
-    @Nonnull
-    @NotNull
-    @Id
-    @Basic(optional = false, fetch = FetchType.EAGER)
-    @Column(name = COLUMN_NAME_ACSTDATE,
-            nullable = false,
-            insertable = true,
-            updatable = false
-    )
-    private LocalDate acstdate;
 
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)

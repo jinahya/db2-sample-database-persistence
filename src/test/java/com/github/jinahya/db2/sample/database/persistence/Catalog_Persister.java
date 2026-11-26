@@ -34,6 +34,5 @@ class Catalog_Persister
     Catalog_Persister() {
         super(Catalog.class);
     }
-
 }
 

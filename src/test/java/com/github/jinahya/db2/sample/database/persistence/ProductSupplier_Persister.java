@@ -34,6 +34,5 @@ class ProductSupplier_Persister
     ProductSupplier_Persister() {
         super(ProductSupplier.class);
     }
-
 }
 

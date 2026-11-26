@@ -1,4 +1,4 @@
-package com.github.jinahya.db2.sample.database.persistence.mapped;
+package com.github.jinahya.db2.sample.database.persistence;
 
 /*-
  * #%L
@@ -20,35 +20,32 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
-import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
-import jakarta.annotation.Nonnull;
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVstafac1;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedVstafac1#TABLE_NAME} view -- the logical,
- * not declared, key of {@value MappedVstafac1#COLUMN_NAME_PROJNO},
- * {@value MappedVstafac1#COLUMN_NAME_ACTNO}, {@value MappedVstafac1#COLUMN_NAME_STDATE}.
+ * The identifier of the {@value MappedVstafac1#TABLE_NAME} view, the key of
+ * {@value MappedVstafac1#COLUMN_NAME_PROJNO}, {@value MappedVstafac1#COLUMN_NAME_ACTNO},
+ * {@value MappedVstafac1#COLUMN_NAME_STDATE}.
  * <p>
- * An entity extending {@link MappedVstafac1} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
- * the {@link jakarta.persistence.Id @Id} attributes there.
+ * It is an {@link Embeddable @Embeddable}, so that an entity extending {@link MappedVstafac1} may
+ * name it either with {@link jakarta.persistence.IdClass @IdClass}, whose attributes have the names
+ * and the types of the {@link jakarta.persistence.Id @Id} attributes there, or as the type of an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId}, which the column mappings here serve.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedVstafac1
  */
-public abstract class MappedVstafac1Id
-        implements Serializable {
-
-    /**
-     * The serial version UID of this class. The value is {@value}.
-     */
-    private static final long serialVersionUID = 1L;
+@Embeddable
+public class Vstafac1Id {
 
     // -------------------------------------------------------------------------------------- PROJNO
 
@@ -56,7 +53,7 @@ public abstract class MappedVstafac1Id
      * The name of the attribute which maps the {@value MappedVstafac1#COLUMN_NAME_PROJNO} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_PROJNO = MappedVstafac1.ATTRIBUTE_NAME_PROJNO;
+    public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
     // --------------------------------------------------------------------------------------- ACTNO
 
@@ -64,7 +61,7 @@ public abstract class MappedVstafac1Id
      * The name of the attribute which maps the {@value MappedVstafac1#COLUMN_NAME_ACTNO} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_ACTNO = MappedVstafac1.ATTRIBUTE_NAME_ACTNO;
+    public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
     // -------------------------------------------------------------------------------------- STDATE
 
@@ -72,31 +69,20 @@ public abstract class MappedVstafac1Id
      * The name of the attribute which maps the {@value MappedVstafac1#COLUMN_NAME_STDATE} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_STDATE = MappedVstafac1.ATTRIBUTE_NAME_STDATE;
+    public static final String ATTRIBUTE_NAME_STDATE = "stdate";
 
-    // ---------------------------------------------------------------------------------------------
-    // STATIC_FACTORY_METHODS
+    // ---------------------------------------------------------------------- STATIC_FACTORY_METHODS
 
     /**
-     * Creates a new instance of a subclass, with the specified values.
+     * Returns a new instance with the specified values.
      *
-     * @param <T>          the type of the identifier.
-     * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param projno       a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
-     * @param actno        a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
-     * @param stdate       a value for the {@value #ATTRIBUTE_NAME_STDATE} attribute.
-     * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
-     *                              {@code null}.
+     * @param projno a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
+     * @param actno  a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
+     * @param stdate a value for the {@value #ATTRIBUTE_NAME_STDATE} attribute.
+     * @return a new instance with the specified values.
      */
-    protected static <T extends MappedVstafac1Id> T of(
-            final Supplier<? extends T> instantiator,
-            final String projno,
-            final Integer actno,
-            final LocalDate stdate) {
-        Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance =
-                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+    public static Vstafac1Id of(final String projno, final Integer actno, final LocalDate stdate) {
+        final var instance = new Vstafac1Id();
         instance.setProjno(projno);
         instance.setActno(actno);
         instance.setStdate(stdate);
@@ -108,7 +94,7 @@ public abstract class MappedVstafac1Id
     /**
      * Creates a new instance.
      */
-    protected MappedVstafac1Id() {
+    public Vstafac1Id() {
         super();
     }
 
@@ -133,7 +119,7 @@ public abstract class MappedVstafac1Id
      */
     @Override
     public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedVstafac1Id that)) {
+        if (!(obj instanceof Vstafac1Id that)) {
             return false;
         }
         return Objects.equals(getProjno(), that.getProjno())
@@ -161,7 +147,6 @@ public abstract class MappedVstafac1Id
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
-    @Nonnull
     public String getProjno() {
         return projno;
     }
@@ -172,7 +157,7 @@ public abstract class MappedVstafac1Id
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
-    protected void setProjno(@Nonnull final String projno) {
+    protected void setProjno(final String projno) {
         this.projno = projno;
     }
 
@@ -183,7 +168,6 @@ public abstract class MappedVstafac1Id
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    @Nonnull
     public Integer getActno() {
         return actno;
     }
@@ -193,7 +177,7 @@ public abstract class MappedVstafac1Id
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Integer actno) {
+    protected void setActno(final Integer actno) {
         this.actno = actno;
     }
 
@@ -204,7 +188,6 @@ public abstract class MappedVstafac1Id
      *
      * @return current value of {@value #ATTRIBUTE_NAME_STDATE} attribute.
      */
-    @Nonnull
     public LocalDate getStdate() {
         return stdate;
     }
@@ -215,7 +198,7 @@ public abstract class MappedVstafac1Id
      *
      * @param stdate new value for {@value #ATTRIBUTE_NAME_STDATE} attribute.
      */
-    protected void setStdate(@Nonnull final LocalDate stdate) {
+    protected void setStdate(final LocalDate stdate) {
         this.stdate = stdate;
     }
 
@@ -224,6 +207,14 @@ public abstract class MappedVstafac1Id
     /**
      * The value of the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
+    @Size(max = MappedVstafac1.SIZE_MAX_PROJNO)
+    @NotNull
+    @Column(name = MappedVstafac1.COLUMN_NAME_PROJNO,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedVstafac1.COLUMN_LENGTH_PROJNO
+    )
     private String projno;
 
     // ---------------------------------------------------------------------------------------------
@@ -233,6 +224,12 @@ public abstract class MappedVstafac1Id
      */
     @Max(Db2Constants.SMALLINT_MAX)
     @Min(Db2Constants.SMALLINT_MIN)
+    @NotNull
+    @Column(name = MappedVstafac1.COLUMN_NAME_ACTNO,
+            nullable = false,
+            insertable = true,
+            updatable = false
+    )
     private Integer actno;
 
     // ---------------------------------------------------------------------------------------------
@@ -240,5 +237,11 @@ public abstract class MappedVstafac1Id
     /**
      * The value of the {@value #ATTRIBUTE_NAME_STDATE} attribute.
      */
+    @NotNull
+    @Column(name = MappedVstafac1.COLUMN_NAME_STDATE,
+            nullable = false,
+            insertable = true,
+            updatable = false
+    )
     private LocalDate stdate;
 }

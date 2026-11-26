@@ -39,7 +39,7 @@ public class Vempdpt1
     /**
      * Creates a new instance.
      */
-    public Vempdpt1() {
+    protected Vempdpt1() {
         super();
     }
 }

@@ -39,7 +39,7 @@ public class Supplier
     /**
      * Creates a new instance.
      */
-    public Supplier() {
+    protected Supplier() {
         super();
     }
 

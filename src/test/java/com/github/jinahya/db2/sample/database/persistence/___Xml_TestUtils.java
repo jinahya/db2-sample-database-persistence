@@ -49,9 +49,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Helpers which read, parse, validate and save the documents of the {@code XML} columns.
  * <p>
- * Each file is saved in {@code target}, named {@code <TABLE>_<ID>_<COLUMN>.xml} for the document
- * as stored, and {@code <TABLE>_<ID>_<COLUMN>_JAXB.xml} for the document marshalled from the
- * attribute bound to the column's schema.
+ * Each file is saved in {@code target}, named {@code <TABLE>_<ID>_<COLUMN>.xml} for the document as
+ * stored, and {@code <TABLE>_<ID>_<COLUMN>_JAXB.xml} for the document marshalled from the attribute
+ * bound to the column's schema.
  */
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
@@ -75,16 +75,15 @@ public final class ___Xml_TestUtils {
      * Reads the document stored in the specified column of the row of the specified id, as the
      * database serializes it, not as an attribute converter writes it back.
      *
-     * @implNote The document is serialized as a {@code VARCHAR}, not a {@code CLOB}, which the
-     *         driver closes before the query returns it; the longest in the sample is 458
-     *         characters.
-     *
      * @param entityManager the entity manager to read with.
      * @param table         the name of the table.
      * @param column        the name of the {@code XML} column.
      * @param idColumn      the name of the identifier column.
      * @param id            the identifier of the row.
      * @return the document stored in the column; {@code null} when the column is {@code null}.
+     * @implNote The document is serialized as a {@code VARCHAR}, not a {@code CLOB}, which
+     *         the driver closes before the query returns it; the longest in the sample is 458
+     *         characters.
      */
     public static String serialized(final EntityManager entityManager, final String table,
                                     final String column, final String idColumn,

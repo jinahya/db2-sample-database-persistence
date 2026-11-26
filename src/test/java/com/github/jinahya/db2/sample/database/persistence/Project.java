@@ -45,7 +45,7 @@ public class Project
     /**
      * Creates a new instance.
      */
-    public Project() {
+    protected Project() {
         super();
     }
 

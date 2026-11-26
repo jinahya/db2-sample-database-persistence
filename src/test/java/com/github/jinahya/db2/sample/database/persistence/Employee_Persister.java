@@ -34,6 +34,5 @@ class Employee_Persister
     Employee_Persister() {
         super(Employee.class);
     }
-
 }
 

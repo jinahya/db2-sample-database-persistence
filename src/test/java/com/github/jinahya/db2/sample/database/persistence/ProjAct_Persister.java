@@ -22,7 +22,6 @@ package com.github.jinahya.db2.sample.database.persistence;
 
 import com.github.jinahya.persistence.test.util.AbstractEntityPersister;
 import jakarta.persistence.EntityManager;
-import static com.github.jinahya.persistence.test.util.EntityPersisterUtils.newPersistedInstanceOf;
 
 import static com.github.jinahya.persistence.test.util.EntityPersisterUtils.newPersistedInstanceOf;
 
@@ -44,7 +43,7 @@ class ProjAct_Persister
     public ProjAct apply(final EntityManager entityManager, final ProjAct entityInstance) {
         final var project = newPersistedInstanceOf(entityManager, Project.class);
         entityManager.flush();
-        entityInstance.setProjno(project.getProjno());
+        entityInstance.setProject(project);
         return super.apply(entityManager, entityInstance);
     }
 }

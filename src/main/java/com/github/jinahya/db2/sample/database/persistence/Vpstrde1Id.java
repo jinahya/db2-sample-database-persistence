@@ -1,4 +1,4 @@
-package com.github.jinahya.db2.sample.database.persistence.mapped;
+package com.github.jinahya.db2.sample.database.persistence;
 
 /*-
  * #%L
@@ -20,31 +20,28 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
-import jakarta.annotation.Nonnull;
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVpstrde1;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import java.io.Serializable;
 import java.util.Objects;
-import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedVpstrde1#TABLE_NAME} view -- the logical,
- * not declared, key of {@value MappedVpstrde1#COLUMN_NAME_PROJ1NO},
- * {@value MappedVpstrde1#COLUMN_NAME_PROJ2NO}.
+ * The identifier of the {@value MappedVpstrde1#TABLE_NAME} view, the key of
+ * {@value MappedVpstrde1#COLUMN_NAME_PROJ1NO}, {@value MappedVpstrde1#COLUMN_NAME_PROJ2NO}.
  * <p>
- * An entity extending {@link MappedVpstrde1} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
- * the {@link jakarta.persistence.Id @Id} attributes there.
+ * It is an {@link Embeddable @Embeddable}, so that an entity extending {@link MappedVpstrde1} may
+ * name it either with {@link jakarta.persistence.IdClass @IdClass}, whose attributes have the names
+ * and the types of the {@link jakarta.persistence.Id @Id} attributes there, or as the type of an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId}, which the column mappings here serve.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedVpstrde1
  */
-public abstract class MappedVpstrde1Id
-        implements Serializable {
-
-    /**
-     * The serial version UID of this class. The value is {@value}.
-     */
-    private static final long serialVersionUID = 1L;
+@Embeddable
+public class Vpstrde1Id {
 
     // ------------------------------------------------------------------------------------- PROJ1NO
 
@@ -52,7 +49,7 @@ public abstract class MappedVpstrde1Id
      * The name of the attribute which maps the {@value MappedVpstrde1#COLUMN_NAME_PROJ1NO} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_PROJ1NO = MappedVpstrde1.ATTRIBUTE_NAME_PROJ1NO;
+    public static final String ATTRIBUTE_NAME_PROJ1NO = "proj1no";
 
     // ------------------------------------------------------------------------------------- PROJ2NO
 
@@ -60,29 +57,19 @@ public abstract class MappedVpstrde1Id
      * The name of the attribute which maps the {@value MappedVpstrde1#COLUMN_NAME_PROJ2NO} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_PROJ2NO = MappedVpstrde1.ATTRIBUTE_NAME_PROJ2NO;
+    public static final String ATTRIBUTE_NAME_PROJ2NO = "proj2no";
 
-    // ---------------------------------------------------------------------------------------------
-    // STATIC_FACTORY_METHODS
+    // ---------------------------------------------------------------------- STATIC_FACTORY_METHODS
 
     /**
-     * Creates a new instance of a subclass, with the specified values.
+     * Returns a new instance with the specified values.
      *
-     * @param <T>          the type of the identifier.
-     * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param proj1no      a value for the {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
-     * @param proj2no      a value for the {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
-     * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
-     *                              {@code null}.
+     * @param proj1no a value for the {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
+     * @param proj2no a value for the {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
+     * @return a new instance with the specified values.
      */
-    protected static <T extends MappedVpstrde1Id> T of(
-            final Supplier<? extends T> instantiator,
-            final String proj1no,
-            final String proj2no) {
-        Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance =
-                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+    public static Vpstrde1Id of(final String proj1no, final String proj2no) {
+        final var instance = new Vpstrde1Id();
         instance.setProj1no(proj1no);
         instance.setProj2no(proj2no);
         return instance;
@@ -93,7 +80,7 @@ public abstract class MappedVpstrde1Id
     /**
      * Creates a new instance.
      */
-    protected MappedVpstrde1Id() {
+    public Vpstrde1Id() {
         super();
     }
 
@@ -117,7 +104,7 @@ public abstract class MappedVpstrde1Id
      */
     @Override
     public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedVpstrde1Id that)) {
+        if (!(obj instanceof Vpstrde1Id that)) {
             return false;
         }
         return Objects.equals(getProj1no(), that.getProj1no())
@@ -143,7 +130,6 @@ public abstract class MappedVpstrde1Id
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
      */
-    @Nonnull
     public String getProj1no() {
         return proj1no;
     }
@@ -154,7 +140,7 @@ public abstract class MappedVpstrde1Id
      *
      * @param proj1no new value for {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
      */
-    protected void setProj1no(@Nonnull final String proj1no) {
+    protected void setProj1no(final String proj1no) {
         this.proj1no = proj1no;
     }
 
@@ -165,7 +151,6 @@ public abstract class MappedVpstrde1Id
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
      */
-    @Nonnull
     public String getProj2no() {
         return proj2no;
     }
@@ -176,7 +161,7 @@ public abstract class MappedVpstrde1Id
      *
      * @param proj2no new value for {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
      */
-    protected void setProj2no(@Nonnull final String proj2no) {
+    protected void setProj2no(final String proj2no) {
         this.proj2no = proj2no;
     }
 
@@ -185,6 +170,14 @@ public abstract class MappedVpstrde1Id
     /**
      * The value of the {@value #ATTRIBUTE_NAME_PROJ1NO} attribute.
      */
+    @Size(max = MappedVpstrde1.SIZE_MAX_PROJ1NO)
+    @NotNull
+    @Column(name = MappedVpstrde1.COLUMN_NAME_PROJ1NO,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedVpstrde1.COLUMN_LENGTH_PROJ1NO
+    )
     private String proj1no;
 
     // ---------------------------------------------------------------------------------------------
@@ -192,5 +185,13 @@ public abstract class MappedVpstrde1Id
     /**
      * The value of the {@value #ATTRIBUTE_NAME_PROJ2NO} attribute.
      */
+    @Size(max = MappedVpstrde1.SIZE_MAX_PROJ2NO)
+    @NotNull
+    @Column(name = MappedVpstrde1.COLUMN_NAME_PROJ2NO,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedVpstrde1.COLUMN_LENGTH_PROJ2NO
+    )
     private String proj2no;
 }

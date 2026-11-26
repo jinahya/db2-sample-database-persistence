@@ -1,4 +1,4 @@
-package com.github.jinahya.db2.sample.database.persistence.mapped;
+package com.github.jinahya.db2.sample.database.persistence;
 
 /*-
  * #%L
@@ -20,31 +20,28 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
-import jakarta.annotation.Nonnull;
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVastrde1;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import java.io.Serializable;
 import java.util.Objects;
-import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedVastrde1#TABLE_NAME} view -- the logical,
- * not declared, key of {@value MappedVastrde1#COLUMN_NAME_DEPT1NO},
- * {@value MappedVastrde1#COLUMN_NAME_DEPT2NO}.
+ * The identifier of the {@value MappedVastrde1#TABLE_NAME} view, the key of
+ * {@value MappedVastrde1#COLUMN_NAME_DEPT1NO}, {@value MappedVastrde1#COLUMN_NAME_DEPT2NO}.
  * <p>
- * An entity extending {@link MappedVastrde1} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
- * the {@link jakarta.persistence.Id @Id} attributes there.
+ * It is an {@link Embeddable @Embeddable}, so that an entity extending {@link MappedVastrde1} may
+ * name it either with {@link jakarta.persistence.IdClass @IdClass}, whose attributes have the names
+ * and the types of the {@link jakarta.persistence.Id @Id} attributes there, or as the type of an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId}, which the column mappings here serve.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedVastrde1
  */
-public abstract class MappedVastrde1Id
-        implements Serializable {
-
-    /**
-     * The serial version UID of this class. The value is {@value}.
-     */
-    private static final long serialVersionUID = 1L;
+@Embeddable
+public class Vastrde1Id {
 
     // ------------------------------------------------------------------------------------- DEPT1NO
 
@@ -52,7 +49,7 @@ public abstract class MappedVastrde1Id
      * The name of the attribute which maps the {@value MappedVastrde1#COLUMN_NAME_DEPT1NO} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_DEPT1NO = MappedVastrde1.ATTRIBUTE_NAME_DEPT1NO;
+    public static final String ATTRIBUTE_NAME_DEPT1NO = "dept1no";
 
     // ------------------------------------------------------------------------------------- DEPT2NO
 
@@ -60,29 +57,19 @@ public abstract class MappedVastrde1Id
      * The name of the attribute which maps the {@value MappedVastrde1#COLUMN_NAME_DEPT2NO} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_DEPT2NO = MappedVastrde1.ATTRIBUTE_NAME_DEPT2NO;
+    public static final String ATTRIBUTE_NAME_DEPT2NO = "dept2no";
 
-    // ---------------------------------------------------------------------------------------------
-    // STATIC_FACTORY_METHODS
+    // ---------------------------------------------------------------------- STATIC_FACTORY_METHODS
 
     /**
-     * Creates a new instance of a subclass, with the specified values.
+     * Returns a new instance with the specified values.
      *
-     * @param <T>          the type of the identifier.
-     * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param dept1no      a value for the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
-     * @param dept2no      a value for the {@value #ATTRIBUTE_NAME_DEPT2NO} attribute.
-     * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
-     *                              {@code null}.
+     * @param dept1no a value for the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
+     * @param dept2no a value for the {@value #ATTRIBUTE_NAME_DEPT2NO} attribute.
+     * @return a new instance with the specified values.
      */
-    protected static <T extends MappedVastrde1Id> T of(
-            final Supplier<? extends T> instantiator,
-            final String dept1no,
-            final String dept2no) {
-        Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance =
-                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+    public static Vastrde1Id of(final String dept1no, final String dept2no) {
+        final var instance = new Vastrde1Id();
         instance.setDept1no(dept1no);
         instance.setDept2no(dept2no);
         return instance;
@@ -93,7 +80,7 @@ public abstract class MappedVastrde1Id
     /**
      * Creates a new instance.
      */
-    protected MappedVastrde1Id() {
+    public Vastrde1Id() {
         super();
     }
 
@@ -117,7 +104,7 @@ public abstract class MappedVastrde1Id
      */
     @Override
     public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedVastrde1Id that)) {
+        if (!(obj instanceof Vastrde1Id that)) {
             return false;
         }
         return Objects.equals(getDept1no(), that.getDept1no())
@@ -143,7 +130,6 @@ public abstract class MappedVastrde1Id
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
      */
-    @Nonnull
     public String getDept1no() {
         return dept1no;
     }
@@ -154,7 +140,7 @@ public abstract class MappedVastrde1Id
      *
      * @param dept1no new value for {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
      */
-    protected void setDept1no(@Nonnull final String dept1no) {
+    protected void setDept1no(final String dept1no) {
         this.dept1no = dept1no;
     }
 
@@ -165,7 +151,6 @@ public abstract class MappedVastrde1Id
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DEPT2NO} attribute.
      */
-    @Nonnull
     public String getDept2no() {
         return dept2no;
     }
@@ -176,7 +161,7 @@ public abstract class MappedVastrde1Id
      *
      * @param dept2no new value for {@value #ATTRIBUTE_NAME_DEPT2NO} attribute.
      */
-    protected void setDept2no(@Nonnull final String dept2no) {
+    protected void setDept2no(final String dept2no) {
         this.dept2no = dept2no;
     }
 
@@ -185,6 +170,14 @@ public abstract class MappedVastrde1Id
     /**
      * The value of the {@value #ATTRIBUTE_NAME_DEPT1NO} attribute.
      */
+    @Size(max = MappedVastrde1.SIZE_MAX_DEPT1NO)
+    @NotNull
+    @Column(name = MappedVastrde1.COLUMN_NAME_DEPT1NO,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedVastrde1.COLUMN_LENGTH_DEPT1NO
+    )
     private String dept1no;
 
     // ---------------------------------------------------------------------------------------------
@@ -192,5 +185,13 @@ public abstract class MappedVastrde1Id
     /**
      * The value of the {@value #ATTRIBUTE_NAME_DEPT2NO} attribute.
      */
+    @Size(max = MappedVastrde1.SIZE_MAX_DEPT2NO)
+    @NotNull
+    @Column(name = MappedVastrde1.COLUMN_NAME_DEPT2NO,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedVastrde1.COLUMN_LENGTH_DEPT2NO
+    )
     private String dept2no;
 }

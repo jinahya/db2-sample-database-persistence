@@ -34,6 +34,5 @@ class PurchaseOrder_Persister
     PurchaseOrder_Persister() {
         super(PurchaseOrder.class);
     }
-
 }
 

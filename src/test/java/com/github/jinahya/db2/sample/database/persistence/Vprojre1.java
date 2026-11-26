@@ -39,7 +39,7 @@ public class Vprojre1
     /**
      * Creates a new instance.
      */
-    public Vprojre1() {
+    protected Vprojre1() {
         super();
     }
 }

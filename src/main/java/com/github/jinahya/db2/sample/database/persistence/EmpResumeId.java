@@ -1,4 +1,4 @@
-package com.github.jinahya.db2.sample.database.persistence.mapped;
+package com.github.jinahya.db2.sample.database.persistence;
 
 /*-
  * #%L
@@ -20,30 +20,30 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
-import jakarta.annotation.Nonnull;
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmpResume;
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmployee;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import java.io.Serializable;
 import java.util.Objects;
-import java.util.function.Supplier;
+import java.util.Optional;
 
 /**
- * A superclass for the identifier of the {@value MappedEmpResume#TABLE_NAME} table -- the key of
+ * The identifier of the {@value MappedEmpResume#TABLE_NAME} table, the key of
  * {@value MappedEmpResume#COLUMN_NAME_EMPNO}, {@value MappedEmpResume#COLUMN_NAME_RESUME_FORMAT}.
  * <p>
- * An entity extending {@link MappedEmpResume} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
- * the {@link jakarta.persistence.Id @Id} attributes there.
+ * It is an {@link Embeddable @Embeddable}, so that an entity extending {@link MappedEmpResume} may
+ * name it either with {@link jakarta.persistence.IdClass @IdClass}, whose attributes have the names
+ * and the types of the {@link jakarta.persistence.Id @Id} attributes there, or as the type of an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId}, which the column mappings here serve.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  * @see MappedEmpResume
  */
-public abstract class MappedEmpResumeId
-        implements Serializable {
-
-    /**
-     * The serial version UID of this class. The value is {@value}.
-     */
-    private static final long serialVersionUID = 1L;
+@Embeddable
+public class EmpResumeId {
 
     // --------------------------------------------------------------------------------------- EMPNO
 
@@ -51,7 +51,7 @@ public abstract class MappedEmpResumeId
      * The name of the attribute which maps the {@value MappedEmpResume#COLUMN_NAME_EMPNO} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_EMPNO = MappedEmpResume.ATTRIBUTE_NAME_EMPNO;
+    public static final String ATTRIBUTE_NAME_EMPNO = "empno";
 
     // ------------------------------------------------------------------------------- RESUME_FORMAT
 
@@ -59,33 +59,37 @@ public abstract class MappedEmpResumeId
      * The name of the attribute which maps the {@value MappedEmpResume#COLUMN_NAME_RESUME_FORMAT}
      * column. The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_RESUME_FORMAT =
-            MappedEmpResume.ATTRIBUTE_NAME_RESUME_FORMAT;
+    public static final String ATTRIBUTE_NAME_RESUME_FORMAT = "resumeFormat";
 
-    // ---------------------------------------------------------------------------------------------
-    // STATIC_FACTORY_METHODS
+    // ---------------------------------------------------------------------- STATIC_FACTORY_METHODS
 
     /**
-     * Creates a new instance of a subclass, with the specified values.
+     * Returns a new instance with the specified values.
      *
-     * @param <T>          the type of the identifier.
-     * @param instantiator a supplier of a new, empty instance of {@code T}.
      * @param empno        a value for the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      * @param resumeFormat a value for the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
-     * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
-     *                              {@code null}.
+     * @return a new instance with the specified values.
      */
-    protected static <T extends MappedEmpResumeId> T of(
-            final Supplier<? extends T> instantiator,
-            final String empno,
-            final String resumeFormat) {
-        Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance =
-                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+    public static EmpResumeId of(final String empno, final String resumeFormat) {
+        final var instance = new EmpResumeId();
         instance.setEmpno(empno);
         instance.setResumeFormat(resumeFormat);
         return instance;
+    }
+
+    /**
+     * Returns a new instance with the employee number of the specified employee, and the specified
+     * resume format.
+     *
+     * @param employee     the employee whose employee number is the {@value #ATTRIBUTE_NAME_EMPNO}
+     *                     attribute; {@code null} for none.
+     * @param resumeFormat a value for the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
+     * @return a new instance with the employee number of {@code employee} and
+     *         {@code resumeFormat}.
+     */
+    public static EmpResumeId from(final MappedEmployee employee, final String resumeFormat) {
+        return of(Optional.ofNullable(employee).map(MappedEmployee::getEmpno).orElse(null),
+                  resumeFormat);
     }
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
@@ -93,7 +97,7 @@ public abstract class MappedEmpResumeId
     /**
      * Creates a new instance.
      */
-    protected MappedEmpResumeId() {
+    public EmpResumeId() {
         super();
     }
 
@@ -117,7 +121,7 @@ public abstract class MappedEmpResumeId
      */
     @Override
     public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedEmpResumeId that)) {
+        if (!(obj instanceof EmpResumeId that)) {
             return false;
         }
         return Objects.equals(getEmpno(), that.getEmpno())
@@ -143,7 +147,6 @@ public abstract class MappedEmpResumeId
      *
      * @return current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      */
-    @Nonnull
     public String getEmpno() {
         return empno;
     }
@@ -153,7 +156,7 @@ public abstract class MappedEmpResumeId
      *
      * @param empno new value for {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      */
-    protected void setEmpno(@Nonnull final String empno) {
+    protected void setEmpno(final String empno) {
         this.empno = empno;
     }
 
@@ -164,7 +167,6 @@ public abstract class MappedEmpResumeId
      *
      * @return current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
      */
-    @Nonnull
     public String getResumeFormat() {
         return resumeFormat;
     }
@@ -175,7 +177,7 @@ public abstract class MappedEmpResumeId
      *
      * @param resumeFormat new value for {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
      */
-    protected void setResumeFormat(@Nonnull final String resumeFormat) {
+    protected void setResumeFormat(final String resumeFormat) {
         this.resumeFormat = resumeFormat;
     }
 
@@ -184,6 +186,14 @@ public abstract class MappedEmpResumeId
     /**
      * The value of the {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      */
+    @Size(max = MappedEmpResume.SIZE_MAX_EMPNO)
+    @NotNull
+    @Column(name = MappedEmpResume.COLUMN_NAME_EMPNO,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedEmpResume.COLUMN_LENGTH_EMPNO
+    )
     private String empno;
 
     // ---------------------------------------------------------------------------------------------
@@ -191,5 +201,13 @@ public abstract class MappedEmpResumeId
     /**
      * The value of the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
      */
+    @Size(max = MappedEmpResume.SIZE_MAX_RESUME_FORMAT)
+    @NotNull
+    @Column(name = MappedEmpResume.COLUMN_NAME_RESUME_FORMAT,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedEmpResume.COLUMN_LENGTH_RESUME_FORMAT
+    )
     private String resumeFormat;
 }

@@ -39,7 +39,7 @@ public class Catalog
     /**
      * Creates a new instance.
      */
-    public Catalog() {
+    protected Catalog() {
         super();
     }
 

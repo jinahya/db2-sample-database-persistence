@@ -20,31 +20,27 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
-import jakarta.annotation.Nonnull;
+import com.github.jinahya.db2.sample.database.persistence.EmpResumeId;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
-import java.util.Objects;
 
 /**
  * A mapped superclass which holds the mappings of the {@value MappedEmpResume#TABLE_NAME} table,
  * the resumes of the employees.
  * <p>
  * The primary key is composite, of {@value MappedEmpResume#COLUMN_NAME_EMPNO},
- * {@value MappedEmpResume#COLUMN_NAME_RESUME_FORMAT}, mapped with an
- * {@link jakarta.persistence.IdClass @IdClass}: an extending entity names a subclass of
- * {@link MappedEmpResumeId} with {@code @IdClass} and inherits the {@link Id @Id} attributes from
- * here.
+ * {@value MappedEmpResume#COLUMN_NAME_RESUME_FORMAT}, which this class does not map: an extending
+ * entity declares it, either as {@link jakarta.persistence.Id @Id} attributes with
+ * {@link EmpResumeId} as its {@link jakarta.persistence.IdClass @IdClass}, or as an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId} of {@link EmpResumeId}, and with it its
+ * {@code equals} and {@code hashCode}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
- * @see MappedEmpResumeId
+ * @see EmpResumeId
  */
 @MappedSuperclass
 public abstract class MappedEmpResume {
@@ -57,8 +53,8 @@ public abstract class MappedEmpResume {
     // --------------------------------------------------------------------------------------- EMPNO
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_EMPNO} attribute maps. The
-     * value is {@value}.
+     * The name of the table column to which the {@value EmpResumeId#ATTRIBUTE_NAME_EMPNO} attribute
+     * maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_EMPNO = "EMPNO";
 
@@ -68,21 +64,16 @@ public abstract class MappedEmpResume {
     public static final int COLUMN_LENGTH_EMPNO = 6;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column. The value is
+     * The maximum size of the {@value EmpResumeId#ATTRIBUTE_NAME_EMPNO} attribute. The value is
      * {@value}.
-     */
-    public static final String ATTRIBUTE_NAME_EMPNO = "empno";
-
-    /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_EMPNO} attribute. The value is {@value}.
      */
     public static final int SIZE_MAX_EMPNO = COLUMN_LENGTH_EMPNO;
 
     // ------------------------------------------------------------------------------- RESUME_FORMAT
 
     /**
-     * The name of the table column to which the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute
-     * maps. The value is {@value}.
+     * The name of the table column to which the {@value EmpResumeId#ATTRIBUTE_NAME_RESUME_FORMAT}
+     * attribute maps. The value is {@value}.
      */
     public static final String COLUMN_NAME_RESUME_FORMAT = "RESUME_FORMAT";
 
@@ -92,14 +83,8 @@ public abstract class MappedEmpResume {
     public static final int COLUMN_LENGTH_RESUME_FORMAT = 10;
 
     /**
-     * The name of the attribute which maps the {@value #COLUMN_NAME_RESUME_FORMAT} column. The
+     * The maximum size of the {@value EmpResumeId#ATTRIBUTE_NAME_RESUME_FORMAT} attribute. The
      * value is {@value}.
-     */
-    public static final String ATTRIBUTE_NAME_RESUME_FORMAT = "resumeFormat";
-
-    /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute. The value is
-     * {@value}.
      */
     public static final int SIZE_MAX_RESUME_FORMAT = COLUMN_LENGTH_RESUME_FORMAT;
 
@@ -136,82 +121,8 @@ public abstract class MappedEmpResume {
     @Override
     public String toString() {
         return super.toString() + '{' +
-               "empno=" + empno +
-               ",resumeFormat=" + resumeFormat +
-               ",resume=" + (resume == null ? null : resume.length() + " char(s)") +
+               "resume=" + (resume == null ? null : resume.length() + " char(s)") +
                '}';
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param obj {@inheritDoc}
-     * @return {@inheritDoc}
-     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_EMPNO} and
-     *         {@value #ATTRIBUTE_NAME_RESUME_FORMAT} alone.
-     */
-    @Override
-    public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedEmpResume that)) {
-            return false;
-        }
-        return Objects.equals(getEmpno(), that.getEmpno())
-               && Objects.equals(getResumeFormat(), that.getResumeFormat());
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_EMPNO} and
-     *         {@value #ATTRIBUTE_NAME_RESUME_FORMAT}, consistent with {@link #equals(Object)}.
-     */
-    @Override
-    public final int hashCode() {
-        return Objects.hash(getEmpno(), getResumeFormat());
-    }
-
-    // --------------------------------------------------------------------------------------- empno
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
-     */
-    @Nonnull
-    public String getEmpno() {
-        return empno;
-    }
-
-    /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute with the specified value.
-     *
-     * @param empno new value for {@value #ATTRIBUTE_NAME_EMPNO} attribute.
-     */
-    protected void setEmpno(@Nonnull final String empno) {
-        this.empno = empno;
-    }
-
-    // -------------------------------------------------------------------------------- resumeFormat
-
-    /**
-     * Returns current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
-     *
-     * @return current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
-     */
-    @Nonnull
-    public String getResumeFormat() {
-        return resumeFormat;
-    }
-
-    /**
-     * Replaces current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute with the specified
-     * value.
-     *
-     * @param resumeFormat new value for {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
-     */
-    protected void setResumeFormat(@Nonnull final String resumeFormat) {
-        this.resumeFormat = resumeFormat;
     }
 
     // -------------------------------------------------------------------------------------- resume
@@ -235,34 +146,6 @@ public abstract class MappedEmpResume {
     public void setResume(@Nullable final String resume) {
         this.resume = resume;
     }
-
-    // ---------------------------------------------------------------------------------------------
-    @Nonnull
-    @Size(max = SIZE_MAX_EMPNO)
-    @NotNull
-    @Id
-    @Basic(optional = false, fetch = FetchType.EAGER)
-    @Column(name = COLUMN_NAME_EMPNO,
-            nullable = false,
-            insertable = true,
-            updatable = false,
-            length = COLUMN_LENGTH_EMPNO
-    )
-    private String empno;
-
-    // ---------------------------------------------------------------------------------------------
-    @Nonnull
-    @Size(max = SIZE_MAX_RESUME_FORMAT)
-    @NotNull
-    @Id
-    @Basic(optional = false, fetch = FetchType.EAGER)
-    @Column(name = COLUMN_NAME_RESUME_FORMAT,
-            nullable = false,
-            insertable = true,
-            updatable = false,
-            length = COLUMN_LENGTH_RESUME_FORMAT
-    )
-    private String resumeFormat;
 
     // ---------------------------------------------------------------------------------------------
     @Lob

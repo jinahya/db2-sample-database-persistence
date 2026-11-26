@@ -21,51 +21,113 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedProductSupplier;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.Objects;
 
 /**
- * An entity of the {@value #TABLE_NAME} table.
+ * An entity of the {@value #TABLE_NAME} table, which declares the identifier
+ * {@link MappedProductSupplier} leaves out, an {@link EmbeddedId @EmbeddedId} of
+ * {@link ProductSupplierId}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
 @Entity
-@IdClass(ProductSupplierId.class)
 @Table(name = ProductSupplier.TABLE_NAME)
 public class ProductSupplier
         extends MappedProductSupplier {
+
+    /**
+     * The name of the attribute of the identifier, an {@link EmbeddedId @EmbeddedId} of
+     * {@link ProductSupplierId}. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_ID = "id";
+
+    /**
+     * The path of the identifier's attribute which maps the {@value #COLUMN_NAME_PID} column. The
+     * value is {@value}.
+     */
+    public static final String ATTRIBUTE_PATH_ID_PID =
+            ATTRIBUTE_NAME_ID + "." + ProductSupplierId.ATTRIBUTE_NAME_PID;
+
+    /**
+     * The path of the identifier's attribute which maps the {@value #COLUMN_NAME_SID} column. The
+     * value is {@value}.
+     */
+    public static final String ATTRIBUTE_PATH_ID_SID =
+            ATTRIBUTE_NAME_ID + "." + ProductSupplierId.ATTRIBUTE_NAME_SID;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
      */
-    public ProductSupplier() {
+    protected ProductSupplier() {
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param pid {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
-     */
+    // ---------------------------------------------------------------------------- java.lang.Object
+
     @Override
-    public void setPid(final String pid) {
-        super.setPid(pid);
+    public String toString() {
+        return super.toString() + '{' +
+               "id=" + id +
+               '}';
     }
 
     /**
      * {@inheritDoc}
      *
-     * @param sid {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @param obj {@inheritDoc}
+     * @return {@inheritDoc}
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_ID}, the identifier.
      */
     @Override
-    public void setSid(final String sid) {
-        super.setSid(sid);
+    public final boolean equals(final Object obj) {
+        if (!(obj instanceof ProductSupplier that)) {
+            return false;
+        }
+        return Objects.equals(getId(), that.getId());
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return {@inheritDoc}
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ID}, consistent with
+     *         {@link #equals(Object)}.
+     */
+    @Override
+    public final int hashCode() {
+        return Objects.hash(getId());
+    }
+    // ------------------------------------------------------------------------------------------ id
+
+    /**
+     * Returns current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     *
+     * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     */
+    protected ProductSupplierId getId() {
+        return id;
+    }
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ID} attribute with the specified value.
+     *
+     * @param id new value for {@value #ATTRIBUTE_NAME_ID} attribute.
+     */
+    public void setId(final ProductSupplierId id) {
+        this.id = id;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Valid
+    @NotNull
+    @EmbeddedId
+    private ProductSupplierId id;
 }

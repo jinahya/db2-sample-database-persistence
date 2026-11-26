@@ -1,4 +1,4 @@
-package com.github.jinahya.db2.sample.database.persistence.mapped;
+package com.github.jinahya.db2.sample.database.persistence;
 
 /*-
  * #%L
@@ -20,83 +20,70 @@ package com.github.jinahya.db2.sample.database.persistence.mapped;
  * #L%
  */
 
-import com.github.jinahya.db2.sample.database.persistence.Db2Constants;
-import jakarta.annotation.Nonnull;
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVprojact;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.function.Supplier;
 
 /**
- * A superclass for the identifier of the {@value MappedProjAct#TABLE_NAME} table -- the key of
- * {@value MappedProjAct#COLUMN_NAME_PROJNO}, {@value MappedProjAct#COLUMN_NAME_ACTNO},
- * {@value MappedProjAct#COLUMN_NAME_ACSTDATE}.
+ * The identifier of the {@value MappedVprojact#TABLE_NAME} view, the key of
+ * {@value MappedVprojact#COLUMN_NAME_PROJNO}, {@value MappedVprojact#COLUMN_NAME_ACTNO},
+ * {@value MappedVprojact#COLUMN_NAME_ACSTDATE}.
  * <p>
- * An entity extending {@link MappedProjAct} names a concrete subclass of this class with
- * {@link jakarta.persistence.IdClass @IdClass}; the attributes here have the names and the types of
- * the {@link jakarta.persistence.Id @Id} attributes there.
+ * It is an {@link Embeddable @Embeddable}, so that an entity extending {@link MappedVprojact} may
+ * name it either with {@link jakarta.persistence.IdClass @IdClass}, whose attributes have the names
+ * and the types of the {@link jakarta.persistence.Id @Id} attributes there, or as the type of an
+ * {@link jakarta.persistence.EmbeddedId @EmbeddedId}, which the column mappings here serve.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
- * @see MappedProjAct
+ * @see MappedVprojact
  */
-public abstract class MappedProjActId
-        implements Serializable {
-
-    /**
-     * The serial version UID of this class. The value is {@value}.
-     */
-    private static final long serialVersionUID = 1L;
+@Embeddable
+public class VprojactId {
 
     // -------------------------------------------------------------------------------------- PROJNO
 
     /**
-     * The name of the attribute which maps the {@value MappedProjAct#COLUMN_NAME_PROJNO} column.
+     * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_PROJNO} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_PROJNO = MappedProjAct.ATTRIBUTE_NAME_PROJNO;
+    public static final String ATTRIBUTE_NAME_PROJNO = "projno";
 
     // --------------------------------------------------------------------------------------- ACTNO
 
     /**
-     * The name of the attribute which maps the {@value MappedProjAct#COLUMN_NAME_ACTNO} column. The
-     * value is {@value}.
+     * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_ACTNO} column.
+     * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_ACTNO = MappedProjAct.ATTRIBUTE_NAME_ACTNO;
+    public static final String ATTRIBUTE_NAME_ACTNO = "actno";
 
     // ------------------------------------------------------------------------------------ ACSTDATE
 
     /**
-     * The name of the attribute which maps the {@value MappedProjAct#COLUMN_NAME_ACSTDATE} column.
+     * The name of the attribute which maps the {@value MappedVprojact#COLUMN_NAME_ACSTDATE} column.
      * The value is {@value}.
      */
-    public static final String ATTRIBUTE_NAME_ACSTDATE = MappedProjAct.ATTRIBUTE_NAME_ACSTDATE;
+    public static final String ATTRIBUTE_NAME_ACSTDATE = "acstdate";
 
-    // ---------------------------------------------------------------------------------------------
-    // STATIC_FACTORY_METHODS
+    // ---------------------------------------------------------------------- STATIC_FACTORY_METHODS
 
     /**
-     * Creates a new instance of a subclass, with the specified values.
+     * Returns a new instance with the specified values.
      *
-     * @param <T>          the type of the identifier.
-     * @param instantiator a supplier of a new, empty instance of {@code T}.
-     * @param projno       a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
-     * @param actno        a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
-     * @param acstdate     a value for the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
-     * @return the instance supplied by {@code instantiator}, with its attributes set.
-     * @throws NullPointerException if {@code instantiator} is {@code null}, or it supplies
-     *                              {@code null}.
+     * @param projno   a value for the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
+     * @param actno    a value for the {@value #ATTRIBUTE_NAME_ACTNO} attribute.
+     * @param acstdate a value for the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
+     * @return a new instance with the specified values.
      */
-    protected static <T extends MappedProjActId> T of(
-            final Supplier<? extends T> instantiator,
-            final String projno,
-            final Integer actno,
-            final LocalDate acstdate) {
-        Objects.requireNonNull(instantiator, "instantiator is null");
-        final var instance =
-                Objects.requireNonNull(instantiator.get(), "instantiator.get() is null");
+    public static VprojactId of(final String projno, final Integer actno,
+                                final LocalDate acstdate) {
+        final var instance = new VprojactId();
         instance.setProjno(projno);
         instance.setActno(actno);
         instance.setAcstdate(acstdate);
@@ -108,7 +95,7 @@ public abstract class MappedProjActId
     /**
      * Creates a new instance.
      */
-    protected MappedProjActId() {
+    public VprojactId() {
         super();
     }
 
@@ -133,7 +120,7 @@ public abstract class MappedProjActId
      */
     @Override
     public final boolean equals(final Object obj) {
-        if (!(obj instanceof MappedProjActId that)) {
+        if (!(obj instanceof VprojactId that)) {
             return false;
         }
         return Objects.equals(getProjno(), that.getProjno())
@@ -161,7 +148,6 @@ public abstract class MappedProjActId
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
-    @Nonnull
     public String getProjno() {
         return projno;
     }
@@ -172,7 +158,7 @@ public abstract class MappedProjActId
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
-    protected void setProjno(@Nonnull final String projno) {
+    protected void setProjno(final String projno) {
         this.projno = projno;
     }
 
@@ -183,7 +169,6 @@ public abstract class MappedProjActId
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    @Nonnull
     public Integer getActno() {
         return actno;
     }
@@ -193,7 +178,7 @@ public abstract class MappedProjActId
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Integer actno) {
+    protected void setActno(final Integer actno) {
         this.actno = actno;
     }
 
@@ -204,7 +189,6 @@ public abstract class MappedProjActId
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
      */
-    @Nonnull
     public LocalDate getAcstdate() {
         return acstdate;
     }
@@ -215,7 +199,7 @@ public abstract class MappedProjActId
      *
      * @param acstdate new value for {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
      */
-    protected void setAcstdate(@Nonnull final LocalDate acstdate) {
+    protected void setAcstdate(final LocalDate acstdate) {
         this.acstdate = acstdate;
     }
 
@@ -224,6 +208,14 @@ public abstract class MappedProjActId
     /**
      * The value of the {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
+    @Size(max = MappedVprojact.SIZE_MAX_PROJNO)
+    @NotNull
+    @Column(name = MappedVprojact.COLUMN_NAME_PROJNO,
+            nullable = false,
+            insertable = true,
+            updatable = false,
+            length = MappedVprojact.COLUMN_LENGTH_PROJNO
+    )
     private String projno;
 
     // ---------------------------------------------------------------------------------------------
@@ -233,6 +225,12 @@ public abstract class MappedProjActId
      */
     @Max(Db2Constants.SMALLINT_MAX)
     @Min(Db2Constants.SMALLINT_MIN)
+    @NotNull
+    @Column(name = MappedVprojact.COLUMN_NAME_ACTNO,
+            nullable = false,
+            insertable = true,
+            updatable = false
+    )
     private Integer actno;
 
     // ---------------------------------------------------------------------------------------------
@@ -240,5 +238,11 @@ public abstract class MappedProjActId
     /**
      * The value of the {@value #ATTRIBUTE_NAME_ACSTDATE} attribute.
      */
+    @NotNull
+    @Column(name = MappedVprojact.COLUMN_NAME_ACSTDATE,
+            nullable = false,
+            insertable = true,
+            updatable = false
+    )
     private LocalDate acstdate;
 }

@@ -34,8 +34,8 @@ import static com.github.jinahya.persistence.util.JinahyaEntityManagerFactoryUti
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Reads every row of each table and view with no key, which is no entity, through a native query
- * of its {@code SELECT_LIST}, and builds an instance of its class from each row.
+ * Reads every row of each table and view with no key, which is no entity, through a native query of
+ * its {@code SELECT_LIST}, and builds an instance of its class from each row.
  */
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention

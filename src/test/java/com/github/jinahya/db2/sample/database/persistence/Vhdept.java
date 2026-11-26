@@ -39,7 +39,7 @@ public class Vhdept
     /**
      * Creates a new instance.
      */
-    public Vhdept() {
+    protected Vhdept() {
         super();
     }
 }

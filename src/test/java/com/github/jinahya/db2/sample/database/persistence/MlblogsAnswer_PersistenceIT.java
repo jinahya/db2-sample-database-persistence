@@ -53,7 +53,9 @@ class MlblogsAnswer_PersistenceIT
     }
 
     // ---------------------------------------------------------------------------------------------
-    @Disabled("not an entity: the table has no key, and MlblogsAnswer is persisted by no entity manager")
+    @Disabled(
+            "not an entity: the table has no key, and MlblogsAnswer is persisted by no entity " +
+            "manager")
     @Override
     @Test
     protected void persistRandomizedEntityInstance__() {

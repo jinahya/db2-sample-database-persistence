@@ -21,27 +21,111 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedVastrde1;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.Objects;
 
 /**
- * An entity of the {@value #TABLE_NAME} view.
+ * An entity of the {@value #TABLE_NAME} view, which declares the identifier {@link MappedVastrde1}
+ * leaves out, an {@link EmbeddedId @EmbeddedId} of {@link Vastrde1Id}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */
 @Entity
-@IdClass(Vastrde1Id.class)
 @Table(name = Vastrde1.TABLE_NAME)
 public class Vastrde1
         extends MappedVastrde1 {
+
+    /**
+     * The name of the attribute of the identifier, an {@link EmbeddedId @EmbeddedId} of
+     * {@link Vastrde1Id}. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_ID = "id";
+
+    /**
+     * The path of the identifier's attribute which maps the {@value #COLUMN_NAME_DEPT1NO} column.
+     * The value is {@value}.
+     */
+    public static final String ATTRIBUTE_PATH_ID_DEPT1NO =
+            ATTRIBUTE_NAME_ID + "." + Vastrde1Id.ATTRIBUTE_NAME_DEPT1NO;
+
+    /**
+     * The path of the identifier's attribute which maps the {@value #COLUMN_NAME_DEPT2NO} column.
+     * The value is {@value}.
+     */
+    public static final String ATTRIBUTE_PATH_ID_DEPT2NO =
+            ATTRIBUTE_NAME_ID + "." + Vastrde1Id.ATTRIBUTE_NAME_DEPT2NO;
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
      * Creates a new instance.
      */
-    public Vastrde1() {
+    protected Vastrde1() {
         super();
     }
+    // ---------------------------------------------------------------------------- java.lang.Object
+
+    @Override
+    public String toString() {
+        return super.toString() + '{' +
+               "id=" + id +
+               '}';
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param obj {@inheritDoc}
+     * @return {@inheritDoc}
+     * @implSpec Equality is by {@value #ATTRIBUTE_NAME_ID}, the identifier.
+     */
+    @Override
+    public final boolean equals(final Object obj) {
+        if (!(obj instanceof Vastrde1 that)) {
+            return false;
+        }
+        return Objects.equals(getId(), that.getId());
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return {@inheritDoc}
+     * @implSpec The hash is over {@value #ATTRIBUTE_NAME_ID}, consistent with
+     *         {@link #equals(Object)}.
+     */
+    @Override
+    public final int hashCode() {
+        return Objects.hash(getId());
+    }
+    // ------------------------------------------------------------------------------------------ id
+
+    /**
+     * Returns current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     *
+     * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     */
+    protected Vastrde1Id getId() {
+        return id;
+    }
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_ID} attribute with the specified value.
+     *
+     * @param id new value for {@value #ATTRIBUTE_NAME_ID} attribute.
+     */
+    protected void setId(final Vastrde1Id id) {
+        this.id = id;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Valid
+    @NotNull
+    @EmbeddedId
+    private Vastrde1Id id;
 }

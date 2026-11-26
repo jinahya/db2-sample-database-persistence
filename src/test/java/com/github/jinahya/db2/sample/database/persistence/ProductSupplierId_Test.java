@@ -21,6 +21,11 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
@@ -32,5 +37,40 @@ class ProductSupplierId_Test
     ProductSupplierId_Test() {
         super(ProductSupplierId.class);
     }
-}
 
+    // ---------------------------------------------------------------------------------------------
+
+    /**
+     * Tests {@link ProductSupplierId#of(String, String)}.
+     */
+    @DisplayName("of(pid, sid)")
+    @Nested
+    class OfTest {
+
+        /**
+         * Verifies that {@link ProductSupplierId#of(String, String) of} returns an instance of the
+         * specified values.
+         */
+        @Test
+        void __() {
+            final var instance = ProductSupplierId.of("V0", "V1");
+            assertThat(instance).isNotNull().satisfies(v -> {
+                assertThat(v.getPid()).isEqualTo("V0");
+                assertThat(v.getSid()).isEqualTo("V1");
+            });
+        }
+
+        /**
+         * Verifies that {@link ProductSupplierId#of(String, String) of} takes {@code null} values
+         * as they are.
+         */
+        @Test
+        void __null() {
+            final var instance = ProductSupplierId.of(null, null);
+            assertThat(instance).isNotNull().satisfies(v -> {
+                assertThat(v.getPid()).isNull();
+                assertThat(v.getSid()).isNull();
+            });
+        }
+    }
+}

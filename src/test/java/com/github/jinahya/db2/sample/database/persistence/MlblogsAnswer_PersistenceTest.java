@@ -27,7 +27,9 @@ import org.junit.jupiter.api.Disabled;
         "java:S101" // Class names should comply with a naming convention
 })
 @Slf4j
-@Disabled("not an entity: the table has no key; MlblogsAnswer is built from the rows of a native query")
+@Disabled(
+        "not an entity: the table has no key; MlblogsAnswer is built from the rows of a native " +
+        "query")
 class MlblogsAnswer_PersistenceTest
         extends _Entity_PersistenceTest<MlblogsAnswer, String> {
 
