@@ -1,0 +1,4331 @@
+= Exercises
+:toc: left
+:toclevels: 3
+
+The exercises on the installed `SAMPLE` database of IBM Db2, in its `DB2INST1` schema: a section for each table and view, with a section for each level, and, at the end, a section for the schema as a whole.
+Each exercise poses a problem; its answer, and what the installed data gives back, are in the `.sql` file.
+The output is that of the command line processor, `db2`, with each column narrowed to its widest value; it shows a `DATE` as `MM/DD/YYYY` and a `NULL` as `-`.
+An exercise only SQL can answer, a recursive query, a window, a rollup, a function of Db2 or a query into an XML document, is flagged `native-only: true` in `EXERCISES.yaml`.
+
+Run a file as a whole, from the project's directory:
+
+[source,sh]
+----
+docker cp src/test/sql-exercises/<section>/<NN>_<level>.sql db2-sample-database-persistence:/tmp/ &&
+docker exec db2-sample-database-persistence \
+  su - db2inst1 -c 'db2 connect to SAMPLE && db2 -tvf /tmp/<NN>_<level>.sql'
+----
+
+== DEPARTMENT
+
+The `DEPARTMENT` table, mapped by `MappedDepartment`: the fourteen departments of the company, each administered by a department, `A00` by itself, and most with a manager.
+
+=== Basic
+
+[[SAMPLE_DEPARTMENT_B_01]]
+==== SAMPLE_DEPARTMENT_B_01: every department, by number
+
+Show the number, the name, the manager and the administering department of every department, ordered by `DEPTNO`.
+A single table and a sort; no filter.
+
+.`DEPARTMENT/01_basic.sql`, SAMPLE_DEPARTMENT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DEPTNO, DEPTNAME, MGRNO, ADMRDEPT
+FROM DEPARTMENT
+ORDER BY DEPTNO
+----
+
+....
+DEPTNO DEPTNAME                     MGRNO  ADMRDEPT
+------ ---------------------------- ------ --------
+A00    SPIFFY COMPUTER SERVICE DIV. 000010 A00
+B01    PLANNING                     000020 A00
+C01    INFORMATION CENTER           000030 A00
+D01    DEVELOPMENT CENTER           -      A00
+D11    MANUFACTURING SYSTEMS        000060 D01
+D21    ADMINISTRATION SYSTEMS       000070 D01
+E01    SUPPORT SERVICES             000050 A00
+E11    OPERATIONS                   000090 E01
+E21    SOFTWARE SUPPORT             000100 E01
+F22    BRANCH OFFICE F2             -      E01
+... 14 rows in all.
+....
+====
+
+[[SAMPLE_DEPARTMENT_B_02]]
+==== SAMPLE_DEPARTMENT_B_02: the departments without a manager
+
+Find the departments whose `MGRNO` is `NULL`, ordered by `DEPTNO`.
+A single table and a test for `NULL`.
+
+.`DEPARTMENT/01_basic.sql`, SAMPLE_DEPARTMENT_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DEPTNO, DEPTNAME, ADMRDEPT
+FROM DEPARTMENT
+WHERE MGRNO IS NULL
+ORDER BY DEPTNO
+----
+
+....
+DEPTNO DEPTNAME           ADMRDEPT
+------ ------------------ --------
+D01    DEVELOPMENT CENTER A00
+F22    BRANCH OFFICE F2   E01
+G22    BRANCH OFFICE G2   E01
+H22    BRANCH OFFICE H2   E01
+I22    BRANCH OFFICE I2   E01
+J22    BRANCH OFFICE J2   E01
+
+  6 record(s) selected.
+....
+====
+
+[[SAMPLE_DEPARTMENT_B_03]]
+==== SAMPLE_DEPARTMENT_B_03: the departments E01 administers
+
+Find the departments whose `ADMRDEPT` is `E01`, ordered by `DEPTNO`.
+A single table, an equality and a sort.
+
+.`DEPARTMENT/01_basic.sql`, SAMPLE_DEPARTMENT_B_03
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DEPTNO, DEPTNAME
+FROM DEPARTMENT
+WHERE ADMRDEPT = 'E01'
+ORDER BY DEPTNO
+----
+
+....
+DEPTNO DEPTNAME
+------ ----------------
+E11    OPERATIONS
+E21    SOFTWARE SUPPORT
+F22    BRANCH OFFICE F2
+G22    BRANCH OFFICE G2
+H22    BRANCH OFFICE H2
+I22    BRANCH OFFICE I2
+J22    BRANCH OFFICE J2
+
+  7 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_DEPARTMENT_I_01]]
+==== SAMPLE_DEPARTMENT_I_01: each department with the name of its manager
+
+Show every department with the first and the last name of its manager, ordered by `DEPTNO`; a department without a manager is still shown.
+An outer join along `MGRNO` to `EMPLOYEE`.
+
+.`DEPARTMENT/02_intermediate.sql`, SAMPLE_DEPARTMENT_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT d.DEPTNO, d.DEPTNAME, e.FIRSTNME, e.LASTNAME
+FROM DEPARTMENT d
+         LEFT JOIN EMPLOYEE e ON e.EMPNO = d.MGRNO
+ORDER BY d.DEPTNO
+----
+
+....
+DEPTNO DEPTNAME                     FIRSTNME  LASTNAME
+------ ---------------------------- --------- ---------
+A00    SPIFFY COMPUTER SERVICE DIV. CHRISTINE HAAS
+B01    PLANNING                     MICHAEL   THOMPSON
+C01    INFORMATION CENTER           SALLY     KWAN
+D01    DEVELOPMENT CENTER           -         -
+D11    MANUFACTURING SYSTEMS        IRVING    STERN
+D21    ADMINISTRATION SYSTEMS       EVA       PULASKI
+E01    SUPPORT SERVICES             JOHN      GEYER
+E11    OPERATIONS                   EILEEN    HENDERSON
+E21    SOFTWARE SUPPORT             THEODORE  SPENSER
+F22    BRANCH OFFICE F2             -         -
+... 14 rows in all.
+....
+====
+
+[[SAMPLE_DEPARTMENT_I_02]]
+==== SAMPLE_DEPARTMENT_I_02: each department with the name of the department that administers it
+
+Show every department with the name of its administering department, ordered by `DEPTNO`.
+A self join along `ADMRDEPT`.
+
+.`DEPARTMENT/02_intermediate.sql`, SAMPLE_DEPARTMENT_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT d.DEPTNO, d.DEPTNAME, d.ADMRDEPT, a.DEPTNAME AS ADMRDEPTNAME
+FROM DEPARTMENT d
+         JOIN DEPARTMENT a ON a.DEPTNO = d.ADMRDEPT
+ORDER BY d.DEPTNO
+----
+
+....
+DEPTNO DEPTNAME                     ADMRDEPT ADMRDEPTNAME
+------ ---------------------------- -------- ----------------------------
+A00    SPIFFY COMPUTER SERVICE DIV. A00      SPIFFY COMPUTER SERVICE DIV.
+B01    PLANNING                     A00      SPIFFY COMPUTER SERVICE DIV.
+C01    INFORMATION CENTER           A00      SPIFFY COMPUTER SERVICE DIV.
+D01    DEVELOPMENT CENTER           A00      SPIFFY COMPUTER SERVICE DIV.
+D11    MANUFACTURING SYSTEMS        D01      DEVELOPMENT CENTER
+D21    ADMINISTRATION SYSTEMS       D01      DEVELOPMENT CENTER
+E01    SUPPORT SERVICES             A00      SPIFFY COMPUTER SERVICE DIV.
+E11    OPERATIONS                   E01      SUPPORT SERVICES
+E21    SOFTWARE SUPPORT             E01      SUPPORT SERVICES
+F22    BRANCH OFFICE F2             E01      SUPPORT SERVICES
+... 14 rows in all.
+....
+====
+
+[[SAMPLE_DEPARTMENT_I_03]]
+==== SAMPLE_DEPARTMENT_I_03: the number of employees in each department
+
+Count the employees of each department, including the departments with none, the largest first; departments with the same count are ordered by `DEPTNO`.
+An outer join to `EMPLOYEE` and a group.
+
+.`DEPARTMENT/02_intermediate.sql`, SAMPLE_DEPARTMENT_I_03
+[%collapsible]
+====
+[source,sql]
+----
+SELECT d.DEPTNO, d.DEPTNAME, COUNT(e.EMPNO) AS EMPLOYEES
+FROM DEPARTMENT d
+         LEFT JOIN EMPLOYEE e ON e.WORKDEPT = d.DEPTNO
+GROUP BY d.DEPTNO, d.DEPTNAME
+ORDER BY EMPLOYEES DESC, d.DEPTNO
+----
+
+....
+DEPTNO DEPTNAME                     EMPLOYEES
+------ ---------------------------- ---------
+D11    MANUFACTURING SYSTEMS               11
+D21    ADMINISTRATION SYSTEMS               7
+E11    OPERATIONS                           7
+E21    SOFTWARE SUPPORT                     6
+A00    SPIFFY COMPUTER SERVICE DIV.         5
+C01    INFORMATION CENTER                   4
+B01    PLANNING                             1
+E01    SUPPORT SERVICES                     1
+D01    DEVELOPMENT CENTER                   0
+F22    BRANCH OFFICE F2                     0
+... 14 rows in all.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_DEPARTMENT_A_01]]
+==== SAMPLE_DEPARTMENT_A_01: the departments under A00, level by level
+
+Walk the tree of departments from `A00` down along `ADMRDEPT`, and show each department with its depth, `A00` at 0, ordered by depth and `DEPTNO`.
+`A00` administers itself, so the walk must not start again from it.
+A recursive common table expression, whose recursive part Db2 wants joined in `WHERE`; Jakarta Persistence has none.
+
+.`DEPARTMENT/03_advanced.sql`, SAMPLE_DEPARTMENT_A_01
+[%collapsible]
+====
+[source,sql]
+----
+WITH TREE (DEPTNO, DEPTNAME, ADMRDEPT, DEPTH) AS (
+    SELECT DEPTNO, DEPTNAME, ADMRDEPT, 0
+    FROM DEPARTMENT
+    WHERE DEPTNO = 'A00'
+    UNION ALL
+    SELECT d.DEPTNO, d.DEPTNAME, d.ADMRDEPT, t.DEPTH + 1
+    FROM DEPARTMENT d, TREE t
+    WHERE d.ADMRDEPT = t.DEPTNO
+      AND d.DEPTNO <> d.ADMRDEPT
+)
+SELECT DEPTNO, DEPTNAME, ADMRDEPT, DEPTH
+FROM TREE
+ORDER BY DEPTH, DEPTNO
+----
+
+....
+DEPTNO DEPTNAME                     ADMRDEPT DEPTH
+------ ---------------------------- -------- -----
+A00    SPIFFY COMPUTER SERVICE DIV. A00          0
+B01    PLANNING                     A00          1
+C01    INFORMATION CENTER           A00          1
+D01    DEVELOPMENT CENTER           A00          1
+E01    SUPPORT SERVICES             A00          1
+D11    MANUFACTURING SYSTEMS        D01          2
+D21    ADMINISTRATION SYSTEMS       D01          2
+E11    OPERATIONS                   E01          2
+E21    SOFTWARE SUPPORT             E01          2
+F22    BRANCH OFFICE F2             E01          2
+... 14 rows in all.
+....
+====
+
+[[SAMPLE_DEPARTMENT_A_02]]
+==== SAMPLE_DEPARTMENT_A_02: the departments whose average salary is above the company's
+
+Find the departments whose employees' average `SALARY` is above the average of every employee, the highest first.
+A group, and a subquery in `HAVING`.
+
+.`DEPARTMENT/03_advanced.sql`, SAMPLE_DEPARTMENT_A_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT d.DEPTNO, d.DEPTNAME, DECIMAL(AVG(e.SALARY), 9, 2) AS AVG_SALARY
+FROM DEPARTMENT d
+         JOIN EMPLOYEE e ON e.WORKDEPT = d.DEPTNO
+GROUP BY d.DEPTNO, d.DEPTNAME
+HAVING AVG(e.SALARY) > (SELECT AVG(SALARY) FROM EMPLOYEE)
+ORDER BY AVG_SALARY DESC
+----
+
+....
+DEPTNO DEPTNAME                     AVG_SALARY
+------ ---------------------------- ----------
+B01    PLANNING                       94250.00
+E01    SUPPORT SERVICES               80175.00
+C01    INFORMATION CENTER             77222.50
+A00    SPIFFY COMPUTER SERVICE DIV.   70850.00
+D11    MANUFACTURING SYSTEMS          58783.63
+
+  5 record(s) selected.
+....
+====
+
+== EMPLOYEE
+
+The `EMPLOYEE` table, mapped by `MappedEmployee`: the forty-two employees, each working in a department, with their job, education level, salary, bonus and commission.
+
+=== Basic
+
+[[SAMPLE_EMPLOYEE_B_01]]
+==== SAMPLE_EMPLOYEE_B_01: the employees of D11, by name
+
+Find the employees whose `WORKDEPT` is `D11`, ordered by `LASTNAME` and then by `FIRSTNME`.
+A single table, an equality and a sort on two columns.
+
+.`EMPLOYEE/01_basic.sql`, SAMPLE_EMPLOYEE_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, FIRSTNME, LASTNAME, JOB
+FROM EMPLOYEE
+WHERE WORKDEPT = 'D11'
+ORDER BY LASTNAME, FIRSTNME
+----
+
+....
+EMPNO  FIRSTNME  LASTNAME  JOB
+------ --------- --------- --------
+000150 BRUCE     ADAMSON   DESIGNER
+000200 DAVID     BROWN     DESIGNER
+200220 REBA      JOHN      DESIGNER
+000210 WILLIAM   JONES     DESIGNER
+000220 JENNIFER  LUTZ      DESIGNER
+000160 ELIZABETH PIANKA    DESIGNER
+000180 MARILYN   SCOUTTEN  DESIGNER
+000060 IRVING    STERN     MANAGER
+000190 JAMES     WALKER    DESIGNER
+200170 KIYOSHI   YAMAMOTO  DESIGNER
+... 11 rows in all.
+....
+====
+
+[[SAMPLE_EMPLOYEE_B_02]]
+==== SAMPLE_EMPLOYEE_B_02: the employees hired in 2006
+
+Find the employees hired in 2006, ordered by `HIREDATE` and then by `EMPNO`.
+A range on a `DATE`, bound on both ends.
+
+.`EMPLOYEE/01_basic.sql`, SAMPLE_EMPLOYEE_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, FIRSTNME, LASTNAME, HIREDATE
+FROM EMPLOYEE
+WHERE HIREDATE >= DATE '2006-01-01'
+  AND HIREDATE < DATE '2007-01-01'
+ORDER BY HIREDATE, EMPNO
+----
+
+....
+EMPNO  FIRSTNME  LASTNAME HIREDATE
+------ --------- -------- ----------
+000330 WING      LEE      02/23/2006
+200330 HELENA    WONG     02/23/2006
+000290 JOHN      PARKER   05/30/2006
+000270 MARIA     PEREZ    09/30/2006
+000160 ELIZABETH PIANKA   10/11/2006
+000140 HEATHER   NICHOLLS 12/15/2006
+200140 KIM       NATZ     12/15/2006
+
+  7 record(s) selected.
+....
+====
+
+[[SAMPLE_EMPLOYEE_B_03]]
+==== SAMPLE_EMPLOYEE_B_03: the five highest salaries
+
+Show the five employees with the highest `SALARY`; employees with the same salary are ordered by `EMPNO`.
+A sort and the first rows.
+
+.`EMPLOYEE/01_basic.sql`, SAMPLE_EMPLOYEE_B_03
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, FIRSTNME, LASTNAME, SALARY
+FROM EMPLOYEE
+ORDER BY SALARY DESC, EMPNO
+FETCH FIRST 5 ROWS ONLY
+----
+
+....
+EMPNO  FIRSTNME  LASTNAME  SALARY
+------ --------- --------- ---------
+000010 CHRISTINE HAAS      152750.00
+000030 SALLY     KWAN       98250.00
+000070 EVA       PULASKI    96170.00
+000020 MICHAEL   THOMPSON   94250.00
+000090 EILEEN    HENDERSON  89750.00
+
+  5 record(s) selected.
+....
+====
+
+[[SAMPLE_EMPLOYEE_B_04]]
+==== SAMPLE_EMPLOYEE_B_04: the employees without a middle initial
+
+Find the employees whose `MIDINIT` is blank, ordered by `EMPNO`.
+`MIDINIT` is `CHARACTER(1)`, never `NULL` in the data; a blank one compares equal to the empty string, since a `CHARACTER` is padded with spaces.
+
+.`EMPLOYEE/01_basic.sql`, SAMPLE_EMPLOYEE_B_04
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, FIRSTNME, LASTNAME
+FROM EMPLOYEE
+WHERE MIDINIT = ''
+ORDER BY EMPNO
+----
+
+....
+EMPNO  FIRSTNME LASTNAME
+------ -------- ---------
+000120 SEAN     O'CONNELL
+000150 BRUCE    ADAMSON
+000200 DAVID    BROWN
+000330 WING     LEE
+200120 GREG     ORLANDO
+200170 KIYOSHI  YAMAMOTO
+200330 HELENA   WONG
+
+  7 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_EMPLOYEE_I_01]]
+==== SAMPLE_EMPLOYEE_I_01: the number of employees and their average salary per job
+
+Count the employees of each `JOB` and average their `SALARY`, cut to two decimals, the highest average first.
+A group and two aggregates.
+
+.`EMPLOYEE/02_intermediate.sql`, SAMPLE_EMPLOYEE_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT JOB, COUNT(*) AS EMPLOYEES, DECIMAL(AVG(SALARY), 9, 2) AS AVG_SALARY
+FROM EMPLOYEE
+GROUP BY JOB
+ORDER BY AVG_SALARY DESC
+----
+
+....
+JOB      EMPLOYEES AVG_SALARY
+-------- --------- ----------
+PRES             1  152750.00
+MANAGER          7   88142.14
+ANALYST          3   70213.33
+DESIGNER        10   57437.00
+SALESREP         2   56500.00
+CLERK            8   43876.25
+FIELDREP         5   39274.00
+OPERATOR         6   37898.33
+
+  8 record(s) selected.
+....
+====
+
+[[SAMPLE_EMPLOYEE_I_02]]
+==== SAMPLE_EMPLOYEE_I_02: the employees of the E21 with the name of their department
+
+Show the employees of `E21` with the name of their department, ordered by `EMPNO`.
+A join along `WORKDEPT` to `DEPARTMENT`.
+
+.`EMPLOYEE/02_intermediate.sql`, SAMPLE_EMPLOYEE_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT e.EMPNO, e.FIRSTNME, e.LASTNAME, d.DEPTNAME
+FROM EMPLOYEE e
+         JOIN DEPARTMENT d ON d.DEPTNO = e.WORKDEPT
+WHERE e.WORKDEPT = 'E21'
+ORDER BY e.EMPNO
+----
+
+....
+EMPNO  FIRSTNME LASTNAME DEPTNAME
+------ -------- -------- ----------------
+000100 THEODORE SPENSER  SOFTWARE SUPPORT
+000320 RAMLAL   MEHTA    SOFTWARE SUPPORT
+000330 WING     LEE      SOFTWARE SUPPORT
+000340 JASON    GOUNOT   SOFTWARE SUPPORT
+200330 HELENA   WONG     SOFTWARE SUPPORT
+200340 ROY      ALONZO   SOFTWARE SUPPORT
+
+  6 record(s) selected.
+....
+====
+
+[[SAMPLE_EMPLOYEE_I_03]]
+==== SAMPLE_EMPLOYEE_I_03: the employees who manage a department
+
+Find the employees who are the `MGRNO` of a department, ordered by `EMPNO`.
+A correlated `EXISTS`.
+
+.`EMPLOYEE/02_intermediate.sql`, SAMPLE_EMPLOYEE_I_03
+[%collapsible]
+====
+[source,sql]
+----
+SELECT e.EMPNO, e.FIRSTNME, e.LASTNAME, e.JOB
+FROM EMPLOYEE e
+WHERE EXISTS (SELECT 1 FROM DEPARTMENT d WHERE d.MGRNO = e.EMPNO)
+ORDER BY e.EMPNO
+----
+
+....
+EMPNO  FIRSTNME  LASTNAME  JOB
+------ --------- --------- -------
+000010 CHRISTINE HAAS      PRES
+000020 MICHAEL   THOMPSON  MANAGER
+000030 SALLY     KWAN      MANAGER
+000050 JOHN      GEYER     MANAGER
+000060 IRVING    STERN     MANAGER
+000070 EVA       PULASKI   MANAGER
+000090 EILEEN    HENDERSON MANAGER
+000100 THEODORE  SPENSER   MANAGER
+
+  8 record(s) selected.
+....
+====
+
+[[SAMPLE_EMPLOYEE_I_04]]
+==== SAMPLE_EMPLOYEE_I_04: the five highest total earnings
+
+Add up the `SALARY`, the `BONUS` and the `COMM` of each employee, and show the five highest totals; equal totals are ordered by `EMPNO`.
+An expression on three columns, a sort on it and the first rows.
+
+.`EMPLOYEE/02_intermediate.sql`, SAMPLE_EMPLOYEE_I_04
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, LASTNAME, SALARY + BONUS + COMM AS TOTAL
+FROM EMPLOYEE
+ORDER BY TOTAL DESC, EMPNO
+FETCH FIRST 5 ROWS ONLY
+----
+
+....
+EMPNO  LASTNAME  TOTAL
+------ --------- ---------
+000010 HAAS      157970.00
+000030 KWAN      102110.00
+000070 PULASKI    99763.00
+000020 THOMPSON   98350.00
+000090 HENDERSON  92730.00
+
+  5 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_EMPLOYEE_A_01]]
+==== SAMPLE_EMPLOYEE_A_01: the highest paid employee of each department
+
+Find, for each department, the employee whose `SALARY` is the highest in it, ordered by `WORKDEPT`.
+A correlated subquery that takes the maximum of the employee's own department.
+
+.`EMPLOYEE/03_advanced.sql`, SAMPLE_EMPLOYEE_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT e.WORKDEPT, e.EMPNO, e.LASTNAME, e.SALARY
+FROM EMPLOYEE e
+WHERE e.SALARY = (SELECT MAX(x.SALARY) FROM EMPLOYEE x WHERE x.WORKDEPT = e.WORKDEPT)
+ORDER BY e.WORKDEPT
+----
+
+....
+WORKDEPT EMPNO  LASTNAME  SALARY
+-------- ------ --------- ---------
+A00      000010 HAAS      152750.00
+B01      000020 THOMPSON   94250.00
+C01      000030 KWAN       98250.00
+D11      000060 STERN      72250.00
+D21      000070 PULASKI    96170.00
+E01      000050 GEYER      80175.00
+E11      000090 HENDERSON  89750.00
+E21      000100 SPENSER    86150.00
+
+  8 record(s) selected.
+....
+====
+
+[[SAMPLE_EMPLOYEE_A_02]]
+==== SAMPLE_EMPLOYEE_A_02: the employees older than the manager of their department
+
+Find the employees born before the manager of their own department, ordered by `EMPNO`; no employee is paid more than the manager.
+Two joins, to `DEPARTMENT` and from there back to `EMPLOYEE`, and a comparison across them.
+
+.`EMPLOYEE/03_advanced.sql`, SAMPLE_EMPLOYEE_A_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT e.EMPNO, e.LASTNAME, e.BIRTHDATE, m.EMPNO AS MGRNO, m.BIRTHDATE AS MGR_BIRTHDATE
+FROM EMPLOYEE e
+         JOIN DEPARTMENT d ON d.DEPTNO = e.WORKDEPT
+         JOIN EMPLOYEE m ON m.EMPNO = d.MGRNO
+WHERE e.BIRTHDATE < m.BIRTHDATE
+ORDER BY e.EMPNO
+----
+
+....
+EMPNO  LASTNAME   BIRTHDATE  MGRNO  MGR_BIRTHDATE
+------ ---------- ---------- ------ -------------
+000110 LUCCHESSI  11/05/1959 000010 08/24/1963
+000130 QUINTANA   09/15/1955 000030 05/11/1971
+000200 BROWN      05/29/1971 000060 07/07/1975
+000230 JEFFERSON  05/30/1980 000070 05/26/2003
+000240 MARINO     03/31/2002 000070 05/26/2003
+000250 SMITH      11/12/1969 000070 05/26/2003
+000260 JOHNSON    10/05/1976 000070 05/26/2003
+000310 SETRIGHT   04/21/1961 000090 05/15/1971
+000320 MEHTA      08/11/1962 000100 12/18/1980
+000330 LEE        07/18/1971 000100 12/18/1980
+... 16 rows in all.
+....
+====
+
+[[SAMPLE_EMPLOYEE_A_03]]
+==== SAMPLE_EMPLOYEE_A_03: each employee's rank by salary within the department, D21
+
+Rank the employees of `D21` by `SALARY`, the highest first, and show each with the share of the department's total salary it takes, in percent, cut to two decimals.
+Two window functions; Jakarta Persistence has none.
+
+.`EMPLOYEE/03_advanced.sql`, SAMPLE_EMPLOYEE_A_03
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, LASTNAME, SALARY,
+       RANK() OVER (ORDER BY SALARY DESC) AS SALARY_RANK,
+       DECIMAL(DECFLOAT(SALARY) * 100 / SUM(SALARY) OVER (), 5, 2) AS SHARE
+FROM EMPLOYEE
+WHERE WORKDEPT = 'D21'
+ORDER BY SALARY_RANK, EMPNO
+----
+
+....
+EMPNO  LASTNAME   SALARY   SALARY_RANK SHARE
+------ ---------- -------- ----------- -----
+000070 PULASKI    96170.00           1 26.81
+000250 SMITH      49180.00           2 13.71
+000240 MARINO     48760.00           3 13.59
+000260 JOHNSON    47250.00           4 13.17
+000230 JEFFERSON  42180.00           5 11.76
+200240 MONTEVERDE 37760.00           6 10.53
+000270 PEREZ      37380.00           7 10.42
+
+  7 record(s) selected.
+....
+====
+
+== PROJECT
+
+The `PROJECT` table, mapped by `MappedProject`: the twenty projects, each of a department and in the charge of an employee, most of them part of a major project.
+
+=== Basic
+
+[[SAMPLE_PROJECT_B_01]]
+==== SAMPLE_PROJECT_B_01: the projects of D21
+
+Find the projects whose `DEPTNO` is `D21`, ordered by `PROJNO`.
+A single table and an equality.
+
+.`PROJECT/01_basic.sql`, SAMPLE_PROJECT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, PROJNAME, RESPEMP, PRSTAFF
+FROM PROJECT
+WHERE DEPTNO = 'D21'
+ORDER BY PROJNO
+----
+
+....
+PROJNO PROJNAME              RESPEMP PRSTAFF
+------ --------------------- ------- -------
+AD3110 GENERAL ADMIN SYSTEMS 000070     6.00
+AD3111 PAYROLL PROGRAMMING   000230     2.00
+AD3112 PERSONNEL PROGRAMMING 000250     1.00
+AD3113 ACCOUNT PROGRAMMING   000270     2.00
+
+  4 record(s) selected.
+....
+====
+
+[[SAMPLE_PROJECT_B_02]]
+==== SAMPLE_PROJECT_B_02: the major projects
+
+Find the projects which are part of no other, whose `MAJPROJ` is `NULL`, ordered by `PROJNO`.
+A single table and a test for `NULL`.
+
+.`PROJECT/01_basic.sql`, SAMPLE_PROJECT_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, PROJNAME, DEPTNO
+FROM PROJECT
+WHERE MAJPROJ IS NULL
+ORDER BY PROJNO
+----
+
+....
+PROJNO PROJNAME             DEPTNO
+------ -------------------- ------
+AD3100 ADMIN SERVICES       D01
+IF1000 QUERY SERVICES       C01
+IF2000 USER EDUCATION       C01
+MA2100 WELD LINE AUTOMATION D01
+OP1000 OPERATION SUPPORT    E01
+OP2000 GEN SYSTEMS SERVICES E01
+
+  6 record(s) selected.
+....
+====
+
+[[SAMPLE_PROJECT_B_03]]
+==== SAMPLE_PROJECT_B_03: the projects that end before they start
+
+Find the projects whose `PRENDATE` is before their `PRSTDATE`, ordered by `PROJNO`; the data has some.
+A comparison of two columns of the same row.
+
+.`PROJECT/01_basic.sql`, SAMPLE_PROJECT_B_03
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, PROJNAME, PRSTDATE, PRENDATE
+FROM PROJECT
+WHERE PRENDATE < PRSTDATE
+ORDER BY PROJNO
+----
+
+....
+PROJNO PROJNAME            PRSTDATE   PRENDATE
+------ ------------------- ---------- ----------
+MA2111 W L PROGRAM DESIGN  01/01/2002 12/01/1982
+MA2112 W L ROBOT DESIGN    01/01/2002 12/01/1982
+MA2113 W L PROD CONT PROGS 02/15/2002 12/01/1982
+
+  3 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_PROJECT_I_01]]
+==== SAMPLE_PROJECT_I_01: each project with the name of the employee in charge
+
+Show every project with the first and the last name of its `RESPEMP`, ordered by `PROJNO`.
+A join along `RESPEMP` to `EMPLOYEE`.
+
+.`PROJECT/02_intermediate.sql`, SAMPLE_PROJECT_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT p.PROJNO, p.PROJNAME, e.FIRSTNME, e.LASTNAME
+FROM PROJECT p
+         JOIN EMPLOYEE e ON e.EMPNO = p.RESPEMP
+ORDER BY p.PROJNO
+----
+
+....
+PROJNO PROJNAME              FIRSTNME  LASTNAME
+------ --------------------- --------- ---------
+AD3100 ADMIN SERVICES        CHRISTINE HAAS
+AD3110 GENERAL ADMIN SYSTEMS EVA       PULASKI
+AD3111 PAYROLL PROGRAMMING   JAMES     JEFFERSON
+AD3112 PERSONNEL PROGRAMMING DANIEL    SMITH
+AD3113 ACCOUNT PROGRAMMING   MARIA     PEREZ
+IF1000 QUERY SERVICES        SALLY     KWAN
+IF2000 USER EDUCATION        SALLY     KWAN
+MA2100 WELD LINE AUTOMATION  CHRISTINE HAAS
+MA2110 W L PROGRAMMING       IRVING    STERN
+MA2111 W L PROGRAM DESIGN    JENNIFER  LUTZ
+... 20 rows in all.
+....
+====
+
+[[SAMPLE_PROJECT_I_02]]
+==== SAMPLE_PROJECT_I_02: the number of subprojects of each project
+
+Count, for each project that has any, the projects whose `MAJPROJ` it is, ordered by `PROJNO`.
+A self join and a group.
+
+.`PROJECT/02_intermediate.sql`, SAMPLE_PROJECT_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT m.PROJNO, m.PROJNAME, COUNT(*) AS SUBPROJECTS
+FROM PROJECT m
+         JOIN PROJECT p ON p.MAJPROJ = m.PROJNO
+GROUP BY m.PROJNO, m.PROJNAME
+ORDER BY m.PROJNO
+----
+
+....
+PROJNO PROJNAME              SUBPROJECTS
+------ --------------------- -----------
+AD3100 ADMIN SERVICES                  1
+AD3110 GENERAL ADMIN SYSTEMS           3
+MA2100 WELD LINE AUTOMATION            2
+MA2110 W L PROGRAMMING                 3
+OP1000 OPERATION SUPPORT               1
+OP2000 GEN SYSTEMS SERVICES            1
+OP2010 SYSTEMS SUPPORT                 3
+
+  7 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_PROJECT_A_01]]
+==== SAMPLE_PROJECT_A_01: the projects under MA2100, level by level
+
+Walk the tree of projects from `MA2100` down along `MAJPROJ`, and show each project with its depth, `MA2100` at 0, ordered by depth and `PROJNO`.
+A recursive common table expression, whose recursive part Db2 wants joined in `WHERE`; Jakarta Persistence has none.
+
+.`PROJECT/03_advanced.sql`, SAMPLE_PROJECT_A_01
+[%collapsible]
+====
+[source,sql]
+----
+WITH TREE (PROJNO, PROJNAME, MAJPROJ, DEPTH) AS (
+    SELECT PROJNO, PROJNAME, MAJPROJ, 0
+    FROM PROJECT
+    WHERE PROJNO = 'MA2100'
+    UNION ALL
+    SELECT p.PROJNO, p.PROJNAME, p.MAJPROJ, t.DEPTH + 1
+    FROM PROJECT p, TREE t
+    WHERE p.MAJPROJ = t.PROJNO
+)
+SELECT PROJNO, PROJNAME, MAJPROJ, DEPTH
+FROM TREE
+ORDER BY DEPTH, PROJNO
+----
+
+....
+PROJNO PROJNAME             MAJPROJ DEPTH
+------ -------------------- ------- -----
+MA2100 WELD LINE AUTOMATION -           0
+MA2110 W L PROGRAMMING      MA2100      1
+PL2100 WELD LINE PLANNING   MA2100      1
+MA2111 W L PROGRAM DESIGN   MA2110      2
+MA2112 W L ROBOT DESIGN     MA2110      2
+MA2113 W L PROD CONT PROGS  MA2110      2
+
+  6 record(s) selected with 1 warning messages suppressed.
+....
+====
+
+[[SAMPLE_PROJECT_A_02]]
+==== SAMPLE_PROJECT_A_02: the projects in the charge of an employee of another department
+
+Find the projects whose `RESPEMP` works in a department other than the project's `DEPTNO`, ordered by `PROJNO`.
+A join to `EMPLOYEE` and a comparison across the two tables.
+
+.`PROJECT/03_advanced.sql`, SAMPLE_PROJECT_A_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT p.PROJNO, p.PROJNAME, p.DEPTNO, e.EMPNO, e.WORKDEPT
+FROM PROJECT p
+         JOIN EMPLOYEE e ON e.EMPNO = p.RESPEMP
+WHERE e.WORKDEPT <> p.DEPTNO
+ORDER BY p.PROJNO
+----
+
+....
+PROJNO PROJNAME             DEPTNO EMPNO  WORKDEPT
+------ -------------------- ------ ------ --------
+AD3100 ADMIN SERVICES       D01    000010 A00
+MA2100 WELD LINE AUTOMATION D01    000010 A00
+
+  2 record(s) selected.
+....
+====
+
+== ACT
+
+The `ACT` table, mapped by `MappedAct`: the eighteen activities a project can be made of, each with a keyword and a description.
+
+=== Basic
+
+[[SAMPLE_ACT_B_01]]
+==== SAMPLE_ACT_B_01: every activity, by number
+
+Show every activity, ordered by `ACTNO`.
+A single table and a sort; no filter.
+
+.`ACT/01_basic.sql`, SAMPLE_ACT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT ACTNO, ACTKWD, ACTDESC
+FROM ACT
+ORDER BY ACTNO
+----
+
+....
+ACTNO ACTKWD ACTDESC
+----- ------ -------------------
+   10 MANAGE MANAGE/ADVISE
+   20 ECOST  ESTIMATE COST
+   30 DEFINE DEFINE SPECS
+   40 LEADPR LEAD PROGRAM/DESIGN
+   50 SPECS  WRITE SPECS
+   60 LOGIC  DESCRIBE LOGIC
+   70 CODE   CODE PROGRAMS
+   80 TEST   TEST PROGRAMS
+   90 ADMQS  ADM QUERY SYSTEM
+  100 TEACH  TEACH CLASSES
+... 18 rows in all.
+....
+====
+
+[[SAMPLE_ACT_B_02]]
+==== SAMPLE_ACT_B_02: the administrative activities
+
+Find the activities whose `ACTKWD` starts with `ADM`, ordered by `ACTNO`.
+A single table and a `LIKE`.
+
+.`ACT/01_basic.sql`, SAMPLE_ACT_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT ACTNO, ACTKWD, ACTDESC
+FROM ACT
+WHERE ACTKWD LIKE 'ADM%'
+ORDER BY ACTNO
+----
+
+....
+ACTNO ACTKWD ACTDESC
+----- ------ -----------------
+   90 ADMQS  ADM QUERY SYSTEM
+  150 ADMSYS ADM OPERATING SYS
+  160 ADMDB  ADM DATA BASES
+  170 ADMDC  ADM DATA COMM
+
+  4 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_ACT_I_01]]
+==== SAMPLE_ACT_I_01: the number of projects of each activity
+
+Count the distinct projects of each activity in `PROJACT`, including the activities of none, the most first; activities with the same count are ordered by `ACTNO`.
+An outer join and a distinct count.
+
+.`ACT/02_intermediate.sql`, SAMPLE_ACT_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT a.ACTNO, a.ACTKWD, COUNT(DISTINCT pa.PROJNO) AS PROJECTS
+FROM ACT a
+         LEFT JOIN PROJACT pa ON pa.ACTNO = a.ACTNO
+GROUP BY a.ACTNO, a.ACTKWD
+ORDER BY PROJECTS DESC, a.ACTNO
+----
+
+....
+ACTNO ACTKWD PROJECTS
+----- ------ --------
+   10 MANAGE        9
+   60 LOGIC         6
+   70 CODE          5
+   80 TEST          5
+  180 DOC           5
+  140 MAINT         3
+  100 TEACH         2
+   20 ECOST         1
+   30 DEFINE        1
+   40 LEADPR        1
+... 18 rows in all.
+....
+====
+
+[[SAMPLE_ACT_I_02]]
+==== SAMPLE_ACT_I_02: the activities no project has
+
+Find the activities that appear in no row of `PROJACT`, ordered by `ACTNO`.
+A correlated `NOT EXISTS`.
+
+.`ACT/02_intermediate.sql`, SAMPLE_ACT_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT a.ACTNO, a.ACTKWD, a.ACTDESC
+FROM ACT a
+WHERE NOT EXISTS (SELECT 1 FROM PROJACT pa WHERE pa.ACTNO = a.ACTNO)
+ORDER BY a.ACTNO
+----
+
+....
+ACTNO ACTKWD ACTDESC
+----- ------ -----------------
+  120 STAFF  PERS AND STAFFING
+
+  1 record(s) selected.
+....
+====
+
+== PROJACT
+
+The `PROJACT` table, mapped by `MappedProjAct`: the activities of each project, each from a start date; the staff and the end date are `NULL` in every row.
+
+=== Basic
+
+[[SAMPLE_PROJACT_B_01]]
+==== SAMPLE_PROJACT_B_01: the activities of AD3111
+
+Find the rows of project `AD3111`, ordered by `ACTNO` and then by `ACSTDATE`.
+A single table, an equality and a sort on two columns.
+
+.`PROJACT/01_basic.sql`, SAMPLE_PROJACT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, ACTNO, ACSTDATE
+FROM PROJACT
+WHERE PROJNO = 'AD3111'
+ORDER BY ACTNO, ACSTDATE
+----
+
+....
+PROJNO ACTNO ACSTDATE
+------ ----- ----------
+AD3111    60 01/01/2002
+AD3111    60 03/15/2002
+AD3111    70 02/15/2002
+AD3111    70 03/15/2002
+AD3111    80 04/15/2002
+AD3111    80 09/15/2002
+AD3111   180 10/15/2002
+
+  7 record(s) selected.
+....
+====
+
+[[SAMPLE_PROJACT_B_02]]
+==== SAMPLE_PROJACT_B_02: the columns that are never set
+
+Count the rows, and the rows whose `ACSTAFF` and whose `ACENDATE` are set; neither is in any row.
+Three counts, two of them on a column, which skips `NULL`.
+
+.`PROJACT/01_basic.sql`, SAMPLE_PROJACT_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT COUNT(*) AS ROWS, COUNT(ACSTAFF) AS WITH_STAFF, COUNT(ACENDATE) AS WITH_END
+FROM PROJACT
+----
+
+....
+ROWS WITH_STAFF WITH_END
+---- ---------- --------
+  65          0        0
+
+  1 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_PROJACT_I_01]]
+==== SAMPLE_PROJACT_I_01: the activities of MA2111 with their description
+
+Show the activities of project `MA2111` with the `ACTDESC` of each, ordered by `ACTNO` and `ACSTDATE`.
+A join along `ACTNO` to `ACT`.
+
+.`PROJACT/02_intermediate.sql`, SAMPLE_PROJACT_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT pa.ACTNO, a.ACTDESC, pa.ACSTDATE
+FROM PROJACT pa
+         JOIN ACT a ON a.ACTNO = pa.ACTNO
+WHERE pa.PROJNO = 'MA2111'
+ORDER BY pa.ACTNO, pa.ACSTDATE
+----
+
+....
+ACTNO ACTDESC             ACSTDATE
+----- ------------------- ----------
+   40 LEAD PROGRAM/DESIGN 01/01/2002
+   50 WRITE SPECS         01/01/2002
+   60 DESCRIBE LOGIC      06/15/2002
+
+  3 record(s) selected.
+....
+====
+
+[[SAMPLE_PROJACT_I_02]]
+==== SAMPLE_PROJACT_I_02: the number of activities and their first and last start per project
+
+Count the rows of each project, with the earliest and the latest `ACSTDATE`, ordered by `PROJNO`.
+A group, a count, a minimum and a maximum.
+
+.`PROJACT/02_intermediate.sql`, SAMPLE_PROJACT_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, COUNT(*) AS ACTIVITIES, MIN(ACSTDATE) AS FIRST_START, MAX(ACSTDATE) AS LAST_START
+FROM PROJACT
+GROUP BY PROJNO
+ORDER BY PROJNO
+----
+
+....
+PROJNO ACTIVITIES FIRST_START LAST_START
+------ ---------- ----------- ----------
+AD3100          1 01/01/2002  01/01/2002
+AD3110          1 01/01/2002  01/01/2002
+AD3111          7 01/01/2002  10/15/2002
+AD3112          9 01/01/2002  01/01/2003
+AD3113         12 01/01/2002  10/15/2002
+IF1000          3 06/01/2002  10/01/2002
+IF2000          5 01/01/2002  10/01/2002
+MA2100          2 01/01/2002  01/01/2002
+MA2110          1 01/01/2002  01/01/2002
+MA2111          3 01/01/2002  06/15/2002
+... 19 rows in all.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_PROJACT_A_01]]
+==== SAMPLE_PROJACT_A_01: the activities that start before their project
+
+Find the rows whose `ACSTDATE` is before the `PRSTDATE` of their project, ordered by `PROJNO`, `ACTNO` and `ACSTDATE`.
+A join to `PROJECT` and a comparison across the two tables.
+
+.`PROJACT/03_advanced.sql`, SAMPLE_PROJACT_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT pa.PROJNO, pa.ACTNO, pa.ACSTDATE, p.PRSTDATE
+FROM PROJACT pa
+         JOIN PROJECT p ON p.PROJNO = pa.PROJNO
+WHERE pa.ACSTDATE < p.PRSTDATE
+ORDER BY pa.PROJNO, pa.ACTNO, pa.ACSTDATE
+----
+
+....
+PROJNO ACTNO ACSTDATE   PRSTDATE
+------ ----- ---------- ----------
+MA2113    80 01/01/2002 02/15/2002
+
+  1 record(s) selected.
+....
+====
+
+== EMPPROJACT
+
+The `EMPPROJACT` table, mapped by `MappedEmpProjAct`: the employees on each activity of a project, with the share of their time it takes.
+
+=== Basic
+
+[[SAMPLE_EMPPROJACT_B_01]]
+==== SAMPLE_EMPPROJACT_B_01: the assignments of 000130
+
+Find the rows of employee `000130`, ordered by `PROJNO`, `ACTNO` and `EMSTDATE`.
+A single table, an equality and a sort.
+
+.`EMPPROJACT/01_basic.sql`, SAMPLE_EMPPROJACT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, ACTNO, EMPTIME, EMSTDATE, EMENDATE
+FROM EMPPROJACT
+WHERE EMPNO = '000130'
+ORDER BY PROJNO, ACTNO, EMSTDATE
+----
+
+....
+PROJNO ACTNO EMPTIME EMSTDATE   EMENDATE
+------ ----- ------- ---------- ----------
+IF1000    90    1.00 10/01/2002 01/01/2003
+IF1000   100    0.50 10/01/2002 01/01/2003
+
+  2 record(s) selected.
+....
+====
+
+[[SAMPLE_EMPPROJACT_B_02]]
+==== SAMPLE_EMPPROJACT_B_02: the part-time assignments of AD3113
+
+Find the rows of project `AD3113` whose `EMPTIME` is below 1, ordered by `EMPNO`, `ACTNO` and `EMSTDATE`.
+Two conditions on a single table.
+
+.`EMPPROJACT/01_basic.sql`, SAMPLE_EMPPROJACT_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, ACTNO, EMPTIME, EMSTDATE, EMENDATE
+FROM EMPPROJACT
+WHERE PROJNO = 'AD3113'
+  AND EMPTIME < 1
+ORDER BY EMPNO, ACTNO, EMSTDATE
+----
+
+....
+EMPNO  ACTNO EMPTIME EMSTDATE   EMENDATE
+------ ----- ------- ---------- ----------
+000260    70    0.50 06/15/2002 07/01/2002
+000260    80    0.50 03/01/2002 04/15/2002
+000260   180    0.50 03/01/2002 04/15/2002
+000270    60    0.50 03/01/2002 04/01/2002
+000270    60    0.25 09/01/2002 10/15/2002
+000270    70    0.75 09/01/2002 10/15/2002
+000270    80    0.50 03/01/2002 04/01/2002
+
+  7 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_EMPPROJACT_I_01]]
+==== SAMPLE_EMPPROJACT_I_01: the total time of each employee
+
+Add up the `EMPTIME` of each employee, with the name, the highest first; equal totals are ordered by `EMPNO`.
+A join to `EMPLOYEE` and a group.
+
+.`EMPPROJACT/02_intermediate.sql`, SAMPLE_EMPPROJACT_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT e.EMPNO, e.LASTNAME, SUM(x.EMPTIME) AS EMPTIME
+FROM EMPPROJACT x
+         JOIN EMPLOYEE e ON e.EMPNO = x.EMPNO
+GROUP BY e.EMPNO, e.LASTNAME
+ORDER BY EMPTIME DESC, e.EMPNO
+----
+
+....
+EMPNO  LASTNAME  EMPTIME
+------ --------- -------
+000250 SMITH        5.50
+000260 JOHNSON      5.50
+000270 PEREZ        5.00
+000140 NICHOLLS     3.00
+000170 YOSHIMURA    3.00
+000230 JEFFERSON    3.00
+000010 HAAS         2.00
+000150 ADAMSON      2.00
+000190 WALKER       2.00
+000200 BROWN        2.00
+... 30 rows in all.
+....
+====
+
+[[SAMPLE_EMPPROJACT_I_02]]
+==== SAMPLE_EMPPROJACT_I_02: the employees on more than one project
+
+Find the employees with rows on two or more distinct projects, with the number of projects, ordered by `EMPNO`.
+A group and a distinct count in `HAVING`.
+
+.`EMPPROJACT/02_intermediate.sql`, SAMPLE_EMPPROJACT_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, COUNT(DISTINCT PROJNO) AS PROJECTS
+FROM EMPPROJACT
+GROUP BY EMPNO
+HAVING COUNT(DISTINCT PROJNO) > 1
+ORDER BY EMPNO
+----
+
+....
+EMPNO  PROJECTS
+------ --------
+000010        3
+000030        2
+000050        2
+000140        2
+000170        2
+
+  5 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_EMPPROJACT_A_01]]
+==== SAMPLE_EMPPROJACT_A_01: the employees on no project
+
+Find the employees who have no row in `EMPPROJACT`, ordered by `EMPNO`.
+A correlated `NOT EXISTS`.
+
+.`EMPPROJACT/03_advanced.sql`, SAMPLE_EMPPROJACT_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT e.EMPNO, e.LASTNAME, e.WORKDEPT
+FROM EMPLOYEE e
+WHERE NOT EXISTS (SELECT 1 FROM EMPPROJACT x WHERE x.EMPNO = e.EMPNO)
+ORDER BY e.EMPNO
+----
+
+....
+EMPNO  LASTNAME   WORKDEPT
+------ ---------- --------
+000060 STERN      D11
+000120 O'CONNELL  A00
+200010 HEMMINGER  A00
+200120 ORLANDO    A00
+200140 NATZ       C01
+200170 YAMAMOTO   D11
+200220 JOHN       D11
+200240 MONTEVERDE D21
+200280 SCHWARTZ   E11
+200310 SPRINGER   E11
+... 12 rows in all.
+....
+====
+
+[[SAMPLE_EMPPROJACT_A_02]]
+==== SAMPLE_EMPPROJACT_A_02: the employees on a project of a department other than their own
+
+Find the employees with a row on a project whose `DEPTNO` is not their `WORKDEPT`, each once, ordered by `EMPNO`.
+Two joins and `DISTINCT`.
+
+.`EMPPROJACT/03_advanced.sql`, SAMPLE_EMPPROJACT_A_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DISTINCT e.EMPNO, e.LASTNAME, e.WORKDEPT, p.PROJNO, p.DEPTNO
+FROM EMPPROJACT x
+         JOIN EMPLOYEE e ON e.EMPNO = x.EMPNO
+         JOIN PROJECT p ON p.PROJNO = x.PROJNO
+WHERE p.DEPTNO <> e.WORKDEPT
+ORDER BY e.EMPNO, p.PROJNO
+----
+
+....
+EMPNO  LASTNAME  WORKDEPT PROJNO DEPTNO
+------ --------- -------- ------ ------
+000010 HAAS      A00      AD3100 D01
+000010 HAAS      A00      MA2100 D01
+000010 HAAS      A00      MA2110 D11
+000050 GEYER     E01      OP2010 E21
+000110 LUCCHESSI A00      MA2100 D01
+
+  5 record(s) selected.
+....
+====
+
+== EMP_PHOTO
+
+The `EMP_PHOTO` table, mapped by `MappedEmpPhoto`: the photos of four employees, each in two formats, as a `BLOB`.
+
+=== Basic
+
+[[SAMPLE_EMP_PHOTO_B_01]]
+==== SAMPLE_EMP_PHOTO_B_01: every photo, by employee and format
+
+Show the `EMPNO` and the `PHOTO_FORMAT` of every row, ordered by both.
+A single table and a sort; the `PICTURE` itself is left out.
+
+.`EMP_PHOTO/01_basic.sql`, SAMPLE_EMP_PHOTO_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, PHOTO_FORMAT
+FROM EMP_PHOTO
+ORDER BY EMPNO, PHOTO_FORMAT
+----
+
+....
+EMPNO  PHOTO_FORMAT
+------ ------------
+000130 bitmap
+000130 gif
+000140 bitmap
+000140 gif
+000150 bitmap
+000150 gif
+000190 bitmap
+000190 gif
+
+  8 record(s) selected.
+....
+====
+
+[[SAMPLE_EMP_PHOTO_B_02]]
+==== SAMPLE_EMP_PHOTO_B_02: the size of each photo
+
+Show the size of each `PICTURE` in bytes, the largest first.
+`LENGTH` of a `BLOB`; Jakarta Persistence's `LENGTH` takes a string only.
+
+.`EMP_PHOTO/01_basic.sql`, SAMPLE_EMP_PHOTO_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, PHOTO_FORMAT, LENGTH(PICTURE) AS BYTES
+FROM EMP_PHOTO
+ORDER BY BYTES DESC
+----
+
+....
+EMPNO  PHOTO_FORMAT BYTES
+------ ------------ -----
+000150 bitmap       73438
+000140 bitmap       71798
+000190 bitmap       63542
+000130 bitmap       43690
+000150 gif          39795
+000190 gif          36088
+000130 gif          29540
+000140 gif          29143
+
+  8 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_EMP_PHOTO_I_01]]
+==== SAMPLE_EMP_PHOTO_I_01: the employees with a photo
+
+Show the employees who have a photo, each once, with their name, ordered by `EMPNO`.
+A join to `EMPLOYEE` and `DISTINCT`.
+
+.`EMP_PHOTO/02_intermediate.sql`, SAMPLE_EMP_PHOTO_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DISTINCT e.EMPNO, e.FIRSTNME, e.LASTNAME
+FROM EMP_PHOTO p
+         JOIN EMPLOYEE e ON e.EMPNO = p.EMPNO
+ORDER BY e.EMPNO
+----
+
+....
+EMPNO  FIRSTNME LASTNAME
+------ -------- --------
+000130 DELORES  QUINTANA
+000140 HEATHER  NICHOLLS
+000150 BRUCE    ADAMSON
+000190 JAMES    WALKER
+
+  4 record(s) selected.
+....
+====
+
+== EMP_RESUME
+
+The `EMP_RESUME` table, mapped by `MappedEmpResume`: the resumes of four employees, each in two formats, as a `CLOB`.
+
+=== Basic
+
+[[SAMPLE_EMP_RESUME_B_01]]
+==== SAMPLE_EMP_RESUME_B_01: every resume, by employee and format
+
+Show the `EMPNO` and the `RESUME_FORMAT` of every row, ordered by both.
+A single table and a sort; the `RESUME` itself is left out.
+
+.`EMP_RESUME/01_basic.sql`, SAMPLE_EMP_RESUME_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, RESUME_FORMAT
+FROM EMP_RESUME
+ORDER BY EMPNO, RESUME_FORMAT
+----
+
+....
+EMPNO  RESUME_FORMAT
+------ -------------
+000130 ascii
+000130 html
+000140 ascii
+000140 html
+000150 ascii
+000150 html
+000190 ascii
+000190 html
+
+  8 record(s) selected.
+....
+====
+
+[[SAMPLE_EMP_RESUME_B_02]]
+==== SAMPLE_EMP_RESUME_B_02: the length of each resume
+
+Show the length of each `RESUME` in characters, ordered by `EMPNO` and `RESUME_FORMAT`.
+`LENGTH` of a `CLOB`.
+
+.`EMP_RESUME/01_basic.sql`, SAMPLE_EMP_RESUME_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, RESUME_FORMAT, LENGTH(RESUME) AS CHARACTERS
+FROM EMP_RESUME
+ORDER BY EMPNO, RESUME_FORMAT
+----
+
+....
+EMPNO  RESUME_FORMAT CHARACTERS
+------ ------------- ----------
+000130 ascii               1257
+000130 html                2415
+000140 ascii               1261
+000140 html                2440
+000150 ascii               1308
+000150 html                2467
+000190 ascii               1237
+000190 html                2402
+
+  8 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_EMP_RESUME_I_01]]
+==== SAMPLE_EMP_RESUME_I_01: the employees whose resume lists a B.A.
+
+Find the `ascii` resumes which contain `B.A.`, with the employee's name, ordered by `EMPNO`.
+A join to `EMPLOYEE` and a search in a `CLOB` with `LOCATE`.
+
+.`EMP_RESUME/02_intermediate.sql`, SAMPLE_EMP_RESUME_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT r.EMPNO, e.LASTNAME
+FROM EMP_RESUME r
+         JOIN EMPLOYEE e ON e.EMPNO = r.EMPNO
+WHERE r.RESUME_FORMAT = 'ascii'
+  AND LOCATE('B.A.', r.RESUME) > 0
+ORDER BY r.EMPNO
+----
+
+....
+EMPNO  LASTNAME
+------ --------
+000130 QUINTANA
+000140 NICHOLLS
+000150 ADAMSON
+000190 WALKER
+
+  4 record(s) selected.
+....
+====
+
+== EMPMDC
+
+The `EMPMDC` table, mapped by `MappedEmpmdc`: ten thousand rows of an employee, a department and a division, made to show multidimensional clustering.
+
+=== Basic
+
+[[SAMPLE_EMPMDC_B_01]]
+==== SAMPLE_EMPMDC_B_01: the number of rows
+
+Count the rows, and the distinct `DEPT` and `DIV`.
+Three counts on a single table.
+
+.`EMPMDC/01_basic.sql`, SAMPLE_EMPMDC_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT COUNT(*) AS ROWS, COUNT(DISTINCT DEPT) AS DEPTS, COUNT(DISTINCT DIV) AS DIVS
+FROM EMPMDC
+----
+
+....
+ROWS  DEPTS DIVS
+----- ----- ----
+10000     5   10
+
+  1 record(s) selected.
+....
+====
+
+[[SAMPLE_EMPMDC_B_02]]
+==== SAMPLE_EMPMDC_B_02: the first page of division 3
+
+Show the first five rows whose `DIV` is 3, ordered by `EMPNO`.
+An equality, a sort and the first rows.
+
+.`EMPMDC/01_basic.sql`, SAMPLE_EMPMDC_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, DEPT, DIV
+FROM EMPMDC
+WHERE DIV = 3
+ORDER BY EMPNO
+FETCH FIRST 5 ROWS ONLY
+----
+
+....
+EMPNO DEPT DIV
+----- ---- ---
+    2    3   3
+   12    3   3
+   22    3   3
+   32    3   3
+   42    3   3
+
+  5 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_EMPMDC_I_01]]
+==== SAMPLE_EMPMDC_I_01: the number of rows per division
+
+Count the rows of each `DIV`, ordered by `DIV`.
+A group.
+
+.`EMPMDC/02_intermediate.sql`, SAMPLE_EMPMDC_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DIV, COUNT(*) AS ROWS
+FROM EMPMDC
+GROUP BY DIV
+ORDER BY DIV
+----
+
+....
+DIV ROWS
+--- ----
+  1 1000
+  2 1000
+  3 1000
+  4 1000
+  5 1000
+  6 1000
+  7 1000
+  8 1000
+  9 1000
+ 10 1000
+
+  10 record(s) selected.
+....
+====
+
+== STAFF
+
+The `STAFF` table, mapped by `MappedStaff`: thirty-five staff members of the older sample, each in a department of `ORG`, with years of service, salary and commission.
+
+=== Basic
+
+[[SAMPLE_STAFF_B_01]]
+==== SAMPLE_STAFF_B_01: the staff of department 20
+
+Find the staff whose `DEPT` is 20, ordered by `ID`.
+A single table and an equality.
+
+.`STAFF/01_basic.sql`, SAMPLE_STAFF_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT ID, NAME, JOB, YEARS, SALARY
+FROM STAFF
+WHERE DEPT = 20
+ORDER BY ID
+----
+
+....
+ID  NAME    JOB   YEARS SALARY
+--- ------- ----- ----- --------
+ 10 Sanders Mgr       7 98357.50
+ 20 Pernal  Sales     8 78171.25
+ 80 James   Clerk     - 43504.60
+190 Sneider Clerk     8 34252.75
+
+  4 record(s) selected.
+....
+====
+
+[[SAMPLE_STAFF_B_02]]
+==== SAMPLE_STAFF_B_02: the staff without a commission
+
+Find the staff whose `COMM` is `NULL`, ordered by `ID`.
+A single table and a test for `NULL`.
+
+.`STAFF/01_basic.sql`, SAMPLE_STAFF_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT ID, NAME, DEPT, JOB
+FROM STAFF
+WHERE COMM IS NULL
+ORDER BY ID
+----
+
+....
+ID  NAME     DEPT JOB
+--- -------- ---- ---
+ 10 Sanders    20 Mgr
+ 30 Marenghi   38 Mgr
+ 50 Hanes      15 Mgr
+100 Plotz      42 Mgr
+140 Fraye      51 Mgr
+160 Molinare   10 Mgr
+210 Lu         10 Mgr
+240 Daniels    10 Mgr
+260 Jones      10 Mgr
+270 Lea        66 Mgr
+... 11 rows in all.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_STAFF_I_01]]
+==== SAMPLE_STAFF_I_01: the number of staff and their average salary per job
+
+Count the staff of each `JOB` and average their `SALARY`, cut to two decimals, ordered by `JOB`.
+A group and two aggregates.
+
+.`STAFF/02_intermediate.sql`, SAMPLE_STAFF_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT JOB, COUNT(*) AS STAFF, DECIMAL(AVG(SALARY), 9, 2) AS AVG_SALARY
+FROM STAFF
+GROUP BY JOB
+ORDER BY JOB
+----
+
+....
+JOB   STAFF AVG_SALARY
+----- ----- ----------
+Clerk    12   47945.94
+Mgr      11   85260.34
+Sales    12   72036.02
+
+  3 record(s) selected.
+....
+====
+
+[[SAMPLE_STAFF_I_02]]
+==== SAMPLE_STAFF_I_02: the staff of the Eastern division
+
+Find the staff whose department is in the `Eastern` division of `ORG`, ordered by `ID`.
+A join along `DEPT` to `ORG`, which no foreign key declares.
+
+.`STAFF/02_intermediate.sql`, SAMPLE_STAFF_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT s.ID, s.NAME, o.DEPTNAME, o.LOCATION
+FROM STAFF s
+         JOIN ORG o ON o.DEPTNUMB = s.DEPT
+WHERE o.DIVISION = 'Eastern'
+ORDER BY s.ID
+----
+
+....
+ID  NAME     DEPTNAME       LOCATION
+--- -------- -------------- ----------
+ 10 Sanders  Mid Atlantic   Washington
+ 20 Pernal   Mid Atlantic   Washington
+ 30 Marenghi South Atlantic Atlanta
+ 40 O'Brien  South Atlantic Atlanta
+ 50 Hanes    New England    Boston
+ 60 Quigley  South Atlantic Atlanta
+ 70 Rothman  New England    Boston
+ 80 James    Mid Atlantic   Washington
+110 Ngan     New England    Boston
+120 Naughton South Atlantic Atlanta
+... 13 rows in all.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_STAFF_A_01]]
+==== SAMPLE_STAFF_A_01: the staff paid more than the average of their department
+
+Find the staff whose `SALARY` is above the average of their own `DEPT`, ordered by `DEPT` and `ID`.
+A correlated subquery.
+
+.`STAFF/03_advanced.sql`, SAMPLE_STAFF_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT s.ID, s.NAME, s.DEPT, s.SALARY
+FROM STAFF s
+WHERE s.SALARY > (SELECT AVG(x.SALARY) FROM STAFF x WHERE x.DEPT = s.DEPT)
+ORDER BY s.DEPT, s.ID
+----
+
+....
+ID  NAME      DEPT SALARY
+--- --------- ---- --------
+210 Lu          10 90010.00
+ 50 Hanes       15 80659.80
+ 70 Rothman     15 76502.83
+ 10 Sanders     20 98357.50
+ 20 Pernal      20 78171.25
+ 30 Marenghi    38 77506.75
+ 40 O'Brien     38 78006.00
+ 60 Quigley     38 66808.30
+100 Plotz       42 78352.80
+140 Fraye       51 91150.00
+... 17 rows in all.
+....
+====
+
+== STAFFG
+
+The `STAFFG` table, mapped by `MappedStaffg`: the rows of `STAFF` again, with `NAME` and `JOB` as graphic strings.
+
+=== Basic
+
+[[SAMPLE_STAFFG_B_01]]
+==== SAMPLE_STAFFG_B_01: the first page of staff
+
+Show the first five rows, ordered by `ID`.
+A sort and the first rows.
+
+.`STAFFG/01_basic.sql`, SAMPLE_STAFFG_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT ID, NAME, DEPT, JOB
+FROM STAFFG
+ORDER BY ID
+FETCH FIRST 5 ROWS ONLY
+----
+
+....
+ID NAME     DEPT JOB
+-- -------- ---- -----
+10 Sanders    20 Mgr
+20 Pernal     20 Sales
+30 Marenghi   38 Mgr
+40 O Brien    38 Sales
+50 Hanes      15 Mgr
+
+  5 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_STAFFG_I_01]]
+==== SAMPLE_STAFFG_I_01: the names that differ from STAFF
+
+Find the rows whose `NAME` is not the same as that of the row of `STAFF` with the same `ID`, ordered by `ID`.
+A join across two tables of the same shape; a `VARGRAPHIC` is compared with a `VARCHAR` as it is.
+
+.`STAFFG/02_intermediate.sql`, SAMPLE_STAFFG_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT g.ID, g.NAME, s.NAME AS STAFF_NAME
+FROM STAFFG g
+         JOIN STAFF s ON s.ID = g.ID
+WHERE g.NAME <> s.NAME
+ORDER BY g.ID
+----
+
+....
+ID NAME    STAFF_NAME
+-- ------- ----------
+40 O Brien O'Brien
+
+  1 record(s) selected.
+....
+====
+
+[[SAMPLE_STAFFG_I_02]]
+==== SAMPLE_STAFFG_I_02: the salaries beside those of STAFF
+
+Show the first five rows, ordered by `ID`, with the `SALARY` of the row of `STAFF` with the same `ID` and the difference; the salaries differ in every row.
+A join, an expression across the two tables, and the first rows.
+
+.`STAFFG/02_intermediate.sql`, SAMPLE_STAFFG_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT g.ID, g.SALARY, s.SALARY AS STAFF_SALARY, g.SALARY - s.SALARY AS DIFFERENCE
+FROM STAFFG g
+         JOIN STAFF s ON s.ID = g.ID
+ORDER BY g.ID
+FETCH FIRST 5 ROWS ONLY
+----
+
+....
+ID SALARY STAFF_SALARY DIFFERENCE
+-- ------ ------------ ----------
+10 18357.     98357.50  -80000.50
+20 18171.     78171.25  -60000.25
+30 17506.     77506.75  -60000.75
+40 18006.     78006.00  -60000.00
+50 20659.     80659.80  -60000.80
+
+  5 record(s) selected.
+....
+====
+
+== ORG
+
+The `ORG` table, mapped by `MappedOrg`: the eight departments of the older sample, each in a division and a location, with the `ID` of its manager in `STAFF`.
+
+=== Basic
+
+[[SAMPLE_ORG_B_01]]
+==== SAMPLE_ORG_B_01: every department, by number
+
+Show every row, ordered by `DEPTNUMB`.
+A single table and a sort; no filter.
+
+.`ORG/01_basic.sql`, SAMPLE_ORG_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DEPTNUMB, DEPTNAME, MANAGER, DIVISION, LOCATION
+FROM ORG
+ORDER BY DEPTNUMB
+----
+
+....
+DEPTNUMB DEPTNAME       MANAGER DIVISION  LOCATION
+-------- -------------- ------- --------- -------------
+      10 Head Office        160 Corporate New York
+      15 New England         50 Eastern   Boston
+      20 Mid Atlantic        10 Eastern   Washington
+      38 South Atlantic      30 Eastern   Atlanta
+      42 Great Lakes        100 Midwest   Chicago
+      51 Plains             140 Midwest   Dallas
+      66 Pacific            270 Western   San Francisco
+      84 Mountain           290 Western   Denver
+
+  8 record(s) selected.
+....
+====
+
+[[SAMPLE_ORG_B_02]]
+==== SAMPLE_ORG_B_02: the departments of the Eastern division
+
+Find the departments whose `DIVISION` is `Eastern`, ordered by `DEPTNAME`.
+A single table and an equality.
+
+.`ORG/01_basic.sql`, SAMPLE_ORG_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DEPTNUMB, DEPTNAME, LOCATION
+FROM ORG
+WHERE DIVISION = 'Eastern'
+ORDER BY DEPTNAME
+----
+
+....
+DEPTNUMB DEPTNAME       LOCATION
+-------- -------------- ----------
+      20 Mid Atlantic   Washington
+      15 New England    Boston
+      38 South Atlantic Atlanta
+
+  3 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_ORG_I_01]]
+==== SAMPLE_ORG_I_01: the number of departments per division
+
+Count the departments of each `DIVISION`, ordered by `DIVISION`.
+A group.
+
+.`ORG/02_intermediate.sql`, SAMPLE_ORG_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DIVISION, COUNT(*) AS DEPTS
+FROM ORG
+GROUP BY DIVISION
+ORDER BY DIVISION
+----
+
+....
+DIVISION  DEPTS
+--------- -----
+Corporate     1
+Eastern       3
+Midwest       2
+Western       2
+
+  4 record(s) selected.
+....
+====
+
+[[SAMPLE_ORG_I_02]]
+==== SAMPLE_ORG_I_02: each department with the name of its manager
+
+Show every department with the `NAME` of its `MANAGER` in `STAFF`, ordered by `DEPTNUMB`.
+A join along `MANAGER` to `STAFF`, which no foreign key declares.
+
+.`ORG/02_intermediate.sql`, SAMPLE_ORG_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT o.DEPTNUMB, o.DEPTNAME, o.MANAGER, s.NAME
+FROM ORG o
+         JOIN STAFF s ON s.ID = o.MANAGER
+ORDER BY o.DEPTNUMB
+----
+
+....
+DEPTNUMB DEPTNAME       MANAGER NAME
+-------- -------------- ------- --------
+      10 Head Office        160 Molinare
+      15 New England         50 Hanes
+      20 Mid Atlantic        10 Sanders
+      38 South Atlantic      30 Marenghi
+      42 Great Lakes        100 Plotz
+      51 Plains             140 Fraye
+      66 Pacific            270 Lea
+      84 Mountain           290 Quill
+
+  8 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_ORG_A_01]]
+==== SAMPLE_ORG_A_01: the departments with more staff than the average
+
+Find the departments with more staff than the average number of staff per department, ordered by `DEPTNUMB`.
+A join, a group, and a subquery in `HAVING` which averages a count.
+
+.`ORG/03_advanced.sql`, SAMPLE_ORG_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT o.DEPTNUMB, o.DEPTNAME, COUNT(*) AS STAFF
+FROM ORG o
+         JOIN STAFF s ON s.DEPT = o.DEPTNUMB
+GROUP BY o.DEPTNUMB, o.DEPTNAME
+HAVING COUNT(*) > (SELECT COUNT(*) FROM STAFF) / (SELECT COUNT(*) FROM ORG)
+ORDER BY o.DEPTNUMB
+----
+
+....
+DEPTNUMB DEPTNAME       STAFF
+-------- -------------- -----
+      38 South Atlantic     5
+      51 Plains             5
+      66 Pacific            5
+
+  3 record(s) selected.
+....
+====
+
+== SALES
+
+The `SALES` table, mapped by `MappedSale`: forty-one daily sales counts of three sales people in four regions.
+
+=== Basic
+
+[[SAMPLE_SALES_B_01]]
+==== SAMPLE_SALES_B_01: the sales of LUCCHESSI
+
+Find the rows whose `SALES_PERSON` is `LUCCHESSI`, ordered by `SALES_DATE` and `REGION`.
+A single table, an equality and a sort on two columns.
+
+.`SALES/01_basic.sql`, SAMPLE_SALES_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT SALES_DATE, REGION, SALES
+FROM SALES
+WHERE SALES_PERSON = 'LUCCHESSI'
+ORDER BY SALES_DATE, REGION
+----
+
+....
+SALES_DATE REGION        SALES
+---------- ------------- -----
+12/31/2005 Ontario-South     1
+03/29/2006 Ontario-South     3
+03/29/2006 Quebec            1
+03/30/2006 Manitoba          1
+03/30/2006 Ontario-South     1
+03/30/2006 Quebec            2
+03/31/2006 Manitoba          1
+04/01/2006 Manitoba          1
+04/01/2006 Ontario-South     3
+
+  9 record(s) selected.
+....
+====
+
+[[SAMPLE_SALES_B_02]]
+==== SAMPLE_SALES_B_02: the rows without a count
+
+Find the rows whose `SALES` is `NULL`.
+A single table and a test for `NULL`.
+
+.`SALES/01_basic.sql`, SAMPLE_SALES_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT SALES_DATE, SALES_PERSON, REGION
+FROM SALES
+WHERE SALES IS NULL
+----
+
+....
+SALES_DATE SALES_PERSON REGION
+---------- ------------ -------------
+04/01/2006 LEE          Ontario-North
+
+  1 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_SALES_I_01]]
+==== SAMPLE_SALES_I_01: the total sales of each person
+
+Add up the `SALES` of each `SALES_PERSON`, the highest first.
+A group and a sum.
+
+.`SALES/02_intermediate.sql`, SAMPLE_SALES_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT SALES_PERSON, SUM(SALES) AS SALES
+FROM SALES
+GROUP BY SALES_PERSON
+ORDER BY SALES DESC
+----
+
+....
+SALES_PERSON SALES
+------------ -----
+LEE             91
+GOUNOT          50
+LUCCHESSI       14
+
+  3 record(s) selected.
+....
+====
+
+[[SAMPLE_SALES_I_02]]
+==== SAMPLE_SALES_I_02: the total sales of each region on 03/31/2006
+
+Add up the `SALES` of each `REGION` on 2006-03-31, ordered by `REGION`.
+An equality on a `DATE` and a group.
+
+.`SALES/02_intermediate.sql`, SAMPLE_SALES_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT REGION, SUM(SALES) AS SALES
+FROM SALES
+WHERE SALES_DATE = DATE '2006-03-31'
+GROUP BY REGION
+ORDER BY REGION
+----
+
+....
+REGION        SALES
+------------- -----
+Manitoba          5
+Ontario-North     3
+Ontario-South    16
+Quebec            8
+
+  4 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_SALES_A_01]]
+==== SAMPLE_SALES_A_01: the totals by person and region, with subtotals
+
+Add up the `SALES` by `SALES_PERSON` and `REGION`, with a subtotal for each person and a grand total, ordered so that each subtotal follows its person's regions.
+`GROUP BY ROLLUP`; Jakarta Persistence has none.
+
+.`SALES/03_advanced.sql`, SAMPLE_SALES_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT SALES_PERSON, REGION, SUM(SALES) AS SALES
+FROM SALES
+GROUP BY ROLLUP (SALES_PERSON, REGION)
+ORDER BY GROUPING(SALES_PERSON), SALES_PERSON, GROUPING(REGION), REGION
+----
+
+....
+SALES_PERSON REGION        SALES
+------------ ------------- -----
+GOUNOT       Manitoba         15
+GOUNOT       Ontario-North     1
+GOUNOT       Ontario-South    10
+GOUNOT       Quebec           24
+GOUNOT       -                50
+LEE          Manitoba         23
+LEE          Ontario-North     8
+LEE          Ontario-South    34
+LEE          Quebec           26
+LEE          -                91
+... 15 rows in all.
+....
+====
+
+== CL_SCHED
+
+The `CL_SCHED` table, mapped by `MappedClSched`: the five classes of a schedule, each on a day of the week, from a starting to an ending time.
+
+=== Basic
+
+[[SAMPLE_CL_SCHED_B_01]]
+==== SAMPLE_CL_SCHED_B_01: every class, by day and time
+
+Show every class, ordered by `DAY` and then by `STARTING`.
+A single table and a sort on two columns.
+
+.`CL_SCHED/01_basic.sql`, SAMPLE_CL_SCHED_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT CLASS_CODE, DAY, STARTING, ENDING
+FROM CL_SCHED
+ORDER BY DAY, STARTING
+----
+
+....
+CLASS_CODE DAY STARTING ENDING
+---------- --- -------- --------
+553:MJA      1 10:30:00 11:00:00
+778:RES      2 12:10:00 14:00:00
+543:CWM      3 09:10:00 10:30:00
+044:HD       3 17:12:30 18:00:00
+042:BF       4 12:10:00 14:00:00
+
+  5 record(s) selected.
+....
+====
+
+[[SAMPLE_CL_SCHED_B_02]]
+==== SAMPLE_CL_SCHED_B_02: the classes that start before noon
+
+Find the classes whose `STARTING` is before 12:00, ordered by `STARTING`.
+A comparison on a `TIME`.
+
+.`CL_SCHED/01_basic.sql`, SAMPLE_CL_SCHED_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT CLASS_CODE, DAY, STARTING
+FROM CL_SCHED
+WHERE STARTING < TIME '12:00:00'
+ORDER BY STARTING
+----
+
+....
+CLASS_CODE DAY STARTING
+---------- --- --------
+543:CWM      3 09:10:00
+553:MJA      1 10:30:00
+
+  2 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_CL_SCHED_I_01]]
+==== SAMPLE_CL_SCHED_I_01: the length of each class in minutes
+
+Show each class with its length in minutes, the longest first; classes of the same length are ordered by `CLASS_CODE`.
+Arithmetic on a `TIME` with `MIDNIGHT_SECONDS`, a function of Db2.
+
+.`CL_SCHED/02_intermediate.sql`, SAMPLE_CL_SCHED_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT CLASS_CODE, STARTING, ENDING,
+       (MIDNIGHT_SECONDS(ENDING) - MIDNIGHT_SECONDS(STARTING)) / 60 AS MINUTES
+FROM CL_SCHED
+ORDER BY MINUTES DESC, CLASS_CODE
+----
+
+....
+CLASS_CODE STARTING ENDING   MINUTES
+---------- -------- -------- -------
+042:BF     12:10:00 14:00:00     110
+778:RES    12:10:00 14:00:00     110
+543:CWM    09:10:00 10:30:00      80
+044:HD     17:12:30 18:00:00      47
+553:MJA    10:30:00 11:00:00      30
+
+  5 record(s) selected.
+....
+====
+
+== IN_TRAY
+
+The `IN_TRAY` table, mapped by `MappedInTray`: three notes in a mail tray, each received at a time from a source, with a subject and a text.
+
+=== Basic
+
+[[SAMPLE_IN_TRAY_B_01]]
+==== SAMPLE_IN_TRAY_B_01: the notes, the newest first
+
+Show the `RECEIVED`, the `SOURCE` and the `SUBJECT` of every note, the newest first.
+A single table and a sort on a `TIMESTAMP`.
+
+.`IN_TRAY/01_basic.sql`, SAMPLE_IN_TRAY_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT RECEIVED, SOURCE, RTRIM(SUBJECT) AS SUBJECT
+FROM IN_TRAY
+ORDER BY RECEIVED DESC
+----
+
+....
+RECEIVED                   SOURCE   SUBJECT
+-------------------------- -------- ---------------------------------------
+1988-12-25-17.12.30.000000 BADAMSON FWD: Fantastic year! 4th Quarter Bonus.
+1988-12-23-08.53.58.000000 ISTERN   FWD: Fantastic year! 4th Quarter Bonus.
+1988-12-22-14.07.21.136421 CHAAS    Fantastic year! 4th Quarter Bonus.
+
+  3 record(s) selected.
+....
+====
+
+[[SAMPLE_IN_TRAY_B_02]]
+==== SAMPLE_IN_TRAY_B_02: the forwarded notes
+
+Find the notes whose `SUBJECT` starts with `FWD:`, ordered by `RECEIVED`.
+A single table and a `LIKE`.
+
+.`IN_TRAY/01_basic.sql`, SAMPLE_IN_TRAY_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT RECEIVED, SOURCE
+FROM IN_TRAY
+WHERE SUBJECT LIKE 'FWD:%'
+ORDER BY RECEIVED
+----
+
+....
+RECEIVED                   SOURCE
+-------------------------- --------
+1988-12-23-08.53.58.000000 ISTERN
+1988-12-25-17.12.30.000000 BADAMSON
+
+  2 record(s) selected.
+....
+====
+
+== INVENTORY
+
+The `INVENTORY` table, mapped by `MappedInventory`: the stock of four products, each with a quantity and a location.
+
+=== Basic
+
+[[SAMPLE_INVENTORY_B_01]]
+==== SAMPLE_INVENTORY_B_01: every product in stock, by id
+
+Show every row, ordered by `PID`.
+A single table and a sort; no filter.
+
+.`INVENTORY/01_basic.sql`, SAMPLE_INVENTORY_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PID, QUANTITY, LOCATION
+FROM INVENTORY
+ORDER BY PID
+----
+
+....
+PID        QUANTITY LOCATION
+---------- -------- ---------
+100-100-01        5 -
+100-101-01       25 Store
+100-103-01       55 Store
+100-201-01       99 Warehouse
+
+  4 record(s) selected.
+....
+====
+
+[[SAMPLE_INVENTORY_B_02]]
+==== SAMPLE_INVENTORY_B_02: the stock without a location
+
+Find the rows whose `LOCATION` is `NULL`.
+A single table and a test for `NULL`.
+
+.`INVENTORY/01_basic.sql`, SAMPLE_INVENTORY_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PID, QUANTITY
+FROM INVENTORY
+WHERE LOCATION IS NULL
+----
+
+....
+PID        QUANTITY
+---------- --------
+100-100-01        5
+
+  1 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_INVENTORY_I_01]]
+==== SAMPLE_INVENTORY_I_01: the stock with the name and the value of each product
+
+Show each row with the `NAME` of the product and the value of the stock at its `PRICE`, ordered by `PID`.
+A join along `PID` to `PRODUCT`, which no foreign key declares, and an expression on both tables.
+
+.`INVENTORY/02_intermediate.sql`, SAMPLE_INVENTORY_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT i.PID, p.NAME, i.QUANTITY, i.QUANTITY * p.PRICE AS VALUE
+FROM INVENTORY i
+         JOIN PRODUCT p ON p.PID = i.PID
+ORDER BY i.PID
+----
+
+....
+PID        NAME                              QUANTITY VALUE
+---------- --------------------------------- -------- -------
+100-100-01 Snow Shovel, Basic 22 inch               5   49.95
+100-101-01 Snow Shovel, Deluxe 24 inch             25  499.75
+100-103-01 Snow Shovel, Super Deluxe 26 inch       55 2749.45
+100-201-01 Ice Scraper, Windshield 4 inch          99  395.01
+
+  4 record(s) selected.
+....
+====
+
+== PRODUCT
+
+The `PRODUCT` table, mapped by `MappedProduct`: the four products of the XML sample, each with a price, a promotion, and a description as an XML document.
+
+=== Basic
+
+[[SAMPLE_PRODUCT_B_01]]
+==== SAMPLE_PRODUCT_B_01: every product, the most expensive first
+
+Show the `PID`, the `NAME` and the `PRICE` of every product, the most expensive first.
+A single table and a sort.
+
+.`PRODUCT/01_basic.sql`, SAMPLE_PRODUCT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PID, NAME, PRICE
+FROM PRODUCT
+ORDER BY PRICE DESC
+----
+
+....
+PID        NAME                              PRICE
+---------- --------------------------------- -----
+100-103-01 Snow Shovel, Super Deluxe 26 inch 49.99
+100-101-01 Snow Shovel, Deluxe 24 inch       19.99
+100-100-01 Snow Shovel, Basic 22 inch         9.99
+100-201-01 Ice Scraper, Windshield 4 inch     3.99
+
+  4 record(s) selected.
+....
+====
+
+[[SAMPLE_PRODUCT_B_02]]
+==== SAMPLE_PRODUCT_B_02: the products on promotion on 2006-01-15
+
+Find the products whose promotion, from `PROMOSTART` to `PROMOEND`, covers 2006-01-15, ordered by `PID`.
+A `BETWEEN` turned around: a value between two columns.
+
+.`PRODUCT/01_basic.sql`, SAMPLE_PRODUCT_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PID, NAME, PROMOPRICE
+FROM PRODUCT
+WHERE DATE '2006-01-15' BETWEEN PROMOSTART AND PROMOEND
+ORDER BY PID
+----
+
+....
+PID        NAME                              PROMOPRICE
+---------- --------------------------------- ----------
+100-101-01 Snow Shovel, Deluxe 24 inch            15.99
+100-103-01 Snow Shovel, Super Deluxe 26 inch      39.99
+
+  2 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_PRODUCT_I_01]]
+==== SAMPLE_PRODUCT_I_01: the discount of each promotion
+
+Show each product on a promotion with its discount, the share of its `PRICE` the `PROMOPRICE` takes off, in percent, cut to two decimals, the largest first.
+An expression, and a filter on `NULL`.
+
+.`PRODUCT/02_intermediate.sql`, SAMPLE_PRODUCT_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PID, PRICE, PROMOPRICE, DECIMAL(DECFLOAT(PRICE - PROMOPRICE) * 100 / PRICE, 5, 2) AS DISCOUNT
+FROM PRODUCT
+WHERE PROMOPRICE IS NOT NULL
+ORDER BY DISCOUNT DESC
+----
+
+....
+PID        PRICE PROMOPRICE DISCOUNT
+---------- ----- ---------- --------
+100-100-01  9.99       7.25    27.43
+100-101-01 19.99      15.99    20.01
+100-103-01 49.99      39.99    20.00
+
+  3 record(s) selected.
+....
+====
+
+[[SAMPLE_PRODUCT_I_02]]
+==== SAMPLE_PRODUCT_I_02: the products with their supplier
+
+Show the products which have a supplier, with the `SID`, ordered by `PID`.
+A join along `PID` to `PRODUCTSUPPLIER`.
+
+.`PRODUCT/02_intermediate.sql`, SAMPLE_PRODUCT_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT p.PID, p.NAME, ps.SID
+FROM PRODUCT p
+         JOIN PRODUCTSUPPLIER ps ON ps.PID = p.PID
+ORDER BY p.PID
+----
+
+....
+PID        NAME                           SID
+---------- ------------------------------ ---
+100-101-01 Snow Shovel, Deluxe 24 inch    100
+100-201-01 Ice Scraper, Windshield 4 inch 101
+
+  2 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_PRODUCT_A_01]]
+==== SAMPLE_PRODUCT_A_01: the weight of each product, from its description
+
+Show the `weight` element of each product's `DESCRIPTION`, ordered by `PID`.
+`XMLCAST` of an `XMLQUERY`; Jakarta Persistence sees the column as a whole.
+
+.`PRODUCT/03_advanced.sql`, SAMPLE_PRODUCT_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PID,
+       XMLCAST(XMLQUERY('$d/product/description/weight' PASSING DESCRIPTION AS "d") AS VARCHAR(10)) AS WEIGHT
+FROM PRODUCT
+ORDER BY PID
+----
+
+....
+PID        WEIGHT
+---------- ------
+100-100-01 1 kg
+100-101-01 2 kg
+100-103-01 3 kg
+100-201-01 -
+
+  4 record(s) selected.
+....
+====
+
+== PRODUCTSUPPLIER
+
+The `PRODUCTSUPPLIER` table, mapped by `MappedProductSupplier`: which supplier supplies which product.
+
+=== Basic
+
+[[SAMPLE_PRODUCTSUPPLIER_B_01]]
+==== SAMPLE_PRODUCTSUPPLIER_B_01: every pair, by product
+
+Show every row, ordered by `PID`.
+A single table and a sort.
+
+.`PRODUCTSUPPLIER/01_basic.sql`, SAMPLE_PRODUCTSUPPLIER_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PID, SID
+FROM PRODUCTSUPPLIER
+ORDER BY PID
+----
+
+....
+PID        SID
+---------- ---
+100-101-01 100
+100-201-01 101
+
+  2 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_PRODUCTSUPPLIER_I_01]]
+==== SAMPLE_PRODUCTSUPPLIER_I_01: the products no supplier supplies
+
+Find the products which have no row here, ordered by `PID`.
+A correlated `NOT EXISTS` from `PRODUCT`.
+
+.`PRODUCTSUPPLIER/02_intermediate.sql`, SAMPLE_PRODUCTSUPPLIER_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT p.PID, p.NAME
+FROM PRODUCT p
+WHERE NOT EXISTS (SELECT 1 FROM PRODUCTSUPPLIER ps WHERE ps.PID = p.PID)
+ORDER BY p.PID
+----
+
+....
+PID        NAME
+---------- ---------------------------------
+100-100-01 Snow Shovel, Basic 22 inch
+100-103-01 Snow Shovel, Super Deluxe 26 inch
+
+  2 record(s) selected.
+....
+====
+
+== SUPPLIERS
+
+The `SUPPLIERS` table, mapped by `MappedSupplier`: the two suppliers, each with its address as an XML document in the `http://posample.org` namespace.
+
+=== Basic
+
+[[SAMPLE_SUPPLIERS_B_01]]
+==== SAMPLE_SUPPLIERS_B_01: every supplier, by id
+
+Show the `SID` of every supplier, ordered by it.
+A single table and a sort.
+
+.`SUPPLIERS/01_basic.sql`, SAMPLE_SUPPLIERS_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT SID
+FROM SUPPLIERS
+ORDER BY SID
+----
+
+....
+SID
+---
+100
+101
+
+  2 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_SUPPLIERS_A_01]]
+==== SAMPLE_SUPPLIERS_A_01: the name and the city of each supplier
+
+Show the `name` and the `city` of each supplier's `ADDR`, ordered by `SID`.
+`XMLTABLE` with a default namespace; Jakarta Persistence sees the column as a whole.
+
+.`SUPPLIERS/03_advanced.sql`, SAMPLE_SUPPLIERS_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT s.SID, x.NAME, x.CITY
+FROM SUPPLIERS s,
+     XMLTABLE(XMLNAMESPACES(DEFAULT 'http://posample.org'),
+              '$a/supplierinfo' PASSING s.ADDR AS "a"
+              COLUMNS NAME VARCHAR(20) PATH 'name',
+                      CITY VARCHAR(20) PATH 'addr/city') x
+ORDER BY s.SID
+----
+
+....
+SID NAME               CITY
+--- ------------------ -------
+100 Harry Suppliers    Markham
+101 Johnston Suppliers Toronto
+
+  2 record(s) selected.
+....
+====
+
+== CUSTOMER
+
+The `CUSTOMER` table, mapped by `MappedCustomer`: the six customers of the XML sample, each with its information as an XML document.
+
+=== Basic
+
+[[SAMPLE_CUSTOMER_B_01]]
+==== SAMPLE_CUSTOMER_B_01: every customer, by id
+
+Show the `CID` of every customer, ordered by it.
+A single table and a sort.
+
+.`CUSTOMER/01_basic.sql`, SAMPLE_CUSTOMER_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT CID
+FROM CUSTOMER
+ORDER BY CID
+----
+
+....
+CID
+----
+1000
+1001
+1002
+1003
+1004
+1005
+
+  6 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_CUSTOMER_I_01]]
+==== SAMPLE_CUSTOMER_I_01: the number of orders of each customer
+
+Count the purchase orders of each customer, including the customers with none, ordered by `CID`.
+An outer join to `PURCHASEORDER` and a group.
+
+.`CUSTOMER/02_intermediate.sql`, SAMPLE_CUSTOMER_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT c.CID, COUNT(po.POID) AS ORDERS
+FROM CUSTOMER c
+         LEFT JOIN PURCHASEORDER po ON po.CUSTID = c.CID
+GROUP BY c.CID
+ORDER BY c.CID
+----
+
+....
+CID  ORDERS
+---- ------
+1000      0
+1001      1
+1002      3
+1003      1
+1004      0
+1005      1
+
+  6 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_CUSTOMER_A_01]]
+==== SAMPLE_CUSTOMER_A_01: the name and the city of each customer
+
+Show the `name` and the `city` of each customer's `INFO`, ordered by `CID`.
+`XMLTABLE`; Jakarta Persistence sees the column as a whole.
+
+.`CUSTOMER/03_advanced.sql`, SAMPLE_CUSTOMER_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT c.CID, x.NAME, x.CITY
+FROM CUSTOMER c,
+     XMLTABLE('$i/customerinfo' PASSING c.INFO AS "i"
+              COLUMNS NAME VARCHAR(20) PATH 'name',
+                      CITY VARCHAR(20) PATH 'addr/city') x
+ORDER BY c.CID
+----
+
+....
+CID  NAME             CITY
+---- ---------------- -------
+1000 Kathy Smith      Toronto
+1001 Kathy Smith      Markham
+1002 Jim Noodle       Markham
+1003 Robert Shoemaker Aurora
+1004 Matt Foreman     Toronto
+1005 Larry Menard     Toronto
+
+  6 record(s) selected.
+....
+====
+
+== PURCHASEORDER
+
+The `PURCHASEORDER` table, mapped by `MappedPurchaseOrder`: the six purchase orders of the XML sample, each of a customer, with its items as an XML document.
+
+=== Basic
+
+[[SAMPLE_PURCHASEORDER_B_01]]
+==== SAMPLE_PURCHASEORDER_B_01: the shipped orders, by date
+
+Find the orders whose `STATUS` is `Shipped`, ordered by `ORDERDATE`.
+A single table, an equality and a sort.
+
+.`PURCHASEORDER/01_basic.sql`, SAMPLE_PURCHASEORDER_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT POID, CUSTID, ORDERDATE
+FROM PURCHASEORDER
+WHERE STATUS = 'Shipped'
+ORDER BY ORDERDATE
+----
+
+....
+POID CUSTID ORDERDATE
+---- ------ ----------
+5002   1001 02/29/2004
+5001   1003 02/03/2005
+5003   1002 02/28/2005
+5004   1005 11/18/2005
+5006   1002 03/01/2006
+
+  5 record(s) selected.
+....
+====
+
+[[SAMPLE_PURCHASEORDER_B_02]]
+==== SAMPLE_PURCHASEORDER_B_02: the number of orders per status
+
+Count the orders of each `STATUS`, ordered by `STATUS`.
+A group.
+
+.`PURCHASEORDER/01_basic.sql`, SAMPLE_PURCHASEORDER_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT STATUS, COUNT(*) AS ORDERS
+FROM PURCHASEORDER
+GROUP BY STATUS
+ORDER BY STATUS
+----
+
+....
+STATUS    ORDERS
+--------- ------
+Shipped        5
+Unshipped      1
+
+  2 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_PURCHASEORDER_I_01]]
+==== SAMPLE_PURCHASEORDER_I_01: the latest order of each customer
+
+Find, for each customer with an order, the date of the latest, ordered by `CUSTID`.
+A group and a maximum.
+
+.`PURCHASEORDER/02_intermediate.sql`, SAMPLE_PURCHASEORDER_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT CUSTID, COUNT(*) AS ORDERS, MAX(ORDERDATE) AS LATEST
+FROM PURCHASEORDER
+GROUP BY CUSTID
+ORDER BY CUSTID
+----
+
+....
+CUSTID ORDERS LATEST
+------ ------ ----------
+  1001      1 02/29/2004
+  1002      3 03/01/2006
+  1003      1 02/03/2005
+  1005      1 11/18/2005
+
+  4 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_PURCHASEORDER_A_01]]
+==== SAMPLE_PURCHASEORDER_A_01: the items of order 5000
+
+Show the `partid`, the `quantity` and the `price` of each `item` of order 5000's `PORDER`, and the amount of each.
+`XMLTABLE`; Jakarta Persistence sees the column as a whole.
+
+.`PURCHASEORDER/03_advanced.sql`, SAMPLE_PURCHASEORDER_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT x.PARTID, x.QUANTITY, x.PRICE, x.QUANTITY * x.PRICE AS AMOUNT
+FROM PURCHASEORDER po,
+     XMLTABLE('$p/PurchaseOrder/item' PASSING po.PORDER AS "p"
+              COLUMNS PARTID VARCHAR(10) PATH 'partid',
+                      QUANTITY INTEGER PATH 'quantity',
+                      PRICE DECIMAL(9, 2) PATH 'price') x
+WHERE po.POID = 5000
+ORDER BY x.PARTID
+----
+
+....
+PARTID     QUANTITY PRICE AMOUNT
+---------- -------- ----- ------
+100-100-01        3  9.99  29.97
+100-103-01        5 49.99 249.95
+
+  2 record(s) selected.
+....
+====
+
+== CATALOG
+
+The `CATALOG` table, mapped by `MappedCatalog`: a catalog of the XML sample, by name, with an XML document; the table is empty.
+
+=== Basic
+
+[[SAMPLE_CATALOG_B_01]]
+==== SAMPLE_CATALOG_B_01: the number of catalogs
+
+Count the rows; there are none.
+A count on a single table.
+
+.`CATALOG/01_basic.sql`, SAMPLE_CATALOG_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT COUNT(*) AS ROWS
+FROM CATALOG
+----
+
+....
+ROWS
+----
+   0
+
+  1 record(s) selected.
+....
+====
+
+== ADEFUSR
+
+The `ADEFUSR` materialized query table, mapped by `MappedAdefusr`: the number of employees in each department, which the database maintains from `EMPLOYEE`.
+
+=== Basic
+
+[[SAMPLE_ADEFUSR_B_01]]
+==== SAMPLE_ADEFUSR_B_01: every department, by number
+
+Show every row, ordered by `WORKDEPT`.
+A single table and a sort.
+
+.`ADEFUSR/01_basic.sql`, SAMPLE_ADEFUSR_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT WORKDEPT, NO_OF_EMPLOYEES
+FROM ADEFUSR
+ORDER BY WORKDEPT
+----
+
+....
+WORKDEPT NO_OF_EMPLOYEES
+-------- ---------------
+A00                    5
+B01                    1
+C01                    4
+D11                   11
+D21                    7
+E01                    1
+E11                    7
+E21                    6
+
+  8 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_ADEFUSR_I_01]]
+==== SAMPLE_ADEFUSR_I_01: the counts that differ from EMPLOYEE
+
+Count the employees of each `WORKDEPT` in `EMPLOYEE` and find the departments whose count differs from `NO_OF_EMPLOYEES`; none does while the table is current.
+A join to a derived table.
+
+.`ADEFUSR/02_intermediate.sql`, SAMPLE_ADEFUSR_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT a.WORKDEPT, a.NO_OF_EMPLOYEES, e.EMPLOYEES
+FROM ADEFUSR a
+         JOIN (SELECT WORKDEPT, COUNT(*) AS EMPLOYEES
+               FROM EMPLOYEE
+               GROUP BY WORKDEPT) e ON e.WORKDEPT = a.WORKDEPT
+WHERE a.NO_OF_EMPLOYEES <> e.EMPLOYEES
+----
+
+....
+WORKDEPT NO_OF_EMPLOYEES EMPLOYEES
+-------- --------------- ---------
+
+  0 record(s) selected.
+....
+====
+
+== MLBLOGS_QUESTIONS
+
+The `MLBLOGS_QUESTIONS` table, mapped by `MappedMlblogsQuestion`: five questions of the machine learning sample, each with an embedding, which is not mapped.
+
+=== Basic
+
+[[SAMPLE_MLBLOGS_QUESTIONS_B_01]]
+==== SAMPLE_MLBLOGS_QUESTIONS_B_01: every question
+
+Show every `QUESTION`, ordered by it.
+A single table and a sort.
+
+.`MLBLOGS_QUESTIONS/01_basic.sql`, SAMPLE_MLBLOGS_QUESTIONS_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT QUESTION
+FROM MLBLOGS_QUESTIONS
+ORDER BY QUESTION
+----
+
+....
+QUESTION
+----------------------------------------------------------------
+How can one inference a Python model with Db2?
+How to generate summary statistics for a Db2 table?
+How to integrate a Python model with Db2?
+What are Db2's key capabilities for enterprise machine learning?
+What is Python UDF?
+
+  5 record(s) selected.
+....
+====
+
+[[SAMPLE_MLBLOGS_QUESTIONS_B_02]]
+==== SAMPLE_MLBLOGS_QUESTIONS_B_02: the questions about Python
+
+Find the questions which contain `Python`, ordered by `QUESTION`.
+A `LIKE` with a wildcard on both sides.
+
+.`MLBLOGS_QUESTIONS/01_basic.sql`, SAMPLE_MLBLOGS_QUESTIONS_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT QUESTION
+FROM MLBLOGS_QUESTIONS
+WHERE QUESTION LIKE '%Python%'
+ORDER BY QUESTION
+----
+
+....
+QUESTION
+----------------------------------------------
+How can one inference a Python model with Db2?
+How to integrate a Python model with Db2?
+What is Python UDF?
+
+  3 record(s) selected.
+....
+====
+
+== MLBLOGS_ANSWERS
+
+The `MLBLOGS_ANSWERS` table, mapped by `MappedMlblogsAnswer`: the answers of the machine learning sample, each with an embedding, which is not mapped; some are exact duplicates.
+
+=== Basic
+
+[[SAMPLE_MLBLOGS_ANSWERS_B_01]]
+==== SAMPLE_MLBLOGS_ANSWERS_B_01: the number of answers
+
+Count the rows and the distinct `ANSWER`.
+Two counts.
+
+.`MLBLOGS_ANSWERS/01_basic.sql`, SAMPLE_MLBLOGS_ANSWERS_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT COUNT(*) AS ROWS, COUNT(DISTINCT ANSWER) AS ANSWERS
+FROM MLBLOGS_ANSWERS
+----
+
+....
+ROWS ANSWERS
+---- -------
+ 108     105
+
+  1 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_MLBLOGS_ANSWERS_I_01]]
+==== SAMPLE_MLBLOGS_ANSWERS_I_01: the answers stored more than once
+
+Find the answers which appear in more than one row, with the number of rows, the first 40 characters of each, ordered by them.
+A group and a count in `HAVING`.
+
+.`MLBLOGS_ANSWERS/02_intermediate.sql`, SAMPLE_MLBLOGS_ANSWERS_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT SUBSTR(ANSWER, 1, 40) AS ANSWER, COUNT(*) AS ROWS
+FROM MLBLOGS_ANSWERS
+GROUP BY ANSWER
+HAVING COUNT(*) > 1
+ORDER BY 1
+----
+
+....
+ANSWER                                   ROWS
+---------------------------------------- ----
+Events  Conference Community Events User    3
+Groups  AI Automation Data Security Sust    2
+
+  2 record(s) selected.
+....
+====
+
+== PATIENTS
+
+The `PATIENTS` table, mapped by `MappedPatient`: twenty patients of the machine learning sample, each with an age, a cholesterol level, a blood pressure and whether they smoke.
+
+=== Basic
+
+[[SAMPLE_PATIENTS_B_01]]
+==== SAMPLE_PATIENTS_B_01: the smokers, the oldest first
+
+Find the patients whose `SMOKING_STATUS` is `Smoker`, the oldest first; patients of the same age are ordered by `PATIENT_ID`.
+A single table, an equality and a sort.
+
+.`PATIENTS/01_basic.sql`, SAMPLE_PATIENTS_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PATIENT_ID, NAME, AGE, CHOLESTEROL_LEVEL
+FROM PATIENTS
+WHERE SMOKING_STATUS = 'Smoker'
+ORDER BY AGE DESC, PATIENT_ID
+----
+
+....
+PATIENT_ID NAME            AGE CHOLESTEROL_LEVEL
+---------- --------------- --- -----------------
+        12 Jamie Arnold     76               236
+        10 Ryan Munoz       69               202
+        15 Dylan Miller     64               210
+         8 Gina Moore       58               213
+        18 Derek Zuniga     58               243
+         6 Connie Lawrence  57               237
+        16 Brian Ramirez    56               244
+        20 Carla Gray       52               236
+
+  8 record(s) selected.
+....
+====
+
+[[SAMPLE_PATIENTS_B_02]]
+==== SAMPLE_PATIENTS_B_02: the patients with a cholesterol level of 240 or more
+
+Find the patients whose `CHOLESTEROL_LEVEL` is 240 or more, ordered by `PATIENT_ID`.
+A single table and a comparison.
+
+.`PATIENTS/01_basic.sql`, SAMPLE_PATIENTS_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PATIENT_ID, NAME, CHOLESTEROL_LEVEL
+FROM PATIENTS
+WHERE CHOLESTEROL_LEVEL >= 240
+ORDER BY PATIENT_ID
+----
+
+....
+PATIENT_ID NAME          CHOLESTEROL_LEVEL
+---------- ------------- -----------------
+        16 Brian Ramirez               244
+        18 Derek Zuniga                243
+
+  2 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_PATIENTS_I_01]]
+==== SAMPLE_PATIENTS_I_01: the averages of smokers and non-smokers
+
+Count the patients of each `SMOKING_STATUS` and average their `AGE`, `CHOLESTEROL_LEVEL` and `BLOOD_PRESSURE`, cut to one decimal, ordered by `SMOKING_STATUS`.
+A group and several aggregates; Db2 averages an `INTEGER` as an `INTEGER`, so each is taken as a `DECFLOAT` first.
+
+.`PATIENTS/02_intermediate.sql`, SAMPLE_PATIENTS_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT SMOKING_STATUS, COUNT(*) AS PATIENTS,
+       DECIMAL(AVG(DECFLOAT(AGE)), 5, 1) AS AGE,
+       DECIMAL(AVG(DECFLOAT(CHOLESTEROL_LEVEL)), 5, 1) AS CHOLESTEROL,
+       DECIMAL(AVG(DECFLOAT(BLOOD_PRESSURE)), 5, 1) AS PRESSURE
+FROM PATIENTS
+GROUP BY SMOKING_STATUS
+ORDER BY SMOKING_STATUS
+----
+
+....
+SMOKING_STATUS PATIENTS AGE  CHOLESTEROL PRESSURE
+-------------- -------- ---- ----------- --------
+Non-smoker           12 34.2       173.1    105.1
+Smoker                8 61.2       227.6    157.1
+
+  2 record(s) selected.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_PATIENTS_A_01]]
+==== SAMPLE_PATIENTS_A_01: the patients above the cholesterol average of their group
+
+Find the patients whose `CHOLESTEROL_LEVEL` is above the average of those with the same `SMOKING_STATUS`, ordered by `PATIENT_ID`.
+A correlated subquery.
+
+.`PATIENTS/03_advanced.sql`, SAMPLE_PATIENTS_A_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT p.PATIENT_ID, p.NAME, p.SMOKING_STATUS, p.CHOLESTEROL_LEVEL
+FROM PATIENTS p
+WHERE p.CHOLESTEROL_LEVEL > (SELECT AVG(x.CHOLESTEROL_LEVEL)
+                             FROM PATIENTS x
+                             WHERE x.SMOKING_STATUS = p.SMOKING_STATUS)
+ORDER BY p.PATIENT_ID
+----
+
+....
+PATIENT_ID NAME            SMOKING_STATUS CHOLESTEROL_LEVEL
+---------- --------------- -------------- -----------------
+         2 Noah Rhodes     Non-smoker                   193
+         4 Daniel Wagner   Non-smoker                   182
+         5 Cristian Santos Non-smoker                   195
+         6 Connie Lawrence Smoker                       237
+         7 Abigail Shaffer Non-smoker                   194
+        12 Jamie Arnold    Smoker                       236
+        13 Lisa Hensley    Non-smoker                   199
+        16 Brian Ramirez   Smoker                       244
+        18 Derek Zuniga    Smoker                       243
+        20 Carla Gray      Smoker                       236
+
+  10 record(s) selected.
+....
+====
+
+== VACT
+
+The `VACT` view, mapped by `MappedVact`: every column of `ACT`.
+
+=== Basic
+
+[[SAMPLE_VACT_B_01]]
+==== SAMPLE_VACT_B_01: the activities of the first page
+
+Show the first five activities, ordered by `ACTNO`.
+A sort and the first rows, on a view.
+
+.`VACT/01_basic.sql`, SAMPLE_VACT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT ACTNO, ACTKWD, ACTDESC
+FROM VACT
+ORDER BY ACTNO
+FETCH FIRST 5 ROWS ONLY
+----
+
+....
+ACTNO ACTKWD ACTDESC
+----- ------ -------------------
+   10 MANAGE MANAGE/ADVISE
+   20 ECOST  ESTIMATE COST
+   30 DEFINE DEFINE SPECS
+   40 LEADPR LEAD PROGRAM/DESIGN
+   50 SPECS  WRITE SPECS
+
+  5 record(s) selected.
+....
+====
+
+== VASTRDE1
+
+The `VASTRDE1` view, mapped by `MappedVastrde1`: each department with its manager, beside each department it administers, with that one's manager.
+
+=== Basic
+
+[[SAMPLE_VASTRDE1_B_01]]
+==== SAMPLE_VASTRDE1_B_01: the departments A00 administers
+
+Find the rows whose `DEPT1NO` is `A00`, ordered by `DEPT2NO`.
+An equality on a view.
+
+.`VASTRDE1/01_basic.sql`, SAMPLE_VASTRDE1_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DEPT2NO, DEPT2NAM, EMP2NO, EMP2LN
+FROM VASTRDE1
+WHERE DEPT1NO = 'A00'
+ORDER BY DEPT2NO
+----
+
+....
+DEPT2NO DEPT2NAM                     EMP2NO EMP2LN
+------- ---------------------------- ------ --------
+A00     SPIFFY COMPUTER SERVICE DIV. 000010 HAAS
+B01     PLANNING                     000020 THOMPSON
+C01     INFORMATION CENTER           000030 KWAN
+D01     DEVELOPMENT CENTER           -      -
+E01     SUPPORT SERVICES             000050 GEYER
+
+  5 record(s) selected.
+....
+====
+
+== VASTRDE2
+
+The `VASTRDE2` view, mapped by `MappedVastrde2`: each department with its manager, beside each employee of the department.
+
+=== Basic
+
+[[SAMPLE_VASTRDE2_B_01]]
+==== SAMPLE_VASTRDE2_B_01: the employees of C01 with their manager
+
+Find the rows whose `DEPT1NO` is `C01`, ordered by `EMP2NO`.
+An equality on a view.
+
+.`VASTRDE2/01_basic.sql`, SAMPLE_VASTRDE2_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMP1NO, EMP1LN, EMP2NO, EMP2LN
+FROM VASTRDE2
+WHERE DEPT1NO = 'C01'
+ORDER BY EMP2NO
+----
+
+....
+EMP1NO EMP1LN EMP2NO EMP2LN
+------ ------ ------ --------
+000030 KWAN   000030 KWAN
+000030 KWAN   000130 QUINTANA
+000030 KWAN   000140 NICHOLLS
+000030 KWAN   200140 NATZ
+
+  4 record(s) selected.
+....
+====
+
+== VDEPMG1
+
+The `VDEPMG1` view, mapped by `MappedVdepmg1`: each department with the name of its manager.
+
+=== Basic
+
+[[SAMPLE_VDEPMG1_B_01]]
+==== SAMPLE_VDEPMG1_B_01: the departments administered by D01, with their manager
+
+Find the rows whose `ADMRDEPT` is `D01`, ordered by `DEPTNO`.
+An equality on a view.
+
+.`VDEPMG1/01_basic.sql`, SAMPLE_VDEPMG1_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DEPTNO, DEPTNAME, FIRSTNME, LASTNAME
+FROM VDEPMG1
+WHERE ADMRDEPT = 'D01'
+ORDER BY DEPTNO
+----
+
+....
+DEPTNO DEPTNAME               FIRSTNME LASTNAME
+------ ---------------------- -------- --------
+D11    MANUFACTURING SYSTEMS  IRVING   STERN
+D21    ADMINISTRATION SYSTEMS EVA      PULASKI
+
+  2 record(s) selected.
+....
+====
+
+== VDEPT
+
+The `VDEPT` view, mapped by `MappedVdept`: the departments, without their location.
+
+=== Basic
+
+[[SAMPLE_VDEPT_B_01]]
+==== SAMPLE_VDEPT_B_01: the number of departments each department administers
+
+Count the rows of each `ADMRDEPT`, ordered by it.
+A group on a view.
+
+.`VDEPT/01_basic.sql`, SAMPLE_VDEPT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT ADMRDEPT, COUNT(*) AS DEPTS
+FROM VDEPT
+GROUP BY ADMRDEPT
+ORDER BY ADMRDEPT
+----
+
+....
+ADMRDEPT DEPTS
+-------- -----
+A00          5
+D01          2
+E01          7
+
+  3 record(s) selected.
+....
+====
+
+== VEMP
+
+The `VEMP` view, mapped by `MappedVemp`: the employees, by number, name and department.
+
+=== Basic
+
+[[SAMPLE_VEMP_B_01]]
+==== SAMPLE_VEMP_B_01: the employees of D21
+
+Find the rows whose `WORKDEPT` is `D21`, ordered by `EMPNO`.
+An equality on a view.
+
+.`VEMP/01_basic.sql`, SAMPLE_VEMP_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, FIRSTNME, LASTNAME
+FROM VEMP
+WHERE WORKDEPT = 'D21'
+ORDER BY EMPNO
+----
+
+....
+EMPNO  FIRSTNME  LASTNAME
+------ --------- ----------
+000070 EVA       PULASKI
+000230 JAMES     JEFFERSON
+000240 SALVATORE MARINO
+000250 DANIEL    SMITH
+000260 SYBIL     JOHNSON
+000270 MARIA     PEREZ
+200240 ROBERT    MONTEVERDE
+
+  7 record(s) selected.
+....
+====
+
+== VEMPDPT1
+
+The `VEMPDPT1` view, mapped by `MappedVempdpt1`: the employees with the first letter of their first name, beside the name of their department.
+
+=== Basic
+
+[[SAMPLE_VEMPDPT1_B_01]]
+==== SAMPLE_VEMPDPT1_B_01: the employees of the information center
+
+Find the rows whose `DEPTNAME` is `INFORMATION CENTER`, ordered by `EMPNO`.
+An equality on a view.
+
+.`VEMPDPT1/01_basic.sql`, SAMPLE_VEMPDPT1_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT EMPNO, FRSTINIT, MIDINIT, LASTNAME
+FROM VEMPDPT1
+WHERE DEPTNAME = 'INFORMATION CENTER'
+ORDER BY EMPNO
+----
+
+....
+EMPNO  FRSTINIT MIDINIT LASTNAME
+------ -------- ------- --------
+000030 S        A       KWAN
+000130 D        M       QUINTANA
+000140 H        A       NICHOLLS
+200140 K        N       NATZ
+
+  4 record(s) selected.
+....
+====
+
+== VEMPLP
+
+The `VEMPLP` view, mapped by `MappedVemplp`: the phone number of each employee.
+
+=== Basic
+
+[[SAMPLE_VEMPLP_B_01]]
+==== SAMPLE_VEMPLP_B_01: the employees who share a phone number
+
+Find the phone numbers of more than one employee, with the number of employees, ordered by `PHONENUMBER`.
+A group and a count in `HAVING`, on a view.
+
+.`VEMPLP/01_basic.sql`, SAMPLE_VEMPLP_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PHONENUMBER, COUNT(*) AS EMPLOYEES
+FROM VEMPLP
+GROUP BY PHONENUMBER
+HAVING COUNT(*) > 1
+ORDER BY PHONENUMBER
+----
+
+....
+PHONENUMBER EMPLOYEES
+----------- ---------
+0672                2
+1793                2
+2103                2
+2167                2
+2890                2
+3332                2
+3780                2
+3978                2
+5698                2
+8997                2
+
+  10 record(s) selected.
+....
+====
+
+== VEMPPROJACT
+
+The `VEMPPROJACT` view, mapped by `MappedVempprojact`: every column of `EMPPROJACT`.
+
+=== Basic
+
+[[SAMPLE_VEMPPROJACT_B_01]]
+==== SAMPLE_VEMPPROJACT_B_01: the number of rows per project
+
+Count the rows of each `PROJNO`, the most first; projects with the same count are ordered by `PROJNO`.
+A group on a view.
+
+.`VEMPPROJACT/01_basic.sql`, SAMPLE_VEMPPROJACT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, COUNT(*) AS ROWS
+FROM VEMPPROJACT
+GROUP BY PROJNO
+ORDER BY ROWS DESC, PROJNO
+----
+
+....
+PROJNO ROWS
+------ ----
+AD3113   14
+AD3112    9
+AD3111    7
+MA2112    6
+IF2000    5
+MA2113    5
+OP1010    5
+IF1000    4
+MA2111    3
+MA2100    2
+... 19 rows in all.
+....
+====
+
+== VFORPLA
+
+The `VFORPLA` view, mapped by `MappedVforpla`: each project with the department and the name of the employee in charge, a row for each of its activities; rows repeat.
+
+=== Basic
+
+[[SAMPLE_VFORPLA_B_01]]
+==== SAMPLE_VFORPLA_B_01: the rows of AD3111
+
+Find the rows whose `PROJNO` is `AD3111`.
+An equality on a view; the rows are exact duplicates of one another, one for each row of the project in `EMPPROJACT`.
+
+.`VFORPLA/01_basic.sql`, SAMPLE_VFORPLA_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, PROJNAME, RESPEMP, LASTNAME
+FROM VFORPLA
+WHERE PROJNO = 'AD3111'
+----
+
+....
+PROJNO PROJNAME            RESPEMP LASTNAME
+------ ------------------- ------- ---------
+AD3111 PAYROLL PROGRAMMING 000230  JEFFERSON
+AD3111 PAYROLL PROGRAMMING 000230  JEFFERSON
+AD3111 PAYROLL PROGRAMMING 000230  JEFFERSON
+AD3111 PAYROLL PROGRAMMING 000230  JEFFERSON
+AD3111 PAYROLL PROGRAMMING 000230  JEFFERSON
+AD3111 PAYROLL PROGRAMMING 000230  JEFFERSON
+AD3111 PAYROLL PROGRAMMING 000230  JEFFERSON
+
+  7 record(s) selected.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_VFORPLA_I_01]]
+==== SAMPLE_VFORPLA_I_01: the number of rows per project, and the distinct ones
+
+Count, for each project, the rows and the distinct rows, ordered by `PROJNO`.
+A group, and `DISTINCT` on the whole row in a derived table.
+
+.`VFORPLA/02_intermediate.sql`, SAMPLE_VFORPLA_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT a.PROJNO, a.ROWS, d.DISTINCT_ROWS
+FROM (SELECT PROJNO, COUNT(*) AS ROWS FROM VFORPLA GROUP BY PROJNO) a
+         JOIN (SELECT PROJNO, COUNT(*) AS DISTINCT_ROWS
+               FROM (SELECT DISTINCT * FROM VFORPLA) v
+               GROUP BY PROJNO) d ON d.PROJNO = a.PROJNO
+ORDER BY a.PROJNO
+----
+
+....
+PROJNO ROWS DISTINCT_ROWS
+------ ---- -------------
+AD3100    1             1
+AD3110    1             1
+AD3111    7             1
+AD3112    9             1
+AD3113   14             1
+IF1000    4             1
+IF2000    5             1
+MA2100    2             1
+MA2110    1             1
+MA2111    3             1
+... 20 rows in all.
+....
+====
+
+== VHDEPT
+
+The `VHDEPT` view, mapped by `MappedVhdept`: every column of `DEPARTMENT`.
+
+=== Basic
+
+[[SAMPLE_VHDEPT_B_01]]
+==== SAMPLE_VHDEPT_B_01: the branch offices
+
+Find the rows whose `DEPTNAME` starts with `BRANCH OFFICE`, ordered by `DEPTNO`.
+A `LIKE` on a view.
+
+.`VHDEPT/01_basic.sql`, SAMPLE_VHDEPT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT DEPTNO, DEPTNAME, ADMRDEPT
+FROM VHDEPT
+WHERE DEPTNAME LIKE 'BRANCH OFFICE%'
+ORDER BY DEPTNO
+----
+
+....
+DEPTNO DEPTNAME         ADMRDEPT
+------ ---------------- --------
+F22    BRANCH OFFICE F2 E01
+G22    BRANCH OFFICE G2 E01
+H22    BRANCH OFFICE H2 E01
+I22    BRANCH OFFICE I2 E01
+J22    BRANCH OFFICE J2 E01
+
+  5 record(s) selected.
+....
+====
+
+== VPHONE
+
+The `VPHONE` view, mapped by `MappedVphone`: a phone list: each employee's name and phone number, with the department.
+
+=== Basic
+
+[[SAMPLE_VPHONE_B_01]]
+==== SAMPLE_VPHONE_B_01: the phone list of E21
+
+Find the rows whose `DEPTNUMBER` is `E21`, ordered by `LASTNAME` and `FIRSTNAME`.
+An equality and a sort on two columns, on a view.
+
+.`VPHONE/01_basic.sql`, SAMPLE_VPHONE_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT LASTNAME, FIRSTNAME, PHONENUMBER
+FROM VPHONE
+WHERE DEPTNUMBER = 'E21'
+ORDER BY LASTNAME, FIRSTNAME
+----
+
+....
+LASTNAME FIRSTNAME PHONENUMBER
+-------- --------- -----------
+ALONZO   ROY       5698
+GOUNOT   JASON     5698
+LEE      WING      2103
+MEHTA    RAMLAL    9990
+SPENSER  THEODORE  0972
+WONG     HELENA    2103
+
+  6 record(s) selected.
+....
+====
+
+== VPROJ
+
+The `VPROJ` view, mapped by `MappedVproj`: every column of `PROJECT`.
+
+=== Basic
+
+[[SAMPLE_VPROJ_B_01]]
+==== SAMPLE_VPROJ_B_01: the projects with the most staff
+
+Show the three projects with the highest `PRSTAFF`; projects with the same staff are ordered by `PROJNO`.
+A sort and the first rows, on a view.
+
+.`VPROJ/01_basic.sql`, SAMPLE_VPROJ_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, PROJNAME, PRSTAFF
+FROM VPROJ
+ORDER BY PRSTAFF DESC, PROJNO
+FETCH FIRST 3 ROWS ONLY
+----
+
+....
+PROJNO PROJNAME             PRSTAFF
+------ -------------------- -------
+MA2100 WELD LINE AUTOMATION   12.00
+MA2110 W L PROGRAMMING         9.00
+AD3100 ADMIN SERVICES          6.50
+
+  3 record(s) selected.
+....
+====
+
+== VPROJACT
+
+The `VPROJACT` view, mapped by `MappedVprojact`: every column of `PROJACT`.
+
+=== Basic
+
+[[SAMPLE_VPROJACT_B_01]]
+==== SAMPLE_VPROJACT_B_01: the activities that start in 2002-06
+
+Find the rows whose `ACSTDATE` is in June 2002, ordered by `ACSTDATE`, `PROJNO` and `ACTNO`.
+A range on a `DATE`, on a view.
+
+.`VPROJACT/01_basic.sql`, SAMPLE_VPROJACT_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, ACTNO, ACSTDATE
+FROM VPROJACT
+WHERE ACSTDATE >= DATE '2002-06-01'
+  AND ACSTDATE < DATE '2002-07-01'
+ORDER BY ACSTDATE, PROJNO, ACTNO
+----
+
+....
+PROJNO ACTNO ACSTDATE
+------ ----- ----------
+AD3113   180 06/01/2002
+IF1000    10 06/01/2002
+MA2112    70 06/01/2002
+AD3113    70 06/15/2002
+MA2111    60 06/15/2002
+
+  5 record(s) selected.
+....
+====
+
+== VPROJRE1
+
+The `VPROJRE1` view, mapped by `MappedVprojre1`: each project with the name of the employee in charge.
+
+=== Basic
+
+[[SAMPLE_VPROJRE1_B_01]]
+==== SAMPLE_VPROJRE1_B_01: the projects of D11, with the employee in charge
+
+Find the rows whose `PROJDEP` is `D11`, ordered by `PROJNO`.
+An equality on a view.
+
+.`VPROJRE1/01_basic.sql`, SAMPLE_VPROJRE1_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, PROJNAME, RESPEMP, LASTNAME
+FROM VPROJRE1
+WHERE PROJDEP = 'D11'
+ORDER BY PROJNO
+----
+
+....
+PROJNO PROJNAME            RESPEMP LASTNAME
+------ ------------------- ------- --------
+MA2110 W L PROGRAMMING     000060  STERN
+MA2111 W L PROGRAM DESIGN  000220  LUTZ
+MA2112 W L ROBOT DESIGN    000150  ADAMSON
+MA2113 W L PROD CONT PROGS 000160  PIANKA
+
+  4 record(s) selected.
+....
+====
+
+== VPSTRDE1
+
+The `VPSTRDE1` view, mapped by `MappedVpstrde1`: each project, with the employee in charge, beside each of its subprojects, with that one's.
+
+=== Basic
+
+[[SAMPLE_VPSTRDE1_B_01]]
+==== SAMPLE_VPSTRDE1_B_01: the subprojects of AD3110
+
+Find the rows whose `PROJ1NO` is `AD3110`, ordered by `PROJ2NO`.
+An equality on a view.
+
+.`VPSTRDE1/01_basic.sql`, SAMPLE_VPSTRDE1_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJ2NO, PROJ2NAME, RESP2NO, RESP2LN
+FROM VPSTRDE1
+WHERE PROJ1NO = 'AD3110'
+ORDER BY PROJ2NO
+----
+
+....
+PROJ2NO PROJ2NAME             RESP2NO RESP2LN
+------- --------------------- ------- ---------
+AD3111  PAYROLL PROGRAMMING   000230  JEFFERSON
+AD3112  PERSONNEL PROGRAMMING 000250  SMITH
+AD3113  ACCOUNT PROGRAMMING   000270  PEREZ
+
+  3 record(s) selected.
+....
+====
+
+== VPSTRDE2
+
+The `VPSTRDE2` view, mapped by `MappedVpstrde2`: each project, with the employee in charge, beside itself.
+
+=== Basic
+
+[[SAMPLE_VPSTRDE2_B_01]]
+==== SAMPLE_VPSTRDE2_B_01: the number of rows
+
+Count the rows, and the distinct `PROJ1NO`.
+Two counts on a view.
+
+.`VPSTRDE2/01_basic.sql`, SAMPLE_VPSTRDE2_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT COUNT(*) AS ROWS, COUNT(DISTINCT PROJ1NO) AS PROJECTS
+FROM VPSTRDE2
+----
+
+....
+ROWS PROJECTS
+---- --------
+  13       13
+
+  1 record(s) selected.
+....
+====
+
+== VSTAFAC1
+
+The `VSTAFAC1` view, mapped by `MappedVstafac1`: the activities of each project with their description, as rows of a staffing list without an employee.
+
+=== Basic
+
+[[SAMPLE_VSTAFAC1_B_01]]
+==== SAMPLE_VSTAFAC1_B_01: the rows of IF1000
+
+Find the rows whose `PROJNO` is `IF1000`, ordered by `ACTNO` and `STDATE`.
+An equality on a view.
+
+.`VSTAFAC1/01_basic.sql`, SAMPLE_VSTAFAC1_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT PROJNO, ACTNO, ACTDESC, STDATE, ENDATE, TYPE
+FROM VSTAFAC1
+WHERE PROJNO = 'IF1000'
+ORDER BY ACTNO, STDATE
+----
+
+....
+PROJNO ACTNO ACTDESC          STDATE     ENDATE TYPE
+------ ----- ---------------- ---------- ------ ----
+IF1000    10 MANAGE/ADVISE    06/01/2002 -      1
+IF1000    90 ADM QUERY SYSTEM 10/01/2002 -      1
+IF1000   100 TEACH CLASSES    10/01/2002 -      1
+
+  3 record(s) selected.
+....
+====
+
+== VSTAFAC2
+
+The `VSTAFAC2` view, mapped by `MappedVstafac2`: the employees on each activity of a project, with the description of the activity and the employee's name.
+
+=== Basic
+
+[[SAMPLE_VSTAFAC2_B_01]]
+==== SAMPLE_VSTAFAC2_B_01: the staff of IF1000
+
+Find the rows whose `PROJNO` is `IF1000`, ordered by `ACTNO`, `EMPNO` and `STDATE`.
+An equality on a view.
+
+.`VSTAFAC2/01_basic.sql`, SAMPLE_VSTAFAC2_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT ACTNO, ACTDESC, EMPNO, LASTNAME, EMPTIME, STDATE
+FROM VSTAFAC2
+WHERE PROJNO = 'IF1000'
+ORDER BY ACTNO, EMPNO, STDATE
+----
+
+....
+ACTNO ACTDESC          EMPNO  LASTNAME EMPTIME STDATE
+----- ---------------- ------ -------- ------- ----------
+   10 MANAGE/ADVISE    000030 KWAN        0.50 06/01/2002
+   90 ADM QUERY SYSTEM 000130 QUINTANA    1.00 10/01/2002
+   90 ADM QUERY SYSTEM 000140 NICHOLLS    0.50 10/01/2002
+  100 TEACH CLASSES    000130 QUINTANA    0.50 10/01/2002
+
+  4 record(s) selected.
+....
+====
+
+== The schema
+
+Exercises on the schema as a whole, not on a single table.
+
+=== Basic
+
+[[SAMPLE_SCHEMA_B_01]]
+==== SAMPLE_SCHEMA_B_01: the tables and the views of the schema
+
+List the tables, the views and the materialized query tables of the `DB2INST1` schema from `SYSCAT.TABLES`, with their kind, ordered by kind and name; the aliases are left out.
+A query on the catalog.
+
+.`__/01_basic.sql`, SAMPLE_SCHEMA_B_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT TABNAME, TYPE
+FROM SYSCAT.TABLES
+WHERE TABSCHEMA = 'DB2INST1'
+  AND TYPE IN ('T', 'V', 'S')
+ORDER BY TYPE, TABNAME
+----
+
+....
+TABNAME           TYPE
+----------------- ----
+ADEFUSR           S
+ACT               T
+CATALOG           T
+CL_SCHED          T
+CUSTOMER          T
+DEPARTMENT        T
+EMPLOYEE          T
+EMPMDC            T
+EMPPROJACT        T
+EMP_PHOTO         T
+... 45 rows in all.
+....
+====
+
+[[SAMPLE_SCHEMA_B_02]]
+==== SAMPLE_SCHEMA_B_02: the columns of EMPLOYEE
+
+List the columns of `EMPLOYEE` from `SYSCAT.COLUMNS`, in their order: the name, the type, the length and whether `NULL` is allowed.
+A query on the catalog.
+
+.`__/01_basic.sql`, SAMPLE_SCHEMA_B_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT COLNAME, TYPENAME, LENGTH, SCALE, NULLS
+FROM SYSCAT.COLUMNS
+WHERE TABSCHEMA = 'DB2INST1'
+  AND TABNAME = 'EMPLOYEE'
+ORDER BY COLNO
+----
+
+....
+COLNAME   TYPENAME  LENGTH SCALE NULLS
+--------- --------- ------ ----- -----
+EMPNO     CHARACTER      6     0 N
+FIRSTNME  VARCHAR       12     0 N
+MIDINIT   CHARACTER      1     0 Y
+LASTNAME  VARCHAR       15     0 N
+WORKDEPT  CHARACTER      3     0 Y
+PHONENO   CHARACTER      4     0 Y
+HIREDATE  DATE           4     0 Y
+JOB       CHARACTER      8     0 Y
+EDLEVEL   SMALLINT       2     0 N
+SEX       CHARACTER      1     0 Y
+... 14 rows in all.
+....
+====
+
+=== Intermediate
+
+[[SAMPLE_SCHEMA_I_01]]
+==== SAMPLE_SCHEMA_I_01: the foreign keys of the schema
+
+List the foreign keys of the schema from `SYSCAT.REFERENCES`: the table, its columns, and the table and the columns they refer to, ordered by table and constraint.
+A query on the catalog.
+
+.`__/02_intermediate.sql`, SAMPLE_SCHEMA_I_01
+[%collapsible]
+====
+[source,sql]
+----
+SELECT TABNAME, CONSTNAME, FK_COLNAMES, REFTABNAME, PK_COLNAMES
+FROM SYSCAT.REFERENCES
+WHERE TABSCHEMA = 'DB2INST1'
+ORDER BY TABNAME, CONSTNAME
+----
+
+....
+TABNAME       CONSTNAME     FK_COLNAMES                                      REFTABNAME PK_COLNAMES
+------------- ------------- ------------------------------------------------ ---------- ------------------------------------------------
+ACT           RPAA          ACTNO                                            ACT        ACTNO
+DEPARTMENT    RDE           MGRNO                                            EMPLOYEE   EMPNO
+DEPARTMENT    ROD           ADMRDEPT                                         DEPARTMENT DEPTNO
+EMPLOYEE      RED           WORKDEPT                                         DEPARTMENT DEPTNO
+EMPPROJACT    REPAPA        PROJNO              ACTNO               EMSTDATE PROJACT    PROJNO              ACTNO               ACSTDATE
+EMP_PHOTO     FK_EMP_PHOTO  EMPNO                                            EMPLOYEE   EMPNO
+EMP_RESUME    FK_EMP_RESUME EMPNO                                            EMPLOYEE   EMPNO
+PROJACT       RPAP          PROJNO                                           PROJECT    PROJNO
+PROJECT       FK_PROJECT_1  DEPTNO                                           DEPARTMENT DEPTNO
+PROJECT       FK_PROJECT_2  RESPEMP                                          EMPLOYEE   EMPNO
+... 12 rows in all.
+....
+====
+
+[[SAMPLE_SCHEMA_I_02]]
+==== SAMPLE_SCHEMA_I_02: the departments with their employees and projects
+
+Count, for each department, its employees and its projects, ordered by `DEPTNO`; a department with neither shows zeros.
+Two correlated subqueries in the select list.
+
+.`__/02_intermediate.sql`, SAMPLE_SCHEMA_I_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT d.DEPTNO, d.DEPTNAME,
+       (SELECT COUNT(*) FROM EMPLOYEE e WHERE e.WORKDEPT = d.DEPTNO) AS EMPLOYEES,
+       (SELECT COUNT(*) FROM PROJECT p WHERE p.DEPTNO = d.DEPTNO) AS PROJECTS
+FROM DEPARTMENT d
+ORDER BY d.DEPTNO
+----
+
+....
+DEPTNO DEPTNAME                     EMPLOYEES PROJECTS
+------ ---------------------------- --------- --------
+A00    SPIFFY COMPUTER SERVICE DIV.         5        0
+B01    PLANNING                             1        1
+C01    INFORMATION CENTER                   4        2
+D01    DEVELOPMENT CENTER                   0        2
+D11    MANUFACTURING SYSTEMS               11        4
+D21    ADMINISTRATION SYSTEMS               7        4
+E01    SUPPORT SERVICES                     1        2
+E11    OPERATIONS                           7        1
+E21    SOFTWARE SUPPORT                     6        4
+F22    BRANCH OFFICE F2                     0        0
+... 14 rows in all.
+....
+====
+
+=== Advanced
+
+[[SAMPLE_SCHEMA_A_01]]
+==== SAMPLE_SCHEMA_A_01: the managers of the employees, up to the top
+
+Show, for employee `000290`, the chain of managers up to the top: the manager of the employee's department, then the manager of the department administering it, and so on, until a department administers itself.
+A recursive common table expression across `EMPLOYEE` and `DEPARTMENT`; Jakarta Persistence has none.
+
+.`__/03_advanced.sql`, SAMPLE_SCHEMA_A_01
+[%collapsible]
+====
+[source,sql]
+----
+WITH CHAIN (DEPTNO, ADMRDEPT, MGRNO, STEP) AS (
+    SELECT d.DEPTNO, d.ADMRDEPT, d.MGRNO, 1
+    FROM EMPLOYEE e, DEPARTMENT d
+    WHERE d.DEPTNO = e.WORKDEPT
+      AND e.EMPNO = '000290'
+    UNION ALL
+    SELECT d.DEPTNO, d.ADMRDEPT, d.MGRNO, c.STEP + 1
+    FROM CHAIN c, DEPARTMENT d
+    WHERE d.DEPTNO = c.ADMRDEPT
+      AND c.DEPTNO <> c.ADMRDEPT
+)
+SELECT c.STEP, c.DEPTNO, c.MGRNO, m.LASTNAME
+FROM CHAIN c
+         LEFT JOIN EMPLOYEE m ON m.EMPNO = c.MGRNO
+ORDER BY c.STEP
+----
+
+....
+STEP DEPTNO MGRNO  LASTNAME
+---- ------ ------ ---------
+   1 E11    000090 HENDERSON
+   2 E01    000050 GEYER
+   3 A00    000010 HAAS
+
+  3 record(s) selected.
+....
+====
+
+[[SAMPLE_SCHEMA_A_02]]
+==== SAMPLE_SCHEMA_A_02: the departments' share of the project time
+
+Add up the `EMPTIME` of the employees of each department over `EMPPROJACT`, with each department's share of the whole in percent, cut to two decimals, the largest first.
+A join, a group, and a scalar subquery for the whole.
+
+.`__/03_advanced.sql`, SAMPLE_SCHEMA_A_02
+[%collapsible]
+====
+[source,sql]
+----
+SELECT e.WORKDEPT, SUM(x.EMPTIME) AS EMPTIME,
+       DECIMAL(DECFLOAT(SUM(x.EMPTIME)) * 100 / (SELECT SUM(EMPTIME) FROM EMPPROJACT), 5, 2) AS SHARE
+FROM EMPPROJACT x
+         JOIN EMPLOYEE e ON e.EMPNO = x.EMPNO
+GROUP BY e.WORKDEPT
+ORDER BY EMPTIME DESC
+----
+
+....
+WORKDEPT EMPTIME SHARE
+-------- ------- -----
+D21        22.00 40.37
+D11        13.00 23.85
+C01         5.50 10.09
+E11         5.00  9.17
+E21         4.00  7.34
+A00         3.00  5.50
+B01         1.00  1.83
+E01         1.00  1.83
+
+  8 record(s) selected.
+....
+====
+

@@ -1,0 +1,940 @@
+# Registry of the exercises in EXERCISES.asciidoc and the <section>/<NN>_<level>.sql files beside it.
+#
+# An id is SAMPLE_<SECTION>_<TIER>_<NN>: the table or view the exercise reads alone, or SCHEMA for one that reads more
+# than one, the tier (B for Basic, I for Intermediate, A for Advanced), and a number within that section and tier.
+#
+# Ids are permanent. A new exercise takes the next unused number of its section and tier; an exercise that moves or
+# changes tier keeps its id; an id of a removed exercise is marked `retired: true` and never reused. EXERCISES.asciidoc
+# carries each id as the anchor and the prefix of the exercise's heading, and the .sql file repeats it in the marker
+# above the statement.
+#
+# `sql` is the file that answers the exercise in SQL; `test` is the integration test that answers it in JPQL and with
+# the Criteria API, a class of its own, `sample.<section>.<ID>_PersistenceIT` in the module's test package; an
+# exercise only SQL can answer is flagged `native-only: true`.
+
+# ---- DEPARTMENT
+
+- id: SAMPLE_DEPARTMENT_B_01
+  section: "DEPARTMENT"
+  tier: Basic
+  title: "every department, by number"
+  sql: src/test/sql-exercises/DEPARTMENT/01_basic.sql
+  test: sample.department.SAMPLE_DEPARTMENT_B_01_PersistenceIT
+- id: SAMPLE_DEPARTMENT_B_02
+  section: "DEPARTMENT"
+  tier: Basic
+  title: "the departments without a manager"
+  sql: src/test/sql-exercises/DEPARTMENT/01_basic.sql
+  test: sample.department.SAMPLE_DEPARTMENT_B_02_PersistenceIT
+- id: SAMPLE_DEPARTMENT_B_03
+  section: "DEPARTMENT"
+  tier: Basic
+  title: "the departments E01 administers"
+  sql: src/test/sql-exercises/DEPARTMENT/01_basic.sql
+  test: sample.department.SAMPLE_DEPARTMENT_B_03_PersistenceIT
+- id: SAMPLE_DEPARTMENT_I_01
+  section: "DEPARTMENT"
+  tier: Intermediate
+  title: "each department with the name of its manager"
+  sql: src/test/sql-exercises/DEPARTMENT/02_intermediate.sql
+  test: sample.department.SAMPLE_DEPARTMENT_I_01_PersistenceIT
+- id: SAMPLE_DEPARTMENT_I_02
+  section: "DEPARTMENT"
+  tier: Intermediate
+  title: "each department with the name of the department that administers it"
+  sql: src/test/sql-exercises/DEPARTMENT/02_intermediate.sql
+  test: sample.department.SAMPLE_DEPARTMENT_I_02_PersistenceIT
+- id: SAMPLE_DEPARTMENT_I_03
+  section: "DEPARTMENT"
+  tier: Intermediate
+  title: "the number of employees in each department"
+  sql: src/test/sql-exercises/DEPARTMENT/02_intermediate.sql
+  test: sample.department.SAMPLE_DEPARTMENT_I_03_PersistenceIT
+- id: SAMPLE_DEPARTMENT_A_01
+  section: "DEPARTMENT"
+  tier: Advanced
+  title: "the departments under A00, level by level"
+  sql: src/test/sql-exercises/DEPARTMENT/03_advanced.sql
+  test: sample.department.SAMPLE_DEPARTMENT_A_01_PersistenceIT
+  native-only: true
+- id: SAMPLE_DEPARTMENT_A_02
+  section: "DEPARTMENT"
+  tier: Advanced
+  title: "the departments whose average salary is above the company's"
+  sql: src/test/sql-exercises/DEPARTMENT/03_advanced.sql
+  test: sample.department.SAMPLE_DEPARTMENT_A_02_PersistenceIT
+
+# ---- EMPLOYEE
+
+- id: SAMPLE_EMPLOYEE_B_01
+  section: "EMPLOYEE"
+  tier: Basic
+  title: "the employees of D11, by name"
+  sql: src/test/sql-exercises/EMPLOYEE/01_basic.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_B_01_PersistenceIT
+- id: SAMPLE_EMPLOYEE_B_02
+  section: "EMPLOYEE"
+  tier: Basic
+  title: "the employees hired in 2006"
+  sql: src/test/sql-exercises/EMPLOYEE/01_basic.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_B_02_PersistenceIT
+- id: SAMPLE_EMPLOYEE_B_03
+  section: "EMPLOYEE"
+  tier: Basic
+  title: "the five highest salaries"
+  sql: src/test/sql-exercises/EMPLOYEE/01_basic.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_B_03_PersistenceIT
+- id: SAMPLE_EMPLOYEE_B_04
+  section: "EMPLOYEE"
+  tier: Basic
+  title: "the employees without a middle initial"
+  sql: src/test/sql-exercises/EMPLOYEE/01_basic.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_B_04_PersistenceIT
+- id: SAMPLE_EMPLOYEE_I_01
+  section: "EMPLOYEE"
+  tier: Intermediate
+  title: "the number of employees and their average salary per job"
+  sql: src/test/sql-exercises/EMPLOYEE/02_intermediate.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_I_01_PersistenceIT
+- id: SAMPLE_EMPLOYEE_I_02
+  section: "EMPLOYEE"
+  tier: Intermediate
+  title: "the employees of the E21 with the name of their department"
+  sql: src/test/sql-exercises/EMPLOYEE/02_intermediate.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_I_02_PersistenceIT
+- id: SAMPLE_EMPLOYEE_I_03
+  section: "EMPLOYEE"
+  tier: Intermediate
+  title: "the employees who manage a department"
+  sql: src/test/sql-exercises/EMPLOYEE/02_intermediate.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_I_03_PersistenceIT
+- id: SAMPLE_EMPLOYEE_I_04
+  section: "EMPLOYEE"
+  tier: Intermediate
+  title: "the five highest total earnings"
+  sql: src/test/sql-exercises/EMPLOYEE/02_intermediate.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_I_04_PersistenceIT
+- id: SAMPLE_EMPLOYEE_A_01
+  section: "EMPLOYEE"
+  tier: Advanced
+  title: "the highest paid employee of each department"
+  sql: src/test/sql-exercises/EMPLOYEE/03_advanced.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_A_01_PersistenceIT
+- id: SAMPLE_EMPLOYEE_A_02
+  section: "EMPLOYEE"
+  tier: Advanced
+  title: "the employees older than the manager of their department"
+  sql: src/test/sql-exercises/EMPLOYEE/03_advanced.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_A_02_PersistenceIT
+- id: SAMPLE_EMPLOYEE_A_03
+  section: "EMPLOYEE"
+  tier: Advanced
+  title: "each employee's rank by salary within the department, D21"
+  sql: src/test/sql-exercises/EMPLOYEE/03_advanced.sql
+  test: sample.employee.SAMPLE_EMPLOYEE_A_03_PersistenceIT
+  native-only: true
+
+# ---- PROJECT
+
+- id: SAMPLE_PROJECT_B_01
+  section: "PROJECT"
+  tier: Basic
+  title: "the projects of D21"
+  sql: src/test/sql-exercises/PROJECT/01_basic.sql
+  test: sample.project.SAMPLE_PROJECT_B_01_PersistenceIT
+- id: SAMPLE_PROJECT_B_02
+  section: "PROJECT"
+  tier: Basic
+  title: "the major projects"
+  sql: src/test/sql-exercises/PROJECT/01_basic.sql
+  test: sample.project.SAMPLE_PROJECT_B_02_PersistenceIT
+- id: SAMPLE_PROJECT_B_03
+  section: "PROJECT"
+  tier: Basic
+  title: "the projects that end before they start"
+  sql: src/test/sql-exercises/PROJECT/01_basic.sql
+  test: sample.project.SAMPLE_PROJECT_B_03_PersistenceIT
+- id: SAMPLE_PROJECT_I_01
+  section: "PROJECT"
+  tier: Intermediate
+  title: "each project with the name of the employee in charge"
+  sql: src/test/sql-exercises/PROJECT/02_intermediate.sql
+  test: sample.project.SAMPLE_PROJECT_I_01_PersistenceIT
+- id: SAMPLE_PROJECT_I_02
+  section: "PROJECT"
+  tier: Intermediate
+  title: "the number of subprojects of each project"
+  sql: src/test/sql-exercises/PROJECT/02_intermediate.sql
+  test: sample.project.SAMPLE_PROJECT_I_02_PersistenceIT
+- id: SAMPLE_PROJECT_A_01
+  section: "PROJECT"
+  tier: Advanced
+  title: "the projects under MA2100, level by level"
+  sql: src/test/sql-exercises/PROJECT/03_advanced.sql
+  test: sample.project.SAMPLE_PROJECT_A_01_PersistenceIT
+  native-only: true
+- id: SAMPLE_PROJECT_A_02
+  section: "PROJECT"
+  tier: Advanced
+  title: "the projects in the charge of an employee of another department"
+  sql: src/test/sql-exercises/PROJECT/03_advanced.sql
+  test: sample.project.SAMPLE_PROJECT_A_02_PersistenceIT
+
+# ---- ACT
+
+- id: SAMPLE_ACT_B_01
+  section: "ACT"
+  tier: Basic
+  title: "every activity, by number"
+  sql: src/test/sql-exercises/ACT/01_basic.sql
+  test: sample.act.SAMPLE_ACT_B_01_PersistenceIT
+- id: SAMPLE_ACT_B_02
+  section: "ACT"
+  tier: Basic
+  title: "the administrative activities"
+  sql: src/test/sql-exercises/ACT/01_basic.sql
+  test: sample.act.SAMPLE_ACT_B_02_PersistenceIT
+- id: SAMPLE_ACT_I_01
+  section: "ACT"
+  tier: Intermediate
+  title: "the number of projects of each activity"
+  sql: src/test/sql-exercises/ACT/02_intermediate.sql
+  test: sample.act.SAMPLE_ACT_I_01_PersistenceIT
+- id: SAMPLE_ACT_I_02
+  section: "ACT"
+  tier: Intermediate
+  title: "the activities no project has"
+  sql: src/test/sql-exercises/ACT/02_intermediate.sql
+  test: sample.act.SAMPLE_ACT_I_02_PersistenceIT
+
+# ---- PROJACT
+
+- id: SAMPLE_PROJACT_B_01
+  section: "PROJACT"
+  tier: Basic
+  title: "the activities of AD3111"
+  sql: src/test/sql-exercises/PROJACT/01_basic.sql
+  test: sample.projact.SAMPLE_PROJACT_B_01_PersistenceIT
+- id: SAMPLE_PROJACT_B_02
+  section: "PROJACT"
+  tier: Basic
+  title: "the columns that are never set"
+  sql: src/test/sql-exercises/PROJACT/01_basic.sql
+  test: sample.projact.SAMPLE_PROJACT_B_02_PersistenceIT
+- id: SAMPLE_PROJACT_I_01
+  section: "PROJACT"
+  tier: Intermediate
+  title: "the activities of MA2111 with their description"
+  sql: src/test/sql-exercises/PROJACT/02_intermediate.sql
+  test: sample.projact.SAMPLE_PROJACT_I_01_PersistenceIT
+- id: SAMPLE_PROJACT_I_02
+  section: "PROJACT"
+  tier: Intermediate
+  title: "the number of activities and their first and last start per project"
+  sql: src/test/sql-exercises/PROJACT/02_intermediate.sql
+  test: sample.projact.SAMPLE_PROJACT_I_02_PersistenceIT
+- id: SAMPLE_PROJACT_A_01
+  section: "PROJACT"
+  tier: Advanced
+  title: "the activities that start before their project"
+  sql: src/test/sql-exercises/PROJACT/03_advanced.sql
+  test: sample.projact.SAMPLE_PROJACT_A_01_PersistenceIT
+
+# ---- EMPPROJACT
+
+- id: SAMPLE_EMPPROJACT_B_01
+  section: "EMPPROJACT"
+  tier: Basic
+  title: "the assignments of 000130"
+  sql: src/test/sql-exercises/EMPPROJACT/01_basic.sql
+  test: sample.empprojact.SAMPLE_EMPPROJACT_B_01_PersistenceIT
+- id: SAMPLE_EMPPROJACT_B_02
+  section: "EMPPROJACT"
+  tier: Basic
+  title: "the part-time assignments of AD3113"
+  sql: src/test/sql-exercises/EMPPROJACT/01_basic.sql
+  test: sample.empprojact.SAMPLE_EMPPROJACT_B_02_PersistenceIT
+- id: SAMPLE_EMPPROJACT_I_01
+  section: "EMPPROJACT"
+  tier: Intermediate
+  title: "the total time of each employee"
+  sql: src/test/sql-exercises/EMPPROJACT/02_intermediate.sql
+  test: sample.empprojact.SAMPLE_EMPPROJACT_I_01_PersistenceIT
+- id: SAMPLE_EMPPROJACT_I_02
+  section: "EMPPROJACT"
+  tier: Intermediate
+  title: "the employees on more than one project"
+  sql: src/test/sql-exercises/EMPPROJACT/02_intermediate.sql
+  test: sample.empprojact.SAMPLE_EMPPROJACT_I_02_PersistenceIT
+- id: SAMPLE_EMPPROJACT_A_01
+  section: "EMPPROJACT"
+  tier: Advanced
+  title: "the employees on no project"
+  sql: src/test/sql-exercises/EMPPROJACT/03_advanced.sql
+  test: sample.empprojact.SAMPLE_EMPPROJACT_A_01_PersistenceIT
+- id: SAMPLE_EMPPROJACT_A_02
+  section: "EMPPROJACT"
+  tier: Advanced
+  title: "the employees on a project of a department other than their own"
+  sql: src/test/sql-exercises/EMPPROJACT/03_advanced.sql
+  test: sample.empprojact.SAMPLE_EMPPROJACT_A_02_PersistenceIT
+
+# ---- EMP_PHOTO
+
+- id: SAMPLE_EMP_PHOTO_B_01
+  section: "EMP_PHOTO"
+  tier: Basic
+  title: "every photo, by employee and format"
+  sql: src/test/sql-exercises/EMP_PHOTO/01_basic.sql
+  test: sample.emp_photo.SAMPLE_EMP_PHOTO_B_01_PersistenceIT
+- id: SAMPLE_EMP_PHOTO_B_02
+  section: "EMP_PHOTO"
+  tier: Basic
+  title: "the size of each photo"
+  sql: src/test/sql-exercises/EMP_PHOTO/01_basic.sql
+  test: sample.emp_photo.SAMPLE_EMP_PHOTO_B_02_PersistenceIT
+  native-only: true
+- id: SAMPLE_EMP_PHOTO_I_01
+  section: "EMP_PHOTO"
+  tier: Intermediate
+  title: "the employees with a photo"
+  sql: src/test/sql-exercises/EMP_PHOTO/02_intermediate.sql
+  test: sample.emp_photo.SAMPLE_EMP_PHOTO_I_01_PersistenceIT
+
+# ---- EMP_RESUME
+
+- id: SAMPLE_EMP_RESUME_B_01
+  section: "EMP_RESUME"
+  tier: Basic
+  title: "every resume, by employee and format"
+  sql: src/test/sql-exercises/EMP_RESUME/01_basic.sql
+  test: sample.emp_resume.SAMPLE_EMP_RESUME_B_01_PersistenceIT
+- id: SAMPLE_EMP_RESUME_B_02
+  section: "EMP_RESUME"
+  tier: Basic
+  title: "the length of each resume"
+  sql: src/test/sql-exercises/EMP_RESUME/01_basic.sql
+  test: sample.emp_resume.SAMPLE_EMP_RESUME_B_02_PersistenceIT
+- id: SAMPLE_EMP_RESUME_I_01
+  section: "EMP_RESUME"
+  tier: Intermediate
+  title: "the employees whose resume lists a B.A."
+  sql: src/test/sql-exercises/EMP_RESUME/02_intermediate.sql
+  test: sample.emp_resume.SAMPLE_EMP_RESUME_I_01_PersistenceIT
+
+# ---- EMPMDC
+
+- id: SAMPLE_EMPMDC_B_01
+  section: "EMPMDC"
+  tier: Basic
+  title: "the number of rows"
+  sql: src/test/sql-exercises/EMPMDC/01_basic.sql
+  test: sample.empmdc.SAMPLE_EMPMDC_B_01_PersistenceIT
+- id: SAMPLE_EMPMDC_B_02
+  section: "EMPMDC"
+  tier: Basic
+  title: "the first page of division 3"
+  sql: src/test/sql-exercises/EMPMDC/01_basic.sql
+  test: sample.empmdc.SAMPLE_EMPMDC_B_02_PersistenceIT
+- id: SAMPLE_EMPMDC_I_01
+  section: "EMPMDC"
+  tier: Intermediate
+  title: "the number of rows per division"
+  sql: src/test/sql-exercises/EMPMDC/02_intermediate.sql
+  test: sample.empmdc.SAMPLE_EMPMDC_I_01_PersistenceIT
+
+# ---- STAFF
+
+- id: SAMPLE_STAFF_B_01
+  section: "STAFF"
+  tier: Basic
+  title: "the staff of department 20"
+  sql: src/test/sql-exercises/STAFF/01_basic.sql
+  test: sample.staff.SAMPLE_STAFF_B_01_PersistenceIT
+- id: SAMPLE_STAFF_B_02
+  section: "STAFF"
+  tier: Basic
+  title: "the staff without a commission"
+  sql: src/test/sql-exercises/STAFF/01_basic.sql
+  test: sample.staff.SAMPLE_STAFF_B_02_PersistenceIT
+- id: SAMPLE_STAFF_I_01
+  section: "STAFF"
+  tier: Intermediate
+  title: "the number of staff and their average salary per job"
+  sql: src/test/sql-exercises/STAFF/02_intermediate.sql
+  test: sample.staff.SAMPLE_STAFF_I_01_PersistenceIT
+- id: SAMPLE_STAFF_I_02
+  section: "STAFF"
+  tier: Intermediate
+  title: "the staff of the Eastern division"
+  sql: src/test/sql-exercises/STAFF/02_intermediate.sql
+  test: sample.staff.SAMPLE_STAFF_I_02_PersistenceIT
+- id: SAMPLE_STAFF_A_01
+  section: "STAFF"
+  tier: Advanced
+  title: "the staff paid more than the average of their department"
+  sql: src/test/sql-exercises/STAFF/03_advanced.sql
+  test: sample.staff.SAMPLE_STAFF_A_01_PersistenceIT
+
+# ---- STAFFG
+
+- id: SAMPLE_STAFFG_B_01
+  section: "STAFFG"
+  tier: Basic
+  title: "the first page of staff"
+  sql: src/test/sql-exercises/STAFFG/01_basic.sql
+  test: sample.staffg.SAMPLE_STAFFG_B_01_PersistenceIT
+- id: SAMPLE_STAFFG_I_01
+  section: "STAFFG"
+  tier: Intermediate
+  title: "the names that differ from STAFF"
+  sql: src/test/sql-exercises/STAFFG/02_intermediate.sql
+  test: sample.staffg.SAMPLE_STAFFG_I_01_PersistenceIT
+- id: SAMPLE_STAFFG_I_02
+  section: "STAFFG"
+  tier: Intermediate
+  title: "the salaries beside those of STAFF"
+  sql: src/test/sql-exercises/STAFFG/02_intermediate.sql
+  test: sample.staffg.SAMPLE_STAFFG_I_02_PersistenceIT
+
+# ---- ORG
+
+- id: SAMPLE_ORG_B_01
+  section: "ORG"
+  tier: Basic
+  title: "every department, by number"
+  sql: src/test/sql-exercises/ORG/01_basic.sql
+  test: sample.org.SAMPLE_ORG_B_01_PersistenceIT
+- id: SAMPLE_ORG_B_02
+  section: "ORG"
+  tier: Basic
+  title: "the departments of the Eastern division"
+  sql: src/test/sql-exercises/ORG/01_basic.sql
+  test: sample.org.SAMPLE_ORG_B_02_PersistenceIT
+- id: SAMPLE_ORG_I_01
+  section: "ORG"
+  tier: Intermediate
+  title: "the number of departments per division"
+  sql: src/test/sql-exercises/ORG/02_intermediate.sql
+  test: sample.org.SAMPLE_ORG_I_01_PersistenceIT
+- id: SAMPLE_ORG_I_02
+  section: "ORG"
+  tier: Intermediate
+  title: "each department with the name of its manager"
+  sql: src/test/sql-exercises/ORG/02_intermediate.sql
+  test: sample.org.SAMPLE_ORG_I_02_PersistenceIT
+- id: SAMPLE_ORG_A_01
+  section: "ORG"
+  tier: Advanced
+  title: "the departments with more staff than the average"
+  sql: src/test/sql-exercises/ORG/03_advanced.sql
+  test: sample.org.SAMPLE_ORG_A_01_PersistenceIT
+
+# ---- SALES
+
+- id: SAMPLE_SALES_B_01
+  section: "SALES"
+  tier: Basic
+  title: "the sales of LUCCHESSI"
+  sql: src/test/sql-exercises/SALES/01_basic.sql
+  test: sample.sales.SAMPLE_SALES_B_01_PersistenceIT
+- id: SAMPLE_SALES_B_02
+  section: "SALES"
+  tier: Basic
+  title: "the rows without a count"
+  sql: src/test/sql-exercises/SALES/01_basic.sql
+  test: sample.sales.SAMPLE_SALES_B_02_PersistenceIT
+- id: SAMPLE_SALES_I_01
+  section: "SALES"
+  tier: Intermediate
+  title: "the total sales of each person"
+  sql: src/test/sql-exercises/SALES/02_intermediate.sql
+  test: sample.sales.SAMPLE_SALES_I_01_PersistenceIT
+- id: SAMPLE_SALES_I_02
+  section: "SALES"
+  tier: Intermediate
+  title: "the total sales of each region on 03/31/2006"
+  sql: src/test/sql-exercises/SALES/02_intermediate.sql
+  test: sample.sales.SAMPLE_SALES_I_02_PersistenceIT
+- id: SAMPLE_SALES_A_01
+  section: "SALES"
+  tier: Advanced
+  title: "the totals by person and region, with subtotals"
+  sql: src/test/sql-exercises/SALES/03_advanced.sql
+  test: sample.sales.SAMPLE_SALES_A_01_PersistenceIT
+  native-only: true
+
+# ---- CL_SCHED
+
+- id: SAMPLE_CL_SCHED_B_01
+  section: "CL_SCHED"
+  tier: Basic
+  title: "every class, by day and time"
+  sql: src/test/sql-exercises/CL_SCHED/01_basic.sql
+  test: sample.cl_sched.SAMPLE_CL_SCHED_B_01_PersistenceIT
+- id: SAMPLE_CL_SCHED_B_02
+  section: "CL_SCHED"
+  tier: Basic
+  title: "the classes that start before noon"
+  sql: src/test/sql-exercises/CL_SCHED/01_basic.sql
+  test: sample.cl_sched.SAMPLE_CL_SCHED_B_02_PersistenceIT
+- id: SAMPLE_CL_SCHED_I_01
+  section: "CL_SCHED"
+  tier: Intermediate
+  title: "the length of each class in minutes"
+  sql: src/test/sql-exercises/CL_SCHED/02_intermediate.sql
+  test: sample.cl_sched.SAMPLE_CL_SCHED_I_01_PersistenceIT
+  native-only: true
+
+# ---- IN_TRAY
+
+- id: SAMPLE_IN_TRAY_B_01
+  section: "IN_TRAY"
+  tier: Basic
+  title: "the notes, the newest first"
+  sql: src/test/sql-exercises/IN_TRAY/01_basic.sql
+  test: sample.in_tray.SAMPLE_IN_TRAY_B_01_PersistenceIT
+- id: SAMPLE_IN_TRAY_B_02
+  section: "IN_TRAY"
+  tier: Basic
+  title: "the forwarded notes"
+  sql: src/test/sql-exercises/IN_TRAY/01_basic.sql
+  test: sample.in_tray.SAMPLE_IN_TRAY_B_02_PersistenceIT
+
+# ---- INVENTORY
+
+- id: SAMPLE_INVENTORY_B_01
+  section: "INVENTORY"
+  tier: Basic
+  title: "every product in stock, by id"
+  sql: src/test/sql-exercises/INVENTORY/01_basic.sql
+  test: sample.inventory.SAMPLE_INVENTORY_B_01_PersistenceIT
+- id: SAMPLE_INVENTORY_B_02
+  section: "INVENTORY"
+  tier: Basic
+  title: "the stock without a location"
+  sql: src/test/sql-exercises/INVENTORY/01_basic.sql
+  test: sample.inventory.SAMPLE_INVENTORY_B_02_PersistenceIT
+- id: SAMPLE_INVENTORY_I_01
+  section: "INVENTORY"
+  tier: Intermediate
+  title: "the stock with the name and the value of each product"
+  sql: src/test/sql-exercises/INVENTORY/02_intermediate.sql
+  test: sample.inventory.SAMPLE_INVENTORY_I_01_PersistenceIT
+
+# ---- PRODUCT
+
+- id: SAMPLE_PRODUCT_B_01
+  section: "PRODUCT"
+  tier: Basic
+  title: "every product, the most expensive first"
+  sql: src/test/sql-exercises/PRODUCT/01_basic.sql
+  test: sample.product.SAMPLE_PRODUCT_B_01_PersistenceIT
+- id: SAMPLE_PRODUCT_B_02
+  section: "PRODUCT"
+  tier: Basic
+  title: "the products on promotion on 2006-01-15"
+  sql: src/test/sql-exercises/PRODUCT/01_basic.sql
+  test: sample.product.SAMPLE_PRODUCT_B_02_PersistenceIT
+- id: SAMPLE_PRODUCT_I_01
+  section: "PRODUCT"
+  tier: Intermediate
+  title: "the discount of each promotion"
+  sql: src/test/sql-exercises/PRODUCT/02_intermediate.sql
+  test: sample.product.SAMPLE_PRODUCT_I_01_PersistenceIT
+- id: SAMPLE_PRODUCT_I_02
+  section: "PRODUCT"
+  tier: Intermediate
+  title: "the products with their supplier"
+  sql: src/test/sql-exercises/PRODUCT/02_intermediate.sql
+  test: sample.product.SAMPLE_PRODUCT_I_02_PersistenceIT
+- id: SAMPLE_PRODUCT_A_01
+  section: "PRODUCT"
+  tier: Advanced
+  title: "the weight of each product, from its description"
+  sql: src/test/sql-exercises/PRODUCT/03_advanced.sql
+  test: sample.product.SAMPLE_PRODUCT_A_01_PersistenceIT
+  native-only: true
+
+# ---- PRODUCTSUPPLIER
+
+- id: SAMPLE_PRODUCTSUPPLIER_B_01
+  section: "PRODUCTSUPPLIER"
+  tier: Basic
+  title: "every pair, by product"
+  sql: src/test/sql-exercises/PRODUCTSUPPLIER/01_basic.sql
+  test: sample.productsupplier.SAMPLE_PRODUCTSUPPLIER_B_01_PersistenceIT
+- id: SAMPLE_PRODUCTSUPPLIER_I_01
+  section: "PRODUCTSUPPLIER"
+  tier: Intermediate
+  title: "the products no supplier supplies"
+  sql: src/test/sql-exercises/PRODUCTSUPPLIER/02_intermediate.sql
+  test: sample.productsupplier.SAMPLE_PRODUCTSUPPLIER_I_01_PersistenceIT
+
+# ---- SUPPLIERS
+
+- id: SAMPLE_SUPPLIERS_B_01
+  section: "SUPPLIERS"
+  tier: Basic
+  title: "every supplier, by id"
+  sql: src/test/sql-exercises/SUPPLIERS/01_basic.sql
+  test: sample.suppliers.SAMPLE_SUPPLIERS_B_01_PersistenceIT
+- id: SAMPLE_SUPPLIERS_A_01
+  section: "SUPPLIERS"
+  tier: Advanced
+  title: "the name and the city of each supplier"
+  sql: src/test/sql-exercises/SUPPLIERS/03_advanced.sql
+  test: sample.suppliers.SAMPLE_SUPPLIERS_A_01_PersistenceIT
+  native-only: true
+
+# ---- CUSTOMER
+
+- id: SAMPLE_CUSTOMER_B_01
+  section: "CUSTOMER"
+  tier: Basic
+  title: "every customer, by id"
+  sql: src/test/sql-exercises/CUSTOMER/01_basic.sql
+  test: sample.customer.SAMPLE_CUSTOMER_B_01_PersistenceIT
+- id: SAMPLE_CUSTOMER_I_01
+  section: "CUSTOMER"
+  tier: Intermediate
+  title: "the number of orders of each customer"
+  sql: src/test/sql-exercises/CUSTOMER/02_intermediate.sql
+  test: sample.customer.SAMPLE_CUSTOMER_I_01_PersistenceIT
+- id: SAMPLE_CUSTOMER_A_01
+  section: "CUSTOMER"
+  tier: Advanced
+  title: "the name and the city of each customer"
+  sql: src/test/sql-exercises/CUSTOMER/03_advanced.sql
+  test: sample.customer.SAMPLE_CUSTOMER_A_01_PersistenceIT
+  native-only: true
+
+# ---- PURCHASEORDER
+
+- id: SAMPLE_PURCHASEORDER_B_01
+  section: "PURCHASEORDER"
+  tier: Basic
+  title: "the shipped orders, by date"
+  sql: src/test/sql-exercises/PURCHASEORDER/01_basic.sql
+  test: sample.purchaseorder.SAMPLE_PURCHASEORDER_B_01_PersistenceIT
+- id: SAMPLE_PURCHASEORDER_B_02
+  section: "PURCHASEORDER"
+  tier: Basic
+  title: "the number of orders per status"
+  sql: src/test/sql-exercises/PURCHASEORDER/01_basic.sql
+  test: sample.purchaseorder.SAMPLE_PURCHASEORDER_B_02_PersistenceIT
+- id: SAMPLE_PURCHASEORDER_I_01
+  section: "PURCHASEORDER"
+  tier: Intermediate
+  title: "the latest order of each customer"
+  sql: src/test/sql-exercises/PURCHASEORDER/02_intermediate.sql
+  test: sample.purchaseorder.SAMPLE_PURCHASEORDER_I_01_PersistenceIT
+- id: SAMPLE_PURCHASEORDER_A_01
+  section: "PURCHASEORDER"
+  tier: Advanced
+  title: "the items of order 5000"
+  sql: src/test/sql-exercises/PURCHASEORDER/03_advanced.sql
+  test: sample.purchaseorder.SAMPLE_PURCHASEORDER_A_01_PersistenceIT
+  native-only: true
+
+# ---- CATALOG
+
+- id: SAMPLE_CATALOG_B_01
+  section: "CATALOG"
+  tier: Basic
+  title: "the number of catalogs"
+  sql: src/test/sql-exercises/CATALOG/01_basic.sql
+  test: sample.catalog.SAMPLE_CATALOG_B_01_PersistenceIT
+
+# ---- ADEFUSR
+
+- id: SAMPLE_ADEFUSR_B_01
+  section: "ADEFUSR"
+  tier: Basic
+  title: "every department, by number"
+  sql: src/test/sql-exercises/ADEFUSR/01_basic.sql
+  test: sample.adefusr.SAMPLE_ADEFUSR_B_01_PersistenceIT
+- id: SAMPLE_ADEFUSR_I_01
+  section: "ADEFUSR"
+  tier: Intermediate
+  title: "the counts that differ from EMPLOYEE"
+  sql: src/test/sql-exercises/ADEFUSR/02_intermediate.sql
+  test: sample.adefusr.SAMPLE_ADEFUSR_I_01_PersistenceIT
+
+# ---- MLBLOGS_QUESTIONS
+
+- id: SAMPLE_MLBLOGS_QUESTIONS_B_01
+  section: "MLBLOGS_QUESTIONS"
+  tier: Basic
+  title: "every question"
+  sql: src/test/sql-exercises/MLBLOGS_QUESTIONS/01_basic.sql
+  test: sample.mlblogs_questions.SAMPLE_MLBLOGS_QUESTIONS_B_01_PersistenceIT
+- id: SAMPLE_MLBLOGS_QUESTIONS_B_02
+  section: "MLBLOGS_QUESTIONS"
+  tier: Basic
+  title: "the questions about Python"
+  sql: src/test/sql-exercises/MLBLOGS_QUESTIONS/01_basic.sql
+  test: sample.mlblogs_questions.SAMPLE_MLBLOGS_QUESTIONS_B_02_PersistenceIT
+
+# ---- MLBLOGS_ANSWERS
+
+- id: SAMPLE_MLBLOGS_ANSWERS_B_01
+  section: "MLBLOGS_ANSWERS"
+  tier: Basic
+  title: "the number of answers"
+  sql: src/test/sql-exercises/MLBLOGS_ANSWERS/01_basic.sql
+  test: sample.mlblogs_answers.SAMPLE_MLBLOGS_ANSWERS_B_01_PersistenceIT
+- id: SAMPLE_MLBLOGS_ANSWERS_I_01
+  section: "MLBLOGS_ANSWERS"
+  tier: Intermediate
+  title: "the answers stored more than once"
+  sql: src/test/sql-exercises/MLBLOGS_ANSWERS/02_intermediate.sql
+  test: sample.mlblogs_answers.SAMPLE_MLBLOGS_ANSWERS_I_01_PersistenceIT
+
+# ---- PATIENTS
+
+- id: SAMPLE_PATIENTS_B_01
+  section: "PATIENTS"
+  tier: Basic
+  title: "the smokers, the oldest first"
+  sql: src/test/sql-exercises/PATIENTS/01_basic.sql
+  test: sample.patients.SAMPLE_PATIENTS_B_01_PersistenceIT
+- id: SAMPLE_PATIENTS_B_02
+  section: "PATIENTS"
+  tier: Basic
+  title: "the patients with a cholesterol level of 240 or more"
+  sql: src/test/sql-exercises/PATIENTS/01_basic.sql
+  test: sample.patients.SAMPLE_PATIENTS_B_02_PersistenceIT
+- id: SAMPLE_PATIENTS_I_01
+  section: "PATIENTS"
+  tier: Intermediate
+  title: "the averages of smokers and non-smokers"
+  sql: src/test/sql-exercises/PATIENTS/02_intermediate.sql
+  test: sample.patients.SAMPLE_PATIENTS_I_01_PersistenceIT
+- id: SAMPLE_PATIENTS_A_01
+  section: "PATIENTS"
+  tier: Advanced
+  title: "the patients above the cholesterol average of their group"
+  sql: src/test/sql-exercises/PATIENTS/03_advanced.sql
+  test: sample.patients.SAMPLE_PATIENTS_A_01_PersistenceIT
+
+# ---- VACT
+
+- id: SAMPLE_VACT_B_01
+  section: "VACT"
+  tier: Basic
+  title: "the activities of the first page"
+  sql: src/test/sql-exercises/VACT/01_basic.sql
+  test: sample.vact.SAMPLE_VACT_B_01_PersistenceIT
+
+# ---- VASTRDE1
+
+- id: SAMPLE_VASTRDE1_B_01
+  section: "VASTRDE1"
+  tier: Basic
+  title: "the departments A00 administers"
+  sql: src/test/sql-exercises/VASTRDE1/01_basic.sql
+  test: sample.vastrde1.SAMPLE_VASTRDE1_B_01_PersistenceIT
+
+# ---- VASTRDE2
+
+- id: SAMPLE_VASTRDE2_B_01
+  section: "VASTRDE2"
+  tier: Basic
+  title: "the employees of C01 with their manager"
+  sql: src/test/sql-exercises/VASTRDE2/01_basic.sql
+  test: sample.vastrde2.SAMPLE_VASTRDE2_B_01_PersistenceIT
+
+# ---- VDEPMG1
+
+- id: SAMPLE_VDEPMG1_B_01
+  section: "VDEPMG1"
+  tier: Basic
+  title: "the departments administered by D01, with their manager"
+  sql: src/test/sql-exercises/VDEPMG1/01_basic.sql
+  test: sample.vdepmg1.SAMPLE_VDEPMG1_B_01_PersistenceIT
+
+# ---- VDEPT
+
+- id: SAMPLE_VDEPT_B_01
+  section: "VDEPT"
+  tier: Basic
+  title: "the number of departments each department administers"
+  sql: src/test/sql-exercises/VDEPT/01_basic.sql
+  test: sample.vdept.SAMPLE_VDEPT_B_01_PersistenceIT
+
+# ---- VEMP
+
+- id: SAMPLE_VEMP_B_01
+  section: "VEMP"
+  tier: Basic
+  title: "the employees of D21"
+  sql: src/test/sql-exercises/VEMP/01_basic.sql
+  test: sample.vemp.SAMPLE_VEMP_B_01_PersistenceIT
+
+# ---- VEMPDPT1
+
+- id: SAMPLE_VEMPDPT1_B_01
+  section: "VEMPDPT1"
+  tier: Basic
+  title: "the employees of the information center"
+  sql: src/test/sql-exercises/VEMPDPT1/01_basic.sql
+  test: sample.vempdpt1.SAMPLE_VEMPDPT1_B_01_PersistenceIT
+
+# ---- VEMPLP
+
+- id: SAMPLE_VEMPLP_B_01
+  section: "VEMPLP"
+  tier: Basic
+  title: "the employees who share a phone number"
+  sql: src/test/sql-exercises/VEMPLP/01_basic.sql
+  test: sample.vemplp.SAMPLE_VEMPLP_B_01_PersistenceIT
+
+# ---- VEMPPROJACT
+
+- id: SAMPLE_VEMPPROJACT_B_01
+  section: "VEMPPROJACT"
+  tier: Basic
+  title: "the number of rows per project"
+  sql: src/test/sql-exercises/VEMPPROJACT/01_basic.sql
+  test: sample.vempprojact.SAMPLE_VEMPPROJACT_B_01_PersistenceIT
+
+# ---- VFORPLA
+
+- id: SAMPLE_VFORPLA_B_01
+  section: "VFORPLA"
+  tier: Basic
+  title: "the rows of AD3111"
+  sql: src/test/sql-exercises/VFORPLA/01_basic.sql
+  test: sample.vforpla.SAMPLE_VFORPLA_B_01_PersistenceIT
+- id: SAMPLE_VFORPLA_I_01
+  section: "VFORPLA"
+  tier: Intermediate
+  title: "the number of rows per project, and the distinct ones"
+  sql: src/test/sql-exercises/VFORPLA/02_intermediate.sql
+  test: sample.vforpla.SAMPLE_VFORPLA_I_01_PersistenceIT
+  native-only: true
+
+# ---- VHDEPT
+
+- id: SAMPLE_VHDEPT_B_01
+  section: "VHDEPT"
+  tier: Basic
+  title: "the branch offices"
+  sql: src/test/sql-exercises/VHDEPT/01_basic.sql
+  test: sample.vhdept.SAMPLE_VHDEPT_B_01_PersistenceIT
+
+# ---- VPHONE
+
+- id: SAMPLE_VPHONE_B_01
+  section: "VPHONE"
+  tier: Basic
+  title: "the phone list of E21"
+  sql: src/test/sql-exercises/VPHONE/01_basic.sql
+  test: sample.vphone.SAMPLE_VPHONE_B_01_PersistenceIT
+
+# ---- VPROJ
+
+- id: SAMPLE_VPROJ_B_01
+  section: "VPROJ"
+  tier: Basic
+  title: "the projects with the most staff"
+  sql: src/test/sql-exercises/VPROJ/01_basic.sql
+  test: sample.vproj.SAMPLE_VPROJ_B_01_PersistenceIT
+
+# ---- VPROJACT
+
+- id: SAMPLE_VPROJACT_B_01
+  section: "VPROJACT"
+  tier: Basic
+  title: "the activities that start in 2002-06"
+  sql: src/test/sql-exercises/VPROJACT/01_basic.sql
+  test: sample.vprojact.SAMPLE_VPROJACT_B_01_PersistenceIT
+
+# ---- VPROJRE1
+
+- id: SAMPLE_VPROJRE1_B_01
+  section: "VPROJRE1"
+  tier: Basic
+  title: "the projects of D11, with the employee in charge"
+  sql: src/test/sql-exercises/VPROJRE1/01_basic.sql
+  test: sample.vprojre1.SAMPLE_VPROJRE1_B_01_PersistenceIT
+
+# ---- VPSTRDE1
+
+- id: SAMPLE_VPSTRDE1_B_01
+  section: "VPSTRDE1"
+  tier: Basic
+  title: "the subprojects of AD3110"
+  sql: src/test/sql-exercises/VPSTRDE1/01_basic.sql
+  test: sample.vpstrde1.SAMPLE_VPSTRDE1_B_01_PersistenceIT
+
+# ---- VPSTRDE2
+
+- id: SAMPLE_VPSTRDE2_B_01
+  section: "VPSTRDE2"
+  tier: Basic
+  title: "the number of rows"
+  sql: src/test/sql-exercises/VPSTRDE2/01_basic.sql
+  test: sample.vpstrde2.SAMPLE_VPSTRDE2_B_01_PersistenceIT
+
+# ---- VSTAFAC1
+
+- id: SAMPLE_VSTAFAC1_B_01
+  section: "VSTAFAC1"
+  tier: Basic
+  title: "the rows of IF1000"
+  sql: src/test/sql-exercises/VSTAFAC1/01_basic.sql
+  test: sample.vstafac1.SAMPLE_VSTAFAC1_B_01_PersistenceIT
+
+# ---- VSTAFAC2
+
+- id: SAMPLE_VSTAFAC2_B_01
+  section: "VSTAFAC2"
+  tier: Basic
+  title: "the staff of IF1000"
+  sql: src/test/sql-exercises/VSTAFAC2/01_basic.sql
+  test: sample.vstafac2.SAMPLE_VSTAFAC2_B_01_PersistenceIT
+
+# ---- the schema
+
+- id: SAMPLE_SCHEMA_B_01
+  section: "SCHEMA"
+  tier: Basic
+  title: "the tables and the views of the schema"
+  sql: src/test/sql-exercises/__/01_basic.sql
+  test: sample.schema.SAMPLE_SCHEMA_B_01_PersistenceIT
+  native-only: true
+- id: SAMPLE_SCHEMA_B_02
+  section: "SCHEMA"
+  tier: Basic
+  title: "the columns of EMPLOYEE"
+  sql: src/test/sql-exercises/__/01_basic.sql
+  test: sample.schema.SAMPLE_SCHEMA_B_02_PersistenceIT
+  native-only: true
+- id: SAMPLE_SCHEMA_I_01
+  section: "SCHEMA"
+  tier: Intermediate
+  title: "the foreign keys of the schema"
+  sql: src/test/sql-exercises/__/02_intermediate.sql
+  test: sample.schema.SAMPLE_SCHEMA_I_01_PersistenceIT
+  native-only: true
+- id: SAMPLE_SCHEMA_I_02
+  section: "SCHEMA"
+  tier: Intermediate
+  title: "the departments with their employees and projects"
+  sql: src/test/sql-exercises/__/02_intermediate.sql
+  test: sample.schema.SAMPLE_SCHEMA_I_02_PersistenceIT
+- id: SAMPLE_SCHEMA_A_01
+  section: "SCHEMA"
+  tier: Advanced
+  title: "the managers of the employees, up to the top"
+  sql: src/test/sql-exercises/__/03_advanced.sql
+  test: sample.schema.SAMPLE_SCHEMA_A_01_PersistenceIT
+  native-only: true
+- id: SAMPLE_SCHEMA_A_02
+  section: "SCHEMA"
+  tier: Advanced
+  title: "the departments' share of the project time"
+  sql: src/test/sql-exercises/__/03_advanced.sql
+  test: sample.schema.SAMPLE_SCHEMA_A_02_PersistenceIT
