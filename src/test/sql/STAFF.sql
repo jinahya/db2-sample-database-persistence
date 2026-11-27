@@ -33,7 +33,7 @@ FROM STAFF
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this table declares no primary key, and is mapped as no entity, with no identifier. ID, which the data alone would
 -- suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,14 +44,14 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------------ ID
+-- ---------------------------------------------------------------------------------------------- ID
 -- the smallest and the largest ID; 10 and 350.
 SELECT MIN(ID), MAX(ID)
 FROM STAFF
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- NAME
+-- -------------------------------------------------------------------------------------------- NAME
 -- the shortest and the longest NAME, trailing spaces trimmed; 2 to 9 characters, of VARCHAR(9) declared.
 SELECT MIN(LENGTH(RTRIM(NAME))), MAX(LENGTH(RTRIM(NAME)))
 FROM STAFF
@@ -72,7 +72,7 @@ FROM STAFF
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- DEPT
+-- -------------------------------------------------------------------------------------------- DEPT
 -- the smallest and the largest DEPT; 10 and 84.
 SELECT MIN(DEPT), MAX(DEPT)
 FROM STAFF
@@ -84,7 +84,7 @@ FROM STAFF
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- JOB
+-- --------------------------------------------------------------------------------------------- JOB
 -- the shortest and the longest JOB, trailing spaces trimmed; 3 to 5 characters, of CHARACTER(5) declared.
 SELECT MIN(LENGTH(RTRIM(JOB))), MAX(LENGTH(RTRIM(JOB)))
 FROM STAFF
@@ -104,7 +104,7 @@ FROM STAFF
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- YEARS
+-- ------------------------------------------------------------------------------------------- YEARS
 -- the smallest and the largest YEARS; 1 and 13.
 SELECT MIN(YEARS), MAX(YEARS)
 FROM STAFF
@@ -116,7 +116,7 @@ FROM STAFF
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- SALARY
+-- ------------------------------------------------------------------------------------------ SALARY
 -- the smallest and the largest SALARY; 34252.75 and 98357.50.
 SELECT MIN(SALARY), MAX(SALARY)
 FROM STAFF
@@ -128,7 +128,7 @@ FROM STAFF
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- COMM
+-- -------------------------------------------------------------------------------------------- COMM
 -- the smallest and the largest COMM; 55.50 and 1386.70.
 SELECT MIN(COMM), MAX(COMM)
 FROM STAFF

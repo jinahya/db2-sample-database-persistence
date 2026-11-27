@@ -33,7 +33,7 @@ FROM CL_SCHED
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this table declares no primary key, and is mapped as no entity, with no identifier. CLASS_CODE, which the data alone
 -- would suggest as one: the values which more than one row shares.
 -- no rows: each of the 5 appears once, which the 5 rows happen to give, not what the column means; a class
@@ -74,7 +74,7 @@ FROM CL_SCHED
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- DAY
+-- --------------------------------------------------------------------------------------------- DAY
 -- the smallest and the largest DAY; 1 and 4.
 SELECT MIN(DAY), MAX(DAY)
 FROM CL_SCHED
@@ -86,7 +86,7 @@ FROM CL_SCHED
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ STARTING
+-- ---------------------------------------------------------------------------------------- STARTING
 -- the earliest and the latest STARTING; 09:10:00 and 17:12:30.
 SELECT MIN(STARTING), MAX(STARTING)
 FROM CL_SCHED
@@ -98,7 +98,7 @@ FROM CL_SCHED
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- ENDING
+-- ------------------------------------------------------------------------------------------ ENDING
 -- the earliest and the latest ENDING; 10:30:00 and 18:00:00.
 SELECT MIN(ENDING), MAX(ENDING)
 FROM CL_SCHED

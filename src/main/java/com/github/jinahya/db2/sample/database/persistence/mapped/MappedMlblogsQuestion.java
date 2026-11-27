@@ -164,7 +164,7 @@ public abstract class MappedMlblogsQuestion {
      *
      * @param question new value for {@value #ATTRIBUTE_NAME_QUESTION} attribute.
      */
-    protected void setQuestion(@Nonnull final String question) {
+    public void setQuestion(@Nonnull final String question) {
         this.question = question;
     }
 

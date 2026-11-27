@@ -33,7 +33,11 @@ FROM EMP_RESUME
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- EMPNO
+-- ------------------------------------------------------------------------------------------- EMPNO
+SELECT DISTINCT RESUME_FORMAT
+FROM EMP_RESUME
+;
+
 -- the shortest and the longest EMPNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPNO))), MAX(LENGTH(RTRIM(EMPNO)))
 FROM EMP_RESUME
@@ -49,7 +53,7 @@ WHERE RTRIM(EMPNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------- RESUME_FORMAT
+-- ----------------------------------------------------------------------------------- RESUME_FORMAT
 -- the shortest and the longest RESUME_FORMAT, trailing spaces trimmed; 4 to 5 characters, of VARCHAR(10) declared.
 SELECT MIN(LENGTH(RTRIM(RESUME_FORMAT))), MAX(LENGTH(RTRIM(RESUME_FORMAT)))
 FROM EMP_RESUME
@@ -65,7 +69,7 @@ WHERE RTRIM(RESUME_FORMAT) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- RESUME
+-- ------------------------------------------------------------------------------------------ RESUME
 -- the smallest and the largest RESUME; 1237 and 2467 characters, of CLOB(5120) declared.
 SELECT MIN(LENGTH(RESUME)), MAX(LENGTH(RESUME))
 FROM EMP_RESUME

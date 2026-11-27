@@ -174,7 +174,7 @@ public abstract class MappedAct {
      *
      * @param actno new value for {@value #ATTRIBUTE_NAME_ACTNO} attribute.
      */
-    protected void setActno(@Nonnull final Integer actno) {
+    public void setActno(@Nonnull final Integer actno) {
         this.actno = actno;
     }
 

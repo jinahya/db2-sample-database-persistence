@@ -129,6 +129,9 @@ public abstract class MappedEmpResume {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESUME} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_RESUME}
+     * column as "Resume of employee".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_RESUME} attribute.
      */

@@ -33,7 +33,7 @@ FROM PRODUCT
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- PID
+-- --------------------------------------------------------------------------------------------- PID
 -- PID is the primary key; 4 distinct values in 4 rows.
 SELECT COUNT(DISTINCT PID), COUNT(*)
 FROM PRODUCT
@@ -54,7 +54,7 @@ WHERE RTRIM(PID) = ''
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- NAME
+-- -------------------------------------------------------------------------------------------- NAME
 -- the shortest and the longest NAME, trailing spaces trimmed; 26 to 33 characters, of VARCHAR(128) declared.
 SELECT MIN(LENGTH(RTRIM(NAME))), MAX(LENGTH(RTRIM(NAME)))
 FROM PRODUCT
@@ -75,7 +75,7 @@ FROM PRODUCT
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- PRICE
+-- ------------------------------------------------------------------------------------------- PRICE
 -- the smallest and the largest PRICE; 3.99 and 49.99.
 SELECT MIN(PRICE), MAX(PRICE)
 FROM PRODUCT
@@ -87,7 +87,7 @@ FROM PRODUCT
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- PROMOPRICE
+-- -------------------------------------------------------------------------------------- PROMOPRICE
 -- the smallest and the largest PROMOPRICE; 7.25 and 39.99.
 SELECT MIN(PROMOPRICE), MAX(PROMOPRICE)
 FROM PRODUCT
@@ -98,8 +98,15 @@ SELECT COUNT(*) - COUNT(PROMOPRICE), COUNT(*)
 FROM PRODUCT
 ;
 
+SELECT *
+FROM PRODUCT
+WHERE PRICE IS NOT NULL
+  AND PROMOPRICE IS NOT NULL
+  AND PROMOPRICE >= PRICE
+;
 
--- ---------------------------------------------------------------------------------------------------------- PROMOSTART
+
+-- -------------------------------------------------------------------------------------- PROMOSTART
 -- the earliest and the latest PROMOSTART; 2004-11-19 and 2005-12-22.
 SELECT MIN(PROMOSTART), MAX(PROMOSTART)
 FROM PRODUCT
@@ -111,7 +118,7 @@ FROM PRODUCT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ PROMOEND
+-- ---------------------------------------------------------------------------------------- PROMOEND
 -- the earliest and the latest PROMOEND; 2004-12-19 and 2006-02-28.
 SELECT MIN(PROMOEND), MAX(PROMOEND)
 FROM PRODUCT
@@ -122,12 +129,20 @@ SELECT COUNT(*) - COUNT(PROMOEND), COUNT(*)
 FROM PRODUCT
 ;
 
+SELECT *
+FROM PRODUCT
+WHERE PROMOSTART IS NOT NULL
+  AND PROMOEND IS NOT NULL
+  AND PROMOEND < PROMOSTART
+;
 
--- --------------------------------------------------------------------------------------------------------- DESCRIPTION
+
+-- ------------------------------------------------------------------------------------- DESCRIPTION
 -- the XML schema each DESCRIPTION was validated against when it was loaded; PRODUCT for 4.
 SELECT COALESCE((SELECT o.OBJECTNAME
-                  FROM SYSCAT.XSROBJECTS o
-                  WHERE o.OBJECTID = XMLXSROBJECTID(t.DESCRIPTION)), '-') AS SCHEMA, COUNT(*)
+                 FROM SYSCAT.XSROBJECTS o
+                 WHERE o.OBJECTID = XMLXSROBJECTID(t.DESCRIPTION)), '-') AS SCHEMA,
+       COUNT(*)
 FROM PRODUCT t
 WHERE t.DESCRIPTION IS NOT NULL
 GROUP BY XMLXSROBJECTID(t.DESCRIPTION)

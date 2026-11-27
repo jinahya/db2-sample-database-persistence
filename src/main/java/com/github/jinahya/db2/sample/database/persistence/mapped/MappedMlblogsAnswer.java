@@ -166,7 +166,7 @@ public abstract class MappedMlblogsAnswer {
      *
      * @param answer new value for {@value #ATTRIBUTE_NAME_ANSWER} attribute.
      */
-    protected void setAnswer(@Nonnull final String answer) {
+    public void setAnswer(@Nonnull final String answer) {
         this.answer = answer;
     }
 

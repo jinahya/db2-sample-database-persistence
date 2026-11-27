@@ -312,6 +312,9 @@ public abstract class MappedStaffg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_ID}
+     * column of {@code STAFF}, which this table repeats in graphic strings, as "Employee number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
      */
@@ -325,7 +328,7 @@ public abstract class MappedStaffg {
      *
      * @param id new value for {@value #ATTRIBUTE_NAME_ID} attribute.
      */
-    protected void setId(@Nonnull final Integer id) {
+    public void setId(@Nonnull final Integer id) {
         this.id = id;
     }
 
@@ -333,6 +336,9 @@ public abstract class MappedStaffg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_NAME} attribute, from a VARGRAPHIC column.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_NAME}
+     * column of {@code STAFF}, which this table repeats in graphic strings, as "Employee name".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_NAME} attribute.
      */
@@ -354,6 +360,9 @@ public abstract class MappedStaffg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPT} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_DEPT}
+     * column of {@code STAFF}, which this table repeats in graphic strings, as "Department number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DEPT} attribute.
      */
@@ -375,6 +384,9 @@ public abstract class MappedStaffg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_JOB} attribute, from a GRAPHIC column.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_JOB}
+     * column of {@code STAFF}, which this table repeats in graphic strings, as "Job type".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_JOB} attribute.
      */
@@ -396,6 +408,9 @@ public abstract class MappedStaffg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_YEARS} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_YEARS}
+     * column of {@code STAFF}, which this table repeats in graphic strings, as "Years of service".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_YEARS} attribute.
      */
@@ -417,6 +432,9 @@ public abstract class MappedStaffg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALARY} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_SALARY}
+     * column of {@code STAFF}, which this table repeats in graphic strings, as "Current salary".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SALARY} attribute.
      */
@@ -439,6 +457,9 @@ public abstract class MappedStaffg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_COMM} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_COMM}
+     * column of {@code STAFF}, which this table repeats in graphic strings, as "Commission".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_COMM} attribute.
      */

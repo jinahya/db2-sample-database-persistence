@@ -33,7 +33,7 @@ FROM MLBLOGS_QUESTIONS
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this table declares no primary key, and is mapped as no entity, with no identifier. QUESTION, which the data alone
 -- would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ QUESTION
+-- ---------------------------------------------------------------------------------------- QUESTION
 -- the shortest and the longest QUESTION, trailing spaces trimmed; 19 to 64 characters, of VARCHAR(1024) declared.
 SELECT MIN(LENGTH(RTRIM(QUESTION))), MAX(LENGTH(RTRIM(QUESTION)))
 FROM MLBLOGS_QUESTIONS
@@ -65,7 +65,7 @@ FROM MLBLOGS_QUESTIONS
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------- EMBEDDING
+-- --------------------------------------------------------------------------------------- EMBEDDING
 -- how many rows have no EMBEDDING; 0 of 5.
 SELECT COUNT(*) - COUNT(EMBEDDING), COUNT(*)
 FROM MLBLOGS_QUESTIONS

@@ -36,7 +36,8 @@ class Inventory_Randomizer
 
     Inventory_Randomizer() {
         super(Inventory.class, List.of(
-                Inventory.ATTRIBUTE_NAME_PID
+                Inventory.ATTRIBUTE_NAME_PID,
+                "product"
         ));
     }
 
@@ -44,6 +45,7 @@ class Inventory_Randomizer
     @Override
     public Inventory get() {
         final var instance = super.get();
+        // the product's, which the persister sets
         instance.setPid(__Randomizer_Utils.string(10));
         return instance;
     }

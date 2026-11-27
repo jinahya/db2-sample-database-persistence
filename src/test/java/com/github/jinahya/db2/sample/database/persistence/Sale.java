@@ -22,8 +22,6 @@ package com.github.jinahya.db2.sample.database.persistence;
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedSale;
 
-import java.time.LocalDate;
-
 /**
  * A row of the {@value #TABLE_NAME} table; not an entity, since it has no key, but a class built
  * from the rows of a native query.
@@ -57,36 +55,4 @@ public class Sale
         );
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param salesDate {@inheritDoc}
-     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
-     */
-    @Override
-    public void setSalesDate(final LocalDate salesDate) {
-        super.setSalesDate(salesDate);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param salesPerson {@inheritDoc}
-     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
-     */
-    @Override
-    public void setSalesPerson(final String salesPerson) {
-        super.setSalesPerson(salesPerson);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param region {@inheritDoc}
-     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
-     */
-    @Override
-    public void setRegion(final String region) {
-        super.setRegion(region);
-    }
 }

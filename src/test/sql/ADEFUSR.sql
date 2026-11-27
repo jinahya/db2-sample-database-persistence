@@ -33,7 +33,7 @@ FROM ADEFUSR
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this materialized query table declares no primary key, and is mapped as no entity, with no identifier. WORKDEPT,
 -- which the data alone would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ WORKDEPT
+-- ---------------------------------------------------------------------------------------- WORKDEPT
 -- the shortest and the longest WORKDEPT, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(WORKDEPT))), MAX(LENGTH(RTRIM(WORKDEPT)))
 FROM ADEFUSR
@@ -65,7 +65,7 @@ FROM ADEFUSR
 ;
 
 
--- ----------------------------------------------------------------------------------------------------- NO_OF_EMPLOYEES
+-- --------------------------------------------------------------------------------- NO_OF_EMPLOYEES
 -- the smallest and the largest NO_OF_EMPLOYEES; 1 and 11.
 SELECT MIN(NO_OF_EMPLOYEES), MAX(NO_OF_EMPLOYEES)
 FROM ADEFUSR

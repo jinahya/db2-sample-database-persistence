@@ -1,6 +1,6 @@
 # db2-sample-database-persistence
 
-Jakarta Persistence mappings for the [IBM Db2 `SAMPLE` database](https://www.ibm.com/docs/en/db2/11.5.x?topic=samples-sample-database)
+Jakarta Persistence mappings for the [IBM Db2 `SAMPLE` database](https://www.ibm.com/docs/en/db2/12.1.x?topic=samples-sample-database)
 (schema `DB2INST1`).
 
 Sibling of [postgresql-demodb-persistence](https://github.com/jinahya/postgresql-demodb-persistence) and
@@ -11,7 +11,7 @@ Sibling of [postgresql-demodb-persistence](https://github.com/jinahya/postgresql
 | | |
 | --- | --- |
 | `src/main` | one `@MappedSuperclass` per table and view, `Mapped<Table>`, plus a `Mapped<Table>Id` per composite key |
-| `src/test` | an `@Entity` extending each, but for the fifteen with no key (below), with the declared foreign keys as associations; and, per entity, as in the sibling projects: `<Entity>_Test` (`toString`, `equals`/`hashCode` with EqualsVerifier, accessors), `<Entity>_PersistenceTest` (on H2), `<Entity>_PersistenceIT` (on Db2), and, for each table, `<Entity>_Randomizer` (Podam) and `<Entity>_Persister`, which persists what the entity references first; each id class has a `_Test` and a `_Randomizer` |
+| `src/test` | an `@Entity` extending each, but for the fifteen with no key (below), with the declared foreign keys as associations, and four which no foreign key declares (below); and, per entity, as in the sibling projects: `<Entity>_Test` (`toString`, `equals`/`hashCode` with EqualsVerifier, accessors), `<Entity>_PersistenceTest` (on H2), `<Entity>_PersistenceIT` (on Db2), and, for each table, `<Entity>_Randomizer` (Podam) and `<Entity>_Persister`, which persists what the entity references first; each id class has a `_Test` and a `_Randomizer` |
 
 All 26 tables and all 18 views are mapped. The views, and `ADEFUSR`, a materialized query table the database
 maintains, are mapped read-only: no column is updatable, and none but the identifier's is insertable, which
@@ -24,6 +24,14 @@ none, and are plain classes, built from the rows of a native query. See
 [Tables and views with no key](#tables-and-views-with-no-key).
 
 A foreign key column is mapped read-only in the superclass; the entity owns its writable mapping, as an association.
+Four associations have no declared foreign key under them: `PRODUCTSUPPLIER`'s `PID` and `SID`, `INVENTORY`'s `PID`,
+and `PROJACT`'s `ACTNO`, which name a product, a supplier and an activity by the tables' names and columns, and do so
+in every installed row; the database declares no foreign key among the XML tables but `PURCHASEORDER`'s to `CUSTOMER`,
+and `PROJACT`'s only to `PROJECT`.
+The tables with a composite key whose columns name other rows, `EMP_PHOTO`, `EMP_RESUME`, `PROJACT` and
+`PRODUCTSUPPLIER`, map it as an `@EmbeddedId`, each column which names another row by a `@MapsId` association; the
+id class's `from` builds an identifier from the entities it names. `Inventory` maps its product read-only over `PID`,
+its identifier, which `setProduct` keeps in step.
 `XML` columns with a registered schema map to classes bound to it (see below), the others to `String`; `BLOB` maps to
 `byte[]` and `CLOB` to `String`.
 
@@ -122,7 +130,7 @@ The tables and views which are not entities, with what the installed data alone 
 | --- | --- | --- |
 | `ADEFUSR` | `WORKDEPT` | the materialized query table groups by it, but it is nullable |
 | `CL_SCHED` | `CLASS_CODE` | "Class Code (room:teacher)": a class may meet on more than one day |
-| `EMPMDC` | `EMPNO` | the name only; its indexes, on `DEPT` and `DIV`, are not unique |
+| `EMPMDC` | `EMPNO` | the name only; a [multidimensional clustering (MDC)](https://www.ibm.com/docs/en/db2/12.1.x?topic=tables-table-index-management-mdc-itc) table, organized by `DIV` and `DEPT`, whose three indexes are the block indexes of those dimensions, none unique |
 | `EMPPROJACT` | `EMPNO`, `PROJNO`, `ACTNO`, `EMSTDATE` | its foreign key `REPAPA` names a row of `PROJACT`, not one of its own; `EMSTDATE` is nullable |
 | `IN_TRAY` | `RECEIVED` | "Date and Time received"; nullable |
 | `MLBLOGS_ANSWERS` | none | 108 rows, 105 answers: the duplicates are whole-row copies |

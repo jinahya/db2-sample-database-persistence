@@ -58,14 +58,4 @@ public class Staffg
         );
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param id {@inheritDoc}
-     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
-     */
-    @Override
-    public void setId(final Integer id) {
-        super.setId(id);
-    }
 }

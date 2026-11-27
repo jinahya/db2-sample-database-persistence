@@ -33,7 +33,7 @@ FROM EMPMDC
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this table declares no primary key, and is mapped as no entity, with no identifier. EMPNO, which the data alone would
 -- suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- EMPNO
+-- ------------------------------------------------------------------------------------------- EMPNO
 -- the smallest and the largest EMPNO; 0 and 9999.
 SELECT MIN(EMPNO), MAX(EMPNO)
 FROM EMPMDC
@@ -55,8 +55,13 @@ SELECT COUNT(*) - COUNT(EMPNO), COUNT(*)
 FROM EMPMDC
 ;
 
+SELECT empmdc.EMPNO, e.EMPNO
+FROM EMPMDC AS empmdc
+         LEFT JOIN EMPLOYEE AS e ON empmdc.EMPNO = e.EMPNO
+;
 
--- ---------------------------------------------------------------------------------------------------------------- DEPT
+
+-- -------------------------------------------------------------------------------------------- DEPT
 -- the smallest and the largest DEPT; 1 and 5.
 SELECT MIN(DEPT), MAX(DEPT)
 FROM EMPMDC
@@ -67,8 +72,14 @@ SELECT COUNT(*) - COUNT(DEPT), COUNT(*)
 FROM EMPMDC
 ;
 
+SELECT empmdc.DEPT, d.DEPTNO
+FROM EMPMDC AS empmdc
+         LEFT JOIN DEPARTMENT AS d ON empmdc.DEPT = d.DEPTNO
+;
 
--- ----------------------------------------------------------------------------------------------------------------- DIV
+
+
+-- --------------------------------------------------------------------------------------------- DIV
 -- the smallest and the largest DIV; 1 and 10.
 SELECT MIN(DIV), MAX(DIV)
 FROM EMPMDC

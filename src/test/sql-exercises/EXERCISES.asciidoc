@@ -1036,7 +1036,7 @@ ACTNO ACTKWD ACTDESC
 
 == PROJACT
 
-The `PROJACT` table, mapped by `MappedProjAct`: the activities of each project, each from a start date; the staff and the end date are `NULL` in every row.
+The `PROJACT` table, mapped by `MappedProjact`: the activities of each project, each from a start date; the staff and the end date are `NULL` in every row.
 
 === Basic
 
@@ -1192,7 +1192,7 @@ MA2113    80 01/01/2002 02/15/2002
 
 == EMPPROJACT
 
-The `EMPPROJACT` table, mapped by `MappedEmpProjAct`: the employees on each activity of a project, with the share of their time it takes.
+The `EMPPROJACT` table, mapped by `MappedEmpprojact`: the employees on each activity of a project, with the share of their time it takes.
 
 === Basic
 
@@ -2678,7 +2678,7 @@ PID        WEIGHT
 
 == PRODUCTSUPPLIER
 
-The `PRODUCTSUPPLIER` table, mapped by `MappedProductSupplier`: which supplier supplies which product.
+The `PRODUCTSUPPLIER` table, mapped by `MappedProductsupplier`: which supplier supplies which product.
 
 === Basic
 
@@ -2908,7 +2908,7 @@ CID  NAME             CITY
 
 == PURCHASEORDER
 
-The `PURCHASEORDER` table, mapped by `MappedPurchaseOrder`: the six purchase orders of the XML sample, each of a customer, with its items as an XML document.
+The `PURCHASEORDER` table, mapped by `MappedPurchaseorder`: the six purchase orders of the XML sample, each of a customer, with its items as an XML document.
 
 === Basic
 

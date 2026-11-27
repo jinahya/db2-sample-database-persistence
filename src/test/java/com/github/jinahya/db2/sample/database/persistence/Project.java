@@ -21,11 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedProject;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Optional;
@@ -49,48 +51,36 @@ public class Project
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param projno {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
-     */
-    @Override
-    public void setProjno(final String projno) {
-        super.setProjno(projno);
-    }
-
-    // ---------------------------------------------------------------------------- deptnoDepartment
+    // ---------------------------------------------------------------------------------- department
 
     /**
      * Returns the department responsible.
      *
      * @return the department responsible.
      */
-    public Department getDeptnoDepartment() {
-        return deptnoDepartment;
+    public Department getDepartment() {
+        return department;
     }
 
     /**
      * Replaces the department responsible with the specified value.
      *
-     * @param deptnoDepartment new value for the department responsible.
+     * @param department new value for the department responsible.
      */
-    public void setDeptnoDepartment(final Department deptnoDepartment) {
-        this.deptnoDepartment = deptnoDepartment;
-        setDeptno(Optional.ofNullable(deptnoDepartment).map(Department::getDeptno).orElse(null));
+    public void setDepartment(final Department department) {
+        this.department = department;
+        setDeptno(Optional.ofNullable(department).map(Department::getDeptno).orElse(null));
     }
 
-    // ----------------------------------------------------------------------------- respempEmployee
+    // ------------------------------------------------------------------------- responsibleEmployee
 
     /**
      * Returns the employee responsible.
      *
      * @return the employee responsible.
      */
-    public Employee getRespempEmployee() {
-        return respempEmployee;
+    public Employee getResponsibleEmployee() {
+        return responsibleEmployee;
     }
 
     /**
@@ -98,20 +88,20 @@ public class Project
      *
      * @param respempEmployee new value for the employee responsible.
      */
-    public void setRespempEmployee(final Employee respempEmployee) {
-        this.respempEmployee = respempEmployee;
+    public void setResponsibleEmployee(final Employee respempEmployee) {
+        this.responsibleEmployee = respempEmployee;
         setRespemp(Optional.ofNullable(respempEmployee).map(Employee::getEmpno).orElse(null));
     }
 
-    // ------------------------------------------------------------------------------ majprojProject
+    // -------------------------------------------------------------------------------- majorProject
 
     /**
      * Returns the major project.
      *
      * @return the major project.
      */
-    public Project getMajprojProject() {
-        return majprojProject;
+    public Project getMajorProject() {
+        return majorProject;
     }
 
     /**
@@ -119,37 +109,44 @@ public class Project
      *
      * @param majprojProject new value for the major project.
      */
-    public void setMajprojProject(final Project majprojProject) {
-        this.majprojProject = majprojProject;
+    public void setMajorProject(final Project majprojProject) {
+        this.majorProject = majprojProject;
         setMajproj(Optional.ofNullable(majprojProject).map(Project::getProjno).orElse(null));
     }
 
     // ---------------------------------------------------------------------------------------------
+    @Valid
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = Project.COLUMN_NAME_DEPTNO,
                 referencedColumnName = Department.COLUMN_NAME_DEPTNO,
                 nullable = false,
                 insertable = true,
-                updatable = true)
-    private Department deptnoDepartment;
+                updatable = true
+    )
+    private Department department;
 
     // ---------------------------------------------------------------------------------------------
+    @Valid
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = Project.COLUMN_NAME_RESPEMP,
                 referencedColumnName = Employee.COLUMN_NAME_EMPNO,
                 nullable = false,
                 insertable = true,
-                updatable = true)
-    private Employee respempEmployee;
+                updatable = true
+    )
+    private Employee responsibleEmployee;
 
     // ---------------------------------------------------------------------------------------------
+    @Nullable
+    @Valid
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = Project.COLUMN_NAME_MAJPROJ,
                 referencedColumnName = Project.COLUMN_NAME_PROJNO,
                 nullable = true,
                 insertable = true,
-                updatable = true)
-    private Project majprojProject;
+                updatable = true
+    )
+    private Project majorProject;
 }

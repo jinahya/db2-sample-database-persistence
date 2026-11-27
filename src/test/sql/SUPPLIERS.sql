@@ -33,7 +33,7 @@ FROM SUPPLIERS
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- SID
+-- --------------------------------------------------------------------------------------------- SID
 -- SID is the primary key; 2 distinct values in 2 rows.
 SELECT COUNT(DISTINCT SID), COUNT(*)
 FROM SUPPLIERS
@@ -54,7 +54,7 @@ WHERE RTRIM(SID) = ''
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- ADDR
+-- -------------------------------------------------------------------------------------------- ADDR
 -- the XML schema each ADDR was validated against when it was loaded; SUPPLIER for 2.
 SELECT COALESCE((SELECT o.OBJECTNAME
                   FROM SYSCAT.XSROBJECTS o

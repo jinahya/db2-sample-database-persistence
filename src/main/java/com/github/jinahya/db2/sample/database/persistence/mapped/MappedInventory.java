@@ -172,7 +172,7 @@ public abstract class MappedInventory {
      *
      * @param pid new value for {@value #ATTRIBUTE_NAME_PID} attribute.
      */
-    protected void setPid(@Nonnull final String pid) {
+    public void setPid(@Nonnull final String pid) {
         this.pid = pid;
     }
 
@@ -235,6 +235,7 @@ public abstract class MappedInventory {
     private String pid;
 
     // ---------------------------------------------------------------------------------------------
+    @Nullable
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_QUANTITY,
             nullable = true,
@@ -244,6 +245,7 @@ public abstract class MappedInventory {
     private Integer quantity;
 
     // ---------------------------------------------------------------------------------------------
+    @Nullable
     @Size(max = SIZE_MAX_LOCATION)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_LOCATION,

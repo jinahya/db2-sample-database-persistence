@@ -154,7 +154,7 @@ public abstract class MappedCustomer {
      *
      * @param cid new value for {@value #ATTRIBUTE_NAME_CID} attribute.
      */
-    protected void setCid(@Nonnull final Long cid) {
+    public void setCid(@Nonnull final Long cid) {
         this.cid = cid;
     }
 

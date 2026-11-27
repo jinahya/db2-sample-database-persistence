@@ -36,10 +36,10 @@
     <class>com.github.jinahya.db2.sample.database.persistence.EmpResume</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Inventory</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Product</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.ProductSupplier</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.ProjAct</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Productsupplier</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Projact</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Project</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.PurchaseOrder</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Purchaseorder</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Supplier</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vact</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vastrde1</class>
@@ -102,10 +102,10 @@
     <class>com.github.jinahya.db2.sample.database.persistence.EmpResume</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Inventory</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Product</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.ProductSupplier</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.ProjAct</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Productsupplier</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Projact</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Project</class>
-    <class>com.github.jinahya.db2.sample.database.persistence.PurchaseOrder</class>
+    <class>com.github.jinahya.db2.sample.database.persistence.Purchaseorder</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Supplier</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vact</class>
     <class>com.github.jinahya.db2.sample.database.persistence.Vastrde1</class>

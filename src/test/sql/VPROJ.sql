@@ -33,7 +33,7 @@ FROM VPROJ
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, PROJNO, of a view, which has no key: the values which more than one row
 -- shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- PROJNO
+-- ------------------------------------------------------------------------------------------ PROJNO
 -- the shortest and the longest PROJNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNO))), MAX(LENGTH(RTRIM(PROJNO)))
 FROM VPROJ
@@ -60,7 +60,7 @@ WHERE RTRIM(PROJNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ PROJNAME
+-- ---------------------------------------------------------------------------------------- PROJNAME
 -- the shortest and the longest PROJNAME, trailing spaces trimmed; 9 to 21 characters, of VARCHAR(24) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNAME))), MAX(LENGTH(RTRIM(PROJNAME)))
 FROM VPROJ
@@ -76,7 +76,7 @@ WHERE RTRIM(PROJNAME) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- DEPTNO
+-- ------------------------------------------------------------------------------------------ DEPTNO
 -- the shortest and the longest DEPTNO, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(DEPTNO))), MAX(LENGTH(RTRIM(DEPTNO)))
 FROM VPROJ
@@ -92,7 +92,7 @@ WHERE RTRIM(DEPTNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESPEMP
+-- ----------------------------------------------------------------------------------------- RESPEMP
 -- the shortest and the longest RESPEMP, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(RESPEMP))), MAX(LENGTH(RTRIM(RESPEMP)))
 FROM VPROJ
@@ -108,7 +108,7 @@ WHERE RTRIM(RESPEMP) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- PRSTAFF
+-- ----------------------------------------------------------------------------------------- PRSTAFF
 -- the smallest and the largest PRSTAFF; 1.00 and 12.00.
 SELECT MIN(PRSTAFF), MAX(PRSTAFF)
 FROM VPROJ
@@ -120,7 +120,7 @@ FROM VPROJ
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ PRSTDATE
+-- ---------------------------------------------------------------------------------------- PRSTDATE
 -- the earliest and the latest PRSTDATE; 2002-01-01 and 2002-02-15.
 SELECT MIN(PRSTDATE), MAX(PRSTDATE)
 FROM VPROJ
@@ -132,7 +132,7 @@ FROM VPROJ
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ PRENDATE
+-- ---------------------------------------------------------------------------------------- PRENDATE
 -- the earliest and the latest PRENDATE; 1982-12-01 and 2003-02-01.
 SELECT MIN(PRENDATE), MAX(PRENDATE)
 FROM VPROJ
@@ -144,7 +144,7 @@ FROM VPROJ
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- MAJPROJ
+-- ----------------------------------------------------------------------------------------- MAJPROJ
 -- the shortest and the longest MAJPROJ, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(MAJPROJ))), MAX(LENGTH(RTRIM(MAJPROJ)))
 FROM VPROJ

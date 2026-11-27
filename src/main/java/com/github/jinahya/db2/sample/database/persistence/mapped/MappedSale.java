@@ -192,6 +192,9 @@ public abstract class MappedSale {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the
+     * {@value #COLUMN_NAME_SALES_DATE} column as "Date of sales".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
      */
@@ -206,7 +209,7 @@ public abstract class MappedSale {
      *
      * @param salesDate new value for {@value #ATTRIBUTE_NAME_SALES_DATE} attribute.
      */
-    protected void setSalesDate(@Nonnull final LocalDate salesDate) {
+    public void setSalesDate(@Nonnull final LocalDate salesDate) {
         this.salesDate = salesDate;
     }
 
@@ -214,6 +217,9 @@ public abstract class MappedSale {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the
+     * {@value #COLUMN_NAME_SALES_PERSON} column as "Employee's last name".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
      */
@@ -228,7 +234,7 @@ public abstract class MappedSale {
      *
      * @param salesPerson new value for {@value #ATTRIBUTE_NAME_SALES_PERSON} attribute.
      */
-    protected void setSalesPerson(@Nonnull final String salesPerson) {
+    public void setSalesPerson(@Nonnull final String salesPerson) {
         this.salesPerson = salesPerson;
     }
 
@@ -236,6 +242,9 @@ public abstract class MappedSale {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_REGION} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_REGION}
+     * column as "Region of sales".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_REGION} attribute.
      */
@@ -250,7 +259,7 @@ public abstract class MappedSale {
      *
      * @param region new value for {@value #ATTRIBUTE_NAME_REGION} attribute.
      */
-    protected void setRegion(@Nonnull final String region) {
+    public void setRegion(@Nonnull final String region) {
         this.region = region;
     }
 
@@ -258,6 +267,9 @@ public abstract class MappedSale {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALES} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_SALES}
+     * column as "Number of sales".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SALES} attribute.
      */
@@ -313,6 +325,7 @@ public abstract class MappedSale {
     private String region;
 
     // ---------------------------------------------------------------------------------------------
+//    @jakarta.validation.constraints.Positive // no checks
     @Min(ATTRIBUTE_MIN_SALES)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SALES,

@@ -33,7 +33,7 @@ FROM EMPLOYEE
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- EMPNO
+-- ------------------------------------------------------------------------------------------- EMPNO
 -- EMPNO is the primary key; 42 distinct values in 42 rows.
 SELECT COUNT(DISTINCT EMPNO), COUNT(*)
 FROM EMPLOYEE
@@ -54,7 +54,7 @@ WHERE RTRIM(EMPNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ FIRSTNME
+-- ---------------------------------------------------------------------------------------- FIRSTNME
 -- the shortest and the longest FIRSTNME, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(12) declared.
 SELECT MIN(LENGTH(RTRIM(FIRSTNME))), MAX(LENGTH(RTRIM(FIRSTNME)))
 FROM EMPLOYEE
@@ -70,7 +70,7 @@ WHERE RTRIM(FIRSTNME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- MIDINIT
+-- ----------------------------------------------------------------------------------------- MIDINIT
 -- the shortest and the longest MIDINIT, trailing spaces trimmed; 0 to 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(MIDINIT))), MAX(LENGTH(RTRIM(MIDINIT)))
 FROM EMPLOYEE
@@ -91,7 +91,7 @@ FROM EMPLOYEE
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ LASTNAME
+-- ---------------------------------------------------------------------------------------- LASTNAME
 -- the shortest and the longest LASTNAME, trailing spaces trimmed; 3 to 10 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(LASTNAME))), MAX(LENGTH(RTRIM(LASTNAME)))
 FROM EMPLOYEE
@@ -107,7 +107,7 @@ WHERE RTRIM(LASTNAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ WORKDEPT
+-- ---------------------------------------------------------------------------------------- WORKDEPT
 -- the shortest and the longest WORKDEPT, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(WORKDEPT))), MAX(LENGTH(RTRIM(WORKDEPT)))
 FROM EMPLOYEE
@@ -128,7 +128,7 @@ FROM EMPLOYEE
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- PHONENO
+-- ----------------------------------------------------------------------------------------- PHONENO
 -- the shortest and the longest PHONENO, trailing spaces trimmed; always 4 characters, of CHARACTER(4) declared.
 SELECT MIN(LENGTH(RTRIM(PHONENO))), MAX(LENGTH(RTRIM(PHONENO)))
 FROM EMPLOYEE
@@ -149,7 +149,7 @@ FROM EMPLOYEE
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ HIREDATE
+-- ---------------------------------------------------------------------------------------- HIREDATE
 -- the earliest and the latest HIREDATE; 1977-05-05 and 2006-12-15.
 SELECT MIN(HIREDATE), MAX(HIREDATE)
 FROM EMPLOYEE
@@ -161,7 +161,11 @@ FROM EMPLOYEE
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- JOB
+-- --------------------------------------------------------------------------------------------- JOB
+SELECT DISTINCT JOB
+FROM EMPLOYEE
+;
+
 -- the shortest and the longest JOB, trailing spaces trimmed; 4 to 8 characters, of CHARACTER(8) declared.
 SELECT MIN(LENGTH(RTRIM(JOB))), MAX(LENGTH(RTRIM(JOB)))
 FROM EMPLOYEE
@@ -181,14 +185,22 @@ FROM EMPLOYEE
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- EDLEVEL
+-- ----------------------------------------------------------------------------------------- EDLEVEL
+SELECT DISTINCT EDLEVEL
+FROM EMPLOYEE
+;
+
 -- the smallest and the largest EDLEVEL; 12 and 20.
 SELECT MIN(EDLEVEL), MAX(EDLEVEL)
 FROM EMPLOYEE
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- SEX
+-- --------------------------------------------------------------------------------------------- SEX
+SELECT DISTINCT SEX
+FROM EMPLOYEE
+;
+
 -- the shortest and the longest SEX, trailing spaces trimmed; always 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(SEX))), MAX(LENGTH(RTRIM(SEX)))
 FROM EMPLOYEE
@@ -208,7 +220,7 @@ FROM EMPLOYEE
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------- BIRTHDATE
+-- --------------------------------------------------------------------------------------- BIRTHDATE
 -- the earliest and the latest BIRTHDATE; 1955-09-15 and 2003-05-26.
 SELECT MIN(BIRTHDATE), MAX(BIRTHDATE)
 FROM EMPLOYEE
@@ -220,7 +232,7 @@ FROM EMPLOYEE
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- SALARY
+-- ------------------------------------------------------------------------------------------ SALARY
 -- the smallest and the largest SALARY; 31840.00 and 152750.00.
 SELECT MIN(SALARY), MAX(SALARY)
 FROM EMPLOYEE
@@ -232,7 +244,7 @@ FROM EMPLOYEE
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- BONUS
+-- ------------------------------------------------------------------------------------------- BONUS
 -- the smallest and the largest BONUS; 300.00 and 1000.00.
 SELECT MIN(BONUS), MAX(BONUS)
 FROM EMPLOYEE
@@ -244,7 +256,7 @@ FROM EMPLOYEE
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- COMM
+-- -------------------------------------------------------------------------------------------- COMM
 -- the smallest and the largest COMM; 1227.00 and 4220.00.
 SELECT MIN(COMM), MAX(COMM)
 FROM EMPLOYEE

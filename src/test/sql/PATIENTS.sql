@@ -33,7 +33,7 @@ FROM PATIENTS
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this table declares no primary key, and is mapped as no entity, with no identifier. PATIENT_ID, which the data alone
 -- would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- PATIENT_ID
+-- -------------------------------------------------------------------------------------- PATIENT_ID
 -- the smallest and the largest PATIENT_ID; 1 and 20.
 SELECT MIN(PATIENT_ID), MAX(PATIENT_ID)
 FROM PATIENTS
@@ -56,7 +56,7 @@ FROM PATIENTS
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- NAME
+-- -------------------------------------------------------------------------------------------- NAME
 -- the shortest and the longest NAME, trailing spaces trimmed; 10 to 16 characters, of VARCHAR(30) declared.
 SELECT MIN(LENGTH(RTRIM(NAME))), MAX(LENGTH(RTRIM(NAME)))
 FROM PATIENTS
@@ -77,7 +77,7 @@ FROM PATIENTS
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- AGE
+-- --------------------------------------------------------------------------------------------- AGE
 -- the smallest and the largest AGE; 20 and 76.
 SELECT MIN(AGE), MAX(AGE)
 FROM PATIENTS
@@ -88,8 +88,14 @@ SELECT COUNT(*) - COUNT(AGE), COUNT(*)
 FROM PATIENTS
 ;
 
+SELECT *
+FROM PATIENTS
+WHERE AGE IS NOT NULL
+  AND AGE < 0
+;
 
--- -------------------------------------------------------------------------------------------------------------- GENDER
+
+-- ------------------------------------------------------------------------------------------ GENDER
 -- the shortest and the longest GENDER, trailing spaces trimmed; 4 to 6 characters, of VARCHAR(6) declared.
 SELECT MIN(LENGTH(RTRIM(GENDER))), MAX(LENGTH(RTRIM(GENDER)))
 FROM PATIENTS
@@ -110,7 +116,7 @@ FROM PATIENTS
 ;
 
 
--- --------------------------------------------------------------------------------------------------- CHOLESTEROL_LEVEL
+-- ------------------------------------------------------------------------------- CHOLESTEROL_LEVEL
 -- the smallest and the largest CHOLESTEROL_LEVEL; 152 and 244.
 SELECT MIN(CHOLESTEROL_LEVEL), MAX(CHOLESTEROL_LEVEL)
 FROM PATIENTS
@@ -122,7 +128,7 @@ FROM PATIENTS
 ;
 
 
--- ------------------------------------------------------------------------------------------------------ BLOOD_PRESSURE
+-- ---------------------------------------------------------------------------------- BLOOD_PRESSURE
 -- the smallest and the largest BLOOD_PRESSURE; 81 and 178.
 SELECT MIN(BLOOD_PRESSURE), MAX(BLOOD_PRESSURE)
 FROM PATIENTS
@@ -134,7 +140,7 @@ FROM PATIENTS
 ;
 
 
--- ------------------------------------------------------------------------------------------------------ SMOKING_STATUS
+-- ---------------------------------------------------------------------------------- SMOKING_STATUS
 -- the shortest and the longest SMOKING_STATUS, trailing spaces trimmed; 6 to 10 characters, of VARCHAR(10) declared.
 SELECT MIN(LENGTH(RTRIM(SMOKING_STATUS))), MAX(LENGTH(RTRIM(SMOKING_STATUS)))
 FROM PATIENTS
@@ -155,7 +161,7 @@ FROM PATIENTS
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------- EMBEDDING
+-- --------------------------------------------------------------------------------------- EMBEDDING
 -- how many rows have no EMBEDDING; 0 of 20.
 SELECT COUNT(*) - COUNT(EMBEDDING), COUNT(*)
 FROM PATIENTS

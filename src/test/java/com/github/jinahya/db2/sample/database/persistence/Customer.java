@@ -43,15 +43,4 @@ public class Customer
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param cid {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
-     */
-    @Override
-    public void setCid(final Long cid) {
-        super.setCid(cid);
-    }
 }

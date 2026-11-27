@@ -33,7 +33,7 @@ FROM VEMPPROJACT
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this view has no key, and is mapped as no entity, with no identifier. EMPNO, PROJNO, ACTNO, EMSTDATE, which the data
 -- alone would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- EMPNO
+-- ------------------------------------------------------------------------------------------- EMPNO
 -- the shortest and the longest EMPNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPNO))), MAX(LENGTH(RTRIM(EMPNO)))
 FROM VEMPPROJACT
@@ -60,7 +60,7 @@ WHERE RTRIM(EMPNO) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- PROJNO
+-- ------------------------------------------------------------------------------------------ PROJNO
 -- the shortest and the longest PROJNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNO))), MAX(LENGTH(RTRIM(PROJNO)))
 FROM VEMPPROJACT
@@ -76,14 +76,14 @@ WHERE RTRIM(PROJNO) = ''
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- ACTNO
+-- ------------------------------------------------------------------------------------------- ACTNO
 -- the smallest and the largest ACTNO; 10 and 180.
 SELECT MIN(ACTNO), MAX(ACTNO)
 FROM VEMPPROJACT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- EMPTIME
+-- ----------------------------------------------------------------------------------------- EMPTIME
 -- the smallest and the largest EMPTIME; 0.25 and 1.00.
 SELECT MIN(EMPTIME), MAX(EMPTIME)
 FROM VEMPPROJACT
@@ -95,7 +95,7 @@ FROM VEMPPROJACT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ EMSTDATE
+-- ---------------------------------------------------------------------------------------- EMSTDATE
 -- the earliest and the latest EMSTDATE; 2002-01-01 and 2003-01-01.
 SELECT MIN(EMSTDATE), MAX(EMSTDATE)
 FROM VEMPPROJACT
@@ -107,7 +107,7 @@ FROM VEMPPROJACT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ EMENDATE
+-- ---------------------------------------------------------------------------------------- EMENDATE
 -- the earliest and the latest EMENDATE; 2002-02-01 and 2003-10-01.
 SELECT MIN(EMENDATE), MAX(EMENDATE)
 FROM VEMPPROJACT

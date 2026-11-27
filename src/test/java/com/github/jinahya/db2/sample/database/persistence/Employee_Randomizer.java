@@ -23,7 +23,6 @@ package com.github.jinahya.db2.sample.database.persistence;
 import com.github.jinahya.object.randomizer.PodamObjectRandomizer;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Randomizes a new {@link Employee}, whose identifier it sets itself, within the lengths of its
@@ -51,8 +50,6 @@ class Employee_Randomizer
         instance.setEmpno(__Randomizer_Utils.string(6));
         // EMPLOYEE checks PHONENO BETWEEN '0000' AND '9999'
         instance.setPhoneno(__Randomizer_Utils.digits(4));
-        // M male, F female; see Employee#ATTRIBUTE_REGEXP_SEX
-        instance.setSex(ThreadLocalRandom.current().nextBoolean() ? "M" : "F");
         return instance;
     }
 }

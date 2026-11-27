@@ -33,7 +33,7 @@ FROM PURCHASEORDER
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- POID
+-- -------------------------------------------------------------------------------------------- POID
 -- POID is the primary key; 6 distinct values in 6 rows.
 SELECT COUNT(DISTINCT POID), COUNT(*)
 FROM PURCHASEORDER
@@ -45,7 +45,7 @@ FROM PURCHASEORDER
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- STATUS
+-- ------------------------------------------------------------------------------------------ STATUS
 -- the shortest and the longest STATUS, trailing spaces trimmed; 7 to 9 characters, of VARCHAR(10) declared.
 SELECT MIN(LENGTH(RTRIM(STATUS))), MAX(LENGTH(RTRIM(STATUS)))
 FROM PURCHASEORDER
@@ -61,7 +61,7 @@ WHERE RTRIM(STATUS) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- CUSTID
+-- ------------------------------------------------------------------------------------------ CUSTID
 -- the smallest and the largest CUSTID; 1001 and 1005.
 SELECT MIN(CUSTID), MAX(CUSTID)
 FROM PURCHASEORDER
@@ -73,7 +73,7 @@ FROM PURCHASEORDER
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------- ORDERDATE
+-- --------------------------------------------------------------------------------------- ORDERDATE
 -- the earliest and the latest ORDERDATE; 2004-02-29 and 2006-03-01.
 SELECT MIN(ORDERDATE), MAX(ORDERDATE)
 FROM PURCHASEORDER
@@ -85,7 +85,7 @@ FROM PURCHASEORDER
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- PORDER
+-- ------------------------------------------------------------------------------------------ PORDER
 -- the XML schema each PORDER was validated against when it was loaded; PORDER for 6.
 SELECT COALESCE((SELECT o.OBJECTNAME
                   FROM SYSCAT.XSROBJECTS o
@@ -101,7 +101,7 @@ FROM PURCHASEORDER
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ COMMENTS
+-- ---------------------------------------------------------------------------------------- COMMENTS
 -- the shortest and the longest COMMENTS, trailing spaces trimmed; always 28 characters, of VARCHAR(1000) declared.
 SELECT MIN(LENGTH(RTRIM(COMMENTS))), MAX(LENGTH(RTRIM(COMMENTS)))
 FROM PURCHASEORDER

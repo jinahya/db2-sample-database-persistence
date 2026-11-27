@@ -42,16 +42,4 @@ public class Supplier
     protected Supplier() {
         super();
     }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param sid {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
-     */
-    @Override
-    public void setSid(final String sid) {
-        super.setSid(sid);
-    }
 }

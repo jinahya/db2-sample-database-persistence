@@ -22,6 +22,8 @@ package com.github.jinahya.db2.sample.database.persistence;
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedPatient;
 
+import java.util.Optional;
+
 /**
  * A row of the {@value #TABLE_NAME} table; not an entity, since it has no key, but a class built
  * from the rows of a native query.
@@ -51,22 +53,16 @@ public class Patient
                 __Row_Utils.integer(row, 0),
                 __Row_Utils.string(row, 1),
                 __Row_Utils.integer(row, 2),
-                __Row_Utils.string(row, 3),
+                Optional.ofNullable(__Row_Utils.string(row, 3))
+                        .map(Gender::valueOfAttributeValue)
+                        .orElse(null),
                 __Row_Utils.integer(row, 4),
                 __Row_Utils.integer(row, 5),
-                __Row_Utils.string(row, 6),
+                Optional.ofNullable(__Row_Utils.string(row, 6))
+                        .map(SmokingStatus::valueOfAttributeValue)
+                        .orElse(null),
                 __Row_Utils.vector(row, 7)
         );
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param patientId {@inheritDoc}
-     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
-     */
-    @Override
-    public void setPatientId(final Integer patientId) {
-        super.setPatientId(patientId);
-    }
 }

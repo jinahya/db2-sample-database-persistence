@@ -33,7 +33,7 @@ FROM VASTRDE2
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, DEPT1NO, EMP2NO, of a view, which has no key: the values which more than one
 -- row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- DEPT1NO
+-- ----------------------------------------------------------------------------------------- DEPT1NO
 -- the shortest and the longest DEPT1NO, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(DEPT1NO))), MAX(LENGTH(RTRIM(DEPT1NO)))
 FROM VASTRDE2
@@ -60,7 +60,7 @@ WHERE RTRIM(DEPT1NO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ DEPT1NAM
+-- ---------------------------------------------------------------------------------------- DEPT1NAM
 -- the shortest and the longest DEPT1NAM, trailing spaces trimmed; 8 to 28 characters, of VARCHAR(36) declared.
 SELECT MIN(LENGTH(RTRIM(DEPT1NAM))), MAX(LENGTH(RTRIM(DEPT1NAM)))
 FROM VASTRDE2
@@ -76,7 +76,7 @@ WHERE RTRIM(DEPT1NAM) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- EMP1NO
+-- ------------------------------------------------------------------------------------------ EMP1NO
 -- the shortest and the longest EMP1NO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMP1NO))), MAX(LENGTH(RTRIM(EMP1NO)))
 FROM VASTRDE2
@@ -97,7 +97,7 @@ FROM VASTRDE2
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- EMP1FN
+-- ------------------------------------------------------------------------------------------ EMP1FN
 -- the shortest and the longest EMP1FN, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(12) declared.
 SELECT MIN(LENGTH(RTRIM(EMP1FN))), MAX(LENGTH(RTRIM(EMP1FN)))
 FROM VASTRDE2
@@ -118,7 +118,7 @@ FROM VASTRDE2
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- EMP1MI
+-- ------------------------------------------------------------------------------------------ EMP1MI
 -- the shortest and the longest EMP1MI, trailing spaces trimmed; always 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(EMP1MI))), MAX(LENGTH(RTRIM(EMP1MI)))
 FROM VASTRDE2
@@ -139,7 +139,7 @@ FROM VASTRDE2
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- EMP1LN
+-- ------------------------------------------------------------------------------------------ EMP1LN
 -- the shortest and the longest EMP1LN, trailing spaces trimmed; 4 to 9 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(EMP1LN))), MAX(LENGTH(RTRIM(EMP1LN)))
 FROM VASTRDE2
@@ -160,7 +160,7 @@ FROM VASTRDE2
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- TYPE2
+-- ------------------------------------------------------------------------------------------- TYPE2
 -- the shortest and the longest TYPE2, trailing spaces trimmed; always 1 characters, of VARCHAR(1) declared.
 SELECT MIN(LENGTH(RTRIM(TYPE2))), MAX(LENGTH(RTRIM(TYPE2)))
 FROM VASTRDE2
@@ -176,7 +176,7 @@ WHERE RTRIM(TYPE2) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- DEPT2NO
+-- ----------------------------------------------------------------------------------------- DEPT2NO
 -- the shortest and the longest DEPT2NO, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(DEPT2NO))), MAX(LENGTH(RTRIM(DEPT2NO)))
 FROM VASTRDE2
@@ -192,7 +192,7 @@ WHERE RTRIM(DEPT2NO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ DEPT2NAM
+-- ---------------------------------------------------------------------------------------- DEPT2NAM
 -- the shortest and the longest DEPT2NAM, trailing spaces trimmed; 8 to 28 characters, of VARCHAR(36) declared.
 SELECT MIN(LENGTH(RTRIM(DEPT2NAM))), MAX(LENGTH(RTRIM(DEPT2NAM)))
 FROM VASTRDE2
@@ -208,7 +208,7 @@ WHERE RTRIM(DEPT2NAM) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- EMP2NO
+-- ------------------------------------------------------------------------------------------ EMP2NO
 -- the shortest and the longest EMP2NO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMP2NO))), MAX(LENGTH(RTRIM(EMP2NO)))
 FROM VASTRDE2
@@ -224,7 +224,7 @@ WHERE RTRIM(EMP2NO) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- EMP2FN
+-- ------------------------------------------------------------------------------------------ EMP2FN
 -- the shortest and the longest EMP2FN, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(12) declared.
 SELECT MIN(LENGTH(RTRIM(EMP2FN))), MAX(LENGTH(RTRIM(EMP2FN)))
 FROM VASTRDE2
@@ -240,7 +240,7 @@ WHERE RTRIM(EMP2FN) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- EMP2MI
+-- ------------------------------------------------------------------------------------------ EMP2MI
 -- the shortest and the longest EMP2MI, trailing spaces trimmed; 0 to 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(EMP2MI))), MAX(LENGTH(RTRIM(EMP2MI)))
 FROM VASTRDE2
@@ -262,7 +262,7 @@ FROM VASTRDE2
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- EMP2LN
+-- ------------------------------------------------------------------------------------------ EMP2LN
 -- the shortest and the longest EMP2LN, trailing spaces trimmed; 3 to 10 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(EMP2LN))), MAX(LENGTH(RTRIM(EMP2LN)))
 FROM VASTRDE2

@@ -33,7 +33,7 @@ FROM VACT
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, ACTNO, of a view, which has no key: the values which more than one row
 -- shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,14 +44,14 @@ HAVING COUNT(*) > 1
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- ACTNO
+-- ------------------------------------------------------------------------------------------- ACTNO
 -- the smallest and the largest ACTNO; 10 and 180.
 SELECT MIN(ACTNO), MAX(ACTNO)
 FROM VACT
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- ACTKWD
+-- ------------------------------------------------------------------------------------------ ACTKWD
 -- the shortest and the longest ACTKWD, trailing spaces trimmed; 3 to 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(ACTKWD))), MAX(LENGTH(RTRIM(ACTKWD)))
 FROM VACT
@@ -67,7 +67,7 @@ WHERE RTRIM(ACTKWD) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- ACTDESC
+-- ----------------------------------------------------------------------------------------- ACTDESC
 -- the shortest and the longest ACTDESC, trailing spaces trimmed; 8 to 19 characters, of VARCHAR(20) declared.
 SELECT MIN(LENGTH(RTRIM(ACTDESC))), MAX(LENGTH(RTRIM(ACTDESC)))
 FROM VACT

@@ -55,14 +55,4 @@ public class ClSched
         );
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param classCode {@inheritDoc}
-     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
-     */
-    @Override
-    public void setClassCode(final String classCode) {
-        super.setClassCode(classCode);
-    }
 }

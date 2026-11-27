@@ -33,7 +33,7 @@ FROM ACT
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- ACTNO
+-- ------------------------------------------------------------------------------------------- ACTNO
 -- ACTNO is the primary key; 18 distinct values in 18 rows.
 SELECT COUNT(DISTINCT ACTNO), COUNT(*)
 FROM ACT
@@ -45,7 +45,7 @@ FROM ACT
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- ACTKWD
+-- ------------------------------------------------------------------------------------------ ACTKWD
 -- the shortest and the longest ACTKWD, trailing spaces trimmed; 3 to 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(ACTKWD))), MAX(LENGTH(RTRIM(ACTKWD)))
 FROM ACT
@@ -61,7 +61,7 @@ WHERE RTRIM(ACTKWD) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- ACTDESC
+-- ----------------------------------------------------------------------------------------- ACTDESC
 -- the shortest and the longest ACTDESC, trailing spaces trimmed; 8 to 19 characters, of VARCHAR(20) declared.
 SELECT MIN(LENGTH(RTRIM(ACTDESC))), MAX(LENGTH(RTRIM(ACTDESC)))
 FROM ACT

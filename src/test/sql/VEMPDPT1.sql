@@ -33,7 +33,7 @@ FROM VEMPDPT1
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, EMPNO, of a view, which has no key: the values which more than one row
 -- shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- DEPTNO
+-- ------------------------------------------------------------------------------------------ DEPTNO
 -- the shortest and the longest DEPTNO, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(DEPTNO))), MAX(LENGTH(RTRIM(DEPTNO)))
 FROM VEMPDPT1
@@ -65,7 +65,7 @@ FROM VEMPDPT1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ DEPTNAME
+-- ---------------------------------------------------------------------------------------- DEPTNAME
 -- the shortest and the longest DEPTNAME, trailing spaces trimmed; 8 to 28 characters, of VARCHAR(36) declared.
 SELECT MIN(LENGTH(RTRIM(DEPTNAME))), MAX(LENGTH(RTRIM(DEPTNAME)))
 FROM VEMPDPT1
@@ -86,7 +86,7 @@ FROM VEMPDPT1
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- EMPNO
+-- ------------------------------------------------------------------------------------------- EMPNO
 -- the shortest and the longest EMPNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPNO))), MAX(LENGTH(RTRIM(EMPNO)))
 FROM VEMPDPT1
@@ -102,7 +102,7 @@ WHERE RTRIM(EMPNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ FRSTINIT
+-- ---------------------------------------------------------------------------------------- FRSTINIT
 -- the shortest and the longest FRSTINIT, trailing spaces trimmed; always 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(FRSTINIT))), MAX(LENGTH(RTRIM(FRSTINIT)))
 FROM VEMPDPT1
@@ -118,7 +118,7 @@ WHERE RTRIM(FRSTINIT) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- MIDINIT
+-- ----------------------------------------------------------------------------------------- MIDINIT
 -- the shortest and the longest MIDINIT, trailing spaces trimmed; 0 to 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(MIDINIT))), MAX(LENGTH(RTRIM(MIDINIT)))
 FROM VEMPDPT1
@@ -140,7 +140,7 @@ FROM VEMPDPT1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ LASTNAME
+-- ---------------------------------------------------------------------------------------- LASTNAME
 -- the shortest and the longest LASTNAME, trailing spaces trimmed; 3 to 10 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(LASTNAME))), MAX(LENGTH(RTRIM(LASTNAME)))
 FROM VEMPDPT1
@@ -156,7 +156,7 @@ WHERE RTRIM(LASTNAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ WORKDEPT
+-- ---------------------------------------------------------------------------------------- WORKDEPT
 -- the shortest and the longest WORKDEPT, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(WORKDEPT))), MAX(LENGTH(RTRIM(WORKDEPT)))
 FROM VEMPDPT1

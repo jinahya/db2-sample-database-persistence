@@ -20,7 +20,17 @@ package com.github.jinahya.db2.sample.database.persistence;
  * #L%
  */
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import lombok.extern.slf4j.Slf4j;
+
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
@@ -31,6 +41,36 @@ class EmpResume_PersistenceIT
 
     EmpResume_PersistenceIT() {
         super(EmpResume.class, EmpResumeId.class);
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Override
+    protected void randomEntityInstanceSelected__(final EntityManagerFactory entityManagerFactory,
+                                                  final EntityManager entityManager,
+                                                  final EmpResume entityInstance) {
+        super.randomEntityInstanceSelected__(entityManagerFactory, entityManager, entityInstance);
+        try {
+            resume(entityInstance);
+        } catch (final IOException ioe) {
+            throw new UncheckedIOException("failed to save the resume of " + entityInstance, ioe);
+        }
+    }
+
+    // saves the resume to target, with its RESUME_FORMAT (ascii, html) as the file extension
+    private void resume(final EmpResume entityInstance) throws IOException {
+        final var id = entityInstance.getId();
+        final var resume = entityInstance.getResume();
+        if (resume == null) {
+            log.debug("no resume: {}", entityInstance);
+            return;
+        }
+        final var path = Path.of(
+                "target",
+                id.getEmpno().strip() + "_resume." + id.getResumeFormat().strip().toLowerCase()
+        );
+        Files.writeString(path, resume, StandardCharsets.UTF_8);
+        log.debug("resume saved to {}", path.toAbsolutePath());
+        assertThat(Files.readString(path, StandardCharsets.UTF_8)).isEqualTo(resume);
     }
 }
 

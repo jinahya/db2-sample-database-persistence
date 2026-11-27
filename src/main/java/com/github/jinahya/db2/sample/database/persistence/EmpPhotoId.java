@@ -21,11 +21,14 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmpPhoto;
+import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmployee;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.annotation.Nullable;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The identifier of the {@value MappedEmpPhoto#TABLE_NAME} table, the key of
@@ -68,10 +71,22 @@ public class EmpPhotoId {
      * @return a new instance with {@code empno} and {@code photoFormat}.
      */
     public static EmpPhotoId of(final String empno, final String photoFormat) {
-        final var instance = new EmpPhotoId();
-        instance.setEmpno(empno);
-        instance.setPhotoFormat(photoFormat);
-        return instance;
+        return new EmpPhotoId().withEmpno(empno).withPhotoFormat(photoFormat);
+    }
+
+    /**
+     * Returns a new instance with the employee number of the specified employee, and the specified
+     * photo format.
+     *
+     * @param employee    the employee whose employee number is the {@value #ATTRIBUTE_NAME_EMPNO}
+     *                    attribute; {@code null} for none.
+     * @param photoFormat a value for the {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
+     * @return a new instance with the employee number of {@code employee} and
+     *         {@code photoFormat}.
+     */
+    public static EmpPhotoId from(final MappedEmployee employee, final String photoFormat) {
+        return of(Optional.ofNullable(employee).map(MappedEmployee::getEmpno).orElse(null),
+                  photoFormat);
     }
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
@@ -126,6 +141,9 @@ public class EmpPhotoId {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@code EMPNO} column as
+     * "Employee number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      */
@@ -143,10 +161,41 @@ public class EmpPhotoId {
         this.empno = empno;
     }
 
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute with the specified value,
+     * and returns this instance.
+     *
+     * @param empno new value for {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * @return this instance.
+     */
+    EmpPhotoId withEmpno(final String empno) {
+        setEmpno(empno);
+        return this;
+    }
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute with the employee number
+     * of the specified employee, and returns this instance.
+     *
+     * @param employee the employee whose employee number is the {@value #ATTRIBUTE_NAME_EMPNO}
+     *                 attribute; {@code null} for none.
+     * @return this instance.
+     */
+    EmpPhotoId withEmployee(@Nullable final MappedEmployee employee) {
+        return withEmpno(
+                Optional.ofNullable(employee)
+                        .map(MappedEmployee::getEmpno)
+                        .orElse(null)
+        );
+    }
+
     // --------------------------------------------------------------------------------- photoFormat
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@code PHOTO_FORMAT} column as
+     * "Photo format".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
      */
@@ -163,6 +212,18 @@ public class EmpPhotoId {
      */
     protected void setPhotoFormat(@Nonnull final String photoFormat) {
         this.photoFormat = photoFormat;
+    }
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute with the specified
+     * value, and returns this instance.
+     *
+     * @param photoFormat new value for {@value #ATTRIBUTE_NAME_PHOTO_FORMAT} attribute.
+     * @return this instance.
+     */
+    EmpPhotoId withPhotoFormat(final String photoFormat) {
+        setPhotoFormat(photoFormat);
+        return this;
     }
 
     // ---------------------------------------------------------------------------------------------

@@ -26,6 +26,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import jakarta.annotation.Nullable;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -71,10 +72,7 @@ public class EmpResumeId {
      * @return a new instance with the specified values.
      */
     public static EmpResumeId of(final String empno, final String resumeFormat) {
-        final var instance = new EmpResumeId();
-        instance.setEmpno(empno);
-        instance.setResumeFormat(resumeFormat);
-        return instance;
+        return new EmpResumeId().withEmpno(empno).withResumeFormat(resumeFormat);
     }
 
     /**
@@ -144,6 +142,9 @@ public class EmpResumeId {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@code EMPNO} column as
+     * "Employee number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      */
@@ -160,10 +161,41 @@ public class EmpResumeId {
         this.empno = empno;
     }
 
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute with the specified value,
+     * and returns this instance.
+     *
+     * @param empno new value for {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * @return this instance.
+     */
+    EmpResumeId withEmpno(final String empno) {
+        setEmpno(empno);
+        return this;
+    }
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute with the employee number
+     * of the specified employee, and returns this instance.
+     *
+     * @param employee the employee whose employee number is the {@value #ATTRIBUTE_NAME_EMPNO}
+     *                 attribute; {@code null} for none.
+     * @return this instance.
+     */
+    EmpResumeId withEmployee(@Nullable final MappedEmployee employee) {
+        return withEmpno(
+                Optional.ofNullable(employee)
+                        .map(MappedEmployee::getEmpno)
+                        .orElse(null)
+        );
+    }
+
     // -------------------------------------------------------------------------------- resumeFormat
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@code RESUME_FORMAT} column
+     * as "Resume Format".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
      */
@@ -179,6 +211,18 @@ public class EmpResumeId {
      */
     protected void setResumeFormat(final String resumeFormat) {
         this.resumeFormat = resumeFormat;
+    }
+
+    /**
+     * Replaces current value of {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute with the specified
+     * value, and returns this instance.
+     *
+     * @param resumeFormat new value for {@value #ATTRIBUTE_NAME_RESUME_FORMAT} attribute.
+     * @return this instance.
+     */
+    EmpResumeId withResumeFormat(final String resumeFormat) {
+        setResumeFormat(resumeFormat);
+        return this;
     }
 
     // ---------------------------------------------------------------------------------------------

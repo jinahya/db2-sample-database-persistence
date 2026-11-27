@@ -68,8 +68,8 @@ class EmpPhoto_PersistenceIT
     }
 
     private void photo(final EmpPhoto entityInstance) throws IOException {
-        final var empno = entityInstance.getEmpno();
-        final var photoFormat = entityInstance.getPhotoFormat();
+        final var empno = entityInstance.getId().getEmpno();
+        final var photoFormat = entityInstance.getId().getPhotoFormat();
         final var picture = entityInstance.getPicture();
         if (picture == null) {
             log.debug("no picture: {}", entityInstance);

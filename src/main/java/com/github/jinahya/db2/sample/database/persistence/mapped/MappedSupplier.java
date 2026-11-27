@@ -150,7 +150,7 @@ public abstract class MappedSupplier {
      *
      * @param sid new value for {@value #ATTRIBUTE_NAME_SID} attribute.
      */
-    protected void setSid(@Nonnull final String sid) {
+    public void setSid(@Nonnull final String sid) {
         this.sid = sid;
     }
 

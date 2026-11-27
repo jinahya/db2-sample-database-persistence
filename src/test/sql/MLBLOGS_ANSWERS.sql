@@ -33,7 +33,7 @@ FROM MLBLOGS_ANSWERS
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this table declares no primary key, and is mapped as no entity, with no identifier. ANSWER, the text of a row: the
 -- values which more than one row shares.
 -- 2 ANSWERs, in 5 rows: the rows of each are copies of one another.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- ANSWER
+-- ------------------------------------------------------------------------------------------ ANSWER
 -- the shortest and the longest ANSWER, trailing spaces trimmed; 30 to 1024 characters, of VARCHAR(1024) declared.
 SELECT MIN(LENGTH(RTRIM(ANSWER))), MAX(LENGTH(RTRIM(ANSWER)))
 FROM MLBLOGS_ANSWERS
@@ -65,7 +65,7 @@ FROM MLBLOGS_ANSWERS
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------- EMBEDDING
+-- --------------------------------------------------------------------------------------- EMBEDDING
 -- how many rows have no EMBEDDING; 0 of 108.
 SELECT COUNT(*) - COUNT(EMBEDDING), COUNT(*)
 FROM MLBLOGS_ANSWERS

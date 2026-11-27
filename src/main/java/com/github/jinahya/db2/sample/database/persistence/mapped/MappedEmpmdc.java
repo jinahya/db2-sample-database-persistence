@@ -153,7 +153,7 @@ public abstract class MappedEmpmdc {
      *
      * @param empno new value for {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      */
-    protected void setEmpno(@Nonnull final Integer empno) {
+    public void setEmpno(@Nonnull final Integer empno) {
         this.empno = empno;
     }
 

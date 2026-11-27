@@ -21,9 +21,12 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.persistence.test.util.AbstractEntityPersister;
+import jakarta.persistence.EntityManager;
+
+import static com.github.jinahya.persistence.test.util.EntityPersisterUtils.newPersistedInstanceOf;
 
 /**
- * Persists a new {@link Inventory}, which references nothing.
+ * Persists a new {@link Inventory}, after a new {@link Product} whose id it takes.
  */
 @SuppressWarnings({
         "java:S101" // Class names should comply with a naming convention
@@ -33,6 +36,15 @@ class Inventory_Persister
 
     Inventory_Persister() {
         super(Inventory.class);
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @Override
+    public Inventory apply(final EntityManager entityManager, final Inventory entityInstance) {
+        final var product = newPersistedInstanceOf(entityManager, Product.class);
+        entityManager.flush();
+        entityInstance.setProduct(product);
+        return super.apply(entityManager, entityInstance);
     }
 }
 

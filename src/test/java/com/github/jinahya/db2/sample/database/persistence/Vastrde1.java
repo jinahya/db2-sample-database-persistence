@@ -110,7 +110,7 @@ public class Vastrde1
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
      */
-    protected Vastrde1Id getId() {
+    public Vastrde1Id getId() {
         return id;
     }
 

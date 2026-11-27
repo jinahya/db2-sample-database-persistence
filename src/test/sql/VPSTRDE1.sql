@@ -33,7 +33,7 @@ FROM VPSTRDE1
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, PROJ1NO, PROJ2NO, of a view, which has no key: the values which more than one
 -- row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- PROJ1NO
+-- ----------------------------------------------------------------------------------------- PROJ1NO
 -- the shortest and the longest PROJ1NO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJ1NO))), MAX(LENGTH(RTRIM(PROJ1NO)))
 FROM VPSTRDE1
@@ -60,7 +60,7 @@ WHERE RTRIM(PROJ1NO) = ''
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------- PROJ1NAME
+-- --------------------------------------------------------------------------------------- PROJ1NAME
 -- the shortest and the longest PROJ1NAME, trailing spaces trimmed; 14 to 21 characters, of VARCHAR(24) declared.
 SELECT MIN(LENGTH(RTRIM(PROJ1NAME))), MAX(LENGTH(RTRIM(PROJ1NAME)))
 FROM VPSTRDE1
@@ -76,7 +76,7 @@ WHERE RTRIM(PROJ1NAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESP1NO
+-- ----------------------------------------------------------------------------------------- RESP1NO
 -- the shortest and the longest RESP1NO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(RESP1NO))), MAX(LENGTH(RTRIM(RESP1NO)))
 FROM VPSTRDE1
@@ -92,7 +92,7 @@ WHERE RTRIM(RESP1NO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESP1FN
+-- ----------------------------------------------------------------------------------------- RESP1FN
 -- the shortest and the longest RESP1FN, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(12) declared.
 SELECT MIN(LENGTH(RTRIM(RESP1FN))), MAX(LENGTH(RTRIM(RESP1FN)))
 FROM VPSTRDE1
@@ -108,7 +108,7 @@ WHERE RTRIM(RESP1FN) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESP1MI
+-- ----------------------------------------------------------------------------------------- RESP1MI
 -- the shortest and the longest RESP1MI, trailing spaces trimmed; always 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(RESP1MI))), MAX(LENGTH(RTRIM(RESP1MI)))
 FROM VPSTRDE1
@@ -129,7 +129,7 @@ FROM VPSTRDE1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESP1LN
+-- ----------------------------------------------------------------------------------------- RESP1LN
 -- the shortest and the longest RESP1LN, trailing spaces trimmed; 4 to 7 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(RESP1LN))), MAX(LENGTH(RTRIM(RESP1LN)))
 FROM VPSTRDE1
@@ -145,7 +145,7 @@ WHERE RTRIM(RESP1LN) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- PROJ2NO
+-- ----------------------------------------------------------------------------------------- PROJ2NO
 -- the shortest and the longest PROJ2NO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJ2NO))), MAX(LENGTH(RTRIM(PROJ2NO)))
 FROM VPSTRDE1
@@ -161,7 +161,7 @@ WHERE RTRIM(PROJ2NO) = ''
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------- PROJ2NAME
+-- --------------------------------------------------------------------------------------- PROJ2NAME
 -- the shortest and the longest PROJ2NAME, trailing spaces trimmed; 9 to 21 characters, of VARCHAR(24) declared.
 SELECT MIN(LENGTH(RTRIM(PROJ2NAME))), MAX(LENGTH(RTRIM(PROJ2NAME)))
 FROM VPSTRDE1
@@ -177,7 +177,7 @@ WHERE RTRIM(PROJ2NAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESP2NO
+-- ----------------------------------------------------------------------------------------- RESP2NO
 -- the shortest and the longest RESP2NO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(RESP2NO))), MAX(LENGTH(RTRIM(RESP2NO)))
 FROM VPSTRDE1
@@ -193,7 +193,7 @@ WHERE RTRIM(RESP2NO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESP2FN
+-- ----------------------------------------------------------------------------------------- RESP2FN
 -- the shortest and the longest RESP2FN, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(12) declared.
 SELECT MIN(LENGTH(RTRIM(RESP2FN))), MAX(LENGTH(RTRIM(RESP2FN)))
 FROM VPSTRDE1
@@ -209,7 +209,7 @@ WHERE RTRIM(RESP2FN) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESP2MI
+-- ----------------------------------------------------------------------------------------- RESP2MI
 -- the shortest and the longest RESP2MI, trailing spaces trimmed; 0 to 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(RESP2MI))), MAX(LENGTH(RTRIM(RESP2MI)))
 FROM VPSTRDE1
@@ -231,7 +231,7 @@ FROM VPSTRDE1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESP2LN
+-- ----------------------------------------------------------------------------------------- RESP2LN
 -- the shortest and the longest RESP2LN, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(RESP2LN))), MAX(LENGTH(RTRIM(RESP2LN)))
 FROM VPSTRDE1

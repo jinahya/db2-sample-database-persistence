@@ -309,6 +309,9 @@ public abstract class MappedProject {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_PROJNO}
+     * column as "Project number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
@@ -323,7 +326,7 @@ public abstract class MappedProject {
      *
      * @param projno new value for {@value #ATTRIBUTE_NAME_PROJNO} attribute.
      */
-    protected void setProjno(@Nonnull final String projno) {
+    public void setProjno(@Nonnull final String projno) {
         this.projno = projno;
     }
 
@@ -331,6 +334,9 @@ public abstract class MappedProject {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_PROJNAME}
+     * column as "Project name".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PROJNAME} attribute.
      */
@@ -354,6 +360,9 @@ public abstract class MappedProject {
     /**
      * Replaces current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute with the specified
      * value.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_DEPTNO}
+     * column as "Department responsible".
      *
      * @param deptno new value for {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
      * @apiNote The column is mapped read-only here, and written through the association of
@@ -369,6 +378,9 @@ public abstract class MappedProject {
     /**
      * Replaces current value of {@value #ATTRIBUTE_NAME_RESPEMP} attribute with the specified
      * value.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_RESPEMP}
+     * column as "Employee responsible".
      *
      * @param respemp new value for {@value #ATTRIBUTE_NAME_RESPEMP} attribute.
      * @apiNote The column is mapped read-only here, and written through the association of
@@ -383,6 +395,9 @@ public abstract class MappedProject {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRSTAFF} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_PRSTAFF}
+     * column as "Estimated mean staffing".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PRSTAFF} attribute.
      */
@@ -405,6 +420,9 @@ public abstract class MappedProject {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRSTDATE} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_PRSTDATE}
+     * column as "Estimated start date".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PRSTDATE} attribute.
      */
@@ -427,6 +445,9 @@ public abstract class MappedProject {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PRENDATE} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_PRENDATE}
+     * column as "Estimated end date".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PRENDATE} attribute.
      */
@@ -450,6 +471,9 @@ public abstract class MappedProject {
     /**
      * Replaces current value of {@value #ATTRIBUTE_NAME_MAJPROJ} attribute with the specified
      * value.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_MAJPROJ}
+     * column as "Major project, for a subproject".
      *
      * @param majproj new value for {@value #ATTRIBUTE_NAME_MAJPROJ} attribute.
      * @apiNote The column is mapped read-only here, and written through the association of

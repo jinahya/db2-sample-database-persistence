@@ -33,7 +33,7 @@ FROM PRODUCTSUPPLIER
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- PID
+-- --------------------------------------------------------------------------------------------- PID
 -- the shortest and the longest PID, trailing spaces trimmed; always 10 characters, of VARCHAR(10) declared.
 SELECT MIN(LENGTH(RTRIM(PID))), MAX(LENGTH(RTRIM(PID)))
 FROM PRODUCTSUPPLIER
@@ -49,7 +49,7 @@ WHERE RTRIM(PID) = ''
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- SID
+-- --------------------------------------------------------------------------------------------- SID
 -- the shortest and the longest SID, trailing spaces trimmed; always 3 characters, of VARCHAR(10) declared.
 SELECT MIN(LENGTH(RTRIM(SID))), MAX(LENGTH(RTRIM(SID)))
 FROM PRODUCTSUPPLIER

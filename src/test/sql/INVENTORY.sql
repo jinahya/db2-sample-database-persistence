@@ -33,7 +33,7 @@ FROM INVENTORY
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- PID
+-- --------------------------------------------------------------------------------------------- PID
 -- PID is the primary key; 4 distinct values in 4 rows.
 SELECT COUNT(DISTINCT PID), COUNT(*)
 FROM INVENTORY
@@ -54,7 +54,7 @@ WHERE RTRIM(PID) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ QUANTITY
+-- ---------------------------------------------------------------------------------------- QUANTITY
 -- the smallest and the largest QUANTITY; 5 and 99.
 SELECT MIN(QUANTITY), MAX(QUANTITY)
 FROM INVENTORY
@@ -66,7 +66,7 @@ FROM INVENTORY
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ LOCATION
+-- ---------------------------------------------------------------------------------------- LOCATION
 -- the shortest and the longest LOCATION, trailing spaces trimmed; 5 to 9 characters, of VARCHAR(128) declared.
 SELECT MIN(LENGTH(RTRIM(LOCATION))), MAX(LENGTH(RTRIM(LOCATION)))
 FROM INVENTORY

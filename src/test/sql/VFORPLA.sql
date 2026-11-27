@@ -33,7 +33,7 @@ FROM VFORPLA
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this view has no key, and is mapped as no entity, with no identifier. PROJNO, the project of a row: the values which
 -- more than one row shares.
 -- 14 PROJNOs, in 68 rows: the view repeats a project once per row of EMPPROJACT, so the rows of each are copies of one
@@ -45,7 +45,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- PROJNO
+-- ------------------------------------------------------------------------------------------ PROJNO
 -- the shortest and the longest PROJNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNO))), MAX(LENGTH(RTRIM(PROJNO)))
 FROM VFORPLA
@@ -61,7 +61,7 @@ WHERE RTRIM(PROJNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ PROJNAME
+-- ---------------------------------------------------------------------------------------- PROJNAME
 -- the shortest and the longest PROJNAME, trailing spaces trimmed; 9 to 21 characters, of VARCHAR(24) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNAME))), MAX(LENGTH(RTRIM(PROJNAME)))
 FROM VFORPLA
@@ -77,7 +77,7 @@ WHERE RTRIM(PROJNAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESPEMP
+-- ----------------------------------------------------------------------------------------- RESPEMP
 -- the shortest and the longest RESPEMP, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(RESPEMP))), MAX(LENGTH(RTRIM(RESPEMP)))
 FROM VFORPLA
@@ -93,7 +93,7 @@ WHERE RTRIM(RESPEMP) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- PROJDEP
+-- ----------------------------------------------------------------------------------------- PROJDEP
 -- the shortest and the longest PROJDEP, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(PROJDEP))), MAX(LENGTH(RTRIM(PROJDEP)))
 FROM VFORPLA
@@ -109,7 +109,7 @@ WHERE RTRIM(PROJDEP) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ FRSTINIT
+-- ---------------------------------------------------------------------------------------- FRSTINIT
 -- the shortest and the longest FRSTINIT, trailing spaces trimmed; always 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(FRSTINIT))), MAX(LENGTH(RTRIM(FRSTINIT)))
 FROM VFORPLA
@@ -125,7 +125,7 @@ WHERE RTRIM(FRSTINIT) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- MIDINIT
+-- ----------------------------------------------------------------------------------------- MIDINIT
 -- the shortest and the longest MIDINIT, trailing spaces trimmed; 0 to 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(MIDINIT))), MAX(LENGTH(RTRIM(MIDINIT)))
 FROM VFORPLA
@@ -147,7 +147,7 @@ FROM VFORPLA
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ LASTNAME
+-- ---------------------------------------------------------------------------------------- LASTNAME
 -- the shortest and the longest LASTNAME, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(LASTNAME))), MAX(LENGTH(RTRIM(LASTNAME)))
 FROM VFORPLA

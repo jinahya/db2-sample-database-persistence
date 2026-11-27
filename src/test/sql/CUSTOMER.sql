@@ -33,7 +33,7 @@ FROM CUSTOMER
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------------- CID
+-- --------------------------------------------------------------------------------------------- CID
 -- CID is the primary key; 6 distinct values in 6 rows.
 SELECT COUNT(DISTINCT CID), COUNT(*)
 FROM CUSTOMER
@@ -45,7 +45,7 @@ FROM CUSTOMER
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- INFO
+-- -------------------------------------------------------------------------------------------- INFO
 -- the XML schema each INFO was validated against when it was loaded; CUSTOMER for 6.
 SELECT COALESCE((SELECT o.OBJECTNAME
                   FROM SYSCAT.XSROBJECTS o
@@ -61,7 +61,7 @@ FROM CUSTOMER
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- HISTORY
+-- ----------------------------------------------------------------------------------------- HISTORY
 -- the XML schema each HISTORY was validated against when it was loaded; no document.
 SELECT COALESCE((SELECT o.OBJECTNAME
                   FROM SYSCAT.XSROBJECTS o

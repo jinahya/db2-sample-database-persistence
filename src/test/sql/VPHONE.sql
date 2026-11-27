@@ -33,7 +33,7 @@ FROM VPHONE
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, EMPLOYEENUMBER, of a view, which has no key: the values which more than one
 -- row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ LASTNAME
+-- ---------------------------------------------------------------------------------------- LASTNAME
 -- the shortest and the longest LASTNAME, trailing spaces trimmed; 3 to 10 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(LASTNAME))), MAX(LENGTH(RTRIM(LASTNAME)))
 FROM VPHONE
@@ -60,7 +60,7 @@ WHERE RTRIM(LASTNAME) = ''
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------- FIRSTNAME
+-- --------------------------------------------------------------------------------------- FIRSTNAME
 -- the shortest and the longest FIRSTNAME, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(12) declared.
 SELECT MIN(LENGTH(RTRIM(FIRSTNAME))), MAX(LENGTH(RTRIM(FIRSTNAME)))
 FROM VPHONE
@@ -76,7 +76,7 @@ WHERE RTRIM(FIRSTNAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------- MIDDLEINITIAL
+-- ----------------------------------------------------------------------------------- MIDDLEINITIAL
 -- the shortest and the longest MIDDLEINITIAL, trailing spaces trimmed; 0 to 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(MIDDLEINITIAL))), MAX(LENGTH(RTRIM(MIDDLEINITIAL)))
 FROM VPHONE
@@ -98,7 +98,7 @@ FROM VPHONE
 ;
 
 
--- --------------------------------------------------------------------------------------------------------- PHONENUMBER
+-- ------------------------------------------------------------------------------------- PHONENUMBER
 -- the shortest and the longest PHONENUMBER, trailing spaces trimmed; always 4 characters, of VARCHAR(4) declared.
 SELECT MIN(LENGTH(RTRIM(PHONENUMBER))), MAX(LENGTH(RTRIM(PHONENUMBER)))
 FROM VPHONE
@@ -114,7 +114,7 @@ WHERE RTRIM(PHONENUMBER) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------ EMPLOYEENUMBER
+-- ---------------------------------------------------------------------------------- EMPLOYEENUMBER
 -- the shortest and the longest EMPLOYEENUMBER, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPLOYEENUMBER))), MAX(LENGTH(RTRIM(EMPLOYEENUMBER)))
 FROM VPHONE
@@ -130,7 +130,7 @@ WHERE RTRIM(EMPLOYEENUMBER) = ''
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- DEPTNUMBER
+-- -------------------------------------------------------------------------------------- DEPTNUMBER
 -- the shortest and the longest DEPTNUMBER, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(DEPTNUMBER))), MAX(LENGTH(RTRIM(DEPTNUMBER)))
 FROM VPHONE
@@ -146,7 +146,7 @@ WHERE RTRIM(DEPTNUMBER) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ DEPTNAME
+-- ---------------------------------------------------------------------------------------- DEPTNAME
 -- the shortest and the longest DEPTNAME, trailing spaces trimmed; 8 to 28 characters, of VARCHAR(36) declared.
 SELECT MIN(LENGTH(RTRIM(DEPTNAME))), MAX(LENGTH(RTRIM(DEPTNAME)))
 FROM VPHONE

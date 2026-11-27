@@ -109,6 +109,7 @@ public class EmpResume
     public final int hashCode() {
         return Objects.hash(getId());
     }
+
     // ------------------------------------------------------------------------------------------ id
 
     /**
@@ -116,7 +117,7 @@ public class EmpResume
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
      */
-    protected EmpResumeId getId() {
+    public EmpResumeId getId() {
         return id;
     }
 
@@ -129,10 +130,9 @@ public class EmpResume
      * @param resumeFormat new value for the resume format of the identifier.
      */
     protected void setResumeFormat(final String resumeFormat) {
-        if (id == null) {
-            id = new EmpResumeId();
-        }
-        id.setResumeFormat(resumeFormat);
+        id = Optional.ofNullable(id)
+                .map(v -> v.withResumeFormat(resumeFormat))
+                .orElseGet(() -> EmpResumeId.from(employee, resumeFormat));
     }
 
     // ------------------------------------------------------------------------------------ employee
@@ -157,12 +157,9 @@ public class EmpResume
      */
     public void setEmployee(final Employee employee) {
         this.employee = employee;
-        id = EmpResumeId.from(
-                employee,
-                Optional.ofNullable(id)
-                        .map(EmpResumeId::getResumeFormat)
-                        .orElse(null)
-        );
+        id = Optional.ofNullable(id)
+                .map(v -> v.withEmployee(this.employee))
+                .orElseGet(() -> EmpResumeId.from(this.employee, null));
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -173,6 +170,8 @@ public class EmpResume
 
     // ---------------------------------------------------------------------------------------------
     // maps the employee number of the identifier, which the provider derives from it
+    @Valid
+    @NotNull
     @MapsId(EmpResumeId.ATTRIBUTE_NAME_EMPNO)
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = EmpResume.COLUMN_NAME_EMPNO,

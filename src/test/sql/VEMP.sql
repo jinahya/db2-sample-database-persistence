@@ -33,7 +33,7 @@ FROM VEMP
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, EMPNO, of a view, which has no key: the values which more than one row
 -- shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- EMPNO
+-- ------------------------------------------------------------------------------------------- EMPNO
 -- the shortest and the longest EMPNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPNO))), MAX(LENGTH(RTRIM(EMPNO)))
 FROM VEMP
@@ -60,7 +60,7 @@ WHERE RTRIM(EMPNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ FIRSTNME
+-- ---------------------------------------------------------------------------------------- FIRSTNME
 -- the shortest and the longest FIRSTNME, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(12) declared.
 SELECT MIN(LENGTH(RTRIM(FIRSTNME))), MAX(LENGTH(RTRIM(FIRSTNME)))
 FROM VEMP
@@ -76,7 +76,7 @@ WHERE RTRIM(FIRSTNME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- MIDINIT
+-- ----------------------------------------------------------------------------------------- MIDINIT
 -- the shortest and the longest MIDINIT, trailing spaces trimmed; 0 to 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(MIDINIT))), MAX(LENGTH(RTRIM(MIDINIT)))
 FROM VEMP
@@ -98,7 +98,7 @@ FROM VEMP
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ LASTNAME
+-- ---------------------------------------------------------------------------------------- LASTNAME
 -- the shortest and the longest LASTNAME, trailing spaces trimmed; 3 to 10 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(LASTNAME))), MAX(LENGTH(RTRIM(LASTNAME)))
 FROM VEMP
@@ -114,7 +114,7 @@ WHERE RTRIM(LASTNAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ WORKDEPT
+-- ---------------------------------------------------------------------------------------- WORKDEPT
 -- the shortest and the longest WORKDEPT, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(WORKDEPT))), MAX(LENGTH(RTRIM(WORKDEPT)))
 FROM VEMP

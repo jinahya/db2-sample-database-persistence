@@ -102,7 +102,7 @@ class PersistenceUnit_IT {
         entityManager.createQuery("SELECT p FROM Product p", Product.class).getResultList()
                 .forEach(p -> assertThat(p.getDescription().getPid())
                         .as("description of %s", p.getPid()).isEqualTo(p.getPid()));
-        entityManager.createQuery("SELECT o FROM PurchaseOrder o", PurchaseOrder.class)
+        entityManager.createQuery("SELECT o FROM Purchaseorder o", Purchaseorder.class)
                 .getResultList()
                 .forEach(o -> assertThat(o.getPorder().getPoNum())
                         .as("porder of %s", o.getPoid()).isEqualTo(String.valueOf(o.getPoid())));
@@ -128,8 +128,8 @@ class PersistenceUnit_IT {
             product.validate(source(new ProductStringAttributeConverter()
                                             .convertToDatabaseColumn(p.getDescription())));
         }
-        for (final var o : entityManager.createQuery("SELECT o FROM PurchaseOrder o",
-                                                     PurchaseOrder.class).getResultList()) {
+        for (final var o : entityManager.createQuery("SELECT o FROM Purchaseorder o",
+                                                     Purchaseorder.class).getResultList()) {
             porder.validate(source(new PurchaseOrderStringAttributeConverter()
                                            .convertToDatabaseColumn(o.getPorder())));
         }
@@ -158,12 +158,12 @@ class PersistenceUnit_IT {
         assertThat(found.getDescription()).isNotNull().isEqualTo(product.getDescription());
     }
 
-    @DisplayName("a random PurchaseOrder inserts, and its XML column reads back equal")
+    @DisplayName("a random Purchaseorder inserts, and its XML column reads back equal")
     @Test
     void purchaseOrder_Inserts_() {
-        final var purchaseOrder = new PurchaseOrder_Randomizer().get();
+        final var purchaseOrder = new Purchaseorder_Randomizer().get();
         purchaseOrder.setPoid(9999L);
-        final var found = insertAndFind(purchaseOrder, PurchaseOrder.class,
+        final var found = insertAndFind(purchaseOrder, Purchaseorder.class,
                                         purchaseOrder.getPoid());
         assertThat(found.getPorder()).isNotNull().isEqualTo(purchaseOrder.getPorder());
     }
@@ -181,16 +181,16 @@ class PersistenceUnit_IT {
     @Test
     void lob_() {
         entityManager.createQuery("SELECT p FROM EmpPhoto p", EmpPhoto.class).getResultList()
-                .forEach(p -> assertThat(p.getPicture()).as("picture of %s", p.getEmpno())
+                .forEach(p -> assertThat(p.getPicture()).as("picture of %s", p.getId().getEmpno())
                         .isNotEmpty());
         entityManager.createQuery("SELECT r FROM EmpResume r", EmpResume.class).getResultList()
                 .forEach(r -> assertThat(r.getResume()).as("resume of %s", r.getId().getEmpno())
                         .contains("Resume"));
     }
 
-    @DisplayName("an @IdClass entity finds by its id, and its association resolves")
+    @DisplayName("an @EmbeddedId entity finds by its id, and its @MapsId association resolves")
     @Test
-    void idClass_() {
+    void embeddedId_() {
         final var photo = entityManager.find(EmpPhoto.class,
                                              EmpPhotoId.of("000130", "bitmap"));
         assertThat(photo).isNotNull();

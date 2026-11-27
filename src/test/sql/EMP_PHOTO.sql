@@ -33,7 +33,7 @@ FROM EMP_PHOTO
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- EMPNO
+-- ------------------------------------------------------------------------------------------- EMPNO
 -- the shortest and the longest EMPNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPNO))), MAX(LENGTH(RTRIM(EMPNO)))
 FROM EMP_PHOTO
@@ -49,7 +49,7 @@ WHERE RTRIM(EMPNO) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------- PHOTO_FORMAT
+-- ------------------------------------------------------------------------------------ PHOTO_FORMAT
 -- the shortest and the longest PHOTO_FORMAT, trailing spaces trimmed; 3 to 6 characters, of VARCHAR(10) declared.
 SELECT MIN(LENGTH(RTRIM(PHOTO_FORMAT))), MAX(LENGTH(RTRIM(PHOTO_FORMAT)))
 FROM EMP_PHOTO
@@ -69,7 +69,7 @@ WHERE RTRIM(PHOTO_FORMAT) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- PICTURE
+-- ----------------------------------------------------------------------------------------- PICTURE
 -- the smallest and the largest PICTURE; 29143 and 73438 bytes, of BLOB(102400) declared.
 SELECT MIN(LENGTH(PICTURE)), MAX(LENGTH(PICTURE))
 FROM EMP_PHOTO

@@ -147,7 +147,7 @@ public abstract class MappedCatalog {
      *
      * @param name new value for {@value #ATTRIBUTE_NAME_NAME} attribute.
      */
-    protected void setName(@Nonnull final String name) {
+    public void setName(@Nonnull final String name) {
         this.name = name;
     }
 

@@ -26,11 +26,15 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumeratedValue;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -121,15 +125,85 @@ public abstract class MappedPatient {
     public static final int COLUMN_LENGTH_GENDER = 6;
 
     /**
+     * A value of the {@value #COLUMN_NAME_GENDER} column, for a female patient. The value is
+     * {@value}.
+     */
+    public static final String COLUMN_VALUE_GENDER_FEMALE = "Female";
+
+    /**
+     * A value of the {@value #COLUMN_NAME_GENDER} column, for a male patient. The value is
+     * {@value}.
+     */
+    public static final String COLUMN_VALUE_GENDER_MALE = "Male";
+
+    /**
      * The name of the attribute which maps the {@value #COLUMN_NAME_GENDER} column. The value is
      * {@value}.
      */
     public static final String ATTRIBUTE_NAME_GENDER = "gender";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_GENDER} attribute. The value is {@value}.
+     * An enum for the {@value #ATTRIBUTE_NAME_GENDER} attribute; the values the installed data
+     * holds. A column value is not a constant's {@link Enum#name() name} ({@code Female}, not
+     * {@code FEMALE}), so each constant carries it as an {@link EnumeratedValue @EnumeratedValue}.
+     *
+     * @implNote The database does not restrict the column to these values.
      */
-    public static final int SIZE_MAX_GENDER = COLUMN_LENGTH_GENDER;
+    public enum Gender {
+
+        /**
+         * A constant for the {@value MappedPatient#COLUMN_VALUE_GENDER_FEMALE} value, for a female
+         * patient.
+         */
+        FEMALE(COLUMN_VALUE_GENDER_FEMALE),
+
+        /**
+         * A constant for the {@value MappedPatient#COLUMN_VALUE_GENDER_MALE} value, for a male
+         * patient.
+         */
+        MALE(COLUMN_VALUE_GENDER_MALE);
+
+        // -----------------------------------------------------------------------------------------
+
+        /**
+         * Returns the constant whose {@link #attributeValue() attribute value} is the specified
+         * value.
+         *
+         * @param attributeValue the attribute value to match.
+         * @return the constant whose attribute value is {@code attributeValue}.
+         * @throws IllegalArgumentException if no constant has {@code attributeValue} as its
+         *                                  attribute value.
+         */
+        public static Gender valueOfAttributeValue(final String attributeValue) {
+            for (final var value : values()) {
+                if (value.attributeValue.equals(attributeValue)) {
+                    return value;
+                }
+            }
+            throw new IllegalArgumentException("no gender for '" + attributeValue + "'");
+        }
+
+        // -----------------------------------------------------------------------------------------
+        Gender(final String attributeValue) {
+            this.attributeValue = Objects.requireNonNull(attributeValue, "attributeValue is null");
+        }
+
+        // -----------------------------------------------------------------------------------------
+
+        /**
+         * Returns the value of the {@value MappedPatient#COLUMN_NAME_GENDER} column which this
+         * constant represents.
+         *
+         * @return the attribute value of this constant.
+         */
+        public String attributeValue() {
+            return attributeValue;
+        }
+
+        // -----------------------------------------------------------------------------------------
+        @EnumeratedValue
+        private final String attributeValue;
+    }
 
     // --------------------------------------------------------------------------- CHOLESTEROL_LEVEL
 
@@ -179,10 +253,81 @@ public abstract class MappedPatient {
     public static final String ATTRIBUTE_NAME_SMOKING_STATUS = "smokingStatus";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute. The value is
-     * {@value}.
+     * A value of the {@value #COLUMN_NAME_SMOKING_STATUS} column, for a patient who does not smoke.
+     * The value is {@value}.
      */
-    public static final int SIZE_MAX_SMOKING_STATUS = COLUMN_LENGTH_SMOKING_STATUS;
+    public static final String COLUMN_VALUE_SMOKING_STATUS_NON_SMOKER = "Non-smoker";
+
+    /**
+     * A value of the {@value #COLUMN_NAME_SMOKING_STATUS} column, for a patient who smokes. The
+     * value is {@value}.
+     */
+    public static final String COLUMN_VALUE_SMOKING_STATUS_SMOKER = "Smoker";
+
+    /**
+     * An enum for the {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute; the values the installed
+     * data holds. A column value is not a constant's {@link Enum#name() name}
+     * ({@code Non-smoker}, not {@code NON_SMOKER}), so each constant carries it as an
+     * {@link EnumeratedValue @EnumeratedValue}.
+     *
+     * @implNote The database does not restrict the column to these values.
+     */
+    public enum SmokingStatus {
+
+        /**
+         * A constant for the {@value MappedPatient#COLUMN_VALUE_SMOKING_STATUS_NON_SMOKER} value,
+         * for a patient who does not smoke. Note that the column value is not this constant's
+         * {@link Enum#name() name}.
+         */
+        NON_SMOKER(COLUMN_VALUE_SMOKING_STATUS_NON_SMOKER),
+
+        /**
+         * A constant for the {@value MappedPatient#COLUMN_VALUE_SMOKING_STATUS_SMOKER} value, for a
+         * patient who smokes.
+         */
+        SMOKER(COLUMN_VALUE_SMOKING_STATUS_SMOKER);
+
+        // -----------------------------------------------------------------------------------------
+
+        /**
+         * Returns the constant whose {@link #attributeValue() attribute value} is the specified
+         * value.
+         *
+         * @param attributeValue the attribute value to match.
+         * @return the constant whose attribute value is {@code attributeValue}.
+         * @throws IllegalArgumentException if no constant has {@code attributeValue} as its
+         *                                  attribute value.
+         */
+        public static SmokingStatus valueOfAttributeValue(final String attributeValue) {
+            for (final var value : values()) {
+                if (value.attributeValue.equals(attributeValue)) {
+                    return value;
+                }
+            }
+            throw new IllegalArgumentException("no smoking status for '" + attributeValue + "'");
+        }
+
+        // -----------------------------------------------------------------------------------------
+        SmokingStatus(final String attributeValue) {
+            this.attributeValue = Objects.requireNonNull(attributeValue, "attributeValue is null");
+        }
+
+        // -----------------------------------------------------------------------------------------
+
+        /**
+         * Returns the value of the {@value MappedPatient#COLUMN_NAME_SMOKING_STATUS} column which
+         * this constant represents.
+         *
+         * @return the attribute value of this constant.
+         */
+        public String attributeValue() {
+            return attributeValue;
+        }
+
+        // -----------------------------------------------------------------------------------------
+        @EnumeratedValue
+        private final String attributeValue;
+    }
 
     // ----------------------------------------------------------------------------------- EMBEDDING
 
@@ -251,10 +396,10 @@ public abstract class MappedPatient {
             final Integer patientId,
             final String name,
             final Integer age,
-            final String gender,
+            final Gender gender,
             final Integer cholesterolLevel,
             final Integer bloodPressure,
-            final String smokingStatus,
+            final SmokingStatus smokingStatus,
             final float[] embedding) {
         this();
         this.patientId = patientId;
@@ -300,7 +445,7 @@ public abstract class MappedPatient {
      *
      * @param patientId new value for {@value #ATTRIBUTE_NAME_PATIENT_ID} attribute.
      */
-    protected void setPatientId(@Nonnull final Integer patientId) {
+    public void setPatientId(@Nonnull final Integer patientId) {
         this.patientId = patientId;
     }
 
@@ -354,7 +499,7 @@ public abstract class MappedPatient {
      * @return current value of {@value #ATTRIBUTE_NAME_GENDER} attribute.
      */
     @Nullable
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
@@ -364,7 +509,7 @@ public abstract class MappedPatient {
      *
      * @param gender new value for {@value #ATTRIBUTE_NAME_GENDER} attribute.
      */
-    public void setGender(@Nullable final String gender) {
+    public void setGender(@Nullable final Gender gender) {
         this.gender = gender;
     }
 
@@ -420,7 +565,7 @@ public abstract class MappedPatient {
      * @return current value of {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute.
      */
     @Nullable
-    public String getSmokingStatus() {
+    public SmokingStatus getSmokingStatus() {
         return smokingStatus;
     }
 
@@ -430,7 +575,7 @@ public abstract class MappedPatient {
      *
      * @param smokingStatus new value for {@value #ATTRIBUTE_NAME_SMOKING_STATUS} attribute.
      */
-    public void setSmokingStatus(@Nullable final String smokingStatus) {
+    public void setSmokingStatus(@Nullable final SmokingStatus smokingStatus) {
         this.smokingStatus = smokingStatus;
     }
 
@@ -492,7 +637,11 @@ public abstract class MappedPatient {
     private Integer age;
 
     // ---------------------------------------------------------------------------------------------
-    @Size(max = SIZE_MAX_GENDER)
+    // the specification infers STRING from the enum's @EnumeratedValue String field, without
+    // @Enumerated; Hibernate ORM 7 does not, and takes it as ORDINAL
+    // https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2#a14719
+    // https://hibernate.atlassian.net/browse/HHH-20410
+    @Enumerated(EnumType.STRING)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_GENDER,
             nullable = true,
@@ -500,7 +649,7 @@ public abstract class MappedPatient {
             updatable = true,
             length = COLUMN_LENGTH_GENDER
     )
-    private String gender;
+    private Gender gender;
 
     // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
@@ -521,7 +670,11 @@ public abstract class MappedPatient {
     private Integer bloodPressure;
 
     // ---------------------------------------------------------------------------------------------
-    @Size(max = SIZE_MAX_SMOKING_STATUS)
+    // the specification infers STRING from the enum's @EnumeratedValue String field, without
+    // @Enumerated; Hibernate ORM 7 does not, and takes it as ORDINAL
+    // https://jakarta.ee/specifications/persistence/3.2/jakarta-persistence-spec-3.2#a14719
+    // https://hibernate.atlassian.net/browse/HHH-20410
+    @Enumerated(EnumType.STRING)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SMOKING_STATUS,
             nullable = true,
@@ -529,7 +682,7 @@ public abstract class MappedPatient {
             updatable = true,
             length = COLUMN_LENGTH_SMOKING_STATUS
     )
-    private String smokingStatus;
+    private SmokingStatus smokingStatus;
 
     // ---------------------------------------------------------------------------------------------
     @Size(min = SIZE_EMBEDDING, max = SIZE_EMBEDDING)

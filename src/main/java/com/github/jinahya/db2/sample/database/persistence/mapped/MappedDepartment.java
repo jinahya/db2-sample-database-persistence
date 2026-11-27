@@ -240,6 +240,9 @@ public abstract class MappedDepartment {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_DEPTNO}
+     * column as "Department number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DEPTNO} attribute.
      */
@@ -262,6 +265,9 @@ public abstract class MappedDepartment {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_DEPTNAME}
+     * column as "Name describing general activities of department".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
      */
@@ -284,6 +290,9 @@ public abstract class MappedDepartment {
 
     /**
      * Replaces current value of {@value #ATTRIBUTE_NAME_MGRNO} attribute with the specified value.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_MGRNO}
+     * column as "Employee number (EMPNO) of department manager".
      *
      * @param mgrno new value for {@value #ATTRIBUTE_NAME_MGRNO} attribute.
      * @apiNote The column is mapped read-only here, and written through the association of
@@ -299,6 +308,9 @@ public abstract class MappedDepartment {
     /**
      * Replaces current value of {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute with the specified
      * value.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_ADMRDEPT}
+     * column as "Department (DEPTNO) to which this department reports".
      *
      * @param admrdept new value for {@value #ATTRIBUTE_NAME_ADMRDEPT} attribute.
      * @apiNote The column is mapped read-only here, and written through the association of
@@ -313,6 +325,9 @@ public abstract class MappedDepartment {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_LOCATION}
+     * column as "Name of the remote location".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute.
      */

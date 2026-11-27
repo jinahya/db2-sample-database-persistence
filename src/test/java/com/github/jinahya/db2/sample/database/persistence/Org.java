@@ -56,14 +56,4 @@ public class Org
         );
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param deptnumb {@inheritDoc}
-     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
-     */
-    @Override
-    public void setDeptnumb(final Integer deptnumb) {
-        super.setDeptnumb(deptnumb);
-    }
 }

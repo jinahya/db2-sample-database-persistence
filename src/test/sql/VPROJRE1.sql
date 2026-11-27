@@ -33,7 +33,7 @@ FROM VPROJRE1
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, PROJNO, of a view, which has no key: the values which more than one row
 -- shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- PROJNO
+-- ------------------------------------------------------------------------------------------ PROJNO
 -- the shortest and the longest PROJNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNO))), MAX(LENGTH(RTRIM(PROJNO)))
 FROM VPROJRE1
@@ -60,7 +60,7 @@ WHERE RTRIM(PROJNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ PROJNAME
+-- ---------------------------------------------------------------------------------------- PROJNAME
 -- the shortest and the longest PROJNAME, trailing spaces trimmed; 9 to 21 characters, of VARCHAR(24) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNAME))), MAX(LENGTH(RTRIM(PROJNAME)))
 FROM VPROJRE1
@@ -76,7 +76,7 @@ WHERE RTRIM(PROJNAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- PROJDEP
+-- ----------------------------------------------------------------------------------------- PROJDEP
 -- the shortest and the longest PROJDEP, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(PROJDEP))), MAX(LENGTH(RTRIM(PROJDEP)))
 FROM VPROJRE1
@@ -92,7 +92,7 @@ WHERE RTRIM(PROJDEP) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- RESPEMP
+-- ----------------------------------------------------------------------------------------- RESPEMP
 -- the shortest and the longest RESPEMP, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(RESPEMP))), MAX(LENGTH(RTRIM(RESPEMP)))
 FROM VPROJRE1
@@ -108,7 +108,7 @@ WHERE RTRIM(RESPEMP) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ FIRSTNME
+-- ---------------------------------------------------------------------------------------- FIRSTNME
 -- the shortest and the longest FIRSTNME, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(12) declared.
 SELECT MIN(LENGTH(RTRIM(FIRSTNME))), MAX(LENGTH(RTRIM(FIRSTNME)))
 FROM VPROJRE1
@@ -124,7 +124,7 @@ WHERE RTRIM(FIRSTNME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- MIDINIT
+-- ----------------------------------------------------------------------------------------- MIDINIT
 -- the shortest and the longest MIDINIT, trailing spaces trimmed; 0 to 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(MIDINIT))), MAX(LENGTH(RTRIM(MIDINIT)))
 FROM VPROJRE1
@@ -146,7 +146,7 @@ FROM VPROJRE1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ LASTNAME
+-- ---------------------------------------------------------------------------------------- LASTNAME
 -- the shortest and the longest LASTNAME, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(LASTNAME))), MAX(LENGTH(RTRIM(LASTNAME)))
 FROM VPROJRE1
@@ -162,7 +162,7 @@ WHERE RTRIM(LASTNAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- MAJPROJ
+-- ----------------------------------------------------------------------------------------- MAJPROJ
 -- the shortest and the longest MAJPROJ, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(MAJPROJ))), MAX(LENGTH(RTRIM(MAJPROJ)))
 FROM VPROJRE1

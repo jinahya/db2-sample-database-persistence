@@ -212,6 +212,9 @@ public abstract class MappedOrg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_DEPTNUMB}
+     * column as "Department number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute.
      */
@@ -226,7 +229,7 @@ public abstract class MappedOrg {
      *
      * @param deptnumb new value for {@value #ATTRIBUTE_NAME_DEPTNUMB} attribute.
      */
-    protected void setDeptnumb(@Nonnull final Integer deptnumb) {
+    public void setDeptnumb(@Nonnull final Integer deptnumb) {
         this.deptnumb = deptnumb;
     }
 
@@ -234,6 +237,9 @@ public abstract class MappedOrg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_DEPTNAME}
+     * column as "Department name".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DEPTNAME} attribute.
      */
@@ -256,6 +262,9 @@ public abstract class MappedOrg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MANAGER} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_MANAGER}
+     * column as "Manager number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_MANAGER} attribute.
      */
@@ -278,6 +287,9 @@ public abstract class MappedOrg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DIVISION} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_DIVISION}
+     * column as "Division of corporation".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DIVISION} attribute.
      */
@@ -300,6 +312,9 @@ public abstract class MappedOrg {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_LOCATION}
+     * column as "City".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_LOCATION} attribute.
      */

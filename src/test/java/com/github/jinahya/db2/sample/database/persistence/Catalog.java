@@ -43,15 +43,4 @@ public class Catalog
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param name {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
-     */
-    @Override
-    public void setName(final String name) {
-        super.setName(name);
-    }
 }

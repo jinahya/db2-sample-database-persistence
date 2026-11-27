@@ -22,7 +22,14 @@ package com.github.jinahya.db2.sample.database.persistence;
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedInventory;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.Optional;
 
 /**
  * An entity of the {@value #TABLE_NAME} table.
@@ -43,15 +50,42 @@ public class Inventory
         super();
     }
 
+    // ------------------------------------------------------------------------------------- product
+
     /**
-     * {@inheritDoc}
+     * Returns the product of this inventory.
      *
-     * @param pid {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
+     * @return the product of this inventory.
      */
-    @Override
-    public void setPid(final String pid) {
-        super.setPid(pid);
+    public Product getProduct() {
+        return product;
     }
+
+    /**
+     * Replaces the product of this inventory with the specified value, and the
+     * {@value #ATTRIBUTE_NAME_PID} attribute with its product id.
+     *
+     * @param product new value for the product.
+     * @implNote The association is read-only over the column of the identifier, which the
+     *         {@value #ATTRIBUTE_NAME_PID} attribute writes; this keeps the two in step.
+     */
+    public void setProduct(final Product product) {
+        this.product = product;
+        setPid(Optional.ofNullable(product).map(Product::getPid).orElse(null));
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // the table declares no foreign key; PID names a product, as the column says, and every
+    // installed row's does. Read-only: the identifier's column is written by the pid attribute
+    @Valid
+    @NotNull
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = Inventory.COLUMN_NAME_PID,
+                referencedColumnName = Product.COLUMN_NAME_PID,
+                nullable = false,
+                insertable = false,
+                updatable = false
+    )
+    private Product product;
+
 }

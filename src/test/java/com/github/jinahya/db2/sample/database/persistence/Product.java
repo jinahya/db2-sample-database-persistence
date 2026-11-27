@@ -43,15 +43,4 @@ public class Product
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param pid {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
-     */
-    @Override
-    public void setPid(final String pid) {
-        super.setPid(pid);
-    }
 }

@@ -33,7 +33,7 @@ FROM IN_TRAY
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this table declares no primary key, and is mapped as no entity, with no identifier. RECEIVED, which the data alone
 -- would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ RECEIVED
+-- ---------------------------------------------------------------------------------------- RECEIVED
 -- the earliest and the latest RECEIVED; 1988-12-22-14.07.21.136421 and 1988-12-25-17.12.30.000000.
 SELECT MIN(RECEIVED), MAX(RECEIVED)
 FROM IN_TRAY
@@ -56,7 +56,7 @@ FROM IN_TRAY
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- SOURCE
+-- ------------------------------------------------------------------------------------------ SOURCE
 -- the shortest and the longest SOURCE, trailing spaces trimmed; 5 to 8 characters, of CHARACTER(8) declared.
 SELECT MIN(LENGTH(RTRIM(SOURCE))), MAX(LENGTH(RTRIM(SOURCE)))
 FROM IN_TRAY
@@ -77,7 +77,7 @@ FROM IN_TRAY
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- SUBJECT
+-- ----------------------------------------------------------------------------------------- SUBJECT
 -- the shortest and the longest SUBJECT, trailing spaces trimmed; 34 to 39 characters, of CHARACTER(64) declared.
 SELECT MIN(LENGTH(RTRIM(SUBJECT))), MAX(LENGTH(RTRIM(SUBJECT)))
 FROM IN_TRAY
@@ -98,7 +98,7 @@ FROM IN_TRAY
 ;
 
 
--- ----------------------------------------------------------------------------------------------------------- NOTE_TEXT
+-- --------------------------------------------------------------------------------------- NOTE_TEXT
 -- the shortest and the longest NOTE_TEXT, trailing spaces trimmed; 192 to 649 characters, of VARCHAR(3000) declared.
 SELECT MIN(LENGTH(RTRIM(NOTE_TEXT))), MAX(LENGTH(RTRIM(NOTE_TEXT)))
 FROM IN_TRAY

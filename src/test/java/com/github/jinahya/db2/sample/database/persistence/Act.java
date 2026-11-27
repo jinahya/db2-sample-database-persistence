@@ -43,15 +43,4 @@ public class Act
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param actno {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
-     */
-    @Override
-    public void setActno(final Integer actno) {
-        super.setActno(actno);
-    }
 }

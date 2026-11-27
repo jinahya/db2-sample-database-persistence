@@ -33,7 +33,7 @@ FROM CATALOG
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- NAME
+-- -------------------------------------------------------------------------------------------- NAME
 -- NAME is the primary key; 0 distinct values in 0 rows.
 SELECT COUNT(DISTINCT NAME), COUNT(*)
 FROM CATALOG
@@ -54,7 +54,7 @@ WHERE RTRIM(NAME) = ''
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- CATLOG
+-- ------------------------------------------------------------------------------------------ CATLOG
 -- the XML schema each CATLOG was validated against when it was loaded; no document.
 SELECT COALESCE((SELECT o.OBJECTNAME
                   FROM SYSCAT.XSROBJECTS o

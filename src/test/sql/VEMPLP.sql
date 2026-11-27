@@ -33,7 +33,7 @@ FROM VEMPLP
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, EMPLOYEENUMBER, of a view, which has no key: the values which more than one
 -- row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ------------------------------------------------------------------------------------------------------ EMPLOYEENUMBER
+-- ---------------------------------------------------------------------------------- EMPLOYEENUMBER
 -- the shortest and the longest EMPLOYEENUMBER, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPLOYEENUMBER))), MAX(LENGTH(RTRIM(EMPLOYEENUMBER)))
 FROM VEMPLP
@@ -60,7 +60,7 @@ WHERE RTRIM(EMPLOYEENUMBER) = ''
 ;
 
 
--- --------------------------------------------------------------------------------------------------------- PHONENUMBER
+-- ------------------------------------------------------------------------------------- PHONENUMBER
 -- the shortest and the longest PHONENUMBER, trailing spaces trimmed; always 4 characters, of CHARACTER(4) declared.
 SELECT MIN(LENGTH(RTRIM(PHONENUMBER))), MAX(LENGTH(RTRIM(PHONENUMBER)))
 FROM VEMPLP

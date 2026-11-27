@@ -33,7 +33,7 @@ FROM SALES
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this table declares no primary key, and is mapped as no entity, with no identifier. SALES_DATE, SALES_PERSON, REGION,
 -- which the data alone would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- SALES_DATE
+-- -------------------------------------------------------------------------------------- SALES_DATE
 -- the earliest and the latest SALES_DATE; 1996-03-29 and 2006-04-01.
 SELECT MIN(SALES_DATE), MAX(SALES_DATE)
 FROM SALES
@@ -56,7 +56,7 @@ FROM SALES
 ;
 
 
--- -------------------------------------------------------------------------------------------------------- SALES_PERSON
+-- ------------------------------------------------------------------------------------ SALES_PERSON
 -- the shortest and the longest SALES_PERSON, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(SALES_PERSON))), MAX(LENGTH(RTRIM(SALES_PERSON)))
 FROM SALES
@@ -77,7 +77,7 @@ FROM SALES
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- REGION
+-- ------------------------------------------------------------------------------------------ REGION
 -- the shortest and the longest REGION, trailing spaces trimmed; 6 to 13 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(REGION))), MAX(LENGTH(RTRIM(REGION)))
 FROM SALES
@@ -98,7 +98,7 @@ FROM SALES
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- SALES
+-- ------------------------------------------------------------------------------------------- SALES
 -- the smallest and the largest SALES; 1 and 18.
 SELECT MIN(SALES), MAX(SALES)
 FROM SALES
@@ -108,4 +108,8 @@ FROM SALES
 SELECT COUNT(*) - COUNT(SALES), COUNT(*)
 FROM SALES
 ;
+
+SELECT COUNT(1)
+FROM SALES
+WHERE SALES <= 0;
 

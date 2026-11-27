@@ -312,6 +312,9 @@ public abstract class MappedStaff {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ID} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_ID}
+     * column as "Employee number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
      */
@@ -325,7 +328,7 @@ public abstract class MappedStaff {
      *
      * @param id new value for {@value #ATTRIBUTE_NAME_ID} attribute.
      */
-    protected void setId(@Nonnull final Integer id) {
+    public void setId(@Nonnull final Integer id) {
         this.id = id;
     }
 
@@ -333,6 +336,9 @@ public abstract class MappedStaff {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_NAME} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_NAME}
+     * column as "Employee name".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_NAME} attribute.
      */
@@ -354,6 +360,9 @@ public abstract class MappedStaff {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DEPT} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_DEPT}
+     * column as "Department number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DEPT} attribute.
      */
@@ -375,6 +384,9 @@ public abstract class MappedStaff {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_JOB} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_JOB}
+     * column as "Job type".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_JOB} attribute.
      */
@@ -396,6 +408,9 @@ public abstract class MappedStaff {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_YEARS} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_YEARS}
+     * column as "Years of service".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_YEARS} attribute.
      */
@@ -417,6 +432,9 @@ public abstract class MappedStaff {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALARY} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_SALARY}
+     * column as "Current salary".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SALARY} attribute.
      */
@@ -439,6 +457,9 @@ public abstract class MappedStaff {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_COMM} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_COMM}
+     * column as "Commission".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_COMM} attribute.
      */

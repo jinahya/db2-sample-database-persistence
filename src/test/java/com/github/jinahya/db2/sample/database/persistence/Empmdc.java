@@ -54,14 +54,4 @@ public class Empmdc
         );
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param empno {@inheritDoc}
-     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
-     */
-    @Override
-    public void setEmpno(final Integer empno) {
-        super.setEmpno(empno);
-    }
 }

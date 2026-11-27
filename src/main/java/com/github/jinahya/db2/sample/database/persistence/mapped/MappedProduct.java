@@ -283,7 +283,7 @@ public abstract class MappedProduct {
      *
      * @param pid new value for {@value #ATTRIBUTE_NAME_PID} attribute.
      */
-    protected void setPid(@Nonnull final String pid) {
+    public void setPid(@Nonnull final String pid) {
         this.pid = pid;
     }
 

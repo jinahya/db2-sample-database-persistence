@@ -193,6 +193,9 @@ public abstract class MappedClSched {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the
+     * {@value #COLUMN_NAME_CLASS_CODE} column as "Class Code (room:teacher)".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute.
      */
@@ -207,7 +210,7 @@ public abstract class MappedClSched {
      *
      * @param classCode new value for {@value #ATTRIBUTE_NAME_CLASS_CODE} attribute.
      */
-    protected void setClassCode(@Nonnull final String classCode) {
+    public void setClassCode(@Nonnull final String classCode) {
         this.classCode = classCode;
     }
 
@@ -215,6 +218,9 @@ public abstract class MappedClSched {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_DAY} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_DAY}
+     * column as "Day # of 4 day schedule".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_DAY} attribute.
      */
@@ -236,6 +242,9 @@ public abstract class MappedClSched {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_STARTING} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_STARTING}
+     * column as "Class Start Time".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_STARTING} attribute.
      */
@@ -258,6 +267,9 @@ public abstract class MappedClSched {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_ENDING} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_ENDING}
+     * column as "Class End Time".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ENDING} attribute.
      */

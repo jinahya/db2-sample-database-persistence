@@ -33,7 +33,7 @@ FROM EMPPROJACT
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this table declares no primary key, and is mapped as no entity, with no identifier. EMPNO, PROJNO, ACTNO, EMSTDATE,
 -- which the data alone would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- EMPNO
+-- ------------------------------------------------------------------------------------------- EMPNO
 -- the shortest and the longest EMPNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPNO))), MAX(LENGTH(RTRIM(EMPNO)))
 FROM EMPPROJACT
@@ -59,8 +59,15 @@ WHERE RTRIM(EMPNO) = ''
    OR EMPNO <> LTRIM(EMPNO)
 ;
 
+SELECT epa.EMPNO, e.EMPNO
+FROM EMPPROJACT AS epa
+         LEFT JOIN EMPLOYEE AS e ON epa.EMPNO = e.EMPNO
+WHERE e.EMPNO IS NULL
+;
 
--- -------------------------------------------------------------------------------------------------------------- PROJNO
+
+
+-- ------------------------------------------------------------------------------------------ PROJNO
 -- the shortest and the longest PROJNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNO))), MAX(LENGTH(RTRIM(PROJNO)))
 FROM EMPPROJACT
@@ -75,15 +82,28 @@ WHERE RTRIM(PROJNO) = ''
    OR PROJNO <> LTRIM(PROJNO)
 ;
 
+SELECT epa.PROJNO, p.PROJNO
+FROM EMPPROJACT AS epa
+         LEFT JOIN PROJECT AS p ON epa.PROJNO = p.PROJNO
+WHERE p.PROJNO IS NULL
+;
 
--- --------------------------------------------------------------------------------------------------------------- ACTNO
+
+-- ------------------------------------------------------------------------------------------- ACTNO
 -- the smallest and the largest ACTNO; 10 and 180.
 SELECT MIN(ACTNO), MAX(ACTNO)
 FROM EMPPROJACT
 ;
 
+SELECT epa.ACTNO, a.ACTNO
+FROM EMPPROJACT AS epa
+         LEFT JOIN ACT AS a ON epa.ACTNO = a.ACTNO
+WHERE a.ACTNO IS NULL
+;
 
--- ------------------------------------------------------------------------------------------------------------- EMPTIME
+
+
+-- ----------------------------------------------------------------------------------------- EMPTIME
 -- the smallest and the largest EMPTIME; 0.25 and 1.00.
 SELECT MIN(EMPTIME), MAX(EMPTIME)
 FROM EMPPROJACT
@@ -95,7 +115,7 @@ FROM EMPPROJACT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ EMSTDATE
+-- ---------------------------------------------------------------------------------------- EMSTDATE
 -- the earliest and the latest EMSTDATE; 2002-01-01 and 2003-01-01.
 SELECT MIN(EMSTDATE), MAX(EMSTDATE)
 FROM EMPPROJACT
@@ -107,7 +127,7 @@ FROM EMPPROJACT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ EMENDATE
+-- ---------------------------------------------------------------------------------------- EMENDATE
 -- the earliest and the latest EMENDATE; 2002-02-01 and 2003-10-01.
 SELECT MIN(EMENDATE), MAX(EMENDATE)
 FROM EMPPROJACT

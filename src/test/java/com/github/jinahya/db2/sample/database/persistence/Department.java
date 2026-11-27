@@ -21,11 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedDepartment;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Optional;
@@ -103,6 +105,8 @@ public class Department
     }
 
     // ---------------------------------------------------------------------------------------------
+    @Nullable
+    @Valid
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = Department.COLUMN_NAME_MGRNO,
                 referencedColumnName = Employee.COLUMN_NAME_EMPNO,
@@ -113,6 +117,7 @@ public class Department
     private Employee manager;
 
     // ---------------------------------------------------------------------------------------------
+    @Valid
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = Department.COLUMN_NAME_ADMRDEPT,

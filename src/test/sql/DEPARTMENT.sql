@@ -33,7 +33,7 @@ FROM DEPARTMENT
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- DEPTNO
+-- ------------------------------------------------------------------------------------------ DEPTNO
 -- DEPTNO is the primary key; 14 distinct values in 14 rows.
 SELECT COUNT(DISTINCT DEPTNO), COUNT(*)
 FROM DEPARTMENT
@@ -54,7 +54,7 @@ WHERE RTRIM(DEPTNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ DEPTNAME
+-- ---------------------------------------------------------------------------------------- DEPTNAME
 -- the shortest and the longest DEPTNAME, trailing spaces trimmed; 8 to 28 characters, of VARCHAR(36) declared.
 SELECT MIN(LENGTH(RTRIM(DEPTNAME))), MAX(LENGTH(RTRIM(DEPTNAME)))
 FROM DEPARTMENT
@@ -70,7 +70,7 @@ WHERE RTRIM(DEPTNAME) = ''
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- MGRNO
+-- ------------------------------------------------------------------------------------------- MGRNO
 -- the shortest and the longest MGRNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(MGRNO))), MAX(LENGTH(RTRIM(MGRNO)))
 FROM DEPARTMENT
@@ -91,7 +91,7 @@ FROM DEPARTMENT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ ADMRDEPT
+-- ---------------------------------------------------------------------------------------- ADMRDEPT
 -- the shortest and the longest ADMRDEPT, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(ADMRDEPT))), MAX(LENGTH(RTRIM(ADMRDEPT)))
 FROM DEPARTMENT
@@ -107,7 +107,7 @@ WHERE RTRIM(ADMRDEPT) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ LOCATION
+-- ---------------------------------------------------------------------------------------- LOCATION
 -- the shortest and the longest LOCATION; no value, of CHARACTER(16) declared.
 SELECT MIN(LENGTH(RTRIM(LOCATION))), MAX(LENGTH(RTRIM(LOCATION)))
 FROM DEPARTMENT

@@ -28,7 +28,15 @@
  * {@code MLBLOGS_ANSWERS}, {@code MLBLOGS_QUESTIONS} and {@code PATIENTS} map to {@code float[]}
  * through {@code VectorStringAttributeConverter}. The aliases ({@code DEPT}, {@code EMP},
  * {@code EMPACT}, {@code EMP_ACT}, {@code PROJ}) are other names of tables mapped here.
+ * <p>
+ * The description of a column, in the javadoc of its attribute, is quoted from
+ * <a href="https://www.ibm.com/docs/en/db2/12.1.x?topic=samples-sample-database">The SAMPLE
+ * database</a> of the Db2 12.1 documentation, which describes most of the tables; it describes no
+ * view, and not {@code EMPMDC}, {@code MLBLOGS_ANSWERS}, {@code MLBLOGS_QUESTIONS},
+ * {@code PATIENTS} or {@code STAFFG}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
+ * @see <a href="https://www.ibm.com/docs/en/db2/12.1.x?topic=samples-sample-database">The SAMPLE
+ *         database (Db2 12.1)</a>
  */
 package com.github.jinahya.db2.sample.database.persistence.mapped;

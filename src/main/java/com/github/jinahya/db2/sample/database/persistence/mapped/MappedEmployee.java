@@ -25,6 +25,8 @@ import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -251,9 +253,56 @@ public abstract class MappedEmployee {
     public static final String ATTRIBUTE_NAME_JOB = "job";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_JOB} attribute. The value is {@value}.
+     * An enum for the {@value #ATTRIBUTE_NAME_JOB} attribute; the jobs the {@code SAMPLE} database
+     * holds. Each constant's {@link Enum#name() name} is the column value it represents, and fits
+     * in {@value #COLUMN_LENGTH_JOB} characters.
+     *
+     * @implNote The database does not restrict the column to these values; the column is a
+     *         {@code CHAR}, which the database pads with spaces, and each provider reads the padded
+     *         value back as the constant.
      */
-    public static final int SIZE_MAX_JOB = COLUMN_LENGTH_JOB;
+    public enum Job {
+
+        /**
+         * A constant for an analyst.
+         */
+        ANALYST,
+
+        /**
+         * A constant for a clerk.
+         */
+        CLERK,
+
+        /**
+         * A constant for a designer.
+         */
+        DESIGNER,
+
+        /**
+         * A constant for a field representative.
+         */
+        FIELDREP,
+
+        /**
+         * A constant for a manager.
+         */
+        MANAGER,
+
+        /**
+         * A constant for an operator.
+         */
+        OPERATOR,
+
+        /**
+         * A constant for the president.
+         */
+        PRES,
+
+        /**
+         * A constant for a sales representative.
+         */
+        SALESREP
+    }
 
     // ------------------------------------------------------------------------------------- EDLEVEL
 
@@ -297,17 +346,24 @@ public abstract class MappedEmployee {
     public static final String ATTRIBUTE_NAME_SEX = "sex";
 
     /**
-     * The maximum size of the {@value #ATTRIBUTE_NAME_SEX} attribute. The value is {@value}.
-     */
-    public static final int SIZE_MAX_SEX = COLUMN_LENGTH_SEX;
-
-    /**
-     * The regular expression of the {@value #ATTRIBUTE_NAME_SEX} attribute. The value is {@value}.
+     * An enum for the {@value #ATTRIBUTE_NAME_SEX} attribute. Each constant's
+     * {@link Enum#name() name} is the column value it represents.
      *
-     * @implNote "Sex (M male, F female)", as the documentation of the {@code SAMPLE}
-     *         database describes the column; the database does not enforce it.
+     * @implNote "Sex (M male, F female)", as the documentation of the {@code SAMPLE} database
+     *         describes the column; the database does not enforce it.
      */
-    public static final String ATTRIBUTE_REGEXP_SEX = "[MF]";
+    public enum Sex {
+
+        /**
+         * A constant for female.
+         */
+        F,
+
+        /**
+         * A constant for male.
+         */
+        M
+    }
 
     // ----------------------------------------------------------------------------------- BIRTHDATE
 
@@ -517,6 +573,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_EMPNO}
+     * column as "Employee number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      */
@@ -530,7 +589,7 @@ public abstract class MappedEmployee {
      *
      * @param empno new value for {@value #ATTRIBUTE_NAME_EMPNO} attribute.
      */
-    protected void setEmpno(@Nonnull final String empno) {
+    public void setEmpno(@Nonnull final String empno) {
         this.empno = empno;
     }
 
@@ -538,6 +597,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_FIRSTNME}
+     * column as "First name".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_FIRSTNME} attribute.
      */
@@ -560,6 +622,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_MIDINIT}
+     * column as "Middle initial".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_MIDINIT} attribute.
      */
@@ -582,6 +647,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_LASTNAME}
+     * column as "Last name".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_LASTNAME} attribute.
      */
@@ -605,13 +673,14 @@ public abstract class MappedEmployee {
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute, which is {@code null}
      * until this instance is loaded.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_WORKDEPT}
+     * column as "Department (DEPTNO) in which the employee works".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_WORKDEPT} attribute.
-     * @apiNote This method is {@code protected}, not package-private, so that a lazy proxy,
-     *         which is a subclass in another package, can override it.
      */
     @Nullable
-    protected String getWorkdept() {
+    public String getWorkdept() {
         return workdept;
     }
 
@@ -632,6 +701,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_PHONENO} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_PHONENO}
+     * column as "Phone number".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_PHONENO} attribute.
      */
@@ -654,6 +726,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_HIREDATE} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_HIREDATE}
+     * column as "Date of hire".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_HIREDATE} attribute.
      */
@@ -676,11 +751,14 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_JOB} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_JOB}
+     * column as "Job".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_JOB} attribute.
      */
     @Nullable
-    public String getJob() {
+    public Job getJob() {
         return job;
     }
 
@@ -689,7 +767,7 @@ public abstract class MappedEmployee {
      *
      * @param job new value for {@value #ATTRIBUTE_NAME_JOB} attribute.
      */
-    public void setJob(@Nullable final String job) {
+    public void setJob(@Nullable final Job job) {
         this.job = job;
     }
 
@@ -697,6 +775,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_EDLEVEL} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_EDLEVEL}
+     * column as "Number of years of formal education".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_EDLEVEL} attribute.
      */
@@ -719,11 +800,14 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SEX} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_SEX}
+     * column as "Sex (M male, F female)".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SEX} attribute.
      */
     @Nullable
-    public String getSex() {
+    public Sex getSex() {
         return sex;
     }
 
@@ -732,7 +816,7 @@ public abstract class MappedEmployee {
      *
      * @param sex new value for {@value #ATTRIBUTE_NAME_SEX} attribute.
      */
-    public void setSex(@Nullable final String sex) {
+    public void setSex(@Nullable final Sex sex) {
         this.sex = sex;
     }
 
@@ -740,6 +824,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_BIRTHDATE} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the
+     * {@value #COLUMN_NAME_BIRTHDATE} column as "Date of birth".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_BIRTHDATE} attribute.
      */
@@ -762,6 +849,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SALARY} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_SALARY}
+     * column as "Yearly salary".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SALARY} attribute.
      */
@@ -784,6 +874,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_BONUS} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_BONUS}
+     * column as "Yearly bonus".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_BONUS} attribute.
      */
@@ -805,6 +898,9 @@ public abstract class MappedEmployee {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_COMM} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_COMM}
+     * column as "Yearly commission".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_COMM} attribute.
      */
@@ -849,7 +945,6 @@ public abstract class MappedEmployee {
     )
     private String firstnme;
 
-    // ---------------------------------------------------------------------------------------------
     @Size(max = SIZE_MAX_MIDINIT)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_MIDINIT,
@@ -860,7 +955,6 @@ public abstract class MappedEmployee {
     )
     private String midinit;
 
-    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Size(max = SIZE_MAX_LASTNAME)
     @NotNull
@@ -873,7 +967,6 @@ public abstract class MappedEmployee {
     )
     private String lastname;
 
-    // ---------------------------------------------------------------------------------------------
     // read-only: the extending entity owns the writable mapping of this column; see the class
     // documentation
     @Size(max = SIZE_MAX_WORKDEPT)
@@ -886,7 +979,6 @@ public abstract class MappedEmployee {
     )
     private String workdept;
 
-    // ---------------------------------------------------------------------------------------------
     // the table's NUMBER check constraint: PHONENO >= '0000' AND PHONENO <= '9999'
     @Pattern(regexp = ATTRIBUTE_REGEXP_PHONENO)
     @Size(max = SIZE_MAX_PHONENO)
@@ -899,7 +991,6 @@ public abstract class MappedEmployee {
     )
     private String phoneno;
 
-    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_HIREDATE,
             nullable = true,
@@ -908,8 +999,7 @@ public abstract class MappedEmployee {
     )
     private LocalDate hiredate;
 
-    // ---------------------------------------------------------------------------------------------
-    @Size(max = SIZE_MAX_JOB)
+    @Enumerated(EnumType.STRING)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_JOB,
             nullable = true,
@@ -917,9 +1007,8 @@ public abstract class MappedEmployee {
             updatable = true,
             length = COLUMN_LENGTH_JOB
     )
-    private String job;
+    private Job job;
 
-    // ---------------------------------------------------------------------------------------------
     @Nonnull
     @Min(ATTRIBUTE_MIN_EDLEVEL)
     @Max(Db2Constants.SMALLINT_MAX)
@@ -932,9 +1021,7 @@ public abstract class MappedEmployee {
     )
     private Integer edlevel;
 
-    // ---------------------------------------------------------------------------------------------
-    @Pattern(regexp = ATTRIBUTE_REGEXP_SEX)
-    @Size(max = SIZE_MAX_SEX)
+    @Enumerated(EnumType.STRING)
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_SEX,
             nullable = true,
@@ -942,9 +1029,8 @@ public abstract class MappedEmployee {
             updatable = true,
             length = COLUMN_LENGTH_SEX
     )
-    private String sex;
+    private Sex sex;
 
-    // ---------------------------------------------------------------------------------------------
     @Basic(optional = true, fetch = FetchType.EAGER)
     @Column(name = COLUMN_NAME_BIRTHDATE,
             nullable = true,
@@ -953,7 +1039,6 @@ public abstract class MappedEmployee {
     )
     private LocalDate birthdate;
 
-    // ---------------------------------------------------------------------------------------------
     @DecimalMin(ATTRIBUTE_DECIMAL_MIN_SALARY)
     @Digits(integer = DIGITS_INTEGER_SALARY, fraction = DIGITS_FRACTION_SALARY)
     @Basic(optional = true, fetch = FetchType.EAGER)
@@ -966,7 +1051,6 @@ public abstract class MappedEmployee {
     )
     private BigDecimal salary;
 
-    // ---------------------------------------------------------------------------------------------
     @DecimalMin(ATTRIBUTE_DECIMAL_MIN_BONUS)
     @Digits(integer = DIGITS_INTEGER_BONUS, fraction = DIGITS_FRACTION_BONUS)
     @Basic(optional = true, fetch = FetchType.EAGER)
@@ -979,7 +1063,6 @@ public abstract class MappedEmployee {
     )
     private BigDecimal bonus;
 
-    // ---------------------------------------------------------------------------------------------
     @DecimalMin(ATTRIBUTE_DECIMAL_MIN_COMM)
     @Digits(integer = DIGITS_INTEGER_COMM, fraction = DIGITS_FRACTION_COMM)
     @Basic(optional = true, fetch = FetchType.EAGER)

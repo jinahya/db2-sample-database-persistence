@@ -33,7 +33,7 @@ FROM VSTAFAC2
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- this view has no key, and is mapped as no entity, with no identifier. PROJNO, ACTNO, EMPNO, STDATE, which the data
 -- alone would suggest as one: the values which more than one row shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- PROJNO
+-- ------------------------------------------------------------------------------------------ PROJNO
 -- the shortest and the longest PROJNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNO))), MAX(LENGTH(RTRIM(PROJNO)))
 FROM VSTAFAC2
@@ -60,14 +60,14 @@ WHERE RTRIM(PROJNO) = ''
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- ACTNO
+-- ------------------------------------------------------------------------------------------- ACTNO
 -- the smallest and the largest ACTNO; 10 and 180.
 SELECT MIN(ACTNO), MAX(ACTNO)
 FROM VSTAFAC2
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- ACTDESC
+-- ----------------------------------------------------------------------------------------- ACTDESC
 -- the shortest and the longest ACTDESC, trailing spaces trimmed; 8 to 19 characters, of VARCHAR(20) declared.
 SELECT MIN(LENGTH(RTRIM(ACTDESC))), MAX(LENGTH(RTRIM(ACTDESC)))
 FROM VSTAFAC2
@@ -83,7 +83,7 @@ WHERE RTRIM(ACTDESC) = ''
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- EMPNO
+-- ------------------------------------------------------------------------------------------- EMPNO
 -- the shortest and the longest EMPNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(EMPNO))), MAX(LENGTH(RTRIM(EMPNO)))
 FROM VSTAFAC2
@@ -99,7 +99,7 @@ WHERE RTRIM(EMPNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ FIRSTNME
+-- ---------------------------------------------------------------------------------------- FIRSTNME
 -- the shortest and the longest FIRSTNME, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(12) declared.
 SELECT MIN(LENGTH(RTRIM(FIRSTNME))), MAX(LENGTH(RTRIM(FIRSTNME)))
 FROM VSTAFAC2
@@ -115,7 +115,7 @@ WHERE RTRIM(FIRSTNME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- MIDINIT
+-- ----------------------------------------------------------------------------------------- MIDINIT
 -- the shortest and the longest MIDINIT, trailing spaces trimmed; 0 to 1 characters, of CHARACTER(1) declared.
 SELECT MIN(LENGTH(RTRIM(MIDINIT))), MAX(LENGTH(RTRIM(MIDINIT)))
 FROM VSTAFAC2
@@ -137,7 +137,7 @@ FROM VSTAFAC2
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ LASTNAME
+-- ---------------------------------------------------------------------------------------- LASTNAME
 -- the shortest and the longest LASTNAME, trailing spaces trimmed; 3 to 9 characters, of VARCHAR(15) declared.
 SELECT MIN(LENGTH(RTRIM(LASTNAME))), MAX(LENGTH(RTRIM(LASTNAME)))
 FROM VSTAFAC2
@@ -153,7 +153,7 @@ WHERE RTRIM(LASTNAME) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------- EMPTIME
+-- ----------------------------------------------------------------------------------------- EMPTIME
 -- the smallest and the largest EMPTIME; 0.25 and 1.00.
 SELECT MIN(EMPTIME), MAX(EMPTIME)
 FROM VSTAFAC2
@@ -165,7 +165,7 @@ FROM VSTAFAC2
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- STDATE
+-- ------------------------------------------------------------------------------------------ STDATE
 -- the earliest and the latest STDATE; 2002-01-01 and 2003-01-01.
 SELECT MIN(STDATE), MAX(STDATE)
 FROM VSTAFAC2
@@ -177,7 +177,7 @@ FROM VSTAFAC2
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- ENDATE
+-- ------------------------------------------------------------------------------------------ ENDATE
 -- the earliest and the latest ENDATE; 2002-02-01 and 2003-10-01.
 SELECT MIN(ENDATE), MAX(ENDATE)
 FROM VSTAFAC2
@@ -189,7 +189,7 @@ FROM VSTAFAC2
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------------- TYPE
+-- -------------------------------------------------------------------------------------------- TYPE
 -- the shortest and the longest TYPE, trailing spaces trimmed; always 1 characters, of VARCHAR(1) declared.
 SELECT MIN(LENGTH(RTRIM(TYPE))), MAX(LENGTH(RTRIM(TYPE)))
 FROM VSTAFAC2

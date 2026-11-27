@@ -38,8 +38,7 @@ class EmpPhoto_Randomizer
     EmpPhoto_Randomizer() {
         super(EmpPhoto.class, List.of(
                 "employee",
-                EmpPhoto.ATTRIBUTE_NAME_EMPNO,
-                EmpPhoto.ATTRIBUTE_NAME_PHOTO_FORMAT
+                EmpPhoto.ATTRIBUTE_NAME_ID
         ));
     }
 
@@ -47,7 +46,7 @@ class EmpPhoto_Randomizer
     @Override
     public EmpPhoto get() {
         final var instance = super.get();
-        instance.setEmpno(__Randomizer_Utils.string(6));
+        // the employee number is the employee's, which the persister sets
         instance.setPhotoFormat(__Randomizer_Utils.string(10));
         return instance;
     }

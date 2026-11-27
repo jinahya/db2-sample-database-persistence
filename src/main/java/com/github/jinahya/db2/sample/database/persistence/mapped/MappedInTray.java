@@ -192,6 +192,9 @@ public abstract class MappedInTray {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_RECEIVED} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_RECEIVED}
+     * column as "Date and Time received".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_RECEIVED} attribute.
      */
@@ -206,7 +209,7 @@ public abstract class MappedInTray {
      *
      * @param received new value for {@value #ATTRIBUTE_NAME_RECEIVED} attribute.
      */
-    protected void setReceived(@Nonnull final LocalDateTime received) {
+    public void setReceived(@Nonnull final LocalDateTime received) {
         this.received = received;
     }
 
@@ -214,6 +217,9 @@ public abstract class MappedInTray {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SOURCE} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_SOURCE}
+     * column as "User id of person sending note".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SOURCE} attribute.
      */
@@ -236,6 +242,9 @@ public abstract class MappedInTray {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_SUBJECT} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the {@value #COLUMN_NAME_SUBJECT}
+     * column as "Brief description".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_SUBJECT} attribute.
      */
@@ -258,6 +267,9 @@ public abstract class MappedInTray {
 
     /**
      * Returns current value of {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute.
+     * <p>
+     * The documentation of the {@code SAMPLE} database describes the
+     * {@value #COLUMN_NAME_NOTE_TEXT} column as "The note".
      *
      * @return current value of {@value #ATTRIBUTE_NAME_NOTE_TEXT} attribute.
      */

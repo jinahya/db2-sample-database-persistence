@@ -33,7 +33,7 @@ FROM VDEPT
 ;
 
 
--- ---------------------------------------------------------------------------------------------------------- IDENTIFIER
+-- -------------------------------------------------------------------------------------- IDENTIFIER
 -- the identifier which the mapping takes, DEPTNO, of a view, which has no key: the values which more than one row
 -- shares.
 -- no rows: unique in the installed data; nothing in the database keeps it so.
@@ -44,7 +44,7 @@ HAVING COUNT(*) > 1
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- DEPTNO
+-- ------------------------------------------------------------------------------------------ DEPTNO
 -- the shortest and the longest DEPTNO, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(DEPTNO))), MAX(LENGTH(RTRIM(DEPTNO)))
 FROM VDEPT
@@ -60,7 +60,7 @@ WHERE RTRIM(DEPTNO) = ''
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ DEPTNAME
+-- ---------------------------------------------------------------------------------------- DEPTNAME
 -- the shortest and the longest DEPTNAME, trailing spaces trimmed; 8 to 28 characters, of VARCHAR(36) declared.
 SELECT MIN(LENGTH(RTRIM(DEPTNAME))), MAX(LENGTH(RTRIM(DEPTNAME)))
 FROM VDEPT
@@ -76,7 +76,7 @@ WHERE RTRIM(DEPTNAME) = ''
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- MGRNO
+-- ------------------------------------------------------------------------------------------- MGRNO
 -- the shortest and the longest MGRNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(MGRNO))), MAX(LENGTH(RTRIM(MGRNO)))
 FROM VDEPT
@@ -97,7 +97,7 @@ FROM VDEPT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ ADMRDEPT
+-- ---------------------------------------------------------------------------------------- ADMRDEPT
 -- the shortest and the longest ADMRDEPT, trailing spaces trimmed; always 3 characters, of CHARACTER(3) declared.
 SELECT MIN(LENGTH(RTRIM(ADMRDEPT))), MAX(LENGTH(RTRIM(ADMRDEPT)))
 FROM VDEPT

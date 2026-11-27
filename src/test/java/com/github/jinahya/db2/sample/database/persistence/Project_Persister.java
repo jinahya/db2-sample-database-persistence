@@ -42,8 +42,8 @@ class Project_Persister
     // ---------------------------------------------------------------------------------------------
     @Override
     public Project apply(final EntityManager entityManager, final Project entityInstance) {
-        entityInstance.setDeptnoDepartment(newPersistedInstanceOf(entityManager, Department.class));
-        entityInstance.setRespempEmployee(newPersistedInstanceOf(entityManager, Employee.class));
+        entityInstance.setDepartment(newPersistedInstanceOf(entityManager, Department.class));
+        entityInstance.setResponsibleEmployee(newPersistedInstanceOf(entityManager, Employee.class));
         entityManager.flush();
         return super.apply(entityManager, entityInstance);
     }

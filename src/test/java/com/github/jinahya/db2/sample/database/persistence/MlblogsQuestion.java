@@ -53,14 +53,4 @@ public class MlblogsQuestion
         );
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @param question {@inheritDoc}
-     * @implNote Widened to {@code public}, so that whoever creates an instance sets it.
-     */
-    @Override
-    public void setQuestion(final String question) {
-        super.setQuestion(question);
-    }
 }

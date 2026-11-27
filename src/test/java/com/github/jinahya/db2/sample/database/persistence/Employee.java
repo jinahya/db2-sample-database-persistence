@@ -21,11 +21,13 @@ package com.github.jinahya.db2.sample.database.persistence;
  */
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedEmployee;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 
 import java.util.Optional;
 
@@ -48,30 +50,6 @@ public class Employee
         super();
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
-     * @implNote Widened to {@code public}, so that a test reads the column the association
-     *         writes.
-     */
-    @Override
-    public String getWorkdept() {
-        return super.getWorkdept();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @param empno {@inheritDoc}
-     * @implNote Widened to {@code public}: the identifier is assigned, not generated, so
-     *         whoever creates an instance sets it.
-     */
-    @Override
-    public void setEmpno(final String empno) {
-        super.setEmpno(empno);
-    }
-
     // -------------------------------------------------------------------------- workdeptDepartment
 
     /**
@@ -90,17 +68,22 @@ public class Employee
      */
     public void setWorkdeptDepartment(final Department workdeptDepartment) {
         this.workdeptDepartment = workdeptDepartment;
-        setWorkdept(Optional.ofNullable(workdeptDepartment)
-                            .map(Department::getDeptno)
-                            .orElse(null));
+        setWorkdept(
+                Optional.ofNullable(workdeptDepartment)
+                        .map(Department::getDeptno)
+                        .orElse(null)
+        );
     }
 
     // ---------------------------------------------------------------------------------------------
+    @Nullable
+    @Valid
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = Employee.COLUMN_NAME_WORKDEPT,
                 referencedColumnName = Department.COLUMN_NAME_DEPTNO,
                 nullable = true,
                 insertable = true,
-                updatable = true)
+                updatable = true
+    )
     private Department workdeptDepartment;
 }

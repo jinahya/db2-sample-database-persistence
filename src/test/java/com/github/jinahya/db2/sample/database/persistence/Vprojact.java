@@ -117,7 +117,7 @@ public class Vprojact
      *
      * @return current value of {@value #ATTRIBUTE_NAME_ID} attribute.
      */
-    protected VprojactId getId() {
+    public VprojactId getId() {
         return id;
     }
 

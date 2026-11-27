@@ -33,7 +33,7 @@ FROM PROJACT
 ;
 
 
--- -------------------------------------------------------------------------------------------------------------- PROJNO
+-- ------------------------------------------------------------------------------------------ PROJNO
 -- the shortest and the longest PROJNO, trailing spaces trimmed; always 6 characters, of CHARACTER(6) declared.
 SELECT MIN(LENGTH(RTRIM(PROJNO))), MAX(LENGTH(RTRIM(PROJNO)))
 FROM PROJACT
@@ -49,14 +49,19 @@ WHERE RTRIM(PROJNO) = ''
 ;
 
 
--- --------------------------------------------------------------------------------------------------------------- ACTNO
+-- ------------------------------------------------------------------------------------------- ACTNO
 -- the smallest and the largest ACTNO; 10 and 180.
 SELECT MIN(ACTNO), MAX(ACTNO)
 FROM PROJACT
 ;
 
+SELECT pa.ACTNO, a.ACTNO
+FROM PROJACT AS pa
+         LEFT OUTER JOIN ACT AS a ON pa.ACTNO = a.ACTNO
+WHERE a.ACTNO IS NULL
+;
 
--- ------------------------------------------------------------------------------------------------------------- ACSTAFF
+-- ----------------------------------------------------------------------------------------- ACSTAFF
 -- the smallest and the largest ACSTAFF; no value.
 SELECT MIN(ACSTAFF), MAX(ACSTAFF)
 FROM PROJACT
@@ -68,14 +73,14 @@ FROM PROJACT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ ACSTDATE
+-- ---------------------------------------------------------------------------------------- ACSTDATE
 -- the earliest and the latest ACSTDATE; 2002-01-01 and 2003-01-01.
 SELECT MIN(ACSTDATE), MAX(ACSTDATE)
 FROM PROJACT
 ;
 
 
--- ------------------------------------------------------------------------------------------------------------ ACENDATE
+-- ---------------------------------------------------------------------------------------- ACENDATE
 -- the earliest and the latest ACENDATE; no value.
 SELECT MIN(ACENDATE), MAX(ACENDATE)
 FROM PROJACT
