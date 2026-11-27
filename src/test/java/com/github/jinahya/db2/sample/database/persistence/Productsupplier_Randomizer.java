@@ -37,8 +37,8 @@ class Productsupplier_Randomizer
     Productsupplier_Randomizer() {
         super(Productsupplier.class, List.of(
                 Productsupplier.ATTRIBUTE_NAME_ID,
-                "product",
-                "supplier"
+                Productsupplier.ATTRIBUTE_NAME_PRODUCT,
+                Productsupplier.ATTRIBUTE_NAME_SUPPLIER
         ));
     }
 

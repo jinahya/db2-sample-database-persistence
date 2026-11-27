@@ -65,6 +65,14 @@ public class EmpResume
     public static final String ATTRIBUTE_PATH_ID_RESUME_FORMAT =
             ATTRIBUTE_NAME_ID + "." + EmpResumeId.ATTRIBUTE_NAME_RESUME_FORMAT;
 
+    // --------------------------------------------------------------------------------------- EMPNO
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_EMPLOYEE = "employee";
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**

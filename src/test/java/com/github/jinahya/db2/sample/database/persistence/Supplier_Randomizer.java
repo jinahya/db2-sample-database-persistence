@@ -36,6 +36,7 @@ class Supplier_Randomizer
 
     Supplier_Randomizer() {
         super(Supplier.class, List.of(
+                Supplier.ATTRIBUTE_NAME_PRODUCTSUPPLIERS,
                 Supplier.ATTRIBUTE_NAME_SID
         ));
     }

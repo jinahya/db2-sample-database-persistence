@@ -22,7 +22,13 @@ package com.github.jinahya.db2.sample.database.persistence;
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedCustomer;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 /**
  * An entity of the {@value #TABLE_NAME} table.
@@ -34,6 +40,16 @@ import jakarta.persistence.Table;
 public class Customer
         extends MappedCustomer {
 
+    // ------------------------------------------------------------------------------ PURCHASEORDERS
+
+    /**
+     * The name of the attribute which maps the purchase orders of this customer. The value is
+     * {@value}.
+     *
+     * @see Purchaseorder#ATTRIBUTE_NAME_CUSTOMER
+     */
+    public static final String ATTRIBUTE_NAME_PURCHASEORDERS = "purchaseorders";
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
@@ -43,4 +59,32 @@ public class Customer
         super();
     }
 
+    // ------------------------------------------------------------------------------ purchaseorders
+
+    /**
+     * Returns the purchase orders of this customer.
+     *
+     * @return the purchase orders of this customer.
+     */
+    public List<Purchaseorder> getPurchaseorders() {
+        return purchaseorders;
+    }
+
+    /**
+     * Replaces the purchase orders of this customer with the specified value.
+     *
+     * @param purchaseorders new value for the purchase orders of this customer.
+     */
+    public void setPurchaseorders(final List<Purchaseorder> purchaseorders) {
+        this.purchaseorders = purchaseorders;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @OneToMany(mappedBy = Purchaseorder.ATTRIBUTE_NAME_CUSTOMER,
+               fetch = FetchType.LAZY,
+               cascade = {
+               },
+               orphanRemoval = false
+    )
+    private List<@Valid @NotNull Purchaseorder> purchaseorders;
 }

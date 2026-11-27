@@ -26,10 +26,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -41,6 +43,52 @@ import java.util.Optional;
 @Table(name = Department.TABLE_NAME)
 public class Department
         extends MappedDepartment {
+
+    // --------------------------------------------------------------------------------------- MGRNO
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MGRNO} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_MANAGER = "manager";
+
+    // ------------------------------------------------------------------------------------ ADMRDEPT
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ADMRDEPT} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_ADMINISTRATIVE_DEPARTMENT = "administrativeDepartment";
+
+    // ----------------------------------------------------------------------------------- EMPLOYEES
+
+    /**
+     * The name of the attribute which maps the employees who work in this department. The value is
+     * {@value}.
+     *
+     * @see Employee#ATTRIBUTE_NAME_WORKDEPT_DEPARTMENT
+     */
+    public static final String ATTRIBUTE_NAME_EMPLOYEES = "employees";
+
+    // -------------------------------------------------------------------- ADMINISTERED_DEPARTMENTS
+
+    /**
+     * The name of the attribute which maps the departments which this department administers. The
+     * value is {@value}.
+     *
+     * @see Department#ATTRIBUTE_NAME_ADMINISTRATIVE_DEPARTMENT
+     */
+    public static final String ATTRIBUTE_NAME_ADMINISTERED_DEPARTMENTS = "administeredDepartments";
+
+    // ------------------------------------------------------------------------------------ PROJECTS
+
+    /**
+     * The name of the attribute which maps the projects for which this department is responsible.
+     * The value is {@value}.
+     *
+     * @see Project#ATTRIBUTE_NAME_DEPARTMENT
+     */
+    public static final String ATTRIBUTE_NAME_PROJECTS = "projects";
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -104,6 +152,67 @@ public class Department
                             .orElse(null));
     }
 
+    // ----------------------------------------------------------------------------------- employees
+
+    /**
+     * Returns the employees who work in this department.
+     *
+     * @return the employees who work in this department.
+     */
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    /**
+     * Replaces the employees who work in this department with the specified value.
+     *
+     * @param employees new value for the employees who work in this department.
+     */
+    public void setEmployees(final List<Employee> employees) {
+        this.employees = employees;
+    }
+
+    // --------------------------------------------------------------------- administeredDepartments
+
+    /**
+     * Returns the departments which this department administers.
+     *
+     * @return the departments which this department administers.
+     */
+    public List<Department> getAdministeredDepartments() {
+        return administeredDepartments;
+    }
+
+    /**
+     * Replaces the departments which this department administers with the specified value.
+     *
+     * @param administeredDepartments new value for the departments which this department
+     * administers.
+     */
+    public void setAdministeredDepartments(final List<Department> administeredDepartments) {
+        this.administeredDepartments = administeredDepartments;
+    }
+
+    // ------------------------------------------------------------------------------------ projects
+
+    /**
+     * Returns the projects for which this department is responsible.
+     *
+     * @return the projects for which this department is responsible.
+     */
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    /**
+     * Replaces the projects for which this department is responsible with the specified value.
+     *
+     * @param projects new value for the projects for which this department is responsible.
+     */
+    public void setProjects(final List<Project> projects) {
+        this.projects = projects;
+    }
+
     // ---------------------------------------------------------------------------------------------
     @Nullable
     @Valid
@@ -127,4 +236,31 @@ public class Department
                 updatable = true
     )
     private Department administrativeDepartment;
+
+    // ---------------------------------------------------------------------------------------------
+    @OneToMany(mappedBy = Employee.ATTRIBUTE_NAME_WORKDEPT_DEPARTMENT,
+               fetch = FetchType.LAZY,
+               cascade = {
+               },
+               orphanRemoval = false
+    )
+    private List<@Valid @NotNull Employee> employees;
+
+    // ---------------------------------------------------------------------------------------------
+    @OneToMany(mappedBy = Department.ATTRIBUTE_NAME_ADMINISTRATIVE_DEPARTMENT,
+               fetch = FetchType.LAZY,
+               cascade = {
+               },
+               orphanRemoval = false
+    )
+    private List<@Valid @NotNull Department> administeredDepartments;
+
+    // ---------------------------------------------------------------------------------------------
+    @OneToMany(mappedBy = Project.ATTRIBUTE_NAME_DEPARTMENT,
+               fetch = FetchType.LAZY,
+               cascade = {
+               },
+               orphanRemoval = false
+    )
+    private List<@Valid @NotNull Project> projects;
 }

@@ -37,8 +37,8 @@ class Projact_Randomizer
 
     Projact_Randomizer() {
         super(Projact.class, List.of(
-                "project",
-                "act",
+                Projact.ATTRIBUTE_NAME_PROJECT,
+                Projact.ATTRIBUTE_NAME_ACT,
                 Projact.ATTRIBUTE_NAME_ID
         ));
     }

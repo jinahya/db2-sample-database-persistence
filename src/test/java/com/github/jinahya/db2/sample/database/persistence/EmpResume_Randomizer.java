@@ -37,7 +37,7 @@ class EmpResume_Randomizer
 
     EmpResume_Randomizer() {
         super(EmpResume.class, List.of(
-                "employee",
+                EmpResume.ATTRIBUTE_NAME_EMPLOYEE,
                 EmpResume.ATTRIBUTE_NAME_ID
         ));
     }

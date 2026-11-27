@@ -37,7 +37,7 @@ class Purchaseorder_Randomizer
 
     Purchaseorder_Randomizer() {
         super(Purchaseorder.class, List.of(
-                "custidCustomer",
+                Purchaseorder.ATTRIBUTE_NAME_CUSTOMER,
                 Purchaseorder.ATTRIBUTE_NAME_POID,
                 Purchaseorder.ATTRIBUTE_NAME_CUSTID
         ));

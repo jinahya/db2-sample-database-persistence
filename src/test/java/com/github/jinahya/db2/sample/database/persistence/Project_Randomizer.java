@@ -37,9 +37,11 @@ class Project_Randomizer
 
     Project_Randomizer() {
         super(Project.class, List.of(
-                "deptnoDepartment",
-                "respempEmployee",
-                "majprojProject",
+                Project.ATTRIBUTE_NAME_SUBPROJECTS,
+                Project.ATTRIBUTE_NAME_PROJACTS,
+                Project.ATTRIBUTE_NAME_DEPARTMENT,
+                Project.ATTRIBUTE_NAME_RESPONSIBLE_EMPLOYEE,
+                Project.ATTRIBUTE_NAME_MAJOR_PROJECT,
                 Project.ATTRIBUTE_NAME_PROJNO,
                 Project.ATTRIBUTE_NAME_DEPTNO,
                 Project.ATTRIBUTE_NAME_RESPEMP,

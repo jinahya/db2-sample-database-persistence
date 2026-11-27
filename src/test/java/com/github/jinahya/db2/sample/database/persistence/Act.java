@@ -22,7 +22,13 @@ package com.github.jinahya.db2.sample.database.persistence;
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedAct;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 /**
  * An entity of the {@value #TABLE_NAME} table.
@@ -34,6 +40,15 @@ import jakarta.persistence.Table;
 public class Act
         extends MappedAct {
 
+    // ------------------------------------------------------------------------------------ PROJACTS
+
+    /**
+     * The name of the attribute which maps the projects of this activity. The value is {@value}.
+     *
+     * @see Projact#ATTRIBUTE_NAME_ACT
+     */
+    public static final String ATTRIBUTE_NAME_PROJACTS = "projacts";
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
@@ -43,4 +58,32 @@ public class Act
         super();
     }
 
+    // ------------------------------------------------------------------------------------ projacts
+
+    /**
+     * Returns the projects of this activity.
+     *
+     * @return the projects of this activity.
+     */
+    public List<Projact> getProjacts() {
+        return projacts;
+    }
+
+    /**
+     * Replaces the projects of this activity with the specified value.
+     *
+     * @param projacts new value for the projects of this activity.
+     */
+    public void setProjacts(final List<Projact> projacts) {
+        this.projacts = projacts;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @OneToMany(mappedBy = Projact.ATTRIBUTE_NAME_ACT,
+               fetch = FetchType.LAZY,
+               cascade = {
+               },
+               orphanRemoval = false
+    )
+    private List<@Valid @NotNull Projact> projacts;
 }

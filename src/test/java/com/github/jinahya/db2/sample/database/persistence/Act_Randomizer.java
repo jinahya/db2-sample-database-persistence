@@ -36,6 +36,7 @@ class Act_Randomizer
 
     Act_Randomizer() {
         super(Act.class, List.of(
+                Act.ATTRIBUTE_NAME_PROJACTS,
                 Act.ATTRIBUTE_NAME_ACTNO
         ));
     }

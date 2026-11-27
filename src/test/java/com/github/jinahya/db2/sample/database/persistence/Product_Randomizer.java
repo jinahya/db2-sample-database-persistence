@@ -36,6 +36,7 @@ class Product_Randomizer
 
     Product_Randomizer() {
         super(Product.class, List.of(
+                Product.ATTRIBUTE_NAME_PRODUCTSUPPLIERS,
                 Product.ATTRIBUTE_NAME_PID
         ));
     }

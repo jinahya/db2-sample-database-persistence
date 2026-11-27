@@ -37,7 +37,7 @@ class EmpPhoto_Randomizer
 
     EmpPhoto_Randomizer() {
         super(EmpPhoto.class, List.of(
-                "employee",
+                EmpPhoto.ATTRIBUTE_NAME_EMPLOYEE,
                 EmpPhoto.ATTRIBUTE_NAME_ID
         ));
     }

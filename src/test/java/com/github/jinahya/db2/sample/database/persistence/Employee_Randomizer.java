@@ -37,7 +37,11 @@ class Employee_Randomizer
 
     Employee_Randomizer() {
         super(Employee.class, List.of(
-                "workdeptDepartment",
+                Employee.ATTRIBUTE_NAME_MANAGED_DEPARTMENTS,
+                Employee.ATTRIBUTE_NAME_RESPONSIBLE_PROJECTS,
+                Employee.ATTRIBUTE_NAME_EMP_PHOTOS,
+                Employee.ATTRIBUTE_NAME_EMP_RESUMES,
+                Employee.ATTRIBUTE_NAME_WORKDEPT_DEPARTMENT,
                 Employee.ATTRIBUTE_NAME_EMPNO,
                 Employee.ATTRIBUTE_NAME_WORKDEPT
         ));

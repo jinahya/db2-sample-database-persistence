@@ -73,6 +73,22 @@ public class Projact
     public static final String ATTRIBUTE_PATH_ID_ACSTDATE =
             ATTRIBUTE_NAME_ID + "." + ProjactId.ATTRIBUTE_NAME_ACSTDATE;
 
+    // -------------------------------------------------------------------------------------- PROJNO
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PROJNO} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_PROJECT = "project";
+
+    // --------------------------------------------------------------------------------------- ACTNO
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_ACTNO} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_ACT = "act";
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**

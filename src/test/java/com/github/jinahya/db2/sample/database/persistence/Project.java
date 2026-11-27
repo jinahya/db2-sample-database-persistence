@@ -26,10 +26,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -41,6 +43,48 @@ import java.util.Optional;
 @Table(name = Project.TABLE_NAME)
 public class Project
         extends MappedProject {
+
+    // -------------------------------------------------------------------------------------- DEPTNO
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_DEPTNO} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_DEPARTMENT = "department";
+
+    // ------------------------------------------------------------------------------------- RESPEMP
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_RESPEMP} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_RESPONSIBLE_EMPLOYEE = "responsibleEmployee";
+
+    // ------------------------------------------------------------------------------------- MAJPROJ
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_MAJPROJ} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_MAJOR_PROJECT = "majorProject";
+
+    // --------------------------------------------------------------------------------- SUBPROJECTS
+
+    /**
+     * The name of the attribute which maps the subprojects of this project. The value is {@value}.
+     *
+     * @see Project#ATTRIBUTE_NAME_MAJOR_PROJECT
+     */
+    public static final String ATTRIBUTE_NAME_SUBPROJECTS = "subprojects";
+
+    // ------------------------------------------------------------------------------------ PROJACTS
+
+    /**
+     * The name of the attribute which maps the activities of this project. The value is {@value}.
+     *
+     * @see Projact#ATTRIBUTE_NAME_PROJECT
+     */
+    public static final String ATTRIBUTE_NAME_PROJACTS = "projacts";
 
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
@@ -114,6 +158,46 @@ public class Project
         setMajproj(Optional.ofNullable(majprojProject).map(Project::getProjno).orElse(null));
     }
 
+    // --------------------------------------------------------------------------------- subprojects
+
+    /**
+     * Returns the subprojects of this project.
+     *
+     * @return the subprojects of this project.
+     */
+    public List<Project> getSubprojects() {
+        return subprojects;
+    }
+
+    /**
+     * Replaces the subprojects of this project with the specified value.
+     *
+     * @param subprojects new value for the subprojects of this project.
+     */
+    public void setSubprojects(final List<Project> subprojects) {
+        this.subprojects = subprojects;
+    }
+
+    // ------------------------------------------------------------------------------------ projacts
+
+    /**
+     * Returns the activities of this project.
+     *
+     * @return the activities of this project.
+     */
+    public List<Projact> getProjacts() {
+        return projacts;
+    }
+
+    /**
+     * Replaces the activities of this project with the specified value.
+     *
+     * @param projacts new value for the activities of this project.
+     */
+    public void setProjacts(final List<Projact> projacts) {
+        this.projacts = projacts;
+    }
+
     // ---------------------------------------------------------------------------------------------
     @Valid
     @NotNull
@@ -149,4 +233,22 @@ public class Project
                 updatable = true
     )
     private Project majorProject;
+
+    // ---------------------------------------------------------------------------------------------
+    @OneToMany(mappedBy = Project.ATTRIBUTE_NAME_MAJOR_PROJECT,
+               fetch = FetchType.LAZY,
+               cascade = {
+               },
+               orphanRemoval = false
+    )
+    private List<@Valid @NotNull Project> subprojects;
+
+    // ---------------------------------------------------------------------------------------------
+    @OneToMany(mappedBy = Projact.ATTRIBUTE_NAME_PROJECT,
+               fetch = FetchType.LAZY,
+               cascade = {
+               },
+               orphanRemoval = false
+    )
+    private List<@Valid @NotNull Projact> projacts;
 }

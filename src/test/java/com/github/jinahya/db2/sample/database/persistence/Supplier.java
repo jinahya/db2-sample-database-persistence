@@ -22,7 +22,13 @@ package com.github.jinahya.db2.sample.database.persistence;
 
 import com.github.jinahya.db2.sample.database.persistence.mapped.MappedSupplier;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 /**
  * An entity of the {@value #TABLE_NAME} table.
@@ -34,6 +40,15 @@ import jakarta.persistence.Table;
 public class Supplier
         extends MappedSupplier {
 
+    // ---------------------------------------------------------------------------- PRODUCTSUPPLIERS
+
+    /**
+     * The name of the attribute which maps the products of this supplier. The value is {@value}.
+     *
+     * @see Productsupplier#ATTRIBUTE_NAME_SUPPLIER
+     */
+    public static final String ATTRIBUTE_NAME_PRODUCTSUPPLIERS = "productsuppliers";
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
@@ -42,4 +57,33 @@ public class Supplier
     protected Supplier() {
         super();
     }
+
+    // ---------------------------------------------------------------------------- productsuppliers
+
+    /**
+     * Returns the products of this supplier.
+     *
+     * @return the products of this supplier.
+     */
+    public List<Productsupplier> getProductsuppliers() {
+        return productsuppliers;
+    }
+
+    /**
+     * Replaces the products of this supplier with the specified value.
+     *
+     * @param productsuppliers new value for the products of this supplier.
+     */
+    public void setProductsuppliers(final List<Productsupplier> productsuppliers) {
+        this.productsuppliers = productsuppliers;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    @OneToMany(mappedBy = Productsupplier.ATTRIBUTE_NAME_SUPPLIER,
+               fetch = FetchType.LAZY,
+               cascade = {
+               },
+               orphanRemoval = false
+    )
+    private List<@Valid @NotNull Productsupplier> productsuppliers;
 }

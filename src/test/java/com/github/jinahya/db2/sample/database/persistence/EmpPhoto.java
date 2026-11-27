@@ -65,6 +65,14 @@ public class EmpPhoto
     public static final String ATTRIBUTE_PATH_ID_PHOTO_FORMAT =
             ATTRIBUTE_NAME_ID + "." + EmpPhotoId.ATTRIBUTE_NAME_PHOTO_FORMAT;
 
+    // --------------------------------------------------------------------------------------- EMPNO
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_EMPNO} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_EMPLOYEE = "employee";
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**

@@ -37,8 +37,11 @@ class Department_Randomizer
 
     Department_Randomizer() {
         super(Department.class, List.of(
-                "manager",
-                "administrativeDepartment",
+                Department.ATTRIBUTE_NAME_EMPLOYEES,
+                Department.ATTRIBUTE_NAME_ADMINISTERED_DEPARTMENTS,
+                Department.ATTRIBUTE_NAME_PROJECTS,
+                Department.ATTRIBUTE_NAME_MANAGER,
+                Department.ATTRIBUTE_NAME_ADMINISTRATIVE_DEPARTMENT,
                 Department.ATTRIBUTE_NAME_MGRNO,
                 Department.ATTRIBUTE_NAME_ADMRDEPT
         ));

@@ -41,6 +41,14 @@ import java.util.Optional;
 public class Purchaseorder
         extends MappedPurchaseorder {
 
+    // -------------------------------------------------------------------------------------- CUSTID
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_CUSTID} column as an
+     * association. The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_CUSTOMER = "customer";
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**

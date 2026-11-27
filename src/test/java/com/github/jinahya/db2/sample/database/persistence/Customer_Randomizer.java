@@ -37,6 +37,7 @@ class Customer_Randomizer
 
     Customer_Randomizer() {
         super(Customer.class, List.of(
+                Customer.ATTRIBUTE_NAME_PURCHASEORDERS,
                 Customer.ATTRIBUTE_NAME_CID,
                 Customer.ATTRIBUTE_NAME_HISTORY
         ));

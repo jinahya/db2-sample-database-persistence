@@ -66,6 +66,22 @@ public class Productsupplier
     public static final String ATTRIBUTE_PATH_ID_SID =
             ATTRIBUTE_NAME_ID + "." + ProductsupplierId.ATTRIBUTE_NAME_SID;
 
+    // ----------------------------------------------------------------------------------------- PID
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_PID} column as an association.
+     * The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_PRODUCT = "product";
+
+    // ----------------------------------------------------------------------------------------- SID
+
+    /**
+     * The name of the attribute which maps the {@value #COLUMN_NAME_SID} column as an association.
+     * The value is {@value}.
+     */
+    public static final String ATTRIBUTE_NAME_SUPPLIER = "supplier";
+
     // -------------------------------------------------------------------------------- CONSTRUCTORS
 
     /**
