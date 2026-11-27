@@ -45,7 +45,7 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 /**
  * The integration tests of an entity, against the
  * {@value ___PersistenceIT_Utils#PERSISTENCE_UNIT_NAME} unit on the database
- * {@code docker-compose.yml} brings up. Each reads installed rows, or persists a new randomized
+ * {@code compose.yaml} brings up. Each reads installed rows, or persists a new randomized
  * instance, and rolls back.
  * <p>
  * The base holds no entity manager. Each test takes the factory from {@link ___PersistenceIT_Utils}

@@ -134,7 +134,7 @@
     <validation-mode>CALLBACK</validation-mode>
     <properties>
       <property name="jakarta.persistence.jdbc.driver" value="com.ibm.db2.jcc.DB2Driver"/>
-      <!-- the database from docker-compose.yml; db2inst1's tables are in schema DB2INST1, its default -->
+      <!-- the database from compose.yaml; db2inst1's tables are in schema DB2INST1, its default -->
       <property name="jakarta.persistence.jdbc.url" value="jdbc:db2://localhost:50000/SAMPLE"/>
       <property name="jakarta.persistence.jdbc.user" value="db2inst1"/>
       <property name="jakarta.persistence.jdbc.password" value="abcD1234!"/>

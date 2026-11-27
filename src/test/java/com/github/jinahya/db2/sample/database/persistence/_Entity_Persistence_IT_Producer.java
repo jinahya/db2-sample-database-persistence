@@ -39,7 +39,7 @@ import java.lang.invoke.MethodHandles;
 
 /**
  * Produces an entity manager factory, and entity managers, of the integration-test persistence
- * unit, on the SAMPLE database of the Db2 from docker-compose.yml.
+ * unit, on the SAMPLE database of the Db2 from compose.yaml.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

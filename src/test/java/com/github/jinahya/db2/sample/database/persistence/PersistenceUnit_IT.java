@@ -41,7 +41,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Tests the mappings against the {@code SAMPLE} database of the Db2 from
- * {@code docker-compose.yml}.
+ * {@code compose.yaml}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
  */

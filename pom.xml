@@ -404,7 +404,7 @@
       <artifactId>podam</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency><!-- for the *IT, against the Db2 from docker-compose.yml -->
+    <dependency><!-- for the *IT, against the Db2 from compose.yaml -->
       <groupId>com.ibm.db2</groupId>
       <artifactId>jcc</artifactId>
       <scope>test</scope>
